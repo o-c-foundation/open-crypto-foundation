@@ -50,7 +50,9 @@ const scamTypes = [
       'Organizers accumulate a large position in a low-cap, illiquid cryptocurrency at low prices',
       'They spread misleading positive information through social media, paid promotions, or influencer endorsements',
       'When enough unsuspecting investors buy in and drive the price up, organizers sell their entire position',
-      'The token price crashes, leaving new investors with significant losses'
+      'The token price crashes, leaving new investors with significant losses',
+      'Modern pump and dumps are often orchestrated through dedicated groups on Telegram, Discord, or other messaging platforms',
+      'These groups often charge membership fees to participate in coordinated "pumps"'
     ],
     warning_signs: [
       'Sudden price increases without substantial news or development updates',
@@ -58,20 +60,60 @@ const scamTypes = [
       'Celebrity endorsements, especially from those not typically involved in cryptocurrency',
       'Excessive hype on social media with little substance about actual utility',
       'Unrealistic price predictions in a short timeframe',
-      'Heavy emphasis on "buying now before it\'s too late"'
+      'Heavy emphasis on "buying now before it\'s too late"',
+      'Messages suggesting "everyone will get rich" or "everyone will win"',
+      'Secret groups promising insider information on the next big coin',
+      'Projects using terms like "guaranteed returns" or referring to investments as "no risk"',
+      'Unusual trading patterns showing coordinated large buys followed by massive sell-offs'
     ],
     prevention: [
       'Be skeptical of projects heavily promoted by influencers, especially if they\'re paid to promote',
       'Research the token\'s fundamentals rather than making decisions based on FOMO',
       'Check trading volume - artificially pumped coins often have unusual volume patterns',
       'Avoid buying into sudden price spikes without clear catalysts',
-      'Look for evidence of long-term development and real use cases'
+      'Look for evidence of long-term development and real use cases',
+      'Never join pump groups or participate in coordinated market manipulation',
+      'Use blockchain explorers to check if a token\'s holdings are concentrated among few wallets',
+      'Set up price alerts instead of panic buying when you see sudden movements',
+      'Remember that legitimate projects don\'t need artificial price inflation tactics'
     ],
     image: '/images/scams/pump-and-dump/chart.jpg',
     examples: [
       'SaveTheKids token (2021): Promoted by several social media influencers before crashing',
       'Multiple coins endorsed by celebrities like Kim Kardashian (EthereumMax) and Floyd Mayweather',
-      'Countless small-cap altcoins promoted through coordinated Telegram and Discord groups'
+      'Countless small-cap altcoins promoted through coordinated Telegram and Discord groups',
+      'Bitconnect (2018): A classic pump and dump promoted by influencers promising 1% daily returns before collapsing',
+      'SQUID Token (2021): Marketed as tied to the Netflix show but developers abandoned the project after the price spiked 230,000% and then crashed to near zero'
+    ],
+    tactics: [
+      {
+        name: 'Social Media Blitz',
+        description: 'Coordinated posts across Twitter, Reddit, TikTok and other platforms to create the illusion of organic interest. Often uses similar language and hashtags to make a token appear to be "trending".'
+      },
+      {
+        name: 'Fake Celebrity Endorsements',
+        description: 'Creating false tweets or social media posts that appear to come from celebrities, or taking their statements out of context to imply endorsement of a specific token.'
+      },
+      {
+        name: 'Paid Influencer Campaigns',
+        description: 'Paying crypto influencers to promote tokens without disclosing they\'re being compensated, creating the impression of genuine enthusiasm rather than paid advertising.'
+      },
+      {
+        name: 'Technical Analysis Manipulation',
+        description: 'Presenting misleading charts and technical analysis to suggest a coin is about to "break out" based on pattern recognition that isn't valid for low-liquidity assets.'
+      },
+      {
+        name: 'False Partnerships',
+        description: 'Announcing fake partnerships with legitimate companies or exaggerating the significance of minor connections to established brands or celebrities.'
+      },
+      {
+        name: 'Wash Trading',
+        description: 'Creating artificial trading volume by buying and selling between related accounts to make a token appear more active and popular than it actually is.'
+      },
+      {
+        name: 'Telegram/Discord Pump Groups',
+        description: 'Subscription-based groups that coordinate members to buy a specific token simultaneously, artificially driving up the price before the organizers sell their pre-purchased holdings.'
+      }
     ]
   },
   {
@@ -251,6 +293,20 @@ export default function Traders() {
                         ))}
                       </ul>
                     </div>
+
+                    {scam.tactics && (
+                      <div className="bg-orange-900/20 p-5 rounded-lg border border-orange-800/30">
+                        <h4 className="text-lg font-semibold text-orange-400 mb-4">Common Tactics Used</h4>
+                        <div className="space-y-4">
+                          {scam.tactics.map((tactic, i) => (
+                            <div key={i} className="bg-gray-700/50 p-4 rounded">
+                              <h5 className="font-medium text-white">{tactic.name}</h5>
+                              <p className="mt-1 text-gray-300">{tactic.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
