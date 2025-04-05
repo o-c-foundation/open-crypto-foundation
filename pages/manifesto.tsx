@@ -8,7 +8,9 @@ import {
   FaNewspaper,
   FaHandHoldingUsd,
   FaRegLightbulb,
-  FaShieldAlt
+  FaShieldAlt,
+  FaCodeBranch,
+  FaCheckCircle
 } from 'react-icons/fa'
 import SkullLogo from '../components/SkullLogo'
 import TabLayout from '../components/TabLayout'
@@ -729,7 +731,289 @@ export default function Manifesto() {
               </div>
 
               <div className={`transition-all duration-300 ${activeTab === 'solution' ? 'block' : 'hidden'}`}>
-                {/* Content for Our Solution section */}
+                <div className="bg-gray-800 rounded-lg p-6">
+                  <h2 className="text-2xl font-bold mb-6 text-white flex items-center">
+                    <FaHandHoldingUsd className="text-pink-400 mr-3" />
+                    Our Solution
+                  </h2>
+                  
+                  <div className="space-y-6 text-gray-300">
+                    <p className="text-xl">
+                      The Open Crypto Foundation is creating practical, user-focused solutions to make cryptocurrency safer for everyone.
+                    </p>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-white mb-4">Comprehensive Approach</h3>
+                      
+                      <p className="mb-4">
+                        Our approach addresses the fundamental issues in cryptocurrency through three interconnected pillars:
+                      </p>
+                      
+                      <div className="grid md:grid-cols-3 gap-5">
+                        <div className="bg-gray-600 p-5 rounded-lg">
+                          <div className="bg-pink-500/20 rounded-full w-12 h-12 flex items-center justify-center mb-3">
+                            <FaShieldAlt className="text-pink-400 text-xl" />
+                          </div>
+                          <h4 className="font-medium text-white text-lg mb-2">Education</h4>
+                          <p className="text-sm">
+                            Accessible, jargon-free resources that empower users to identify risks and make informed decisions. Knowledge is the first line of defense.
+                          </p>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-5 rounded-lg">
+                          <div className="bg-blue-500/20 rounded-full w-12 h-12 flex items-center justify-center mb-3">
+                            <FaCodeBranch className="text-blue-400 text-xl" />
+                          </div>
+                          <h4 className="font-medium text-white text-lg mb-2">Tools</h4>
+                          <p className="text-sm">
+                            Open-source, user-friendly software that helps identify scams, verify contracts, and manage crypto security with minimal technical knowledge.
+                          </p>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-5 rounded-lg">
+                          <div className="bg-green-500/20 rounded-full w-12 h-12 flex items-center justify-center mb-3">
+                            <FaCheckCircle className="text-green-400 text-xl" />
+                          </div>
+                          <h4 className="font-medium text-white text-lg mb-2">Standards</h4>
+                          <p className="text-sm">
+                            Clear, measurable criteria for project transparency and security that create accountability and help users quickly identify safer options.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-white mb-4">Key Initiatives</h3>
+                      
+                      <div className="space-y-5">
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-pink-300 text-lg flex items-center mb-3">
+                            <span className="bg-pink-500/20 rounded-full w-8 h-8 flex items-center justify-center mr-2">1</span>
+                            Comprehensive Scam Database
+                          </h4>
+                          <p className="mb-3">
+                            A living, community-contributed repository of known scams, their techniques, and warning signs.
+                          </p>
+                          <div className="grid md:grid-cols-2 gap-3 text-sm">
+                            <div>
+                              <h5 className="font-medium text-white mb-1">Features:</h5>
+                              <ul className="list-disc pl-5 space-y-1">
+                                <li>Searchable catalog of scam techniques</li>
+                                <li>Flagged addresses and contracts</li>
+                                <li>Real-world case studies</li>
+                                <li>Early warning system for emerging threats</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <h5 className="font-medium text-white mb-1">Impact:</h5>
+                              <ul className="list-disc pl-5 space-y-1">
+                                <li>Helps users recognize patterns before becoming victims</li>
+                                <li>Creates shared knowledge pool of scam tactics</li>
+                                <li>Reduces repeated successful attacks</li>
+                                <li>Integrates with wallets and platforms as security layer</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-blue-300 text-lg flex items-center mb-3">
+                            <span className="bg-blue-500/20 rounded-full w-8 h-8 flex items-center justify-center mr-2">2</span>
+                            Risk Assessment Tools
+                          </h4>
+                          <p className="mb-3">
+                            Browser extensions and web apps that analyze token contracts and project characteristics to highlight potential red flags.
+                          </p>
+                          <div className="grid md:grid-cols-2 gap-3 text-sm">
+                            <div>
+                              <h5 className="font-medium text-white mb-1">Features:</h5>
+                              <ul className="list-disc pl-5 space-y-1">
+                                <li>Smart contract security analysis</li>
+                                <li>Tokenomics evaluation</li>
+                                <li>Team verification checks</li>
+                                <li>Social sentiment analysis</li>
+                                <li>Historical pattern matching</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <h5 className="font-medium text-white mb-1">Impact:</h5>
+                              <ul className="list-disc pl-5 space-y-1">
+                                <li>Makes complex security analysis accessible</li>
+                                <li>Provides real-time protection while browsing</li>
+                                <li>Helps users make decisions with better information</li>
+                                <li>Creates market pressure for better project practices</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-green-300 text-lg flex items-center mb-3">
+                            <span className="bg-green-500/20 rounded-full w-8 h-8 flex items-center justify-center mr-2">3</span>
+                            Safe Crypto Standards
+                          </h4>
+                          <p className="mb-3">
+                            A transparent, community-driven certification framework for cryptocurrency projects that demonstrates commitment to user protection.
+                          </p>
+                          <div className="grid md:grid-cols-2 gap-3 text-sm">
+                            <div>
+                              <h5 className="font-medium text-white mb-1">Features:</h5>
+                              <ul className="list-disc pl-5 space-y-1">
+                                <li>Clear, measurable security criteria</li>
+                                <li>Transparency requirements</li>
+                                <li>Community governance of standards</li>
+                                <li>Regular re-verification process</li>
+                                <li>Integration with exchanges and platforms</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <h5 className="font-medium text-white mb-1">Impact:</h5>
+                              <ul className="list-disc pl-5 space-y-1">
+                                <li>Creates baseline quality expectations</li>
+                                <li>Helps users quickly identify safer projects</li>
+                                <li>Incentivizes better project practices</li>
+                                <li>Builds consensus on minimum security measures</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-yellow-300 text-lg flex items-center mb-3">
+                            <span className="bg-yellow-500/20 rounded-full w-8 h-8 flex items-center justify-center mr-2">4</span>
+                            Educational Platform
+                          </h4>
+                          <p className="mb-3">
+                            A multilingual learning platform with interactive modules, videos, and resources tailored to different experience levels.
+                          </p>
+                          <div className="grid md:grid-cols-2 gap-3 text-sm">
+                            <div>
+                              <h5 className="font-medium text-white mb-1">Features:</h5>
+                              <ul className="list-disc pl-5 space-y-1">
+                                <li>Progressive learning paths</li>
+                                <li>Interactive safety simulations</li>
+                                <li>Red flag recognition training</li>
+                                <li>Wallet security best practices</li>
+                                <li>Recovery and response guides</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <h5 className="font-medium text-white mb-1">Impact:</h5>
+                              <ul className="list-disc pl-5 space-y-1">
+                                <li>Builds critical evaluation skills</li>
+                                <li>Reduces successful scam attempts</li>
+                                <li>Increases confidence in legitimate projects</li>
+                                <li>Creates more knowledgeable ecosystem participants</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-white mb-4">How It's Different</h3>
+                      
+                      <div className="space-y-4">
+                        <div className="flex items-start">
+                          <div className="text-green-400 mr-3 mt-1">
+                            <FaCheckCircle size={18} />
+                          </div>
+                          <div>
+                            <h4 className="font-medium text-white">Independent & Unconflicted</h4>
+                            <p className="text-sm">Unlike existing solutions that often have financial incentives tied to particular projects or platforms, we operate without conflicts of interest that could compromise our assessments.</p>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-start">
+                          <div className="text-green-400 mr-3 mt-1">
+                            <FaCheckCircle size={18} />
+                          </div>
+                          <div>
+                            <h4 className="font-medium text-white">User-Centric, Not Protocol-Centric</h4>
+                            <p className="text-sm">We prioritize the needs and protection of users over the growth metrics of protocols, focusing on practical solutions rather than theoretical ideals.</p>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-start">
+                          <div className="text-green-400 mr-3 mt-1">
+                            <FaCheckCircle size={18} />
+                          </div>
+                          <div>
+                            <h4 className="font-medium text-white">Accessible To Everyone</h4>
+                            <p className="text-sm">Our tools and education are designed to be understood by non-technical users while still being powerful enough for experienced participants.</p>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-start">
+                          <div className="text-green-400 mr-3 mt-1">
+                            <FaCheckCircle size={18} />
+                          </div>
+                          <div>
+                            <h4 className="font-medium text-white">Community-Powered</h4>
+                            <p className="text-sm">We leverage collective intelligence and experiences through a transparent, community-driven approach to identifying threats and developing solutions.</p>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-start">
+                          <div className="text-green-400 mr-3 mt-1">
+                            <FaCheckCircle size={18} />
+                          </div>
+                          <div>
+                            <h4 className="font-medium text-white">Transparent & Open-Source</h4>
+                            <p className="text-sm">All our code, methodologies, and assessment criteria are open for scrutiny and improvement, ensuring we maintain the highest standards.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gradient-to-r from-purple-900/30 to-pink-900/30 p-6 rounded-lg border border-purple-800/50">
+                      <h3 className="text-xl font-semibold text-white mb-4">Get Involved</h3>
+                      
+                      <p className="mb-4">
+                        The Open Crypto Foundation is a collaborative effort that becomes stronger with diverse contributions. Here's how you can participate:
+                      </p>
+                      
+                      <div className="grid md:grid-cols-3 gap-4">
+                        <div className="bg-gray-800/50 p-4 rounded-lg">
+                          <h4 className="font-medium text-pink-300 mb-2">For Developers</h4>
+                          <ul className="list-disc pl-5 space-y-1 text-sm">
+                            <li>Contribute to our open-source tools</li>
+                            <li>Help build security analyzers</li>
+                            <li>Review smart contracts</li>
+                            <li>Develop educational materials</li>
+                          </ul>
+                        </div>
+                        
+                        <div className="bg-gray-800/50 p-4 rounded-lg">
+                          <h4 className="font-medium text-blue-300 mb-2">For Community Members</h4>
+                          <ul className="list-disc pl-5 space-y-1 text-sm">
+                            <li>Report suspicious projects</li>
+                            <li>Share experiences and lessons</li>
+                            <li>Help translate resources</li>
+                            <li>Spread awareness of best practices</li>
+                          </ul>
+                        </div>
+                        
+                        <div className="bg-gray-800/50 p-4 rounded-lg">
+                          <h4 className="font-medium text-green-300 mb-2">For Projects & Platforms</h4>
+                          <ul className="list-disc pl-5 space-y-1 text-sm">
+                            <li>Adopt security standards</li>
+                            <li>Integrate our tools</li>
+                            <li>Support transparency initiatives</li>
+                            <li>Prioritize user protection</li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <div className="text-center mt-5">
+                        <a href="#" className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium py-2 px-5 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-colors">
+                          Join Our Discord
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className={`transition-all duration-300 ${activeTab === 'commitment' ? 'block' : 'hidden'}`}>

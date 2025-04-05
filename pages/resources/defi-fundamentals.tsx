@@ -1745,149 +1745,195 @@ export default function DeFiFundamentals() {
                       <p className="mb-4">
                         Projects use various token distribution methods to achieve different objectives in terms of fairness, capital raising, and token distribution.
                       </p>
+                      
                       <div className="bg-gray-700 p-5 rounded-lg">
-                        <div className="space-y-5">
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div className="bg-gray-600 p-4 rounded">
-                              <h4 className="font-medium text-amber-300">Initial Coin Offering (ICO)</h4>
-                              <p className="text-sm mt-1 mb-2">
-                                Direct token sales to investors at a fixed price before public trading begins.
-                              </p>
-                              <div className="text-sm space-y-1">
-                                <div><span className="text-green-300">Pros:</span> Simple, efficient capital raising</div>
-                                <div><span className="text-red-300">Cons:</span> Regulatory concerns, often inequitable distribution</div>
-                              </div>
-                              <div className="mt-2 text-xs">
-                                <span className="font-medium">Notable Examples:</span> Ethereum (2014), EOS (2017)
-                              </div>
-                            </div>
-                            
-                            <div className="bg-gray-600 p-4 rounded">
-                              <h4 className="font-medium text-amber-300">Initial DEX Offering (IDO)</h4>
-                              <p className="text-sm mt-1 mb-2">
-                                Token launches directly on DEXs, typically using liquidity pools.
-                              </p>
-                              <div className="text-sm space-y-1">
-                                <div><span className="text-green-300">Pros:</span> Immediate liquidity, lower barriers to entry</div>
-                                <div><span className="text-red-300">Cons:</span> Potential for high volatility, MEV attacks</div>
-                              </div>
-                              <div className="mt-2 text-xs">
-                                <span className="font-medium">Notable Examples:</span> SushiSwap, Raydium
-                              </div>
-                            </div>
-                            
-                            <div className="bg-gray-600 p-4 rounded">
-                              <h4 className="font-medium text-amber-300">Liquidity Bootstrapping Pool (LBP)</h4>
-                              <p className="text-sm mt-1 mb-2">
-                                Dynamic pricing mechanism that starts high and decreases over time to discourage early speculation.
-                              </p>
-                              <div className="text-sm space-y-1">
-                                <div><span className="text-green-300">Pros:</span> Reduces FOMO buying, price discovery</div>
-                                <div><span className="text-red-300">Cons:</span> Complex to understand, requires sustained interest</div>
-                              </div>
-                              <div className="mt-2 text-xs">
-                                <span className="font-medium">Notable Examples:</span> Perpetual Protocol, Gitcoin
+                        <h4 className="font-medium text-white mb-3">Common Launch Mechanisms</h4>
+                        <div className="space-y-4">
+                          {fairLaunchPlatforms.map((platform, index) => (
+                            <div key={index} className="bg-gray-600 p-4 rounded-lg">
+                              <h5 className="font-medium text-amber-300">{platform.name}</h5>
+                              <p className="text-sm mt-1 mb-2">{platform.description}</p>
+                              
+                              <div className="grid md:grid-cols-2 gap-3 text-sm">
+                                <div>
+                                  <h6 className="text-xs font-medium text-white mb-1">Examples:</h6>
+                                  <div className="flex flex-wrap gap-2">
+                                    {platform.examples.map((example, i) => (
+                                      <span key={i} className="bg-amber-900/30 text-xs py-1 px-2 rounded">{example}</span>
+                                    ))}
+                                  </div>
+                                </div>
+                                
+                                <div className="space-y-2">
+                                  <div>
+                                    <h6 className="text-xs font-medium text-green-400 mb-1">Advantages</h6>
+                                    <ul className="list-disc pl-5 text-xs space-y-1">
+                                      {platform.pros.map((pro, i) => (
+                                        <li key={i}>{pro}</li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                  
+                                  <div>
+                                    <h6 className="text-xs font-medium text-red-400 mb-1">Limitations</h6>
+                                    <ul className="list-disc pl-5 text-xs space-y-1">
+                                      {platform.cons.map((con, i) => (
+                                        <li key={i}>{con}</li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                            
-                            <div className="bg-gray-600 p-4 rounded">
-                              <h4 className="font-medium text-amber-300">Fair Launch</h4>
-                              <p className="text-sm mt-1 mb-2">
-                                Distribution without private sales or team pre-allocations, often through mining or participation.
-                              </p>
-                              <div className="text-sm space-y-1">
-                                <div><span className="text-green-300">Pros:</span> Community-focused, more equitable distribution</div>
-                                <div><span className="text-red-300">Cons:</span> Limited funding for development, potential capture by bots</div>
-                              </div>
-                              <div className="mt-2 text-xs">
-                                <span className="font-medium">Notable Examples:</span> YFI, SUSHI
-                              </div>
-                            </div>
-                          </div>
-                          
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div className="bg-gray-600 p-4 rounded">
-                              <h4 className="font-medium text-amber-300">Airdrops</h4>
-                              <p className="text-sm mt-1 mb-2">
-                                Free distribution of tokens to existing users or community members.
-                              </p>
-                              <div className="text-sm space-y-1">
-                                <div><span className="text-green-300">Pros:</span> Broad distribution, community building</div>
-                                <div><span className="text-red-300">Cons:</span> Potential for sybil attacks, regulatory concerns</div>
-                              </div>
-                              <div className="mt-2 text-xs">
-                                <span className="font-medium">Notable Examples:</span> Uniswap, dYdX, Optimism
-                              </div>
-                            </div>
-                            
-                            <div className="bg-gray-600 p-4 rounded">
-                              <h4 className="font-medium text-amber-300">Initial Stake Pool Offering (ISPO)</h4>
-                              <p className="text-sm mt-1 mb-2">
-                                Users delegate existing tokens to a project's staking pool, receiving new tokens instead of staking rewards.
-                              </p>
-                              <div className="text-sm space-y-1">
-                                <div><span className="text-green-300">Pros:</span> No direct investment required, aligned incentives</div>
-                                <div><span className="text-red-300">Cons:</span> Opportunity cost of staking elsewhere, only viable on certain networks</div>
-                              </div>
-                              <div className="mt-2 text-xs">
-                                <span className="font-medium">Notable Examples:</span> MELD, Genius Yield (Cardano ecosystem)
-                              </div>
-                            </div>
-                            
-                            <div className="bg-gray-600 p-4 rounded">
-                              <h4 className="font-medium text-amber-300">Auction Mechanisms</h4>
-                            <div>
-                              <h5 className="text-sm font-medium text-red-400 mb-1">Challenges</h5>
-                              <ul className="list-disc pl-5 text-xs space-y-1">
-                                {marketplace.challenges.map((challenge, i) => (
-                                  <li key={i}>{challenge}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          </div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
+                      </div>
+                    </section>
+
+                    <section>
+                      <h3 className="text-xl font-semibold text-amber-400 mb-3">Bonding Curves & Tokenomics</h3>
+                      <p className="mb-4">
+                        Bonding curves are mathematical formulas that determine how token price relates to supply, creating different incentive structures and growth models.
+                      </p>
+                      
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <h4 className="font-medium text-white mb-3">Bonding Curve Types</h4>
+                        <div className="space-y-4">
+                          {bondingCurveTypes.map((curve, index) => (
+                            <div key={index} className="bg-gray-600 p-4 rounded-lg">
+                              <div className="flex justify-between items-start">
+                                <h5 className="font-medium text-amber-300">{curve.type}</h5>
+                                <span className="bg-gray-700 text-xs py-1 px-2 rounded font-mono">{curve.formula}</span>
+                              </div>
+                              
+                              <p className="text-sm mt-2 mb-3">{curve.description}</p>
+                              
+                              <div className="grid md:grid-cols-2 gap-3 text-sm">
+                                <div>
+                                  <h6 className="text-xs font-medium text-green-400 mb-1">Applications</h6>
+                                  <ul className="list-disc pl-5 text-xs space-y-1">
+                                    {curve.applications.map((app, i) => (
+                                      <li key={i}>{app}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                                
+                                <div>
+                                  <h6 className="text-xs font-medium text-red-400 mb-1">Limitations</h6>
+                                  <ul className="list-disc pl-5 text-xs space-y-1">
+                                    {curve.limitations.map((limitation, i) => (
+                                      <li key={i}>{limitation}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </section>
+
+                    <section>
+                      <h3 className="text-xl font-semibold text-amber-400 mb-3">NFT Marketplaces & Ecosystem</h3>
+                      <p className="mb-4">
+                        Non-fungible token (NFT) marketplaces have evolved to serve different segments of the digital asset ecosystem.
+                      </p>
+                      
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <h4 className="font-medium text-white mb-3">NFT Marketplace Types</h4>
+                        <div className="space-y-4">
+                          {nftMarketplaces.map((market, index) => (
+                            <div key={index} className="bg-gray-600 p-4 rounded-lg">
+                              <h5 className="font-medium text-amber-300">{market.name}</h5>
+                              
+                              <div className="mt-2 mb-3">
+                                <h6 className="text-xs font-medium text-white mb-1">Examples:</h6>
+                                <div className="flex flex-wrap gap-2">
+                                  {market.examples.map((example, i) => (
+                                    <span key={i} className="bg-amber-900/30 text-xs py-1 px-2 rounded">{example}</span>
+                                  ))}
+                                </div>
+                              </div>
+                              
+                              <div className="grid md:grid-cols-3 gap-3 text-sm">
+                                <div>
+                                  <h6 className="text-xs font-medium text-blue-400 mb-1">Key Features</h6>
+                                  <ul className="list-disc pl-5 text-xs space-y-1">
+                                    {market.features.map((feature, i) => (
+                                      <li key={i}>{feature}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                                
+                                <div>
+                                  <h6 className="text-xs font-medium text-green-400 mb-1">Advantages</h6>
+                                  <ul className="list-disc pl-5 text-xs space-y-1">
+                                    {market.advantages.map((advantage, i) => (
+                                      <li key={i}>{advantage}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                                
+                                <div>
+                                  <h6 className="text-xs font-medium text-red-400 mb-1">Challenges</h6>
+                                  <ul className="list-disc pl-5 text-xs space-y-1">
+                                    {market.challenges.map((challenge, i) => (
+                                      <li key={i}>{challenge}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </section>
                     
                     <h3 className="text-xl font-semibold text-white mt-8 mb-4">Challenges in the Current Token Launch Landscape</h3>
-                    
                     <div className="space-y-4">
                       {launchProblems.map((problem, index) => (
-                        <div key={index} className="bg-gray-700 p-4 rounded-lg">
+                        <div key={index} className="bg-gray-700 p-5 rounded-lg">
                           <h4 className="font-medium text-red-400 mb-2">{problem.problem}</h4>
-                          <p className="text-sm mb-3">{problem.description}</p>
-                          <div className="bg-gray-600 p-3 rounded">
-                            <h5 className="text-xs font-medium text-white mb-1">Common Examples:</h5>
+                          <p className="mb-3">{problem.description}</p>
+                          
+                          <div className="bg-gray-600 p-3 rounded-lg mb-3">
+                            <h5 className="text-sm font-medium text-white mb-1">Examples</h5>
                             <ul className="list-disc pl-5 text-xs space-y-1">
                               {problem.examples.map((example, i) => (
                                 <li key={i}>{example}</li>
                               ))}
                             </ul>
                           </div>
-                          <div className="mt-2 text-xs text-red-300">
-                            <span className="font-medium">Ecosystem Impact:</span> {problem.impact}
+                          
+                          <div className="bg-red-900/30 p-3 rounded-lg border border-red-800/50">
+                            <h5 className="text-sm font-medium text-white mb-1">Impact</h5>
+                            <p className="text-xs">{problem.impact}</p>
                           </div>
                         </div>
                       ))}
                     </div>
                     
-                    <h3 className="text-xl font-semibold text-white mt-8 mb-4">Proposed Solutions for Better Token Launches</h3>
-                    
+                    <h3 className="text-xl font-semibold text-white mt-8 mb-4">Proposed Solutions & Best Practices</h3>
                     <div className="space-y-4">
                       {launchSolutions.map((solution, index) => (
-                        <div key={index} className="bg-gray-700 p-4 rounded-lg">
+                        <div key={index} className="bg-gray-700 p-5 rounded-lg">
                           <h4 className="font-medium text-green-400 mb-2">{solution.solution}</h4>
-                          <p className="text-sm mb-3">{solution.description}</p>
-                          <div className="bg-gray-600 p-3 rounded">
-                            <h5 className="text-xs font-medium text-white mb-1">Implementation Approaches:</h5>
-                            <ul className="list-disc pl-5 text-xs space-y-1">
-                              {solution.implementation.map((item, i) => (
-                                <li key={i}>{item}</li>
-                              ))}
-                            </ul>
-                          </div>
-                          <div className="mt-2 text-xs text-green-300">
-                            <span className="font-medium">Potential Benefits:</span> {solution.benefits}
+                          <p className="mb-3">{solution.description}</p>
+                          
+                          <div className="grid md:grid-cols-2 gap-4">
+                            <div className="bg-gray-600 p-3 rounded-lg">
+                              <h5 className="text-sm font-medium text-white mb-1">Implementation Approaches</h5>
+                              <ul className="list-disc pl-5 text-xs space-y-1">
+                                {solution.implementation.map((approach, i) => (
+                                  <li key={i}>{approach}</li>
+                                ))}
+                              </ul>
+                            </div>
+                            
+                            <div className="bg-green-900/30 p-3 rounded-lg border border-green-800/50">
+                              <h5 className="text-sm font-medium text-white mb-1">Potential Benefits</h5>
+                              <p className="text-xs">{solution.benefits}</p>
+                            </div>
                           </div>
                         </div>
                       ))}
