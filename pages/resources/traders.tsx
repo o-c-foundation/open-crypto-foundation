@@ -173,6 +173,88 @@ const scamTypes = [
     ]
   },
   {
+    id: 'kol-alerts',
+    name: 'KOLs & Alert Groups',
+    icon: <FaChartLine className="text-yellow-500" size={24} />,
+    description: 'Key Opinion Leaders (KOLs) and alert groups who claim to provide unbiased market analysis but are actually paid to promote specific tokens or who use their follower base to pump tokens they\'ve already accumulated.',
+    details: [
+      'KOLs and alert groups build a following by claiming to have special insights or analysis skills',
+      'They showcase high success rates and impressive returns on their calls to attract subscribers',
+      'Many receive direct payment from projects to promote tokens while presenting analysis as independent',
+      'Large groups accumulate positions in low liquidity tokens before alerting their followers to buy',
+      'The resulting influx of buyer volume from followers creates price spikes, allowing group leaders to exit at a profit',
+      'The artificially pumped tokens typically collapse shortly after group leaders exit their positions'
+    ],
+    warning_signs: [
+      'Suspiciously high "win rates" on calls (legitimate traders rarely achieve consistent >70% win rates)',
+      'Lack of transparency about compensation received from projects they promote',
+      'Minimal disclosure about their own positions in recommended tokens',
+      'Urgency in messaging ("buy now" or "last chance")',
+      'Absence of risk analysis or downside scenarios in their recommendations',
+      'Deletion of past unsuccessful calls to manipulate their track record',
+      'Excessive focus on short-term price action rather than fundamentals'
+    ],
+    prevention: [
+      'Always assume KOLs and alert groups have accumulated positions before making calls',
+      'Look for transparent disclosure of compensation and personal positions',
+      'Check if alerts include proper risk analysis and potential downside scenarios',
+      'Verify if past unsuccessful calls remain visible or have been deleted',
+      'Never make investment decisions solely based on KOL recommendations',
+      'Develop your own analysis skills rather than relying on alert services'
+    ],
+    examples: [
+      'FaZe Clan members promoting SaveTheKids token, which crashed after their followers invested',
+      'Multiple Discord/Telegram groups with thousands of members who pump low-cap tokens using coordinated buying',
+      'Twitter/YouTube influencers who promoted tokens like SafeMoon and EMAX without disclosing compensation'
+    ],
+    tacticsBreakdown: [
+      {
+        name: 'Front-Running Subscribers',
+        description: 'Group leaders accumulate tokens before sending alerts, then sell into the liquidity provided by their followers.',
+        details: 'Group leaders typically buy tokens at low prices, then alert their followers to "a great opportunity." As thousands of followers buy in, the price rises, allowing the leaders to sell their pre-accumulated positions at a profit. This creates an artificial pump driven not by the token\'s fundamental value but by the predictable behavior of the group\'s members.',
+        identification: 'Check wallet activity of suspected alert group leaders to see if they buy before alerts and sell shortly after. Be wary of groups that don\'t share entry prices in real-time or that suddenly promote low-cap projects with minimal liquidity.'
+      },
+      {
+        name: 'Manufactured Win Rates',
+        description: 'Creating artificially high success percentages by manipulating what counts as a "win" and selectively reporting results.',
+        details: 'Many groups advertise 80-90% win rates, which are statistically improbable in trading. These rates are manufactured by counting small price increases as "wins" even if they\'re temporary, deleting failed calls, setting absurdly low targets that are almost guaranteed to hit, or simply fabricating results. The real success isn\'t from market analysis but from creating self-fulfilling prophecies - when enough people buy simultaneously, prices inevitably rise temporarily.',
+        identification: 'Request verifiable, time-stamped historical alerts and calculate actual returns if you had followed every call. Legitimate analysts typically have win rates between 40-60% but positive overall returns because winners outperform losers.'
+      },
+      {
+        name: 'Paid Promotions Disguised as Analysis',
+        description: 'Receiving payment to promote tokens while presenting the recommendation as independent research.',
+        details: 'KOLs and alert groups often receive direct payment (or pre-allocated tokens) from projects to promote them. These compensated recommendations are then presented as unbiased analysis with price targets and technical charts. The payment arrangements are rarely disclosed prominently, if at all. The resulting "analysis" typically emphasizes potential gains while minimizing or ignoring significant risks.',
+        identification: 'Look for small, easily missed disclosures like #ad or #sponsored. Be skeptical of sudden interest in obscure projects, especially when multiple influencers promote the same token simultaneously. Genuine analysis usually includes balanced risk assessment.'
+      },
+      {
+        name: 'Tiered Alert Systems',
+        description: 'Creating multiple membership tiers where higher-paying members receive alerts before lower tiers, allowing cascading pump and dump schemes.',
+        details: 'Some groups operate tiered systems where premium members receive alerts minutes or hours before regular members. This allows the highest tier (and group leaders) to buy at lower prices, then sell into the demand created by regular members who receive the alert later. This is essentially a sophisticated pump and dump scheme where members unknowingly create exit liquidity for each other and the group leaders.',
+        identification: 'Compare notes with members in different tiers about alert timing. If price significantly rises before most members receive the alert, the group is likely operating a tiered pump system.'
+      },
+      {
+        name: 'False Credibility Through Association',
+        description: 'Creating an illusion of expertise by associating with legitimate projects or claiming special relationships with insiders.',
+        details: 'Many KOLs inflate their credibility by claiming connections to legitimate project teams or venture capitalists. They may post photographs with known industry figures or claim to have "insider information" from anonymous sources. These associations are often tenuous or entirely fabricated but create an impression of special access or knowledge that followers cannot verify.',
+        identification: 'Be skeptical of vague claims about "sources" or "connections." Legitimate insiders rarely share material non-public information, as this could constitute illegal market manipulation or securities violations.'
+      }
+    ],
+    psychologySection: [
+      {
+        title: 'The Self-Fulfilling Prophecy Effect',
+        content: 'Large alert groups create "wins" simply through the volume of their followers. When thousands of people simultaneously buy a token with limited liquidity, the price inevitably rises in the short term. This creates the illusion that the group leader predicted a market movement, when in reality they created it through their influence. This self-fulfilling dynamic helps maintain the perception that the group has special insight or skills.'
+      },
+      {
+        title: 'The Survivorship Bias Trap',
+        content: 'Most followers only see the successful calls highlighted by group leaders while failed calls are downplayed or deleted. This creates a skewed perception of the group\'s success rate. Additionally, followers who lose money often leave quietly, while those who profit become vocal advocates, further distorting the perceived value of the group.'
+      },
+      {
+        title: 'The Authority Bias',
+        content: 'Many KOLs cultivate an image of expertise through displays of wealth (luxury cars, expensive watches, screenshots of trades) and complex-looking analysis. This triggers authority bias in followers, who assume someone who appears successful must have special knowledge. In reality, this displayed wealth often comes from subscription fees or paid promotions rather than actual trading skill.'
+      }
+    ]
+  },
+  {
     id: 'exit-scam',
     name: 'Exit Scam',
     icon: <FaLock className="text-purple-500" size={24} />,
@@ -284,6 +366,46 @@ export default function Traders() {
                             objectFit="contain"
                             className="rounded"
                           />
+                        </div>
+                      </div>
+                    )}
+                    
+                    {scam.tacticsBreakdown && (
+                      <div className="bg-gray-700 p-6 rounded-lg mt-6">
+                        <h4 className="text-lg font-semibold text-white mb-4">Common Tactics Used by {scam.name}</h4>
+                        <div className="space-y-6">
+                          {scam.tacticsBreakdown.map((tactic, i) => (
+                            <div key={i} className="bg-gray-600 p-5 rounded-lg">
+                              <h5 className="text-lg font-medium text-yellow-400 mb-2">{tactic.name}</h5>
+                              <p className="mb-3">{tactic.description}</p>
+                              
+                              <div className="mt-3 space-y-3">
+                                <div>
+                                  <h6 className="font-medium text-gray-200">How it works:</h6>
+                                  <p className="text-sm text-gray-300">{tactic.details}</p>
+                                </div>
+                                
+                                <div>
+                                  <h6 className="font-medium text-gray-200">How to identify it:</h6>
+                                  <p className="text-sm text-gray-300">{tactic.identification}</p>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {scam.psychologySection && (
+                      <div className="bg-yellow-900/20 p-6 rounded-lg mt-6 border border-yellow-800/30">
+                        <h4 className="text-lg font-semibold text-yellow-400 mb-4">The Psychology Behind It</h4>
+                        <div className="space-y-4">
+                          {scam.psychologySection.map((section, i) => (
+                            <div key={i} className="bg-gray-700/50 p-4 rounded-lg">
+                              <h5 className="font-medium text-white mb-2">{section.title}</h5>
+                              <p className="text-sm">{section.content}</p>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     )}
