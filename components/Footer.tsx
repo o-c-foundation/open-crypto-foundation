@@ -65,6 +65,7 @@ export default function Footer() {
               <li><Link href="/resources/scam-database" className="hover:text-primary transition-colors">Scam Database</Link></li>
               <li><Link href="/resources/guides" className="hover:text-primary transition-colors">Educational Guides</Link></li>
               <li><Link href="/resources/defi-fundamentals" className="hover:text-primary transition-colors">{t('defiFundamentals')}</Link></li>
+              <li><Link href="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
               <li><Link href="/manifesto" className="hover:text-primary transition-colors">{t('manifesto')}</Link></li>
             </ul>
           </div>

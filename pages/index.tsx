@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
-import { FaArrowRight, FaShieldAlt, FaBookOpen, FaTools } from 'react-icons/fa'
+import { FaArrowRight, FaShieldAlt, FaBookOpen, FaTools, FaRegNewspaper } from 'react-icons/fa'
+import NewsletterSubscribe from '../components/NewsletterSubscribe'
 
 export default function Home() {
   const [logoError, setLogoError] = useState(false);
@@ -107,6 +108,38 @@ export default function Home() {
               <Link href="/manifesto" className="text-purple-400 hover:text-purple-300 font-medium inline-flex items-center">
                 Read Guidelines <FaArrowRight className="ml-1" size={14} />
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Newsletter Section */}
+      <section className="py-20 bg-gray-800">
+        <div className="container px-4 mx-auto">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+              <div className="md:w-1/2">
+                <h2 className="mb-4 text-3xl font-bold text-white">Stay Informed, Stay Secure</h2>
+                <p className="text-gray-300 mb-6">
+                  Join our weekly newsletter to receive the latest updates on crypto security, 
+                  educational resources, and important announcements from the Open Crypto Foundation.
+                </p>
+                <div className="flex items-center mb-2">
+                  <FaRegNewspaper className="text-blue-400 mr-2" />
+                  <span className="text-gray-300 text-sm">Free weekly updates</span>
+                </div>
+                <div className="flex items-center mb-2">
+                  <FaRegNewspaper className="text-blue-400 mr-2" />
+                  <span className="text-gray-300 text-sm">Security alerts</span>
+                </div>
+                <div className="flex items-center">
+                  <FaRegNewspaper className="text-blue-400 mr-2" />
+                  <span className="text-gray-300 text-sm">Educational content</span>
+                </div>
+              </div>
+              <div className="md:w-1/2">
+                <NewsletterSubscribe className="md:max-w-md" />
+              </div>
             </div>
           </div>
         </div>

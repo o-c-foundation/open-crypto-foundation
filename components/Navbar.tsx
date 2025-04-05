@@ -30,6 +30,7 @@ export default function Navbar() {
         { name: t('forEveryone'), href: '/resources/everyone', description: 'Resources for anyone interested in crypto safety' }
       ]
     },
+    { name: 'Blog', href: '/blog' },
     { name: t('about'), href: '/about' },
     { name: t('manifesto'), href: '/manifesto' },
   ]
