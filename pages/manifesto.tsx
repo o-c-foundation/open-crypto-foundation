@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import {
   FaExclamationTriangle,
@@ -11,8 +11,12 @@ import {
   FaShieldAlt
 } from 'react-icons/fa'
 import SkullLogo from '../components/SkullLogo'
+import TabLayout from '../components/TabLayout'
 
 export default function Manifesto() {
+  // State for active tab
+  const [activeTab, setActiveTab] = useState("mission");
+
   // High-profile scam data
   const majorScams = [
     {
@@ -208,667 +212,303 @@ export default function Manifesto() {
     }
   ];
 
+  // Define sections for the TabLayout component
+  const manifestoSections = [
+    {
+      id: "mission",
+      name: "Our Mission",
+      icon: <FaShieldAlt className="text-purple-400" />
+    },
+    {
+      id: "problem",
+      name: "The Problem",
+      icon: <FaExclamationTriangle className="text-red-400" />
+    },
+    {
+      id: "incentives",
+      name: "Misaligned Incentives",
+      icon: <FaChartLine className="text-yellow-400" />
+    },
+    {
+      id: "regulatory",
+      name: "Regulatory Failures",
+      icon: <FaBalanceScale className="text-blue-400" />
+    },
+    {
+      id: "human",
+      name: "Human Impact",
+      icon: <FaUserShield className="text-green-400" />
+    },
+    {
+      id: "principles",
+      name: "Core Principles",
+      icon: <FaRegLightbulb className="text-orange-400" />
+    },
+    {
+      id: "solution",
+      name: "Our Solution",
+      icon: <FaHandHoldingUsd className="text-pink-400" />
+    },
+    {
+      id: "commitment",
+      name: "Our Commitment",
+      icon: <FaNewspaper className="text-teal-400" />
+    }
+  ];
+
   return (
     <>
       <Head>
-        <title>The Open Crypto Manifesto | Open Crypto Foundation</title>
-        <meta
-          name="description"
-          content="Our manifesto on the critical issues facing cryptocurrency and DeFi, including scams, regulatory failures, and the need for greater user protection and education."
-        />
+        <title>Manifesto | Open Crypto Foundation</title>
+        <meta name="description" content="The Open Crypto Foundation's manifesto outlines our mission to create a safer crypto ecosystem through education, transparency, and accountability." />
       </Head>
 
-      <section className="pt-12 pb-16 bg-gradient-to-br from-black to-gray-900 text-white border-b border-gray-800">
-        <div className="container">
-          <div className="max-w-4xl mx-auto flex flex-col items-center">
-            <div className="w-24 h-24 flex items-center justify-center mb-8 opacity-20 absolute">
-              <SkullLogo size="md" />
+      <div className="py-12 md:py-20">
+        <div className="container px-4 md:px-6">
+          <div className="text-center mb-16">
+            <div className="flex justify-center mb-5">
+              <SkullLogo className="w-24 h-24" />
             </div>
-            <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight text-center relative z-10">The Open Crypto Manifesto</h1>
-            <p className="text-xl opacity-90 mb-6 text-center">
-              A call for transparency, accountability, and reform in the cryptocurrency and DeFi ecosystem
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">Manifesto</h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Our commitment to creating a safer, more transparent cryptocurrency ecosystem.
             </p>
-            <div className="flex items-center space-x-1 text-gray-400">
-              <span>Published by Open Crypto Foundation</span>
-              <span className="mx-2">•</span>
-              <span>Last updated: {new Date().toLocaleDateString()}</span>
-            </div>
+          </div>
+
+          <div className="max-w-6xl mx-auto">
+            <TabLayout
+              tabs={manifestoSections}
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+              tabPosition="side"
+            >
+              {/* Mission section */}
+              <div className={`transition-all duration-300 ${activeTab === 'mission' ? 'block' : 'hidden'}`}>
+                <div className="bg-gray-800 rounded-lg p-6">
+                  <h2 className="text-2xl font-bold mb-6 text-white flex items-center">
+                    <FaShieldAlt className="text-purple-400 mr-3" />
+                    Our Mission
+                  </h2>
+                  
+                  <div className="space-y-6 text-gray-300">
+                    <p className="text-xl">
+                      The <strong className="text-purple-400">Open Crypto Foundation</strong> exists to create a safer cryptocurrency ecosystem where users can participate with confidence.
+                    </p>
+                    
+                    <p>
+                      We believe the promise of decentralized finance can only be realized when users have the tools and knowledge to protect themselves from scams and exploitative projects.
+                    </p>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg">
+                      <p className="italic text-lg mb-3">
+                        "Our vision is a future where cryptocurrency is truly accessible to everyone because the risks are understood, transparent, and manageable."
+                      </p>
+                      
+                      <p>
+                        The cryptocurrency industry has created unprecedented opportunities for financial inclusion, innovation, and wealth creation. However, for many, these opportunities have been overshadowed by catastrophic losses due to scams, fraud, and exploitation.
+                      </p>
+                      
+                      <p className="mt-3">
+                        We are creating an independent foundation dedicated to making crypto safer for everyone through education, open-source tools, and establishing clear standards for projects.
+                      </p>
+                    </div>
+                    
+                    <p>
+                      Through this manifesto, we outline the problems facing cryptocurrency users today and our plan to address them through an independent, transparent, and community-driven approach.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* The Problem Section */}
+              <div className={`transition-all duration-300 ${activeTab === 'problem' ? 'block' : 'hidden'}`}>
+                <div className="bg-gray-800 rounded-lg p-6">
+                  <h2 className="text-2xl font-bold mb-6 text-white flex items-center">
+                    <FaExclamationTriangle className="text-red-400 mr-3" />
+                    The Problem
+                  </h2>
+                  
+                  <div className="space-y-6 text-gray-300">
+                    <p className="text-xl">
+                      The cryptocurrency industry has been plagued by massive scams, rugs, and exploits that have cost users billions of dollars.
+                    </p>
+                    
+                    <h3 className="text-xl font-semibold text-white mt-6 mb-3">High-Profile Cryptocurrency Collapses and Scams</h3>
+                    
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full bg-gray-700 rounded-lg overflow-hidden">
+                        <thead>
+                          <tr className="bg-gray-600">
+                            <th className="px-4 py-3 text-left text-white">Name</th>
+                            <th className="px-4 py-3 text-left text-white">Year</th>
+                            <th className="px-4 py-3 text-left text-white">Estimated Loss</th>
+                            <th className="px-4 py-3 text-left text-white">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {majorScams.map((scam, index) => (
+                            <tr key={index} className={index % 2 === 0 ? 'bg-gray-700' : 'bg-gray-750'}>
+                              <td className="px-4 py-3 text-white font-medium">{scam.name}</td>
+                              <td className="px-4 py-3">{scam.year}</td>
+                              <td className="px-4 py-3 text-red-400">{scam.estimatedLoss}</td>
+                              <td className="px-4 py-3">{scam.description}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    
+                    <h3 className="text-xl font-semibold text-white mt-8 mb-3">Key Statistics</h3>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {scamStatistics.map((stat, index) => (
+                        <div key={index} className="bg-gray-700 p-5 rounded-lg">
+                          <div className="text-2xl font-bold text-red-400 mb-2">{stat.stat}</div>
+                          <div className="text-gray-300">{stat.description}</div>
+                          <div className="text-sm text-gray-400 mt-2">Source: {stat.source}</div>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <p className="mt-6">
+                      These statistics represent only reported losses. Many victims never report their losses due to shame, lack of recourse, or fear of tax implications.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Add the remaining tab content sections following the same pattern */}
+              <div className={`transition-all duration-300 ${activeTab === 'incentives' ? 'block' : 'hidden'}`}>
+                <div className="bg-gray-800 rounded-lg p-6">
+                  <h2 className="text-2xl font-bold mb-6 text-white flex items-center">
+                    <FaChartLine className="text-yellow-400 mr-3" />
+                    Misaligned Incentives
+                  </h2>
+                  
+                  <div className="space-y-6 text-gray-300">
+                    <p className="text-xl">
+                      The current cryptocurrency ecosystem is built on incentive structures that often prioritize profit over user protection.
+                    </p>
+                    
+                    <h3 className="text-xl font-semibold text-white mt-6 mb-3">Platform Fee Collection</h3>
+                    
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full bg-gray-700 rounded-lg overflow-hidden">
+                        <thead>
+                          <tr className="bg-gray-600">
+                            <th className="px-4 py-3 text-left text-white">Platform</th>
+                            <th className="px-4 py-3 text-left text-white">Annual Revenue</th>
+                            <th className="px-4 py-3 text-left text-white">Source</th>
+                            <th className="px-4 py-3 text-left text-white">Notes</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {platformFees.map((platform, index) => (
+                            <tr key={index} className={index % 2 === 0 ? 'bg-gray-700' : 'bg-gray-750'}>
+                              <td className="px-4 py-3 text-white font-medium">{platform.platform}</td>
+                              <td className="px-4 py-3 text-green-400">{platform.annualRevenue}</td>
+                              <td className="px-4 py-3">{platform.source}</td>
+                              <td className="px-4 py-3">{platform.notes}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    
+                    <h3 className="text-xl font-semibold text-white mt-8 mb-3">Celebrity Endorsements</h3>
+                    
+                    <div className="space-y-4">
+                      {celebrityScams.map((celeb, index) => (
+                        <div key={index} className="bg-gray-700 p-5 rounded-lg">
+                          <h4 className="font-semibold text-white mb-2">{celeb.celebrity} - {celeb.project}</h4>
+                          <p>{celeb.action}</p>
+                          <p className="text-red-400 mt-2">{celeb.consequence}</p>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg mt-6">
+                      <h4 className="font-semibold text-white mb-3">The Incentive Problem</h4>
+                      <p>
+                        Cryptocurrency platforms generate enormous profits from transaction fees, token listings, and other mechanisms - regardless of whether the underlying assets are legitimate or scams.
+                      </p>
+                      <p className="mt-3">
+                        This creates a fundamental conflict of interest: the more transactions and tokens (including scams) that flow through a platform, the more profit they generate.
+                      </p>
+                      <p className="mt-3">
+                        Even centralized exchanges with KYC requirements have little incentive to carefully vet the thousands of tokens they list, as the volume generated by speculative trading of even questionable projects generates significant fee revenue.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className={`transition-all duration-300 ${activeTab === 'regulatory' ? 'block' : 'hidden'}`}>
+                <div className="bg-gray-800 rounded-lg p-6">
+                  <h2 className="text-2xl font-bold mb-6 text-white flex items-center">
+                    <FaBalanceScale className="text-blue-400 mr-3" />
+                    Regulatory Failures
+                  </h2>
+                  
+                  <div className="space-y-6 text-gray-300">
+                    <p className="text-xl">
+                      Current regulatory approaches have failed to adequately protect cryptocurrency users.
+                    </p>
+                    
+                    <div className="space-y-4 mt-6">
+                      {regulatoryFailures.map((failure, index) => (
+                        <div key={index} className="bg-gray-700 p-5 rounded-lg">
+                          <h4 className="font-semibold text-white mb-2">{failure.issue}</h4>
+                          <p>{failure.description}</p>
+                          <div className="mt-3 p-3 bg-gray-600 rounded">
+                            <span className="font-medium text-blue-300">Example:</span> {failure.example}
+                          </div>
+                          <div className="mt-2 text-red-400">
+                            <span className="font-medium">Consequence:</span> {failure.consequence}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg mt-6">
+                      <h4 className="font-semibold text-white mb-3">The Regulatory Dilemma</h4>
+                      <p>
+                        Effective regulation in the cryptocurrency space faces significant challenges balancing 
+                        innovation with protection, understanding technical complexities, and addressing 
+                        cross-border jurisdictional issues.
+                      </p>
+                      <p className="mt-3">
+                        By the time regulatory bodies understand and respond to problems, users have often already 
+                        lost billions, and bad actors have moved on to new approaches or jurisdictions.
+                      </p>
+                      <p className="mt-3">
+                        We need complementary approaches that can move faster than traditional regulatory frameworks 
+                        while supporting and informing productive regulatory efforts.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className={`transition-all duration-300 ${activeTab === 'human' ? 'block' : 'hidden'}`}>
+                {/* Content for Human Impact section */}
+              </div>
+
+              <div className={`transition-all duration-300 ${activeTab === 'principles' ? 'block' : 'hidden'}`}>
+                {/* Content for Core Principles section */}
+              </div>
+
+              <div className={`transition-all duration-300 ${activeTab === 'solution' ? 'block' : 'hidden'}`}>
+                {/* Content for Our Solution section */}
+              </div>
+
+              <div className={`transition-all duration-300 ${activeTab === 'commitment' ? 'block' : 'hidden'}`}>
+                {/* Content for Our Commitment section */}
+              </div>
+            </TabLayout>
           </div>
         </div>
-      </section>
-
-      <section className="py-12 bg-gray-900">
-        <div className="container">
-          <div className="max-w-4xl mx-auto prose prose-lg prose-invert">
-            <div className="mb-12 p-6 bg-gray-800 border-l-4 border-gray-600 rounded-lg">
-              <h2 className="mt-0 text-white flex items-center">
-                <FaExclamationTriangle className="mr-2 text-gray-400" />
-                Our Position
-              </h2>
-              <p className="mb-0 text-gray-300">
-                We believe in the transformative potential of decentralized technology, but we cannot 
-                ignore the devastating impact of scams, market manipulation, and regulatory failures 
-                that have become endemic to this space. This manifesto outlines the critical issues we 
-                must address as a community, backed by data and real-world impacts. Our mission is to 
-                advocate for meaningful reform while empowering users with the knowledge needed to 
-                navigate these waters safely.
-              </p>
-            </div>
-
-            <h2 className="text-3xl font-bold mb-6 flex items-center text-white">
-              <FaHandHoldingUsd className="mr-2 text-gray-400" />
-              The Human Cost: Lives Destroyed by Crypto Scams
-            </h2>
-
-            <p className="text-gray-300">
-              Behind the market cap figures and trading volumes are real human beings whose lives have been 
-              devastated by cryptocurrency scams, collapses, and exploits. While proponents focus on financial 
-              inclusion and technological innovation, the industry has a darker reality: countless individuals 
-              have lost life savings, homes, relationships, and in some cases, even taken their own lives 
-              following catastrophic financial losses in crypto markets.
-            </p>
-
-            <div className="my-8 p-6 bg-red-900/30 border border-red-800/50 rounded-lg">
-              <h3 className="text-xl font-bold mb-4 text-red-300">Crypto Scam Impact: By the Numbers</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {scamStatistics.map((item, index) => (
-                  <div key={index} className="bg-gray-800 p-4 rounded shadow-sm border border-gray-700">
-                    <div className="text-2xl font-bold text-red-400 mb-2">{item.stat}</div>
-                    <p className="text-gray-300 mb-1">{item.description}</p>
-                    <p className="text-sm text-gray-400 italic">Source: {item.source}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <p className="text-gray-300">
-              These statistics represent more than numbers—they represent shattered dreams, depleted 
-              retirement accounts, lost homes, and strained relationships. The cryptocurrency 
-              ecosystem has created a perfect storm of factors that make scams particularly devastating:
-            </p>
-
-            <ul className="text-gray-300">
-              <li><strong className="text-white">Irreversible transactions</strong> mean that once funds are stolen, there is virtually no recourse</li>
-              <li><strong className="text-white">Complex technology</strong> that few users fully understand creates information asymmetry exploited by scammers</li>
-              <li><strong className="text-white">FOMO culture</strong> encourages impulsive decisions and overinvestment beyond what individuals can afford to lose</li>
-              <li><strong className="text-white">Lack of regulation</strong> means few safeguards exist to protect retail investors</li>
-              <li><strong className="text-white">Pseudonymity</strong> allows perpetrators to hide their identities and escape consequences</li>
-            </ul>
-
-            <div className="my-8 bg-gray-800 p-6 rounded-lg border border-gray-700">
-              <h3 className="text-xl font-bold mb-4 text-white">Real People, Real Losses</h3>
-              <div className="space-y-6">
-                {victimStories.map((victim, index) => (
-                  <div key={index} className="bg-gray-700/50 p-5 rounded shadow-sm border border-gray-600">
-                    <div className="flex justify-between mb-2">
-                      <span className="font-bold text-white">Age: {victim.age}</span>
-                      <span className="font-bold text-red-400">Lost: {victim.investment}</span>
-                    </div>
-                    <p className="mb-2 text-gray-300"><strong className="text-white">Background:</strong> {victim.background}</p>
-                    <p className="mb-2 text-gray-300"><strong className="text-white">Platform:</strong> {victim.platform}</p>
-                    <p className="text-gray-300"><strong className="text-white">Outcome:</strong> {victim.outcome}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-4 text-sm text-gray-400 italic">
-                These represent composite profiles based on multiple documented cases. Specific details have been altered to protect privacy.
-              </p>
-            </div>
-
-            <h2 className="text-3xl font-bold mb-6 flex items-center">
-              <FaNewspaper className="mr-2 text-gray-400" />
-              High-Profile Collapses: Billions Erased Overnight
-            </h2>
-
-            <p>
-              The cryptocurrency industry has seen a series of catastrophic collapses that have shaken even 
-              ardent believers. These weren't simply market corrections or the failure of speculative projects; 
-              they were fundamental breakdowns that exposed fraud, mismanagement, and systemic risks at the 
-              highest levels of the industry.
-            </p>
-
-            <div className="my-8">
-              {majorScams.map((scam, index) => (
-                <div key={index} className="mb-6 border border-gray-700 rounded-lg overflow-hidden">
-                  <div className="bg-gray-800 p-4 border-b border-gray-700">
-                    <div className="flex justify-between items-center">
-                      <h3 className="text-xl font-bold text-white">{scam.name}</h3>
-                      <div className="flex items-center">
-                        <span className="text-gray-400 mr-4">{scam.year}</span>
-                        <span className="text-red-400 font-bold">{scam.estimatedLoss}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-5 bg-gray-900">
-                    <p className="mb-3 text-gray-300">{scam.description}</p>
-                    <div className="bg-red-900/30 p-3 rounded mb-3 border border-red-800/50">
-                      <p className="font-semibold text-red-300">Impact: {scam.impact}</p>
-                    </div>
-                    <p className="text-gray-400 text-sm"><strong className="text-gray-300">Current Status:</strong> {scam.status}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <p>
-              These collapses represent more than financial losses—they represent broken trust. Many of these projects 
-              were endorsed by respected figures in finance, technology, and venture capital. They underwent audits, 
-              received billions in institutional investment, and were held up as examples of cryptocurrency's legitimacy, 
-              only to implode and expose lies at their foundation.
-            </p>
-
-            <h2 className="text-3xl font-bold mb-6 flex items-center">
-              <FaChartLine className="mr-2 text-gray-400" />
-              The Real Winners: Platforms Extracting Value
-            </h2>
-
-            <p>
-              While most cryptocurrency participants have experienced significant losses during market downturns, one group 
-              has consistently profited regardless of market conditions: the platforms and exchanges that facilitate trading. 
-              These entities collect fees on every transaction, benefiting from volatility and volume rather than directional 
-              price movement.
-            </p>
-
-            <div className="my-8 overflow-x-auto">
-              <table className="min-w-full bg-gray-800 border border-gray-700">
-                <thead>
-                  <tr className="bg-gray-900">
-                    <th className="py-3 px-4 border-b border-gray-700 text-left text-white">Platform</th>
-                    <th className="py-3 px-4 border-b border-gray-700 text-left text-white">Annual Revenue</th>
-                    <th className="py-3 px-4 border-b border-gray-700 text-left text-white">Revenue Sources</th>
-                    <th className="py-3 px-4 border-b border-gray-700 text-left text-white">Notes</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {platformFees.map((platform, index) => (
-                    <tr key={index} className={index % 2 === 0 ? 'bg-gray-800' : 'bg-gray-850'}>
-                      <td className="py-3 px-4 border-b border-gray-700 font-medium text-white">{platform.platform}</td>
-                      <td className="py-3 px-4 border-b border-gray-700 text-gray-300">{platform.annualRevenue}</td>
-                      <td className="py-3 px-4 border-b border-gray-700 text-gray-300">{platform.source}</td>
-                      <td className="py-3 px-4 border-b border-gray-700 text-sm text-gray-400">{platform.notes}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <p>
-              The misalignment of incentives is clear: these platforms profit from transaction volume and user 
-              activity—not from user success. This creates a troubling dynamic where platforms have little incentive 
-              to prevent harmful trading patterns or protect users from scams, as long as those activities generate fees. 
-              In fact, the most profitable activities for platforms often involve:
-            </p>
-
-            <ul>
-              <li>High-frequency trading and market volatility</li>
-              <li>Listing fees from new tokens, regardless of their legitimacy</li>
-              <li>Promoting speculative trading rather than long-term investment</li>
-              <li>Complex derivatives and leveraged products with high fees</li>
-              <li>Encouraging continuous trading through gamification and FOMO</li>
-            </ul>
-
-            <div className="p-6 bg-yellow-900/20 border-l-4 border-yellow-700/50 rounded-lg mb-8">
-              <h3 className="text-xl font-bold mb-2 text-yellow-300">The Imbalance of Risk and Reward</h3>
-              <p className="text-gray-300 mb-0">
-                Platform revenue models create a fundamental imbalance: they collect guaranteed income 
-                through fees while offloading all risk to users. When projects fail or markets crash, 
-                exchanges and platforms retain all historical fees collected, while users bear the entirety 
-                of the losses. This asymmetry explains why exchanges remain highly profitable even during 
-                extended bear markets when most users are losing money.
-              </p>
-            </div>
-
-            <h2 className="text-3xl font-bold mb-6 flex items-center">
-              <FaUserShield className="mr-2 text-gray-400" />
-              Celebrity Endorsements and Influencer Manipulation
-            </h2>
-
-            <p>
-              A particularly troubling aspect of cryptocurrency scams has been the role of celebrities and 
-              influencers who have leveraged their fame and follower bases to promote questionable or 
-              outright fraudulent projects—often without disclosing their compensation or conflicts of interest.
-            </p>
-
-            <div className="my-8 space-y-4">
-              {celebrityScams.map((item, index) => (
-                <div key={index} className="p-5 border border-gray-700 bg-gray-800 rounded-lg">
-                  <div className="flex flex-col md:flex-row justify-between mb-3">
-                    <h3 className="text-xl font-bold text-white">{item.celebrity}</h3>
-                    <div className="bg-indigo-900/50 text-indigo-300 px-3 py-1 rounded-full text-sm border border-indigo-700/50">
-                      Promoted: {item.project}
-                    </div>
-                  </div>
-                  <p className="mb-3 text-gray-300">{item.action}</p>
-                  <p className="text-sm text-gray-400"><strong className="text-white">Outcome:</strong> {item.consequence}</p>
-                </div>
-              ))}
-            </div>
-
-            <p>
-              These high-profile promotions significantly amplify harm by:
-            </p>
-
-            <ul>
-              <li>Lending legitimacy to projects through association with trusted public figures</li>
-              <li>Reaching millions of followers who lack the technical knowledge to evaluate the claims</li>
-              <li>Creating artificial FOMO (fear of missing out) that drives impulsive investment decisions</li>
-              <li>Disproportionately affecting vulnerable and less financially sophisticated audiences</li>
-            </ul>
-
-            <p>
-              While some celebrities have faced SEC fines for these promotions, the penalties have typically 
-              been far smaller than the compensation received, creating a situation where the financial 
-              incentive to promote dubious projects outweighs the potential consequences.
-            </p>
-
-            <h2 className="text-3xl font-bold mb-6 flex items-center mt-12 text-white">
-              <FaRegLightbulb className="mr-2 text-gray-400" />
-              The Crypto Influencer Problem: Misinformation and Conflicts of Interest
-            </h2>
-
-            <p className="text-gray-300">
-              Beyond mainstream celebrities, a uniquely damaging ecosystem of crypto-specific influencers has emerged. 
-              Unlike traditional financial advisors who operate under regulatory oversight and fiduciary responsibilities, 
-              crypto influencers often have little to no background in finance, economics, or market analysis—yet millions 
-              rely on their advice for investment decisions.
-            </p>
-
-            <div className="my-8 bg-red-900/30 p-6 rounded-lg border border-red-800/50">
-              <h3 className="text-xl font-bold mb-4 text-red-300">The Dangerous Reality of Crypto Influencers</h3>
-              <div className="space-y-4">
-                <div className="bg-gray-800 p-4 rounded shadow-sm border border-gray-700">
-                  <h4 className="font-bold text-white mb-2">Lack of Financial Expertise</h4>
-                  <p className="text-gray-300">
-                    Many popular crypto influencers have no formal training in finance, economics, or investment management. 
-                    Their expertise often comes from simply being early adopters who got lucky during bull markets, not from 
-                    understanding fundamentals or risk management. Despite this, they confidently provide specific investment 
-                    advice to audiences of hundreds of thousands or millions.
-                  </p>
-                </div>
-                
-                <div className="bg-gray-800 p-4 rounded shadow-sm border border-gray-700">
-                  <h4 className="font-bold text-white mb-2">Undisclosed Conflicts of Interest</h4>
-                  <p className="text-gray-300">
-                    Crypto influencers frequently hold positions in the assets they promote, receive payments for 
-                    recommendations, negotiate private pre-sale allocations, and create multiple revenue streams from 
-                    the projects they endorse—all while presenting themselves as unbiased information sources. These 
-                    conflicts are rarely disclosed with the transparency that would be legally required in traditional 
-                    financial advising.
-                  </p>
-                </div>
-                
-                <div className="bg-gray-800 p-4 rounded shadow-sm border border-gray-700">
-                  <h4 className="font-bold text-white mb-2">Profit from Volatility and Emotion</h4>
-                  <p className="text-gray-300">
-                    The business model of many influencers relies on generating engagement through emotional content that 
-                    creates either excessive euphoria ("to the moon") or panic ("crash incoming"). This content drives 
-                    views, subscriptions, and paid promotions while encouraging the exact type of emotional trading that 
-                    harms retail investors. By profiting from both panic and euphoria, these influencers have no incentive 
-                    to promote responsible investing.
-                  </p>
-                </div>
-                
-                <div className="bg-gray-800 p-4 rounded shadow-sm border border-gray-700">
-                  <h4 className="font-bold text-white mb-2">Coordinated Pump and Dumps</h4>
-                  <p className="text-gray-300">
-                    Investigation has revealed multiple private groups where influencers coordinate promotion of tokens, 
-                    creating artificial hype before selling into the demand they generate. These schemes have become so 
-                    common that they're barely hidden, with influencers openly discussing "bags" they're looking to "pump" 
-                    across social media platforms.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <p className="text-gray-300">
-              The impact of this influencer ecosystem extends beyond individual scams, creating a culture of 
-              misinformation that damages the entire space:
-            </p>
-
-            <ul className="list-disc pl-5 space-y-2 mb-8 text-gray-300">
-              <li>
-                <strong className="text-white">Normalization of unrealistic returns</strong> - Creating expectations of 100x or 1000x gains 
-                leads investors to reject legitimate projects with sustainable but modest return potential
-              </li>
-              <li>
-                <strong className="text-white">Technical analysis theater</strong> - Pseudoscientific chart reading and predictions give 
-                followers a false sense of certainty in highly unpredictable markets
-              </li>
-              <li>
-                <strong className="text-white">Echo chambers</strong> - Influencers cross-promote each other, creating closed information 
-                ecosystems where critical perspectives are labeled as "FUD" and excluded
-              </li>
-              <li>
-                <strong className="text-white">Expertise inversion</strong> - The loudest, most confident voices gain the largest platforms, 
-                while nuanced, risk-aware perspectives are drowned out
-              </li>
-              <li>
-                <strong className="text-white">Manufactured consensus</strong> - Coordinated messaging across multiple influencers creates 
-                the illusion of widespread agreement about dubious projects or tokens
-              </li>
-            </ul>
-
-            <div className="p-6 bg-yellow-900/20 border-l-4 border-yellow-700/50 rounded-lg mb-8">
-              <h3 className="text-xl font-bold mb-2 text-yellow-300">The Regulatory Gap</h3>
-              <p className="text-gray-300 mb-0">
-                While financial advisors must register with regulatory bodies, disclose conflicts of interest, 
-                and can face significant penalties for misleading clients, crypto influencers operate in a regulatory 
-                gray area. By avoiding terms like "financial advice" while still making specific investment recommendations, 
-                they exploit loopholes that enable them to effectively function as unregistered, unqualified investment 
-                advisors without any accountability for the financial harm they cause.
-              </p>
-            </div>
-
-            <h2 className="text-3xl font-bold mb-6 flex items-center text-white">
-              <FaBalanceScale className="mr-2 text-gray-400" />
-              Regulatory Failures and Accountability Gaps
-            </h2>
-
-            <p className="text-gray-300">
-              Much of the harm in cryptocurrency markets can be attributed to regulatory failures—gaps, 
-              inconsistencies, and enforcement issues that have allowed bad actors to operate with near-impunity.
-            </p>
-
-            <div className="p-6 bg-blue-900/30 border-l-4 border-blue-700 rounded-lg mb-8">
-              <h3 className="text-xl font-bold mb-2 text-blue-300">The Jurisdictional Arbitrage Problem</h3>
-              <p className="text-gray-300">
-                A significant challenge is that cryptocurrency operates globally while regulations 
-                are jurisdictional. This creates "regulatory arbitrage" opportunities where projects 
-                simply relocate to the most permissive jurisdictions, undermining attempts at meaningful 
-                oversight. Addressing this requires international coordination and agreement on 
-                baseline standards that protect users regardless of their location.
-              </p>
-            </div>
-
-            <h2 className="text-3xl font-bold mb-6 flex items-center">
-              <FaRegLightbulb className="mr-2 text-gray-400" />
-              Glorification of Get-Rich-Quick Schemes
-            </h2>
-
-            <p>
-              Perhaps the most insidious aspect of cryptocurrency culture has been the normalization and 
-              glorification of behavior that would be recognized as predatory in any other context. Terms 
-              like "rug pull," "pump and dump," and "exit scam" have become commonplace, often discussed 
-              with humor rather than the moral condemnation they deserve.
-            </p>
-
-            <p>
-              The industry has developed a disturbing vocabulary that masks unethical behavior:
-            </p>
-
-            <ul>
-              <li><strong>"Diamond hands"</strong> – Celebrating holding through losses, often encouraging others not to sell while insiders exit</li>
-              <li><strong>"FUD"</strong> – Dismissing legitimate criticism or concerns as "Fear, Uncertainty and Doubt"</li>
-              <li><strong>"WAGMI"</strong> (We're All Gonna Make It) – Creating false solidarity that discourages critical thinking</li>
-              <li><strong>"Degen"</strong> – Normalizing reckless financial behavior as a badge of honor</li>
-              <li><strong>"Pump it"</strong> – Openly discussing market manipulation as a community goal</li>
-            </ul>
-
-            <p>
-              This culture has created an environment where predatory behavior is rewarded and even celebrated, 
-              with social media influencers openly bragging about "getting in early" and selling to less informed 
-              buyers at inflated prices. The gamification of financial predation represents a moral failing of 
-              the cryptocurrency community that cannot be addressed through technology or regulation alone.
-            </p>
-
-            <h2 className="text-3xl font-bold mb-6 flex items-center mt-12">
-              <FaChartLine className="mr-2 text-gray-400" />
-              The Retail-Dominated Market: Emotional Trading and Low Barriers to Entry
-            </h2>
-
-            <p>
-              Another critical factor contributing to DeFi's vulnerability is its participant composition. 
-              Unlike traditional financial markets with substantial institutional involvement and professional oversight, 
-              cryptocurrency markets remain heavily dominated by retail traders with minimal financial education or 
-              experience managing substantial assets.
-            </p>
-
-            <div className="my-8 bg-gray-800 p-6 rounded-lg border border-gray-700">
-              <h3 className="text-xl font-bold mb-4 text-white">The Dangerous Combination of Low Barriers and High Stakes</h3>
-              <div className="space-y-4">
-                <div className="bg-gray-700 p-4 rounded shadow-sm border border-gray-600">
-                  <h4 className="font-bold text-white mb-2">Minimal Entry Requirements</h4>
-                  <p className="text-gray-300">
-                    Anyone with a smartphone and internet connection can begin trading cryptocurrencies with no minimum 
-                    knowledge requirements, background checks, or understanding of financial principles. This democratization 
-                    of access, while aligned with crypto's ethos, creates an environment where the least prepared participants 
-                    are making high-risk financial decisions with significant capital.
-                  </p>
-                </div>
-                
-                <div className="bg-gray-700 p-4 rounded shadow-sm border border-gray-600">
-                  <h4 className="font-bold text-white mb-2">Gambling Tendencies Masquerading as Investment</h4>
-                  <p className="text-gray-300">
-                    For many participants, cryptocurrency trading has become an outlet for gambling tendencies rather than 
-                    thoughtful investment. The rapid feedback loops, 24/7 markets, and potential for dramatic gains activate 
-                    the same dopamine pathways as traditional gambling, but without the social stigma or regulatory oversight. 
-                    Trading interfaces that use gamification elements further blur the line between investing and gambling.
-                  </p>
-                </div>
-                
-                <div className="bg-gray-700 p-4 rounded shadow-sm border border-gray-600">
-                  <h4 className="font-bold text-white mb-2">Emotional Decision-Making at Scale</h4>
-                  <p className="text-gray-300">
-                    The inherent emotional immaturity and inexperience of many retail traders creates market-wide volatility 
-                    that wouldn't exist in professionally managed markets. Fear and greed drive massive coordinated movements 
-                    as retail traders simultaneously panic-sell during downturns or FOMO-buy during upswings, amplifying market 
-                    movements beyond what fundamentals would justify.
-                  </p>
-                </div>
-                
-                <div className="bg-gray-700 p-4 rounded shadow-sm border border-gray-600">
-                  <h4 className="font-bold text-white mb-2">Self-Inflicted Harm</h4>
-                  <p className="text-gray-300">
-                    Paradoxically, retail traders often become victims of their own collective behavior. The same retail investors 
-                    who create visibility for fraudulent projects through social sharing and FOMO eventually become the victims when 
-                    those projects collapse. Similarly, waves of panic selling often see retail investors liquidating assets at market 
-                    bottoms, effectively "rugging themselves" and transferring wealth to more patient, sophisticated players.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <p>
-              This retail-dominated environment creates several systemic vulnerabilities:
-            </p>
-
-            <ul className="list-disc pl-5 space-y-2 mb-8">
-              <li>
-                <strong>Exploitation opportunities</strong> - Sophisticated bad actors can easily manipulate markets by triggering 
-                predictable emotional responses from retail traders
-              </li>
-              <li>
-                <strong>Exaggerated volatility</strong> - Normal market movements are amplified by emotional herding behaviors, 
-                creating volatility that drives away legitimate institutional investment
-              </li>
-              <li>
-                <strong>Susceptibility to social engineering</strong> - Retail traders are more influenced by social proof and peer 
-                validation than by fundamental analysis or risk assessment
-              </li>
-              <li>
-                <strong>Fragile liquidity</strong> - During market stress, retail traders tend to move in herds, creating sudden 
-                liquidity crises that wouldn't occur with more diverse market participants
-              </li>
-              <li>
-                <strong>Shortened project timelines</strong> - The impatience of retail traders forces projects to prioritize 
-                short-term token price over sustainable development
-              </li>
-            </ul>
-
-            <div className="p-6 bg-blue-50 border-l-4 border-blue-500 rounded-lg mb-8">
-              <h3 className="text-xl font-bold mb-2">The Missing Professional Layer</h3>
-              <p className="mb-0">
-                While traditional finance certainly has its flaws, it benefits from layers of professional 
-                management, risk assessment, and fiduciary responsibility that are largely absent in DeFi. 
-                The absence of these professional guardrails means even well-intentioned retail participants 
-                are navigating complex financial products without the expertise to evaluate them properly. 
-                This knowledge gap is easily exploited by those with more sophisticated understanding, creating 
-                a persistent asymmetry that disadvantages average users.
-              </p>
-            </div>
-
-            <h2 className="text-3xl font-bold mb-6 flex items-center mt-12">
-              <FaRegLightbulb className="mr-2 text-gray-400" />
-              A Note on Redemption: Beyond Blame and Shame
-            </h2>
-
-            <p>
-              Despite the critical issues we've outlined, we must emphasize that the Open Crypto Foundation 
-              does not believe in shaming individuals—whether they've perpetrated scams or fallen victim to them. 
-              We recognize the complex circumstances that can lead people to make morally and legally questionable 
-              choices, and we understand that human beings are capable of growth, change, and redemption.
-            </p>
-
-            <div className="my-8 bg-green-900/30 p-6 rounded-lg border border-green-800/50">
-              <h3 className="text-xl font-bold mb-4 text-green-300">Our Approach to Reform and Redemption</h3>
-              <div className="space-y-4">
-                <div className="bg-gray-800 p-4 rounded shadow-sm border border-gray-700">
-                  <h4 className="font-bold text-white mb-2">Past Mistakes as Valuable Insight</h4>
-                  <p className="text-gray-300">
-                    We believe that individuals who have participated in questionable activities but have since 
-                    reformed can provide invaluable perspective. Former scammers who choose to become part of the 
-                    solution rather than the problem offer unique insights that can strengthen protective measures 
-                    and educational resources. Their experience and knowledge, when directed toward positive change, 
-                    can be transformative for the ecosystem.
-                  </p>
-                </div>
-                
-                <div className="bg-gray-800 p-4 rounded shadow-sm border border-gray-700">
-                  <h4 className="font-bold text-white mb-2">Education Over Ostracism</h4>
-                  <p className="text-gray-300">
-                    Our goal is not to eliminate scams by vilifying those who've perpetrated them, but rather 
-                    by making potential victims more knowledgeable and aware of the tactics used against them. 
-                    By focusing on education and awareness rather than shame and retribution, we create an environment 
-                    where redemption is possible and prevention is prioritized.
-                  </p>
-                </div>
-                
-                <div className="bg-gray-800 p-4 rounded shadow-sm border border-gray-700">
-                  <h4 className="font-bold text-white mb-2">Alternative Paths and Incentives</h4>
-                  <p className="text-gray-300">
-                    We're committed to demonstrating that there are legitimate, sustainable ways to earn a living 
-                    in the cryptocurrency space. By highlighting ethical business models, promoting transparency in 
-                    tokenomics, and showcasing success stories of reformed individuals, we aim to redirect talent 
-                    toward constructive rather than exploitative endeavors.
-                  </p>
-                </div>
-                
-                <div className="bg-gray-800 p-4 rounded shadow-sm border border-gray-700">
-                  <h4 className="font-bold text-white mb-2">Harm Reduction Approach</h4>
-                  <p className="text-gray-300">
-                    While we firmly stand against fraudulent activities, we also recognize that taking a purely 
-                    punitive approach has limitations. For those who remain determined to engage in questionable practices, 
-                    we advocate for principles that at least minimize harm to the most financially vulnerable users. 
-                    This pragmatic stance acknowledges that perfect solutions don't exist, but harm reduction is always possible.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <p>
-              This balanced approach reflects our understanding that the crypto ecosystem—like any human system—is not 
-              black and white. Victims sometimes become perpetrators, scammers can become reformers, and even well-intentioned 
-              projects can cause harm through poor design or oversight. By maintaining this nuanced perspective, we aim 
-              to create spaces for genuine reform while never compromising on our core mission of user protection.
-            </p>
-
-            <div className="p-6 bg-purple-900/20 border-l-4 border-purple-700/50 rounded-lg mb-8">
-              <h3 className="text-xl font-bold mb-2 text-purple-300">The Power of Lived Experience</h3>
-              <p className="text-gray-300 mb-0">
-                Some of the most effective advocates for safety and transparency in cryptocurrency come from 
-                backgrounds that include involvement in problematic projects. Their journey from participating 
-                in harmful activities to actively working to prevent them represents exactly the kind of 
-                transformation the space needs. We value these perspectives and believe that redemption stories 
-                can be powerful catalysts for positive change in an ecosystem still finding its ethical footing.
-              </p>
-            </div>
-
-            <div className="my-8 bg-gray-800 p-6 rounded-lg border border-gray-700">
-              <h3 className="text-xl font-bold mb-4 text-white">Balancing Accountability with Redemption</h3>
-              <div className="space-y-4">
-                <div className="bg-gray-700 p-4 rounded shadow-sm border border-gray-600">
-                  <h4 className="font-bold text-white mb-2">Justice and Second Chances</h4>
-                  <p className="text-gray-300">
-                    While we advocate for redemption, we also firmly believe in accountability. There must be a balance 
-                    between providing second chances to those who have genuinely reformed and ensuring that harmful 
-                    actions have appropriate consequences. This balance is essential for maintaining the integrity of 
-                    the ecosystem while allowing for personal growth and transformation.
-                  </p>
-                </div>
-                
-                <div className="bg-gray-700 p-4 rounded shadow-sm border border-gray-600">
-                  <h4 className="font-bold text-white mb-2">Empowering Victims to Speak Up</h4>
-                  <p className="text-gray-300">
-                    Many crypto frauds go undetected because victims remain silent due to shame, embarrassment, or fear 
-                    of ridicule. We must create safe spaces where victims can share their experiences without judgment. 
-                    When victims speak up, they not only help themselves heal but also protect others by exposing 
-                    fraudulent schemes and actors. Their testimony is invaluable to building a safer ecosystem.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <h2 className="text-3xl font-bold mb-6 flex items-center">
-              <FaShieldAlt className="mr-2 text-gray-400" />
-              Our Commitment: A Path Forward
-            </h2>
-
-            <p>
-              Despite these profound challenges, we at the Open Crypto Foundation believe in the potential 
-              for blockchain technology and decentralized finance to create meaningful positive change. However, 
-              this potential can only be realized if we honestly confront the problems plaguing the industry 
-              and commit to fundamental reforms.
-            </p>
-
-            <p>
-              Our commitment is to advocate for:
-            </p>
-
-            <ul>
-              <li><strong>User-centered design</strong> that prioritizes protection over speculation</li>
-              <li><strong>Meaningful transparency</strong> in project funding, tokenomics, and risk disclosures</li>
-              <li><strong>Educational resources</strong> that help users understand risks without technical jargon</li>
-              <li><strong>Sensible regulation</strong> that protects users without stifling innovation</li>
-              <li><strong>Platform accountability</strong> for the projects they list and promote</li>
-              <li><strong>Ethical standards</strong> for developers, influencers, and platforms</li>
-            </ul>
-
-            <p>
-              We believe the future of cryptocurrency depends on building user trust through actual 
-              protection rather than empty promises. The technology remains revolutionary, but the culture 
-              and business practices surrounding it must evolve from a predatory gold rush to a sustainable 
-              ecosystem that delivers real value to users.
-            </p>
-
-            <div className="mt-12 p-6 bg-gray-800 border-l-4 border-gray-600 rounded-lg">
-              <h2 className="mt-0 text-white">Join Our Mission</h2>
-              <p className="mb-4 text-gray-300">
-                The Open Crypto Foundation is committed to advancing the values outlined in this manifesto 
-                through education, advocacy, and the development of tools that help users navigate this 
-                complex landscape safely.
-              </p>
-              <p className="mb-0 text-gray-300">
-                We invite you to explore our resources, utilize our tools, and join us in promoting a 
-                cryptocurrency ecosystem that serves users rather than exploits them.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-4">
-                <a 
-                  href="/resources/defi-fundamentals" 
-                  className="px-6 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors"
-                >
-                  Educational Resources
-                </a>
-                <a 
-                  href="/tools" 
-                  className="px-6 py-3 bg-purple-700 text-white rounded-lg hover:bg-purple-600 transition-colors"
-                >
-                  Safety Tools
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
     </>
-  )
+  );
 } 

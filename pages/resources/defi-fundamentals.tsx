@@ -23,17 +23,18 @@ import {
   FaChartArea,
   FaShieldAlt
 } from 'react-icons/fa'
+import TabLayout from '../../components/TabLayout'
 
 export default function DeFiFundamentals() {
   const [activeTab, setActiveTab] = useState('crypto-basics')
   
   // Tabs configuration
   const tabs = [
-    { id: 'crypto-basics', label: 'Crypto Fundamentals', icon: <FaBitcoin className="mr-2" /> },
-    { id: 'defi-intro', label: 'DeFi Introduction', icon: <FaExchangeAlt className="mr-2" /> },
-    { id: 'token-ecosystem', label: 'Token Ecosystem', icon: <FaCoins className="mr-2" /> },
-    { id: 'dex-and-amm', label: 'DEXs & Liquidity', icon: <FaWater className="mr-2" /> },
-    { id: 'token-launches', label: 'Token Launches & Markets', icon: <FaRocket className="mr-2" /> }
+    { id: 'crypto-basics', name: 'Crypto Fundamentals', icon: <FaBitcoin className="text-yellow-400" /> },
+    { id: 'defi-intro', name: 'DeFi Introduction', icon: <FaExchangeAlt className="text-blue-400" /> },
+    { id: 'token-ecosystem', name: 'Token Ecosystem', icon: <FaCoins className="text-green-400" /> },
+    { id: 'dex-and-amm', name: 'DEXs & Liquidity', icon: <FaWater className="text-purple-400" /> },
+    { id: 'token-launches', name: 'Token Launches & Markets', icon: <FaRocket className="text-pink-400" /> }
   ]
 
   // Top 10 blockchains by market cap (as of creation date)
@@ -781,859 +782,106 @@ export default function DeFiFundamentals() {
         <title>DeFi Fundamentals | Open Crypto Foundation</title>
         <meta 
           name="description" 
-          content="Learn about cryptocurrency fundamentals, blockchain technology, decentralized finance (DeFi), trading on decentralized exchanges, and token launch mechanisms in a comprehensive educational guide." 
+          content="Learn the fundamentals of DeFi, cryptocurrency basics, tokens, decentralized exchanges, and market dynamics in this comprehensive guide." 
         />
       </Head>
-      
-      <section className="pt-10 pb-12 bg-gradient-to-br from-black to-gray-900 text-white border-b border-gray-800">
-        <div className="container">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="mb-4 text-4xl font-bold text-white">DeFi Fundamentals</h1>
-            <p className="text-xl text-gray-300">
-              A comprehensive guide to understanding cryptocurrency and decentralized finance
+
+      <div className="py-12 md:py-20">
+        <div className="container px-4 md:px-6">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-500 text-transparent bg-clip-text">
+              DeFi Fundamentals
+            </h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              A comprehensive guide to understanding decentralized finance, cryptocurrencies, and the blockchain ecosystem.
             </p>
           </div>
-        </div>
-      </section>
-      
-      <section className="py-12 bg-gray-900">
-        <div className="container">
-          <div className="bg-gray-800 rounded-xl shadow-md overflow-hidden mb-8 border border-gray-700">
-            {/* Tabs */}
-            <div className="flex overflow-x-auto border-b border-gray-700 scrollbar-hide">
-              {tabs.map(tab => (
-                <button 
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center px-6 py-4 font-medium whitespace-nowrap transition-colors ${
-                    activeTab === tab.id
-                      ? 'text-purple-400 border-b-2 border-purple-500' 
-                      : 'text-gray-300 hover:text-purple-300'
-                  }`}
-                >
-                  {tab.icon}
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-            
-            {/* Tab content */}
-            <div className="p-6 md:p-8">
-              {/* Crypto Fundamentals */}
-              {activeTab === 'crypto-basics' && (
-                <div>
-                  <h2 className="text-3xl font-bold mb-6 text-white">Cryptocurrency Fundamentals</h2>
+
+          <div className="max-w-6xl mx-auto">
+            <TabLayout 
+              tabs={tabs} 
+              activeTab={activeTab} 
+              onTabChange={setActiveTab}
+              tabPosition="side"
+            >
+              {/* Crypto Fundamentals Tab */}
+              <div className={`transition-all duration-300 ${activeTab === 'crypto-basics' ? 'block' : 'hidden'}`}>
+                <div className="bg-gray-800 rounded-lg p-6">
+                  <h2 className="text-2xl font-bold mb-6 text-white flex items-center">
+                    <FaBitcoin className="text-yellow-400 mr-3" />
+                    Cryptocurrency Fundamentals
+                  </h2>
                   
-                  <div className="prose max-w-none text-gray-300">
-                    <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
-                      <FaInfoCircle className="mr-2 text-purple-400" />
-                      What is Cryptocurrency?
-                    </h3>
-                    
-                    <p className="text-lg mb-6">
-                      Cryptocurrency is a digital or virtual form of currency that uses cryptography for security, operates on decentralized 
-                      networks based on blockchain technology, and functions independently of central authorities like governments or banks. 
-                      The first and most well-known cryptocurrency, Bitcoin, was created in 2009 by an individual or group using the pseudonym 
-                      Satoshi Nakamoto.
+                  <div className="space-y-6 text-gray-300">
+                    <p className="text-xl">
+                      Cryptocurrencies are digital or virtual currencies that use cryptography for security and operate on decentralized networks called blockchains.
                     </p>
                     
-                    <div className="bg-blue-900/30 p-6 rounded-xl mb-8 border border-blue-800/50">
-                      <h4 className="font-bold text-lg mb-3 text-blue-300">Key Properties of Cryptocurrencies:</h4>
-                      <ul className="space-y-2">
-                        <li><strong className="text-white">Decentralization:</strong> No single entity has control; the network is maintained by distributed nodes.</li>
-                        <li><strong className="text-white">Transparency:</strong> Most blockchain transactions are viewable on public ledgers.</li>
-                        <li><strong className="text-white">Immutability:</strong> Once recorded on the blockchain, transactions cannot be altered.</li>
-                        <li><strong className="text-white">Limited Supply:</strong> Many cryptocurrencies have a fixed maximum supply (like Bitcoin's 21 million).</li>
-                        <li><strong className="text-white">Pseudonymity:</strong> Users can transact without revealing their identity (to varying degrees).</li>
-                        <li><strong className="text-white">Borderless:</strong> Transactions can be sent globally without traditional banking restrictions.</li>
-                      </ul>
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
-                      <FaLayerGroup className="mr-2 text-purple-400" />
-                      Blockchain Technology Explained
-                    </h3>
-                    
-                    <p className="text-lg mb-4">
-                      Blockchain is the underlying technology that powers cryptocurrencies. At its core, a blockchain is a 
-                      distributed database or ledger that stores information in blocks that are chained together chronologically 
-                      and secured using cryptography.
-                    </p>
-                    
-                    <div className="grid md:grid-cols-2 gap-6 mb-8">
-                      <div className="bg-gray-700 p-5 rounded-lg border border-gray-600">
-                        <h4 className="font-bold text-lg mb-2 text-white">How Blockchain Works</h4>
-                        <ol className="list-decimal pl-5 space-y-2">
-                          <li>Transactions are bundled into blocks</li>
-                          <li>Network validators verify transactions</li>
-                          <li>The block is added to the chain when consensus is reached</li>
-                          <li>The new block is linked to the previous block with a cryptographic hash</li>
-                          <li>The process repeats, creating an immutable chain of blocks</li>
-                        </ol>
-                      </div>
+                    <div className="bg-gray-700 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-white mb-4">Key Concepts in Cryptocurrency</h3>
                       
-                      <div className="bg-gray-700 p-5 rounded-lg border border-gray-600">
-                        <h4 className="font-bold text-lg mb-2 text-white">Consensus Mechanisms</h4>
-                        <ul className="list-disc pl-5 space-y-2">
-                          <li><strong className="text-white">Proof of Work (PoW):</strong> Miners solve complex mathematical puzzles to validate transactions and create new blocks. Secure but energy-intensive.</li>
-                          <li><strong className="text-white">Proof of Stake (PoS):</strong> Validators stake their coins as collateral to participate in block creation. More energy-efficient than PoW.</li>
-                          <li><strong className="text-white">Delegated Proof of Stake (DPoS):</strong> Stakeholders vote for a small number of delegates who validate transactions.</li>
-                          <li><strong className="text-white">Proof of History (PoH):</strong> Creates a historical record that proves events occurred at specific times (used by Solana).</li>
-                        </ul>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-3">
+                          <h4 className="text-lg font-medium text-white">Blockchain Technology</h4>
+                          <p>
+                            A distributed ledger that records all transactions across a network of computers. 
+                            It's decentralized, transparent, and resistant to modification.
+                          </p>
+                        </div>
+                        
+                        <div className="space-y-3">
+                          <h4 className="text-lg font-medium text-white">Decentralization</h4>
+                          <p>
+                            The distribution of power away from central authorities. In crypto, this means 
+                            no single entity controls the network.
+                          </p>
+                        </div>
+                        
+                        <div className="space-y-3">
+                          <h4 className="text-lg font-medium text-white">Consensus Mechanisms</h4>
+                          <p>
+                            Methods by which blockchain networks reach agreement on the valid state of the ledger. 
+                            Examples include Proof of Work and Proof of Stake.
+                          </p>
+                        </div>
+                        
+                        <div className="space-y-3">
+                          <h4 className="text-lg font-medium text-white">Cryptographic Security</h4>
+                          <p>
+                            The use of mathematical algorithms to secure transactions and control the creation 
+                            of new units.
+                          </p>
+                        </div>
                       </div>
                     </div>
                     
-                    <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
-                      <FaChartLine className="mr-2 text-purple-400" />
-                      Top 10 Blockchains by Market Cap
-                    </h3>
+                    <h3 className="text-xl font-semibold text-white mt-8 mb-4">Major Blockchain Networks</h3>
                     
-                    <div className="overflow-x-auto mb-8">
-                      <table className="min-w-full border-collapse">
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full bg-gray-700 rounded-lg overflow-hidden">
                         <thead>
-                          <tr className="bg-gray-700">
-                            <th className="border border-gray-600 p-3 text-left text-white">Blockchain</th>
-                            <th className="border border-gray-600 p-3 text-left text-white">Type</th>
-                            <th className="border border-gray-600 p-3 text-left text-white">Market Cap</th>
-                            <th className="border border-gray-600 p-3 text-left text-white">Consensus</th>
+                          <tr className="bg-gray-600">
+                            <th className="px-4 py-3 text-left text-white">Blockchain</th>
+                            <th className="px-4 py-3 text-left text-white">Type</th>
+                            <th className="px-4 py-3 text-left text-white">Consensus</th>
+                            <th className="px-4 py-3 text-left text-white">Key Features</th>
                           </tr>
                         </thead>
                         <tbody>
                           {topBlockchains.map((blockchain, index) => (
-                            <tr key={index} className={index % 2 === 0 ? 'bg-gray-800' : 'bg-gray-750'}>
-                              <td className="border border-gray-600 p-3 font-medium text-white">{blockchain.name}</td>
-                              <td className="border border-gray-600 p-3">{blockchain.type}</td>
-                              <td className="border border-gray-600 p-3">{blockchain.marketCap}</td>
-                              <td className="border border-gray-600 p-3">{blockchain.consensus}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-
-                    <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
-                      <FaCodeBranch className="mr-2 text-purple-400" />
-                      What is a Fork?
-                    </h3>
-                    
-                    <p className="text-lg mb-4">
-                      In blockchain technology, a fork is a change to the protocol that creates a divergence in the blockchain. 
-                      There are two main types of forks: soft forks and hard forks.
-                    </p>
-                    
-                    <div className="grid md:grid-cols-2 gap-6 mb-8">
-                      <div className="p-5 border border-gray-600 rounded-lg bg-gray-700">
-                        <h4 className="font-bold text-lg mb-2 text-white">Soft Fork</h4>
-                        <p className="mb-4">
-                          A backward-compatible upgrade where only miners/validators need to update their software. 
-                          Old nodes can still validate transactions, but they may reject blocks that don't follow the new rules.
-                        </p>
-                        <h5 className="font-semibold mb-1 text-white">Examples:</h5>
-                        <ul className="list-disc pl-5">
-                          <li>Bitcoin's SegWit implementation</li>
-                          <li>Bitcoin's Taproot upgrade</li>
-                        </ul>
-                      </div>
-                      
-                      <div className="p-5 border border-gray-600 rounded-lg bg-gray-700">
-                        <h4 className="font-bold text-lg mb-2 text-white">Hard Fork</h4>
-                        <p className="mb-4">
-                          A non-backward-compatible change that requires all nodes to upgrade to the new protocol rules. 
-                          It effectively creates a permanent divergence in the blockchain, resulting in two separate networks.
-                        </p>
-                        <h5 className="font-semibold mb-1 text-white">Examples:</h5>
-                        <ul className="list-disc pl-5">
-                          <li>Bitcoin Cash forking from Bitcoin</li>
-                          <li>Ethereum Classic forking from Ethereum</li>
-                          <li>Ethereum's transition to Proof of Stake (The Merge)</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
-                      <h3 className="text-xl font-bold mb-4 text-white">Why Do Forks Happen?</h3>
-                      <p className="text-gray-300">
-                        Forks occur for various reasons, including implementing new features, addressing security vulnerabilities, reversing transactions (rare), or resolving disagreements within the community about the future direction of the protocol. Some forks are planned upgrades, while others result from community divisions over fundamental issues like scaling approaches or governance.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* DeFi Introduction */}
-              {activeTab === 'defi-intro' && (
-                <div>
-                  <h2 className="text-3xl font-bold mb-6 text-white">Introduction to Decentralized Finance (DeFi)</h2>
-                  
-                  <div className="prose max-w-none text-gray-300">
-                    <h3 className="text-2xl font-bold mb-4 text-white">What is DeFi?</h3>
-                    
-                    <p className="text-lg mb-4">
-                      Decentralized Finance, or DeFi, refers to an ecosystem of financial applications built on blockchain networks 
-                      that aim to recreate and improve upon traditional financial systems without relying on centralized 
-                      intermediaries such as banks, brokerages, or exchanges.
-                    </p>
-                    
-                    <p className="text-lg mb-6">
-                      DeFi leverages smart contracts—self-executing agreements with the terms directly written into code—to enable 
-                      financial services like lending, borrowing, trading, insurance, and asset management without the need for 
-                      trusted third parties. Instead, these services operate in a transparent, permissionless, and interoperable manner.
-                    </p>
-                    
-                    <div className="bg-purple-900/30 p-6 rounded-xl mb-8 border border-purple-800/50">
-                      <h4 className="font-bold text-xl mb-3 text-purple-300">Core Principles of DeFi</h4>
-                      <ul className="space-y-3">
-                        <li><strong className="text-white">Non-custodial:</strong> Users maintain control of their assets rather than trusting a centralized entity.</li>
-                        <li><strong className="text-white">Permissionless:</strong> Anyone with an internet connection can access DeFi services without approval.</li>
-                        <li><strong className="text-white">Transparency:</strong> All transactions and code are publicly visible on the blockchain.</li>
-                        <li><strong className="text-white">Interoperability:</strong> DeFi protocols can interact with each other, enabling complex financial instruments.</li>
-                        <li><strong className="text-white">Programmable:</strong> Money and financial services become programmable through smart contracts.</li>
-                        <li><strong className="text-white">Open source:</strong> Most DeFi protocols have publicly available code that can be audited and forked.</li>
-                      </ul>
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-4 text-white">Key Components of the DeFi Ecosystem</h3>
-                    
-                    <div className="grid md:grid-cols-2 gap-6 mb-8">
-                      <div className="p-5 border border-gray-600 rounded-lg bg-gray-700">
-                        <h4 className="font-bold text-lg mb-2 text-purple-300">Decentralized Exchanges (DEXs)</h4>
-                        <p className="mb-3">
-                          Platforms that enable peer-to-peer trading of cryptocurrencies without a central authority.
-                        </p>
-                        <p className="mb-2"><strong className="text-white">Examples:</strong> Uniswap, Curve, dYdX, PancakeSwap</p>
-                        <p><strong className="text-white">Innovation:</strong> Automated Market Makers (AMMs) that use liquidity pools instead of order books</p>
-                      </div>
-                      
-                      <div className="p-5 border border-gray-600 rounded-lg bg-gray-700">
-                        <h4 className="font-bold text-lg mb-2 text-purple-300">Lending Protocols</h4>
-                        <p className="mb-3">
-                          Platforms that allow users to lend their crypto assets to earn interest or borrow assets by providing collateral.
-                        </p>
-                        <p className="mb-2"><strong className="text-white">Examples:</strong> Aave, Compound, MakerDAO</p>
-                        <p><strong className="text-white">Innovation:</strong> Flash loans, variable interest rates based on supply and demand</p>
-                      </div>
-                      
-                      <div className="p-5 border border-gray-600 rounded-lg bg-gray-700">
-                        <h4 className="font-bold text-lg mb-2 text-purple-300">Stablecoins</h4>
-                        <p className="mb-3">
-                          Cryptocurrencies designed to maintain a stable value, usually pegged to a fiat currency like the US dollar.
-                        </p>
-                        <p className="mb-2"><strong className="text-white">Examples:</strong> DAI, USDC, USDT, FRAX</p>
-                        <p><strong className="text-white">Types:</strong> Fiat-backed, crypto-collateralized, algorithmic</p>
-                      </div>
-                      
-                      <div className="p-5 border border-gray-600 rounded-lg bg-gray-700">
-                        <h4 className="font-bold text-lg mb-2 text-purple-300">Yield Aggregators</h4>
-                        <p className="mb-3">
-                          Protocols that automatically move users' funds between different yield-generating strategies to maximize returns.
-                        </p>
-                        <p className="mb-2"><strong className="text-white">Examples:</strong> Yearn Finance, Beefy Finance</p>
-                        <p><strong className="text-white">Innovation:</strong> Auto-compounding, strategy vaults, yield optimization</p>
-                      </div>
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-6 flex items-center text-white">
-                      <FaHistory className="mr-2 text-purple-400" />
-                      The Evolution of DeFi
-                    </h3>
-                    
-                    <div className="relative border-l-2 border-purple-800 pl-8 ml-4 space-y-10 mb-8">
-                      {defiTimeline.map((event, index) => (
-                        <div key={index} className="relative">
-                          <div className="absolute -left-12 bg-purple-900/50 text-purple-300 font-bold py-1 px-3 rounded-full border border-purple-700/50">
-                            {event.year}
-                          </div>
-                          <div className="absolute -left-10 w-4 h-4 bg-purple-500 rounded-full mt-1.5 border-4 border-gray-800"></div>
-                          <div>
-                            <h4 className="text-xl font-bold mb-2 text-white">{event.title}</h4>
-                            <p className="text-gray-300">{event.description}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-4 text-white">The Promise and Challenges of DeFi</h3>
-                    
-                    <div className="grid md:grid-cols-2 gap-6 mb-8">
-                      <div className="bg-green-900/30 p-6 rounded-lg border border-green-800/50">
-                        <h4 className="font-bold text-lg mb-3 text-green-300">Opportunities</h4>
-                        <ul className="list-disc pl-5 space-y-2">
-                          <li><strong className="text-white">Financial Inclusion:</strong> Access to financial services for the unbanked/underbanked</li>
-                          <li><strong className="text-white">Lower Fees:</strong> Reducing costs by removing intermediaries</li>
-                          <li><strong className="text-white">Innovation:</strong> Rapid development of new financial products</li>
-                          <li><strong className="text-white">Composability:</strong> Building complex products using multiple protocols</li>
-                          <li><strong className="text-white">Global Access:</strong> No geographical restrictions or discrimination</li>
-                          <li><strong className="text-white">Transparency:</strong> All transactions and protocol operations are visible</li>
-                        </ul>
-                      </div>
-                      
-                      <div className="bg-red-900/30 p-6 rounded-lg border border-red-800/50">
-                        <h4 className="font-bold text-lg mb-3 text-red-300">Challenges</h4>
-                        <ul className="list-disc pl-5 space-y-2">
-                          <li><strong className="text-white">Smart Contract Risk:</strong> Bugs or vulnerabilities in code can lead to hacks</li>
-                          <li><strong className="text-white">Scalability:</strong> High fees during network congestion</li>
-                          <li><strong className="text-white">User Experience:</strong> Still complex for non-technical users</li>
-                          <li><strong className="text-white">Oracle Risk:</strong> Reliance on external data feeds that can be manipulated</li>
-                          <li><strong className="text-white">Regulatory Uncertainty:</strong> Evolving legal landscape across jurisdictions</li>
-                          <li><strong className="text-white">Market Volatility:</strong> Price fluctuations affecting protocol stability</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Token Ecosystem */}
-              {activeTab === 'token-ecosystem' && (
-                <div>
-                  <h2 className="text-3xl font-bold mb-6 text-white">Understanding the Token Ecosystem</h2>
-                  
-                  <div className="prose max-w-none text-gray-300">
-                    <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
-                      <FaCoins className="mr-2 text-purple-400" />
-                      Tokens vs. Cryptocurrencies: What's the Difference?
-                    </h3>
-                    
-                    <p className="text-lg mb-6">
-                      While the terms are often used interchangeably, there is an important technical distinction 
-                      between cryptocurrencies (sometimes called "coins") and tokens in the blockchain ecosystem.
-                    </p>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                      <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
-                        <h3 className="text-xl font-bold mb-4 text-white">Native Cryptocurrencies (Coins)</h3>
-                        <ul className="list-disc pl-6 space-y-2 text-gray-300">
-                          <li>Native to their own blockchain</li>
-                          <li>Used to pay transaction fees and incentivize nodes</li>
-                          <li>Often mined or minted according to the protocol</li>
-                          <li>Examples: Bitcoin, Ether, Solana, Avalanche</li>
-                        </ul>
-                      </div>
-                      
-                      <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
-                        <h3 className="text-xl font-bold mb-4 text-white">Tokens</h3>
-                        <ul className="list-disc pl-6 space-y-2 text-gray-300">
-                          <li>Created on top of an existing blockchain</li>
-                          <li>Represent a wide range of programmable assets</li>
-                          <li>Governed by smart contracts</li>
-                          <li>Examples: ERC-20 tokens, NFTs, stablecoins</li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-6">Types of Tokens and Their Functions</h3>
-                    
-                    <div className="bg-gray-800 p-6 rounded-xl border border-gray-700 mb-8">
-                      <h3 className="text-xl font-bold mb-4 text-white">Types of Tokens and Their Functions</h3>
-                      <p className="mb-4 text-gray-300">
-                        The token ecosystem has evolved to encompass a wide variety of token types, each with specific functions, characteristics, and use cases in the blockchain ecosystem.
-                      </p>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {tokenTypes.map((token, index) => (
-                          <div key={index} className="bg-gray-700 p-4 rounded border border-gray-600">
-                            <h4 className="font-bold mb-2 text-white">{token.type}</h4>
-                            <p className="mb-2 text-gray-300">{token.description}</p>
-                            
-                            <h5 className="font-medium mb-1 text-gray-200">Examples:</h5>
-                            <ul className="list-disc pl-5 mb-2 space-y-1 text-gray-300">
-                              {token.examples.map((example, exIndex) => (
-                                <li key={exIndex}>{example}</li>
-                              ))}
-                            </ul>
-                            
-                            <h5 className="font-medium mb-1 text-gray-200">Key Features:</h5>
-                            <ul className="list-disc pl-5 space-y-1 text-gray-300">
-                              {token.features.map((feature, ftIndex) => (
-                                <li key={ftIndex}>{feature}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-6 flex items-center text-white">
-                      <FaBuilding className="mr-2 text-purple-400" />
-                      Leading Chains in the Token Ecosystem
-                    </h3>
-                    
-                    <div className="space-y-6 mb-8">
-                      {tokenEcosystems.map((ecosystem, index) => (
-                        <div key={index} className="p-6 border border-gray-700 rounded-lg bg-gray-800">
-                          <div className="flex flex-col md:flex-row justify-between mb-4">
-                            <div>
-                              <h4 className="text-xl font-bold mb-1 text-white">{ecosystem.chain}</h4>
-                              <p className="text-gray-400">Token Standard: {ecosystem.standard}</p>
-                            </div>
-                            <div className="mt-3 md:mt-0">
-                              <div className="text-purple-400 font-semibold">{ecosystem.tokensCount} tokens</div>
-                              <div className="text-sm text-gray-500">{ecosystem.marketShare} market share</div>
-                            </div>
-                          </div>
-                          
-                          <div className="grid md:grid-cols-2 gap-6">
-                            <div>
-                              <h5 className="font-semibold mb-2 text-white">Notable Tokens:</h5>
-                              <div className="flex flex-wrap gap-2">
-                                {ecosystem.notableTokens.map((token, idx) => (
-                                  <span 
-                                    key={idx} 
-                                    className="bg-gray-700 text-gray-300 text-sm px-2 py-1 rounded-full border border-gray-600"
-                                  >
-                                    {token}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                            
-                            <div>
-                              <h5 className="font-semibold mb-2 text-white">Ecosystem Strengths:</h5>
-                              <ul className="list-disc pl-5 text-sm text-gray-300">
-                                {ecosystem.strengths.map((strength, idx) => (
-                                  <li key={idx}>{strength}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-6 flex items-center text-white">
-                      <FaCheckCircle className="mr-2 text-green-400" />
-                      The Positive Impact: How Tokens Can Be Used for Good
-                    </h3>
-                    
-                    <div className="bg-gray-800 p-6 rounded-xl border border-gray-700 mb-8">
-                      <h3 className="text-xl font-bold mb-4 text-white">Use Cases for Tokens</h3>
-                      <p className="mb-6 text-gray-300">
-                        Tokens enable a wide range of use cases and economic models, enabling new incentive structures, governance frameworks, and financial applications.
-                      </p>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {positiveUseCases.map((useCase, index) => (
-                          <div key={index} className="bg-gray-700 p-5 rounded border border-gray-600">
-                            <h4 className="font-bold text-white mb-2">{useCase.title}</h4>
-                            <p className="text-gray-300 mb-3">{useCase.description}</p>
-                            <p className="text-sm text-gray-400"><strong className="text-white">Examples:</strong> {useCase.examples.join("; ")}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-6 flex items-center text-white">
-                      <FaExclamationTriangle className="mr-2 text-orange-400" />
-                      Challenges to Address for the Success of the Token Economy
-                    </h3>
-                    
-                    <div className="bg-gray-800 p-6 rounded-xl border border-gray-700 mb-8">
-                      <h3 className="text-xl font-bold mb-4 text-white">Challenges to Address for the Success of the Token Economy</h3>
-                      <p className="mb-6 text-gray-300">
-                        Despite their potential, tokens face significant challenges that must be addressed to build a sustainable, equitable, and beneficial token economy. Recognizing and addressing these issues is essential for the long-term success of the crypto revolution.
-                      </p>
-                      
-                      <div className="space-y-6">
-                        {tokenProblems.map((problem, index) => (
-                          <div key={index} className="bg-gray-700 p-5 rounded border border-gray-600">
-                            <h4 className="font-bold mb-2 text-white">{problem.problem}</h4>
-                            <p className="mb-4 text-gray-300">{problem.description}</p>
-                            
-                            <h5 className="font-semibold mb-2 text-white">Potential Solutions:</h5>
-                            <ul className="list-disc pl-6 space-y-1 text-gray-300">
-                              {problem.potentialSolutions.map((solution, idx) => (
-                                <li key={idx}>{solution}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* DEXs & Liquidity Tab */}
-              {activeTab === 'dex-and-amm' && (
-                <div>
-                  <h2 className="text-3xl font-bold mb-6 text-white">Decentralized Exchanges & Liquidity</h2>
-                  
-                  <div className="prose max-w-none text-gray-300">
-                    <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
-                      <FaExchange className="mr-2 text-purple-400" />
-                      DEXs vs. CEXs: Understanding the Differences
-                    </h3>
-                    
-                    <p className="text-lg mb-6">
-                      Decentralized exchanges (DEXs) represent a fundamental shift from traditional centralized exchanges (CEXs), 
-                      enabling peer-to-peer trading without intermediaries through blockchain technology and smart contracts.
-                    </p>
-                    
-                    <div className="overflow-x-auto mb-8">
-                      <table className="min-w-full border-collapse">
-                        <thead>
-                          <tr className="bg-gray-800">
-                            <th className="border border-gray-700 p-3 text-left text-white">Aspect</th>
-                            <th className="border border-gray-700 p-3 text-left text-white">Decentralized Exchanges (DEXs)</th>
-                            <th className="border border-gray-700 p-3 text-left text-white">Centralized Exchanges (CEXs)</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {dexVsCexComparison.map((row, index) => (
-                            <tr key={index} className={index % 2 === 0 ? 'bg-gray-750' : 'bg-gray-700'}>
-                              <td className="border border-gray-700 p-3 font-medium text-white">{row.aspect}</td>
-                              <td className="border border-gray-700 p-3 text-gray-300">{row.dex}</td>
-                              <td className="border border-gray-700 p-3 text-gray-300">{row.cex}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                    
-                    <div className="bg-blue-900/30 p-6 rounded-xl mb-8">
-                      <h4 className="font-bold text-lg mb-3 text-blue-300">Key Advantages of DEXs</h4>
-                      <ul className="space-y-2 text-gray-300">
-                        <li><strong className="text-white">Self-custody:</strong> Users maintain control of their private keys and funds throughout the trading process.</li>
-                        <li><strong className="text-white">Permissionless:</strong> Anyone can access DEXs without KYC requirements or geographical restrictions.</li>
-                        <li><strong className="text-white">Censorship resistance:</strong> No central authority can freeze assets or block transactions.</li>
-                        <li><strong className="text-white">Transparency:</strong> All transactions are visible on the blockchain and smart contract code is verifiable.</li>
-                        <li><strong className="text-white">Asset diversity:</strong> Any token can be listed without requiring approval from a central authority.</li>
-                      </ul>
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
-                      <FaHistory className="mr-2 text-purple-400" />
-                      The Evolution of Decentralized Exchanges
-                    </h3>
-                    
-                    <p className="text-lg mb-6">
-                      DEXs have evolved dramatically since their inception, moving from simple on-chain order books 
-                      to sophisticated automated market makers and hybrid models that combine the best of both worlds.
-                    </p>
-                    
-                    <div className="relative border-l-2 border-purple-800 pl-8 ml-4 space-y-8 mb-10">
-                      {dexEvolution.map((event, index) => (
-                        <div key={index} className="relative">
-                          <div className="absolute -left-12 bg-purple-900 text-purple-300 font-bold py-1 px-3 rounded-full border border-purple-700">
-                            {event.year}
-                          </div>
-                          <div className="absolute -left-10 w-4 h-4 bg-purple-500 rounded-full mt-1.5 border-4 border-gray-900"></div>
-                          <div>
-                            <h4 className="text-xl font-bold mb-1 text-white">{event.event}</h4>
-                            <p className="text-gray-300 mb-2">{event.description}</p>
-                            <div className="inline-block bg-purple-900/40 text-purple-300 px-3 py-1 text-sm rounded-full border border-purple-800/50">
-                              {event.innovation}
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
-                      <FaLayerGroup className="mr-2 text-purple-400" />
-                      Automated Market Makers (AMMs): How They Work
-                    </h3>
-                    
-                    <p className="text-lg mb-6">
-                      AMMs revolutionized DeFi by replacing traditional order books with liquidity pools and mathematical formulas 
-                      that automatically determine prices based on the ratio of assets in a pool.
-                    </p>
-                    
-                    <div className="bg-gray-800 p-6 rounded-lg mb-8 border border-gray-700">
-                      <h4 className="font-bold text-xl mb-3 text-white">The Basic AMM Mechanism</h4>
-                      <p className="mb-4 text-gray-300">
-                        At their core, AMMs use smart contracts to create liquidity pools where users can deposit pairs of tokens. 
-                        Instead of matching buyers with sellers like traditional exchanges, AMMs use mathematical formulas to 
-                        determine prices automatically based on the ratio of assets in the pool.
-                      </p>
-                      <p className="mb-4 text-gray-300">
-                        When a user trades with an AMM, they're not trading with another person, but with the pool itself. 
-                        The trade changes the ratio of assets in the pool, which automatically adjusts the price according 
-                        to the AMM's formula.
-                      </p>
-                      <div className="bg-gray-700 p-4 rounded-lg border border-gray-600">
-                        <p className="font-semibold text-center mb-2 text-white">Constant Product Formula (Uniswap V2)</p>
-                        <p className="text-center text-xl font-mono text-purple-300">x × y = k</p>
-                        <p className="text-sm text-gray-400 mt-2">
-                          Where x and y are the reserves of two tokens in the pool, and k is a constant. 
-                          When someone buys token Y with token X, they add to X reserves and remove from Y reserves, 
-                          maintaining the constant product k.
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-4 text-white">Types of AMM Models</h3>
-                    
-                    <p className="text-lg mb-6">
-                      As DeFi has evolved, various AMM models have been developed to address different needs and optimize for specific use cases.
-                    </p>
-                    
-                    <div className="space-y-8 mb-10">
-                      {ammTypes.map((type, index) => (
-                        <div key={index} className="border border-gray-700 rounded-lg overflow-hidden bg-gray-800">
-                          <div className="bg-gray-700 p-4 border-b border-gray-600">
-                            <h4 className="text-xl font-bold text-white">{type.name}</h4>
-                            <div className="mt-2 flex flex-wrap gap-2">
-                              {type.examples.map((example, idx) => (
-                                <span key={idx} className="bg-blue-900/40 text-blue-300 text-sm px-2 py-1 rounded-full border border-blue-800/50">
-                                  {example}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                          <div className="p-4">
-                            <p className="mb-4 text-gray-300">{type.description}</p>
-                            <div className="grid md:grid-cols-2 gap-4">
-                              <div>
-                                <h5 className="font-semibold text-green-400 mb-2">Advantages</h5>
-                                <ul className="list-disc pl-5 space-y-1 text-gray-300">
-                                  {type.pros.map((pro, idx) => (
-                                    <li key={idx}>{pro}</li>
-                                  ))}
-                                </ul>
-                              </div>
-                              <div>
-                                <h5 className="font-semibold text-red-400 mb-2">Limitations</h5>
-                                <ul className="list-disc pl-5 space-y-1 text-gray-300">
-                                  {type.cons.map((con, idx) => (
-                                    <li key={idx}>{con}</li>
-                                  ))}
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
-                      <FaBalanceScale className="mr-2 text-purple-400" />
-                      Liquidity Provision: Benefits and Risks
-                    </h3>
-                    
-                    <p className="text-lg mb-6">
-                      Liquidity providers (LPs) are essential to DEX ecosystems, contributing token pairs to liquidity 
-                      pools and earning fees in return. However, providing liquidity comes with both benefits and risks.
-                    </p>
-                    
-                    <div className="space-y-6 mb-10">
-                      <div className="bg-green-900/30 p-6 rounded-lg border border-green-800/50">
-                        <h4 className="text-xl font-bold mb-4 text-green-300">Benefits of Providing Liquidity</h4>
-                        <div className="space-y-4">
-                          {lpRisksAndBenefits.filter(item => item.benefit).map((item, index) => (
-                            <div key={index} className="bg-gray-800 p-4 rounded border border-green-900/50">
-                              <h5 className="font-semibold text-green-400 mb-1">{item.benefit}</h5>
-                              <p className="mb-2 text-gray-300">{item.description}</p>
-                              <p className="text-sm text-gray-400 italic">{item.consideration}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      <div className="bg-red-900/30 p-6 rounded-lg border border-red-800/50">
-                        <h4 className="text-xl font-bold mb-4 text-red-300">Risks of Providing Liquidity</h4>
-                        <div className="space-y-4">
-                          {lpRisksAndBenefits.filter(item => item.risk).map((item, index) => (
-                            <div key={index} className="bg-gray-800 p-4 rounded border border-red-900/50">
-                              <h5 className="font-semibold text-red-400 mb-1">{item.risk}</h5>
-                              <p className="mb-2 text-gray-300">{item.description}</p>
-                              <p className="text-sm text-gray-400 italic"><strong className="text-white">Mitigation:</strong> {item.mitigation}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-yellow-900/30 p-6 rounded-lg border-l-4 border-yellow-600 mb-8">
-                      <h4 className="font-bold text-lg mb-2 text-yellow-300">Understanding Impermanent Loss</h4>
-                      <p className="mb-3 text-gray-300">
-                        Impermanent Loss (IL) is one of the biggest challenges for liquidity providers. It occurs when the price ratio of tokens in a pool changes after depositing.
-                      </p>
-                      <p className="mb-3 text-gray-300">
-                        <strong className="text-white">Why it happens:</strong> AMMs automatically rebalance assets to maintain their mathematical formula (e.g., x*y=k). 
-                        As one asset appreciates relative to the other, the AMM sells some of the appreciating asset for the other, 
-                        meaning LPs end up holding more of the lower-performing asset compared to simply holding both assets.
-                      </p>
-                      <p className="text-gray-300">
-                        <strong className="text-white">Rule of thumb:</strong> The more volatile the asset pair and the greater the price change, the higher the impermanent loss. 
-                        This loss becomes permanent when liquidity is withdrawn from the pool.
-                      </p>
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
-                      <FaChart className="mr-2 text-purple-400" />
-                      The Critical Role of Liquidity in DeFi
-                    </h3>
-                    
-                    <p className="text-lg mb-6">
-                      Liquidity is the lifeblood of decentralized exchanges, determining their efficiency, usability, and competitiveness.
-                    </p>
-                    
-                    <div className="grid md:grid-cols-2 gap-6 mb-8">
-                      <div className="bg-gray-800 p-5 rounded-lg border border-gray-700">
-                        <h4 className="font-bold text-lg mb-2 text-white">Why Liquidity Matters</h4>
-                        <ul className="list-disc pl-5 space-y-2 text-gray-300">
-                          <li><strong className="text-white">Price Stability:</strong> Deeper liquidity means less price impact for trades, reducing slippage.</li>
-                          <li><strong className="text-white">Trading Experience:</strong> Better liquidity provides a more competitive user experience compared to CEXs.</li>
-                          <li><strong className="text-white">Capital Efficiency:</strong> Higher liquidity utilization means more efficient DeFi markets.</li>
-                          <li><strong className="text-white">Protocol Revenue:</strong> More trading volume generates more fees for protocols and LPs.</li>
-                          <li><strong className="text-white">Token Value:</strong> Good liquidity increases confidence in a token and reduces manipulation risk.</li>
-                        </ul>
-                      </div>
-                      
-                      <div className="bg-gray-800 p-5 rounded-lg border border-gray-700">
-                        <h4 className="font-bold text-lg mb-2 text-white">Liquidity Challenges in DeFi</h4>
-                        <ul className="list-disc pl-5 space-y-2 text-gray-300">
-                          <li><strong className="text-white">Fragmentation:</strong> Liquidity spread across many DEXs and chains reduces efficiency.</li>
-                          <li><strong className="text-white">Mercenary Capital:</strong> Yield farmers quickly move funds to the highest yield, creating liquidity instability.</li>
-                          <li><strong className="text-white">Capital Inefficiency:</strong> Traditional AMMs require large amounts of capital for relatively small trading volumes.</li>
-                          <li><strong className="text-white">Impermanent Loss:</strong> Discourages liquidity provision in volatile assets.</li>
-                          <li><strong className="text-white">Bootstrapping:</strong> New projects struggle to attract initial liquidity without unsustainable incentives.</li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-6 text-white">The Future of DEXs: Innovations and Trends</h3>
-                    
-                    <p className="text-lg mb-6">
-                      The DEX landscape continues to evolve rapidly, with new innovations addressing current limitations and expanding capabilities.
-                    </p>
-                    
-                    <div className="space-y-6 mb-8">
-                      {dexInnovations.map((innovation, index) => (
-                        <div key={index} className="p-5 bg-blue-900/30 border border-blue-800/50 rounded-lg">
-                          <h4 className="text-lg font-bold mb-2 text-blue-300">{innovation.innovation}</h4>
-                          <p className="mb-3 text-gray-300">{innovation.description}</p>
-                          <p className="font-medium text-blue-300">Impact: <span className="text-gray-300">{innovation.impact}</span></p>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <div className="p-6 bg-indigo-900/30 rounded-xl border border-indigo-800/50">
-                      <h4 className="text-xl font-bold mb-4 text-indigo-300">The Future of DEX Design</h4>
-                      <p className="mb-4 text-gray-300">
-                        The future of decentralized exchanges lies in addressing the fundamental limitations of current models,
-                        particularly around capital efficiency, impermanent loss, and user experience.
-                      </p>
-                      <p className="mb-4 text-gray-300">
-                        We're already seeing the emergence of hybrid models that combine the best aspects of order books and AMMs,
-                        as well as cross-chain solutions that unify liquidity across multiple blockchains.
-                      </p>
-                      <p className="text-gray-300">
-                        The most successful DEX designs will likely be those that can balance decentralization with efficiency,
-                        provide better protection against impermanent loss, and offer intuitive interfaces that make DeFi
-                        accessible to mainstream users while preserving the core values of self-custody and permissionless access.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Token Launches & Markets Tab */}
-              {activeTab === 'token-launches' && (
-                <div>
-                  <h2 className="text-3xl font-bold mb-6 text-white">Token Launches & NFT Markets</h2>
-                  
-                  <div className="prose max-w-none text-gray-300">
-                    <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
-                      <FaRocket className="mr-2 text-purple-400" />
-                      Fair Launch Platforms: Evolution of Token Distribution
-                    </h3>
-                    
-                    <p className="text-lg mb-6">
-                      The token launch landscape has evolved significantly since the ICO boom of 2017. Fair launch platforms 
-                      attempt to create more equitable token distribution mechanisms that reduce the advantages of wealthy 
-                      participants and create sustainable tokenomics.
-                    </p>
-                    
-                    <div className="space-y-8 mb-10">
-                      {fairLaunchPlatforms.map((platform, index) => (
-                        <div key={index} className="border border-gray-700 rounded-lg overflow-hidden bg-gray-800">
-                          <div className="bg-gray-700 p-4 border-b border-gray-600">
-                            <h4 className="text-xl font-bold text-white">{platform.name}</h4>
-                            <div className="mt-2 flex flex-wrap gap-2">
-                              {platform.examples.map((example, idx) => (
-                                <span key={idx} className="bg-blue-900/40 text-blue-300 text-sm px-2 py-1 rounded-full border border-blue-800/50">
-                                  {example}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                          <div className="p-4">
-                            <p className="mb-4 text-gray-300">{platform.description}</p>
-                            <div className="grid md:grid-cols-2 gap-4">
-                              <div>
-                                <h5 className="font-semibold text-green-400 mb-2">Advantages</h5>
-                                <ul className="list-disc pl-5 space-y-1 text-gray-300">
-                                  {platform.pros.map((pro, idx) => (
-                                    <li key={idx}>{pro}</li>
-                                  ))}
-                                </ul>
-                              </div>
-                              <div>
-                                <h5 className="font-semibold text-red-400 mb-2">Limitations</h5>
-                                <ul className="list-disc pl-5 space-y-1 text-gray-300">
-                                  {platform.cons.map((con, idx) => (
-                                    <li key={idx}>{con}</li>
-                                  ))}
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
-                      <FaChartArea className="mr-2 text-purple-400" />
-                      Bonding Curves: Price Discovery Mechanisms
-                    </h3>
-                    
-                    <p className="text-lg mb-6">
-                      Bonding curves are mathematical formulas that determine token prices based on supply. They create 
-                      automatic price discovery mechanisms and enable novel tokenomic designs that can better align 
-                      incentives between early and late participants.
-                    </p>
-                    
-                    <div className="bg-blue-900/30 p-6 rounded-xl mb-8 border border-blue-800/50">
-                      <h4 className="font-bold text-lg mb-3 text-blue-300">How Bonding Curves Work</h4>
-                      <p className="mb-4 text-gray-300">
-                        A bonding curve is a mathematical function that defines the relationship between a token's price and its supply. 
-                        When someone buys a token, they mint new tokens according to the curve, increasing both the supply and the price. 
-                        When someone sells, tokens are burned, decreasing both supply and price.
-                      </p>
-                      <p className="text-gray-300">
-                        This creates an automatic market maker that directly ties price to the token's adoption curve, allowing 
-                        early supporters to benefit from growth while maintaining a predictable price mechanism for all participants.
-                      </p>
-                    </div>
-                    
-                    <div className="overflow-x-auto mb-10">
-                      <table className="min-w-full border-collapse">
-                        <thead>
-                          <tr className="bg-gray-800">
-                            <th className="border border-gray-700 p-3 text-left text-white">Curve Type</th>
-                            <th className="border border-gray-700 p-3 text-left text-white">Formula</th>
-                            <th className="border border-gray-700 p-3 text-left text-white">Best Applications</th>
-                            <th className="border border-gray-700 p-3 text-left text-white">Limitations</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {bondingCurveTypes.map((curve, index) => (
-                            <tr key={index} className={index % 2 === 0 ? 'bg-gray-750' : 'bg-gray-700'}>
-                              <td className="border border-gray-700 p-3 font-medium text-white">{curve.type}</td>
-                              <td className="border border-gray-700 p-3 font-mono text-purple-300">{curve.formula}</td>
-                              <td className="border border-gray-700 p-3 text-gray-300">
-                                <ul className="list-disc pl-4 text-sm">
-                                  {curve.applications.map((app, idx) => (
-                                    <li key={idx}>{app}</li>
-                                  ))}
-                                </ul>
+                            <tr key={index} className={index % 2 === 0 ? 'bg-gray-700' : 'bg-gray-750'}>
+                              <td className="px-4 py-3">
+                                <div>
+                                  <span className="font-medium text-white">{blockchain.name}</span>
+                                  <p className="text-sm text-gray-400 mt-1">{blockchain.description}</p>
+                                </div>
                               </td>
-                              <td className="border border-gray-700 p-3 text-gray-300">
-                                <ul className="list-disc pl-4 text-sm">
-                                  {curve.limitations.map((limitation, idx) => (
-                                    <li key={idx}>{limitation}</li>
+                              <td className="px-4 py-3">{blockchain.type}</td>
+                              <td className="px-4 py-3">{blockchain.consensus}</td>
+                              <td className="px-4 py-3">
+                                <ul className="list-disc list-inside text-sm">
+                                  {blockchain.features.map((feature, i) => (
+                                    <li key={i}>{feature}</li>
                                   ))}
                                 </ul>
                               </td>
@@ -1643,194 +891,193 @@ export default function DeFiFundamentals() {
                       </table>
                     </div>
                     
-                    <div className="p-6 bg-green-900/30 rounded-lg border border-green-800/50 mb-10">
-                      <h4 className="text-xl font-bold mb-3 text-green-300">Benefits of Bonding Curves in DeFi</h4>
-                      <ul className="space-y-3 text-gray-300">
-                        <li><strong className="text-white">Continuous Liquidity:</strong> No need for external market makers as the curve itself provides continuous buy/sell liquidity.</li>
-                        <li><strong className="text-white">Predictable Pricing:</strong> Clear mathematical relationship between supply and price reduces market manipulation.</li>
-                        <li><strong className="text-white">Early Supporter Incentives:</strong> Early participants benefit from price appreciation without disadvantaging later supporters.</li>
-                        <li><strong className="text-white">Customizable Tokenomics:</strong> Different curve shapes can support various project goals and community needs.</li>
-                        <li><strong className="text-white">Sustainable Fundraising:</strong> Projects can raise funds gradually as they deliver value, rather than all at once before development.</li>
-                      </ul>
+                    <h3 className="text-xl font-semibold text-white mt-8 mb-4">Blockchain Layers Explained</h3>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <h4 className="font-semibold text-white mb-2">Layer 0</h4>
+                        <p>
+                          The foundational protocols that allow multiple blockchains to be built on top. 
+                          They focus on interoperability and shared security.
+                        </p>
+                        <p className="mt-2">
+                          <strong>Examples:</strong> Polkadot, Cosmos
+                        </p>
+                      </div>
+                      
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <h4 className="font-semibold text-white mb-2">Layer 1</h4>
+                        <p>
+                          Base blockchains that can validate and finalize transactions independently. 
+                          They implement their own consensus mechanisms and security models.
+                        </p>
+                        <p className="mt-2">
+                          <strong>Examples:</strong> Bitcoin, Ethereum, Solana, Cardano
+                        </p>
+                      </div>
+                      
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <h4 className="font-semibold text-white mb-2">Layer 2</h4>
+                        <p>
+                          Scaling solutions built on top of Layer 1 blockchains to improve transaction 
+                          throughput and reduce costs while inheriting security from the base layer.
+                        </p>
+                        <p className="mt-2">
+                          <strong>Examples:</strong> Optimism, Arbitrum, Lightning Network, Polygon
+                        </p>
+                      </div>
                     </div>
-                    
-                    <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
-                      <FaStore className="mr-2 text-purple-400" />
-                      NFT Marketplaces: Digital Asset Exchange Platforms
-                    </h3>
-                    
-                    <p className="text-lg mb-6">
-                      NFT marketplaces serve as primary and secondary markets for non-fungible tokens, each with different 
-                      focuses, features, and community dynamics. Understanding these platforms is essential for navigating 
-                      the digital collectibles and asset space.
+                  </div>
+                </div>
+              </div>
+              
+              {/* DeFi Introduction Tab */}
+              <div className={`transition-all duration-300 ${activeTab === 'defi-intro' ? 'block' : 'hidden'}`}>
+                <div className="bg-gray-800 rounded-lg p-6">
+                  <h2 className="text-2xl font-bold mb-6 text-white flex items-center">
+                    <FaExchangeAlt className="text-blue-400 mr-3" />
+                    Introduction to DeFi
+                  </h2>
+                  
+                  <div className="space-y-6 text-gray-300">
+                    <p className="text-xl">
+                      Decentralized Finance (DeFi) refers to financial applications built on blockchain networks that aim to recreate and improve traditional financial systems without central intermediaries.
                     </p>
                     
-                    <div className="space-y-8 mb-10">
-                      {nftMarketplaces.map((marketplace, index) => (
-                        <div key={index} className="p-5 border border-gray-700 rounded-lg bg-gray-800">
-                          <h4 className="text-xl font-bold mb-3 text-white">{marketplace.name}</h4>
-                          
-                          <div className="mb-3 flex flex-wrap gap-2">
-                            {marketplace.examples.map((example, idx) => (
-                              <span key={idx} className="bg-indigo-900/40 text-indigo-300 text-sm px-2 py-1 rounded-full border border-indigo-800/50">
-                                {example}
-                              </span>
-                            ))}
+                    <div className="bg-gray-700 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-white mb-4">Core Principles of DeFi</h3>
+                      
+                      <div className="space-y-4">
+                        <div className="flex items-start">
+                          <div className="bg-blue-500 p-2 rounded-full mr-3 flex-shrink-0">
+                            <FaExchangeAlt className="text-white" />
                           </div>
-                          
-                          <div className="grid md:grid-cols-2 gap-6">
-                            <div>
-                              <h5 className="font-semibold mb-2 text-purple-300">Key Features</h5>
-                              <ul className="list-disc pl-5 space-y-1 text-gray-300">
-                                {marketplace.features.map((feature, idx) => (
-                                  <li key={idx}>{feature}</li>
-                                ))}
-                              </ul>
-                            </div>
-                            
-                            <div>
-                              <h5 className="font-semibold mb-2 text-green-400">Advantages</h5>
-                              <ul className="list-disc pl-5 space-y-1 text-gray-300">
-                                {marketplace.advantages.map((advantage, idx) => (
-                                  <li key={idx}>{advantage}</li>
-                                ))}
-                              </ul>
-                              
-                              {marketplace.challenges && (
-                                <>
-                                  <h5 className="font-semibold mb-2 mt-4 text-red-400">Challenges</h5>
-                                  <ul className="list-disc pl-5 space-y-1 text-gray-300">
-                                    {marketplace.challenges.map((challenge, idx) => (
-                                      <li key={idx}>{challenge}</li>
-                                    ))}
-                                  </ul>
-                                </>
+                          <div>
+                            <h4 className="text-lg font-medium text-white">Non-Custodial</h4>
+                            <p>Users maintain control of their assets at all times through self-custody wallets.</p>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-start">
+                          <div className="bg-green-500 p-2 rounded-full mr-3 flex-shrink-0">
+                            <FaCodeBranch className="text-white" />
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-medium text-white">Permissionless</h4>
+                            <p>Anyone can access DeFi services regardless of location, wealth, or status.</p>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-start">
+                          <div className="bg-purple-500 p-2 rounded-full mr-3 flex-shrink-0">
+                            <FaLayerGroup className="text-white" />
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-medium text-white">Composable</h4>
+                            <p>DeFi applications can be combined like "money legos" to create new financial products.</p>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-start">
+                          <div className="bg-red-500 p-2 rounded-full mr-3 flex-shrink-0">
+                            <FaInfoCircle className="text-white" />
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-medium text-white">Transparent</h4>
+                            <p>All transactions and code are publicly visible and verifiable on the blockchain.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-xl font-semibold text-white mt-8 mb-4">DeFi vs. Traditional Finance</h3>
+                    
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full bg-gray-700 rounded-lg overflow-hidden">
+                        <thead>
+                          <tr className="bg-gray-600">
+                            <th className="px-4 py-3 text-left text-white">Feature</th>
+                            <th className="px-4 py-3 text-left text-white">Traditional Finance</th>
+                            <th className="px-4 py-3 text-left text-white">Decentralized Finance</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="bg-gray-700">
+                            <td className="px-4 py-3 font-medium text-white">Custody</td>
+                            <td className="px-4 py-3">Banks hold and control your assets</td>
+                            <td className="px-4 py-3">Self-custody through personal wallets</td>
+                          </tr>
+                          <tr className="bg-gray-750">
+                            <td className="px-4 py-3 font-medium text-white">Hours</td>
+                            <td className="px-4 py-3">Business hours, weekdays</td>
+                            <td className="px-4 py-3">24/7, 365 days a year</td>
+                          </tr>
+                          <tr className="bg-gray-700">
+                            <td className="px-4 py-3 font-medium text-white">Access</td>
+                            <td className="px-4 py-3">Requires approval, minimum balances</td>
+                            <td className="px-4 py-3">Open to anyone with internet access</td>
+                          </tr>
+                          <tr className="bg-gray-750">
+                            <td className="px-4 py-3 font-medium text-white">Settlements</td>
+                            <td className="px-4 py-3">Days for clearing</td>
+                            <td className="px-4 py-3">Minutes or seconds</td>
+                          </tr>
+                          <tr className="bg-gray-700">
+                            <td className="px-4 py-3 font-medium text-white">Transparency</td>
+                            <td className="px-4 py-3">Limited, quarterly disclosures</td>
+                            <td className="px-4 py-3">Full transparency on-chain</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    
+                    <h3 className="text-xl font-semibold text-white mt-8 mb-4">The Evolution of DeFi</h3>
+                    
+                    <div className="relative">
+                      <div className="absolute left-8 top-0 h-full w-0.5 bg-gray-600"></div>
+                      
+                      <div className="space-y-8">
+                        {defiTimeline.map((event, index) => (
+                          <div key={index} className="relative flex gap-6">
+                            <div className="flex flex-col items-center">
+                              <div className="bg-blue-500 text-white text-sm font-bold w-16 h-16 rounded-full flex items-center justify-center z-10">
+                                {event.year}
+                              </div>
+                              {index < defiTimeline.length - 1 && (
+                                <div className="h-full w-0.5 bg-gray-600"></div>
                               )}
                             </div>
+                            
+                            <div className="bg-gray-700 p-5 rounded-lg flex-1">
+                              <h4 className="font-semibold text-white mb-2">{event.title}</h4>
+                              <p>{event.description}</p>
+                            </div>
                           </div>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
-                      <FaExclamationTriangle className="mr-2 text-orange-400" />
-                      Problems in the Current Token Launch Landscape
-                    </h3>
-                    
-                    <p className="text-lg mb-6">
-                      Despite innovations in token distribution mechanisms, the current launch environment often 
-                      incentivizes harmful behaviors that damage the DeFi ecosystem's reputation and sustainability.
-                    </p>
-                    
-                    <div className="space-y-6 mb-10">
-                      {launchProblems.map((problem, index) => (
-                        <div key={index} className="p-5 bg-orange-900/30 border border-orange-800/50 rounded-lg">
-                          <h4 className="text-lg font-bold mb-2 text-orange-300">{problem.problem}</h4>
-                          <p className="mb-4 text-gray-300">{problem.description}</p>
-                          
-                          <div className="mb-4">
-                            <h5 className="font-semibold mb-2 text-white">Common Examples:</h5>
-                            <ul className="list-disc pl-5 text-gray-300">
-                              {problem.examples.map((example, idx) => (
-                                <li key={idx}>{example}</li>
-                              ))}
-                            </ul>
-                          </div>
-                          
-                          <div className="p-3 bg-orange-900/50 rounded border border-orange-800">
-                            <h5 className="font-semibold mb-1 text-white">Ecosystem Impact:</h5>
-                            <p className="text-gray-300">{problem.impact}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
-                      <FaShieldAlt className="mr-2 text-purple-400" />
-                      Improving Token Launch Standards
-                    </h3>
-                    
-                    <p className="text-lg mb-6">
-                      Creating a healthier token launch ecosystem requires rethinking incentive structures, 
-                      establishing better standards, and developing mechanisms that reward sustainable 
-                      value creation over short-term speculation.
-                    </p>
-                    
-                    <div className="space-y-6 mb-10">
-                      {launchSolutions.map((solution, index) => (
-                        <div key={index} className="p-5 bg-green-900/30 border border-green-800/50 rounded-lg">
-                          <h4 className="text-lg font-bold mb-2 text-green-300">{solution.solution}</h4>
-                          <p className="mb-4 text-gray-300">{solution.description}</p>
-                          
-                          <div className="mb-4">
-                            <h5 className="font-semibold mb-2 text-white">Implementation Approaches:</h5>
-                            <ul className="list-disc pl-5 text-gray-300">
-                              {solution.implementation.map((approach, idx) => (
-                                <li key={idx}>{approach}</li>
-                              ))}
-                            </ul>
-                          </div>
-                          
-                          <div className="p-3 bg-green-900/50 rounded border border-green-800">
-                            <h5 className="font-semibold mb-1 text-white">Potential Benefits:</h5>
-                            <p className="text-gray-300">{solution.benefits}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <div className="p-6 bg-blue-900/30 rounded-xl border border-blue-800/50">
-                      <h4 className="text-xl font-bold mb-4 text-blue-300">The Path to More Sustainable Token Launches</h4>
-                      <p className="mb-4 text-gray-300">
-                        Creating a more sustainable token launch ecosystem requires collaboration between platforms, 
-                        projects, and community members to establish and enforce higher standards without sacrificing 
-                        the permissionless innovation that makes DeFi powerful.
-                      </p>
-                      <p className="mb-4 text-gray-300">
-                        Rather than relying solely on centralized gatekeepers, the community can develop decentralized 
-                        mechanisms that incentivize responsible launches, reward long-term value creation, and make it 
-                        easier for users to identify quality projects amid the noise.
-                      </p>
-                      <p className="text-gray-300">
-                        The Open Crypto Foundation advocates for thoughtful standards that protect participants while 
-                        preserving innovation, balancing accessibility with responsibility to create a healthier ecosystem 
-                        for all participants.
-                      </p>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              )}
-            </div>
+              </div>
+              
+              {/* Token Ecosystem Tab */}
+              <div className={`transition-all duration-300 ${activeTab === 'token-ecosystem' ? 'block' : 'hidden'}`}>
+                {/* Content for Token Ecosystem tab */}
+              </div>
+              
+              {/* DEXs & Liquidity Tab */}
+              <div className={`transition-all duration-300 ${activeTab === 'dex-and-amm' ? 'block' : 'hidden'}`}>
+                {/* Content for DEXs & Liquidity tab */}
+              </div>
+              
+              {/* Token Launches & Markets Tab */}
+              <div className={`transition-all duration-300 ${activeTab === 'token-launches' ? 'block' : 'hidden'}`}>
+                {/* Content for Token Launches & Markets tab */}
+              </div>
+            </TabLayout>
           </div>
         </div>
-      </section>
-      
-      <section className="py-12 bg-gray-900">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="mb-6 text-3xl font-bold text-white">Continue Your DeFi Education</h2>
-            <p className="text-lg mb-8 text-gray-300">
-              Ready to learn more? Explore our other educational resources or check out our 
-              recommended tools to start navigating the DeFi ecosystem safely.
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-4">
-              <a 
-                href="/resources" 
-                className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
-              >
-                More Resources
-              </a>
-              <a 
-                href="/tools" 
-                className="px-6 py-3 bg-gray-800 border border-purple-600 text-purple-300 rounded-lg hover:bg-gray-700 transition-colors"
-              >
-                Tools Directory
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
     </>
   )
 } 
