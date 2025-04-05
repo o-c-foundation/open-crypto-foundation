@@ -11,7 +11,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="flex items-center space-x-2 mb-6">
               <div className="flex items-center justify-center">
-                <Logo size="sm" />
+                <Logo size="md" />
               </div>
               <span className="text-xl font-bold text-white">Open Crypto Foundation</span>
             </Link>

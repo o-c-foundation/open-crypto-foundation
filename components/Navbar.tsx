@@ -45,7 +45,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center py-3">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <div className="flex items-center justify-center mr-3">
+              <div className="flex items-center justify-center mr-2">
                 <Logo size="md" />
               </div>
               <span className="font-bold text-xl text-white">Open Crypto Foundation</span>
