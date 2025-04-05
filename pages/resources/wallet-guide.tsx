@@ -11,7 +11,6 @@ import {
   FaPaintBrush,
   FaCode
 } from 'react-icons/fa'
-import Layout from '../../components/Layout'
 
 export default function WalletGuide() {
   const [activeTab, setActiveTab] = useState('wallet-basics')
@@ -69,7 +68,7 @@ export default function WalletGuide() {
   ]
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>Crypto Wallet Guide | Open Crypto Foundation</title>
         <meta name="description" content="Learn how to set up and use crypto wallets, add networks, manage tokens, and navigate the world of NFTs safely and effectively." />
@@ -642,6 +641,6 @@ export default function WalletGuide() {
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   )
 } 

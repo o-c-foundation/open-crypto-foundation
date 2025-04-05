@@ -11,7 +11,6 @@ import {
   FaUserSecret,
   FaExchangeAlt
 } from 'react-icons/fa'
-import Layout from '../../components/Layout'
 
 export default function SecurityGuide() {
   const [activeTab, setActiveTab] = useState('basics')
@@ -25,7 +24,7 @@ export default function SecurityGuide() {
   ]
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>Crypto Security Guide | Open Crypto Foundation</title>
         <meta name="description" content="Learn essential security practices for protecting your crypto assets, understanding token approvals, avoiding common scams, and steps to take if you've been compromised." />
@@ -458,6 +457,6 @@ export default function SecurityGuide() {
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   )
 } 
