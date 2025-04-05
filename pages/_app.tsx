@@ -46,7 +46,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>Open Crypto Foundation</title>
         <meta name="description" content="Empowering safe DeFi interactions with tools and education" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="https://bafkreih4hdkhpjoxluzj526ehakmylfg5o2ri4wctumedqc3i5lv35k7ay.ipfs.w3s.link/" />
       </Head>
       <div className="min-h-screen">
         <LanguageProvider>
