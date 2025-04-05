@@ -253,6 +253,11 @@ export default function Manifesto() {
       id: "commitment",
       name: "Our Commitment",
       icon: <FaNewspaper className="text-teal-400" />
+    },
+    {
+      id: "initiatives",
+      name: "Our Initiatives",
+      icon: <FaHandHoldingUsd className="text-pink-400" />
     }
   ];
 
@@ -491,11 +496,236 @@ export default function Manifesto() {
               </div>
 
               <div className={`transition-all duration-300 ${activeTab === 'human' ? 'block' : 'hidden'}`}>
-                {/* Content for Human Impact section */}
+                <div className="bg-gray-800 rounded-lg p-6">
+                  <h2 className="text-2xl font-bold mb-6 text-white flex items-center">
+                    <FaUserShield className="text-green-400 mr-3" />
+                    Human Impact
+                  </h2>
+                  
+                  <div className="space-y-6 text-gray-300">
+                    <p className="text-xl">
+                      Behind every cryptocurrency scam statistic are real people whose lives have been severely impacted. These stories highlight the profound human consequences of inadequate protection.
+                    </p>
+                    
+                    <h3 className="text-xl font-semibold text-white mt-6 mb-3">Real Victim Profiles</h3>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {victimStories.map((victim, index) => (
+                        <div key={index} className="bg-gray-700 p-5 rounded-lg">
+                          <div className="flex justify-between items-start mb-3">
+                            <div>
+                              <span className="text-white font-medium">Age: {victim.age}</span>
+                            </div>
+                            <div className="text-red-400 font-semibold">
+                              {victim.investment}
+                            </div>
+                          </div>
+                          <div className="space-y-3">
+                            <p><span className="text-green-400">Background:</span> {victim.background}</p>
+                            <p><span className="text-blue-400">Platform:</span> {victim.platform}</p>
+                            <p className="border-t border-gray-600 pt-3 mt-3 text-yellow-200">{victim.outcome}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg mt-6">
+                      <h4 className="font-semibold text-white mb-3">Beyond Financial Loss</h4>
+                      <p className="mb-3">
+                        While financial losses are quantifiable, many victims suffer profound non-financial consequences:
+                      </p>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h5 className="font-medium text-white mb-2">Mental Health Impact</h5>
+                          <ul className="list-disc pl-5 space-y-1">
+                            <li>Depression and anxiety disorders</li>
+                            <li>Post-traumatic stress symptoms</li>
+                            <li>Increased suicidal ideation (numerous documented cases)</li>
+                            <li>Substance abuse as coping mechanism</li>
+                            <li>Relationship breakdown under financial stress</li>
+                          </ul>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h5 className="font-medium text-white mb-2">Long-Term Financial Impact</h5>
+                          <ul className="list-disc pl-5 space-y-1">
+                            <li>Loss of retirement security</li>
+                            <li>Spiraling debt from borrowed investment funds</li>
+                            <li>Inability to afford housing, education, or healthcare</li>
+                            <li>Destroyed credit scores</li>
+                            <li>Multi-generational financial setbacks</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-red-900/30 p-6 rounded-lg mt-6 border border-red-800/50">
+                      <h4 className="text-lg font-medium text-white mb-3">Vulnerable Populations at Higher Risk</h4>
+                      <p className="mb-4">Research indicates that certain groups are disproportionately impacted by cryptocurrency scams:</p>
+                      
+                      <div className="space-y-3">
+                        <div className="flex items-start">
+                          <div className="bg-red-500 h-2 w-2 rounded-full mt-2 mr-2"></div>
+                          <div>
+                            <span className="font-medium text-white">Elderly individuals</span> often lack technical knowledge to evaluate crypto projects but have substantial retirement savings that make them attractive targets.
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="bg-red-500 h-2 w-2 rounded-full mt-2 mr-2"></div>
+                          <div>
+                            <span className="font-medium text-white">Young adults</span> are susceptible to FOMO (fear of missing out) and influencer marketing but lack financial literacy and experience with scam patterns.
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="bg-red-500 h-2 w-2 rounded-full mt-2 mr-2"></div>
+                          <div>
+                            <span className="font-medium text-white">Financially distressed individuals</span> seeking quick solutions are more likely to ignore red flags when promised unrealistic returns.
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="bg-red-500 h-2 w-2 rounded-full mt-2 mr-2"></div>
+                          <div>
+                            <span className="font-medium text-white">Non-English speakers</span> face additional barriers in accessing legitimate information and resources to verify projects.
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="bg-red-500 h-2 w-2 rounded-full mt-2 mr-2"></div>
+                          <div>
+                            <span className="font-medium text-white">Individuals in developing countries</span> with less regulatory protection and financial infrastructure are disproportionately targeted.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <p className="mt-6 text-center font-medium text-lg">
+                      These real human stories underscore why stronger protections, better education, and industry accountability are not just desirable, but essential.
+                    </p>
+                  </div>
+                </div>
               </div>
 
               <div className={`transition-all duration-300 ${activeTab === 'principles' ? 'block' : 'hidden'}`}>
-                {/* Content for Core Principles section */}
+                <div className="bg-gray-800 rounded-lg p-6">
+                  <h2 className="text-2xl font-bold mb-6 text-white flex items-center">
+                    <FaRegLightbulb className="text-yellow-400 mr-3" />
+                    Core Principles
+                  </h2>
+                  
+                  <div className="space-y-6 text-gray-300">
+                    <p className="text-xl">
+                      The Open Crypto Foundation operates according to these fundamental principles that guide all our work and initiatives.
+                    </p>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <h3 className="text-xl font-semibold text-yellow-400 mb-3">Independence</h3>
+                        <p className="mb-3">
+                          We maintain complete independence from cryptocurrency projects, exchanges, and financial interests that could compromise our mission.
+                        </p>
+                        <ul className="list-disc pl-5 space-y-1">
+                          <li>No token sales or ICOs to fund operations</li>
+                          <li>Transparent funding sources with no conflicts of interest</li>
+                          <li>No paid partnerships with projects we evaluate</li>
+                          <li>No financial incentives tied to project success or failure</li>
+                        </ul>
+                      </div>
+                      
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <h3 className="text-xl font-semibold text-yellow-400 mb-3">Transparency</h3>
+                        <p className="mb-3">
+                          We operate with radical transparency in all aspects of our organization and methodology.
+                        </p>
+                        <ul className="list-disc pl-5 space-y-1">
+                          <li>Open-source code and methodologies</li>
+                          <li>Public documentation of all evaluation criteria</li>
+                          <li>Full disclosure of funding sources and expenditures</li>
+                          <li>Clear explanation of how recommendations are determined</li>
+                        </ul>
+                      </div>
+                      
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <h3 className="text-xl font-semibold text-yellow-400 mb-3">Education First</h3>
+                        <p className="mb-3">
+                          We believe that informed users make better decisions and are less vulnerable to scams and exploits.
+                        </p>
+                        <ul className="list-disc pl-5 space-y-1">
+                          <li>Create accessible, jargon-free educational resources</li>
+                          <li>Prioritize teaching principles over specific recommendations</li>
+                          <li>Explain the "why" behind security best practices</li>
+                          <li>Build critical thinking skills for evaluating projects</li>
+                        </ul>
+                      </div>
+                      
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <h3 className="text-xl font-semibold text-yellow-400 mb-3">Evidence-Based</h3>
+                        <p className="mb-3">
+                          Our recommendations and tools are based on evidence, data, and technical analysis, not speculation or opinion.
+                        </p>
+                        <ul className="list-disc pl-5 space-y-1">
+                          <li>Employ rigorous technical evaluation methodologies</li>
+                          <li>Base assessments on verifiable on-chain and off-chain data</li>
+                          <li>Document reasoning behind security evaluations</li>
+                          <li>Update recommendations as new evidence emerges</li>
+                        </ul>
+                      </div>
+                      
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <h3 className="text-xl font-semibold text-yellow-400 mb-3">Inclusive & Accessible</h3>
+                        <p className="mb-3">
+                          We create resources that are accessible to all, regardless of technical background, geography, or language.
+                        </p>
+                        <ul className="list-disc pl-5 space-y-1">
+                          <li>Multi-language resources and tools</li>
+                          <li>Content designed for all knowledge levels</li>
+                          <li>Free, open access to all core educational materials</li>
+                          <li>Design for accessibility across devices and limitations</li>
+                        </ul>
+                      </div>
+                      
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <h3 className="text-xl font-semibold text-yellow-400 mb-3">Collaborative</h3>
+                        <p className="mb-3">
+                          We work with the broader ecosystem to create positive change rather than operating in isolation.
+                        </p>
+                        <ul className="list-disc pl-5 space-y-1">
+                          <li>Partner with security researchers and organizations</li>
+                          <li>Engage with regulators to share expertise and insights</li>
+                          <li>Support projects committed to security and transparency</li>
+                          <li>Coordinate with other educational initiatives</li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg mt-6">
+                      <h3 className="text-xl font-semibold text-white mb-3">Our Ethical Framework</h3>
+                      <p className="mb-4">
+                        The Open Crypto Foundation follows strict ethical guidelines in all our work:
+                      </p>
+                      
+                      <div className="space-y-3">
+                        <div>
+                          <h4 className="font-medium text-yellow-400">No Conflicts of Interest</h4>
+                          <p>Board members and employees cannot hold positions in evaluated projects or receive compensation that could create conflicts.</p>
+                        </div>
+                        
+                        <div>
+                          <h4 className="font-medium text-yellow-400">Public Disclosure</h4>
+                          <p>All funding sources, partnerships, and potential conflicts must be publicly disclosed in a timely manner.</p>
+                        </div>
+                        
+                        <div>
+                          <h4 className="font-medium text-yellow-400">Responsible Disclosure</h4>
+                          <p>We follow standard security vulnerability disclosure procedures to protect users while giving projects appropriate time to address issues.</p>
+                        </div>
+                        
+                        <div>
+                          <h4 className="font-medium text-yellow-400">User Privacy</h4>
+                          <p>We minimize data collection, never sell user data, and design tools with privacy-preserving principles.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className={`transition-all duration-300 ${activeTab === 'solution' ? 'block' : 'hidden'}`}>
@@ -503,7 +733,329 @@ export default function Manifesto() {
               </div>
 
               <div className={`transition-all duration-300 ${activeTab === 'commitment' ? 'block' : 'hidden'}`}>
-                {/* Content for Our Commitment section */}
+                <div className="bg-gray-800 rounded-lg p-6">
+                  <h2 className="text-2xl font-bold mb-6 text-white flex items-center">
+                    <FaNewspaper className="text-teal-400 mr-3" />
+                    Our Commitment
+                  </h2>
+                  
+                  <div className="space-y-6 text-gray-300">
+                    <p className="text-xl">
+                      The Open Crypto Foundation pledges to operate with transparency, independence, and an unwavering focus on user protection, staying true to these commitments:
+                    </p>
+                    
+                    <div className="bg-teal-900/30 p-6 rounded-lg border border-teal-800/50">
+                      <h3 className="text-xl font-semibold text-white mb-4">Independence Pledge</h3>
+                      <p className="mb-4 italic text-lg">
+                        "We will never accept funding that compromises our mission or creates conflicts of interest in our evaluations."
+                      </p>
+                      
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <h4 className="font-medium text-teal-300 mb-2">How We Maintain Independence</h4>
+                          <ul className="list-disc pl-5 space-y-1">
+                            <li>Diversified funding model to prevent undue influence</li>
+                            <li>No token sales, ICOs, or investment in projects we evaluate</li>
+                            <li>Clear conflict of interest policies for all team members</li>
+                            <li>Regular audits of funding sources and expenditures</li>
+                            <li>Public disclosure of all major donors and partnerships</li>
+                          </ul>
+                        </div>
+                        
+                        <div>
+                          <h4 className="font-medium text-teal-300 mb-2">Funding Approach</h4>
+                          <ul className="list-disc pl-5 space-y-1">
+                            <li>Grants from established charitable foundations</li>
+                            <li>Small individual donations (with caps on large contributions)</li>
+                            <li>Research collaboration funding without editorial control</li>
+                            <li>Educational service fees that don't influence evaluations</li>
+                            <li>Open-source technology development sponsorships</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg mt-6">
+                      <h3 className="text-xl font-semibold text-white mb-3">Transparency Commitment</h3>
+                      
+                      <p className="mb-4">
+                        The Open Crypto Foundation believes transparency builds trust. We commit to making the following information publicly available:
+                      </p>
+                      
+                      <div className="grid md:grid-cols-3 gap-4">
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-teal-300 mb-2">Financial Transparency</h4>
+                          <ul className="list-disc pl-5 space-y-1 text-sm">
+                            <li>Detailed quarterly financial reports</li>
+                            <li>All funding sources with amounts</li>
+                            <li>Complete expenditure breakdowns</li>
+                            <li>Board member compensation</li>
+                            <li>Annual independent financial audits</li>
+                          </ul>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-teal-300 mb-2">Operational Transparency</h4>
+                          <ul className="list-disc pl-5 space-y-1 text-sm">
+                            <li>Decision-making processes</li>
+                            <li>Evaluation methodologies</li>
+                            <li>Team member backgrounds</li>
+                            <li>Partnership agreements</li>
+                            <li>Progress against roadmap targets</li>
+                          </ul>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-teal-300 mb-2">Technical Transparency</h4>
+                          <ul className="list-disc pl-5 space-y-1 text-sm">
+                            <li>Open-source code repositories</li>
+                            <li>Security audit results</li>
+                            <li>Data collection practices</li>
+                            <li>Research methodologies</li>
+                            <li>Tool development roadmaps</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-white mb-3">Accountability Framework</h3>
+                      
+                      <p className="mb-4">
+                        We hold ourselves accountable to the community through these mechanisms:
+                      </p>
+                      
+                      <div className="space-y-4">
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-teal-300 mb-2">Community Oversight Board</h4>
+                          <p className="text-sm">
+                            A diverse board of community representatives, industry experts, and victim advocates who review our work, provide guidance, and ensure we remain true to our mission.
+                          </p>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-teal-300 mb-2">Regular Public Reviews</h4>
+                          <p className="text-sm">
+                            Quarterly public meetings where we present progress, challenges, and plans, with open Q&A sessions for community input and feedback.
+                          </p>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-teal-300 mb-2">Impact Measurement</h4>
+                          <p className="text-sm">
+                            Clear metrics to track our effectiveness in reducing scam losses, improving user security practices, and increasing awareness of safety measures.
+                          </p>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-teal-300 mb-2">Feedback Mechanisms</h4>
+                          <p className="text-sm">
+                            Accessible channels for users to provide feedback, report issues, and suggest improvements to all our resources and tools.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-white mb-3">Call to Action</h3>
+                      
+                      <p className="mb-4">
+                        Creating a safer cryptocurrency ecosystem requires collaboration. We invite participation through these channels:
+                      </p>
+                      
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-teal-300 mb-2">For Individuals</h4>
+                          <ul className="list-disc pl-5 space-y-1">
+                            <li>Use and share our educational resources</li>
+                            <li>Provide feedback on tools and content</li>
+                            <li>Report scams to our incident database</li>
+                            <li>Volunteer technical skills or domain expertise</li>
+                            <li>Support our work through donations</li>
+                          </ul>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-teal-300 mb-2">For Organizations</h4>
+                          <ul className="list-disc pl-5 space-y-1">
+                            <li>Adopt our security standards and practices</li>
+                            <li>Contribute to research initiatives</li>
+                            <li>Integrate our educational content</li>
+                            <li>Participate in the incident response network</li>
+                            <li>Support our initiatives through grants or sponsorships</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-6 text-center">
+                      <p className="text-xl font-medium text-white">
+                        Together, we can build a cryptocurrency ecosystem where innovation flourishes without sacrificing user safety.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className={`transition-all duration-300 ${activeTab === 'initiatives' ? 'block' : 'hidden'}`}>
+                <div className="bg-gray-800 rounded-lg p-6">
+                  <h2 className="text-2xl font-bold mb-6 text-white flex items-center">
+                    <FaHandHoldingUsd className="text-pink-400 mr-3" />
+                    Our Initiatives
+                  </h2>
+                  
+                  <div className="space-y-6 text-gray-300">
+                    <p className="text-xl">
+                      The Open Crypto Foundation is implementing practical solutions to create a safer cryptocurrency ecosystem through these key initiatives.
+                    </p>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg mt-6">
+                      <h3 className="text-xl font-semibold text-pink-400 mb-3">Comprehensive Educational Platform</h3>
+                      <div className="space-y-4">
+                        <p>We're building an accessible, multilingual educational platform designed for users at all knowledge levels, focusing on security best practices and scam identification.</p>
+                        
+                        <div className="grid md:grid-cols-2 gap-4 mt-4">
+                          <div className="bg-gray-600 p-4 rounded-lg">
+                            <h4 className="font-medium text-white mb-2">Key Features</h4>
+                            <ul className="list-disc pl-5 space-y-1">
+                              <li>Interactive learning modules covering everything from basic wallet security to advanced scam identification</li>
+                              <li>Real-world case studies of common scams with prevention guidance</li>
+                              <li>Visual guides to secure setup for different blockchains</li>
+                              <li>Customized learning paths based on user experience level</li>
+                              <li>Multiple language support starting with major global languages</li>
+                            </ul>
+                          </div>
+                          
+                          <div className="bg-gray-600 p-4 rounded-lg">
+                            <h4 className="font-medium text-white mb-2">Implementation Timeline</h4>
+                            <ul className="list-disc pl-5 space-y-1">
+                              <li><strong>Phase 1:</strong> Core educational content in English</li>
+                              <li><strong>Phase 2:</strong> Interactive modules and assessment tools</li>
+                              <li><strong>Phase 3:</strong> Multi-language support and community contribution system</li>
+                              <li><strong>Phase 4:</strong> Mobile application and offline learning resources</li>
+                              <li><strong>Phase 5:</strong> Partnership program with exchanges and projects</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-pink-400 mb-3">Token Safety Standard</h3>
+                      <div className="space-y-4">
+                        <p>We're developing an open, community-driven standard for token project transparency and security, enabling users to quickly identify projects meeting baseline safety criteria.</p>
+                        
+                        <div className="grid md:grid-cols-2 gap-4 mt-4">
+                          <div className="bg-gray-600 p-4 rounded-lg">
+                            <h4 className="font-medium text-white mb-2">Certification Requirements</h4>
+                            <ul className="list-disc pl-5 space-y-1">
+                              <li>Verified team identities with proven track record</li>
+                              <li>Smart contract audits from reputable providers</li>
+                              <li>Transparent tokenomics with clear distribution schedules</li>
+                              <li>Documented use cases and sustainable revenue model</li>
+                              <li>Responsible marketing practices without misleading claims</li>
+                              <li>Clear roadmap with measurable milestones</li>
+                            </ul>
+                          </div>
+                          
+                          <div className="bg-gray-600 p-4 rounded-lg">
+                            <h4 className="font-medium text-white mb-2">Verification Process</h4>
+                            <ul className="list-disc pl-5 space-y-1">
+                              <li>Open application process for any project</li>
+                              <li>Technical review by security experts</li>
+                              <li>Community feedback period for each application</li>
+                              <li>Transparent scoring system with detailed rationale</li>
+                              <li>Regular re-verification to maintain standard</li>
+                              <li>Immediate revocation for serious violations</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-pink-400 mb-3">Blockchain Analysis Tools</h3>
+                      <div className="space-y-4">
+                        <p>We're building accessible tools that help everyday users analyze on-chain data to identify suspicious activities and evaluate project legitimacy before investing.</p>
+                        
+                        <div className="grid md:grid-cols-2 gap-4 mt-4">
+                          <div className="bg-gray-600 p-4 rounded-lg">
+                            <h4 className="font-medium text-white mb-2">Open-Source Tools</h4>
+                            <ul className="list-disc pl-5 space-y-1">
+                              <li><strong>Token Analyzer:</strong> Examine token contracts for suspicious code patterns</li>
+                              <li><strong>Wallet Profiler:</strong> Check transaction history for known scam interactions</li>
+                              <li><strong>Liquidity Verifier:</strong> Analyze lock status and pool stability</li>
+                              <li><strong>Transaction Simulator:</strong> Preview transaction outcomes before signing</li>
+                              <li><strong>Approval Manager:</strong> Monitor and manage token permissions</li>
+                            </ul>
+                          </div>
+                          
+                          <div className="bg-gray-600 p-4 rounded-lg">
+                            <h4 className="font-medium text-white mb-2">Development Approach</h4>
+                            <ul className="list-disc pl-5 space-y-1">
+                              <li>All tools released under open-source licenses</li>
+                              <li>Browser extensions for seamless integration</li>
+                              <li>API access for developers to build additional tools</li>
+                              <li>Documentation for community contributions</li>
+                              <li>Regular updates based on emerging threats</li>
+                              <li>Accessible UI designed for non-technical users</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-pink-400 mb-3">Incident Response Network</h3>
+                      <div className="space-y-4">
+                        <p>We're establishing a coordinated response network to assist scam victims, report incidents, and facilitate recovery efforts when possible.</p>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-white mb-2">Network Components</h4>
+                          <ul className="list-disc pl-5 space-y-1">
+                            <li><strong>Victim Support Center:</strong> Guidance and resources for those affected by scams</li>
+                            <li><strong>Scam Reporting Database:</strong> Centralized system to document and track scam operations</li>
+                            <li><strong>Exchange Coordination:</strong> Direct lines to major exchanges to freeze stolen funds</li>
+                            <li><strong>Legal Resources:</strong> Templates and guides for filing reports with authorities</li>
+                            <li><strong>Mental Health Support:</strong> Connections to counseling resources for victims</li>
+                            <li><strong>Recovery Specialists:</strong> Network of experts who can assist in asset recovery when possible</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-purple-900/30 p-6 rounded-lg mt-6 border border-purple-800/50">
+                      <h3 className="text-xl font-semibold text-white mb-3">Collaborative Research Program</h3>
+                      <p className="mb-4">
+                        We're funding and publishing independent research to better understand cryptocurrency scams, their mechanisms, and effective prevention strategies.
+                      </p>
+                      
+                      <div className="grid md:grid-cols-2 gap-5">
+                        <div>
+                          <h4 className="font-medium text-purple-300 mb-2">Research Focus Areas</h4>
+                          <ul className="list-disc pl-5 space-y-1">
+                            <li>Psychological factors in crypto scam susceptibility</li>
+                            <li>Smart contract vulnerability patterns and detection</li>
+                            <li>Effectiveness of various educational approaches</li>
+                            <li>Cross-border coordination for scam recovery</li>
+                            <li>Economic impacts of scams on ecosystem development</li>
+                          </ul>
+                        </div>
+                        
+                        <div>
+                          <h4 className="font-medium text-purple-300 mb-2">Output Formats</h4>
+                          <ul className="list-disc pl-5 space-y-1">
+                            <li>Peer-reviewed academic papers</li>
+                            <li>Accessible summaries for general audiences</li>
+                            <li>Practical recommendation guides</li>
+                            <li>Open datasets for further analysis</li>
+                            <li>Regular industry briefings and reports</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </TabLayout>
           </div>

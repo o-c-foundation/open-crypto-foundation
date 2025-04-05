@@ -33,7 +33,7 @@ export default function DeFiFundamentals() {
     { id: 'crypto-basics', name: 'Crypto Fundamentals', icon: <FaBitcoin className="text-yellow-400" /> },
     { id: 'defi-intro', name: 'DeFi Introduction', icon: <FaExchangeAlt className="text-blue-400" /> },
     { id: 'token-ecosystem', name: 'Token Ecosystem', icon: <FaCoins className="text-green-400" /> },
-    { id: 'dex-and-amm', name: 'DEXs & Liquidity', icon: <FaWater className="text-purple-400" /> },
+    { id: 'dexs-liquidity', name: 'DEXs & Liquidity', icon: <FaWater className="text-purple-400" /> },
     { id: 'token-launches', name: 'Token Launches & Markets', icon: <FaRocket className="text-pink-400" /> }
   ]
 
@@ -1062,17 +1062,838 @@ export default function DeFiFundamentals() {
               
               {/* Token Ecosystem Tab */}
               <div className={`transition-all duration-300 ${activeTab === 'token-ecosystem' ? 'block' : 'hidden'}`}>
-                {/* Content for Token Ecosystem tab */}
+                <div className="bg-gray-800 rounded-lg p-6">
+                  <h2 className="text-2xl font-bold mb-6 text-gradient">Token Ecosystem</h2>
+
+                  <div className="space-y-6">
+                    <section>
+                      <h3 className="text-xl font-semibold text-blue-400 mb-3">Cryptocurrency Ecosystem Overview</h3>
+                      <p className="mb-4">
+                        The cryptocurrency ecosystem represents a vast interconnected network of technologies, platforms, and financial instruments that serve different purposes within the blockchain space.
+                      </p>
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <h4 className="font-medium text-white mb-3">Key Components of the Ecosystem</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="bg-gray-600 p-3 rounded">
+                            <span className="font-medium text-blue-300">Layer 1 Blockchains</span>
+                            <p className="text-sm mt-1">Base blockchain protocols that handle consensus, security, and execution (Bitcoin, Ethereum, Solana)</p>
+                          </div>
+                          <div className="bg-gray-600 p-3 rounded">
+                            <span className="font-medium text-blue-300">Layer 2 Solutions</span>
+                            <p className="text-sm mt-1">Scaling technologies built on top of L1s to increase transaction throughput (Optimism, Arbitrum, Lightning Network)</p>
+                          </div>
+                          <div className="bg-gray-600 p-3 rounded">
+                            <span className="font-medium text-blue-300">DeFi Protocols</span>
+                            <p className="text-sm mt-1">Financial primitives for lending, trading, and asset management (Uniswap, Aave, Compound)</p>
+                          </div>
+                          <div className="bg-gray-600 p-3 rounded">
+                            <span className="font-medium text-blue-300">Infrastructure</span>
+                            <p className="text-sm mt-1">Developer tools, oracles, data indexing, and node infrastructure (Chainlink, The Graph, Infura)</p>
+                          </div>
+                          <div className="bg-gray-600 p-3 rounded">
+                            <span className="font-medium text-blue-300">Consumer Applications</span>
+                            <p className="text-sm mt-1">User-facing products built on blockchain tech (MetaMask, OpenSea, Lens Protocol)</p>
+                          </div>
+                          <div className="bg-gray-600 p-3 rounded">
+                            <span className="font-medium text-blue-300">Tokenized Assets</span>
+                            <p className="text-sm mt-1">Digital representations of real-world or crypto-native assets (USDC, tokenized securities, LP tokens)</p>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+                    <section>
+                      <h3 className="text-xl font-semibold text-blue-400 mb-3">Major Token Categories</h3>
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <div className="space-y-4">
+                          <div>
+                            <h4 className="font-medium text-white">Payment & Store of Value</h4>
+                            <p className="text-sm mt-1 mb-2">Tokens designed primarily for transactions and wealth preservation.</p>
+                            <div className="flex flex-wrap gap-2">
+                              <span className="bg-blue-900/40 text-xs py-1 px-2 rounded">Bitcoin (BTC)</span>
+                              <span className="bg-blue-900/40 text-xs py-1 px-2 rounded">Litecoin (LTC)</span>
+                              <span className="bg-blue-900/40 text-xs py-1 px-2 rounded">Bitcoin Cash (BCH)</span>
+                              <span className="bg-blue-900/40 text-xs py-1 px-2 rounded">Monero (XMR)</span>
+                              <span className="bg-blue-900/40 text-xs py-1 px-2 rounded">Zcash (ZEC)</span>
+                            </div>
+                          </div>
+
+                          <div>
+                            <h4 className="font-medium text-white">Platform Tokens</h4>
+                            <p className="text-sm mt-1 mb-2">Native tokens of blockchain networks that power transactions and governance.</p>
+                            <div className="flex flex-wrap gap-2">
+                              <span className="bg-purple-900/40 text-xs py-1 px-2 rounded">Ethereum (ETH)</span>
+                              <span className="bg-purple-900/40 text-xs py-1 px-2 rounded">Solana (SOL)</span>
+                              <span className="bg-purple-900/40 text-xs py-1 px-2 rounded">Avalanche (AVAX)</span>
+                              <span className="bg-purple-900/40 text-xs py-1 px-2 rounded">Cardano (ADA)</span>
+                              <span className="bg-purple-900/40 text-xs py-1 px-2 rounded">Polkadot (DOT)</span>
+                            </div>
+                          </div>
+
+                          <div>
+                            <h4 className="font-medium text-white">Utility Tokens</h4>
+                            <p className="text-sm mt-1 mb-2">Tokens providing access to specific products or services within platforms.</p>
+                            <div className="flex flex-wrap gap-2">
+                              <span className="bg-green-900/40 text-xs py-1 px-2 rounded">Chainlink (LINK)</span>
+                              <span className="bg-green-900/40 text-xs py-1 px-2 rounded">Basic Attention Token (BAT)</span>
+                              <span className="bg-green-900/40 text-xs py-1 px-2 rounded">Filecoin (FIL)</span>
+                              <span className="bg-green-900/40 text-xs py-1 px-2 rounded">The Graph (GRT)</span>
+                              <span className="bg-green-900/40 text-xs py-1 px-2 rounded">Render (RNDR)</span>
+                            </div>
+                          </div>
+
+                          <div>
+                            <h4 className="font-medium text-white">Governance Tokens</h4>
+                            <p className="text-sm mt-1 mb-2">Tokens that confer voting rights within decentralized protocols.</p>
+                            <div className="flex flex-wrap gap-2">
+                              <span className="bg-yellow-900/40 text-xs py-1 px-2 rounded">Uniswap (UNI)</span>
+                              <span className="bg-yellow-900/40 text-xs py-1 px-2 rounded">Compound (COMP)</span>
+                              <span className="bg-yellow-900/40 text-xs py-1 px-2 rounded">Aave (AAVE)</span>
+                              <span className="bg-yellow-900/40 text-xs py-1 px-2 rounded">MakerDAO (MKR)</span>
+                              <span className="bg-yellow-900/40 text-xs py-1 px-2 rounded">Curve (CRV)</span>
+                            </div>
+                          </div>
+
+                          <div>
+                            <h4 className="font-medium text-white">Security Tokens</h4>
+                            <p className="text-sm mt-1 mb-2">Tokenized securities representing ownership in assets like equity, debt, or real estate.</p>
+                            <div className="flex flex-wrap gap-2">
+                              <span className="bg-red-900/40 text-xs py-1 px-2 rounded">Tokenized stocks</span>
+                              <span className="bg-red-900/40 text-xs py-1 px-2 rounded">Tokenized real estate</span>
+                              <span className="bg-red-900/40 text-xs py-1 px-2 rounded">Revenue sharing tokens</span>
+                              <span className="bg-red-900/40 text-xs py-1 px-2 rounded">Debt tokens</span>
+                            </div>
+                          </div>
+
+                          <div>
+                            <h4 className="font-medium text-white">NFTs (Non-Fungible Tokens)</h4>
+                            <p className="text-sm mt-1 mb-2">Unique digital assets representing ownership of specific items or content.</p>
+                            <div className="flex flex-wrap gap-2">
+                              <span className="bg-pink-900/40 text-xs py-1 px-2 rounded">Art NFTs</span>
+                              <span className="bg-pink-900/40 text-xs py-1 px-2 rounded">Collectibles</span>
+                              <span className="bg-pink-900/40 text-xs py-1 px-2 rounded">Gaming assets</span>
+                              <span className="bg-pink-900/40 text-xs py-1 px-2 rounded">Virtual land</span>
+                              <span className="bg-pink-900/40 text-xs py-1 px-2 rounded">Identity NFTs</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+                    <section>
+                      <h3 className="text-xl font-semibold text-blue-400 mb-3">Stablecoins Deep Dive</h3>
+                      <p className="mb-4">
+                        Stablecoins are cryptocurrencies designed to maintain a stable value, typically pegged to a fiat currency like the US Dollar.
+                      </p>
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <h4 className="font-medium text-white mb-3">Stablecoin Collateralization Types</h4>
+                        <div className="space-y-4">
+                          <div className="bg-gray-600 p-3 rounded">
+                            <h5 className="font-medium text-green-300">Fiat-Collateralized</h5>
+                            <p className="text-sm mt-1">Backed 1:1 by reserves of fiat currency held in regulated financial institutions.</p>
+                            <div className="mt-2">
+                              <span className="text-xs font-medium">Examples:</span>
+                              <div className="flex flex-wrap gap-2 mt-1">
+                                <span className="bg-green-900/30 text-xs py-1 px-2 rounded">USDC</span>
+                                <span className="bg-green-900/30 text-xs py-1 px-2 rounded">USDT (Tether)</span>
+                                <span className="bg-green-900/30 text-xs py-1 px-2 rounded">BUSD</span>
+                              </div>
+                            </div>
+                            <div className="mt-2 text-xs">
+                              <span className="text-green-300">Pros:</span> High stability, easy to understand
+                            </div>
+                            <div className="mt-1 text-xs">
+                              <span className="text-red-300">Cons:</span> Centralized, requires trust in custodian
+                            </div>
+                          </div>
+
+                          <div className="bg-gray-600 p-3 rounded">
+                            <h5 className="font-medium text-blue-300">Crypto-Collateralized</h5>
+                            <p className="text-sm mt-1">Over-collateralized with other cryptocurrencies to account for price volatility.</p>
+                            <div className="mt-2">
+                              <span className="text-xs font-medium">Examples:</span>
+                              <div className="flex flex-wrap gap-2 mt-1">
+                                <span className="bg-blue-900/30 text-xs py-1 px-2 rounded">DAI</span>
+                                <span className="bg-blue-900/30 text-xs py-1 px-2 rounded">sUSD</span>
+                                <span className="bg-blue-900/30 text-xs py-1 px-2 rounded">LUSD</span>
+                              </div>
+                            </div>
+                            <div className="mt-2 text-xs">
+                              <span className="text-green-300">Pros:</span> Decentralized, transparent on-chain
+                            </div>
+                            <div className="mt-1 text-xs">
+                              <span className="text-red-300">Cons:</span> Capital inefficient, vulnerable to market crashes
+                            </div>
+                          </div>
+
+                          <div className="bg-gray-600 p-3 rounded">
+                            <h5 className="font-medium text-purple-300">Algorithmic</h5>
+                            <p className="text-sm mt-1">Uses algorithms to automatically expand or contract token supply to maintain price stability.</p>
+                            <div className="mt-2">
+                              <span className="text-xs font-medium">Examples:</span>
+                              <div className="flex flex-wrap gap-2 mt-1">
+                                <span className="bg-purple-900/30 text-xs py-1 px-2 rounded">FRAX (partial)</span>
+                                <span className="bg-purple-900/30 text-xs py-1 px-2 rounded">FEI</span>
+                                <span className="bg-red-900/30 text-xs py-1 px-2 rounded line-through">UST (failed)</span>
+                              </div>
+                            </div>
+                            <div className="mt-2 text-xs">
+                              <span className="text-green-300">Pros:</span> Potentially capital efficient, no collateral needed
+                            </div>
+                            <div className="mt-1 text-xs">
+                              <span className="text-red-300">Cons:</span> History of catastrophic failures, complex mechanisms
+                            </div>
+                          </div>
+
+                          <div className="bg-gray-600 p-3 rounded">
+                            <h5 className="font-medium text-yellow-300">Hybrid Models</h5>
+                            <p className="text-sm mt-1">Combines multiple stability mechanisms for greater resilience.</p>
+                            <div className="mt-2">
+                              <span className="text-xs font-medium">Examples:</span>
+                              <div className="flex flex-wrap gap-2 mt-1">
+                                <span className="bg-yellow-900/30 text-xs py-1 px-2 rounded">FRAX</span>
+                                <span className="bg-yellow-900/30 text-xs py-1 px-2 rounded">RAI</span>
+                                <span className="bg-yellow-900/30 text-xs py-1 px-2 rounded">USDD</span>
+                              </div>
+                            </div>
+                            <div className="mt-2 text-xs">
+                              <span className="text-green-300">Pros:</span> Better capital efficiency than pure crypto-backed
+                            </div>
+                            <div className="mt-1 text-xs">
+                              <span className="text-red-300">Cons:</span> Complex mechanisms, still experimental
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+                    <section>
+                      <h3 className="text-xl font-semibold text-blue-400 mb-3">Token Standards</h3>
+                      <p className="mb-4">
+                        Token standards are specifications that ensure interoperability between tokens, wallets, and applications.
+                      </p>
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <div className="overflow-x-auto">
+                          <table className="min-w-full text-sm">
+                            <thead>
+                              <tr className="border-b border-gray-600">
+                                <th className="py-2 px-4 text-left">Standard</th>
+                                <th className="py-2 px-4 text-left">Blockchain</th>
+                                <th className="py-2 px-4 text-left">Type</th>
+                                <th className="py-2 px-4 text-left">Description</th>
+                                <th className="py-2 px-4 text-left">Popular For</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-gray-600">
+                              <tr>
+                                <td className="py-2 px-4">ERC-20</td>
+                                <td className="py-2 px-4">Ethereum</td>
+                                <td className="py-2 px-4">Fungible</td>
+                                <td className="py-2 px-4">Basic fungible token standard on Ethereum</td>
+                                <td className="py-2 px-4">Utility tokens, stablecoins</td>
+                              </tr>
+                              <tr>
+                                <td className="py-2 px-4">ERC-721</td>
+                                <td className="py-2 px-4">Ethereum</td>
+                                <td className="py-2 px-4">Non-fungible</td>
+                                <td className="py-2 px-4">Standard for representing unique assets</td>
+                                <td className="py-2 px-4">Digital art, collectibles</td>
+                              </tr>
+                              <tr>
+                                <td className="py-2 px-4">ERC-1155</td>
+                                <td className="py-2 px-4">Ethereum</td>
+                                <td className="py-2 px-4">Multi-token</td>
+                                <td className="py-2 px-4">Combines fungible and non-fungible tokens</td>
+                                <td className="py-2 px-4">Gaming assets, mixed collections</td>
+                              </tr>
+                              <tr>
+                                <td className="py-2 px-4">BEP-20</td>
+                                <td className="py-2 px-4">BNB Chain</td>
+                                <td className="py-2 px-4">Fungible</td>
+                                <td className="py-2 px-4">Token standard for BNB Chain (similar to ERC-20)</td>
+                                <td className="py-2 px-4">BNB Chain DeFi tokens</td>
+                              </tr>
+                              <tr>
+                                <td className="py-2 px-4">SPL</td>
+                                <td className="py-2 px-4">Solana</td>
+                                <td className="py-2 px-4">Fungible</td>
+                                <td className="py-2 px-4">Solana's native token standard</td>
+                                <td className="py-2 px-4">Solana ecosystem tokens</td>
+                              </tr>
+                              <tr>
+                                <td className="py-2 px-4">ERC-4626</td>
+                                <td className="py-2 px-4">Ethereum</td>
+                                <td className="py-2 px-4">Yield-bearing</td>
+                                <td className="py-2 px-4">Standardized tokenized vaults</td>
+                                <td className="py-2 px-4">DeFi yield strategies</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </section>
+
+                    <section>
+                      <h3 className="text-xl font-semibold text-blue-400 mb-3">Token Project Evaluation Criteria</h3>
+                      <p className="mb-4">
+                        These key factors help assess the quality, legitimacy, and potential of cryptocurrency token projects.
+                      </p>
+                      <div className="bg-gray-700 p-5 rounded-lg space-y-4">
+                        <div className="bg-gray-600 p-3 rounded">
+                          <h4 className="font-medium text-white">Team Background & Transparency</h4>
+                          <ul className="list-disc pl-5 mt-2 space-y-1 text-sm">
+                            <li>Identified team with verifiable track record</li>
+                            <li>Relevant experience in blockchain, finance or project domain</li>
+                            <li>History of successful project delivery</li>
+                            <li>Public team profiles with professional histories</li>
+                            <li>Red flags: Anonymous teams without justification, fake identities</li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-gray-600 p-3 rounded">
+                          <h4 className="font-medium text-white">Tokenomics</h4>
+                          <ul className="list-disc pl-5 mt-2 space-y-1 text-sm">
+                            <li>Clear token utility within ecosystem</li>
+                            <li>Fair distribution model and vesting schedules</li>
+                            <li>Reasonable total supply and inflation rate</li>
+                            <li>Transparent allocation (team, investors, community, etc.)</li>
+                            <li>Red flags: Extremely concentrated holdings, hidden team allocations</li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-gray-600 p-3 rounded">
+                          <h4 className="font-medium text-white">Technical Architecture</h4>
+                          <ul className="list-disc pl-5 mt-2 space-y-1 text-sm">
+                            <li>Open-source code with active development</li>
+                            <li>Smart contract audits from reputable firms</li>
+                            <li>Bug bounty programs and security measures</li>
+                            <li>Scalability and interoperability considerations</li>
+                            <li>Red flags: Closed source code, no audits, copied projects</li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-gray-600 p-3 rounded">
+                          <h4 className="font-medium text-white">Roadmap & Development Activity</h4>
+                          <ul className="list-disc pl-5 mt-2 space-y-1 text-sm">
+                            <li>Clear, realistic roadmap with measurable milestones</li>
+                            <li>Consistent development activity (GitHub commits)</li>
+                            <li>Meeting previously announced deadlines</li>
+                            <li>Responsiveness to community feedback</li>
+                            <li>Red flags: Vague roadmap, inactive repositories, missed deadlines</li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-gray-600 p-3 rounded">
+                          <h4 className="font-medium text-white">Community & Governance</h4>
+                          <ul className="list-disc pl-5 mt-2 space-y-1 text-sm">
+                            <li>Active, organic community engagement</li>
+                            <li>Transparent communication from team</li>
+                            <li>Clear governance mechanisms for protocol changes</li>
+                            <li>Decentralized decision-making processes</li>
+                            <li>Red flags: Manipulation of social metrics, censorship of criticism</li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-gray-600 p-3 rounded">
+                          <h4 className="font-medium text-white">Market & Competition</h4>
+                          <ul className="list-disc pl-5 mt-2 space-y-1 text-sm">
+                            <li>Clear problem the project is solving</li>
+                            <li>Competitive advantages over similar projects</li>
+                            <li>Sustainable revenue or value accrual model</li>
+                            <li>Realistic market size and growth potential</li>
+                            <li>Red flags: Unrealistic market claims, no differentiation</li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-gradient-to-r from-red-900/30 to-orange-900/30 p-3 rounded border border-red-700/50">
+                          <h4 className="font-medium text-white">Warning Signs</h4>
+                          <ul className="list-disc pl-5 mt-2 space-y-1 text-sm">
+                            <li>Promises of guaranteed returns or "risk-free" investments</li>
+                            <li>Excessive focus on price rather than technology or utility</li>
+                            <li>Aggressive marketing with unrealistic claims</li>
+                            <li>Ponzi-like tokenomics requiring constant new buyers</li>
+                            <li>Extreme complexity obscuring simple investment risks</li>
+                            <li>High pressure tactics or artificial scarcity ("limited time only")</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </div>
               </div>
               
               {/* DEXs & Liquidity Tab */}
-              <div className={`transition-all duration-300 ${activeTab === 'dex-and-amm' ? 'block' : 'hidden'}`}>
-                {/* Content for DEXs & Liquidity tab */}
+              <div className={`transition-all duration-300 ${activeTab === 'dexs-liquidity' ? 'block' : 'hidden'}`}>
+                <div className="bg-gray-800 rounded-lg p-6">
+                  <h2 className="text-2xl font-bold mb-6 text-gradient">DEXs & Liquidity</h2>
+
+                  <div className="space-y-6">
+                    <section>
+                      <h3 className="text-xl font-semibold text-purple-400 mb-3">Decentralized Exchange Evolution</h3>
+                      <p className="mb-4">
+                        Decentralized exchanges (DEXs) have evolved dramatically, transforming from simple swap mechanisms to sophisticated trading platforms.
+                      </p>
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <h4 className="font-medium text-white mb-3">DEX Evolution Timeline</h4>
+                        <div className="relative">
+                          <div className="absolute h-full w-0.5 bg-purple-500/30 left-2.5 top-0"></div>
+                          <div className="space-y-6">
+                            <div className="flex">
+                              <div className="h-5 w-5 rounded-full bg-purple-500 flex-shrink-0 z-10"></div>
+                              <div className="ml-4">
+                                <h5 className="font-medium text-purple-300">2016-2017: First-Generation DEXs</h5>
+                                <p className="text-sm mt-1">On-chain order books with limited liquidity and high gas costs. Examples: EtherDelta, IDEX.</p>
+                              </div>
+                            </div>
+                            
+                            <div className="flex">
+                              <div className="h-5 w-5 rounded-full bg-purple-500 flex-shrink-0 z-10"></div>
+                              <div className="ml-4">
+                                <h5 className="font-medium text-purple-300">2018-2019: Automated Market Makers Emerge</h5>
+                                <p className="text-sm mt-1">Introduction of constant product AMMs eliminating order books. Examples: Uniswap v1 & v2, Bancor.</p>
+                              </div>
+                            </div>
+                            
+                            <div className="flex">
+                              <div className="h-5 w-5 rounded-full bg-purple-500 flex-shrink-0 z-10"></div>
+                              <div className="ml-4">
+                                <h5 className="font-medium text-purple-300">2020: Specialized AMMs</h5>
+                                <p className="text-sm mt-1">Optimized AMMs for specific asset types. Examples: Curve (stablecoins), Balancer (weighted pools).</p>
+                              </div>
+                            </div>
+                            
+                            <div className="flex">
+                              <div className="h-5 w-5 rounded-full bg-purple-500 flex-shrink-0 z-10"></div>
+                              <div className="ml-4">
+                                <h5 className="font-medium text-purple-300">2021: Capital Efficiency Innovations</h5>
+                                <p className="text-sm mt-1">Concentrated liquidity and other efficiency improvements. Examples: Uniswap v3, dYdX perpetuals.</p>
+                              </div>
+                            </div>
+                            
+                            <div className="flex">
+                              <div className="h-5 w-5 rounded-full bg-purple-500 flex-shrink-0 z-10"></div>
+                              <div className="ml-4">
+                                <h5 className="font-medium text-purple-300">2022: Cross-Chain & Layer 2 DEXs</h5>
+                                <p className="text-sm mt-1">Expanding beyond Ethereum to multiple chains and L2s. Examples: Thorchain, dYdX on StarkEx.</p>
+                              </div>
+                            </div>
+                            
+                            <div className="flex">
+                              <div className="h-5 w-5 rounded-full bg-purple-500 flex-shrink-0 z-10"></div>
+                              <div className="ml-4">
+                                <h5 className="font-medium text-purple-300">2023-2024: Hybrid Models & MEV Protection</h5>
+                                <p className="text-sm mt-1">Combining AMM and order book approaches with MEV protection. Examples: CoWSwap, Hashflow.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+                    <section>
+                      <h3 className="text-xl font-semibold text-purple-400 mb-3">Automated Market Maker (AMM) Types</h3>
+                      <p className="mb-4">
+                        AMMs are smart contracts that enable permissionless trading without traditional order books. Different AMM designs optimize for various trading scenarios.
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-gray-700 p-5 rounded-lg">
+                          <h4 className="font-medium text-white mb-2">Constant Product AMM</h4>
+                          <p className="text-sm mb-2">Uses the formula x * y = k where the product of token reserves remains constant.</p>
+                          <div className="space-y-1 text-sm mb-3">
+                            <div><span className="text-green-300">Pros:</span> Simple, works for any token pair</div>
+                            <div><span className="text-red-300">Cons:</span> High slippage for large trades, impermanent loss</div>
+                          </div>
+                          <div className="text-xs bg-gray-600 p-2 rounded">
+                            <span className="font-medium">Examples:</span> Uniswap v2, SushiSwap, PancakeSwap
+                          </div>
+                        </div>
+
+                        <div className="bg-gray-700 p-5 rounded-lg">
+                          <h4 className="font-medium text-white mb-2">Stableswap AMM</h4>
+                          <p className="text-sm mb-2">Uses a modified curve optimized for assets that should trade at close to the same price.</p>
+                          <div className="space-y-1 text-sm mb-3">
+                            <div><span className="text-green-300">Pros:</span> Low slippage for stablecoin swaps</div>
+                            <div><span className="text-red-300">Cons:</span> Only efficient for similar-valued assets</div>
+                          </div>
+                          <div className="text-xs bg-gray-600 p-2 rounded">
+                            <span className="font-medium">Examples:</span> Curve Finance, mStable, Saddle
+                          </div>
+                        </div>
+
+                        <div className="bg-gray-700 p-5 rounded-lg">
+                          <h4 className="font-medium text-white mb-2">Weighted Pools</h4>
+                          <p className="text-sm mb-2">Allows for multiple tokens with custom weightings in a single pool.</p>
+                          <div className="space-y-1 text-sm mb-3">
+                            <div><span className="text-green-300">Pros:</span> Flexible weights, supports index-like funds</div>
+                            <div><span className="text-red-300">Cons:</span> More complex, higher gas costs</div>
+                          </div>
+                          <div className="text-xs bg-gray-600 p-2 rounded">
+                            <span className="font-medium">Examples:</span> Balancer, Beethoven X
+                          </div>
+                        </div>
+
+                        <div className="bg-gray-700 p-5 rounded-lg">
+                          <h4 className="font-medium text-white mb-2">Concentrated Liquidity</h4>
+                          <p className="text-sm mb-2">Allows liquidity providers to specify price ranges for their capital.</p>
+                          <div className="space-y-1 text-sm mb-3">
+                            <div><span className="text-green-300">Pros:</span> Higher capital efficiency, better rates</div>
+                            <div><span className="text-red-300">Cons:</span> More complex to use, range management</div>
+                          </div>
+                          <div className="text-xs bg-gray-600 p-2 rounded">
+                            <span className="font-medium">Examples:</span> Uniswap v3, Algebra, KyberSwap Elastic
+                          </div>
+                        </div>
+
+                        <div className="bg-gray-700 p-5 rounded-lg">
+                          <h4 className="font-medium text-white mb-2">Hybrid Order Book + AMM</h4>
+                          <p className="text-sm mb-2">Combines off-chain order books with on-chain settlement using AMM as backup.</p>
+                          <div className="space-y-1 text-sm mb-3">
+                            <div><span className="text-green-300">Pros:</span> Better pricing, lower MEV exposure</div>
+                            <div><span className="text-red-300">Cons:</span> More centralized components</div>
+                          </div>
+                          <div className="text-xs bg-gray-600 p-2 rounded">
+                            <span className="font-medium">Examples:</span> dYdX, CoWSwap, Hashflow, Orderbook.io
+                          </div>
+                        </div>
+
+                        <div className="bg-gray-700 p-5 rounded-lg">
+                          <h4 className="font-medium text-white mb-2">Proactive Market Making</h4>
+                          <p className="text-sm mb-2">Uses advanced algorithms to actively adjust pricing based on market conditions.</p>
+                          <div className="space-y-1 text-sm mb-3">
+                            <div><span className="text-green-300">Pros:</span> Better capital efficiency, reduced IL</div>
+                            <div><span className="text-red-300">Cons:</span> More complex, often semi-centralized</div>
+                          </div>
+                          <div className="text-xs bg-gray-600 p-2 rounded">
+                            <span className="font-medium">Examples:</span> Drift Protocol, Clipper, dAMM
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+                    <section>
+                      <h3 className="text-xl font-semibold text-purple-400 mb-3">Liquidity Provider (LP) Risks & Benefits</h3>
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div>
+                            <h4 className="font-medium text-green-400 mb-3">Benefits of Providing Liquidity</h4>
+                            <div className="space-y-4">
+                              <div className="bg-gray-600 p-3 rounded">
+                                <h5 className="font-medium">Trading Fee Income</h5>
+                                <p className="text-sm mt-1">LPs earn a portion of trading fees proportional to their share of the pool. Typically ranges from 0.01% to 1% of trade volume.</p>
+                              </div>
+                              
+                              <div className="bg-gray-600 p-3 rounded">
+                                <h5 className="font-medium">Yield Farming Rewards</h5>
+                                <p className="text-sm mt-1">Additional token incentives provided by protocols to attract liquidity. Can significantly boost returns but are typically temporary.</p>
+                              </div>
+                              
+                              <div className="bg-gray-600 p-3 rounded">
+                                <h5 className="font-medium">Passive Income Strategy</h5>
+                                <p className="text-sm mt-1">Generates income without active trading or timing the market. Can be more reliable than pure speculation.</p>
+                              </div>
+                              
+                              <div className="bg-gray-600 p-3 rounded">
+                                <h5 className="font-medium">Protocol Governance</h5>
+                                <p className="text-sm mt-1">LP positions often grant governance rights or tokens, allowing participation in protocol decisions.</p>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div>
+                            <h4 className="font-medium text-red-400 mb-3">Risks of Providing Liquidity</h4>
+                            <div className="space-y-4">
+                              <div className="bg-gray-600 p-3 rounded">
+                                <h5 className="font-medium">Impermanent Loss</h5>
+                                <p className="text-sm mt-1">Loss compared to holding when asset prices diverge. Can be substantial in volatile pairs and often misunderstood by new LPs.</p>
+                              </div>
+                              
+                              <div className="bg-gray-600 p-3 rounded">
+                                <h5 className="font-medium">Smart Contract Risk</h5>
+                                <p className="text-sm mt-1">Vulnerability to bugs or exploits in the DEX's code. Even audited protocols can have undiscovered vulnerabilities.</p>
+                              </div>
+                              
+                              <div className="bg-gray-600 p-3 rounded">
+                                <h5 className="font-medium">Token/Protocol Risk</h5>
+                                <p className="text-sm mt-1">Exposure to potential failures or devaluations of the underlying tokens or protocols.</p>
+                              </div>
+                              
+                              <div className="bg-gray-600 p-3 rounded">
+                                <h5 className="font-medium">Gas Costs & Complexity</h5>
+                                <p className="text-sm mt-1">Managing LP positions includes deposit, withdrawal, and management fees. Complex strategies can have high operational overhead.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="mt-5 bg-gray-600 p-4 rounded">
+                          <h4 className="font-medium text-white mb-2">Impermanent Loss Explained</h4>
+                          <p className="text-sm mb-3">
+                            Impermanent Loss (IL) is the difference in value between holding assets in an AMM pool versus holding them separately. It occurs when asset prices change relative to each other.
+                          </p>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div>
+                              <h5 className="font-medium text-yellow-300 mb-1">IL Impact by Price Change</h5>
+                              <ul className="list-disc pl-5 space-y-1">
+                                <li>1.25x price change: ~0.6% loss</li>
+                                <li>1.5x price change: ~2% loss</li>
+                                <li>2x price change: ~5.7% loss</li>
+                                <li>3x price change: ~13.4% loss</li>
+                                <li>4x price change: ~20% loss</li>
+                                <li>5x price change: ~25.5% loss</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <h5 className="font-medium text-yellow-300 mb-1">Risk Mitigation Strategies</h5>
+                              <ul className="list-disc pl-5 space-y-1">
+                                <li>Provide to stable pairs (lower IL risk)</li>
+                                <li>Use concentrated liquidity in narrow ranges</li>
+                                <li>Utilize IL hedging protocols</li>
+                                <li>Factor trading fees and incentives into calculations</li>
+                                <li>Set stop-loss thresholds for removing liquidity</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+                    <section>
+                      <h3 className="text-xl font-semibold text-purple-400 mb-3">DEX Innovations & Future Trends</h3>
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <div className="space-y-4">
+                          <div className="bg-gray-600 p-4 rounded">
+                            <h4 className="font-medium text-white mb-2">Multiple Pool Types & Strategies</h4>
+                            <p className="text-sm">
+                              Modern DEXs now support various pool types on the same platform, allowing traders to access optimal execution for different asset types. Examples include Maverick Protocol with multiple pool designs and Curve v2 with dynamic fees.
+                            </p>
+                          </div>
+                          
+                          <div className="bg-gray-600 p-4 rounded">
+                            <h4 className="font-medium text-white mb-2">Single-Sided Liquidity</h4>
+                            <p className="text-sm">
+                              Protocols allowing liquidity provision in just one asset, eliminating the need for paired deposits and reducing impermanent loss. Examples include Tokemak, Gamma Strategies, and various lending protocols that support LP token collateralization.
+                            </p>
+                          </div>
+                          
+                          <div className="bg-gray-600 p-4 rounded">
+                            <h4 className="font-medium text-white mb-2">MEV Protection Mechanisms</h4>
+                            <p className="text-sm">
+                              Tools to protect users from Maximal Extractable Value (frontrunning, sandwiching, etc.). These include batch auctions (CoWSwap), private RPC networks (Eden Network), and intent-based trading (UniswapX).
+                            </p>
+                          </div>
+                          
+                          <div className="bg-gray-600 p-4 rounded">
+                            <h4 className="font-medium text-white mb-2">Cross-Chain Liquidity</h4>
+                            <p className="text-sm">
+                              Solutions for trading assets across different blockchains without wrapped tokens or centralized bridges. Examples include LayerZero integrated DEXs, Thorchain, and Symbiosis Finance.
+                            </p>
+                          </div>
+                          
+                          <div className="bg-gray-600 p-4 rounded">
+                            <h4 className="font-medium text-white mb-2">Liquidity as a Service (LaaS)</h4>
+                            <p className="text-sm">
+                              Professional liquidity management services that optimize positions for projects and token holders. Examples include Arrakis Finance, Charm Finance, and Primitive Finance.
+                            </p>
+                          </div>
+                          
+                          <div className="bg-gray-600 p-4 rounded">
+                            <h4 className="font-medium text-white mb-2">Real-World Asset (RWA) Integration</h4>
+                            <p className="text-sm">
+                              DEXs specializing in tokenized real-world assets like bonds, real estate, and commodities. These require specific designs for less liquid markets with different pricing models.
+                            </p>
+                          </div>
+                          
+                          <div className="bg-purple-900/30 p-4 rounded border border-purple-700/50">
+                            <h4 className="font-medium text-white mb-2">Emerging Future Trends</h4>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                              <div>
+                                <h5 className="font-medium text-purple-300">Intent-Based Trading</h5>
+                                <p>Users specify desired outcomes rather than exact routes, allowing more efficient execution across fragmented liquidity.</p>
+                              </div>
+                              
+                              <div>
+                                <h5 className="font-medium text-purple-300">AI-Powered Liquidity</h5>
+                                <p>Machine learning algorithms that optimize liquidity positions based on historical data and market patterns.</p>
+                              </div>
+                              
+                              <div>
+                                <h5 className="font-medium text-purple-300">Zero-Knowledge Proofs</h5>
+                                <p>Privacy-preserving trading with ZK-proofs enabling confidential transactions while maintaining security.</p>
+                              </div>
+                              
+                              <div>
+                                <h5 className="font-medium text-purple-300">Decentralized Liquidity Aggregation</h5>
+                                <p>Meta-protocols that automatically distribute liquidity across multiple DEXs for optimal capital efficiency.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </div>
               </div>
               
               {/* Token Launches & Markets Tab */}
               <div className={`transition-all duration-300 ${activeTab === 'token-launches' ? 'block' : 'hidden'}`}>
-                {/* Content for Token Launches & Markets tab */}
+                <div className="bg-gray-800 rounded-lg p-6">
+                  <h2 className="text-2xl font-bold mb-6 text-gradient">Token Launches & Markets</h2>
+
+                  <div className="space-y-6">
+                    <section>
+                      <h3 className="text-xl font-semibold text-amber-400 mb-3">Token Launch Mechanisms</h3>
+                      <p className="mb-4">
+                        Projects use various token distribution methods to achieve different objectives in terms of fairness, capital raising, and token distribution.
+                      </p>
+                      <div className="bg-gray-700 p-5 rounded-lg">
+                        <div className="space-y-5">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div className="bg-gray-600 p-4 rounded">
+                              <h4 className="font-medium text-amber-300">Initial Coin Offering (ICO)</h4>
+                              <p className="text-sm mt-1 mb-2">
+                                Direct token sales to investors at a fixed price before public trading begins.
+                              </p>
+                              <div className="text-sm space-y-1">
+                                <div><span className="text-green-300">Pros:</span> Simple, efficient capital raising</div>
+                                <div><span className="text-red-300">Cons:</span> Regulatory concerns, often inequitable distribution</div>
+                              </div>
+                              <div className="mt-2 text-xs">
+                                <span className="font-medium">Notable Examples:</span> Ethereum (2014), EOS (2017)
+                              </div>
+                            </div>
+                            
+                            <div className="bg-gray-600 p-4 rounded">
+                              <h4 className="font-medium text-amber-300">Initial DEX Offering (IDO)</h4>
+                              <p className="text-sm mt-1 mb-2">
+                                Token launches directly on DEXs, typically using liquidity pools.
+                              </p>
+                              <div className="text-sm space-y-1">
+                                <div><span className="text-green-300">Pros:</span> Immediate liquidity, lower barriers to entry</div>
+                                <div><span className="text-red-300">Cons:</span> Potential for high volatility, MEV attacks</div>
+                              </div>
+                              <div className="mt-2 text-xs">
+                                <span className="font-medium">Notable Examples:</span> SushiSwap, Raydium
+                              </div>
+                            </div>
+                            
+                            <div className="bg-gray-600 p-4 rounded">
+                              <h4 className="font-medium text-amber-300">Liquidity Bootstrapping Pool (LBP)</h4>
+                              <p className="text-sm mt-1 mb-2">
+                                Dynamic pricing mechanism that starts high and decreases over time to discourage early speculation.
+                              </p>
+                              <div className="text-sm space-y-1">
+                                <div><span className="text-green-300">Pros:</span> Reduces FOMO buying, price discovery</div>
+                                <div><span className="text-red-300">Cons:</span> Complex to understand, requires sustained interest</div>
+                              </div>
+                              <div className="mt-2 text-xs">
+                                <span className="font-medium">Notable Examples:</span> Perpetual Protocol, Gitcoin
+                              </div>
+                            </div>
+                            
+                            <div className="bg-gray-600 p-4 rounded">
+                              <h4 className="font-medium text-amber-300">Fair Launch</h4>
+                              <p className="text-sm mt-1 mb-2">
+                                Distribution without private sales or team pre-allocations, often through mining or participation.
+                              </p>
+                              <div className="text-sm space-y-1">
+                                <div><span className="text-green-300">Pros:</span> Community-focused, more equitable distribution</div>
+                                <div><span className="text-red-300">Cons:</span> Limited funding for development, potential capture by bots</div>
+                              </div>
+                              <div className="mt-2 text-xs">
+                                <span className="font-medium">Notable Examples:</span> YFI, SUSHI
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div className="bg-gray-600 p-4 rounded">
+                              <h4 className="font-medium text-amber-300">Airdrops</h4>
+                              <p className="text-sm mt-1 mb-2">
+                                Free distribution of tokens to existing users or community members.
+                              </p>
+                              <div className="text-sm space-y-1">
+                                <div><span className="text-green-300">Pros:</span> Broad distribution, community building</div>
+                                <div><span className="text-red-300">Cons:</span> Potential for sybil attacks, regulatory concerns</div>
+                              </div>
+                              <div className="mt-2 text-xs">
+                                <span className="font-medium">Notable Examples:</span> Uniswap, dYdX, Optimism
+                              </div>
+                            </div>
+                            
+                            <div className="bg-gray-600 p-4 rounded">
+                              <h4 className="font-medium text-amber-300">Initial Stake Pool Offering (ISPO)</h4>
+                              <p className="text-sm mt-1 mb-2">
+                                Users delegate existing tokens to a project's staking pool, receiving new tokens instead of staking rewards.
+                              </p>
+                              <div className="text-sm space-y-1">
+                                <div><span className="text-green-300">Pros:</span> No direct investment required, aligned incentives</div>
+                                <div><span className="text-red-300">Cons:</span> Opportunity cost of staking elsewhere, only viable on certain networks</div>
+                              </div>
+                              <div className="mt-2 text-xs">
+                                <span className="font-medium">Notable Examples:</span> MELD, Genius Yield (Cardano ecosystem)
+                              </div>
+                            </div>
+                            
+                            <div className="bg-gray-600 p-4 rounded">
+                              <h4 className="font-medium text-amber-300">Auction Mechanisms</h4>
+                            <div>
+                              <h5 className="text-sm font-medium text-red-400 mb-1">Challenges</h5>
+                              <ul className="list-disc pl-5 text-xs space-y-1">
+                                {marketplace.challenges.map((challenge, i) => (
+                                  <li key={i}>{challenge}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <h3 className="text-xl font-semibold text-white mt-8 mb-4">Challenges in the Current Token Launch Landscape</h3>
+                    
+                    <div className="space-y-4">
+                      {launchProblems.map((problem, index) => (
+                        <div key={index} className="bg-gray-700 p-4 rounded-lg">
+                          <h4 className="font-medium text-red-400 mb-2">{problem.problem}</h4>
+                          <p className="text-sm mb-3">{problem.description}</p>
+                          <div className="bg-gray-600 p-3 rounded">
+                            <h5 className="text-xs font-medium text-white mb-1">Common Examples:</h5>
+                            <ul className="list-disc pl-5 text-xs space-y-1">
+                              {problem.examples.map((example, i) => (
+                                <li key={i}>{example}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div className="mt-2 text-xs text-red-300">
+                            <span className="font-medium">Ecosystem Impact:</span> {problem.impact}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <h3 className="text-xl font-semibold text-white mt-8 mb-4">Proposed Solutions for Better Token Launches</h3>
+                    
+                    <div className="space-y-4">
+                      {launchSolutions.map((solution, index) => (
+                        <div key={index} className="bg-gray-700 p-4 rounded-lg">
+                          <h4 className="font-medium text-green-400 mb-2">{solution.solution}</h4>
+                          <p className="text-sm mb-3">{solution.description}</p>
+                          <div className="bg-gray-600 p-3 rounded">
+                            <h5 className="text-xs font-medium text-white mb-1">Implementation Approaches:</h5>
+                            <ul className="list-disc pl-5 text-xs space-y-1">
+                              {solution.implementation.map((item, i) => (
+                                <li key={i}>{item}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div className="mt-2 text-xs text-green-300">
+                            <span className="font-medium">Potential Benefits:</span> {solution.benefits}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </TabLayout>
           </div>
