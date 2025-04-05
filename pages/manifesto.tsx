@@ -12,7 +12,7 @@ import {
   FaCodeBranch,
   FaCheckCircle
 } from 'react-icons/fa'
-import SkullLogo from '../components/SkullLogo'
+import Image from 'next/image'
 import TabLayout from '../components/TabLayout'
 
 export default function Manifesto() {
@@ -275,7 +275,16 @@ export default function Manifesto() {
           <div className="text-center relative">
             <div className="flex justify-center items-center w-full mb-24">
               <div className="mx-auto">
-                <SkullLogo className="w-36 h-36" />
+                <div className="relative w-36 h-36">
+                  <Image
+                    src="https://bafkreiajnwdr7cy7ajszr4hf2ywou4cp2wjw7vlkc4kwyqf3ibqpfeoqpm.ipfs.w3s.link/"
+                    alt="Open Crypto Foundation Logo"
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    priority
+                    className="rounded-lg"
+                  />
+                </div>
               </div>
             </div>
             <div className="mb-20">
