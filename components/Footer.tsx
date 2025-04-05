@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { FaTwitter, FaGithub, FaDiscord, FaTelegram, FaEnvelope } from 'react-icons/fa'
-import SkullLogo from './SkullLogo'
+import Logo from './Logo'
 
 export default function Footer() {
   return (
@@ -10,8 +10,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 pb-8 border-b md:grid-cols-4 border-gray-800">
           <div>
             <Link href="/" className="flex items-center space-x-2 mb-6">
-              <div className="w-9 h-9 flex items-center justify-center overflow-hidden bg-black">
-                <SkullLogo size="xs" className="transform scale-125" />
+              <div className="flex items-center justify-center">
+                <Logo size="sm" />
               </div>
               <span className="text-xl font-bold text-white">Open Crypto Foundation</span>
             </Link>

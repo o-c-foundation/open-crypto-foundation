@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FaBars, FaTimes } from 'react-icons/fa'
-import SkullLogo from './SkullLogo'
+import Logo from './Logo'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -45,8 +45,8 @@ export default function Navbar() {
         <div className="flex justify-between items-center py-3">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <div className="w-10 h-10 flex items-center justify-center overflow-hidden mr-3 bg-black">
-                <SkullLogo size="xs" className="transform scale-125" />
+              <div className="flex items-center justify-center mr-3">
+                <Logo size="md" />
               </div>
               <span className="font-bold text-xl text-white">Open Crypto Foundation</span>
             </Link>

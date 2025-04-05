@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import { FaArrowRight, FaShieldAlt, FaBookOpen, FaTools } from 'react-icons/fa'
 
 export default function Home() {
@@ -18,11 +19,15 @@ export default function Home() {
       <section className="pt-20 pb-24 bg-gradient-to-br from-black to-gray-900 text-white">
         <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto text-center">
-            <img 
-              src="/images/logo-main.png" 
-              alt="Open Crypto Foundation Logo" 
-              className="h-24 mx-auto mb-8"
-            />
+            <div className="relative h-24 w-24 mx-auto mb-8">
+              <Image 
+                src="https://bafkreibvunxo4row3xx7ju3cjgietdvpb7mem4luvclzbkbpz37i3scani.ipfs.w3s.link/" 
+                alt="Open Crypto Foundation Logo" 
+                fill
+                style={{ objectFit: 'contain' }}
+                priority
+              />
+            </div>
             <h1 className="mb-6 text-5xl font-bold">
               Promoting Safe &amp; Accessible Crypto for Everyone
             </h1>
