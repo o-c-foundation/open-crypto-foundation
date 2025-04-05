@@ -1,13 +1,10 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import React, { useEffect } from 'react'
 import Layout from '../components/Layout'
 import ErrorBoundary from '../components/ErrorBoundary'
 import { LanguageProvider } from '../contexts/LanguageContext'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -51,7 +48,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="description" content="Empowering safe DeFi interactions with tools and education" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={`${inter.className} bg-gray-900 text-white min-h-screen`}>
+      <div className="min-h-screen">
         <LanguageProvider>
           <Layout>
             <Component {...pageProps} />
