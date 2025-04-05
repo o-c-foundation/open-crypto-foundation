@@ -272,11 +272,13 @@ export default function Manifesto() {
 
       <div className="py-12 md:py-20">
         <div className="container px-4 md:px-6">
-          <div className="text-center mb-16">
-            <div className="flex justify-center mb-5">
-              <SkullLogo className="w-24 h-24" />
+          <div className="text-center mb-16 relative">
+            <div className="flex justify-center mb-12">
+              <SkullLogo className="w-32 h-32" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">Manifesto</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">
+              Manifesto
+            </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Our commitment to creating a safer, more transparent cryptocurrency ecosystem.
             </p>
