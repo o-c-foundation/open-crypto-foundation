@@ -22,6 +22,8 @@ export default function Navbar() {
         { name: 'For Traders', href: '/resources/traders', description: 'Resources for crypto traders and DeFi users' },
         { name: 'For Developers', href: '/resources/developers', description: 'Resources for smart contract and DeFi developers' },
         { name: 'DeFi Fundamentals', href: '/resources/defi-fundamentals', description: 'Learn about cryptocurrency, blockchain technology, and decentralized finance' },
+        { name: 'Security Guide', href: '/resources/security-guide', description: 'Protect your crypto assets with essential security knowledge and best practices' },
+        { name: 'Wallet Guide', href: '/resources/wallet-guide', description: 'Set up and manage your crypto wallet, networks, tokens, and NFTs' },
         { name: 'For Everyone', href: '/resources/everyone', description: 'Resources for anyone interested in crypto safety' }
       ]
     },
