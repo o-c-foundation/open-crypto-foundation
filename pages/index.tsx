@@ -126,7 +126,7 @@ export default function Home() {
               <div className="flex justify-center">
                 <div className="relative w-full max-w-3xl aspect-[3/1] rounded-lg overflow-hidden">
                   <Image 
-                    src="https://bafkreif6d6f6zlm3kgfwnhujf2ug4qidtnv3qsaix6wtlf3jnr6grz7yya.ipfs.w3s.link/"
+                    src="https://bafkreia5c7l5vs4oetg4cn5557wp34nl3k5lya63ayq6i2x66gte6nseni.ipfs.w3s.link/"
                     alt="Top cryptocurrency logos including Bitcoin, Ethereum, and other major coins"
                     fill
                     style={{ 
