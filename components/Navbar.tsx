@@ -18,6 +18,7 @@ export default function Navbar() {
       href: '/tools',
       description: 'Directory of trusted third-party tools for safer crypto trading and investment'
     },
+    { name: t('services'), href: '/services' },
     { 
       name: t('resources'), 
       children: [
