@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { FaCalendarAlt, FaTag, FaSearch, FaMegaphone, FaBookOpen, FaShieldAlt } from 'react-icons/fa';
+import { FaCalendarAlt, FaTag, FaSearch, FaBullhorn, FaBookOpen, FaShieldAlt } from 'react-icons/fa';
 import NewsletterSubscribe from '../../components/NewsletterSubscribe';
 
 // Sample blog post data - this would typically come from a CMS or API
@@ -77,7 +77,7 @@ const blogPosts = [
 const categories = [
   { name: "All", count: blogPosts.length, icon: <FaBookOpen /> },
   { name: "Security", count: blogPosts.filter(p => p.category === "Security").length, icon: <FaShieldAlt /> },
-  { name: "Announcement", count: blogPosts.filter(p => p.category === "Announcement").length, icon: <FaMegaphone /> },
+  { name: "Announcement", count: blogPosts.filter(p => p.category === "Announcement").length, icon: <FaBullhorn /> },
   { name: "Research", count: blogPosts.filter(p => p.category === "Research").length, icon: <FaBookOpen /> },
   { name: "Report", count: blogPosts.filter(p => p.category === "Report").length, icon: <FaBookOpen /> }
 ];
