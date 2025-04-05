@@ -5,7 +5,8 @@ const nextConfig = {
   images: {
     domains: [
       'bafkreibvunxo4row3xx7ju3cjgietdvpb7mem4luvclzbkbpz37i3scani.ipfs.w3s.link',
-      'bafkreih4hdkhpjoxluzj526ehakmylfg5o2ri4wctumedqc3i5lv35k7ay.ipfs.w3s.link'
+      'bafkreih4hdkhpjoxluzj526ehakmylfg5o2ri4wctumedqc3i5lv35k7ay.ipfs.w3s.link',
+      'bafkreif6d6f6zlm3kgfwnhujf2ug4qidtnv3qsaix6wtlf3jnr6grz7yya.ipfs.w3s.link'
     ],
     remotePatterns: [
       {
