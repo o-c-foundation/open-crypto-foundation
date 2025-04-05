@@ -3,32 +3,34 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import Logo from './Logo'
+import { useLanguage } from '../contexts/LanguageContext'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null)
   const router = useRouter()
+  const { t } = useLanguage()
 
   const navigation = [
-    { name: 'Home', href: '/' },
+    { name: t('home'), href: '/' },
     { 
-      name: 'Tools', 
+      name: t('tools'), 
       href: '/tools',
       description: 'Directory of trusted third-party tools for safer crypto trading and investment'
     },
     { 
-      name: 'Resources', 
+      name: t('resources'), 
       children: [
-        { name: 'For Traders', href: '/resources/traders', description: 'Resources for crypto traders and DeFi users' },
-        { name: 'For Developers', href: '/resources/developers', description: 'Resources for smart contract and DeFi developers' },
-        { name: 'DeFi Fundamentals', href: '/resources/defi-fundamentals', description: 'Learn about cryptocurrency, blockchain technology, and decentralized finance' },
-        { name: 'Security Guide', href: '/resources/security-guide', description: 'Protect your crypto assets with essential security knowledge and best practices' },
-        { name: 'Wallet Guide', href: '/resources/wallet-guide', description: 'Set up and manage your crypto wallet, networks, tokens, and NFTs' },
-        { name: 'For Everyone', href: '/resources/everyone', description: 'Resources for anyone interested in crypto safety' }
+        { name: t('forTraders'), href: '/resources/traders', description: 'Resources for crypto traders and DeFi users' },
+        { name: t('forDevelopers'), href: '/resources/developers', description: 'Resources for smart contract and DeFi developers' },
+        { name: t('defiFundamentals'), href: '/resources/defi-fundamentals', description: 'Learn about cryptocurrency, blockchain technology, and decentralized finance' },
+        { name: t('securityGuide'), href: '/resources/security-guide', description: 'Protect your crypto assets with essential security knowledge and best practices' },
+        { name: t('walletGuide'), href: '/resources/wallet-guide', description: 'Set up and manage your crypto wallet, networks, tokens, and NFTs' },
+        { name: t('forEveryone'), href: '/resources/everyone', description: 'Resources for anyone interested in crypto safety' }
       ]
     },
-    { name: 'About', href: '/about' },
-    { name: 'Manifesto', href: '/manifesto' },
+    { name: t('about'), href: '/about' },
+    { name: t('manifesto'), href: '/manifesto' },
   ]
   
   const toggleDropdown = (name: string) => {
@@ -40,15 +42,15 @@ export default function Navbar() {
   }
 
   return (
-    <header className="bg-black border-b border-gray-800 shadow-md">
-      <div className="container">
+    <header className="bg-black border-b border-gray-800 shadow-md sticky top-0 z-50">
+      <div className="container px-4 md:px-0">
         <div className="flex justify-between items-center py-3">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <div className="flex items-center justify-center mr-2">
                 <Logo size="md" />
               </div>
-              <span className="font-bold text-xl text-white">Open Crypto Foundation</span>
+              <span className="font-bold text-lg sm:text-xl text-white">Open Crypto Foundation</span>
             </Link>
           </div>
           
@@ -108,8 +110,9 @@ export default function Navbar() {
           {/* Mobile Navigation Toggle */}
           <div className="md:hidden">
             <button 
-              className="text-gray-300 hover:text-white"
+              className="text-gray-300 hover:text-white p-2"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle navigation menu"
             >
               {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </button>
@@ -119,8 +122,8 @@ export default function Navbar() {
       
       {/* Mobile Navigation Menu */}
       {isOpen && (
-        <div className="md:hidden py-4 border-t border-gray-800">
-          <div className="container">
+        <div className="md:hidden py-4 border-t border-gray-800 bg-black">
+          <div className="container px-4">
             <nav className="flex flex-col space-y-4">
               {navigation.map((item) => 
                 !item.children ? (
@@ -160,7 +163,10 @@ export default function Navbar() {
                               setIsOpen(false)
                             }}
                           >
-                            {child.name}
+                            <p className="text-sm font-medium text-white">{child.name}</p>
+                            {child.description && (
+                              <p className="mt-1 text-xs text-gray-400">{child.description}</p>
+                            )}
                           </Link>
                         ))}
                       </div>

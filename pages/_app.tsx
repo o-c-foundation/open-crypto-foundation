@@ -5,6 +5,7 @@ import Head from 'next/head'
 import React, { useEffect } from 'react'
 import Layout from '../components/Layout'
 import ErrorBoundary from '../components/ErrorBoundary'
+import { LanguageProvider } from '../contexts/LanguageContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,6 +32,18 @@ export default function App({ Component, pageProps }: AppProps) {
     };
   }, []);
   
+  // Enable responsive viewport behavior
+  useEffect(() => {
+    // This helps ensure proper responsive behavior on mobile devices
+    const viewport = document.querySelector('meta[name=viewport]')
+    if (!viewport) {
+      const meta = document.createElement('meta')
+      meta.name = 'viewport'
+      meta.content = 'width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover'
+      document.head.appendChild(meta)
+    }
+  }, [])
+
   return (
     <ErrorBoundary>
       <Head>
@@ -39,9 +52,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={`${inter.className} bg-gray-900 text-white min-h-screen`}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <LanguageProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </LanguageProvider>
       </div>
     </ErrorBoundary>
   )

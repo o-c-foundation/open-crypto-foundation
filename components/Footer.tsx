@@ -1,13 +1,20 @@
 import React from 'react'
 import Link from 'next/link'
-import { FaTwitter, FaGithub, FaDiscord, FaTelegram, FaEnvelope } from 'react-icons/fa'
+import { FaTwitter, FaGithub, FaDiscord, FaTelegram, FaEnvelope, FaGlobe } from 'react-icons/fa'
 import Logo from './Logo'
+import { useLanguage } from '../contexts/LanguageContext'
 
 export default function Footer() {
+  const { language, changeLanguage, t } = useLanguage();
+
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    changeLanguage(e.target.value as 'en' | 'es' | 'ja');
+  }
+
   return (
     <footer className="py-12 bg-black text-gray-300 border-t border-gray-800">
-      <div className="container">
-        <div className="grid grid-cols-1 gap-8 pb-8 border-b md:grid-cols-4 border-gray-800">
+      <div className="container px-4 md:px-0">
+        <div className="grid grid-cols-1 gap-8 pb-8 border-b sm:grid-cols-2 md:grid-cols-4 border-gray-800">
           <div>
             <Link href="/" className="flex items-center space-x-2 mb-6">
               <div className="flex items-center justify-center">
@@ -41,7 +48,7 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 className="mb-4 text-lg font-semibold text-white">Tools</h3>
+            <h3 className="mb-4 text-lg font-semibold text-white">{t('tools')}</h3>
             <ul className="space-y-2">
               <li><Link href="/tools/contract-scanner" className="hover:text-white">Contract Scanner</Link></li>
               <li><Link href="/tools/token-analyzer" className="hover:text-white">Token Analyzer</Link></li>
@@ -51,40 +58,56 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 className="mb-4 text-lg font-semibold text-white">Resources</h3>
+            <h3 className="mb-4 text-lg font-semibold text-white">{t('resources')}</h3>
             <ul className="space-y-2">
-              <li><Link href="/resources/traders" className="hover:text-white">For Traders</Link></li>
-              <li><Link href="/resources/developers" className="hover:text-white">For Developers</Link></li>
+              <li><Link href="/resources/traders" className="hover:text-white">{t('forTraders')}</Link></li>
+              <li><Link href="/resources/developers" className="hover:text-white">{t('forDevelopers')}</Link></li>
               <li><Link href="/resources/scam-database" className="hover:text-white">Scam Database</Link></li>
               <li><Link href="/resources/guides" className="hover:text-white">Educational Guides</Link></li>
-              <li><Link href="/resources/defi-fundamentals" className="hover:text-white">DeFi Fundamentals</Link></li>
-              <li><Link href="/manifesto" className="hover:text-white">Our Manifesto</Link></li>
+              <li><Link href="/resources/defi-fundamentals" className="hover:text-white">{t('defiFundamentals')}</Link></li>
+              <li><Link href="/manifesto" className="hover:text-white">{t('manifesto')}</Link></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="mb-4 text-lg font-semibold text-white">About</h3>
+            <h3 className="mb-4 text-lg font-semibold text-white">{t('about')}</h3>
             <ul className="space-y-2">
-              <li><Link href="/about" className="hover:text-white">About Us</Link></li>
+              <li><Link href="/about" className="hover:text-white">{t('about')}</Link></li>
               <li><Link href="/about/philosophy" className="hover:text-white">Our Philosophy</Link></li>
               <li><Link href="/about/team" className="hover:text-white">Team</Link></li>
               <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
-              <li><Link href="/privacy" className="hover:text-white">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="hover:text-white">Terms of Service</Link></li>
+              <li><Link href="/privacy" className="hover:text-white">{t('privacyPolicy')}</Link></li>
+              <li><Link href="/terms" className="hover:text-white">{t('termsOfService')}</Link></li>
             </ul>
           </div>
         </div>
         
-        <div className="flex flex-col justify-between pt-8 space-y-4 md:space-y-0 md:flex-row">
+        <div className="flex flex-col justify-between pt-8 space-y-6 md:space-y-0 md:flex-row">
           <div className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} Open Crypto Foundation. All rights reserved.
+            {t('copyright').replace('{year}', new Date().getFullYear().toString())}
           </div>
-          <div className="flex space-x-6 text-sm">
-            <Link href="/privacy" className="text-gray-400 hover:text-white">Privacy Policy</Link>
-            <span className="text-gray-600">|</span>
-            <Link href="/terms" className="text-gray-400 hover:text-white">Terms of Service</Link>
-            <span className="text-gray-600">|</span>
-            <Link href="/cookies" className="text-gray-400 hover:text-white">Cookie Policy</Link>
+          
+          <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:items-center">
+            <div className="flex items-center space-x-3 md:mr-6">
+              <FaGlobe className="text-gray-400" />
+              <select 
+                value={language}
+                onChange={handleLanguageChange}
+                className="bg-gray-800 text-gray-300 border border-gray-700 rounded py-1 px-2 text-sm"
+              >
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="ja">日本語</option>
+              </select>
+            </div>
+            
+            <div className="flex flex-wrap gap-3 md:gap-0 md:space-x-6 text-sm">
+              <Link href="/privacy" className="text-gray-400 hover:text-white">{t('privacyPolicy')}</Link>
+              <span className="hidden md:inline text-gray-600">|</span>
+              <Link href="/terms" className="text-gray-400 hover:text-white">{t('termsOfService')}</Link>
+              <span className="hidden md:inline text-gray-600">|</span>
+              <Link href="/cookies" className="text-gray-400 hover:text-white">{t('cookiePolicy')}</Link>
+            </div>
           </div>
         </div>
       </div>
