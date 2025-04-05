@@ -22,13 +22,13 @@ export default function Home() {
       <section className="pt-20 pb-24 bg-gradient-to-br from-black to-gray-900 text-white">
         <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="relative h-24 w-24 mx-auto mb-8">
+            <div className="relative h-48 w-48 mx-auto mb-8">
               {logoError ? (
                 <img 
                   src={logoUrl}
                   alt="Open Crypto Foundation Logo" 
-                  width={96}
-                  height={96}
+                  width={192}
+                  height={192}
                   className="max-w-full h-auto"
                 />
               ) : (
