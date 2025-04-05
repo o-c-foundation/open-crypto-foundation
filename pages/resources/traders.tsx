@@ -653,6 +653,373 @@ export default function Traders() {
             </div>
           </div>
 
+          <div className="max-w-6xl mx-auto mb-20">
+            <h2 className="text-3xl font-bold mb-8 text-white flex items-center">
+              <FaFileAlt className="text-purple-500 mr-3" />
+              Advanced Trader Resources
+            </h2>
+            
+            <p className="text-lg text-gray-300 mb-8">
+              Successful trading in the decentralized finance ecosystem requires sophisticated tools, comprehensive research, and disciplined risk management. 
+              Below, we present an extensive compilation of resources to augment your trading methodology and enhance decision-making processes.
+            </p>
+
+            {/* On-Chain Analytics & Research Tools */}
+            <div className="mb-12">
+              <h3 className="text-2xl font-bold mb-6 text-white flex items-center">
+                <span className="bg-purple-500/20 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                  <FaChartLine className="text-purple-400" />
+                </span>
+                On-Chain Analytics & Research Tools
+              </h3>
+
+              <p className="text-gray-300 mb-6">
+                On-chain analytics provides an unparalleled view into blockchain activity, offering traders a significant informational advantage. These platforms enable the examination of transaction flows, wallet behaviors, and protocol metrics that often precede significant market movements.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">Nansen</h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    Sophisticated blockchain analytics platform that labels wallet addresses, enabling traders to track movements of significant market participants, including "smart money" wallets with established track records of profitable trading.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Smart Money Tracking</span>
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Wallet Labeling</span>
+                    </div>
+                    <a href="https://www.nansen.ai/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 text-sm">
+                      Explore
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">Dune Analytics</h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    Query-based analytics platform providing customizable dashboard creation for tracking complex protocol metrics, token distributions, and market behaviors with SQL-based data exploration capabilities.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Custom Dashboards</span>
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Protocol Metrics</span>
+                    </div>
+                    <a href="https://dune.com/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 text-sm">
+                      Explore
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">DefiLlama</h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    Comprehensive DeFi TVL (Total Value Locked) aggregator offering protocol rankings, chain comparisons, and yield analytics across multiple blockchain ecosystems with transparent methodology.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">TVL Tracking</span>
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Cross-Chain Data</span>
+                    </div>
+                    <a href="https://defillama.com/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 text-sm">
+                      Explore
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">Glassnode</h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    Institutional-grade on-chain intelligence platform featuring advanced market indicators, network health metrics, and entity-adjusted data for Bitcoin, Ethereum, and other major blockchains.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Institutional Metrics</span>
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Advanced Indicators</span>
+                    </div>
+                    <a href="https://glassnode.com/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 text-sm">
+                      Explore
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">Messari</h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    Comprehensive market intelligence platform offering detailed research reports, in-depth protocol analyses, governance tracking, and sophisticated screening tools for token evaluation.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Research Reports</span>
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Protocol Analysis</span>
+                    </div>
+                    <a href="https://messari.io/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 text-sm">
+                      Explore
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">Token Terminal</h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    Financial metrics platform focused on protocol revenue, P/E ratios, and fundamental valuation metrics, enabling traditional financial analysis methodologies for on-chain protocols.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Financial Metrics</span>
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Revenue Analysis</span>
+                    </div>
+                    <a href="https://tokenterminal.com/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 text-sm">
+                      Explore
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 bg-gray-900/50 p-4 rounded-lg">
+                <h4 className="font-medium text-white mb-2">Analytical Advantage</h4>
+                <p className="text-sm text-gray-300">
+                  Strategic utilization of these on-chain analytics platforms enables traders to identify emergent trends through capital flow analysis, detect smart money accumulation patterns before public awareness, and conduct sophisticated network value evaluations that transcend traditional technical analysis. Proficient integration of these data sources can establish significant asymmetric information advantages in volatile market environments.
+                </p>
+              </div>
+            </div>
+
+            {/* Market Data & Chart Analysis Platforms */}
+            <div className="mb-12">
+              <h3 className="text-2xl font-bold mb-6 text-white flex items-center">
+                <span className="bg-green-500/20 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                  <FaChartLine className="text-green-400" />
+                </span>
+                Market Data & Chart Analysis Platforms
+              </h3>
+
+              <p className="text-gray-300 mb-6">
+                Sophisticated chart analysis platforms provide the technical framework necessary for precise entry and exit execution. The following resources deliver institutional-grade analytical capabilities with cryptocurrency-specific adaptations for decentralized market structures.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">TradingView</h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    Premier charting platform featuring proprietary scripting language (Pine Script) for custom indicator development, extensive drawing tools, and multi-timeframe analysis capabilities with advanced alert functionality.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Custom Indicators</span>
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Advanced Charting</span>
+                    </div>
+                    <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 text-sm">
+                      Explore
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">CoinGlass</h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    Derivatives-focused analytics platform offering comprehensive funding rate analysis, liquidation data, open interest metrics, and long/short ratios across major cryptocurrency exchanges.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Derivatives Data</span>
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Liquidation Metrics</span>
+                    </div>
+                    <a href="https://www.coinglass.com/" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 text-sm">
+                      Explore
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">CryptoQuant</h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    On-chain data analytics platform featuring exchange flow tracking, miner behavior analysis, and advanced market indicators with a focus on Bitcoin and Ethereum network health diagnostics.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Exchange Flows</span>
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Miner Metrics</span>
+                    </div>
+                    <a href="https://cryptoquant.com/" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 text-sm">
+                      Explore
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">Laevitas</h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    Options and derivatives analytics platform providing implied volatility surfaces, options chain visualization, gamma exposure calculations, and skew analysis across cryptocurrency derivatives markets.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Options Analytics</span>
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Volatility Metrics</span>
+                    </div>
+                    <a href="https://www.laevitas.ch/" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 text-sm">
+                      Explore
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">Whalemap</h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    Specialized visualization platform for tracking whale wallet accumulation zones, creating visual representations of large holder behavior and identifying critical on-chain support/resistance levels.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Whale Tracking</span>
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">On-Chain Support/Resistance</span>
+                    </div>
+                    <a href="https://whalemap.io/" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 text-sm">
+                      Explore
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">CoinMetrics</h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    Institutional-grade network data provider offering advanced on-chain metrics, correlation analysis, and custom data sets for robust quantitative trading strategy development and backtesting.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Network Data</span>
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Quantitative Analysis</span>
+                    </div>
+                    <a href="https://coinmetrics.io/" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 text-sm">
+                      Explore
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 bg-gray-900/50 p-4 rounded-lg">
+                <h4 className="font-medium text-white mb-2">Technical Edge Development</h4>
+                <p className="text-sm text-gray-300">
+                  The judicious application of these analytical platforms can facilitate the development of a systematic technological edge in market interpretation. By synthesizing multiple data modalities—order flow analytics, derivatives sentiment indicators, and on-chain metrics—traders can construct a comprehensive market structure analysis that identifies asymmetric opportunities through confluence of signals. This multidimensional approach transcends the limitations of traditional technical analysis by incorporating network-specific data unique to distributed ledger technologies.
+                </p>
+              </div>
+            </div>
+
+            {/* Risk Management & Security Resources */}
+            <div className="mb-12">
+              <h3 className="text-2xl font-bold mb-6 text-white flex items-center">
+                <span className="bg-red-500/20 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                  <FaShieldAlt className="text-red-400" />
+                </span>
+                Risk Management & Security Resources
+              </h3>
+
+              <p className="text-gray-300 mb-6">
+                In decentralized finance, effective risk management and robust security protocols are foundational to longevity. The following resources enable sophisticated risk quantification, operational security practices, and portfolio management methodologies essential for capital preservation.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">Position Sizing & Risk Calculators</h4>
+                  <div className="space-y-3 text-sm text-gray-300">
+                    <p>Sophisticated position sizing tools employ statistical methods to optimize exposure while maintaining probabilistic risk parameters:</p>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li><a href="https://www.positionsizecalculator.net/" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300">Position Size Calculator</a> - Risk-based position sizing with customizable parameters</li>
+                      <li><a href="https://app.riskmgmt.io/" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300">RiskMgmt.io</a> - Advanced portfolio risk analytics with correlation modeling</li>
+                      <li><a href="https://www.tradingview.com/script/r36RiakW-Position-Size-Calculator-Gann-Method/" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300">Gann Method Calculator</a> - Geometric risk calculation based on Gann principles</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">Smart Contract Security Auditing Tools</h4>
+                  <div className="space-y-3 text-sm text-gray-300">
+                    <p>Protocol security verification resources that enable individual verification of project integrity:</p>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li><a href="https://www.certik.com/" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300">CertiK Security Leaderboard</a> - Comprehensive security rankings of major protocols</li>
+                      <li><a href="https://www.immunefi.com/" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300">Immunefi</a> - Bug bounty platform indicating project security commitment</li>
+                      <li><a href="https://etherscan.io/verifiedsignatures" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300">Etherscan Verified Signatures</a> - Contract verification status repository</li>
+                      <li><a href="https://rugdoc.io/" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300">RugDoc</a> - Smart contract risk analysis for emerging DeFi protocols</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">DeBank</h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    Comprehensive portfolio tracking platform with cross-chain visualization, real-time impermanent loss calculations, and granular performance metrics for all DeFi positions.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Portfolio Tracking</span>
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Cross-Chain</span>
+                    </div>
+                    <a href="https://debank.com/" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300 text-sm">
+                      Explore
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">Revoke.cash</h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    Security-focused tool for identifying and revoking token approvals across multiple chains, mitigating attack vectors through systematic approval management.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Approval Management</span>
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Security</span>
+                    </div>
+                    <a href="https://revoke.cash/" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300 text-sm">
+                      Explore
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-gray-800 rounded-lg p-5 hover:bg-gray-750 transition duration-300">
+                  <h4 className="text-lg font-semibold text-white mb-2">DeFi Safety</h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    Protocol assessment platform providing objective security ratings based on comprehensive technical analysis, code transparency, and governance structure evaluation.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Protocol Ratings</span>
+                      <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs">Security Analysis</span>
+                    </div>
+                    <a href="https://www.defisafety.com/" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300 text-sm">
+                      Explore
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 bg-red-900/20 p-5 rounded-lg border border-red-800/30">
+                <h4 className="font-medium text-white mb-3">Essential Security Protocols</h4>
+                <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-300">
+                  <div className="bg-gray-800/50 p-4 rounded-lg">
+                    <h5 className="font-medium text-red-400 mb-2">Operational Security Framework</h5>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>Implement hardware wallet isolation for principal storage with airgapped signing procedures</li>
+                      <li>Establish tiered wallet architecture separating trading capital from long-term holdings</li>
+                      <li>Employ specialized browser environments with network segregation for trading activities</li>
+                      <li>Conduct regular approval audits with systematic revocation of dormant permissions</li>
+                      <li>Practice transaction simulation before broadcast to verify interaction parameters</li>
+                    </ul>
+                  </div>
+                  <div className="bg-gray-800/50 p-4 rounded-lg">
+                    <h5 className="font-medium text-red-400 mb-2">Risk Management Methodology</h5>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>Establish explicit position sizing parameters based on quantified volatility metrics</li>
+                      <li>Implement correlated asset exposure limits to mitigate systematic market risk</li>
+                      <li>Maintain protocol diversification with explicit concentration thresholds</li>
+                      <li>Develop formal drawdown response procedures with predefined capital preservation thresholds</li>
+                      <li>Establish profit distribution methodology to systematically reduce principal risk</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Additional sections like Risk Management, Trading Strategy, etc. would go here */}
           
         </div>
