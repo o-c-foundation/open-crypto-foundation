@@ -877,9 +877,9 @@ export default function Manifesto() {
                           <div className="bg-blue-500/20 rounded-full w-12 h-12 flex items-center justify-center mb-3">
                             <FaCodeBranch className="text-blue-400 text-xl" />
                           </div>
-                          <h4 className="font-medium text-white text-lg mb-2">Tools</h4>
+                          <h4 className="font-medium text-white text-lg mb-2">Audit Services</h4>
                           <p className="text-sm">
-                            Open-source, user-friendly software that helps identify scams, verify contracts, and manage crypto security with minimal technical knowledge.
+                            Professional security audits and reviews that help projects identify vulnerabilities and implement best practices for user protection.
                           </p>
                         </div>
                         
@@ -887,9 +887,9 @@ export default function Manifesto() {
                           <div className="bg-green-500/20 rounded-full w-12 h-12 flex items-center justify-center mb-3">
                             <FaCheckCircle className="text-green-400 text-xl" />
                           </div>
-                          <h4 className="font-medium text-white text-lg mb-2">Standards</h4>
+                          <h4 className="font-medium text-white text-lg mb-2">Vetted Resources</h4>
                           <p className="text-sm">
-                            Clear, measurable criteria for project transparency and security that create accountability and help users quickly identify safer options.
+                            Curated directories of trusted third-party tools and services that meet our rigorous standards for security and transparency.
                           </p>
                         </div>
                       </div>
@@ -905,16 +905,16 @@ export default function Manifesto() {
                             Comprehensive Scam Database
                           </h4>
                           <p className="mb-3">
-                            A living, community-contributed repository of known scams, their techniques, and warning signs.
+                            A living, educational repository of known scams, their techniques, and warning signs.
                           </p>
                           <div className="grid md:grid-cols-2 gap-3 text-sm">
                             <div>
                               <h5 className="font-medium text-white mb-1">Features:</h5>
                               <ul className="list-disc pl-5 space-y-1">
                                 <li>Searchable catalog of scam techniques</li>
-                                <li>Flagged addresses and contracts</li>
+                                <li>Documentation of high-risk patterns</li>
                                 <li>Real-world case studies</li>
-                                <li>Early warning system for emerging threats</li>
+                                <li>Educational resources on emerging threats</li>
                               </ul>
                             </div>
                             <div>
@@ -923,7 +923,7 @@ export default function Manifesto() {
                                 <li>Helps users recognize patterns before becoming victims</li>
                                 <li>Creates shared knowledge pool of scam tactics</li>
                                 <li>Reduces repeated successful attacks</li>
-                                <li>Integrates with wallets and platforms as security layer</li>
+                                <li>Provides educational material for platforms</li>
                               </ul>
                             </div>
                           </div>
@@ -932,29 +932,29 @@ export default function Manifesto() {
                         <div className="bg-gray-600 p-4 rounded-lg">
                           <h4 className="font-medium text-blue-300 text-lg flex items-center mb-3">
                             <span className="bg-blue-500/20 rounded-full w-8 h-8 flex items-center justify-center mr-2">2</span>
-                            Risk Assessment Tools
+                            Trusted Tool Directory
                           </h4>
                           <p className="mb-3">
-                            Browser extensions and web apps that analyze token contracts and project characteristics to highlight potential red flags.
+                            A curated list of vetted third-party security tools and resources that meet our strict standards for effectiveness and trustworthiness.
                           </p>
                           <div className="grid md:grid-cols-2 gap-3 text-sm">
                             <div>
                               <h5 className="font-medium text-white mb-1">Features:</h5>
                               <ul className="list-disc pl-5 space-y-1">
-                                <li>Smart contract security analysis</li>
-                                <li>Tokenomics evaluation</li>
-                                <li>Team verification checks</li>
-                                <li>Social sentiment analysis</li>
-                                <li>Historical pattern matching</li>
+                                <li>Rigorous vetting process for included tools</li>
+                                <li>Categorized by use case and complexity</li>
+                                <li>User guides and implementation tutorials</li>
+                                <li>Regular review of listed resources</li>
+                                <li>Transparent evaluation criteria</li>
                               </ul>
                             </div>
                             <div>
                               <h5 className="font-medium text-white mb-1">Impact:</h5>
                               <ul className="list-disc pl-5 space-y-1">
-                                <li>Makes complex security analysis accessible</li>
-                                <li>Provides real-time protection while browsing</li>
-                                <li>Helps users make decisions with better information</li>
-                                <li>Creates market pressure for better project practices</li>
+                                <li>Simplifies finding trustworthy security tools</li>
+                                <li>Reduces confusion for non-technical users</li>
+                                <li>Encourages adoption of security best practices</li>
+                                <li>Creates incentives for tool developers to improve</li>
                               </ul>
                             </div>
                           </div>
@@ -1054,7 +1054,7 @@ export default function Manifesto() {
                           </div>
                           <div>
                             <h4 className="font-medium text-white">Accessible To Everyone</h4>
-                            <p className="text-sm">Our tools and education are designed to be understood by non-technical users while still being powerful enough for experienced participants.</p>
+                            <p className="text-sm">Our educational resources and directories are designed to be understood by non-technical users while still being valuable for experienced participants.</p>
                           </div>
                         </div>
                         
@@ -1064,7 +1064,7 @@ export default function Manifesto() {
                           </div>
                           <div>
                             <h4 className="font-medium text-white">Community-Powered</h4>
-                            <p className="text-sm">We leverage collective intelligence and experiences through a transparent, community-driven approach to identifying threats and developing solutions.</p>
+                            <p className="text-sm">We leverage collective intelligence and experiences through a transparent, community-driven approach to identifying threats and developing resources.</p>
                           </div>
                         </div>
                         
@@ -1073,8 +1073,8 @@ export default function Manifesto() {
                             <FaCheckCircle size={18} />
                           </div>
                           <div>
-                            <h4 className="font-medium text-white">Transparent & Open-Source</h4>
-                            <p className="text-sm">All our code, methodologies, and assessment criteria are open for scrutiny and improvement, ensuring we maintain the highest standards.</p>
+                            <h4 className="font-medium text-white">Transparent & Open</h4>
+                            <p className="text-sm">All our methodologies and assessment criteria are open for scrutiny and improvement, ensuring we maintain the highest standards.</p>
                           </div>
                         </div>
                       </div>
@@ -1091,10 +1091,10 @@ export default function Manifesto() {
                         <div className="bg-gray-800/50 p-4 rounded-lg">
                           <h4 className="font-medium text-pink-300 mb-2">For Developers</h4>
                           <ul className="list-disc pl-5 space-y-1 text-sm">
-                            <li>Contribute to our open-source tools</li>
-                            <li>Help build security analyzers</li>
-                            <li>Review smart contracts</li>
-                            <li>Develop educational materials</li>
+                            <li>Submit your projects for audit review</li>
+                            <li>Contribute to educational materials</li>
+                            <li>Help evaluate third-party tools for our directory</li>
+                            <li>Participate in responsible disclosure</li>
                           </ul>
                         </div>
                         
@@ -1112,7 +1112,7 @@ export default function Manifesto() {
                           <h4 className="font-medium text-green-300 mb-2">For Projects & Platforms</h4>
                           <ul className="list-disc pl-5 space-y-1 text-sm">
                             <li>Adopt security standards</li>
-                            <li>Integrate our tools</li>
+                            <li>Request audit services</li>
                             <li>Support transparency initiatives</li>
                             <li>Prioritize user protection</li>
                           </ul>
@@ -1402,13 +1402,13 @@ export default function Manifesto() {
                     </div>
                     
                     <div className="bg-gray-700 p-6 rounded-lg">
-                      <h3 className="text-xl font-semibold text-pink-400 mb-3">Token Safety Standard</h3>
+                      <h3 className="text-xl font-semibold text-pink-400 mb-3">Project Safety Standards</h3>
                       <div className="space-y-4">
-                        <p>We're developing an open, community-driven standard for token project transparency and security, enabling users to quickly identify projects meeting baseline safety criteria.</p>
+                        <p>We're developing an open, community-driven standard for project transparency and security, enabling users to quickly identify projects meeting baseline safety criteria.</p>
                         
                         <div className="grid md:grid-cols-2 gap-4 mt-4">
                           <div className="bg-gray-600 p-4 rounded-lg">
-                            <h4 className="font-medium text-white mb-2">Certification Requirements</h4>
+                            <h4 className="font-medium text-white mb-2">Standard Requirements</h4>
                             <ul className="list-disc pl-5 space-y-1">
                               <li>Verified team identities with proven track record</li>
                               <li>Smart contract audits from reputable providers</li>
@@ -1435,33 +1435,52 @@ export default function Manifesto() {
                     </div>
                     
                     <div className="bg-gray-700 p-6 rounded-lg">
-                      <h3 className="text-xl font-semibold text-pink-400 mb-3">Blockchain Analysis Tools</h3>
+                      <h3 className="text-xl font-semibold text-pink-400 mb-3">Professional Audit Services</h3>
                       <div className="space-y-4">
-                        <p>We're building accessible tools that help everyday users analyze on-chain data to identify suspicious activities and evaluate project legitimacy before investing.</p>
+                        <p>Our comprehensive security audit services help cryptocurrency projects identify vulnerabilities, implement best practices, and build user trust through enhanced security and transparency.</p>
                         
                         <div className="grid md:grid-cols-2 gap-4 mt-4">
                           <div className="bg-gray-600 p-4 rounded-lg">
-                            <h4 className="font-medium text-white mb-2">Open-Source Tools</h4>
+                            <h4 className="font-medium text-white mb-2">Audit Offerings</h4>
                             <ul className="list-disc pl-5 space-y-1">
-                              <li><strong>Token Analyzer:</strong> Examine token contracts for suspicious code patterns</li>
-                              <li><strong>Wallet Profiler:</strong> Check transaction history for known scam interactions</li>
-                              <li><strong>Liquidity Verifier:</strong> Analyze lock status and pool stability</li>
-                              <li><strong>Transaction Simulator:</strong> Preview transaction outcomes before signing</li>
-                              <li><strong>Approval Manager:</strong> Monitor and manage token permissions</li>
+                              <li><strong>Smart Contract Audits:</strong> Comprehensive code reviews to identify vulnerabilities and security flaws</li>
+                              <li><strong>Architecture Reviews:</strong> Analysis of system design and potential structural weaknesses</li>
+                              <li><strong>Tokenomics Assessment:</strong> Evaluation of economic models and incentive structures</li>
+                              <li><strong>Security Consulting:</strong> Custom guidance on implementing security best practices</li>
+                              <li><strong>Incident Response:</strong> Support during security incidents or exploits</li>
                             </ul>
                           </div>
                           
                           <div className="bg-gray-600 p-4 rounded-lg">
-                            <h4 className="font-medium text-white mb-2">Development Approach</h4>
+                            <h4 className="font-medium text-white mb-2">Audit Methodology</h4>
                             <ul className="list-disc pl-5 space-y-1">
-                              <li>All tools released under open-source licenses</li>
-                              <li>Browser extensions for seamless integration</li>
-                              <li>API access for developers to build additional tools</li>
-                              <li>Documentation for community contributions</li>
-                              <li>Regular updates based on emerging threats</li>
-                              <li>Accessible UI designed for non-technical users</li>
+                              <li>Multi-phase review process with multiple auditors</li>
+                              <li>Manual code review combined with automated analysis</li>
+                              <li>Standardized vulnerability classification system</li>
+                              <li>Detailed remediation recommendations</li>
+                              <li>Verification of fixes after implementation</li>
+                              <li>Public reporting option to enhance transparency</li>
                             </ul>
                           </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-pink-400 mb-3">Curated Security Resource Directory</h3>
+                      <div className="space-y-4">
+                        <p>We carefully evaluate and curate directories of third-party security tools and services, helping users find trustworthy resources that meet our strict standards for security and effectiveness.</p>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-white mb-2">Directory Categories</h4>
+                          <ul className="list-disc pl-5 space-y-1">
+                            <li><strong>Wallet Security:</strong> Vetted hardware and software wallet solutions</li>
+                            <li><strong>Transaction Verification:</strong> Tools for analyzing transactions before signing</li>
+                            <li><strong>Project Research:</strong> Resources for conducting due diligence on projects</li>
+                            <li><strong>Monitoring Services:</strong> Account and asset monitoring solutions</li>
+                            <li><strong>Educational Resources:</strong> Trusted learning materials and guides</li>
+                            <li><strong>Recovery Services:</strong> Legitimate recovery assistance providers</li>
+                          </ul>
                         </div>
                       </div>
                     </div>
