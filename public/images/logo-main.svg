@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main skull -->
+  <path d="M120 210C177.899 210 225 162.899 225 105C225 47.1015 177.899 0 120 0C62.1015 0 15 47.1015 15 105C15 162.899 62.1015 210 120 210Z" fill="#1A1A1A"/>
+  <path d="M120 200C172.467 200 215 157.467 215 105C215 52.5329 172.467 10 120 10C67.5329 10 25 52.5329 25 105C25 157.467 67.5329 200 120 200Z" fill="#111111"/>
+  
+  <!-- Glowing outer edge effect -->
+  <path d="M120 210C177.899 210 225 162.899 225 105C225 47.1015 177.899 0 120 0C62.1015 0 15 47.1015 15 105C15 162.899 62.1015 210 120 210Z" stroke="#8B5CF6" stroke-width="2" stroke-opacity="0.6"/>
+  
+  <!-- Eyes -->
+  <path d="M85 100C96.0457 100 105 91.0457 105 80C105 68.9543 96.0457 60 85 60C73.9543 60 65 68.9543 65 80C65 91.0457 73.9543 100 85 100Z" fill="#8B5CF6" fill-opacity="0.4"/>
+  <path d="M155 100C166.046 100 175 91.0457 175 80C175 68.9543 166.046 60 155 60C143.954 60 135 68.9543 135 80C135 91.0457 143.954 100 155 100Z" fill="#8B5CF6" fill-opacity="0.4"/>
+  
+  <!-- Eye sockets -->
+  <path d="M85 95C93.2843 95 100 88.2843 100 80C100 71.7157 93.2843 65 85 65C76.7157 65 70 71.7157 70 80C70 88.2843 76.7157 95 85 95Z" fill="black"/>
+  <path d="M155 95C163.284 95 170 88.2843 170 80C170 71.7157 163.284 65 155 65C146.716 65 140 71.7157 140 80C140 88.2843 146.716 95 155 95Z" fill="black"/>
+  
+  <!-- Nose -->
+  <path d="M120 100L110 130H130L120 100Z" fill="#333333"/>
+  
+  <!-- Teeth -->
+  <rect x="100" y="140" width="10" height="20" rx="2" fill="white"/>
+  <rect x="115" y="140" width="10" height="20" rx="2" fill="white"/>
+  <rect x="130" y="140" width="10" height="20" rx="2" fill="white"/>
+  
+  <!-- Jaw -->
+  <path d="M90 130C90 130 90 160 120 160C150 160 150 130 150 130H90Z" fill="#333333" stroke="#444444" stroke-width="2"/>
+  
+  <!-- Text Open Crypto -->
+  <text x="120" y="225" fill="#8B5CF6" font-size="18" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold">OPEN CRYPTO FOUNDATION</text>
+</svg> 
