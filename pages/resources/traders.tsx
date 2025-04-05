@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaExclamationTriangle, FaChartLine, FaBook, FaShieldAlt, FaFileAlt, FaBalanceScale, FaSkull, FaRocket, FaTractor, FaLock } from 'react-icons/fa';
+import { FaExclamationTriangle, FaChartLine, FaBook, FaShieldAlt, FaFileAlt, FaBalanceScale, FaSkull, FaRocket, FaTractor, FaLock, FaBolt, FaRobot } from 'react-icons/fa';
 import { useLanguage } from '../../contexts/LanguageContext';
 import TabLayout from '../../components/TabLayout';
 
@@ -468,6 +468,189 @@ export default function Traders() {
                 </div>
               ))}
             </TabLayout>
+          </div>
+
+          <div className="max-w-6xl mx-auto mb-20">
+            <h2 className="text-3xl font-bold mb-8 text-white flex items-center">
+              <FaChartLine className="text-blue-500 mr-3" />
+              Trading Execution Platforms
+            </h2>
+            
+            <p className="text-lg text-gray-300 mb-8">
+              For experienced traders focused on short-term entries and exits, specialized execution platforms offer advantages like reduced slippage, 
+              MEV protection, and advanced charting. Here are some platforms designed for skilled traders:
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition duration-300">
+                <h3 className="text-xl font-bold text-white mb-3 flex items-center">
+                  <span className="bg-blue-500/20 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                    <FaChartLine className="text-blue-400" />
+                  </span>
+                  Dexcelerate
+                </h3>
+                <p className="text-gray-300 mb-4">
+                  A Solana-focused trading interface offering advanced order types, real-time charting, and optimized trade execution. Designed for traders who need precise entries and exits with minimal slippage.
+                </p>
+                <div className="flex justify-between items-center">
+                  <div className="flex space-x-3">
+                    <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-xs">Solana</span>
+                    <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-xs">Low Slippage</span>
+                  </div>
+                  <a 
+                    href="https://app.dexcelerate.com/?a=solana" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-blue-400 hover:text-blue-300 text-sm flex items-center"
+                  >
+                    Launch App
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition duration-300">
+                <h3 className="text-xl font-bold text-white mb-3 flex items-center">
+                  <span className="bg-purple-500/20 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                    <FaRocket className="text-purple-400" />
+                  </span>
+                  Photon
+                </h3>
+                <p className="text-gray-300 mb-4">
+                  A lightning-fast trading interface built on TinyAstro that focuses on execution speed and MEV protection. Offers a streamlined UI for rapid entry and exit, making it ideal for momentum traders.
+                </p>
+                <div className="flex justify-between items-center">
+                  <div className="flex space-x-3">
+                    <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-xs">Multi-Chain</span>
+                    <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-xs">Fast Execution</span>
+                  </div>
+                  <a 
+                    href="https://photon.tinyastro.io/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-blue-400 hover:text-blue-300 text-sm flex items-center"
+                  >
+                    Launch App
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition duration-300">
+                <h3 className="text-xl font-bold text-white mb-3 flex items-center">
+                  <span className="bg-green-500/20 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                    <FaRobot className="text-green-400" />
+                  </span>
+                  GMGN
+                </h3>
+                <p className="text-gray-300 mb-4">
+                  An AI-enhanced trading platform for Solana that combines technical analysis tools with machine learning insights. Features pattern recognition and volatility indicators to assist with timing entries and exits.
+                </p>
+                <div className="flex justify-between items-center">
+                  <div className="flex space-x-3">
+                    <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-xs">Solana</span>
+                    <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-xs">AI-Assisted</span>
+                  </div>
+                  <a 
+                    href="https://gmgn.ai/?ref=I2siZzuE&chain=sol" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-blue-400 hover:text-blue-300 text-sm flex items-center"
+                  >
+                    Launch App
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition duration-300">
+                <h3 className="text-xl font-bold text-white mb-3 flex items-center">
+                  <span className="bg-red-500/20 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                    <FaBolt className="text-red-400" />
+                  </span>
+                  BullX Neo
+                </h3>
+                <p className="text-gray-300 mb-4">
+                  A feature-packed Telegram trading bot built by Kugelblitz that enables lightning-fast trade execution directly from your messaging app. Supports limit orders, stop losses, and real-time alerts.
+                </p>
+                <div className="flex justify-between items-center">
+                  <div className="flex space-x-3">
+                    <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-xs">Telegram</span>
+                    <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-xs">Mobile-Friendly</span>
+                  </div>
+                  <a 
+                    href="https://t.me/BullXNeoBot?start=access_UIA1LN90Q" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-blue-400 hover:text-blue-300 text-sm flex items-center"
+                  >
+                    Launch Bot
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition duration-300 md:col-span-2">
+                <h3 className="text-xl font-bold text-white mb-3 flex items-center">
+                  <span className="bg-yellow-500/20 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                    <FaShieldAlt className="text-yellow-400" />
+                  </span>
+                  MEVX
+                </h3>
+                <p className="text-gray-300 mb-4">
+                  A specialized platform focused on MEV (Maximal Extractable Value) protection that shields traders from front-running and sandwich attacks. Provides secure trade execution with minimal slippage for all experience levels.
+                </p>
+                <div className="flex justify-between items-center">
+                  <div className="flex space-x-3">
+                    <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-xs">MEV Protection</span>
+                    <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-xs">Secure Execution</span>
+                  </div>
+                  <a 
+                    href="https://mevx.io/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-blue-400 hover:text-blue-300 text-sm flex items-center"
+                  >
+                    Launch App
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 bg-blue-900/20 p-6 rounded-lg border border-blue-800/30">
+              <h3 className="text-xl font-bold text-white mb-3">Why Use Specialized Trading Platforms?</h3>
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className="bg-gray-800/50 p-4 rounded-lg">
+                  <h4 className="font-medium text-blue-400 mb-2">Execution Speed</h4>
+                  <p className="text-sm text-gray-300">
+                    Specialized platforms optimize transaction routing and confirmation times, giving traders an edge when markets move quickly.
+                  </p>
+                </div>
+                <div className="bg-gray-800/50 p-4 rounded-lg">
+                  <h4 className="font-medium text-blue-400 mb-2">MEV Protection</h4>
+                  <p className="text-sm text-gray-300">
+                    These platforms implement various techniques to protect against front-running and sandwich attacks that can affect trade execution.
+                  </p>
+                </div>
+                <div className="bg-gray-800/50 p-4 rounded-lg">
+                  <h4 className="font-medium text-blue-400 mb-2">Advanced Order Types</h4>
+                  <p className="text-sm text-gray-300">
+                    Access to limit orders, stop losses, and conditional orders that aren't available on standard DEX interfaces.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Additional sections like Risk Management, Trading Strategy, etc. would go here */}
