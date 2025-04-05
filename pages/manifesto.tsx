@@ -508,6 +508,23 @@ export default function Manifesto() {
                     <p className="text-xl">
                       Behind every cryptocurrency scam statistic are real people whose lives have been severely impacted. These stories highlight the profound human consequences of inadequate protection.
                     </p>
+
+                    <div className="bg-gray-700 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-white mb-4">The Hidden Human Toll</h3>
+                      <p className="mb-4">
+                        While proponents focus on financial inclusion and technological innovation, the industry has a darker reality: countless individuals have lost life savings, homes, relationships, and in some cases, even taken their own lives following catastrophic financial losses in crypto markets.
+                      </p>
+                      <p>
+                        The cryptocurrency ecosystem has created a perfect storm of factors that make scams particularly devastating:
+                      </p>
+                      <ul className="list-disc pl-5 mt-3 space-y-2">
+                        <li>Irreversible transactions mean that once funds are stolen, there is virtually no recourse</li>
+                        <li>Complex technology that few users fully understand creates information asymmetry exploited by scammers</li>
+                        <li>FOMO culture encourages impulsive decisions and overinvestment beyond what individuals can afford to lose</li>
+                        <li>Lack of regulation means few safeguards exist to protect retail investors</li>
+                        <li>Pseudonymity allows perpetrators to hide their identities and escape consequences</li>
+                      </ul>
+                    </div>
                     
                     <h3 className="text-xl font-semibold text-white mt-6 mb-3">Real Victim Profiles</h3>
                     
@@ -595,6 +612,35 @@ export default function Manifesto() {
                           <div>
                             <span className="font-medium text-white">Individuals in developing countries</span> with less regulatory protection and financial infrastructure are disproportionately targeted.
                           </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-700 p-6 rounded-lg mt-6">
+                      <h4 className="text-lg font-medium text-white mb-3">The Retail-Dominated Market Problem</h4>
+                      <p className="mb-4">Unlike traditional financial markets with substantial institutional involvement and professional oversight, cryptocurrency markets remain heavily dominated by retail traders with minimal financial education or experience:</p>
+                      
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h5 className="font-medium text-white mb-2">Low Barriers, High Stakes</h5>
+                          <ul className="list-disc pl-5 space-y-1 text-sm">
+                            <li>Minimal entry requirements with no knowledge prerequisites</li>
+                            <li>Gambling tendencies masquerading as investment</li>
+                            <li>Trading interfaces that use gamification elements</li>
+                            <li>24/7 markets creating constant engagement and stress</li>
+                            <li>Absence of professional guardrails and risk management</li>
+                          </ul>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h5 className="font-medium text-white mb-2">Systemic Vulnerabilities</h5>
+                          <ul className="list-disc pl-5 space-y-1 text-sm">
+                            <li>Markets easily manipulated by triggering emotional responses</li>
+                            <li>Exaggerated volatility from emotional herding behaviors</li>
+                            <li>Susceptibility to social proof over fundamental analysis</li>
+                            <li>Fragile liquidity during market stress</li>
+                            <li>Shortened project timelines prioritizing price over sustainability</li>
+                          </ul>
                         </div>
                       </div>
                     </div>
@@ -724,6 +770,73 @@ export default function Manifesto() {
                           <h4 className="font-medium text-yellow-400">User Privacy</h4>
                           <p>We minimize data collection, never sell user data, and design tools with privacy-preserving principles.</p>
                         </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-700 p-6 rounded-lg mt-6">
+                      <h3 className="text-xl font-semibold text-white mb-3">Redemption and Growth</h3>
+                      <p className="mb-4">
+                        We recognize that the crypto ecosystem—like any human system—is not black and white. Our approach balances accountability with opportunity for positive change:
+                      </p>
+                      
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-yellow-400 mb-2">Past Mistakes as Valuable Insight</h4>
+                          <p className="text-sm">
+                            Individuals who have participated in questionable activities but have since reformed can provide invaluable perspective. Former scammers who choose to become part of the solution offer unique insights that can strengthen protective measures.
+                          </p>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-yellow-400 mb-2">Education Over Ostracism</h4>
+                          <p className="text-sm">
+                            Our goal is not to eliminate scams by vilifying those who've perpetrated them, but rather by making potential victims more knowledgeable and aware of the tactics used against them.
+                          </p>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-yellow-400 mb-2">Alternative Paths</h4>
+                          <p className="text-sm">
+                            We're committed to demonstrating that there are legitimate, sustainable ways to earn a living in the cryptocurrency space by highlighting ethical business models and promoting transparency.
+                          </p>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-yellow-400 mb-2">Balancing Accountability</h4>
+                          <p className="text-sm">
+                            While we advocate for redemption, we also firmly believe in accountability. There must be a balance between providing second chances and ensuring that harmful actions have appropriate consequences.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-red-900/30 p-6 rounded-lg mt-6 border border-red-800/50">
+                      <h3 className="text-xl font-semibold text-white mb-3">Confronting Toxic Culture</h3>
+                      <p className="mb-4">
+                        We take a stand against the normalization and glorification of predatory behavior in cryptocurrency culture:
+                      </p>
+                      
+                      <div className="space-y-3">
+                        <p>
+                          The industry has developed a disturbing vocabulary that masks unethical behavior:
+                        </p>
+                        <div className="grid md:grid-cols-2 gap-3 text-sm">
+                          <div className="bg-gray-800/50 p-3 rounded">
+                            <span className="font-medium text-white">"Diamond hands"</span> – Celebrating holding through losses, often encouraging others not to sell while insiders exit
+                          </div>
+                          <div className="bg-gray-800/50 p-3 rounded">
+                            <span className="font-medium text-white">"FUD"</span> – Dismissing legitimate criticism or concerns as "Fear, Uncertainty and Doubt"
+                          </div>
+                          <div className="bg-gray-800/50 p-3 rounded">
+                            <span className="font-medium text-white">"WAGMI"</span> – Creating false solidarity that discourages critical thinking
+                          </div>
+                          <div className="bg-gray-800/50 p-3 rounded">
+                            <span className="font-medium text-white">"Degen"</span> – Normalizing reckless financial behavior as a badge of honor
+                          </div>
+                        </div>
+                        <p className="mt-2">
+                          This culture has created an environment where predatory behavior is rewarded and even celebrated. We believe in replacing this with a culture of transparency, accountability, and genuine user protection.
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -1139,6 +1252,46 @@ export default function Manifesto() {
                         </div>
                       </div>
                     </div>
+
+                    <div className="bg-teal-900/30 p-6 rounded-lg mt-6 border border-teal-800/50">
+                      <h3 className="text-xl font-semibold text-white mb-4">Our Core Advocacy Positions</h3>
+                      <p className="mb-4">
+                        We are committed to advocating for fundamental changes in the cryptocurrency ecosystem:
+                      </p>
+                      
+                      <div className="space-y-3">
+                        <div className="flex items-start">
+                          <div className="bg-teal-500 h-2 w-2 rounded-full mt-2 mr-2"></div>
+                          <div>
+                            <span className="font-medium text-white">User-centered design</span> that prioritizes protection over speculation, making security the default rather than an optional feature.
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="bg-teal-500 h-2 w-2 rounded-full mt-2 mr-2"></div>
+                          <div>
+                            <span className="font-medium text-white">Platform accountability</span> for the projects they list and promote, with higher standards for verification and ongoing monitoring.
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="bg-teal-500 h-2 w-2 rounded-full mt-2 mr-2"></div>
+                          <div>
+                            <span className="font-medium text-white">Meaningful transparency</span> in project funding, tokenomics, and risk disclosures that go beyond checkbox compliance to genuine informative disclosure.
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="bg-teal-500 h-2 w-2 rounded-full mt-2 mr-2"></div>
+                          <div>
+                            <span className="font-medium text-white">Sensible regulation</span> that protects users without stifling innovation, focused on outcomes rather than technologies.
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="bg-teal-500 h-2 w-2 rounded-full mt-2 mr-2"></div>
+                          <div>
+                            <span className="font-medium text-white">Ethical standards</span> for developers, influencers, and platforms that create clear boundaries between acceptable innovation and harmful exploitation.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     
                     <div className="bg-gray-700 p-6 rounded-lg">
                       <h3 className="text-xl font-semibold text-white mb-3">Call to Action</h3>
@@ -1168,6 +1321,30 @@ export default function Manifesto() {
                             <li>Participate in the incident response network</li>
                             <li>Support our initiatives through grants or sponsorships</li>
                           </ul>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-700 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-white mb-3">Vision for the Future</h3>
+                      
+                      <p className="mb-4">
+                        We believe the future of cryptocurrency depends on building user trust through actual protection rather than empty promises. Our commitment is to help create:
+                      </p>
+                      
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-teal-300 mb-2">A Transformed Ecosystem</h4>
+                          <p className="text-sm">
+                            Where the culture and business practices evolve from a predatory gold rush to a sustainable system that delivers real value to users, with reduced information asymmetry and exploitation.
+                          </p>
+                        </div>
+                        
+                        <div className="bg-gray-600 p-4 rounded-lg">
+                          <h4 className="font-medium text-teal-300 mb-2">Empowered Users</h4>
+                          <p className="text-sm">
+                            With the knowledge, tools, and support to navigate blockchain technology safely, evaluate projects effectively, and recover when things go wrong.
+                          </p>
                         </div>
                       </div>
                     </div>
