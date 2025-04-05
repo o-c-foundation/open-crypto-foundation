@@ -273,8 +273,10 @@ export default function Manifesto() {
       <div className="py-12 md:py-24">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="text-center relative">
-            <div className="flex justify-center mb-24">
-              <SkullLogo className="w-36 h-36" />
+            <div className="flex justify-center items-center w-full mb-24">
+              <div className="mx-auto">
+                <SkullLogo className="w-36 h-36" />
+              </div>
             </div>
             <div className="mb-20">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-purple-400 via-blue-500 to-teal-500 text-transparent bg-clip-text">
