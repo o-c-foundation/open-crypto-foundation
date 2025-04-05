@@ -113,41 +113,6 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Top Cryptocurrencies Section */}
-      <section className="py-16 bg-gradient-to-r from-gray-900 to-gray-800">
-        <div className="container px-4 mx-auto">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="mb-6 text-3xl font-bold text-white">Supporting All Major Cryptocurrencies</h2>
-            <p className="mb-8 text-xl text-gray-300 max-w-3xl mx-auto">
-              Our tools and educational resources cover a wide range of blockchain ecosystems
-            </p>
-            
-            <div className="relative bg-gray-800/50 rounded-xl p-6 border border-gray-700 shadow-xl">
-              <div className="flex justify-center">
-                <div className="relative w-full max-w-3xl aspect-[3/1] rounded-lg overflow-hidden">
-                  <Image 
-                    src="https://bafkreia5c7l5vs4oetg4cn5557wp34nl3k5lya63ayq6i2x66gte6nseni.ipfs.w3s.link/"
-                    alt="Top cryptocurrency logos including Bitcoin, Ethereum, and other major coins"
-                    fill
-                    style={{ 
-                      objectFit: 'contain',
-                      objectPosition: 'center'
-                    }}
-                    priority
-                    className="rounded-lg"
-                  />
-                </div>
-              </div>
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-20 pointer-events-none"></div>
-            </div>
-            
-            <p className="mt-6 text-gray-400 text-sm">
-              We provide security guidance across all major blockchain networks
-            </p>
-          </div>
-        </div>
-      </section>
-      
       {/* Newsletter Section */}
       <section className="py-20 bg-gray-800">
         <div className="container px-4 mx-auto">
