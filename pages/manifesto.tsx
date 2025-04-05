@@ -270,17 +270,17 @@ export default function Manifesto() {
         <meta name="description" content="The Open Crypto Foundation's manifesto outlines our mission to create a safer crypto ecosystem through education, transparency, and accountability." />
       </Head>
 
-      <div className="py-12 md:py-20">
-        <div className="container px-4 md:px-6">
+      <div className="py-12 md:py-24">
+        <div className="container px-4 md:px-6 mx-auto">
           <div className="text-center relative">
-            <div className="flex justify-center mb-20">
-              <SkullLogo className="w-32 h-32" />
+            <div className="flex justify-center mb-24">
+              <SkullLogo className="w-36 h-36" />
             </div>
-            <div className="mb-16">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">
+            <div className="mb-20">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-purple-400 via-blue-500 to-teal-500 text-transparent bg-clip-text">
                 Manifesto
               </h1>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
                 Our commitment to creating a safer, more transparent cryptocurrency ecosystem.
               </p>
             </div>
@@ -850,7 +850,7 @@ export default function Manifesto() {
               <div className={`transition-all duration-300 ${activeTab === 'solution' ? 'block' : 'hidden'}`}>
                 <div className="bg-gray-800 rounded-lg p-6">
                   <h2 className="text-2xl font-bold mb-6 text-white flex items-center">
-                    <FaHandHoldingUsd className="text-pink-400 mr-3" />
+                    <FaHandHoldingUsd className="text-blue-400 mr-3" />
                     Our Solution
                   </h2>
                   
@@ -868,8 +868,8 @@ export default function Manifesto() {
                       
                       <div className="grid md:grid-cols-3 gap-5">
                         <div className="bg-gray-600 p-5 rounded-lg">
-                          <div className="bg-pink-500/20 rounded-full w-12 h-12 flex items-center justify-center mb-3">
-                            <FaShieldAlt className="text-pink-400 text-xl" />
+                          <div className="bg-blue-500/20 rounded-full w-12 h-12 flex items-center justify-center mb-3">
+                            <FaShieldAlt className="text-blue-400 text-xl" />
                           </div>
                           <h4 className="font-medium text-white text-lg mb-2">Education</h4>
                           <p className="text-sm">
@@ -965,8 +965,8 @@ export default function Manifesto() {
                         </div>
                         
                         <div className="bg-gray-600 p-4 rounded-lg">
-                          <h4 className="font-medium text-green-300 text-lg flex items-center mb-3">
-                            <span className="bg-green-500/20 rounded-full w-8 h-8 flex items-center justify-center mr-2">3</span>
+                          <h4 className="font-medium text-blue-300 text-lg flex items-center mb-3">
+                            <span className="bg-blue-500/20 rounded-full w-8 h-8 flex items-center justify-center mr-2">3</span>
                             Safe Crypto Standards
                           </h4>
                           <p className="mb-3">
@@ -996,8 +996,8 @@ export default function Manifesto() {
                         </div>
                         
                         <div className="bg-gray-600 p-4 rounded-lg">
-                          <h4 className="font-medium text-yellow-300 text-lg flex items-center mb-3">
-                            <span className="bg-yellow-500/20 rounded-full w-8 h-8 flex items-center justify-center mr-2">4</span>
+                          <h4 className="font-medium text-blue-300 text-lg flex items-center mb-3">
+                            <span className="bg-blue-500/20 rounded-full w-8 h-8 flex items-center justify-center mr-2">4</span>
                             Educational Platform
                           </h4>
                           <p className="mb-3">
@@ -1084,7 +1084,7 @@ export default function Manifesto() {
                       </div>
                     </div>
                     
-                    <div className="bg-gradient-to-r from-purple-900/30 to-pink-900/30 p-6 rounded-lg border border-purple-800/50">
+                    <div className="bg-gradient-to-r from-blue-900/30 to-teal-900/30 p-6 rounded-lg border border-blue-800/50">
                       <h3 className="text-xl font-semibold text-white mb-4">Get Involved</h3>
                       
                       <p className="mb-4">
@@ -1093,7 +1093,7 @@ export default function Manifesto() {
                       
                       <div className="grid md:grid-cols-3 gap-4">
                         <div className="bg-gray-800/50 p-4 rounded-lg">
-                          <h4 className="font-medium text-pink-300 mb-2">For Developers</h4>
+                          <h4 className="font-medium text-blue-300 mb-2">For Developers</h4>
                           <ul className="list-disc pl-5 space-y-1 text-sm">
                             <li>Submit your projects for audit review</li>
                             <li>Contribute to educational materials</li>
@@ -1103,7 +1103,7 @@ export default function Manifesto() {
                         </div>
                         
                         <div className="bg-gray-800/50 p-4 rounded-lg">
-                          <h4 className="font-medium text-blue-300 mb-2">For Community Members</h4>
+                          <h4 className="font-medium text-green-300 mb-2">For Community Members</h4>
                           <ul className="list-disc pl-5 space-y-1 text-sm">
                             <li>Report suspicious projects</li>
                             <li>Share experiences and lessons</li>
@@ -1113,7 +1113,7 @@ export default function Manifesto() {
                         </div>
                         
                         <div className="bg-gray-800/50 p-4 rounded-lg">
-                          <h4 className="font-medium text-green-300 mb-2">For Projects & Platforms</h4>
+                          <h4 className="font-medium text-yellow-300 mb-2">For Projects & Platforms</h4>
                           <ul className="list-disc pl-5 space-y-1 text-sm">
                             <li>Adopt security standards</li>
                             <li>Request audit services</li>
@@ -1124,7 +1124,7 @@ export default function Manifesto() {
                       </div>
                       
                       <div className="text-center mt-5">
-                        <a href="#" className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium py-2 px-5 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-colors">
+                        <a href="#" className="inline-block bg-gradient-to-r from-blue-600 to-teal-600 text-white font-medium py-2 px-5 rounded-lg hover:from-blue-700 hover:to-teal-700 transition-colors">
                           Join Our Discord
                         </a>
                       </div>
@@ -1365,7 +1365,7 @@ export default function Manifesto() {
               <div className={`transition-all duration-300 ${activeTab === 'initiatives' ? 'block' : 'hidden'}`}>
                 <div className="bg-gray-800 rounded-lg p-6">
                   <h2 className="text-2xl font-bold mb-6 text-white flex items-center">
-                    <FaHandHoldingUsd className="text-pink-400 mr-3" />
+                    <FaHandHoldingUsd className="text-blue-400 mr-3" />
                     Our Initiatives
                   </h2>
                   
@@ -1375,7 +1375,7 @@ export default function Manifesto() {
                     </p>
                     
                     <div className="bg-gray-700 p-6 rounded-lg mt-6">
-                      <h3 className="text-xl font-semibold text-pink-400 mb-3">Comprehensive Educational Platform</h3>
+                      <h3 className="text-xl font-semibold text-blue-400 mb-3">Comprehensive Educational Platform</h3>
                       <div className="space-y-4">
                         <p>We're building an accessible, multilingual educational platform designed for users at all knowledge levels, focusing on security best practices and scam identification.</p>
                         
@@ -1406,7 +1406,7 @@ export default function Manifesto() {
                     </div>
                     
                     <div className="bg-gray-700 p-6 rounded-lg">
-                      <h3 className="text-xl font-semibold text-pink-400 mb-3">Project Safety Standards</h3>
+                      <h3 className="text-xl font-semibold text-blue-400 mb-3">Project Safety Standards</h3>
                       <div className="space-y-4">
                         <p>We're developing an open, community-driven standard for project transparency and security, enabling users to quickly identify projects meeting baseline safety criteria.</p>
                         
@@ -1439,7 +1439,7 @@ export default function Manifesto() {
                     </div>
                     
                     <div className="bg-gray-700 p-6 rounded-lg">
-                      <h3 className="text-xl font-semibold text-pink-400 mb-3">Professional Audit Services</h3>
+                      <h3 className="text-xl font-semibold text-blue-400 mb-3">Professional Audit Services</h3>
                       <div className="space-y-4">
                         <p>Our comprehensive security audit services help cryptocurrency projects identify vulnerabilities, implement best practices, and build user trust through enhanced security and transparency.</p>
                         
@@ -1471,7 +1471,7 @@ export default function Manifesto() {
                     </div>
                     
                     <div className="bg-gray-700 p-6 rounded-lg">
-                      <h3 className="text-xl font-semibold text-pink-400 mb-3">Curated Security Resource Directory</h3>
+                      <h3 className="text-xl font-semibold text-blue-400 mb-3">Curated Security Resource Directory</h3>
                       <div className="space-y-4">
                         <p>We carefully evaluate and curate directories of third-party security tools and services, helping users find trustworthy resources that meet our strict standards for security and effectiveness.</p>
                         
@@ -1490,7 +1490,7 @@ export default function Manifesto() {
                     </div>
                     
                     <div className="bg-gray-700 p-6 rounded-lg">
-                      <h3 className="text-xl font-semibold text-pink-400 mb-3">Incident Response Network</h3>
+                      <h3 className="text-xl font-semibold text-blue-400 mb-3">Incident Response Network</h3>
                       <div className="space-y-4">
                         <p>We're establishing a coordinated response network to assist scam victims, report incidents, and facilitate recovery efforts when possible.</p>
                         
@@ -1516,7 +1516,7 @@ export default function Manifesto() {
                       
                       <div className="grid md:grid-cols-2 gap-5">
                         <div>
-                          <h4 className="font-medium text-purple-300 mb-2">Research Focus Areas</h4>
+                          <h4 className="font-medium text-blue-300 mb-2">Research Focus Areas</h4>
                           <ul className="list-disc pl-5 space-y-1">
                             <li>Psychological factors in crypto scam susceptibility</li>
                             <li>Smart contract vulnerability patterns and detection</li>
@@ -1527,7 +1527,7 @@ export default function Manifesto() {
                         </div>
                         
                         <div>
-                          <h4 className="font-medium text-purple-300 mb-2">Output Formats</h4>
+                          <h4 className="font-medium text-blue-300 mb-2">Output Formats</h4>
                           <ul className="list-disc pl-5 space-y-1">
                             <li>Peer-reviewed academic papers</li>
                             <li>Accessible summaries for general audiences</li>
