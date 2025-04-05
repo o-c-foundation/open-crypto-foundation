@@ -454,6 +454,129 @@ export default function TraderResources() {
                     </Link>
                   </div>
                 </div>
+
+                <div>
+                  <div className="flex items-center mb-4">
+                    <FaFileAlt className="text-purple-400 mr-3" size={22} />
+                    <h3 className="text-xl font-semibold text-white">Additional Critical Protection Strategies</h3>
+                  </div>
+                  <p className="text-gray-300 mb-6">
+                    Beyond recognizing scam types, these advanced strategies will significantly enhance your ability to protect yourself in the cryptocurrency space:
+                  </p>
+                  
+                  <div className="space-y-6">
+                    {/* Liquidity Lock Strategy */}
+                    <div className="bg-gray-900 rounded-lg p-6">
+                      <h5 className="font-semibold text-white text-lg mb-3 flex items-center">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-purple-900 mr-3 text-purple-200">1</div>
+                        Beyond Locked Liquidity: Understanding Burned LP Tokens
+                      </h5>
+                      <div className="text-gray-300 space-y-3">
+                        <p>
+                          While many projects advertise "locked liquidity" as a security feature, this only offers temporary protection. When developers merely lock liquidity, they can regain access once the lock period expires (often just months). <strong className="text-purple-300">The gold standard is both burned AND locked liquidity</strong>.
+                        </p>
+                        <p>
+                          When LP (Liquidity Provider) tokens are permanently burned, the creator sends them to a dead address (like 0x000...dead), making the pooled assets permanently inaccessible to anyone—including themselves. This irreversible action demonstrates long-term commitment, as developers can never drain the liquidity pool.
+                        </p>
+                        <p>
+                          How to verify burned liquidity:
+                        </p>
+                        <ul className="list-disc pl-5 space-y-1">
+                          <li>Visit the token's blockchain explorer (e.g., Etherscan, BscScan)</li>
+                          <li>Locate the LP token contract address (should be provided by developers)</li>
+                          <li>Check holders tab to confirm LP tokens are sent to a verified burn address</li>
+                          <li>Ensure the percentage burned is significant (ideally more than 95% of all LP tokens)</li>
+                          <li>Verify transaction timestamps match the project's claims</li>
+                        </ul>
+                        <p className="text-yellow-300 text-sm italic mt-3">
+                          Remember: Locked liquidity ≠ Safe investment. It's merely one security factor among many required to establish legitimacy.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    {/* Launchpad Reality */}
+                    <div className="bg-gray-900 rounded-lg p-6">
+                      <h5 className="font-semibold text-white text-lg mb-3 flex items-center">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-purple-900 mr-3 text-purple-200">2</div>
+                        The Reality of Launchpad Tokens: High Risk Despite Community Support
+                      </h5>
+                      <div className="text-gray-300 space-y-3">
+                        <p>
+                          Platforms like PinkSale, DxSale, and PMP.fun make it extremely easy for anyone to create and launch tokens with minimal technical knowledge. <strong className="text-red-300">The inconvenient truth is that an overwhelming majority (estimated more than 95% of these launchpad tokens are fundamentally worthless)</strong>, regardless of their temporary price action or community enthusiasm.
+                        </p>
+                        <p>
+                          These projects typically follow a predictable lifecycle:
+                        </p>
+                        <ol className="list-decimal pl-5 space-y-2">
+                          <li>
+                            <span className="text-white font-medium">Launch Phase:</span> Aggressive marketing creates initial excitement and FOMO (Fear Of Missing Out)
+                          </li>
+                          <li>
+                            <span className="text-white font-medium">Peak Hype:</span> Early adopters and promoters push the narrative, driving prices up temporarily
+                          </li>
+                          <li>
+                            <span className="text-white font-medium">Community Takeover:</span> Even when original developers abandon the project and a community takes over, the fundamental lack of value remains
+                          </li>
+                          <li>
+                            <span className="text-white font-medium">Inevitable Decline:</span> Without genuine utility or value creation, interest wanes and prices collapse
+                          </li>
+                        </ol>
+                        <p>
+                          Even tokens that reach millions in market capitalization often lack sustainable fundamentals. A genuine project requires:
+                        </p>
+                        <ul className="list-disc pl-5 space-y-1">
+                          <li>Real utility that solves an actual market problem</li>
+                          <li>Long-term holder benefits beyond speculative price action</li>
+                          <li>Transparent team with proven experience</li>
+                          <li>Sustainable tokenomics (not just reflection/tax mechanisms)</li>
+                          <li>Genuine development milestones and roadmap progress</li>
+                        </ul>
+                        <p className="text-yellow-300 text-sm italic mt-3">
+                          Critical insight: There's a profound difference between price and value. Many tokens can experience dramatic price increases while remaining fundamentally valueless.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    {/* Wallet Analysis */}
+                    <div className="bg-gray-900 rounded-lg p-6">
+                      <h5 className="font-semibold text-white text-lg mb-3 flex items-center">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-purple-900 mr-3 text-purple-200">3</div>
+                        Advanced Wallet Analysis: Uncovering Hidden Ownership Structures
+                      </h5>
+                      <div className="text-gray-300 space-y-3">
+                        <p>
+                          One of the most effective ways to identify manipulation is through detailed analysis of token holder wallets. <strong className="text-purple-300">A critical red flag is when top holders are predominantly fresh wallets with minimal transaction history</strong>, often containing only the token in question and a small amount of native currency for gas fees.
+                        </p>
+                        <p>
+                          Sophisticated scammers attempt to disguise concentrated ownership by spreading tokens across multiple addresses they control. To uncover these schemes:
+                        </p>
+                        <ul className="list-disc pl-5 space-y-2">
+                          <li>
+                            <span className="text-white font-medium">Trace wallet funding sources:</span> Examine where each top wallet obtained its initial funds—often, multiple wallets funded from a single source indicates coordinated control
+                          </li>
+                          <li>
+                            <span className="text-white font-medium">Analyze transaction patterns:</span> Look for synchronization in buying/selling behaviors across different wallets
+                          </li>
+                          <li>
+                            <span className="text-white font-medium">Investigate wallet age and diversity:</span> Genuine investors typically have diverse portfolios and established transaction histories
+                          </li>
+                          <li>
+                            <span className="text-white font-medium">Examine token distribution:</span> Healthy projects show organic distribution patterns rather than suspiciously even allocations
+                          </li>
+                          <li>
+                            <span className="text-white font-medium">Watch for interlinked wallets:</span> Follow transaction trails between wallets to identify connected networks
+                          </li>
+                        </ul>
+                        <p>
+                          Tools like Etherscan, BscScan, and specialized platforms like Nansen can help track wallet relationships and token flows. The time invested in this analysis can save you from substantial losses by revealing artificial market structures designed to create an illusion of widespread interest.
+                        </p>
+                        <p className="text-yellow-300 text-sm italic mt-3">
+                          Pro tip: In legitimate projects, token distribution gradually becomes more decentralized over time. Projects with permanently concentrated ownership (even across multiple wallets) are highly susceptible to market manipulation.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
