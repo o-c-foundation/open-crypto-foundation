@@ -1,11 +1,151 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { FaExclamationTriangle, FaChartLine, FaBook, FaShieldAlt, FaFileAlt, FaBalanceScale } from 'react-icons/fa';
+import Image from 'next/image';
+import { FaExclamationTriangle, FaChartLine, FaBook, FaShieldAlt, FaFileAlt, FaBalanceScale, FaSkull, FaRocket, FaTractor, FaLock } from 'react-icons/fa';
 import { useLanguage } from '../../contexts/LanguageContext';
+
+// Scam types data
+const scamTypes = [
+  {
+    id: 'rug-pull',
+    name: 'Rug Pull',
+    icon: <FaSkull className="text-red-500" size={24} />,
+    description: 'A rug pull occurs when the project developers/insiders hold a significant portion of the token supply, build up hype, and then suddenly sell (dump) all their holdings, causing the token price to crash to near zero.',
+    details: [
+      'Developers create a token and pair it with a valuable cryptocurrency (like ETH or BNB) in a liquidity pool',
+      'They market the project aggressively, promising incredible returns or utility',
+      'Once sufficient liquidity has been added by investors, developers withdraw all liquidity and disappear',
+      'Investors are left with worthless tokens that cannot be sold'
+    ],
+    warning_signs: [
+      'Anonymous team with no verifiable history or credentials',
+      'Contract is not verified on blockchain explorers like Etherscan',
+      'Team owns a large percentage of the total token supply (> 20%)',
+      'Liquidity is not locked or is only locked for a short period',
+      'Ownership of the contract is not renounced (allowing developers to modify functions)',
+      'Suspiciously fast growth in value without corresponding development milestones'
+    ],
+    prevention: [
+      'Check token distribution - highly concentrated ownership is a red flag',
+      'Verify that liquidity is locked for an extended period (years, not months)',
+      'Research the team thoroughly - look for real identities with verifiable track records',
+      'Use tools like Token Sniffer or our Contract Scanner to check for malicious functions',
+      'Be skeptical of projects with extremely high promised returns'
+    ],
+    image: '/images/scams/rug-pull/diagram.jpg',
+    examples: [
+      'SQUID token (2021): Inspired by Netflix show "Squid Game", raised millions before developers disappeared with an estimated $3.38 million',
+      'Luna Yield (2021): DeFi project on Solana that vanished with over $10 million in investor funds',
+      'Thodex (2021): Turkish exchange whose CEO disappeared with $2 billion in investor assets'
+    ]
+  },
+  {
+    id: 'pump-and-dump',
+    name: 'Pump and Dump',
+    icon: <FaRocket className="text-orange-500" size={24} />,
+    description: 'A coordinated effort to artificially inflate a token\'s price (pump) through misleading statements, celebrity endorsements, or false news, followed by selling off holdings (dump) once prices rise sufficiently.',
+    details: [
+      'Organizers accumulate a large position in a low-cap, illiquid cryptocurrency at low prices',
+      'They spread misleading positive information through social media, paid promotions, or influencer endorsements',
+      'When enough unsuspecting investors buy in and drive the price up, organizers sell their entire position',
+      'The token price crashes, leaving new investors with significant losses'
+    ],
+    warning_signs: [
+      'Sudden price increases without substantial news or development updates',
+      'Coordinated promotion by multiple influencers simultaneously',
+      'Celebrity endorsements, especially from those not typically involved in cryptocurrency',
+      'Excessive hype on social media with little substance about actual utility',
+      'Unrealistic price predictions in a short timeframe',
+      'Heavy emphasis on "buying now before it\'s too late"'
+    ],
+    prevention: [
+      'Be skeptical of projects heavily promoted by influencers, especially if they\'re paid to promote',
+      'Research the token\'s fundamentals rather than making decisions based on FOMO',
+      'Check trading volume - artificially pumped coins often have unusual volume patterns',
+      'Avoid buying into sudden price spikes without clear catalysts',
+      'Look for evidence of long-term development and real use cases'
+    ],
+    image: '/images/scams/pump-and-dump/chart.jpg',
+    examples: [
+      'SaveTheKids token (2021): Promoted by several social media influencers before crashing',
+      'Multiple coins endorsed by celebrities like Kim Kardashian (EthereumMax) and Floyd Mayweather',
+      'Countless small-cap altcoins promoted through coordinated Telegram and Discord groups'
+    ]
+  },
+  {
+    id: 'farming',
+    name: 'Farming (Cyclic Pump and Dump)',
+    icon: <FaTractor className="text-green-500" size={24} />,
+    description: 'A sophisticated manipulation technique where scammers repeatedly cycle a token through artificial pumps and dumps, extracting value from investors at each cycle while creating the illusion of a volatile but recovering asset.',
+    details: [
+      'Scammers establish positions in a relatively unknown token',
+      'They artificially pump the price to attract attention and new investors',
+      'After reaching a target price, they sell a portion of their holdings, causing a significant dip',
+      'This creates panic selling among investors, driving the price down further',
+      'Scammers then rebuy at the bottom and repeat the cycle multiple times',
+      'Each cycle extracts value from new investors while maintaining the appearance of a legitimate but volatile token'
+    ],
+    warning_signs: [
+      'Repetitive price patterns that show sharp rises followed by steep drops',
+      'Recovery phases that never quite reach previous highs',
+      'Suspicious trading volume that increases dramatically during pumps',
+      'Project teams that always provide explanations for dips and promise recoveries',
+      'Constant new "partnerships" or developments announced just as price begins to fall'
+    ],
+    prevention: [
+      'Analyze the token\'s price history for suspicious repetitive patterns',
+      'Be wary of communities that dismiss concerns about volatility as "weak hands"',
+      'Check wallet distribution to see if large holdings are concentrated among a few addresses',
+      'Look for projects with tangible progress rather than just marketing announcements',
+      'Use blockchain explorers to track large trades that occur before major price movements'
+    ],
+    image: '/images/scams/farming/cycles.jpg',
+    examples: [
+      'Numerous small to mid-cap altcoins exhibit this pattern over extended periods',
+      'Often disguised as "accumulation phases" in trading communities',
+      'Frequently seen in meme coins that rely on community sentiment rather than fundamentals'
+    ]
+  },
+  {
+    id: 'honeypot',
+    name: 'Honeypot',
+    icon: <FaLock className="text-yellow-500" size={24} />,
+    description: 'A deceptive contract designed to prevent investors from selling their tokens, trapping their funds while allowing only the creators to withdraw.',
+    details: [
+      'Developers create a token with a seemingly normal smart contract but with hidden functions',
+      'The contract has code that allows buying but prevents everyone except the creators from selling',
+      'Price initially rises as people can only buy, creating FOMO and attracting more investors',
+      'Once enough people have invested, the creators sell their tokens and/or remove liquidity',
+      'Investors discover they cannot sell their tokens regardless of the price'
+    ],
+    warning_signs: [
+      'Extremely positive early price performance with few or no dips',
+      'Small number of sell transactions visible on blockchain explorers',
+      'Contract code includes complex or obfuscated functions that restrict selling',
+      'Very new contracts with limited transaction history',
+      'Project teams that are completely anonymous',
+      'Excessive transaction taxes or fees (beyond typical tokenomics)'
+    ],
+    prevention: [
+      'Always verify the contract code or use honeypot detection tools before investing',
+      'Test with a very small amount first and ensure you can sell before investing more',
+      'Check trading history to confirm others have successfully sold tokens',
+      'Use our Contract Scanner which checks for honeypot code patterns',
+      'Be suspicious of tokens with unusual restrictions on selling or extraordinary fees'
+    ],
+    image: '/images/scams/honeypot/contract.jpg',
+    examples: [
+      'Thousands of tokens on BSC and other chains specifically designed as honeypots',
+      'Often named after popular memes, games, or current events to attract attention',
+      'Frequently deployed during bull markets when investor caution is lowest'
+    ]
+  }
+];
 
 export default function TraderResources() {
   const { t } = useLanguage();
+  const [activeScam, setActiveScam] = useState('rug-pull');
 
   return (
     <>
@@ -83,7 +223,7 @@ export default function TraderResources() {
                   <p className="text-gray-300 mb-6">
                     The cryptocurrency space is rife with scams, rug pulls, and exploitative projects. Here's how to protect yourself:
                   </p>
-                  <div className="grid gap-6 md:grid-cols-2">
+                  <div className="grid gap-6 md:grid-cols-2 mb-10">
                     <div className="bg-gray-700 p-5 rounded-lg">
                       <h4 className="font-semibold text-white mb-2">Red Flags to Watch For</h4>
                       <ul className="list-disc pl-5 text-gray-300 text-sm space-y-1">
@@ -107,6 +247,122 @@ export default function TraderResources() {
                         <li>Use hardware wallets for larger holdings</li>
                         <li>Regularly revoke unnecessary contract approvals</li>
                       </ul>
+                    </div>
+                  </div>
+
+                  {/* Common Crypto Scams Section */}
+                  <div className="mt-8 mb-4">
+                    <h4 className="text-lg font-semibold text-white mb-4">Common Crypto Scams to Recognize</h4>
+                    <p className="text-gray-300 mb-6">
+                      Understanding how these scams work is your first line of defense. Click on each tab to learn about different scam tactics used by malicious actors in the crypto space.
+                    </p>
+                    
+                    {/* Scam Type Tabs */}
+                    <div className="border-b border-gray-700 mb-6">
+                      <div className="flex flex-wrap -mb-px">
+                        {scamTypes.map((scam) => (
+                          <button
+                            key={scam.id}
+                            onClick={() => setActiveScam(scam.id)}
+                            className={`inline-flex items-center py-4 px-4 text-sm font-medium text-center border-b-2 ${
+                              activeScam === scam.id 
+                                ? 'text-white border-purple-500' 
+                                : 'text-gray-400 border-transparent hover:text-gray-300 hover:border-gray-600'
+                            }`}
+                          >
+                            <span className="mr-2">{scam.icon}</span>
+                            {scam.name}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Scam Details */}
+                    {scamTypes.map((scam) => (
+                      <div 
+                        key={scam.id} 
+                        className={activeScam === scam.id ? 'block' : 'hidden'}
+                      >
+                        <div className="bg-gray-900 rounded-lg p-6 mb-6">
+                          <div className="flex items-center mb-4">
+                            {scam.icon}
+                            <h5 className="text-xl font-bold text-white ml-3">{scam.name}</h5>
+                          </div>
+                          <p className="text-gray-300 mb-4">{scam.description}</p>
+                          
+                          <div className="grid md:grid-cols-2 gap-6">
+                            {/* Left column - details and warnings */}
+                            <div>
+                              <h6 className="font-semibold text-purple-400 mb-2">How it Works</h6>
+                              <ul className="list-disc pl-5 text-gray-300 mb-6 space-y-1">
+                                {scam.details.map((detail, index) => (
+                                  <li key={index}>{detail}</li>
+                                ))}
+                              </ul>
+                              
+                              <h6 className="font-semibold text-red-400 mb-2">Warning Signs</h6>
+                              <ul className="list-disc pl-5 text-gray-300 mb-4 space-y-1">
+                                {scam.warning_signs.map((sign, index) => (
+                                  <li key={index}>{sign}</li>
+                                ))}
+                              </ul>
+                            </div>
+                            
+                            {/* Right column - prevention and examples */}
+                            <div>
+                              <h6 className="font-semibold text-green-400 mb-2">How to Protect Yourself</h6>
+                              <ul className="list-disc pl-5 text-gray-300 mb-6 space-y-1">
+                                {scam.prevention.map((tip, index) => (
+                                  <li key={index}>{tip}</li>
+                                ))}
+                              </ul>
+                              
+                              <h6 className="font-semibold text-yellow-400 mb-2">Real-World Examples</h6>
+                              <ul className="list-disc pl-5 text-gray-300 space-y-1">
+                                {scam.examples.map((example, index) => (
+                                  <li key={index}>{example}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        {/* Image placeholder - shows where to place images */}
+                        <div className="bg-gray-900 rounded-lg p-4 text-center mb-4">
+                          <p className="text-gray-400 mb-3 text-sm italic">
+                            The diagram below illustrates how a {scam.name.toLowerCase()} typically works:
+                          </p>
+                          <div className="bg-gray-800 border border-dashed border-gray-700 rounded-lg p-8 flex items-center justify-center">
+                            <div className="text-center">
+                              <p className="text-gray-500 mb-2 font-mono text-sm">
+                                {`[Image: ${scam.name} Diagram]`}
+                              </p>
+                              <p className="text-gray-400 text-xs">
+                                Place an image at: {scam.image}
+                              </p>
+                            </div>
+                          </div>
+                          <p className="text-gray-400 mt-3 text-sm">
+                            To add this image, place it in: <code className="bg-gray-800 px-1 py-0.5 rounded font-mono">/public/images/scams/{scam.id}/</code>
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                    
+                    <div className="mt-6 bg-purple-900 bg-opacity-20 border border-purple-800 rounded-lg p-4">
+                      <h5 className="font-semibold text-white mb-2 flex items-center">
+                        <FaShieldAlt className="text-purple-400 mr-2" />
+                        Use Our Safety Tools
+                      </h5>
+                      <p className="text-gray-300 text-sm mb-3">
+                        Don't fall victim to these scams. Use our free tools to verify contracts and check for potential red flags before investing.
+                      </p>
+                      <Link 
+                        href="/tools/contract-scanner" 
+                        className="inline-block px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors"
+                      >
+                        Scan a Contract
+                      </Link>
                     </div>
                   </div>
                 </div>
