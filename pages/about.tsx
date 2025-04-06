@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
-import { FaUsers, FaChartLine, FaShieldAlt, FaHandshake, FaHistory, FaMedal } from 'react-icons/fa'
+import { FaUsers, FaChartLine, FaShieldAlt, FaHandshake, FaHistory, FaMedal, FaLightbulb, FaGlobe } from 'react-icons/fa'
 import { useLanguage } from '../contexts/LanguageContext'
 import TabLayout from '../components/TabLayout'
+import ScrollToTop from '../components/ScrollToTop'
 
 export default function AboutPage() {
   const { t } = useLanguage()
@@ -41,93 +42,33 @@ export default function AboutPage() {
       )
     },
     {
-      id: 'team',
-      name: 'Our Team',
-      icon: <FaUsers className="text-blue-400" size={24} />,
+      id: 'purpose',
+      name: 'Our Purpose',
+      icon: <FaLightbulb className="text-blue-400" size={24} />,
       content: (
-        <div className="space-y-6">
+        <div className="space-y-4">
           <p className="text-gray-300">
-            The Open Crypto Foundation is led by a diverse team of experts with backgrounds in blockchain development, 
-            cybersecurity, finance, and consumer protection advocacy. Our team combines technical expertise with a 
-            commitment to creating a more ethical crypto ecosystem.
+            The Open Crypto Foundation serves as a nonprofit organization dedicated to advancing the security, transparency, 
+            and accessibility of blockchain technology and cryptocurrency ecosystems. We function as an independent entity 
+            focused solely on the betterment of the space through education, research, and tooling.
           </p>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-gray-700 p-5 rounded-lg">
-              <div className="flex items-center mb-3">
-                <div className="w-12 h-12 bg-gray-600 rounded-full mr-4">
-                  {/* Replace with actual team member image */}
-                  <div className="w-full h-full rounded-full bg-gradient-to-br from-purple-500 to-blue-500"></div>
-                </div>
-                <div>
-                  <h4 className="text-white font-medium">Alexandra Chen</h4>
-                  <p className="text-gray-400 text-sm">Executive Director & Co-founder</p>
-                </div>
-              </div>
-              <p className="text-gray-300 text-sm">
-                Former cybersecurity researcher with expertise in smart contract vulnerabilities. 
-                Led security teams at major blockchain platforms before co-founding OCF.
-              </p>
-            </div>
-            
-            <div className="bg-gray-700 p-5 rounded-lg">
-              <div className="flex items-center mb-3">
-                <div className="w-12 h-12 bg-gray-600 rounded-full mr-4">
-                  {/* Replace with actual team member image */}
-                  <div className="w-full h-full rounded-full bg-gradient-to-br from-green-500 to-teal-500"></div>
-                </div>
-                <div>
-                  <h4 className="text-white font-medium">Marcus Whitfield</h4>
-                  <p className="text-gray-400 text-sm">CTO & Co-founder</p>
-                </div>
-              </div>
-              <p className="text-gray-300 text-sm">
-                Blockchain developer with 7+ years of experience. Previously contributed to Ethereum core development 
-                and led security audits for multiple DeFi protocols.
-              </p>
-            </div>
-            
-            <div className="bg-gray-700 p-5 rounded-lg">
-              <div className="flex items-center mb-3">
-                <div className="w-12 h-12 bg-gray-600 rounded-full mr-4">
-                  {/* Replace with actual team member image */}
-                  <div className="w-full h-full rounded-full bg-gradient-to-br from-red-500 to-pink-500"></div>
-                </div>
-                <div>
-                  <h4 className="text-white font-medium">Dr. Sophia Rodriguez</h4>
-                  <p className="text-gray-400 text-sm">Research Director</p>
-                </div>
-              </div>
-              <p className="text-gray-300 text-sm">
-                PhD in Computer Science with specialization in distributed systems. Academic background combined with 
-                practical experience in cryptocurrency trading patterns and scam identification.
-              </p>
-            </div>
-            
-            <div className="bg-gray-700 p-5 rounded-lg">
-              <div className="flex items-center mb-3">
-                <div className="w-12 h-12 bg-gray-600 rounded-full mr-4">
-                  {/* Replace with actual team member image */}
-                  <div className="w-full h-full rounded-full bg-gradient-to-br from-yellow-500 to-orange-500"></div>
-                </div>
-                <div>
-                  <h4 className="text-white font-medium">Michael Nakamoto</h4>
-                  <p className="text-gray-400 text-sm">Education & Outreach</p>
-                </div>
-              </div>
-              <p className="text-gray-300 text-sm">
-                Former financial journalist with extensive experience in cryptocurrency markets. 
-                Passionate about making complex crypto concepts accessible to general audiences.
-              </p>
-            </div>
+          <p className="text-gray-300">
+            As a foundation, we operate with a commitment to neutrality and objectivity, ensuring that our work benefits the 
+            entire ecosystem rather than any specific project or platform. Our organizational structure allows us to maintain 
+            independence while collaborating with various stakeholders in the blockchain space.
+          </p>
+          <div className="bg-gray-700 p-4 rounded-lg">
+            <h4 className="text-white font-medium mb-2">Key Focus Areas</h4>
+            <ul className="list-disc pl-5 text-gray-300 space-y-1">
+              <li>Cross-chain security research and implementation</li>
+              <li>Educational initiatives for users of all experience levels</li>
+              <li>Development of open-source security tools and frameworks</li>
+              <li>Standardization of security practices across the industry</li>
+              <li>Support for innovative projects that enhance ecosystem safety</li>
+            </ul>
           </div>
-          
-          <p className="text-gray-300">
-            Our team is complemented by a network of advisors including legal experts, economics researchers, 
-            and community representatives who ensure our work remains balanced, relevant, and impactful.
-          </p>
         </div>
-      ),
+      )
     },
     {
       id: 'history',
@@ -137,9 +78,8 @@ export default function AboutPage() {
         <div className="space-y-4">
           <p className="text-gray-300">
             The Open Crypto Foundation was established in 2022 in response to the growing prevalence of scams and 
-            exploitative projects in the cryptocurrency space. Our founders, having witnessed the devastating impact 
-            of rug pulls and fraudulent schemes on both individual investors and the broader crypto ecosystem, sought 
-            to create an organization dedicated to promoting safety and transparency.
+            exploitative projects in the cryptocurrency space. The foundation emerged as a collective effort by the 
+            community to create an organization dedicated to promoting safety and transparency in the blockchain ecosystem.
           </p>
           
           <div className="space-y-6">
@@ -150,8 +90,8 @@ export default function AboutPage() {
               <div>
                 <h4 className="text-white font-medium">Foundation Established</h4>
                 <p className="text-gray-300">
-                  OCF was founded by a group of blockchain developers, cybersecurity experts, and consumer advocates 
-                  in response to the 2021-2022 wave of cryptocurrency scams and exploits.
+                  OCF was formed as a response to the 2021-2022 wave of cryptocurrency scams and exploits, 
+                  with a mission to create safer blockchain ecosystems through education and tooling.
                 </p>
               </div>
             </div>
@@ -351,6 +291,53 @@ export default function AboutPage() {
           </div>
         </div>
       ),
+    },
+    {
+      id: 'global',
+      name: 'Global Impact',
+      icon: <FaGlobe className="text-teal-400" size={24} />,
+      content: (
+        <div className="space-y-4">
+          <p className="text-gray-300">
+            The Open Crypto Foundation operates globally, working to improve cryptocurrency safety and education 
+            across different regions and regulatory environments. Our decentralized approach allows us to address 
+            unique challenges in various markets while maintaining a consistent mission.
+          </p>
+          
+          <div className="bg-gray-700 p-5 rounded-lg mb-4">
+            <h4 className="text-white font-medium mb-3">Regional Initiatives</h4>
+            <p className="text-gray-300">
+              We develop region-specific educational resources that account for local regulatory frameworks, common
+              scam variations, and market conditions. Our materials are available in multiple languages to ensure 
+              accessibility across different communities.
+            </p>
+            <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3">
+              <span className="bg-gray-800 px-3 py-1 rounded-full text-gray-300 text-sm text-center">North America</span>
+              <span className="bg-gray-800 px-3 py-1 rounded-full text-gray-300 text-sm text-center">Europe</span>
+              <span className="bg-gray-800 px-3 py-1 rounded-full text-gray-300 text-sm text-center">Asia Pacific</span>
+              <span className="bg-gray-800 px-3 py-1 rounded-full text-gray-300 text-sm text-center">Latin America</span>
+              <span className="bg-gray-800 px-3 py-1 rounded-full text-gray-300 text-sm text-center">Africa</span>
+              <span className="bg-gray-800 px-3 py-1 rounded-full text-gray-300 text-sm text-center">Middle East</span>
+              <span className="bg-gray-800 px-3 py-1 rounded-full text-gray-300 text-sm text-center">South Asia</span>
+              <span className="bg-gray-800 px-3 py-1 rounded-full text-gray-300 text-sm text-center">Oceania</span>
+            </div>
+          </div>
+          
+          <div className="bg-gray-700 p-5 rounded-lg">
+            <h4 className="text-white font-medium mb-3">Cross-Border Collaboration</h4>
+            <p className="text-gray-300">
+              Cryptocurrency security threats often transcend national boundaries. Our foundation coordinates 
+              cross-border initiatives to identify emerging threats, share intelligence, and develop standardized 
+              responses that protect users globally.
+            </p>
+            <p className="text-gray-300 mt-3">
+              Through our international network of partners, we facilitate knowledge sharing between 
+              regulatory bodies, security researchers, and consumer protection agencies to create a more 
+              unified approach to cryptocurrency security.
+            </p>
+          </div>
+        </div>
+      ),
     }
   ]
 
@@ -360,7 +347,7 @@ export default function AboutPage() {
         <title>About Us | Open Crypto Foundation</title>
         <meta 
           name="description" 
-          content="Learn about the Open Crypto Foundation's mission, team, history, partners, and core values." 
+          content="Learn about the Open Crypto Foundation's mission, purpose, history, partners, and core values." 
         />
       </Head>
       
@@ -427,6 +414,8 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+      
+      <ScrollToTop />
     </>
   )
 } 
