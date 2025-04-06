@@ -274,10 +274,12 @@ export default function BlogPost() {
               <article className="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
                 {/* Featured Image */}
                 <div className="h-64 bg-gray-700 relative">
-                  {/* This would be an actual image in production */}
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-500">
-                    <span className="text-lg">Featured Image</span>
-                  </div>
+                  {/* Display the actual image */}
+                  <img 
+                    src={post.imageUrl}
+                    alt={post.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
                 </div>
                 
                 {/* Article Content */}

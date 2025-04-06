@@ -122,10 +122,12 @@ export default function Blog() {
                 {featuredPosts.map(post => (
                   <div key={post.id} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform hover:translate-y-[-4px]">
                     <div className="h-48 bg-gray-700 relative">
-                      {/* This would be an actual image in production */}
-                      <div className="absolute inset-0 flex items-center justify-center text-gray-500">
-                        <span className="text-sm">Featured Image</span>
-                      </div>
+                      {/* Display the actual image */}
+                      <img 
+                        src={post.imageUrl}
+                        alt={post.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
                     </div>
                     <div className="p-6">
                       <div className="flex items-center mb-2">
