@@ -51,10 +51,10 @@ export default function Home() {
               and accessible through education, tools, and community engagement.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/tools" className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center">
+              <Link href="/tools" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center">
                 Explore Our Tools <FaArrowRight className="ml-2" />
               </Link>
-              <Link href="/manifesto" className="px-6 py-3 bg-transparent border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-900/20 transition-colors">
+              <Link href="/manifesto" className="px-6 py-3 bg-transparent border border-blue-500 text-blue-400 rounded-lg hover:bg-blue-900/20 transition-colors">
                 Read Our Manifesto
               </Link>
             </div>
@@ -69,7 +69,7 @@ export default function Home() {
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-6 bg-gray-800 rounded-xl border border-gray-700">
-              <div className="w-12 h-12 mb-4 flex items-center justify-center bg-purple-900/50 text-purple-400 rounded-lg">
+              <div className="w-12 h-12 mb-4 flex items-center justify-center bg-blue-900/50 text-blue-400 rounded-lg">
                 <FaShieldAlt size={24} />
               </div>
               <h3 className="mb-3 text-xl font-bold text-white">Security Tools</h3>
@@ -77,13 +77,13 @@ export default function Home() {
                 Our suite of open source tools helps you verify smart contracts, analyze tokens, 
                 and identify potential security risks before investing.
               </p>
-              <Link href="/tools" className="text-purple-400 hover:text-purple-300 font-medium inline-flex items-center">
+              <Link href="/tools" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
                 Explore Tools <FaArrowRight className="ml-1" size={14} />
               </Link>
             </div>
             
             <div className="p-6 bg-gray-800 rounded-xl border border-gray-700">
-              <div className="w-12 h-12 mb-4 flex items-center justify-center bg-purple-900/50 text-purple-400 rounded-lg">
+              <div className="w-12 h-12 mb-4 flex items-center justify-center bg-blue-900/50 text-blue-400 rounded-lg">
                 <FaBookOpen size={24} />
               </div>
               <h3 className="mb-3 text-xl font-bold text-white">Educational Resources</h3>
@@ -91,13 +91,13 @@ export default function Home() {
                 From beginner guides to advanced technical documentation, we're building a comprehensive 
                 knowledge base for safe crypto practices.
               </p>
-              <Link href="/resources/defi-fundamentals" className="text-purple-400 hover:text-purple-300 font-medium inline-flex items-center">
+              <Link href="/resources/defi-fundamentals" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
                 Start Learning <FaArrowRight className="ml-1" size={14} />
               </Link>
             </div>
             
             <div className="p-6 bg-gray-800 rounded-xl border border-gray-700">
-              <div className="w-12 h-12 mb-4 flex items-center justify-center bg-purple-900/50 text-purple-400 rounded-lg">
+              <div className="w-12 h-12 mb-4 flex items-center justify-center bg-blue-900/50 text-blue-400 rounded-lg">
                 <FaTools size={24} />
               </div>
               <h3 className="mb-3 text-xl font-bold text-white">Community Guidelines</h3>
@@ -105,7 +105,7 @@ export default function Home() {
                 We're establishing open standards and best practices for token launches, 
                 protocol development, and responsible DeFi innovation.
               </p>
-              <Link href="/manifesto" className="text-purple-400 hover:text-purple-300 font-medium inline-flex items-center">
+              <Link href="/manifesto" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
                 Read Guidelines <FaArrowRight className="ml-1" size={14} />
               </Link>
             </div>
@@ -146,7 +146,7 @@ export default function Home() {
       </section>
       
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-900 to-gray-900 text-white">
+      <section className="py-20 bg-gradient-to-br from-blue-900 to-gray-900 text-white">
         <div className="container px-4 mx-auto">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="mb-6 text-3xl font-bold">Join Our Mission</h2>
@@ -156,7 +156,7 @@ export default function Home() {
               crypto safer for everyone.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/about" className="px-6 py-3 bg-white text-purple-900 rounded-lg hover:bg-gray-100 transition-colors">
+              <Link href="/about" className="px-6 py-3 bg-white text-blue-900 rounded-lg hover:bg-gray-100 transition-colors">
                 Learn About the Foundation
               </Link>
               <a 
