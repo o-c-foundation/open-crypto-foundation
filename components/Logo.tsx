@@ -38,7 +38,7 @@ export default function Logo({ className = "", size = "md" }: { className?: stri
   };
 
   const dimensions = getDimensions();
-  const imageUrl = "https://bafkreiazwt7g4hwwiqjeq5crcvwdrih7yag7paahiuzfdcmzs7rnsufyvy.ipfs.w3s.link/";
+  const imageUrl = "https://bafkreiexhzwd7ljjj4xpchedqxajimq7t2k4iubpn44asnlq7nkn2k6qnm.ipfs.w3s.link/";
 
   // If Next.js Image fails, fall back to regular img tag
   if (imageError) {

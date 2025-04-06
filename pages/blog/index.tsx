@@ -127,6 +127,12 @@ const categories = [
   { name: "Report", count: blogPosts.filter(p => p.category === "Report").length, icon: <FaBookOpen /> }
 ];
 
+const seoConfig = {
+  title: "OCF Blog | Open Crypto Foundation",
+  description: "Articles, insights, and updates from the Open Crypto Foundation team.",
+  imageUrl: "https://bafkreiexhzwd7ljjj4xpchedqxajimq7t2k4iubpn44asnlq7nkn2k6qnm.ipfs.w3s.link/"
+};
+
 export default function Blog() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
