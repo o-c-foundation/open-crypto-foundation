@@ -224,7 +224,7 @@ export default function Whitepaper() {
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;share = extract_share(signature, i)</p>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;if verify_share(message, share, public_keys[i]):</p>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valid_shares += 1</p>
-                    <p>&nbsp;&nbsp;return valid_shares >= threshold</p>
+                    <p>&nbsp;&nbsp;return valid_shares &gt;= threshold</p>
                     <p></p>
                     <p># Optimized BLS signature aggregation</p>
                     <p>def aggregate_signatures(signatures):</p>
@@ -286,7 +286,7 @@ export default function Whitepaper() {
                   </p>
                   
                   <div className="mt-4 bg-dark-card p-4 rounded border border-gray-700 font-mono text-sm text-gray-300 overflow-x-auto">
-                    <p>struct OCFMessage {</p>
+                    <p>struct OCFMessage {'{'}</p>
                     <p>&nbsp;&nbsp;// Standard Wormhole fields</p>
                     <p>&nbsp;&nbsp;uint8 version;</p>
                     <p>&nbsp;&nbsp;uint32 timestamp;</p>
@@ -303,7 +303,7 @@ export default function Whitepaper() {
                     <p>&nbsp;&nbsp;bytes ocfSignature;</p>
                     <p>&nbsp;&nbsp;uint16 validatorSetId;</p>
                     <p>&nbsp;&nbsp;bytes32 validatorMerkleRoot;</p>
-                    <p>}</p>
+                    <p>{'}'}</p>
                   </div>
                   
                   <p className="text-gray-400 mt-4">These extensions enable deterministic transaction ordering, payload type-specific validation, and validator set rotation without compromising compatibility with the base Wormhole protocol.</p>

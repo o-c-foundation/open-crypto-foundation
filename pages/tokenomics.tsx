@@ -2,9 +2,44 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { FaChartPie, FaExchangeAlt, FaCogs, FaShieldAlt, FaUsers, FaLock, FaCoins, FaServer, FaLightbulb } from 'react-icons/fa'
+import { IconType } from 'react-icons'
+
+// TypeScript interfaces for props
+interface DonutChartSegment {
+  name: string;
+  percentage: number;
+  color: string;
+  description: string;
+}
+
+interface DonutChartProps {
+  segments: DonutChartSegment[];
+}
+
+interface NetworkCardProps {
+  name: string;
+  icon: IconType;
+  tokenType: string;
+  features: string[];
+  allocation: string;
+  color: string;
+}
+
+interface VestingSchedule {
+  category: string;
+  immediate: string;
+  cliff: string;
+  vesting: string;
+}
+
+interface UtilityFeature {
+  icon: IconType;
+  title: string;
+  description: string;
+}
 
 // Donut chart component for token allocation visualization
-const DonutChart = ({ segments }) => {
+const DonutChart = ({ segments }: DonutChartProps) => {
   let cumulativePercentage = 0;
   
   return (
@@ -50,7 +85,7 @@ const DonutChart = ({ segments }) => {
 };
 
 // Network component for displaying token features on different blockchains
-const NetworkCard = ({ name, icon: Icon, tokenType, features, allocation, color }) => (
+const NetworkCard = ({ name, icon: Icon, tokenType, features, allocation, color }: NetworkCardProps) => (
   <div className="bg-dark-card rounded-xl border border-gray-800 overflow-hidden">
     <div className={`${color} px-4 py-3 flex items-center gap-3 border-b border-gray-800`}>
       <Icon size={20} />
@@ -78,7 +113,7 @@ const NetworkCard = ({ name, icon: Icon, tokenType, features, allocation, color 
 );
 
 export default function Tokenomics() {
-  const tokenAllocations = [
+  const tokenAllocations: DonutChartSegment[] = [
     { name: 'Public Sale', percentage: 20, color: '#4F46E5', description: 'Tokens distributed through initial public sale' },
     { name: 'Ecosystem Growth', percentage: 25, color: '#8B5CF6', description: 'Incentives for ecosystem participants and developers' },
     { name: 'Core Team', percentage: 15, color: '#EC4899', description: 'Allocated to core development team and advisors' },
@@ -88,7 +123,7 @@ export default function Tokenomics() {
     { name: 'Cross-Chain Liquidity', percentage: 7, color: '#F97316', description: 'Dedicated to providing cross-chain liquidity' }
   ];
   
-  const vestingSchedules = [
+  const vestingSchedules: VestingSchedule[] = [
     { category: 'Public Sale', immediate: '40%', cliff: 'None', vesting: '60% over 3 months' },
     { category: 'Ecosystem Growth', immediate: '10%', cliff: 'None', vesting: '90% over 36 months' },
     { category: 'Core Team', immediate: '0%', cliff: '12 months', vesting: '100% over 36 months' },
@@ -98,7 +133,7 @@ export default function Tokenomics() {
     { category: 'Cross-Chain Liquidity', immediate: '100%', cliff: 'None', vesting: 'None' }
   ];
   
-  const networks = [
+  const networks: NetworkCardProps[] = [
     {
       name: 'Ethereum',
       icon: FaCoins,
@@ -143,7 +178,7 @@ export default function Tokenomics() {
     }
   ];
   
-  const utilityFeatures = [
+  const utilityFeatures: UtilityFeature[] = [
     {
       icon: FaServer,
       title: 'Validator Staking',

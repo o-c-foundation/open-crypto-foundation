@@ -3,8 +3,30 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { FaShieldAlt, FaCheck, FaExclamationTriangle, FaDownload, FaFileAlt, FaLock, FaCode, FaBug, FaCheckCircle } from 'react-icons/fa'
 
+// Type definitions for component props
+interface FindingItemProps {
+  title: string;
+  severity: string;
+  description: string;
+  status: string;
+}
+
+interface AuditorCardProps {
+  name: string;
+  logo: string;
+  date: string;
+  scope: string;
+  reportLink: string;
+}
+
+interface SecurityScore {
+  category: string;
+  score: number;
+  maxScore: number;
+}
+
 // Component for individual finding item
-const FindingItem = ({ title, severity, description, status }) => {
+const FindingItem = ({ title, severity, description, status }: FindingItemProps) => {
   const severityColors = {
     Critical: 'text-red-500 bg-red-500/10 border-red-500/30',
     High: 'text-orange-500 bg-orange-500/10 border-orange-500/30',
@@ -39,7 +61,7 @@ const FindingItem = ({ title, severity, description, status }) => {
 };
 
 // Component for audit firm card
-const AuditorCard = ({ name, logo, date, scope, reportLink }) => (
+const AuditorCard = ({ name, logo, date, scope, reportLink }: AuditorCardProps) => (
   <div className="bg-dark-card rounded-xl border border-gray-800 overflow-hidden">
     <div className="p-5">
       <div className="flex items-center gap-4 mb-4">
@@ -67,7 +89,7 @@ const AuditorCard = ({ name, logo, date, scope, reportLink }) => (
 );
 
 export default function AuditPage() {
-  const securityScores = [
+  const securityScores: SecurityScore[] = [
     { category: 'Smart Contract Security', score: 98, maxScore: 100 },
     { category: 'Oracle Implementation', score: 96, maxScore: 100 },
     { category: 'Access Controls', score: 100, maxScore: 100 },
@@ -75,7 +97,7 @@ export default function AuditPage() {
     { category: 'Cryptographic Implementation', score: 99, maxScore: 100 },
   ];
   
-  const findings = [
+  const findings: FindingItemProps[] = [
     {
       title: 'Potential Reentrancy in Cross-Chain Message Processing',
       severity: 'Medium',
@@ -120,7 +142,7 @@ export default function AuditPage() {
     }
   ];
   
-  const auditors = [
+  const auditors: AuditorCardProps[] = [
     {
       name: 'ChainGuard Security',
       logo: 'CGS',
