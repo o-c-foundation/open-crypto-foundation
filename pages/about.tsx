@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
-import { FaUsers, FaChartLine, FaShieldAlt, FaHandshake, FaHistory, FaMedal, FaLightbulb, FaGlobe } from 'react-icons/fa'
+import { FaUsers, FaChartLine, FaShieldAlt, FaHandshake, FaHistory, FaMedal, FaLightbulb, FaGlobe, FaRocket } from 'react-icons/fa'
 import { useLanguage } from '../contexts/LanguageContext'
 import TabLayout from '../components/TabLayout'
 import ScrollToTop from '../components/ScrollToTop'
@@ -20,20 +20,21 @@ export default function AboutPage() {
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            The Open Crypto Foundation exists to create a safer, more transparent cryptocurrency ecosystem where users can 
-            participate with confidence. We believe the promise of decentralized finance can only be realized when users 
-            have the tools and knowledge to protect themselves from scams and exploitative projects.
+            The Open Crypto Foundation was established just three weeks ago with the mission to create a safer, more transparent 
+            cryptocurrency ecosystem where users can participate with confidence. We believe the promise of decentralized finance 
+            can only be realized when users have the tools and knowledge to protect themselves from scams and exploitative projects.
           </p>
           <p className="text-gray-300">
-            Our mission is to provide accessible education, reliable tools, and independent verification services that empower 
-            both newcomers and experienced users to navigate the complexities of cryptocurrency with security and confidence.
+            Though we're new, our vision is clear: to provide accessible education, reliable tools, and independent verification 
+            services that empower both newcomers and experienced users to navigate the complexities of cryptocurrency with 
+            security and confidence.
           </p>
           <div className="bg-gray-700 p-4 rounded-lg">
             <h4 className="text-white font-medium mb-2">Core Objectives</h4>
             <ul className="list-disc pl-5 text-gray-300 space-y-1">
               <li>Develop and maintain open-source tools for crypto safety verification</li>
               <li>Provide comprehensive, unbiased educational resources</li>
-              <li>Offer transparent, rigorous auditing services for crypto projects</li>
+              <li>Establish transparent, rigorous auditing services for crypto projects</li>
               <li>Support victims of cryptocurrency scams and exploits</li>
               <li>Advocate for industry standards that prioritize user protection</li>
             </ul>
@@ -48,14 +49,15 @@ export default function AboutPage() {
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            The Open Crypto Foundation serves as a nonprofit organization dedicated to advancing the security, transparency, 
-            and accessibility of blockchain technology and cryptocurrency ecosystems. We function as an independent entity 
-            focused solely on the betterment of the space through education, research, and tooling.
+            Despite being just three weeks old, the Open Crypto Foundation aims to serve as a nonprofit organization 
+            dedicated to advancing the security, transparency, and accessibility of blockchain technology and cryptocurrency 
+            ecosystems. We are establishing ourselves as an independent entity focused solely on the betterment of the space 
+            through education, research, and tooling.
           </p>
           <p className="text-gray-300">
-            As a foundation, we operate with a commitment to neutrality and objectivity, ensuring that our work benefits the 
-            entire ecosystem rather than any specific project or platform. Our organizational structure allows us to maintain 
-            independence while collaborating with various stakeholders in the blockchain space.
+            As a newly formed foundation, we're committed to principles of neutrality and objectivity, ensuring that our work 
+            will benefit the entire ecosystem rather than any specific project or platform. Our organizational structure is 
+            designed to maintain independence while collaborating with various stakeholders in the blockchain space.
           </p>
           <div className="bg-gray-700 p-4 rounded-lg">
             <h4 className="text-white font-medium mb-2">Key Focus Areas</h4>
@@ -71,53 +73,36 @@ export default function AboutPage() {
       )
     },
     {
-      id: 'history',
-      name: 'Our History',
-      icon: <FaHistory className="text-purple-400" size={24} />,
+      id: 'beginnings',
+      name: 'Our Beginnings',
+      icon: <FaRocket className="text-purple-400" size={24} />,
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            The Open Crypto Foundation was established in 2022 in response to the growing prevalence of scams and 
-            exploitative projects in the cryptocurrency space. The foundation emerged as a collective effort by the 
-            community to create an organization dedicated to promoting safety and transparency in the blockchain ecosystem.
+            The Open Crypto Foundation was founded just three weeks ago in response to the growing prevalence of scams and 
+            exploitative projects in the cryptocurrency space. Our organization emerged as a collective effort by concerned 
+            community members to address these challenges and promote safety and transparency in the blockchain ecosystem.
           </p>
           
-          <div className="space-y-6">
+          <div className="bg-gray-700 p-5 rounded-lg">
+            <h4 className="text-white font-medium mb-3">Why Now?</h4>
+            <p className="text-gray-300">
+              The crypto space is at a critical juncture. With growing mainstream adoption and increasing technical complexity, 
+              the need for independent safety standards and education has never been more urgent. Our foundation was established 
+              to meet this immediate need and create lasting infrastructure for a safer ecosystem.
+            </p>
+          </div>
+          
+          <div className="space-y-6 mt-6">
             <div className="flex">
               <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-gray-800 rounded-full border-2 border-purple-500 mr-4">
-                <span className="text-white font-bold">2022</span>
+                <span className="text-white font-bold">Now</span>
               </div>
               <div>
-                <h4 className="text-white font-medium">Foundation Established</h4>
+                <h4 className="text-white font-medium">Formation Phase</h4>
                 <p className="text-gray-300">
-                  OCF was formed as a response to the 2021-2022 wave of cryptocurrency scams and exploits, 
-                  with a mission to create safer blockchain ecosystems through education and tooling.
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex">
-              <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-gray-800 rounded-full border-2 border-purple-500 mr-4">
-                <span className="text-white font-bold">2023</span>
-              </div>
-              <div>
-                <h4 className="text-white font-medium">First Tools Launched</h4>
-                <p className="text-gray-300">
-                  Released our first suite of open-source security tools, including the Contract Scanner and Risk Calculator. 
-                  Established educational resources and scam database.
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex">
-              <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-gray-800 rounded-full border-2 border-purple-500 mr-4">
-                <span className="text-white font-bold">2024</span>
-              </div>
-              <div>
-                <h4 className="text-white font-medium">Expanded Services</h4>
-                <p className="text-gray-300">
-                  Launched professional audit services and victim recovery fund. Expanded educational resources 
-                  and established partnerships with major blockchain platforms and educational institutions.
+                  Currently building our core infrastructure, establishing partnerships, and developing our initial 
+                  educational resources and security tools.
                 </p>
               </div>
             </div>
@@ -127,10 +112,36 @@ export default function AboutPage() {
                 <span className="text-white font-bold">2025</span>
               </div>
               <div>
-                <h4 className="text-white font-medium">Future Vision</h4>
+                <h4 className="text-white font-medium">Initial Goals (3-6 months)</h4>
                 <p className="text-gray-300">
-                  Our roadmap includes developing advanced AI-powered security tools, expanding global educational 
-                  initiatives, and continuing to advocate for industry standards that protect users.
+                  Launch our first suite of open-source security tools, including Contract Scanner and Risk Calculator. 
+                  Establish educational resources and begin development of our scam database.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex">
+              <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-gray-800 rounded-full border-2 border-purple-500 mr-4">
+                <span className="text-white font-bold">2025</span>
+              </div>
+              <div>
+                <h4 className="text-white font-medium">Expansion Plans (6-12 months)</h4>
+                <p className="text-gray-300">
+                  Introduce professional audit services and victim recovery fund. Expand educational resources 
+                  and establish partnerships with major blockchain platforms and educational institutions.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex">
+              <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-gray-800 rounded-full border-2 border-purple-500 mr-4">
+                <span className="text-white font-bold">2026</span>
+              </div>
+              <div>
+                <h4 className="text-white font-medium">Long-term Vision</h4>
+                <p className="text-gray-300">
+                  Develop advanced AI-powered security tools, expand global educational initiatives, and 
+                  advocate for industry standards that protect users worldwide.
                 </p>
               </div>
             </div>
@@ -140,96 +151,61 @@ export default function AboutPage() {
     },
     {
       id: 'partners',
-      name: 'Our Partners',
+      name: 'Partnerships',
       icon: <FaHandshake className="text-green-400" size={24} />,
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            The Open Crypto Foundation collaborates with a variety of organizations that share our commitment to creating 
-            a safer cryptocurrency ecosystem. Our partnerships extend across blockchain platforms, educational institutions, 
-            security firms, and consumer protection organizations.
+            Though we're only three weeks old, the Open Crypto Foundation is actively seeking collaborations with organizations 
+            that share our commitment to creating a safer cryptocurrency ecosystem. We're currently in early discussions with 
+            potential partners across blockchain platforms, educational institutions, security firms, and consumer protection 
+            organizations.
           </p>
           
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-gray-700 p-5 rounded-lg">
-              <h4 className="text-white font-medium border-b border-gray-600 pb-2 mb-3">Blockchain Partners</h4>
-              <ul className="space-y-3">
-                <li className="flex items-center">
-                  <div className="w-10 h-10 bg-gray-800 rounded-full mr-3 flex items-center justify-center">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"></div>
-                  </div>
-                  <div>
-                    <h5 className="text-white text-sm">Ethereum Foundation</h5>
-                    <p className="text-gray-400 text-xs">Collaborative research on smart contract security</p>
-                  </div>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-10 h-10 bg-gray-800 rounded-full mr-3 flex items-center justify-center">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-green-500 to-teal-500"></div>
-                  </div>
-                  <div>
-                    <h5 className="text-white text-sm">Solana Foundation</h5>
-                    <p className="text-gray-400 text-xs">Educational initiatives and developer resources</p>
-                  </div>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-10 h-10 bg-gray-800 rounded-full mr-3 flex items-center justify-center">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-yellow-500 to-orange-500"></div>
-                  </div>
-                  <div>
-                    <h5 className="text-white text-sm">Binance Academy</h5>
-                    <p className="text-gray-400 text-xs">Security awareness content and training</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            
-            <div className="bg-gray-700 p-5 rounded-lg">
-              <h4 className="text-white font-medium border-b border-gray-600 pb-2 mb-3">Security & Research</h4>
-              <ul className="space-y-3">
-                <li className="flex items-center">
-                  <div className="w-10 h-10 bg-gray-800 rounded-full mr-3 flex items-center justify-center">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-red-500 to-pink-500"></div>
-                  </div>
-                  <div>
-                    <h5 className="text-white text-sm">CertiK</h5>
-                    <p className="text-gray-400 text-xs">Shared audit standards and security research</p>
-                  </div>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-10 h-10 bg-gray-800 rounded-full mr-3 flex items-center justify-center">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500"></div>
-                  </div>
-                  <div>
-                    <h5 className="text-white text-sm">Chainalysis</h5>
-                    <p className="text-gray-400 text-xs">Collaborative scam detection and tracking</p>
-                  </div>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-10 h-10 bg-gray-800 rounded-full mr-3 flex items-center justify-center">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"></div>
-                  </div>
-                  <div>
-                    <h5 className="text-white text-sm">MIT Digital Currency Initiative</h5>
-                    <p className="text-gray-400 text-xs">Academic research and education</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
+          <div className="bg-gray-700 p-5 rounded-lg mb-4">
+            <h4 className="text-white font-medium mb-3">Partnership Goals</h4>
+            <p className="text-gray-300">
+              As a newly established foundation, we're looking to form strategic partnerships that will help us achieve our 
+              mission more effectively. We believe that collaboration across the ecosystem is essential to addressing the 
+              complex challenges of cryptocurrency security and education.
+            </p>
+            <p className="text-gray-300 mt-3">
+              If your organization is interested in partnering with us, please reach out through our contact page. We're 
+              particularly interested in collaborations focused on education, security research, and community outreach.
+            </p>
           </div>
           
           <div className="bg-gray-700 p-5 rounded-lg">
-            <h4 className="text-white font-medium border-b border-gray-600 pb-2 mb-3">Consumer Protection</h4>
-            <p className="text-gray-300">
-              We work with consumer advocacy groups, regulatory bodies, and legal experts to help shape policies 
-              that protect cryptocurrency users while preserving the innovation that makes blockchain technology valuable.
-            </p>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <span className="bg-gray-800 px-3 py-1 rounded-full text-gray-300 text-sm">Global Digital Finance</span>
-              <span className="bg-gray-800 px-3 py-1 rounded-full text-gray-300 text-sm">Consumer Financial Protection Bureau</span>
-              <span className="bg-gray-800 px-3 py-1 rounded-full text-gray-300 text-sm">Financial Consumer Agency</span>
-              <span className="bg-gray-800 px-3 py-1 rounded-full text-gray-300 text-sm">Crypto Consumer Coalition</span>
-            </div>
+            <h4 className="text-white font-medium border-b border-gray-600 pb-2 mb-3">Target Collaboration Areas</h4>
+            <ul className="space-y-3">
+              <li className="flex items-start">
+                <div className="w-10 h-10 bg-gray-800 rounded-full mr-3 flex items-center justify-center mt-1">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"></div>
+                </div>
+                <div>
+                  <h5 className="text-white text-sm">Blockchain Networks</h5>
+                  <p className="text-gray-400 text-xs">Collaborative research on cross-chain security implementations</p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <div className="w-10 h-10 bg-gray-800 rounded-full mr-3 flex items-center justify-center mt-1">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-red-500 to-pink-500"></div>
+                </div>
+                <div>
+                  <h5 className="text-white text-sm">Security Firms</h5>
+                  <p className="text-gray-400 text-xs">Joint development of audit standards and security tooling</p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <div className="w-10 h-10 bg-gray-800 rounded-full mr-3 flex items-center justify-center mt-1">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"></div>
+                </div>
+                <div>
+                  <h5 className="text-white text-sm">Academic Institutions</h5>
+                  <p className="text-gray-400 text-xs">Research collaborations and educational resource development</p>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       ),
@@ -241,15 +217,16 @@ export default function AboutPage() {
       content: (
         <div className="space-y-5">
           <p className="text-gray-300">
-            At the Open Crypto Foundation, our work is guided by a core set of values that inform everything we do. 
-            These principles ensure we remain focused on our mission and accountable to the communities we serve.
+            Despite being just three weeks old, the Open Crypto Foundation was established with a clear set of values 
+            that will guide our growth and development. These principles ensure we remain focused on our mission and 
+            accountable to the communities we aim to serve.
           </p>
           
           <div className="bg-gray-700 p-5 rounded-lg mb-4">
             <h4 className="text-white font-medium mb-3">Transparency</h4>
             <p className="text-gray-300">
-              We believe in operating with complete transparency, from our funding sources to our audit methodologies. 
-              All our tools are open-source, our evaluations are clearly documented, and our processes are subject to 
+              We commit to operating with complete transparency, from our funding sources to our audit methodologies. 
+              All our tools will be open-source, our evaluations clearly documented, and our processes subject to 
               public review and feedback.
             </p>
           </div>
@@ -257,8 +234,8 @@ export default function AboutPage() {
           <div className="bg-gray-700 p-5 rounded-lg mb-4">
             <h4 className="text-white font-medium mb-3">Independence</h4>
             <p className="text-gray-300">
-              Our assessments and recommendations remain independent from commercial interests. We do not accept payment 
-              in exchange for favorable reviews, and our multisig governance structure ensures no single entity can 
+              Our assessments and recommendations will remain independent from commercial interests. We will not accept payment 
+              in exchange for favorable reviews, and our governance structure is designed to ensure no single entity can 
               unduly influence our work.
             </p>
           </div>
@@ -267,16 +244,16 @@ export default function AboutPage() {
             <h4 className="text-white font-medium mb-3">Accessibility</h4>
             <p className="text-gray-300">
               We are committed to making cryptocurrency safety accessible to everyone, regardless of technical background. 
-              Our educational materials are designed to be understandable to beginners while remaining valuable to experts, 
-              and our tools are built with usability as a core focus.
+              Our educational materials will be designed to be understandable to beginners while remaining valuable to experts, 
+              and our tools built with usability as a core focus.
             </p>
           </div>
           
           <div className="bg-gray-700 p-5 rounded-lg mb-4">
             <h4 className="text-white font-medium mb-3">Community-Centered</h4>
             <p className="text-gray-300">
-              We exist to serve the crypto community, and we actively involve community members in our work through 
-              open feedback, collaborative research, and participatory governance. Our victim recovery fund reflects 
+              We exist to serve the crypto community, and plan to actively involve community members in our work through 
+              open feedback, collaborative research, and participatory governance. Our planned victim recovery fund reflects 
               our commitment to supporting those harmed by scams and exploits.
             </p>
           </div>
@@ -284,7 +261,7 @@ export default function AboutPage() {
           <div className="bg-gray-700 p-5 rounded-lg">
             <h4 className="text-white font-medium mb-3">Evidence-Based</h4>
             <p className="text-gray-300">
-              Our recommendations and tools are based on rigorous research and data analysis. We continuously evaluate 
+              Our recommendations and tools will be based on rigorous research and data analysis. We'll continuously evaluate 
               emerging threats and adapt our approaches based on empirical evidence of what works in protecting users 
               from harm.
             </p>
@@ -294,21 +271,21 @@ export default function AboutPage() {
     },
     {
       id: 'global',
-      name: 'Global Impact',
+      name: 'Global Vision',
       icon: <FaGlobe className="text-teal-400" size={24} />,
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            The Open Crypto Foundation operates globally, working to improve cryptocurrency safety and education 
-            across different regions and regulatory environments. Our decentralized approach allows us to address 
-            unique challenges in various markets while maintaining a consistent mission.
+            Although the Open Crypto Foundation is only three weeks old, we have a global vision for our work. We aim to 
+            address cryptocurrency safety and education across different regions and regulatory environments, recognizing 
+            that crypto challenges and opportunities vary worldwide.
           </p>
           
           <div className="bg-gray-700 p-5 rounded-lg mb-4">
-            <h4 className="text-white font-medium mb-3">Regional Initiatives</h4>
+            <h4 className="text-white font-medium mb-3">Future Regional Initiatives</h4>
             <p className="text-gray-300">
-              We develop region-specific educational resources that account for local regulatory frameworks, common
-              scam variations, and market conditions. Our materials are available in multiple languages to ensure 
+              We plan to develop region-specific educational resources that account for local regulatory frameworks, common
+              scam variations, and market conditions. Our materials will be available in multiple languages to ensure 
               accessibility across different communities.
             </p>
             <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -324,14 +301,14 @@ export default function AboutPage() {
           </div>
           
           <div className="bg-gray-700 p-5 rounded-lg">
-            <h4 className="text-white font-medium mb-3">Cross-Border Collaboration</h4>
+            <h4 className="text-white font-medium mb-3">Cross-Border Approach</h4>
             <p className="text-gray-300">
-              Cryptocurrency security threats often transcend national boundaries. Our foundation coordinates 
+              Cryptocurrency security threats often transcend national boundaries. Our foundation aims to coordinate 
               cross-border initiatives to identify emerging threats, share intelligence, and develop standardized 
               responses that protect users globally.
             </p>
             <p className="text-gray-300 mt-3">
-              Through our international network of partners, we facilitate knowledge sharing between 
+              Through our developing international network, we hope to facilitate knowledge sharing between 
               regulatory bodies, security researchers, and consumer protection agencies to create a more 
               unified approach to cryptocurrency security.
             </p>
@@ -347,7 +324,7 @@ export default function AboutPage() {
         <title>About Us | Open Crypto Foundation</title>
         <meta 
           name="description" 
-          content="Learn about the Open Crypto Foundation's mission, purpose, history, partners, and core values." 
+          content="Learn about the newly established Open Crypto Foundation's mission, vision, values, and future plans." 
         />
       </Head>
       
@@ -357,8 +334,9 @@ export default function AboutPage() {
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">About Us</h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              The Open Crypto Foundation is dedicated to creating a safer cryptocurrency ecosystem through education, tools, and transparency.
+              The Open Crypto Foundation is a newly established organization dedicated to creating a safer cryptocurrency ecosystem through education, tools, and transparency.
             </p>
+            <p className="text-lg text-blue-400 mt-4">Founded just three weeks ago - April 2025</p>
           </div>
 
           {/* Main content with vertical tabs */}
@@ -395,7 +373,7 @@ export default function AboutPage() {
           <div className="text-center mt-16">
             <h2 className="text-2xl md:text-3xl font-bold mb-6 text-white">Join Our Mission</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Help us create a safer cryptocurrency ecosystem by contributing to our projects, using our tools, or spreading awareness.
+              Help shape the future of our newly formed foundation by contributing to our projects, using our tools, or spreading awareness.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link 

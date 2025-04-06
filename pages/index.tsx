@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
-import { FaArrowRight, FaShieldAlt, FaBookOpen, FaTools, FaRegNewspaper } from 'react-icons/fa'
+import { FaArrowRight, FaShieldAlt, FaBookOpen, FaTools, FaRegNewspaper, FaRocket } from 'react-icons/fa'
 import NewsletterSubscribe from '../components/NewsletterSubscribe'
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
         <title>Open Crypto Foundation | Promoting Safe DeFi</title>
         <meta 
           name="description" 
-          content="The Open Crypto Foundation is dedicated to promoting safe decentralized finance practices and educating users about blockchain technology." 
+          content="The newly launched Open Crypto Foundation is dedicated to promoting safe decentralized finance practices and educating users about blockchain technology." 
         />
       </Head>
       
@@ -43,16 +43,21 @@ export default function Home() {
                 />
               )}
             </div>
+            <div className="mb-4">
+              <span className="inline-block px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
+                Newly Launched - April 2025
+              </span>
+            </div>
             <h1 className="mb-6 text-5xl font-bold">
               Promoting Safe &amp; Accessible Crypto for Everyone
             </h1>
             <p className="mb-10 text-xl text-gray-300">
-              We're dedicated to making decentralized finance safer, more transparent, 
+              Founded just three weeks ago, our mission is to make decentralized finance safer, more transparent, 
               and accessible through education, tools, and community engagement.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/tools" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center">
-                Explore Our Tools <FaArrowRight className="ml-2" />
+                Join Our Early Efforts <FaArrowRight className="ml-2" />
               </Link>
               <Link href="/manifesto" className="px-6 py-3 bg-transparent border border-blue-500 text-blue-400 rounded-lg hover:bg-blue-900/20 transition-colors">
                 Read Our Manifesto
@@ -65,7 +70,7 @@ export default function Home() {
       {/* Features Section */}
       <section className="py-20 bg-gray-900">
         <div className="container px-4 mx-auto">
-          <h2 className="mb-12 text-3xl font-bold text-center text-white">How We're Making Crypto Safer</h2>
+          <h2 className="mb-12 text-3xl font-bold text-center text-white">Our Vision for Safer Crypto</h2>
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-6 bg-gray-800 rounded-xl border border-gray-700">
@@ -74,11 +79,11 @@ export default function Home() {
               </div>
               <h3 className="mb-3 text-xl font-bold text-white">Security Tools</h3>
               <p className="mb-4 text-gray-300">
-                Our suite of open source tools helps you verify smart contracts, analyze tokens, 
+                We're developing a suite of open source tools to help you verify smart contracts, analyze tokens, 
                 and identify potential security risks before investing.
               </p>
               <Link href="/tools" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
-                Explore Tools <FaArrowRight className="ml-1" size={14} />
+                Follow Our Progress <FaArrowRight className="ml-1" size={14} />
               </Link>
             </div>
             
@@ -88,25 +93,25 @@ export default function Home() {
               </div>
               <h3 className="mb-3 text-xl font-bold text-white">Educational Resources</h3>
               <p className="mb-4 text-gray-300">
-                From beginner guides to advanced technical documentation, we're building a comprehensive 
-                knowledge base for safe crypto practices.
+                We're in the early stages of building a comprehensive knowledge base for safe crypto 
+                practices, from beginner guides to advanced technical documentation.
               </p>
               <Link href="/resources/defi-fundamentals" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
-                Start Learning <FaArrowRight className="ml-1" size={14} />
+                See Our First Resources <FaArrowRight className="ml-1" size={14} />
               </Link>
             </div>
             
             <div className="p-6 bg-gray-800 rounded-xl border border-gray-700">
               <div className="w-12 h-12 mb-4 flex items-center justify-center bg-blue-900/50 text-blue-400 rounded-lg">
-                <FaTools size={24} />
+                <FaRocket size={24} />
               </div>
-              <h3 className="mb-3 text-xl font-bold text-white">Community Guidelines</h3>
+              <h3 className="mb-3 text-xl font-bold text-white">Growth Roadmap</h3>
               <p className="mb-4 text-gray-300">
-                We're establishing open standards and best practices for token launches, 
-                protocol development, and responsible DeFi innovation.
+                As a new foundation, we have ambitious plans to establish open standards and best practices 
+                for token launches, protocol development, and responsible DeFi innovation.
               </p>
-              <Link href="/manifesto" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
-                Read Guidelines <FaArrowRight className="ml-1" size={14} />
+              <Link href="/roadmap" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
+                View Our Roadmap <FaArrowRight className="ml-1" size={14} />
               </Link>
             </div>
           </div>
@@ -119,14 +124,14 @@ export default function Home() {
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row gap-8 items-center">
               <div className="md:w-1/2">
-                <h2 className="mb-4 text-3xl font-bold text-white">Stay Informed, Stay Secure</h2>
+                <h2 className="mb-4 text-3xl font-bold text-white">Be Part of Our Early Community</h2>
                 <p className="text-gray-300 mb-6">
-                  Join our weekly newsletter to receive the latest updates on crypto security, 
-                  educational resources, and important announcements from the Open Crypto Foundation.
+                  Join our newsletter to follow our progress, receive updates on crypto security, 
+                  and learn about opportunities to contribute to the Open Crypto Foundation's mission.
                 </p>
                 <div className="flex items-center mb-2">
                   <FaRegNewspaper className="text-blue-400 mr-2" />
-                  <span className="text-gray-300 text-sm">Free weekly updates</span>
+                  <span className="text-gray-300 text-sm">Development updates</span>
                 </div>
                 <div className="flex items-center mb-2">
                   <FaRegNewspaper className="text-blue-400 mr-2" />
@@ -134,7 +139,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center">
                   <FaRegNewspaper className="text-blue-400 mr-2" />
-                  <span className="text-gray-300 text-sm">Educational content</span>
+                  <span className="text-gray-300 text-sm">Contribution opportunities</span>
                 </div>
               </div>
               <div className="md:w-1/2">
@@ -149,21 +154,21 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-br from-blue-900 to-gray-900 text-white">
         <div className="container px-4 mx-auto">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="mb-6 text-3xl font-bold">Join Our Mission</h2>
+            <h2 className="mb-6 text-3xl font-bold">Help Shape Our Foundation</h2>
             <p className="mb-8 text-lg text-gray-300">
-              We believe in the transformative potential of decentralized finance, but only if it's 
-              built on a foundation of security, education, and user protection. Join us in making 
-              crypto safer for everyone.
+              As a newly formed organization, we're looking for passionate individuals and partners to help 
+              shape our future. We believe in the transformative potential of decentralized finance, but only if it's 
+              built on a foundation of security, education, and user protection.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/about" className="px-6 py-3 bg-white text-blue-900 rounded-lg hover:bg-gray-100 transition-colors">
-                Learn About the Foundation
+                Learn About Our Mission
               </Link>
               <a 
                 href="mailto:contact@opencryptofoundation.org" 
                 className="px-6 py-3 bg-transparent border border-white text-white rounded-lg hover:bg-white/10 transition-colors"
               >
-                Contact Us
+                Get Involved
               </a>
             </div>
           </div>
