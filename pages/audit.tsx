@@ -6,9 +6,9 @@ import { FaShieldAlt, FaCheck, FaExclamationTriangle, FaDownload, FaFileAlt, FaL
 // Type definitions for component props
 interface FindingItemProps {
   title: string;
-  severity: string;
+  severity: 'Critical' | 'High' | 'Medium' | 'Low' | 'Informational';
   description: string;
-  status: string;
+  status: 'Fixed' | 'Mitigated' | 'Acknowledged';
 }
 
 interface AuditorCardProps {
@@ -27,7 +27,7 @@ interface SecurityScore {
 
 // Component for individual finding item
 const FindingItem = ({ title, severity, description, status }: FindingItemProps) => {
-  const severityColors = {
+  const severityColors: { [key: string]: string } = {
     Critical: 'text-red-500 bg-red-500/10 border-red-500/30',
     High: 'text-orange-500 bg-orange-500/10 border-orange-500/30',
     Medium: 'text-yellow-500 bg-yellow-500/10 border-yellow-500/30',
@@ -35,7 +35,7 @@ const FindingItem = ({ title, severity, description, status }: FindingItemProps)
     Informational: 'text-blue-500 bg-blue-500/10 border-blue-500/30'
   };
   
-  const statusColors = {
+  const statusColors: { [key: string]: string } = {
     Fixed: 'text-green-500 bg-green-500/10',
     Mitigated: 'text-blue-500 bg-blue-500/10',
     Acknowledged: 'text-yellow-500 bg-yellow-500/10'
