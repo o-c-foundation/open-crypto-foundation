@@ -30,6 +30,15 @@ export default function Navbar() {
         { name: t('forEveryone'), href: '/resources/everyone', description: 'Resources for anyone interested in crypto safety' }
       ]
     },
+    {
+      name: 'Token',
+      children: [
+        { name: 'Whitepaper', href: '/whitepaper', description: 'Technical overview of the OCF token architecture and protocol' },
+        { name: 'Roadmap', href: '/roadmap', description: 'Detailed development timeline and milestone tracking' },
+        { name: 'Tokenomics', href: '/tokenomics', description: 'Token distribution, vesting, and economic model' },
+        { name: 'Security Audit', href: '/audit', description: 'Security verification and audit certification results' }
+      ]
+    },
     { name: 'Blog', href: '/blog' },
     { name: t('about'), href: '/about' },
     { name: t('manifesto'), href: '/manifesto' },
@@ -75,7 +84,10 @@ export default function Navbar() {
                 <div className="relative" key={item.name}>
                   <button
                     className={`text-light-muted hover:text-light px-1 py-2 inline-flex items-center relative group
-                      ${router.pathname.startsWith('/resources') ? 'text-light' : ''}
+                      ${(router.pathname.startsWith('/resources') && item.name === t('resources')) || 
+                        ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
+                          router.pathname === '/tokenomics' || router.pathname === '/audit') && 
+                          item.name === 'Token') ? 'text-light' : ''}
                     `}
                     onClick={() => toggleDropdown(item.name)}
                   >
@@ -84,7 +96,10 @@ export default function Navbar() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                     <span className={`absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300 
-                      ${router.pathname.startsWith('/resources') ? 'w-full' : 'group-hover:w-full'}`}></span>
+                      ${(router.pathname.startsWith('/resources') && item.name === t('resources')) || 
+                         ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
+                           router.pathname === '/tokenomics' || router.pathname === '/audit') && 
+                           item.name === 'Token') ? 'w-full' : 'group-hover:w-full'}`}></span>
                   </button>
                   
                   {dropdownOpen === item.name && (
@@ -149,7 +164,10 @@ export default function Navbar() {
                   <div key={item.name}>
                     <button
                       className={`text-light-muted hover:text-light px-3 py-3 inline-flex items-center justify-between w-full border-l-2 transition-all duration-200
-                        ${router.pathname.startsWith('/resources') 
+                        ${(router.pathname.startsWith('/resources') && item.name === t('resources')) || 
+                          ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
+                            router.pathname === '/tokenomics' || router.pathname === '/audit') && 
+                            item.name === 'Token')
                           ? 'border-primary text-light bg-primary/5' 
                           : 'border-transparent hover:border-primary/50 hover:bg-dark-card'
                         }`}
