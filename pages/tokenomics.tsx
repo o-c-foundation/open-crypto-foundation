@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { FaChartPie, FaExchangeAlt, FaCogs, FaShieldAlt, FaUsers, FaLock, FaCoins, FaServer, FaLightbulb } from 'react-icons/fa'
 import { IconType } from 'react-icons'
+import ScrollToTop from '../components/ScrollToTop'
 
 // TypeScript interfaces for props
 interface DonutChartSegment {
@@ -559,6 +560,8 @@ export default function Tokenomics() {
           </div>
         </div>
       </div>
+      
+      <ScrollToTop />
     </>
   )
 } 

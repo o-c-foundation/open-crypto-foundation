@@ -1,7 +1,8 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { FaDownload, FaFileAlt, FaChevronRight } from 'react-icons/fa'
+import { FaDownload, FaFileAlt, FaChevronRight, FaBook, FaServer, FaNetworkWired, FaShieldAlt, FaExchangeAlt, FaUsers, FaLock, FaChartBar } from 'react-icons/fa'
+import ScrollToTop from '../components/ScrollToTop'
 
 export default function Whitepaper() {
   return (
@@ -339,6 +340,8 @@ export default function Whitepaper() {
           </div>
         </div>
       </div>
+      
+      <ScrollToTop />
     </>
   )
 } 

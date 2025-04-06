@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FaCalendarAlt, FaUser, FaTag, FaArrowLeft, FaTwitter, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
 import NewsletterSubscribe from '../../components/NewsletterSubscribe';
+import ScrollToTop from '../../components/ScrollToTop';
 
 // Sample blog post data - this would typically come from a CMS or API
 const blogPosts = [
@@ -717,7 +718,7 @@ export default function BlogPost() {
   return (
     <>
       <Head>
-        <title>{post.title} | OCF Blog</title>
+        <title>{post.title} | Open Crypto Foundation</title>
         <meta name="description" content={post.excerpt} />
         {/* Open Graph meta tags for better social sharing */}
         <meta property="og:title" content={post.title} />
@@ -903,6 +904,8 @@ export default function BlogPost() {
           </div>
         </div>
       </div>
+      
+      <ScrollToTop />
     </>
   );
 } 

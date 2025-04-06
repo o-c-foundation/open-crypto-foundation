@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { FaCheck, FaHourglass, FaRocket, FaCog, FaFlask, FaNetworkWired, FaShieldAlt, FaUserShield, FaGlobe } from 'react-icons/fa'
 import { IconType } from 'react-icons'
+import ScrollToTop from '../components/ScrollToTop'
 
 // TypeScript interfaces for component props
 interface MilestoneProps {
@@ -349,6 +350,8 @@ export default function Roadmap() {
           </ul>
         </div>
       </div>
+      
+      <ScrollToTop />
     </>
   )
 } 

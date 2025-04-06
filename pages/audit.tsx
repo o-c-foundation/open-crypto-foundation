@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { FaShieldAlt, FaCheck, FaExclamationTriangle, FaDownload, FaFileAlt, FaLock, FaCode, FaBug, FaCheckCircle } from 'react-icons/fa'
+import ScrollToTop from '../components/ScrollToTop'
 
 // Type definitions for component props
 interface FindingItemProps {
@@ -401,6 +402,8 @@ export default function AuditPage() {
           </div>
         </div>
       </div>
+      
+      <ScrollToTop />
     </>
   )
 } 
