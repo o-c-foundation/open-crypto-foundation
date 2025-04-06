@@ -277,7 +277,7 @@ export default function Manifesto() {
               <div className="mx-auto">
                 <div className="relative w-36 h-36">
                   <Image
-                    src="https://bafkreieksxsadiqtmfcz6fom7hecbr24jbpcao2vldlykupdamchbhxp3y.ipfs.w3s.link/"
+                    src="https://bafkreiazwt7g4hwwiqjeq5crcvwdrih7yag7paahiuzfdcmzs7rnsufyvy.ipfs.w3s.link/"
                     alt="Open Crypto Foundation Logo"
                     fill
                     style={{ objectFit: 'contain' }}
