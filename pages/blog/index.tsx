@@ -121,12 +121,12 @@ export default function Blog() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {featuredPosts.map(post => (
                   <div key={post.id} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform hover:translate-y-[-4px]">
-                    <div className="h-48 bg-gray-700 relative">
+                    <div className="h-56 bg-gray-700 relative overflow-hidden">
                       {/* Display the actual image */}
                       <img 
                         src={post.imageUrl}
                         alt={post.title}
-                        className="absolute inset-0 w-full h-full object-cover"
+                        className="absolute inset-0 w-full h-full object-contain"
                       />
                     </div>
                     <div className="p-6">

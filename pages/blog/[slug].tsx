@@ -273,12 +273,12 @@ export default function BlogPost() {
             <div className="lg:col-span-3">
               <article className="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
                 {/* Featured Image */}
-                <div className="h-64 bg-gray-700 relative">
+                <div className="h-80 bg-gray-700 relative overflow-hidden">
                   {/* Display the actual image */}
                   <img 
                     src={post.imageUrl}
                     alt={post.title}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-contain"
                   />
                 </div>
                 
