@@ -2,9 +2,27 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { FaCheck, FaHourglass, FaRocket, FaCog, FaFlask, FaNetworkWired, FaShieldAlt, FaUserShield, FaGlobe } from 'react-icons/fa'
+import { IconType } from 'react-icons'
+
+// TypeScript interfaces for component props
+interface MilestoneProps {
+  title: string;
+  description: string;
+  completed: boolean;
+  quarter: string;
+  year: string;
+}
+
+interface PhaseProps {
+  number: number;
+  title: string;
+  description: string;
+  icon: IconType;
+  milestones: MilestoneProps[];
+}
 
 // Component for milestone items with completed status
-const Milestone = ({ title, description, completed, quarter, year }) => (
+const Milestone = ({ title, description, completed, quarter, year }: MilestoneProps) => (
   <div className={`relative pl-8 pb-8 border-l-2 ${completed ? 'border-green-500' : 'border-gray-700'}`}>
     <div className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full ${completed ? 'bg-green-500' : 'bg-gray-700'}`}></div>
     <div className="flex flex-col md:flex-row md:items-center gap-2 mb-1">
@@ -19,7 +37,7 @@ const Milestone = ({ title, description, completed, quarter, year }) => (
 )
 
 // Phase component with its milestones
-const Phase = ({ number, title, description, icon: Icon, milestones }) => (
+const Phase = ({ number, title, description, icon: Icon, milestones }: PhaseProps) => (
   <div className="mb-16">
     <div className="flex items-center gap-4 mb-6">
       <div className="bg-primary/20 p-4 rounded-xl">
@@ -40,7 +58,7 @@ const Phase = ({ number, title, description, icon: Icon, milestones }) => (
 )
 
 export default function Roadmap() {
-  const phases = [
+  const phases: PhaseProps[] = [
     {
       number: 1,
       title: "Foundation & Research",
