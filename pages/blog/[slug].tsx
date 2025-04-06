@@ -9,14 +9,14 @@ import NewsletterSubscribe from '../../components/NewsletterSubscribe';
 const blogPosts = [
   {
     id: 1,
-    title: "Understanding Common Cryptocurrency Scams in 2023",
-    slug: "understanding-common-crypto-scams-2023",
+    title: "Understanding Common Cryptocurrency Scams in 2025",
+    slug: "understanding-common-crypto-scams-2025",
     excerpt: "A detailed breakdown of the most prevalent scams targeting crypto users this year, and how to protect yourself from them.",
-    date: "2023-06-15",
-    author: "Alex Chen",
+    date: "2025-06-15",
+    author: "Open Crypto Foundation",
     category: "Security",
     content: `
-      <p class="text-lg mb-4">Cryptocurrency scams have evolved significantly in 2023, becoming more sophisticated and difficult to detect. This article examines the most common types of scams currently targeting crypto users and provides actionable steps to protect yourself.</p>
+      <p class="text-lg mb-4">Cryptocurrency scams have evolved significantly in 2025, becoming more sophisticated and difficult to detect. This article examines the most common types of scams currently targeting crypto users and provides actionable steps to protect yourself.</p>
       
       <h2 class="text-2xl font-bold mt-8 mb-4 text-white">1. Fake Exchange and Website Scams</h2>
       
@@ -57,7 +57,7 @@ const blogPosts = [
       
       <h2 class="text-2xl font-bold mt-8 mb-4 text-white">3. Smart Contract Exploits</h2>
       
-      <p class="mb-4">Not all cryptocurrency losses are due to explicit scams—some result from technical vulnerabilities in smart contracts. In 2023, we've seen a rise in exploits targeting decentralized finance (DeFi) protocols.</p>
+      <p class="mb-4">Not all cryptocurrency losses are due to explicit scams—some result from technical vulnerabilities in smart contracts. In 2025, we've seen a rise in exploits targeting decentralized finance (DeFi) protocols.</p>
       
       <p class="mb-4">These exploits can drain millions of dollars from protocols through code vulnerabilities, flash loan attacks, or oracle manipulation.</p>
       
@@ -105,11 +105,108 @@ const blogPosts = [
         <li>Enable all available security features on your accounts</li>
       </ul>
       
-      <p class="mb-4">By staying vigilant and following these guidelines, you can significantly reduce your risk of falling victim to cryptocurrency scams in 2023 and beyond.</p>
+      <p class="mb-4">By staying vigilant and following these guidelines, you can significantly reduce your risk of falling victim to cryptocurrency scams in 2025 and beyond.</p>
     `,
     tags: ["Security", "Scams", "Crypto Safety", "DeFi", "Investment Protection"],
-    imageUrl: "/images/blog/crypto-scams.jpg",
+    imageUrl: "https://bafkreib5mogbk5syxtr2eompzt7kz2gcumxqj6bekamyj4ywwdieoegvgy.ipfs.w3s.link/",
     relatedPosts: [2, 6]
+  },
+  {
+    id: 2,
+    title: "OCF Announces Testnet Beta Cross-Chain Token",
+    slug: "ocf-announces-testnet-beta-cross-chain-token",
+    excerpt: "We're excited to announce our upcoming token launch on ETH, SOLANA, & BNB chains as we work towards our goals and eventually spin off our own network.",
+    date: "2025-05-22",
+    author: "Open Crypto Foundation",
+    category: "Announcement",
+    content: `
+      <p class="text-lg mb-4">The Open Crypto Foundation is thrilled to announce the beta launch of our cross-chain token, marking a significant milestone in our journey towards creating a more secure and accessible cryptocurrency ecosystem.</p>
+      
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-white">Cross-Chain Deployment</h2>
+      
+      <p class="mb-4">Our token will initially be deployed across three major blockchain ecosystems:</p>
+      
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>Ethereum (ETH):</strong> Leveraging the security and widespread adoption of the Ethereum network</li>
+        <li><strong>Solana (SOL):</strong> Utilizing Solana's high throughput and low transaction costs</li>
+        <li><strong>BNB Chain:</strong> Taking advantage of BNB Chain's growing DeFi ecosystem and user base</li>
+      </ul>
+      
+      <p class="mb-4">This multi-chain approach ensures our community members can interact with our token on their preferred blockchain, reducing barriers to entry and maximizing accessibility.</p>
+      
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-white">Testnet Phase</h2>
+      
+      <p class="mb-4">During the initial testnet phase, we'll be focusing on:</p>
+      
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li>Testing cross-chain interoperability and seamless bridging between networks</li>
+        <li>Optimizing gas efficiency and transaction processing</li>
+        <li>Implementing robust security measures to protect token holders</li>
+        <li>Gathering community feedback to refine tokenomics and utility features</li>
+      </ul>
+      
+      <p class="mb-4">Community members who participate in the testnet phase will have the opportunity to earn rewards and contribute directly to the development process.</p>
+      
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-white">Token Utility</h2>
+      
+      <p class="mb-4">The OCF token will serve multiple purposes within our ecosystem:</p>
+      
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>Governance:</strong> Token holders will be able to vote on key protocol decisions and foundation initiatives</li>
+        <li><strong>Security Tools Access:</strong> Premium features of our security toolset will be accessible to token holders</li>
+        <li><strong>Education Platform:</strong> Token-gated educational content and advanced courses</li>
+        <li><strong>Protocol Fee Reductions:</strong> Discounted fees for various services within the OCF ecosystem</li>
+      </ul>
+      
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-white">Roadmap to Our Own Network</h2>
+      
+      <p class="mb-4">While our initial launch leverages existing blockchain infrastructure, we're already working towards our long-term goal of launching a dedicated OCF network specifically designed for secure DeFi applications.</p>
+      
+      <p class="mb-4">Our timeline includes:</p>
+      
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>Q3 2025:</strong> Testnet token launch across ETH, SOL, and BNB Chain</li>
+        <li><strong>Q4 2025:</strong> Mainnet token launch with full utility implementation</li>
+        <li><strong>Q2 2026:</strong> Beta launch of OCF validator testnet</li>
+        <li><strong>Q4 2026:</strong> Full OCF network launch with native token migration option</li>
+      </ul>
+      
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-white">Fair Distribution Model</h2>
+      
+      <p class="mb-4">In line with our commitment to fairness and accessibility, we're implementing a distribution model that prevents concentration of tokens and ensures broad community participation:</p>
+      
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li>No pre-sales or private allocations to venture capital</li>
+        <li>Community allocation: 40%</li>
+        <li>Development fund: 30% (vested over 4 years)</li>
+        <li>Foundation treasury: 20% (for long-term sustainability)</li>
+        <li>Team: 10% (with 2-year cliff and 4-year vesting)</li>
+      </ul>
+      
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-white">How to Participate</h2>
+      
+      <p class="mb-4">We invite our community to join us on this exciting journey. Here's how you can get involved:</p>
+      
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li>Sign up for our testnet whitelist on our official website</li>
+        <li>Join our Discord community for real-time updates and discussions</li>
+        <li>Follow our social media channels for announcements</li>
+        <li>Participate in upcoming community calls and AMA sessions</li>
+      </ul>
+      
+      <p class="mb-4">We're committed to building this token and eventual network with direct input from our community, ensuring it truly serves the needs of cryptocurrency users worldwide.</p>
+      
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-white">Conclusion</h2>
+      
+      <p class="mb-4">The launch of our cross-chain token represents a major step forward in our mission to make cryptocurrency safer and more accessible for everyone. By starting with established blockchain ecosystems and gradually working towards our own specialized network, we're taking a measured, sustainable approach to growth.</p>
+      
+      <p class="mb-4">We deeply appreciate the support of our community and look forward to building this next chapter together.</p>
+      
+      <p class="mb-4">Stay tuned for more detailed announcements about the testnet launch dates and participation instructions.</p>
+    `,
+    tags: ["Announcement", "Token Launch", "Testnet", "Cross-Chain", "ETH", "SOL", "BNB", "Blockchain"],
+    imageUrl: "https://bafkreiazwt7g4hwwiqjeq5crcvwdrih7yag7paahiuzfdcmzs7rnsufyvy.ipfs.w3s.link/",
+    relatedPosts: [1, 5]
   },
   // Additional posts could be defined here
 ];

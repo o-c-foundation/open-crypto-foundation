@@ -8,25 +8,25 @@ import NewsletterSubscribe from '../../components/NewsletterSubscribe';
 const blogPosts = [
   {
     id: 1,
-    title: "Understanding Common Cryptocurrency Scams in 2023",
-    slug: "understanding-common-crypto-scams-2023",
+    title: "Understanding Common Cryptocurrency Scams in 2025",
+    slug: "understanding-common-crypto-scams-2025",
     excerpt: "A detailed breakdown of the most prevalent scams targeting crypto users this year, and how to protect yourself from them.",
-    date: "2023-06-15",
-    author: "Alex Chen",
+    date: "2025-06-15",
+    author: "Open Crypto Foundation",
     category: "Security",
     featured: true,
-    imageUrl: "/images/blog/crypto-scams.jpg"
+    imageUrl: "https://bafkreib5mogbk5syxtr2eompzt7kz2gcumxqj6bekamyj4ywwdieoegvgy.ipfs.w3s.link/"
   },
   {
     id: 2,
-    title: "The OCF Launches New Wallet Security Tool",
-    slug: "ocf-launches-wallet-security-tool",
-    excerpt: "We're excited to announce the release of our new open-source wallet security assessment tool to help users identify potential vulnerabilities.",
-    date: "2023-05-22",
-    author: "Jamie Rodriguez",
+    title: "OCF Announces Testnet Beta Cross-Chain Token",
+    slug: "ocf-announces-testnet-beta-cross-chain-token",
+    excerpt: "We're excited to announce our upcoming token launch on ETH, SOLANA, & BNB chains as we work towards our goals and eventually spin off our own network.",
+    date: "2025-05-22",
+    author: "Open Crypto Foundation",
     category: "Announcement",
     featured: true,
-    imageUrl: "/images/blog/wallet-security.jpg"
+    imageUrl: "https://bafkreiazwt7g4hwwiqjeq5crcvwdrih7yag7paahiuzfdcmzs7rnsufyvy.ipfs.w3s.link/"
   },
   {
     id: 3,
