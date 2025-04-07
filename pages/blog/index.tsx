@@ -171,7 +171,7 @@ export default function Blog() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {featuredPosts.map(post => (
                 <div key={post.id} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform hover:translate-y-[-4px]">
-                  <div className="h-56 bg-gray-700 relative overflow-hidden">
+                  <div className="h-56 bg-black relative overflow-hidden">
                     {/* Display the actual image */}
                     <img 
                       src={post.imageUrl}
