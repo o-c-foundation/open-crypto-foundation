@@ -840,274 +840,161 @@ export default function BlockchainRepositoriesPage() {
   return (
     <>
       <Head>
-        <title>Developer Tools | Open Crypto Foundation</title>
-        <meta 
-          name="description" 
-          content="Comprehensive directory of essential blockchain development tools, repositories, frameworks, and utilities for EVM, BNB Chain, and Solana development." 
-        />
+        <title>Blockchain Repositories | Open Crypto Foundation</title>
+        <meta name="description" content="A curated collection of essential blockchain repositories for EVM and Solana blockchain development." />
       </Head>
 
-      <ScrollToTop />
-
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-black to-gray-900">
-        <div className="container px-4 mx-auto">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="mb-6 text-4xl md:text-5xl font-bold text-white">
-              Developer Tools & Repositories
-            </h1>
-            <p className="mb-8 text-xl text-gray-300 leading-relaxed">
-              A comprehensive directory of essential repositories, frameworks, tools, security utilities, and development resources 
-              for building on EVM chains, BNB Chain, and Solana.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Filter Section */}
-      <section className="py-10 bg-gray-900 border-b border-gray-800">
-        <div className="container px-4 mx-auto">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row gap-4 items-stretch">
-              {/* Search */}
-              <div className="relative flex-grow">
-                <input
-                  type="text"
-                  placeholder="Search repositories..."
-                  className="w-full px-4 py-3 bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white pl-10"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              </div>
-              
-              {/* Chain Filter */}
-              <div className="flex-shrink-0">
-                <select
-                  className="w-full md:w-48 px-4 py-3 bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
-                  value={selectedChain}
-                  onChange={(e) => setSelectedChain(e.target.value)}
-                >
-                  {chains.map(chain => (
-                    <option key={chain.id} value={chain.id}>
-                      {chain.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              
-              {/* Category Filter */}
-              <div className="flex-shrink-0">
-                <select
-                  className="w-full md:w-48 px-4 py-3 bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                >
-                  {categories.map(category => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            
-            {/* Results counter */}
-            <div className="mt-4 text-gray-400 text-sm">
-              Showing {filteredRepositories.length} of {allRepositories.length} repositories
+      <main className="min-h-screen bg-dark">
+        {/* Hero Section */}
+        <section className="py-20 bg-gradient-to-b from-dark-light to-dark">
+          <div className="container px-4 mx-auto">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Blockchain Repositories
+              </h1>
+              <p className="text-xl text-light-muted mb-8">
+                A curated collection of essential blockchain repositories for EVM and Solana blockchain development, 
+                including smart contract frameworks, security tools, and infrastructure components.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Repositories Grid */}
-      <section className="py-16 bg-gray-900">
-        <div className="container px-4 mx-auto">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredRepositories.length > 0 ? (
-                filteredRepositories.map((repo, index) => (
-                  <div key={index} className="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300">
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-3">
-                        <span className={`px-3 py-1 text-xs font-semibold rounded-full ${
-                          repo.chain === 'evm' ? 'bg-blue-900/30 text-blue-400' : repo.chain === 'bnb' ? 'bg-purple-900/30 text-purple-400' : 'bg-purple-900/30 text-purple-400'
-                        }`}>
-                          {repo.chain === 'evm' ? 'EVM' : repo.chain === 'bnb' ? 'BNB Chain' : 'Solana'}
-                        </span>
-                        <span className="text-gray-400 text-sm flex items-center">
-                          <FaGithub className="mr-1" /> {repo.stars}
-                        </span>
-                      </div>
-                      
-                      <h3 className="text-xl font-bold text-white mb-2">{repo.title}</h3>
-                      <p className="text-gray-300 mb-4">{repo.description}</p>
-                      
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {repo.tags.map((tag, tagIndex) => (
-                          <span key={tagIndex} className="bg-gray-700 px-2 py-1 rounded-md text-xs text-gray-300">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      
-                      <a 
-                        href={repo.url} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center text-blue-400 hover:text-blue-300 transition-colors font-medium"
-                      >
-                        <FaGithub className="mr-2" />
-                        View Repository
-                      </a>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div className="col-span-3 text-center py-12">
-                  <p className="text-gray-400 mb-4">No repositories found matching your criteria.</p>
-                  <button 
-                    onClick={() => {
-                      setSearchQuery('');
-                      setSelectedChain('all');
-                      setSelectedCategory('all');
-                    }}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-                  >
-                    Reset Filters
-                  </button>
+        {/* Filter Section */}
+        <section className="py-10 bg-dark">
+          <div className="container px-4 mx-auto">
+            <div className="max-w-6xl mx-auto">
+              <div className="flex flex-col md:flex-row gap-4 items-stretch">
+                {/* Search */}
+                <div className="relative flex-grow">
+                  <input
+                    type="text"
+                    placeholder="Search repositories..."
+                    className="w-full px-4 py-3 bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white pl-10"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
+                  <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Resources Section */}
-      <section className="py-16 bg-gray-800">
-        <div className="container px-4 mx-auto">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Additional Resources</h2>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* EVM Resources */}
-              <div className="bg-gray-700 rounded-lg p-6">
-                <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
-                  <FaEthereum className="mr-2 text-blue-400" /> EVM Development Resources
-                </h3>
-                <ul className="space-y-4">
-                  <li>
-                    <a 
-                      href="https://ethereum.org/developers" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300 font-medium"
-                    >
-                      Ethereum Developer Portal
-                    </a>
-                    <p className="text-gray-300 mt-1">Official Ethereum resources for developers</p>
-                  </li>
-                  <li>
-                    <a 
-                      href="https://docs.openzeppelin.com/" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300 font-medium"
-                    >
-                      OpenZeppelin Documentation
-                    </a>
-                    <p className="text-gray-300 mt-1">Secure smart contract libraries and standards</p>
-                  </li>
-                  <li>
-                    <a 
-                      href="https://consensys.github.io/smart-contract-best-practices/" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300 font-medium"
-                    >
-                      Smart Contract Best Practices
-                    </a>
-                    <p className="text-gray-300 mt-1">Security considerations for Ethereum smart contracts</p>
-                  </li>
-                  <li>
-                    <a 
-                      href="https://www.evm.codes/" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300 font-medium"
-                    >
-                      EVM Codes
-                    </a>
-                    <p className="text-gray-300 mt-1">Interactive reference of EVM opcodes</p>
-                  </li>
-                </ul>
+                
+                {/* Chain Filter */}
+                <div className="flex-shrink-0">
+                  <select
+                    className="w-full md:w-48 px-4 py-3 bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+                    value={selectedChain}
+                    onChange={(e) => setSelectedChain(e.target.value)}
+                  >
+                    {chains.map(chain => (
+                      <option key={chain.id} value={chain.id}>
+                        {chain.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                
+                {/* Category Filter */}
+                <div className="flex-shrink-0">
+                  <select
+                    className="w-full md:w-48 px-4 py-3 bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+                    value={selectedCategory}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
+                  >
+                    {categories.map(category => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
               
-              {/* Solana Resources */}
-              <div className="bg-gray-700 rounded-lg p-6">
-                <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
-                  <FaCoins className="mr-2 text-purple-400" /> Solana Development Resources
-                </h3>
-                <ul className="space-y-4">
-                  <li>
-                    <a 
-                      href="https://solana.com/developers" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300 font-medium"
-                    >
-                      Solana Developer Portal
-                    </a>
-                    <p className="text-gray-300 mt-1">Official Solana resources for developers</p>
-                  </li>
-                  <li>
-                    <a 
-                      href="https://solanacookbook.com/" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300 font-medium"
-                    >
-                      Solana Cookbook
-                    </a>
-                    <p className="text-gray-300 mt-1">Reference guide for building on Solana</p>
-                  </li>
-                  <li>
-                    <a 
-                      href="https://book.anchor-lang.com/" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300 font-medium"
-                    >
-                      Anchor Framework Documentation
-                    </a>
-                    <p className="text-gray-300 mt-1">Solana's popular development framework</p>
-                  </li>
-                  <li>
-                    <a 
-                      href="https://soldev.app/" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300 font-medium"
-                    >
-                      SolDev
-                    </a>
-                    <p className="text-gray-300 mt-1">Community-driven Solana development tutorials</p>
-                  </li>
-                </ul>
+              {/* Results counter */}
+              <div className="mt-4 text-gray-400 text-sm">
+                Showing {filteredRepositories.length} of {allRepositories.length} repositories
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Newsletter Section */}
-      <section className="py-16 bg-gray-900">
-        <div className="container px-4 mx-auto">
-          <div className="max-w-xl mx-auto">
-            <NewsletterSubscribe />
+        {/* Repositories Grid */}
+        <section className="py-12 bg-dark">
+          <div className="container px-4 mx-auto">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredRepositories.length > 0 ? (
+                  filteredRepositories.map((repo, index) => (
+                    <div key={index} className="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300">
+                      <div className="p-6">
+                        <div className="flex items-center justify-between mb-3">
+                          <span className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                            repo.chain === 'evm' ? 'bg-blue-900/30 text-blue-400' : repo.chain === 'bnb' ? 'bg-purple-900/30 text-purple-400' : 'bg-purple-900/30 text-purple-400'
+                          }`}>
+                            {repo.chain === 'evm' ? 'EVM' : repo.chain === 'bnb' ? 'BNB Chain' : 'Solana'}
+                          </span>
+                          <span className="text-gray-400 text-sm flex items-center">
+                            <FaGithub className="mr-1" /> {repo.stars}
+                          </span>
+                        </div>
+                        
+                        <h3 className="text-xl font-bold text-white mb-2">{repo.title}</h3>
+                        <p className="text-gray-300 mb-4">{repo.description}</p>
+                        
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {repo.tags.map((tag, tagIndex) => (
+                            <span key={tagIndex} className="bg-gray-700 px-2 py-1 rounded-md text-xs text-gray-300">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        
+                        <a 
+                          href={repo.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center text-blue-400 hover:text-blue-300 transition-colors font-medium"
+                        >
+                          <FaGithub className="mr-2" />
+                          View Repository
+                        </a>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="col-span-3 text-center py-12">
+                    <p className="text-gray-400 mb-4">No repositories found matching your criteria.</p>
+                    <button 
+                      onClick={() => {
+                        setSearchQuery('');
+                        setSelectedChain('all');
+                        setSelectedCategory('all');
+                      }}
+                      className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                    >
+                      Reset Filters
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Contribute Banner */}
+        <section className="py-12 bg-dark-light/30 border-y border-dark-light/30">
+          {/* ... existing code ... */}
+        </section>
+
+        {/* Newsletter */}
+        <section className="py-16 bg-dark-light/30">
+          <div className="container px-4 mx-auto">
+            <div className="max-w-xl mx-auto">
+              <NewsletterSubscribe />
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <ScrollToTop />
     </>
   );
 } 
