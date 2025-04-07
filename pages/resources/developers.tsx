@@ -17,14 +17,13 @@ export default function DevelopersPage() {
       </Head>
 
       {/* Hero Section */}
-      <section className="py-20 bg-dark">
+      <section className="py-20 bg-gradient-to-b from-dark-light to-dark">
         <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="mb-6 text-4xl md:text-5xl font-bold text-white">
-              Developer Read<br />
-              <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">Future of Finance</span>
+              Developer Read
             </h1>
-            <p className="mb-8 text-xl text-gray-300 leading-relaxed">
+            <p className="mb-8 text-xl text-light-muted leading-relaxed">
               As architects of the decentralized economy, you shape the future of finance. 
               The Open Crypto Foundation provides resources, guidance, and community support 
               to help you build secure, transparent, and innovative DeFi solutions.
@@ -34,15 +33,15 @@ export default function DevelopersPage() {
       </section>
 
       {/* Open Letter */}
-      <section className="py-16 bg-dark-light/5">
+      <section className="py-16 bg-dark-card border-y border-dark-light/30">
         <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto">
             <div className="mb-10 text-center">
               <h2 className="text-3xl font-bold text-white mb-4">An Open Letter to DeFi Developers</h2>
-              <p className="text-gray-400 text-lg">From the Open Crypto Foundation</p>
+              <p className="text-light-muted text-lg">From the Open Crypto Foundation</p>
             </div>
             
-            <div className="prose prose-lg prose-invert max-w-none text-gray-300">
+            <div className="prose prose-lg prose-invert max-w-none text-light-muted">
               <p className="text-xl font-serif leading-relaxed">
                 Distinguished Architects of Decentralized Finance,
               </p>
@@ -111,14 +110,14 @@ export default function DevelopersPage() {
             <h2 className="text-3xl font-bold text-white mb-10 text-center">Developer Resources</h2>
             
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 hover:border-primary transition-all duration-300">
+              <div className="bg-dark-card rounded-lg p-6 border border-dark-light/30 hover:border-primary transition-all duration-300">
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
                     <FaShieldAlt className="text-primary text-2xl" />
                   </div>
                   <h3 className="text-xl font-bold text-white">Security Best Practices</h3>
                 </div>
-                <p className="text-gray-300 mb-4">
+                <p className="text-light-muted mb-4">
                   Comprehensive guidelines for developing secure smart contracts, conducting thorough audits, and implementing robust security measures.
                 </p>
                 <Link href="/resources/security-guide" className="text-primary hover:text-primary-light font-medium inline-flex items-center">
@@ -126,14 +125,14 @@ export default function DevelopersPage() {
                 </Link>
               </div>
               
-              <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 hover:border-primary transition-all duration-300">
+              <div className="bg-dark-card rounded-lg p-6 border border-dark-light/30 hover:border-primary transition-all duration-300">
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
                     <FaCode className="text-primary text-2xl" />
                   </div>
                   <h3 className="text-xl font-bold text-white">Code Patterns & Anti-patterns</h3>
                 </div>
-                <p className="text-gray-300 mb-4">
+                <p className="text-light-muted mb-4">
                   Explore battle-tested design patterns for common DeFi mechanisms and learn from historical vulnerabilities and exploits.
                 </p>
                 <Link href="/resources/code-patterns" className="text-primary hover:text-primary-light font-medium inline-flex items-center">
@@ -141,14 +140,14 @@ export default function DevelopersPage() {
                 </Link>
               </div>
               
-              <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 hover:border-primary transition-all duration-300">
+              <div className="bg-dark-card rounded-lg p-6 border border-dark-light/30 hover:border-primary transition-all duration-300">
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
                     <FaUsers className="text-primary text-2xl" />
                   </div>
                   <h3 className="text-xl font-bold text-white">Community Guidelines</h3>
                 </div>
-                <p className="text-gray-300 mb-4">
+                <p className="text-light-muted mb-4">
                   Frameworks for building transparent, inclusive developer communities and establishing effective governance models.
                 </p>
                 <Link href="/resources/community-guidelines" className="text-primary hover:text-primary-light font-medium inline-flex items-center">
@@ -156,14 +155,14 @@ export default function DevelopersPage() {
                 </Link>
               </div>
               
-              <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 hover:border-primary transition-all duration-300">
+              <div className="bg-dark-card rounded-lg p-6 border border-dark-light/30 hover:border-primary transition-all duration-300">
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
                     <FaBook className="text-primary text-2xl" />
                   </div>
                   <h3 className="text-xl font-bold text-white">Educational Materials</h3>
                 </div>
-                <p className="text-gray-300 mb-4">
+                <p className="text-light-muted mb-4">
                   Curated tutorials, case studies, and technical deep-dives on advanced DeFi concepts and implementation strategies.
                 </p>
                 <Link href="/resources/defi-education" className="text-primary hover:text-primary-light font-medium inline-flex items-center">
@@ -171,14 +170,14 @@ export default function DevelopersPage() {
                 </Link>
               </div>
 
-              <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 hover:border-primary transition-all duration-300 md:col-span-2">
+              <div className="bg-dark-card rounded-lg p-6 border border-dark-light/30 hover:border-primary transition-all duration-300 md:col-span-2">
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
                     <FaGithub className="text-primary text-2xl" />
                   </div>
                   <h3 className="text-xl font-bold text-white">Blockchain Repositories</h3>
                 </div>
-                <p className="text-gray-300 mb-4">
+                <p className="text-light-muted mb-4">
                   Comprehensive directory of essential repositories for EVM and Solana blockchain development, including frameworks, tools, security utilities, bots, and infrastructure components.
                 </p>
                 <Link href="/resources/blockchain-repositories" className="text-primary hover:text-primary-light font-medium inline-flex items-center">
@@ -191,85 +190,85 @@ export default function DevelopersPage() {
       </section>
       
       {/* Common Vulnerabilities */}
-      <section className="py-16 bg-dark-light/5">
+      <section className="py-16 bg-dark-card border-y border-dark-light/30">
         <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-8 text-center">Common Vulnerabilities</h2>
-            <p className="text-gray-300 text-lg text-center mb-10">
+            <p className="text-light-muted text-lg text-center mb-10">
               Understanding historical exploits is essential for developing secure smart contracts.
               Below are critical vulnerabilities that every DeFi developer should be aware of.
             </p>
             
             <div className="space-y-6">
-              <div className="bg-primary/10 border border-primary/30 rounded-lg p-6">
+              <div className="bg-dark-light/10 border border-primary/30 rounded-lg p-6">
                 <div className="flex items-start">
                   <div className="mr-4 mt-1">
                     <FaExclamationTriangle className="text-primary text-xl" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Reentrancy Attacks</h3>
-                    <p className="text-gray-300 mb-3">
+                    <p className="text-light-muted mb-3">
                       Occurs when external contract calls allow attackers to re-enter the original function before the first execution completes, potentially draining funds through recursive calls.
                     </p>
                     <div className="bg-dark p-4 rounded-md mb-3">
-                      <p className="text-sm font-mono text-gray-300">
+                      <p className="text-sm font-mono text-light-muted">
                         <span className="text-red-400">Vulnerable Pattern:</span> Updating state after external calls
                       </p>
                       <p className="text-sm font-mono text-green-300 mt-2">
                         <span className="text-green-400">Mitigation:</span> Apply checks-effects-interactions pattern, use reentrancy guards
                       </p>
                     </div>
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-light-muted text-sm">
                       Notable example: The DAO hack (2016), Various DeFi protocol exploits (2020-2023)
                     </p>
                   </div>
                 </div>
               </div>
               
-              <div className="bg-primary/10 border border-primary/30 rounded-lg p-6">
+              <div className="bg-dark-light/10 border border-primary/30 rounded-lg p-6">
                 <div className="flex items-start">
                   <div className="mr-4 mt-1">
                     <FaExclamationTriangle className="text-primary text-xl" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Flash Loan Attacks</h3>
-                    <p className="text-gray-300 mb-3">
+                    <p className="text-light-muted mb-3">
                       Utilizes uncollateralized loans to manipulate market prices and exploit poorly designed oracles, price mechanisms, or governance systems.
                     </p>
                     <div className="bg-dark p-4 rounded-md mb-3">
-                      <p className="text-sm font-mono text-gray-300">
+                      <p className="text-sm font-mono text-light-muted">
                         <span className="text-red-400">Vulnerable Pattern:</span> Single-source oracles, manipulable price feeds
                       </p>
                       <p className="text-sm font-mono text-green-300 mt-2">
                         <span className="text-green-400">Mitigation:</span> Time-weighted average prices, multi-oracle feeds, circuit breakers
                       </p>
                     </div>
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-light-muted text-sm">
                       Notable examples: bZx, Harvest Finance, PancakeBunny exploits
                     </p>
                   </div>
                 </div>
               </div>
               
-              <div className="bg-primary/10 border border-primary/30 rounded-lg p-6">
+              <div className="bg-dark-light/10 border border-primary/30 rounded-lg p-6">
                 <div className="flex items-start">
                   <div className="mr-4 mt-1">
                     <FaExclamationTriangle className="text-primary text-xl" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Access Control Vulnerabilities</h3>
-                    <p className="text-gray-300 mb-3">
+                    <p className="text-light-muted mb-3">
                       Insufficient permission checks or improper function visibility that allows unauthorized users to access privileged operations.
                     </p>
                     <div className="bg-dark p-4 rounded-md mb-3">
-                      <p className="text-sm font-mono text-gray-300">
+                      <p className="text-sm font-mono text-light-muted">
                         <span className="text-red-400">Vulnerable Pattern:</span> Missing modifiers, improper visibility settings
                       </p>
                       <p className="text-sm font-mono text-green-300 mt-2">
                         <span className="text-green-400">Mitigation:</span> Comprehensive role-based access control, thorough permission tests
                       </p>
                     </div>
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-light-muted text-sm">
                       Notable examples: Parity multi-sig wallet, numerous protocol governance exploits
                     </p>
                   </div>
@@ -282,7 +281,7 @@ export default function DevelopersPage() {
                 <FaLightbulb className="text-primary mr-2" />
                 Development Security Principles
               </h3>
-              <ul className="list-disc pl-5 text-gray-300 space-y-3">
+              <ul className="list-disc pl-5 text-light-muted space-y-3">
                 <li>
                   <strong className="text-white">Implement defense in depth:</strong>
                   <p className="mt-1">Never rely on a single security control. Layer multiple mechanisms to protect against different attack vectors.</p>
@@ -306,12 +305,12 @@ export default function DevelopersPage() {
       </section>
       
       {/* Newsletter Section */}
-      <section className="py-16 bg-dark">
+      <section className="py-16 bg-dark-light/30">
         <div className="container px-4 mx-auto">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-white mb-4">Join Our Developer Community</h2>
-              <p className="text-gray-300 text-lg">
+              <p className="text-light-muted text-lg">
                 Stay updated with the latest security advisories, best practices, and developer resources
               </p>
             </div>
