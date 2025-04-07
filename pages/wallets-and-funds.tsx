@@ -17,8 +17,56 @@ import {
 } from 'react-icons/fa';
 import ScrollToTop from '../components/ScrollToTop';
 
+// Define types for wallet data
+type Balance = {
+  token: string;
+  amount: string;
+  usdValue: string;
+};
+
+type Owner = {
+  name: string;
+  address: string;
+};
+
+type Transaction = {
+  hash: string;
+  type: string;
+  amount: string;
+  recipient?: string;
+  sender?: string;
+  timestamp: string;
+  status: string;
+};
+
+type Wallet = {
+  id: string;
+  name: string;
+  address: string;
+  explorerUrl: string;
+  balances: Balance[];
+  owners: Owner[];
+  recentTransactions: Transaction[];
+  requiredSigners: number;
+  totalSigners: number;
+};
+
+type ChainData = {
+  [chain: string]: Wallet[];
+};
+
+type Fund = {
+  id: string;
+  name: string;
+  description: string;
+  address: string;
+  explorerUrl: string;
+  balance: string;
+  icon: JSX.Element;
+};
+
 // Mock data for wallet balances - in a real implementation, this would come from an API
-const walletData = {
+const walletData: ChainData = {
   ethereum: [
     {
       id: 'eth-treasury',
@@ -178,7 +226,7 @@ const walletData = {
 };
 
 // Mock data for the grant funds
-const fundData = [
+const fundData: Fund[] = [
   {
     id: 'victim-recovery',
     name: 'Victim Recovery Fund',
@@ -209,17 +257,17 @@ const fundData = [
 ];
 
 export default function WalletsAndFundsPage() {
-  const [activeChain, setActiveChain] = React.useState('ethereum');
-  const [activeWallet, setActiveWallet] = React.useState(walletData.ethereum[0].id);
+  const [activeChain, setActiveChain] = React.useState<string>('ethereum');
+  const [activeWallet, setActiveWallet] = React.useState<string>(walletData.ethereum[0].id);
 
-  const handleChainChange = (chain) => {
+  const handleChainChange = (chain: string): void => {
     setActiveChain(chain);
     // Set the first wallet of the selected chain as active
     setActiveWallet(walletData[chain][0].id);
   };
 
-  const getWalletById = (walletId) => {
-    let wallet = null;
+  const getWalletById = (walletId: string): Wallet | null => {
+    let wallet: Wallet | null = null;
     Object.keys(walletData).forEach(chain => {
       const found = walletData[chain].find(w => w.id === walletId);
       if (found) wallet = found;
@@ -315,11 +363,11 @@ export default function WalletsAndFundsPage() {
               <div className="bg-dark-card p-6 rounded-xl border border-gray-800">
                 <div className="flex justify-between items-start mb-6">
                   <div>
-                    <h3 className="text-2xl font-bold text-white">{selectedWallet.name}</h3>
+                    <h3 className="text-2xl font-bold text-white">{selectedWallet?.name}</h3>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className="text-sm text-gray-400 font-mono">{selectedWallet.address}</span>
+                      <span className="text-sm text-gray-400 font-mono">{selectedWallet?.address}</span>
                       <a 
-                        href={selectedWallet.explorerUrl} 
+                        href={selectedWallet?.explorerUrl} 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="text-primary hover:text-primary-light transition-colors"
@@ -330,7 +378,7 @@ export default function WalletsAndFundsPage() {
                   </div>
                   <div className="bg-dark-elevated px-3 py-1 rounded-full flex items-center gap-1">
                     <FaUsers size={14} className="text-primary" />
-                    <span className="text-gray-300 text-sm">{selectedWallet.requiredSigners} of {selectedWallet.totalSigners} Multi-Sig</span>
+                    <span className="text-gray-300 text-sm">{selectedWallet?.requiredSigners} of {selectedWallet?.totalSigners} Multi-Sig</span>
                   </div>
                 </div>
 
@@ -350,7 +398,7 @@ export default function WalletsAndFundsPage() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-dark-card">
-                        {selectedWallet.balances.map((balance, index) => (
+                        {selectedWallet?.balances.map((balance, index) => (
                           <tr key={index} className="hover:bg-dark-card/50 transition-colors">
                             <td className="py-4 px-4 text-left whitespace-nowrap">
                               <span className="font-medium text-white">{balance.token}</span>
@@ -387,7 +435,7 @@ export default function WalletsAndFundsPage() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-dark-card">
-                        {selectedWallet.recentTransactions.map((tx, index) => (
+                        {selectedWallet?.recentTransactions.map((tx, index) => (
                           <tr key={index} className="hover:bg-dark-card/50 transition-colors">
                             <td className="py-4 px-4 text-left whitespace-nowrap">
                               <span className={`font-medium ${tx.type.includes('Out') ? 'text-red-400' : 'text-green-400'}`}>
@@ -419,7 +467,7 @@ export default function WalletsAndFundsPage() {
                                 {tx.hash.slice(0, 10)}...
                               </span>
                               <a 
-                                href={`${selectedWallet.explorerUrl}/tx/${tx.hash}`} 
+                                href={`${selectedWallet?.explorerUrl}/tx/${tx.hash}`} 
                                 target="_blank" 
                                 rel="noopener noreferrer"
                                 className="text-primary hover:text-primary-light transition-colors ml-2"
@@ -442,18 +490,18 @@ export default function WalletsAndFundsPage() {
                   </h4>
                   <div className="bg-dark-elevated rounded-xl p-5">
                     <p className="text-gray-400 mb-4">
-                      This wallet requires {selectedWallet.requiredSigners} out of {selectedWallet.totalSigners} signatures to execute any transaction. 
+                      This wallet requires {selectedWallet?.requiredSigners} out of {selectedWallet?.totalSigners} signatures to execute any transaction. 
                       All signers are verified OCF governance participants with secure key management protocols.
                     </p>
                     <ul className="space-y-3">
-                      {selectedWallet.owners.map((owner, index) => (
+                      {selectedWallet?.owners.map((owner, index) => (
                         <li key={index} className="flex justify-between items-center border-b border-dark-card pb-3">
                           <div>
                             <span className="text-white font-medium">{owner.name}</span>
                             <p className="text-gray-400 font-mono text-xs mt-1">{owner.address}</p>
                           </div>
                           <a 
-                            href={`${selectedWallet.explorerUrl.split('/address')[0]}/address/${owner.address}`} 
+                            href={`${selectedWallet?.explorerUrl.split('/address')[0]}/address/${owner.address}`} 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="text-primary hover:text-primary-light transition-colors"
