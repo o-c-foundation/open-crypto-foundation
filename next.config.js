@@ -27,6 +27,11 @@ const nextConfig = {
     };
     return config;
   },
+  experimental: {
+    runtime: 'edge',
+  },
+  unstable_runtimeJS: true,
+  unstable_JsPreload: false
 }
 
 module.exports = nextConfig 
