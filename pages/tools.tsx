@@ -180,19 +180,19 @@ export default function ToolsPage() {
         />
       </Head>
       
-      <section className="pt-10 pb-16 bg-gradient-to-br from-black to-gray-900 text-white border-b border-gray-800">
-        <div className="container">
+      <section className="pt-10 pb-16 bg-dark text-white border-b border-dark-light/30">
+        <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex items-center justify-center mb-6">
-              <FaTools className="text-4xl mr-3 text-purple-400" />
+              <FaTools className="text-4xl mr-3 text-primary" />
               <h1 className="text-4xl font-bold">DeFi Safety Tools</h1>
             </div>
             <p className="text-xl text-gray-300 mb-8">
               A curated collection of essential tools to help you navigate the DeFi ecosystem safely and confidently.
             </p>
-            <div className="p-6 bg-gray-800 rounded-lg border border-gray-700 text-left">
+            <div className="p-6 bg-dark-card rounded-lg border border-dark-light/30 text-left">
               <h2 className="text-xl font-bold mb-3 flex items-center text-white">
-                <FaShieldAlt className="text-purple-400 mr-2" /> How to Use This Directory
+                <FaShieldAlt className="text-primary mr-2" /> How to Use This Directory
               </h2>
               <p className="mb-4 text-gray-300">
                 We've carefully selected and reviewed these tools to help you protect yourself in the DeFi ecosystem. 
@@ -210,13 +210,13 @@ export default function ToolsPage() {
         </div>
       </section>
       
-      <section className="py-12 bg-gray-900">
-        <div className="container">
+      <section className="py-12 bg-dark">
+        <div className="container px-4 mx-auto">
           {toolCategories.map((category, index) => (
             <div key={index} className="mb-16">
               <div className="flex items-center mb-6">
                 <div className="mr-3 text-2xl">
-                  {category.icon}
+                  {React.cloneElement(category.icon, { className: "text-primary" })}
                 </div>
                 <h2 className="text-2xl font-bold text-white">{category.name}</h2>
               </div>
@@ -226,12 +226,12 @@ export default function ToolsPage() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {category.tools.map((tool, toolIndex) => (
-                  <div key={toolIndex} className="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                  <div key={toolIndex} className="bg-dark-card border border-dark-light/30 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                     {tool.isInternal ? (
                       <Link href={tool.url} className="block p-6">
                         <h3 className="text-lg font-bold mb-2 text-white">{tool.name}</h3>
                         <p className="text-gray-300 text-sm mb-4">{tool.description}</p>
-                        <div className="flex items-center text-purple-400 text-sm">
+                        <div className="flex items-center text-primary text-sm">
                           <FaLink className="mr-2" />
                           <span>Open tool</span>
                         </div>
@@ -243,7 +243,7 @@ export default function ToolsPage() {
                           <FaExternalLinkAlt className="ml-2 text-xs text-gray-400" />
                         </h3>
                         <p className="text-gray-300 text-sm mb-4">{tool.description}</p>
-                        <div className="flex items-center text-purple-400 text-sm">
+                        <div className="flex items-center text-primary text-sm">
                           <FaExternalLinkAlt className="mr-2" />
                           <span>Visit site</span>
                         </div>
@@ -255,7 +255,7 @@ export default function ToolsPage() {
             </div>
           ))}
           
-          <div className="mt-12 bg-gray-800 p-6 rounded-lg border border-gray-700 max-w-4xl mx-auto">
+          <div className="mt-12 bg-dark-card p-6 rounded-lg border border-dark-light/30 max-w-4xl mx-auto">
             <h2 className="text-xl font-bold mb-4 text-white">Disclaimer</h2>
             <p className="text-gray-300 mb-4">
               The Open Crypto Foundation provides these links as a service to the community. While we've 
