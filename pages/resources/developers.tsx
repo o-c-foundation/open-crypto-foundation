@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaBook, FaCode, FaShieldAlt, FaUsers, FaLightbulb, FaExclamationTriangle, FaGithub } from 'react-icons/fa';
+import { FaBook, FaCode, FaShieldAlt, FaUsers, FaLightbulb, FaExclamationTriangle, FaGithub, FaServer } from 'react-icons/fa';
 import NewsletterSubscribe from '../../components/NewsletterSubscribe';
 
 export default function DevelopersPage() {
@@ -159,6 +159,21 @@ export default function DevelopersPage() {
                 <div className="bg-dark-card rounded-lg p-6 border border-dark-light/30 hover:border-primary transition-all duration-300">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                      <FaServer className="text-primary text-2xl" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white">RPC Endpoints</h3>
+                  </div>
+                  <p className="text-light-muted mb-4">
+                    Comprehensive directory of RPC endpoints for major blockchain networks, including service providers and public endpoints.
+                  </p>
+                  <Link href="/resources/rpc-endpoints" className="text-primary hover:text-primary-light font-medium inline-flex items-center">
+                    View Endpoints <span className="ml-1">→</span>
+                  </Link>
+                </div>
+
+                <div className="bg-dark-card rounded-lg p-6 border border-dark-light/30 hover:border-primary transition-all duration-300">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
                       <FaBook className="text-primary text-2xl" />
                     </div>
                     <h3 className="text-xl font-bold text-white">Educational Materials</h3>
@@ -171,7 +186,7 @@ export default function DevelopersPage() {
                   </Link>
                 </div>
 
-                <div className="bg-dark-card rounded-lg p-6 border border-dark-light/30 hover:border-primary transition-all duration-300 md:col-span-2">
+                <div className="bg-dark-card rounded-lg p-6 border border-dark-light/30 hover:border-primary transition-all duration-300">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
                       <FaGithub className="text-primary text-2xl" />
@@ -179,7 +194,7 @@ export default function DevelopersPage() {
                     <h3 className="text-xl font-bold text-white">Blockchain Repositories</h3>
                   </div>
                   <p className="text-light-muted mb-4">
-                    Comprehensive directory of essential repositories for EVM and Solana blockchain development, including frameworks, tools, security utilities, bots, and infrastructure components.
+                    Comprehensive directory of essential repositories for EVM and Solana blockchain development, including frameworks, tools, and components.
                   </p>
                   <Link href="/resources/blockchain-repositories" className="text-primary hover:text-primary-light font-medium inline-flex items-center">
                     Browse Repositories <span className="ml-1">→</span>
