@@ -5,36 +5,9 @@ import Image from 'next/image';
 import { FaCheck, FaCoins, FaInfoCircle, FaClock, FaLock, FaRocket, FaWallet, FaExternalLinkAlt, FaArrowRight } from 'react-icons/fa';
 import NewsletterSubscribe from '../components/NewsletterSubscribe';
 import ScrollToTop from '../components/ScrollToTop';
-
-// Presale Information
-const presaleConfig = {
-  tokenName: "OCF",
-  tokenSymbol: "OCF",
-  tokenLogo: "https://bafkreidnf7j4gen5gwgnqxmi3fcprksdmorptbdenb4q76ejbpgbjqkzqq.ipfs.w3s.link/",
-  presalePrice: 0.05, // In USD
-  publicPrice: 0.10, // In USD
-  startDate: "June 15, 2025 09:00 UTC",
-  endDate: "July 15, 2025 09:00 UTC",
-  softCap: "500,000 USD",
-  hardCap: "2,000,000 USD",
-  minPurchase: "50 USD",
-  maxPurchase: "20,000 USD",
-  accepted: ["SOL"],
-  platform: "Solana",
-  contractAddress: "Sol1PreSale1111111111111111111111111111111",
-  explorers: [
-    { name: "Solscan", url: "https://solscan.io/token/Sol1PreSale1111111111111111111111111111111" },
-    { name: "Solana Explorer", url: "https://explorer.solana.com/address/Sol1PreSale1111111111111111111111111111111" }
-  ],
-  distribution: [
-    { category: "Presale", percentage: 30, description: "Available at discounted rate during presale" },
-    { category: "Public Sale", percentage: 20, description: "Available at market price after presale" },
-    { category: "Team", percentage: 15, description: "Locked for 12 months, then vested over 24 months" },
-    { category: "Development", percentage: 20, description: "For ongoing development and ecosystem growth" },
-    { category: "Community", percentage: 10, description: "Rewards, airdrops, and community initiatives" },
-    { category: "Reserve", percentage: 5, description: "Strategic partnerships and future expansion" }
-  ]
-};
+import PresalePurchaseForm from '../components/PresalePurchaseForm';
+import { useConnection } from '@solana/wallet-adapter-react';
+import { PRESALE_CONFIG, getPresaleStatus } from '../utils/presaleContract';
 
 // Presale steps
 const presaleSteps = [
@@ -84,7 +57,7 @@ const presaleFAQs = [
   },
   {
     question: "Is there a vesting period?",
-    answer: "Presale participants will receive 30% of their tokens immediately after the presale concludes, with the remaining 70% vested linearly over 3 months to ensure price stability."
+    answer: `Presale participants will receive ${PRESALE_CONFIG.vestingPercentageImmediate}% of their tokens immediately after the presale concludes, with the remaining ${100 - PRESALE_CONFIG.vestingPercentageImmediate}% vested linearly over ${PRESALE_CONFIG.vestingDurationMonths} months to ensure price stability.`
   },
   {
     question: "How is the presale smart contract secured?",
@@ -92,28 +65,32 @@ const presaleFAQs = [
   },
   {
     question: "What happens if the softcap isn't reached?",
-    answer: "If the presale doesn't reach its softcap, participants will be able to reclaim their SOL. However, we are confident in reaching our goals given the community interest in our mission."
+    answer: `If the presale doesn't reach its softcap of $${PRESALE_CONFIG.softCapUSD.toLocaleString()}, participants will be able to reclaim their SOL. However, we are confident in reaching our goals given the community interest in our mission.`
   }
 ];
 
 export default function PresalePage() {
+  const { connection } = useConnection();
   const [daysLeft, setDaysLeft] = useState<number>(30);
   const [hoursLeft, setHoursLeft] = useState<number>(0);
   const [isPreSaleActive, setIsPreSaleActive] = useState<boolean>(false);
-  const [solAmount, setSolAmount] = useState<string>('');
-  const [estimatedTokens, setEstimatedTokens] = useState<string>('0');
-  const [isWalletConnected, setIsWalletConnected] = useState<boolean>(false);
+  const [presaleStatus, setPresaleStatus] = useState({
+    totalRaised: 0,
+    participantCount: 0,
+    percentageRaised: 0,
+    hardCapReached: false
+  });
 
   // Calculate time left in presale
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const presaleDate = new Date(presaleConfig.startDate);
-      const endDate = new Date(presaleConfig.endDate);
-      const now = new Date();
+      const presaleStartTime = PRESALE_CONFIG.presaleStartTime;
+      const presaleEndTime = PRESALE_CONFIG.presaleEndTime;
+      const now = Date.now();
       
       // If presale hasn't started yet
-      if (now < presaleDate) {
-        const diffTime = Math.abs(presaleDate.getTime() - now.getTime());
+      if (now < presaleStartTime) {
+        const diffTime = Math.abs(presaleStartTime - now);
         const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
         const diffHours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         
@@ -122,8 +99,8 @@ export default function PresalePage() {
         setIsPreSaleActive(false);
       }
       // If presale is active
-      else if (now >= presaleDate && now <= endDate) {
-        const diffTime = Math.abs(endDate.getTime() - now.getTime());
+      else if (now >= presaleStartTime && now <= presaleEndTime) {
+        const diffTime = Math.abs(presaleEndTime - now);
         const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
         const diffHours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         
@@ -145,24 +122,28 @@ export default function PresalePage() {
     return () => clearInterval(timer);
   }, []);
 
-  // Calculate estimated tokens based on SOL input
+  // Fetch presale status
   useEffect(() => {
-    if (solAmount && !isNaN(parseFloat(solAmount))) {
-      // Assume 1 SOL = $60 USD for this example (in a real implementation, you would use live price data)
-      const solPrice = 60;
-      const usdAmount = parseFloat(solAmount) * solPrice;
-      const tokenAmount = usdAmount / presaleConfig.presalePrice;
-      setEstimatedTokens(tokenAmount.toLocaleString(undefined, { maximumFractionDigits: 0 }));
-    } else {
-      setEstimatedTokens('0');
-    }
-  }, [solAmount]);
+    const fetchPresaleStatus = async () => {
+      try {
+        const status = await getPresaleStatus(connection);
+        setPresaleStatus({
+          totalRaised: status.totalRaised,
+          participantCount: status.participantCount,
+          percentageRaised: (status.totalRaised / PRESALE_CONFIG.hardCapUSD) * 100,
+          hardCapReached: status.hardCapReached
+        });
+        setIsPreSaleActive(status.isActive);
+      } catch (error) {
+        console.error('Error fetching presale status:', error);
+      }
+    };
 
-  const handleConnectWallet = () => {
-    // In a real implementation, this would integrate with Solana wallet adapters
-    console.log("Connecting wallet...");
-    setIsWalletConnected(!isWalletConnected);
-  };
+    fetchPresaleStatus();
+    const intervalId = setInterval(fetchPresaleStatus, 30000); // Update every 30 seconds
+
+    return () => clearInterval(intervalId);
+  }, [connection]);
 
   return (
     <>
@@ -182,8 +163,8 @@ export default function PresalePage() {
               <div className="flex justify-center mb-8">
                 <div className="relative h-24 w-24">
                   <Image
-                    src={presaleConfig.tokenLogo}
-                    alt={presaleConfig.tokenName}
+                    src="https://bafkreidnf7j4gen5gwgnqxmi3fcprksdmorptbdenb4q76ejbpgbjqkzqq.ipfs.w3s.link/"
+                    alt="OCF Token"
                     fill
                     style={{ objectFit: 'contain' }}
                     priority
@@ -195,17 +176,17 @@ export default function PresalePage() {
               </h1>
               <p className="text-xl text-light-muted mb-8">
                 Early access to the Open Crypto Foundation governance and utility token at a discounted price.
-                Secure, transparent, and built on {presaleConfig.platform}.
+                Secure, transparent, and built on Solana.
               </p>
               
               <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8">
                 <div className="bg-dark-card border border-primary/30 rounded-lg px-6 py-4 w-full md:w-auto">
                   <div className="text-sm text-light-muted mb-1">Presale Price</div>
-                  <div className="text-2xl font-bold text-primary">${presaleConfig.presalePrice} USD</div>
+                  <div className="text-2xl font-bold text-primary">${PRESALE_CONFIG.tokenPrice} USD</div>
                 </div>
                 <div className="bg-dark-card border border-dark-light/30 rounded-lg px-6 py-4 w-full md:w-auto">
                   <div className="text-sm text-light-muted mb-1">Public Price</div>
-                  <div className="text-2xl font-bold text-white">${presaleConfig.publicPrice} USD</div>
+                  <div className="text-2xl font-bold text-white">${PRESALE_CONFIG.tokenPrice * 2} USD</div>
                 </div>
                 <div className="bg-dark-card border border-dark-light/30 rounded-lg px-6 py-4 w-full md:w-auto">
                   <div className="text-sm text-light-muted mb-1">Discount</div>
@@ -233,14 +214,22 @@ export default function PresalePage() {
                   <span className="text-light-muted text-sm">Hard Cap</span>
                 </div>
                 <div className="w-full bg-dark-light rounded-full h-2.5 mb-1">
-                  <div className="bg-primary h-2.5 rounded-full" style={{ width: "25%" }}></div>
+                  <div 
+                    className="bg-primary h-2.5 rounded-full" 
+                    style={{ width: `${Math.min(presaleStatus.percentageRaised, 100)}%` }}
+                  ></div>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-light-muted text-sm">{presaleConfig.softCap}</span>
-                  <span className="text-light-muted text-sm">{presaleConfig.hardCap}</span>
+                  <span className="text-light-muted text-sm">${PRESALE_CONFIG.softCapUSD.toLocaleString()}</span>
+                  <span className="text-light-muted text-sm">${PRESALE_CONFIG.hardCapUSD.toLocaleString()}</span>
                 </div>
                 <div className="mt-4 text-center">
-                  <div className="text-primary font-bold text-lg">$500,000 / $2,000,000 raised</div>
+                  <div className="text-primary font-bold text-lg">
+                    ${presaleStatus.totalRaised.toLocaleString()} / ${PRESALE_CONFIG.hardCapUSD.toLocaleString()} raised
+                  </div>
+                  <div className="text-light-muted text-sm mt-1">
+                    {presaleStatus.participantCount} participants
+                  </div>
                 </div>
               </div>
               
@@ -297,76 +286,7 @@ export default function PresalePage() {
         <section id="presale-form" className="py-16 bg-dark-light/5">
           <div className="container px-4 mx-auto">
             <div className="max-w-3xl mx-auto">
-              <div className="bg-dark-card border border-dark-light/30 rounded-lg p-8">
-                <h2 className="text-2xl font-bold text-white mb-6 text-center">Participate in Presale</h2>
-                
-                <div className="mb-6">
-                  <div className="flex justify-between mb-2">
-                    <label htmlFor="sol-amount" className="text-light-muted">Amount in SOL</label>
-                    <span className="text-light-muted">Balance: {isWalletConnected ? '5.42 SOL' : '0 SOL'}</span>
-                  </div>
-                  <div className="relative">
-                    <input
-                      id="sol-amount"
-                      type="text"
-                      value={solAmount}
-                      onChange={(e) => setSolAmount(e.target.value)}
-                      placeholder="0.0"
-                      className="w-full px-4 py-3 bg-dark-light rounded-lg border border-dark-light focus:outline-none focus:ring-2 focus:ring-primary text-white"
-                      disabled={!isWalletConnected}
-                    />
-                    <button 
-                      className="absolute right-2 top-1/2 transform -translate-y-1/2 px-2 py-1 bg-primary/20 text-primary text-sm rounded hover:bg-primary/30 transition-colors"
-                      onClick={() => isWalletConnected && setSolAmount('5.42')}
-                      disabled={!isWalletConnected}
-                    >
-                      MAX
-                    </button>
-                  </div>
-                </div>
-                
-                <div className="mb-6">
-                  <div className="text-light-muted mb-2">You will receive (estimated)</div>
-                  <div className="bg-dark-light rounded-lg p-4 text-center">
-                    <div className="text-2xl font-bold text-white">{estimatedTokens} {presaleConfig.tokenSymbol}</div>
-                  </div>
-                </div>
-                
-                <div className="mb-6">
-                  <div className="bg-dark-light/30 rounded-lg p-4">
-                    <div className="flex justify-between mb-2">
-                      <span className="text-light-muted">Presale Rate</span>
-                      <span className="text-white">${presaleConfig.presalePrice} per {presaleConfig.tokenSymbol}</span>
-                    </div>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-light-muted">Min Purchase</span>
-                      <span className="text-white">{presaleConfig.minPurchase}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-light-muted">Max Purchase</span>
-                      <span className="text-white">{presaleConfig.maxPurchase}</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <button
-                  onClick={handleConnectWallet}
-                  className={`w-full py-3 rounded-lg font-medium transition-colors ${
-                    isWalletConnected 
-                      ? 'bg-primary hover:bg-primary-light text-white' 
-                      : 'bg-primary hover:bg-primary-light text-white'
-                  }`}
-                >
-                  {isWalletConnected ? 'Purchase Allocation Tickets' : 'Connect Wallet'}
-                </button>
-                
-                {isWalletConnected && (
-                  <div className="mt-4 flex items-center justify-center text-primary text-sm">
-                    <FaWallet className="mr-2" size={14} />
-                    <span>Connected: Phantom (8xnf...j29s)</span>
-                  </div>
-                )}
-              </div>
+              <PresalePurchaseForm />
             </div>
           </div>
         </section>
@@ -382,7 +302,14 @@ export default function PresalePage() {
               
               <div className="bg-dark-card border border-dark-light/30 rounded-lg p-6 mb-12">
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {presaleConfig.distribution.map((item, index) => (
+                  {[
+                    { category: "Presale", percentage: 30, description: "Available at discounted rate during presale" },
+                    { category: "Public Sale", percentage: 20, description: "Available at market price after presale" },
+                    { category: "Team", percentage: 15, description: "Locked for 12 months, then vested over 24 months" },
+                    { category: "Development", percentage: 20, description: "For ongoing development and ecosystem growth" },
+                    { category: "Community", percentage: 10, description: "Rewards, airdrops, and community initiatives" },
+                    { category: "Reserve", percentage: 5, description: "Strategic partnerships and future expansion" }
+                  ].map((item, index) => (
                     <div key={index} className="bg-dark-light/10 p-4 rounded-lg">
                       <div className="flex items-center mb-2">
                         <div className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center mr-3 text-sm font-bold">
@@ -402,8 +329,8 @@ export default function PresalePage() {
                   <div>
                     <h3 className="text-lg font-medium text-white mb-2">Token Vesting Information</h3>
                     <p className="text-light-muted mb-2">
-                      Presale participants will receive 30% of their purchased tokens immediately after the presale concludes. 
-                      The remaining 70% will be vested linearly over 3 months to ensure price stability and project sustainability.
+                      Presale participants will receive {PRESALE_CONFIG.vestingPercentageImmediate}% of their purchased tokens immediately after the presale concludes. 
+                      The remaining {100 - PRESALE_CONFIG.vestingPercentageImmediate}% will be vested linearly over {PRESALE_CONFIG.vestingDurationMonths} months to ensure price stability and project sustainability.
                     </p>
                     <p className="text-light-muted">
                       Team tokens are locked for 12 months, then vested over 24 months to demonstrate our long-term commitment to the project.
@@ -432,7 +359,7 @@ export default function PresalePage() {
                       <div>
                         <div className="text-sm text-light-muted mb-1">Contract Address</div>
                         <div className="bg-dark-light/20 p-3 rounded-lg flex items-center justify-between">
-                          <div className="text-light-muted text-sm truncate">{presaleConfig.contractAddress}</div>
+                          <div className="text-light-muted text-sm truncate">{process.env.NEXT_PUBLIC_PRESALE_PROGRAM_ID || 'Contract will be deployed soon'}</div>
                           <button className="text-primary hover:text-primary-light">
                             <FaExternalLinkAlt size={14} />
                           </button>
@@ -440,7 +367,7 @@ export default function PresalePage() {
                       </div>
                       <div>
                         <div className="text-sm text-light-muted mb-1">Platform</div>
-                        <div className="font-medium text-white">{presaleConfig.platform}</div>
+                        <div className="font-medium text-white">Solana</div>
                       </div>
                       <div>
                         <div className="text-sm text-light-muted mb-1">Token Standard</div>
@@ -449,17 +376,22 @@ export default function PresalePage() {
                       <div>
                         <div className="text-sm text-light-muted mb-1">Block Explorers</div>
                         <div className="space-y-2">
-                          {presaleConfig.explorers.map((explorer, index) => (
-                            <a 
-                              key={index}
-                              href={explorer.url} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="flex items-center text-primary hover:text-primary-light"
-                            >
-                              {explorer.name} <FaExternalLinkAlt size={12} className="ml-2" />
-                            </a>
-                          ))}
+                          <a 
+                            href={`https://solscan.io/token/${process.env.NEXT_PUBLIC_TOKEN_MINT || 'coming-soon'}`} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex items-center text-primary hover:text-primary-light"
+                          >
+                            Solscan <FaExternalLinkAlt size={12} className="ml-2" />
+                          </a>
+                          <a 
+                            href={`https://explorer.solana.com/address/${process.env.NEXT_PUBLIC_PRESALE_PROGRAM_ID || 'coming-soon'}`} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex items-center text-primary hover:text-primary-light"
+                          >
+                            Solana Explorer <FaExternalLinkAlt size={12} className="ml-2" />
+                          </a>
                         </div>
                       </div>
                     </div>

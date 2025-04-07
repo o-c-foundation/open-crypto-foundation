@@ -5,6 +5,7 @@ import React, { useEffect } from 'react'
 import Layout from '../components/Layout'
 import ErrorBoundary from '../components/ErrorBoundary'
 import { LanguageProvider } from '../contexts/LanguageContext'
+import SolanaWalletProvider from '../components/SolanaWalletProvider'
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -49,11 +50,13 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="https://bafkreih4hdkhpjoxluzj526ehakmylfg5o2ri4wctumedqc3i5lv35k7ay.ipfs.w3s.link/" />
       </Head>
       <div className="min-h-screen">
-        <LanguageProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </LanguageProvider>
+        <SolanaWalletProvider>
+          <LanguageProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </LanguageProvider>
+        </SolanaWalletProvider>
       </div>
     </ErrorBoundary>
   )
