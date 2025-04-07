@@ -206,7 +206,7 @@ const blogPosts = [
       <p class="mb-4">Stay tuned for more detailed announcements about the testnet launch dates and participation instructions.</p>
     `,
     tags: ["Announcement", "Token Launch", "Testnet", "Cross-Chain", "ETH", "SOL", "BNB", "Blockchain"],
-    imageUrl: "https://bafkreiazwt7g4hwwiqjeq5crcvwdrih7yag7paahiuzfdcmzs7rnsufyvy.ipfs.w3s.link/",
+    imageUrl: "https://bafkreic3dkakjycfdlecqgqrnbmj7ghrwzfkfchqlthypadrudnwnp6npy.ipfs.w3s.link/",
     relatedPosts: [1, 5]
   },
   {

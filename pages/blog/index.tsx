@@ -27,7 +27,7 @@ const blogPosts = [
     author: "Open Crypto Foundation",
     category: "Announcement",
     featured: true,
-    imageUrl: "https://bafkreiazwt7g4hwwiqjeq5crcvwdrih7yag7paahiuzfdcmzs7rnsufyvy.ipfs.w3s.link/"
+    imageUrl: "https://bafkreic3dkakjycfdlecqgqrnbmj7ghrwzfkfchqlthypadrudnwnp6npy.ipfs.w3s.link/"
   },
   {
     id: 3,
