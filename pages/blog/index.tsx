@@ -130,7 +130,7 @@ const categories = [
 const seoConfig = {
   title: "OCF Blog | Open Crypto Foundation",
   description: "Articles, insights, and updates from the Open Crypto Foundation team.",
-  imageUrl: "https://bafkreiexhzwd7ljjj4xpchedqxajimq7t2k4iubpn44asnlq7nkn2k6qnm.ipfs.w3s.link/"
+  imageUrl: "https://bafkreic3dkakjycfdlecqgqrnbmj7ghrwzfkfchqlthypadrudnwnp6npy.ipfs.w3s.link/"
 };
 
 export default function Blog() {

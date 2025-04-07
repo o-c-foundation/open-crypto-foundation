@@ -715,16 +715,22 @@ export default function BlogPost() {
     );
   }
 
+  const seoConfig = {
+    title: post.title + " | Open Crypto Foundation Blog",
+    description: post.excerpt || "Article from the Open Crypto Foundation Blog",
+    imageUrl: "https://bafkreic3dkakjycfdlecqgqrnbmj7ghrwzfkfchqlthypadrudnwnp6npy.ipfs.w3s.link/",
+  };
+
   return (
     <>
       <Head>
-        <title>{post.title} | Open Crypto Foundation</title>
-        <meta name="description" content={post.excerpt} />
+        <title>{seoConfig.title}</title>
+        <meta name="description" content={seoConfig.description} />
         {/* Open Graph meta tags for better social sharing */}
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:title" content={seoConfig.title} />
+        <meta property="og:description" content={seoConfig.description} />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content={post.imageUrl} />
+        <meta property="og:image" content={seoConfig.imageUrl} />
       </Head>
 
       <div className="py-12 md:py-20">
