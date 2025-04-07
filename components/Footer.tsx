@@ -25,11 +25,15 @@ export default function Footer() {
             <p className="mb-8 opacity-70">
               Empowering safe DeFi interactions through education and tools.
             </p>
+            <p className="mb-4 opacity-70 flex items-center">
+              <FaGlobe size={14} className="mr-2 opacity-70" />
+              Based in Singapore
+            </p>
             <div className="flex space-x-4 mb-6">
               <a href="https://twitter.com/opencryptofdn" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-dark-elevated flex items-center justify-center hover:bg-primary hover:scale-110 hover:shadow-glow transition-all duration-300">
                 <FaTwitter size={18} className="text-light" />
               </a>
-              <a href="https://github.com/opencryptofoundation" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-dark-elevated flex items-center justify-center hover:bg-primary hover:scale-110 hover:shadow-glow transition-all duration-300">
+              <a href="https://github.com/o-c-foundation" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-dark-elevated flex items-center justify-center hover:bg-primary hover:scale-110 hover:shadow-glow transition-all duration-300">
                 <FaGithub size={18} className="text-light" />
               </a>
               <a href="https://discord.gg/opencrypto" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-dark-elevated flex items-center justify-center hover:bg-primary hover:scale-110 hover:shadow-glow transition-all duration-300">
