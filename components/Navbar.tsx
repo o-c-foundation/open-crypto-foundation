@@ -70,12 +70,12 @@ export default function Navbar() {
               <div className="flex items-center justify-center mr-2 transition-all duration-300 group-hover:shadow-glow">
                 <Logo size="md" />
               </div>
-              <span className="font-display font-bold text-lg sm:text-xl text-white group-hover:text-gradient">Open Crypto Foundation</span>
+              <span className="font-display font-bold text-lg sm:text-xl text-white whitespace-nowrap group-hover:text-gradient">Open Crypto Foundation</span>
             </Link>
           </div>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-6 lg:space-x-8">
             {navigation.map((item) => 
               !item.children ? (
                 <Link 
