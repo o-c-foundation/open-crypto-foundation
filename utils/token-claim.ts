@@ -7,11 +7,14 @@ import {
   Keypair
 } from '@solana/web3.js';
 import { AnchorProvider, Program, BN, Idl } from '@project-serum/anchor';
-import { 
-  TOKEN_PROGRAM_ID, 
+
+// Use require instead of import to avoid ESM resolution issues
+// @ts-ignore - Ignore the missing type definitions
+const { 
+  TOKEN_PROGRAM_ID,
   getAssociatedTokenAddress, 
   createAssociatedTokenAccountInstruction 
-} from '@solana/spl-token';
+} = require('@solana/spl-token');
 
 // Constants
 export const PROGRAM_ID = new PublicKey("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");

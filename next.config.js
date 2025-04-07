@@ -25,13 +25,23 @@ const nextConfig = {
       os: false,
       crypto: false,
     };
+    
+    // Resolve SPL Token package issues
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@solana/spl-token': require.resolve('@solana/spl-token'),
+      '@solana/web3.js': require.resolve('@solana/web3.js'),
+      '@project-serum/anchor': require.resolve('@project-serum/anchor'),
+    };
+    
     return config;
   },
-  experimental: {
-    runtime: 'edge',
-  },
-  unstable_runtimeJS: true,
-  unstable_JsPreload: false
+  // Remove these as they're causing issues
+  // experimental: {
+  //   runtime: 'edge',
+  // },
+  // unstable_runtimeJS: true,
+  // unstable_JsPreload: false
 }
 
 module.exports = nextConfig 
