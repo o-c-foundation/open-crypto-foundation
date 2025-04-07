@@ -30,6 +30,437 @@ export default function DeFiFundamentals() {
   
   // Tabs configuration
   const tabs = [
+    { id: 'crypto-basics', name: 'Crypto Fundamentals', icon: <FaBitcoin className="text-primary" /> },
+    { id: 'defi-intro', name: 'DeFi Introduction', icon: <FaExchangeAlt className="text-primary" /> },
+    { id: 'token-ecosystem', name: 'Token Ecosystem', icon: <FaCoins className="text-primary" /> },
+    { id: 'dexs-liquidity', name: 'DEXs & Liquidity', icon: <FaWater className="text-primary" /> },
+    { id: 'token-launches', name: 'Token Launches & Markets', icon: <FaRocket className="text-primary" /> }
+  ]
+
+  // Top 10 blockchains by market cap (as of creation date)
+  const topBlockchains = [
+    {
+      name: "Bitcoin (BTC)",
+      description: "The original cryptocurrency that introduced blockchain technology to the world.",
+      type: "Layer 1",
+      marketCap: "$1.2 trillion",
+      consensus: "Proof of Work",
+      features: ["Store of Value", "Peer-to-peer Transactions", "Limited Smart Contract Functionality (via Taproot)"]
+    },
+    {
+      name: "Ethereum (ETH)",
+      description: "The leading smart contract platform that enables decentralized applications and DeFi.",
+      type: "Layer 1",
+      marketCap: "$368 billion",
+      consensus: "Proof of Stake",
+      features: ["Smart Contracts", "dApps", "ERC-20 Tokens", "NFTs"]
+    },
+    {
+      name: "Binance Coin (BNB)",
+      description: "Native token of Binance Exchange and the BNB Chain ecosystem.",
+      type: "Layer 1",
+      marketCap: "$65 billion",
+      consensus: "Proof of Staked Authority",
+      features: ["EVM Compatible", "High Throughput", "Low Gas Fees"]
+    },
+    {
+      name: "Solana (SOL)",
+      description: "High-performance blockchain focused on speed and low transaction costs.",
+      type: "Layer 1",
+      marketCap: "$52 billion",
+      consensus: "Proof of History + Proof of Stake",
+      features: ["High TPS", "Low Fees", "Parallel Processing"]
+    },
+    {
+      name: "XRP",
+      description: "Digital asset built for payments that enables real-time global transfers.",
+      type: "Layer 1",
+      marketCap: "$34 billion",
+      consensus: "XRP Ledger Consensus Protocol",
+      features: ["Fast Settlements", "Low Cost", "Cross-border Payments"]
+    },
+    {
+      name: "Cardano (ADA)",
+      description: "Research-driven blockchain platform built using peer-reviewed academic research.",
+      type: "Layer 1",
+      marketCap: "$15 billion",
+      consensus: "Ouroboros Proof of Stake",
+      features: ["Scientific Approach", "Multi-layer Architecture", "Smart Contracts"]
+    },
+    {
+      name: "Avalanche (AVAX)",
+      description: "Platform for launching decentralized applications with high throughput.",
+      type: "Layer 1",
+      marketCap: "$11 billion",
+      consensus: "Avalanche Consensus",
+      features: ["Sub-second Finality", "Subnet Architecture", "EVM Compatible"]
+    },
+    {
+      name: "Polkadot (DOT)",
+      description: "Multi-chain network that enables different blockchains to transfer messages and value.",
+      type: "Layer 0",
+      marketCap: "$9 billion",
+      consensus: "Nominated Proof of Stake",
+      features: ["Interoperability", "Parachains", "Shared Security"]
+    },
+    {
+      name: "Polygon (MATIC)",
+      description: "Ethereum scaling platform that enables fast, low-cost transactions.",
+      type: "Layer 2",
+      marketCap: "$8 billion",
+      consensus: "Proof of Stake",
+      features: ["Ethereum Scaling", "Multiple Solutions", "Low Gas Fees"]
+    },
+    {
+      name: "Tron (TRX)",
+      description: "Blockchain platform focused on content sharing and entertainment applications.",
+      type: "Layer 1",
+      marketCap: "$8 billion",
+      consensus: "Delegated Proof of Stake",
+      features: ["High Throughput", "Content Distribution", "dApp Ecosystem"]
+    }
+  ]
+
+  // Timeline of DeFi history
+  const defiTimeline = [
+    {
+      year: 2009,
+      title: "Bitcoin Genesis",
+      description: "Bitcoin launched as the first cryptocurrency, introducing the core concept of decentralized, peer-to-peer value transfer without intermediaries."
+    },
+    {
+      year: 2013,
+      title: "Colored Coins & Early Financial Primitives",
+      description: "Early experiments on the Bitcoin blockchain to represent and transfer assets beyond just BTC, laying conceptual groundwork for tokenization."
+    },
+    {
+      year: 2015,
+      title: "Ethereum Launch",
+      description: "Ethereum went live, introducing programmable smart contracts that made complex financial applications possible on blockchain."
+    },
+    {
+      year: 2017,
+      title: "ICO Boom and First DEXs",
+      description: "The ICO boom created thousands of ERC-20 tokens, while early decentralized exchanges like EtherDelta emerged to trade them without centralized intermediaries."
+    },
+    {
+      year: 2018,
+      title: "Stablecoins Gain Traction",
+      description: "MakerDAO launched DAI, the first decentralized stablecoin. USDC and other stablecoins appeared, providing critical infrastructure for DeFi."
+    },
+    {
+      year: 2019,
+      title: "DeFi Summer Precursors",
+      description: "Compound, Aave, and other lending protocols launched. Uniswap introduced automated market makers (AMMs), revolutionizing decentralized trading."
+    },
+    {
+      year: 2020,
+      title: "DeFi Summer",
+      description: "Compound launched COMP token and kickstarted 'yield farming,' leading to the DeFi boom known as 'DeFi Summer' with TVL growing from $1B to $15B."
+    },
+    {
+      year: 2021,
+      title: "Mainstream Attention and Multi-chain DeFi",
+      description: "DeFi expanded beyond Ethereum to Binance Smart Chain, Solana, and other chains. Total value locked in DeFi protocols exceeded $100 billion."
+    },
+    {
+      year: 2022,
+      title: "DeFi Challenges and Regulation",
+      description: "Market downturns and several high-profile protocol failures highlighted risks. Regulatory attention increased significantly."
+    },
+    {
+      year: 2023,
+      title: "Recovery and Maturation",
+      description: "DeFi began recovering with improved security practices, more institutional adoption, and a focus on sustainable yield generation over speculative farming."
+    },
+    {
+      year: 2024,
+      title: "Institutional DeFi and RWAs",
+      description: "Major growth in tokenized real-world assets (RWAs) and institutional DeFi solutions, with traditional finance increasingly integrating with DeFi infrastructure."
+    }
+  ]
+
+  // Token types data
+  const tokenTypes = [
+    {
+      type: "Utility Tokens",
+      description: "Tokens that provide access to a project's product or service.",
+      examples: ["Basic Attention Token (BAT)", "Filecoin (FIL)", "Chainlink (LINK)"],
+      features: ["Grant access rights", "Pay for specific services", "Often native to specific platforms"]
+    },
+    {
+      type: "Security Tokens",
+      description: "Tokens that represent ownership in an external asset or enterprise.",
+      examples: ["Tokenized stocks", "Real estate tokens", "Revenue-sharing tokens"],
+      features: ["Subject to securities regulations", "Represent ownership rights", "May provide dividends"]
+    },
+    {
+      type: "Governance Tokens",
+      description: "Tokens that grant voting rights in decentralized protocol decisions.",
+      examples: ["Uniswap (UNI)", "Aave (AAVE)", "Compound (COMP)"],
+      features: ["Voting on protocol changes", "Proposal submission rights", "Treasury management"]
+    },
+    {
+      type: "Non-Fungible Tokens (NFTs)",
+      description: "Unique tokens representing ownership of distinct digital or physical assets.",
+      examples: ["Digital art", "Virtual real estate", "Collectibles"],
+      features: ["Uniqueness", "Indivisibility", "Provable scarcity"]
+    },
+    {
+      type: "Stablecoins",
+      description: "Tokens designed to maintain a stable value, typically pegged to a fiat currency.",
+      examples: ["USDC", "DAI", "USDT"],
+      features: ["Price stability", "Reduced volatility", "Bridge between crypto and fiat"]
+    },
+    {
+      type: "Liquidity Provider (LP) Tokens",
+      description: "Tokens representing deposit of assets into a liquidity pool on DEXs.",
+      examples: ["Uniswap LP tokens", "PancakeSwap LP tokens"],
+      features: ["Represent pool share", "Earn trading fees", "Can be staked for additional rewards"]
+    },
+    {
+      type: "Wrapped Tokens",
+      description: "Tokens representing another cryptocurrency on a different blockchain.",
+      examples: ["Wrapped Bitcoin (WBTC)", "Wrapped ETH (WETH)"],
+      features: ["Cross-chain compatibility", "Represent 1:1 value of underlying asset", "Enhanced functionality"]
+    },
+    {
+      type: "Meme Tokens",
+      description: "Tokens created primarily as jokes or based on internet memes with limited utility.",
+      examples: ["Dogecoin (DOGE)", "Shiba Inu (SHIB)"],
+      features: ["Often community-driven", "Highly volatile", "Limited practical utility"]
+    }
+  ]
+
+  // Leading token ecosystems data
+  const tokenEcosystems = [
+    {
+      chain: "Ethereum",
+      standard: "ERC-20, ERC-721, ERC-1155",
+      tokensCount: "500,000+",
+      marketShare: "~70% of all tokens",
+      notableTokens: ["USDC", "USDT", "LINK", "UNI", "Most major DeFi tokens"],
+      strengths: ["First-mover advantage", "Largest developer ecosystem", "Highest security", "Most established standards"],
+      image: "/images/ethereum.svg"
+    },
+    {
+      chain: "BNB Chain",
+      standard: "BEP-20, BEP-721, BEP-1155",
+      tokensCount: "100,000+",
+      marketShare: "~10% of all tokens",
+      notableTokens: ["CAKE", "BAKE", "BURGER", "Many memecoins and gaming tokens"],
+      strengths: ["Low fees", "Fast transactions", "Binance exchange integration", "Easier token creation"],
+      image: "/images/bnb.svg"
+    },
+    {
+      chain: "Solana",
+      standard: "SPL Token Standard",
+      tokensCount: "20,000+",
+      marketShare: "~6% of all tokens",
+      notableTokens: ["Serum (SRM)", "Raydium (RAY)", "Star Atlas (ATLAS)"],
+      strengths: ["Ultra-fast transactions", "Low fees", "Growing ecosystem", "Strong for NFTs and gaming"],
+      image: "/images/solana.svg"
+    },
+    {
+      chain: "Polygon",
+      standard: "ERC-20, ERC-721, ERC-1155 (compatible)",
+      tokensCount: "30,000+",
+      marketShare: "~5% of all tokens",
+      notableTokens: ["AAVE (Polygon)", "QUICK", "Wrapped tokens from Ethereum"],
+      strengths: ["Ethereum compatibility", "Low fees", "Fast transactions", "Growing L2 ecosystem"],
+      image: "/images/polygon.svg"
+    }
+  ]
+
+  return (
+    <>
+      <Head>
+        <title>DeFi Fundamentals | Open Crypto Foundation</title>
+        <meta 
+          name="description" 
+          content="Learn the core concepts of DeFi including crypto fundamentals, decentralized exchanges, token ecosystems, and market mechanics." 
+        />
+      </Head>
+
+      <div className="py-12 md:py-20 bg-dark text-white">
+        <div className="container px-4 md:px-6">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">
+              DeFi Fundamentals
+            </h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Understanding the building blocks of decentralized finance is essential for navigating the crypto ecosystem safely and effectively.
+            </p>
+          </div>
+          
+          <div className="max-w-6xl mx-auto">
+            <TabLayout
+              tabs={tabs}
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+              tabPosition="side"
+            >
+              {/* Crypto Fundamentals Tab */}
+              <div className={`transition-all duration-300 ${activeTab === 'crypto-basics' ? 'block' : 'hidden'}`}>
+                <div className="bg-dark-card rounded-lg p-6 border border-dark-light/30">
+                  <h2 className="text-2xl font-bold mb-6 text-white flex items-center">
+                    <FaBitcoin className="text-primary mr-3" />
+                    Crypto Fundamentals
+                  </h2>
+                  
+                  <div className="space-y-6 text-gray-300">
+                    <p className="text-xl">
+                      Cryptocurrency represents a revolutionary approach to finance, built on blockchain technology that enables peer-to-peer transactions without centralized intermediaries.
+                    </p>
+                    
+                    <div className="grid md:grid-cols-2 gap-6 mb-8">
+                      <div className="bg-dark-light/10 p-6 rounded-lg border border-dark-light/20">
+                        <h3 className="text-xl font-semibold text-white mb-4">Key Concepts</h3>
+                        <ul className="list-disc pl-5 space-y-2">
+                          <li><strong className="text-white">Blockchain:</strong> Distributed ledger technology that records all transactions across a network of computers</li>
+                          <li><strong className="text-white">Decentralization:</strong> The distribution of power and control across a network rather than a single entity</li>
+                          <li><strong className="text-white">Consensus Mechanisms:</strong> Methods for achieving agreement on the state of the blockchain (e.g., Proof of Work, Proof of Stake)</li>
+                          <li><strong className="text-white">Public/Private Keys:</strong> Cryptographic keys that enable secure transactions and ownership verification</li>
+                          <li><strong className="text-white">Smart Contracts:</strong> Self-executing code that automates agreements between parties</li>
+                        </ul>
+                      </div>
+                      
+                      <div className="bg-dark-light/10 p-6 rounded-lg border border-dark-light/20">
+                        <h3 className="text-xl font-semibold text-white mb-4">Blockchain Types</h3>
+                        <div className="space-y-4">
+                          <div>
+                            <h4 className="font-medium text-white mb-1">Layer 1</h4>
+                            <p>Base blockchain protocols like Bitcoin, Ethereum, and Solana that validate and finalize transactions on their own blockchain.</p>
+                          </div>
+                          <div>
+                            <h4 className="font-medium text-white mb-1">Layer 2</h4>
+                            <p>Scaling solutions built on top of Layer 1 blockchains to improve transaction speed and reduce costs.</p>
+                          </div>
+                          <div>
+                            <h4 className="font-medium text-white mb-1">Layer 0</h4>
+                            <p>Underlying infrastructure that connects different blockchains and enables cross-chain communication.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-xl font-semibold text-white mb-4">Leading Blockchain Ecosystems</h3>
+                    
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm text-left text-gray-300">
+                        <thead className="text-xs uppercase bg-dark-light/20 text-gray-300">
+                          <tr>
+                            <th scope="col" className="px-4 py-3 rounded-l-lg">Blockchain</th>
+                            <th scope="col" className="px-4 py-3">Type</th>
+                            <th scope="col" className="px-4 py-3">Consensus</th>
+                            <th scope="col" className="px-4 py-3">Market Cap</th>
+                            <th scope="col" className="px-4 py-3 rounded-r-lg">Key Features</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {topBlockchains.slice(0, 5).map((blockchain, i) => (
+                            <tr key={i} className="border-b border-dark-light/10">
+                              <th scope="row" className="px-4 py-3 font-medium text-white whitespace-nowrap">
+                                {blockchain.name}
+                              </th>
+                              <td className="px-4 py-3">{blockchain.type}</td>
+                              <td className="px-4 py-3">{blockchain.consensus}</td>
+                              <td className="px-4 py-3">{blockchain.marketCap}</td>
+                              <td className="px-4 py-3">
+                                <ul className="list-disc pl-5">
+                                  {blockchain.features.slice(0, 2).map((feature, j) => (
+                                    <li key={j}>{feature}</li>
+                                  ))}
+                                </ul>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    
+                    <div className="bg-primary/10 p-6 rounded-lg mt-8 border border-primary/30">
+                      <h3 className="text-xl font-semibold text-white mb-4">Key Risks to Understand</h3>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <h4 className="font-medium text-white mb-2">Market Risks</h4>
+                          <ul className="list-disc pl-5 space-y-1">
+                            <li>Extreme price volatility</li>
+                            <li>Market manipulation</li>
+                            <li>Liquidity risks</li>
+                            <li>Regulatory uncertainty</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-medium text-white mb-2">Technical Risks</h4>
+                          <ul className="list-disc pl-5 space-y-1">
+                            <li>Smart contract vulnerabilities</li>
+                            <li>Protocol exploits</li>
+                            <li>Private key security</li>
+                            <li>Network scalability limitations</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* DeFi Introduction Tab */}
+              <div className={`transition-all duration-300 ${activeTab === 'defi-intro' ? 'block' : 'hidden'}`}>
+                <div className="bg-dark-card rounded-lg p-6 border border-dark-light/30">
+                  <h2 className="text-2xl font-bold mb-6 text-white flex items-center">
+                    <FaExchangeAlt className="text-primary mr-3" />
+                    DeFi Introduction
+                  </h2>
+                  
+                  <div className="space-y-6 text-gray-300">
+                    <p className="text-xl">
+                      Decentralized Finance (DeFi) represents a paradigm shift from traditional financial systems toward open, permissionless, and transparent financial services built on blockchain technology.
+                    </p>
+                    
+                    <div className="bg-dark-light/10 p-6 rounded-lg border border-dark-light/20">
+                      <h3 className="text-xl font-semibold text-white mb-4">What Makes DeFi Different?</h3>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <h4 className="font-medium text-white mb-2">Traditional Finance</h4>
+                          <ul className="list-disc pl-5 space-y-1">
+                            <li>Centralized control</li>
+                            <li>Limited access hours</li>
+                            <li>KYC requirements</li>
+                            <li>Permission-based</li>
+import React, { useState } from 'react'
+import Head from 'next/head'
+import Link from 'next/link'
+import { 
+  FaBitcoin, 
+  FaEthereum, 
+  FaLayerGroup, 
+  FaHistory, 
+  FaCodeBranch, 
+  FaExchangeAlt,
+  FaInfoCircle,
+  FaChartLine,
+  FaCoins,
+  FaExclamationTriangle,
+  FaCheckCircle,
+  FaBuilding,
+  FaWater,
+  FaExchangeAlt as FaExchange,
+  FaChartLine as FaChart,
+  FaBalanceScale,
+  FaRocket,
+  FaStore,
+  FaChartArea,
+  FaShieldAlt
+} from 'react-icons/fa'
+import TabLayout from '../../components/TabLayout'
+
+export default function DeFiFundamentals() {
+  const [activeTab, setActiveTab] = useState('crypto-basics')
+  
+  // Tabs configuration
+  const tabs = [
     { id: 'crypto-basics', name: 'Crypto Fundamentals', icon: <FaBitcoin className="text-yellow-400" /> },
     { id: 'defi-intro', name: 'DeFi Introduction', icon: <FaExchangeAlt className="text-blue-400" /> },
     { id: 'token-ecosystem', name: 'Token Ecosystem', icon: <FaCoins className="text-green-400" /> },

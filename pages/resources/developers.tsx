@@ -17,12 +17,12 @@ export default function DevelopersPage() {
       </Head>
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-black to-gray-900">
+      <section className="py-20 bg-dark">
         <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="mb-6 text-4xl md:text-5xl font-bold text-white">
               Developer Read<br />
-              <span className="bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 text-transparent bg-clip-text">Future of Finance</span>
+              <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">Future of Finance</span>
             </h1>
             <p className="mb-8 text-xl text-gray-300 leading-relaxed">
               As architects of the decentralized economy, you shape the future of finance. 
@@ -34,7 +34,7 @@ export default function DevelopersPage() {
       </section>
 
       {/* Open Letter */}
-      <section className="py-16 bg-gray-900">
+      <section className="py-16 bg-dark-light/5">
         <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto">
             <div className="mb-10 text-center">
@@ -105,83 +105,83 @@ export default function DevelopersPage() {
       </section>
 
       {/* Resources Grid */}
-      <section className="py-16 bg-gray-800">
+      <section className="py-16 bg-dark">
         <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-10 text-center">Developer Resources</h2>
             
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-gray-700 rounded-xl p-6 border border-gray-600 hover:border-blue-500 transition-all duration-300">
+              <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 hover:border-primary transition-all duration-300">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-blue-900/40 rounded-lg flex items-center justify-center mr-4">
-                    <FaShieldAlt className="text-blue-400 text-2xl" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                    <FaShieldAlt className="text-primary text-2xl" />
                   </div>
                   <h3 className="text-xl font-bold text-white">Security Best Practices</h3>
                 </div>
                 <p className="text-gray-300 mb-4">
                   Comprehensive guidelines for developing secure smart contracts, conducting thorough audits, and implementing robust security measures.
                 </p>
-                <Link href="/resources/security-guide" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
+                <Link href="/resources/security-guide" className="text-primary hover:text-primary-light font-medium inline-flex items-center">
                   Learn More <span className="ml-1">→</span>
                 </Link>
               </div>
               
-              <div className="bg-gray-700 rounded-xl p-6 border border-gray-600 hover:border-blue-500 transition-all duration-300">
+              <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 hover:border-primary transition-all duration-300">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-blue-900/40 rounded-lg flex items-center justify-center mr-4">
-                    <FaCode className="text-blue-400 text-2xl" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                    <FaCode className="text-primary text-2xl" />
                   </div>
                   <h3 className="text-xl font-bold text-white">Code Patterns & Anti-patterns</h3>
                 </div>
                 <p className="text-gray-300 mb-4">
                   Explore battle-tested design patterns for common DeFi mechanisms and learn from historical vulnerabilities and exploits.
                 </p>
-                <Link href="/resources/code-patterns" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
+                <Link href="/resources/code-patterns" className="text-primary hover:text-primary-light font-medium inline-flex items-center">
                   Explore Patterns <span className="ml-1">→</span>
                 </Link>
               </div>
               
-              <div className="bg-gray-700 rounded-xl p-6 border border-gray-600 hover:border-blue-500 transition-all duration-300">
+              <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 hover:border-primary transition-all duration-300">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-blue-900/40 rounded-lg flex items-center justify-center mr-4">
-                    <FaUsers className="text-blue-400 text-2xl" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                    <FaUsers className="text-primary text-2xl" />
                   </div>
                   <h3 className="text-xl font-bold text-white">Community Guidelines</h3>
                 </div>
                 <p className="text-gray-300 mb-4">
                   Frameworks for building transparent, inclusive developer communities and establishing effective governance models.
                 </p>
-                <Link href="/resources/community-guidelines" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
+                <Link href="/resources/community-guidelines" className="text-primary hover:text-primary-light font-medium inline-flex items-center">
                   View Guidelines <span className="ml-1">→</span>
                 </Link>
               </div>
               
-              <div className="bg-gray-700 rounded-xl p-6 border border-gray-600 hover:border-blue-500 transition-all duration-300">
+              <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 hover:border-primary transition-all duration-300">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-blue-900/40 rounded-lg flex items-center justify-center mr-4">
-                    <FaBook className="text-blue-400 text-2xl" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                    <FaBook className="text-primary text-2xl" />
                   </div>
                   <h3 className="text-xl font-bold text-white">Educational Materials</h3>
                 </div>
                 <p className="text-gray-300 mb-4">
                   Curated tutorials, case studies, and technical deep-dives on advanced DeFi concepts and implementation strategies.
                 </p>
-                <Link href="/resources/defi-education" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
+                <Link href="/resources/defi-education" className="text-primary hover:text-primary-light font-medium inline-flex items-center">
                   Access Library <span className="ml-1">→</span>
                 </Link>
               </div>
 
-              <div className="bg-gray-700 rounded-xl p-6 border border-gray-600 hover:border-blue-500 transition-all duration-300 md:col-span-2">
+              <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 hover:border-primary transition-all duration-300 md:col-span-2">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-blue-900/40 rounded-lg flex items-center justify-center mr-4">
-                    <FaGithub className="text-blue-400 text-2xl" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                    <FaGithub className="text-primary text-2xl" />
                   </div>
                   <h3 className="text-xl font-bold text-white">Blockchain Repositories</h3>
                 </div>
                 <p className="text-gray-300 mb-4">
                   Comprehensive directory of essential repositories for EVM and Solana blockchain development, including frameworks, tools, security utilities, bots, and infrastructure components.
                 </p>
-                <Link href="/resources/blockchain-repositories" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
+                <Link href="/resources/blockchain-repositories" className="text-primary hover:text-primary-light font-medium inline-flex items-center">
                   Browse Repositories <span className="ml-1">→</span>
                 </Link>
               </div>
@@ -191,7 +191,7 @@ export default function DevelopersPage() {
       </section>
       
       {/* Common Vulnerabilities */}
-      <section className="py-16 bg-gray-900">
+      <section className="py-16 bg-dark-light/5">
         <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-8 text-center">Common Vulnerabilities</h2>
@@ -201,17 +201,17 @@ export default function DevelopersPage() {
             </p>
             
             <div className="space-y-6">
-              <div className="bg-red-900/20 border border-red-800/50 rounded-lg p-6">
+              <div className="bg-primary/10 border border-primary/30 rounded-lg p-6">
                 <div className="flex items-start">
                   <div className="mr-4 mt-1">
-                    <FaExclamationTriangle className="text-red-400 text-xl" />
+                    <FaExclamationTriangle className="text-primary text-xl" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Reentrancy Attacks</h3>
                     <p className="text-gray-300 mb-3">
                       Occurs when external contract calls allow attackers to re-enter the original function before the first execution completes, potentially draining funds through recursive calls.
                     </p>
-                    <div className="bg-gray-800/50 p-4 rounded-md mb-3">
+                    <div className="bg-dark p-4 rounded-md mb-3">
                       <p className="text-sm font-mono text-gray-300">
                         <span className="text-red-400">Vulnerable Pattern:</span> Updating state after external calls
                       </p>
@@ -226,17 +226,17 @@ export default function DevelopersPage() {
                 </div>
               </div>
               
-              <div className="bg-red-900/20 border border-red-800/50 rounded-lg p-6">
+              <div className="bg-primary/10 border border-primary/30 rounded-lg p-6">
                 <div className="flex items-start">
                   <div className="mr-4 mt-1">
-                    <FaExclamationTriangle className="text-red-400 text-xl" />
+                    <FaExclamationTriangle className="text-primary text-xl" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Flash Loan Attacks</h3>
                     <p className="text-gray-300 mb-3">
                       Utilizes uncollateralized loans to manipulate market prices and exploit poorly designed oracles, price mechanisms, or governance systems.
                     </p>
-                    <div className="bg-gray-800/50 p-4 rounded-md mb-3">
+                    <div className="bg-dark p-4 rounded-md mb-3">
                       <p className="text-sm font-mono text-gray-300">
                         <span className="text-red-400">Vulnerable Pattern:</span> Single-source oracles, manipulable price feeds
                       </p>
@@ -251,84 +251,62 @@ export default function DevelopersPage() {
                 </div>
               </div>
               
-              <div className="bg-red-900/20 border border-red-800/50 rounded-lg p-6">
+              <div className="bg-primary/10 border border-primary/30 rounded-lg p-6">
                 <div className="flex items-start">
                   <div className="mr-4 mt-1">
-                    <FaExclamationTriangle className="text-red-400 text-xl" />
+                    <FaExclamationTriangle className="text-primary text-xl" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Access Control Vulnerabilities</h3>
                     <p className="text-gray-300 mb-3">
-                      Insufficient validation of permissions, allowing unauthorized users to access privileged functions or manipulate protocol parameters.
+                      Insufficient permission checks or improper function visibility that allows unauthorized users to access privileged operations.
                     </p>
-                    <div className="bg-gray-800/50 p-4 rounded-md mb-3">
+                    <div className="bg-dark p-4 rounded-md mb-3">
                       <p className="text-sm font-mono text-gray-300">
-                        <span className="text-red-400">Vulnerable Pattern:</span> Missing or incorrect access controls, centralized admin keys
+                        <span className="text-red-400">Vulnerable Pattern:</span> Missing modifiers, improper visibility settings
                       </p>
                       <p className="text-sm font-mono text-green-300 mt-2">
-                        <span className="text-green-400">Mitigation:</span> Role-based access control, multi-sig requirements, timelocks
+                        <span className="text-green-400">Mitigation:</span> Comprehensive role-based access control, thorough permission tests
                       </p>
                     </div>
                     <p className="text-gray-400 text-sm">
-                      Notable examples: Numerous protocol "rug pulls" and governance exploits
+                      Notable examples: Parity multi-sig wallet, numerous protocol governance exploits
                     </p>
                   </div>
                 </div>
               </div>
             </div>
             
-            <div className="mt-8 text-center">
-              <Link href="/resources/vulnerabilities" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center">
-                View Comprehensive Vulnerability Database <span className="ml-2">→</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Developer Principles */}
-      <section className="py-16 bg-gray-800">
-        <div className="container px-4 mx-auto">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Guiding Principles</h2>
-            
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-gray-700 rounded-lg p-6 border border-gray-600">
-                <div className="w-12 h-12 bg-blue-900/40 rounded-full flex items-center justify-center mb-4 mx-auto">
-                  <FaShieldAlt className="text-blue-400 text-xl" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-3 text-center">Security First</h3>
-                <p className="text-gray-300 text-center">
-                  Prioritize security at every stage of development. Multiple audits, formal verification, and extensive testing should be standard practice.
-                </p>
-              </div>
-              
-              <div className="bg-gray-700 rounded-lg p-6 border border-gray-600">
-                <div className="w-12 h-12 bg-blue-900/40 rounded-full flex items-center justify-center mb-4 mx-auto">
-                  <FaUsers className="text-blue-400 text-xl" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-3 text-center">Community First</h3>
-                <p className="text-gray-300 text-center">
-                  Build with and for your community. Transparent development, open governance, and equitable value distribution create sustainable ecosystems.
-                </p>
-              </div>
-              
-              <div className="bg-gray-700 rounded-lg p-6 border border-gray-600">
-                <div className="w-12 h-12 bg-blue-900/40 rounded-full flex items-center justify-center mb-4 mx-auto">
-                  <FaLightbulb className="text-blue-400 text-xl" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-3 text-center">Innovation with Purpose</h3>
-                <p className="text-gray-300 text-center">
-                  Innovate to solve real problems, not to chase trends. True innovation creates lasting value and advances the entire ecosystem.
-                </p>
-              </div>
+            <div className="mt-10 bg-dark-card p-6 rounded-lg border border-dark-light/30">
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center">
+                <FaLightbulb className="text-primary mr-2" />
+                Development Security Principles
+              </h3>
+              <ul className="list-disc pl-5 text-gray-300 space-y-3">
+                <li>
+                  <strong className="text-white">Implement defense in depth:</strong>
+                  <p className="mt-1">Never rely on a single security control. Layer multiple mechanisms to protect against different attack vectors.</p>
+                </li>
+                <li>
+                  <strong className="text-white">Follow the principle of least privilege:</strong>
+                  <p className="mt-1">Functions and users should have only the minimum permissions necessary to perform their tasks.</p>
+                </li>
+                <li>
+                  <strong className="text-white">Secure by default:</strong>
+                  <p className="mt-1">Default configurations should be the most secure options, requiring explicit actions to decrease security protections.</p>
+                </li>
+                <li>
+                  <strong className="text-white">Trust verified code and test exhaustively:</strong>
+                  <p className="mt-1">Use audited libraries and implement comprehensive test suites covering edge cases and adversarial scenarios.</p>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
       
       {/* Newsletter Section */}
-      <section className="py-16 bg-gray-900">
+      <section className="py-16 bg-dark">
         <div className="container px-4 mx-auto">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-8">
