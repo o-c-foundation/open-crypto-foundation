@@ -21,7 +21,11 @@ export const PROGRAM_ID = new PublicKey("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zP
 export const TOKEN_MINT = new PublicKey("4HyGnNETGQoJd9YEXS3cq1gcAdhF5XBGkpxYiUHZmZvx");
 export const SOLANA_NETWORK = "https://api.devnet.solana.com";
 
-// IDL definition
+// Note: This is a demo implementation. In a real app, you would deploy an Anchor program
+// with the token-claim logic and use the actual program to handle token claims.
+// This demo simulates the token claiming process without the actual on-chain program.
+
+// IDL definition (for reference only in this demo)
 export const TOKEN_CLAIM_IDL: Idl = {
   version: "0.1.0",
   name: "token_claim",
@@ -49,15 +53,6 @@ export const TOKEN_CLAIM_IDL: Idl = {
         { name: "rent", isMut: false, isSigner: false }
       ],
       args: [{ name: "amount", type: "u64" }]
-    },
-    {
-      name: "getClaimableAmount",
-      accounts: [
-        { name: "claimInfo", isMut: false, isSigner: false },
-        { name: "user", isMut: false, isSigner: false }
-      ],
-      args: [],
-      returns: "u64"
     }
   ],
   accounts: [
@@ -95,59 +90,38 @@ export const getSolanaConnection = () => {
   return new Connection(SOLANA_NETWORK, 'confirmed');
 };
 
-export const getAnchorProgram = (wallet: any) => {
-  const connection = getSolanaConnection();
-  const provider = new AnchorProvider(
-    connection,
-    wallet,
-    { preflightCommitment: 'processed' }
-  );
-  return new Program(TOKEN_CLAIM_IDL, PROGRAM_ID, provider);
-};
-
-export const findClaimState = async () => {
-  return await PublicKey.findProgramAddress(
-    [Buffer.from('claim_state')],
-    PROGRAM_ID
-  );
-};
-
-export const findClaimInfo = async (userPublicKey: PublicKey) => {
-  return await PublicKey.findProgramAddress(
-    [Buffer.from('claim_info'), userPublicKey.toBuffer()],
-    PROGRAM_ID
-  );
+// Demo whitelist implemented client-side (in a real app, this would be stored on-chain)
+const DEMO_WHITELIST: Record<string, number> = {
+  // Add some example addresses (replace with real ones if needed)
+  "AaYFExyZuMHbJHzjimKyQBAH1yfA9sKTxSzBc6Nr5X4s": 10000000,
+  "5YNmS1R9nNSCDzb5a7mMJ1dwK9uHeAAF4CmPEwKgVWr8": 8500000,
+  // Client's random allocation will be used if wallet not in whitelist
 };
 
 // Get the amount of tokens a user can claim (returns null if user not in whitelist)
 export const getClaimableAmount = async (userPublicKey: PublicKey) => {
   try {
-    const connection = getSolanaConnection();
-    const [claimInfo] = await findClaimInfo(userPublicKey);
+    const publicKeyStr = userPublicKey.toBase58();
     
-    try {
-      // Try to fetch existing claim info
-      const accountInfo = await connection.getAccountInfo(claimInfo);
-      
-      if (!accountInfo) {
-        // Account doesn't exist yet, but user might be eligible
-        // In a real app, check against a whitelist
-        const allocation = Math.floor(Math.random() * (10000000 - 5000000 + 1)) + 5000000;
-        return { amount: allocation, claimed: false };
-      }
-      
-      // TODO: Parse account data to check if claimed
-      // For this example, we'll just return a simple allocation
-      return { amount: 7500000, claimed: false };
-    } catch (err) {
-      console.error("Error checking claim info:", err);
-      return null;
+    // Demo: check whitelist (fixed allocations)
+    if (DEMO_WHITELIST[publicKeyStr]) {
+      return { 
+        amount: DEMO_WHITELIST[publicKeyStr], 
+        claimed: false 
+      };
     }
+    
+    // Demo: random allocation for non-whitelisted wallets (for testing)
+    const allocation = Math.floor(Math.random() * (10000000 - 5000000 + 1)) + 5000000;
+    return { amount: allocation, claimed: false };
   } catch (err) {
     console.error("Error in getClaimableAmount:", err);
     return null;
   }
 };
+
+// Store claimed tokens to prevent double-claiming in the same session
+const claimedWallets = new Set<string>();
 
 // Claim tokens
 export const claimTokens = async (
@@ -160,22 +134,19 @@ export const claimTokens = async (
   try {
     if (!wallet.publicKey) throw new Error("Wallet not connected");
     
+    const publicKeyStr = wallet.publicKey.toBase58();
+    
+    // Check if already claimed in this session
+    if (claimedWallets.has(publicKeyStr)) {
+      return { 
+        success: false, 
+        error: "You have already claimed tokens in this session." 
+      };
+    }
+    
     const connection = getSolanaConnection();
     
-    // We don't need full Anchor Program for this demo, just create a transaction
-    // const program = getAnchorProgram(wallet);
-    
-    // Find PDAs
-    const [claimState] = await findClaimState();
-    const [claimInfo] = await findClaimInfo(wallet.publicKey);
-    
     // Get the token accounts
-    const programTokenAccount = await getAssociatedTokenAddress(
-      TOKEN_MINT,
-      claimState,
-      true // allowOwnerOffCurve
-    );
-    
     let userTokenAccount = await getAssociatedTokenAddress(
       TOKEN_MINT,
       wallet.publicKey
@@ -197,20 +168,28 @@ export const claimTokens = async (
       );
     }
     
-    // For demo purposes, simulate a token transfer
-    // In a real app, you would use program.methods.claim() as shown in the commented code
-    
-    // Convert amount to lamports (assuming 9 decimals)
-    const amountLamports = new BN(amount * Math.pow(10, 9));
-    
-    // Simplified: Just create a transaction that would succeed for demo purposes
-    // In a real app, you would add the actual claim instruction
+    // Demo: Add a simple transfer instruction (in a real app, this would be a program call)
+    // This just creates a small SOL transfer to simulate a transaction
+    transaction.add(
+      SystemProgram.transfer({
+        fromPubkey: wallet.publicKey,
+        toPubkey: wallet.publicKey,
+        lamports: 1000, // minimal amount
+      })
+    );
     
     // Send transaction
     const signature = await wallet.sendTransaction(transaction, connection);
     await connection.confirmTransaction(signature, 'confirmed');
     
-    return { success: true, signature };
+    // Mark as claimed in our client-side storage
+    claimedWallets.add(publicKeyStr);
+    
+    return { 
+      success: true, 
+      signature,
+      message: "Demo: Tokens would be claimed in a real implementation"
+    };
   } catch (err: any) {
     console.error("Error claiming tokens:", err);
     return { 
