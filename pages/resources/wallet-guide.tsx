@@ -502,7 +502,7 @@ export default function WalletGuide() {
                           <li><strong>Metal Backup:</strong> Specialized metal plates resistant to fire, water, and physical damage</li>
                           <li><strong>Multiple Locations:</strong> Consider storing copies in different secure locations</li>
                           <li><strong>Safety Deposit Box:</strong> For high-value holdings, consider a bank safety deposit box</li>
-                        </ul>
+                          </ul>
                       </div>
                     </div>
                     
@@ -529,8 +529,8 @@ export default function WalletGuide() {
                           <li>Always verify addresses before confirming transactions</li>
                           <li>Consider using a separate device for large transactions</li>
                         </ul>
-                      </div>
-                      
+                    </div>
+                    
                       <div className="bg-dark-light/10 p-5 rounded-lg border border-dark-light/20">
                         <h4 className="font-medium text-white mb-3">Social Engineering</h4>
                         <p className="mb-2">Manipulative tactics to trick you into revealing sensitive information.</p>
@@ -540,8 +540,8 @@ export default function WalletGuide() {
                           <li>Verify identities through official channels</li>
                           <li>No legitimate project will ask you to send funds to "verify" your wallet</li>
                         </ul>
-                      </div>
-                      
+                        </div>
+                        
                       <div className="bg-dark-light/10 p-5 rounded-lg border border-dark-light/20">
                         <h4 className="font-medium text-white mb-3">Smart Contract Risks</h4>
                         <p className="mb-2">Malicious or vulnerable code that can compromise your assets.</p>

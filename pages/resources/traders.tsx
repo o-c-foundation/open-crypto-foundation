@@ -318,7 +318,7 @@ export default function Traders() {
             <p className="text-gray-300 mb-8">
               Understanding the tactics used by malicious actors is your first line of defense. Each scam type has specific patterns and warning signs that, once recognized, can help you avoid potential losses.
             </p>
-            
+
             <TabLayout
               tabs={scamTypes.map(scam => ({
                 id: scam.id,
@@ -330,7 +330,7 @@ export default function Traders() {
               tabPosition="side"
             >
               {scamTypes.map((scam) => (
-                <div
+                <div 
                   key={scam.id}
                   className={`bg-dark-card border border-dark-light/30 rounded-lg p-6 transition-opacity duration-300 ${
                     activeScam === scam.id ? 'opacity-100' : 'hidden opacity-0'
@@ -356,21 +356,21 @@ export default function Traders() {
                       <h4 className="font-bold text-white mb-3">Warning Signs</h4>
                       <ul className="list-disc pl-5 text-gray-300 space-y-2">
                         {scam.warning_signs && scam.warning_signs.map((sign, i) => (
-                          <li key={i}>{sign}</li>
-                        ))}
-                      </ul>
+                            <li key={i}>{sign}</li>
+                          ))}
+                        </ul>
                     </div>
-                  </div>
-                  
+                      </div>
+                      
                   <div className="bg-dark-light/10 p-5 rounded-lg mb-6 border border-dark-light/20">
                     <h4 className="font-bold text-white mb-3">Prevention Strategies</h4>
                     <ul className="list-disc pl-5 text-gray-300 space-y-2">
                       {scam.prevention && scam.prevention.map((tip, i) => (
-                        <li key={i}>{tip}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  
+                            <li key={i}>{tip}</li>
+                          ))}
+                        </ul>
+                    </div>
+                    
                   {scam.examples && (
                     <div className="bg-primary/10 border border-primary/30 rounded-lg p-5">
                       <h4 className="font-bold text-white mb-3">Real-World Examples</h4>
@@ -393,14 +393,14 @@ export default function Traders() {
                             <p className="text-gray-300 mb-3">{tactic.description}</p>
                             <div className="bg-dark p-4 rounded-md text-gray-300 text-sm mb-3">
                               <strong className="text-primary">Technical Details:</strong> {tactic.technicalDetails}
-                            </div>
+                  </div>
                             <div className="bg-dark p-4 rounded-md text-gray-300 text-sm">
                               <strong className="text-primary">How to Identify:</strong> {tactic.identification}
-                            </div>
-                          </div>
+                </div>
+              </div>
                         ))}
-                      </div>
-                    </div>
+                  </div>
+                </div>
                   )}
 
                   {/* If this is the KOL section and it has tactics breakdown */}
@@ -414,14 +414,14 @@ export default function Traders() {
                             <p className="text-gray-300 mb-3">{tactic.description}</p>
                             <div className="bg-dark p-4 rounded-md text-gray-300 text-sm mb-3">
                               <strong className="text-primary">How It Works:</strong> {tactic.details}
-                            </div>
+                  </div>
                             <div className="bg-dark p-4 rounded-md text-gray-300 text-sm">
                               <strong className="text-primary">How to Identify:</strong> {tactic.identification}
-                            </div>
-                          </div>
+                </div>
+              </div>
                         ))}
-                      </div>
-                    </div>
+                  </div>
+                </div>
                   )}
 
                   {/* Psychology section for KOL scams */}
@@ -433,12 +433,12 @@ export default function Traders() {
                           <div key={i} className="bg-primary/10 border border-primary/30 rounded-lg p-5">
                             <h4 className="font-bold text-white mb-2">{section.title}</h4>
                             <p className="text-gray-300">{section.content}</p>
-                          </div>
+                  </div>
                         ))}
-                      </div>
-                    </div>
-                  )}
                 </div>
+              </div>
+                  )}
+            </div>
               ))}
             </TabLayout>
           </div>
@@ -453,21 +453,21 @@ export default function Traders() {
               <div className="grid md:grid-cols-2 gap-4">
                 <Link href="/tools/token-analyzer" className="bg-dark-light/10 hover:bg-dark-light/15 border border-dark-light/20 rounded-lg p-4 flex items-center transition-colors">
                   <FaChartLine className="text-primary mr-3" size={24} />
-                  <div>
+                      <div>
                     <h3 className="font-bold text-white">Token Analyzer</h3>
                     <p className="text-sm text-gray-300">Check token distribution patterns and potential risks</p>
-                  </div>
+                      </div>
                 </Link>
                 <Link href="/tools/contract-scanner" className="bg-dark-light/10 hover:bg-dark-light/15 border border-dark-light/20 rounded-lg p-4 flex items-center transition-colors">
                   <FaShieldAlt className="text-primary mr-3" size={24} />
-                  <div>
+                      <div>
                     <h3 className="font-bold text-white">Contract Scanner</h3>
                     <p className="text-sm text-gray-300">Scan for common vulnerabilities and backdoors</p>
-                  </div>
+                      </div>
                 </Link>
-              </div>
-            </div>
-          </div>
+                      </div>
+                    </div>
+                  </div>
         </div>
       </div>
     </>

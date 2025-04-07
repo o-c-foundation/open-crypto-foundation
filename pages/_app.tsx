@@ -6,6 +6,7 @@ import Layout from '../components/Layout'
 import ErrorBoundary from '../components/ErrorBoundary'
 import { LanguageProvider } from '../contexts/LanguageContext'
 import dynamic from 'next/dynamic'
+import SolanaWalletProvider from '../context/SolanaWalletProvider'
 
 // Use a completely client-side only app to avoid any SSR with wallet adapters
 function ClientOnlyApp({ Component, pageProps }: AppProps) {

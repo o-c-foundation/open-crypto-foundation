@@ -21,7 +21,7 @@ export default function ToolsPage() {
   const toolCategories = [
     {
       name: "Contract Analysis",
-      icon: <FaFileContract className="text-purple-400" />,
+      icon: <FaFileContract className="text-primary" />,
       description: "Analyze smart contracts for security vulnerabilities, backdoors, and suspicious code.",
       tools: [
         {
@@ -52,7 +52,7 @@ export default function ToolsPage() {
     },
     {
       name: "Token Investigation",
-      icon: <FaSearchDollar className="text-purple-400" />,
+      icon: <FaSearchDollar className="text-primary" />,
       description: "Research tokens and their distribution patterns, liquidity, and other risk factors.",
       tools: [
         {
@@ -83,7 +83,7 @@ export default function ToolsPage() {
     },
     {
       name: "Risk Assessment",
-      icon: <FaExclamationTriangle className="text-purple-400" />,
+      icon: <FaExclamationTriangle className="text-primary" />,
       description: "Evaluate the overall risk profile of projects and investments.",
       tools: [
         {
@@ -114,7 +114,7 @@ export default function ToolsPage() {
     },
     {
       name: "Wallet & Transaction Safety",
-      icon: <FaUserShield className="text-purple-400" />,
+      icon: <FaUserShield className="text-primary" />,
       description: "Secure your wallet and analyze transactions for safety.",
       tools: [
         {
@@ -139,7 +139,7 @@ export default function ToolsPage() {
     },
     {
       name: "Monitoring Tools",
-      icon: <FaChartLine className="text-purple-400" />,
+      icon: <FaChartLine className="text-primary" />,
       description: "Track and monitor your portfolio, gas prices, and market changes.",
       tools: [
         {
@@ -255,22 +255,35 @@ export default function ToolsPage() {
             </div>
           ))}
           
-          <div className="mt-12 bg-dark-card p-6 rounded-lg border border-dark-light/30 max-w-4xl mx-auto">
-            <h2 className="text-xl font-bold mb-4 text-white">Disclaimer</h2>
-            <p className="text-gray-300 mb-4">
-              The Open Crypto Foundation provides these links as a service to the community. While we've 
-              reviewed these tools for general safety and usefulness, we cannot guarantee their security or 
-              effectiveness in all situations. Always use your own judgment and understand the risks involved 
-              with any DeFi interaction.
-            </p>
-            <p className="text-gray-300">
-              We are not affiliated with the external tools listed and receive no compensation for 
-              including them in this directory. Recommendations are based solely on our assessment of their 
-              utility for DeFi users.
-            </p>
+          <div className="max-w-4xl mx-auto mt-12 p-6 bg-primary/10 rounded-lg border border-primary/30">
+            <h2 className="text-xl font-bold mb-4 text-white flex items-center">
+              <FaShieldAlt className="text-primary mr-2" /> Best Practices for Safe DeFi Navigation
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-lg font-semibold text-white mb-3">Before Using Any DeFi Service</h3>
+                <ul className="list-disc pl-5 text-gray-300 space-y-2">
+                  <li>Verify contracts on block explorers</li>
+                  <li>Check official links through multiple sources</li>
+                  <li>Research the team and project history</li>
+                  <li>Use a dedicated wallet with limited funds</li>
+                  <li>Simulate transactions before confirming</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white mb-3">Regular Security Maintenance</h3>
+                <ul className="list-disc pl-5 text-gray-300 space-y-2">
+                  <li>Review and revoke unused token approvals</li>
+                  <li>Monitor your wallet for suspicious activities</li>
+                  <li>Keep your device software updated</li>
+                  <li>Use hardware wallets for significant holdings</li>
+                  <li>Never share your private keys or seed phrases</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </>
-  )
+  );
 } 
