@@ -219,6 +219,131 @@ export default function RPCEndpointsPage() {
     { name: 'Run Your Own Node', url: 'https://docs.polygon.technology/docs/maintain/validate/validator-index', type: 'setup', chain: 'polygon' },
   ];
 
+  // Solana
+  const solanaProviders: RPCEndpoint[] = [
+    { name: 'Chainstack', url: 'https://chainstack.com/build-better-with-solana/', type: 'provider', chain: 'solana' },
+    { name: 'GetBlock', url: 'https://getblock.io/nodes/sol/', type: 'provider', chain: 'solana' },
+    { name: 'Pocket Network', url: 'https://mainnet.portal.pokt.network', type: 'provider', chain: 'solana' },
+    { name: 'Figment Datahub', url: 'https://datahub.figment.io/', type: 'provider', chain: 'solana' },
+    { name: 'NOWNodes.io', url: 'https://nownodes.io/', type: 'provider', chain: 'solana' },
+    { name: 'Coinbase', url: 'https://www.coinbase.com/blog/coinbase-cloud-launches-solana-archival-nodes-to-empower-the-solana', type: 'provider', chain: 'solana' },
+    { name: 'Blockdaemon', url: 'https://blockdaemon.com/documentation/guides/solana/solana-nodes/', type: 'provider', chain: 'solana' },
+    { name: 'Alchemy', url: 'https://alchemy.com', type: 'provider', chain: 'solana' },
+    { name: 'OnFinality', url: 'https://onfinality.io/networks/solana', type: 'provider', chain: 'solana' },
+    { name: 'DRPC', url: 'https://drpc.org/public-endpoints/solana', type: 'provider', chain: 'solana' },
+  ];
+
+  const solanaEndpoints: RPCEndpoint[] = [
+    { name: 's.1b.tc', url: 'https://s.1b.tc/888/solana', type: 'public', chain: 'solana' },
+    { name: 'QuickNode', url: 'https://aged-serene-cherry.solana-mainnet.quiknode.pro/2fd1bc5f0b9eaf51169ca37b2b92c35232365a1a', type: 'public', chain: 'solana' },
+    { name: 'Solflare', url: 'https://mainnet-beta.solflare.network', type: 'public', chain: 'solana' },
+    { name: 'Helius', url: 'https://adjacent-prisca-fast-mainnet.helius-rpc.com', type: 'public', chain: 'solana' },
+    { name: 'Coin98', url: 'https://information.coin98.com/api/solanaV4', type: 'public', chain: 'solana' },
+    { name: 'Helius Cold', url: 'https://cold-hanni-fast-mainnet.helius-rpc.com/', type: 'public', chain: 'solana' },
+    { name: 'Phantom', url: 'https://solana-mainnet.phantom.app/YBPpkkN4g91xDiAnTE9r0RcMkjg0sKUIWvAfoFVJ', type: 'public', chain: 'solana' },
+    { name: 'Helius Linguistic', url: 'https://linguistic-dulcea-fast-mainnet.helius-rpc.com', type: 'public', chain: 'solana' },
+    { name: 'Ankr', url: 'https://rpc.ankr.com/solana', type: 'public', chain: 'solana' },
+    { name: 'Phantom Tech', url: 'https://solana-mainnet.phantom.tech', type: 'public', chain: 'solana' },
+    { name: 'Solana Mainnet', url: 'https://api.mainnet-beta.solana.com', type: 'public', chain: 'solana' },
+    { name: 'RPC Pool', url: 'https://api.rpcpool.com', type: 'public', chain: 'solana' },
+    { name: 'Solana Public', url: 'https://solana.public-rpc.com', type: 'public', chain: 'solana' },
+    { name: 'Solana Devnet', url: 'https://api.devnet.solana.com', type: 'public', chain: 'solana' },
+  ];
+
+  const solanaSetup: RPCEndpoint[] = [
+    { name: 'Run Your Own Node', url: 'https://docs.solana.com/running-validator', type: 'setup', chain: 'solana' },
+  ];
+
+  // Avalanche
+  const avalancheProviders: RPCEndpoint[] = [
+    { name: 'GetBlock', url: 'https://getblock.io/nodes/avax/', type: 'provider', chain: 'avalanche' },
+    { name: 'Pocket Network', url: 'https://mainnet.portal.pokt.network', type: 'provider', chain: 'avalanche' },
+    { name: 'Chainstack', url: 'https://chainstack.com/build-better-with-avalanche/', type: 'provider', chain: 'avalanche' },
+    { name: 'Allnodes', url: 'https://www.allnodes.com', type: 'provider', chain: 'avalanche' },
+    { name: 'Figment Datahub', url: 'https://datahub.figment.io/', type: 'provider', chain: 'avalanche' },
+    { name: 'Ankr', url: 'https://ankr.com', type: 'provider', chain: 'avalanche' },
+    { name: 'Blast', url: 'https://blastapi.io/', type: 'provider', chain: 'avalanche' },
+    { name: 'NOWNodes.io', url: 'https://nownodes.io/', type: 'provider', chain: 'avalanche' },
+    { name: 'OnFinality.io', url: 'https://onfinality.io', type: 'provider', chain: 'avalanche' },
+    { name: 'Chainbase', url: 'https://chainbase.online', type: 'provider', chain: 'avalanche' },
+    { name: 'Exaion Node', url: 'https://node.exaion.com/', type: 'provider', chain: 'avalanche' },
+    { name: 'DRPC', url: 'https://drpc.org/public-endpoints/avalanche', type: 'provider', chain: 'avalanche' },
+    { name: 'Stackup', url: 'https://www.stackup.sh/', type: 'provider', chain: 'avalanche' },
+  ];
+
+  const avalancheEndpoints: RPCEndpoint[] = [
+    { name: 'Pocket Network', url: 'https://avax-mainnet.gateway.pokt.network/v1/lb/605238bf6b986eea7cf36d5e/ext/bc/C/rpc', type: 'public', chain: 'avalanche' },
+    { name: 'API AVAX', url: 'https://api.avax.network/ext/bc/C/rpc', type: 'public', chain: 'avalanche' },
+    { name: 'Ankr', url: 'https://rpc.ankr.com/avalanche', type: 'public', chain: 'avalanche' },
+    { name: 'RPCGator', url: 'https://avax.rpcgator.com/', type: 'public', chain: 'avalanche' },
+    { name: 'Public RPC', url: 'https://avalanche.public-rpc.com', type: 'public', chain: 'avalanche' },
+    { name: 'BlastAPI', url: 'https://blastapi.io/public-api/avalanche', type: 'public', chain: 'avalanche' },
+    { name: 'OnFinality', url: 'https://avalanche.api.onfinality.io/public', type: 'public', chain: 'avalanche' },
+    { name: 'PublicNode', url: 'https://avalanche.publicnode.com', type: 'public', chain: 'avalanche' },
+    { name: 'DRPC', url: 'https://avalanche.drpc.org', type: 'public', chain: 'avalanche' },
+    { name: 'Stackup', url: 'https://public.stackup.sh/api/v1/node/avalanche-mainnet', type: 'public', chain: 'avalanche' },
+  ];
+
+  const avalancheSetup: RPCEndpoint[] = [
+    { name: 'Run Your Own Node', url: 'https://docs.avax.network/build/tutorials/nodes-and-staking/run-avalanche-node', type: 'setup', chain: 'avalanche' },
+  ];
+
+  // Fantom
+  const fantomProviders: RPCEndpoint[] = [
+    { name: 'GetBlock', url: 'https://getblock.io/nodes/ftm/', type: 'provider', chain: 'fantom' },
+    { name: 'ANKR', url: 'https://ankr.com', type: 'provider', chain: 'fantom' },
+    { name: 'Chainstack', url: 'https://chainstack.com/build-better-with-fantom/', type: 'provider', chain: 'fantom' },
+    { name: 'Pocket Network', url: 'https://mainnet.portal.pokt.network', type: 'provider', chain: 'fantom' },
+    { name: 'Blast', url: 'https://blastapi.io/', type: 'provider', chain: 'fantom' },
+    { name: 'Datahub', url: 'https://datahub.figment.io/', type: 'provider', chain: 'fantom' },
+    { name: 'NOWNodes.io', url: 'https://nownodes.io/', type: 'provider', chain: 'fantom' },
+    { name: 'Chainbase', url: 'https://chainbase.online', type: 'provider', chain: 'fantom' },
+    { name: 'OnFinality.io', url: 'https://onfinality.io', type: 'provider', chain: 'fantom' },
+    { name: 'DRPC', url: 'https://drpc.org/public-endpoints/fantom', type: 'provider', chain: 'fantom' },
+  ];
+
+  const fantomEndpoints: RPCEndpoint[] = [
+    { name: 'Pocket Network', url: 'https://fantom-mainnet.gateway.pokt.network/v1/lb/6261a8a154c745003bcdb0f8', type: 'public', chain: 'fantom' },
+    { name: 'FTM Tools', url: 'https://rpc.ftm.tools/', type: 'public', chain: 'fantom' },
+    { name: 'Ankr', url: 'https://rpc.ankr.com/fantom', type: 'public', chain: 'fantom' },
+    { name: 'RPCGator', url: 'https://ftm.rpcgator.com/', type: 'public', chain: 'fantom' },
+    { name: 'BlastAPI', url: 'https://blastapi.io/public-api/fantom', type: 'public', chain: 'fantom' },
+    { name: 'PublicNode', url: 'https://fantom.publicnode.com', type: 'public', chain: 'fantom' },
+    { name: 'OnFinality', url: 'https://fantom.api.onfinality.io/public', type: 'public', chain: 'fantom' },
+    { name: 'DRPC', url: 'https://fantom.drpc.org', type: 'public', chain: 'fantom' },
+  ];
+
+  const fantomWebsockets: RPCEndpoint[] = [
+    { name: 'Fantom Network', url: 'wss://wsapi.fantom.network', type: 'websocket', chain: 'fantom' },
+    { name: 'GetBlock', url: 'wss://bsc.getblock.io/api_key/mainnet/', type: 'websocket', chain: 'fantom' },
+  ];
+
+  const fantomSetup: RPCEndpoint[] = [
+    { name: 'Run Your Own Node', url: 'https://docs.fantom.foundation/node/how-to-run-a-validator-node', type: 'setup', chain: 'fantom' },
+  ];
+
+  // Polygon zkEVM
+  const zkEVMProviders: RPCEndpoint[] = [
+    { name: 'Chainstack', url: 'https://chainstack.com/build-better-with-polygon-zkevm/', type: 'provider', chain: 'zkEVM' },
+    { name: 'DRPC', url: 'https://drpc.org/public-endpoints/polygon-zkevm', type: 'provider', chain: 'zkEVM' },
+  ];
+
+  const zkEVMEndpoints: RPCEndpoint[] = [
+    { name: 'zkEVM RPC', url: 'https://zkevm-rpc.com', type: 'public', chain: 'zkEVM' },
+    { name: 'DRPC', url: 'https://polygon-zkevm.drpc.org', type: 'public', chain: 'zkEVM' },
+  ];
+
+  // Algorand
+  const algorandProviders: RPCEndpoint[] = [
+    { name: 'GetBlock', url: 'https://getblock.io/nodes/algo/', type: 'provider', chain: 'algorand' },
+    { name: 'Pocket Network', url: 'https://mainnet.portal.pokt.network', type: 'provider', chain: 'algorand' },
+    { name: 'NOWNodes.io', url: 'https://nownodes.io/', type: 'provider', chain: 'algorand' },
+  ];
+
+  const algorandSetup: RPCEndpoint[] = [
+    { name: 'Run Your Own Node', url: 'https://developer.algorand.org/docs/run-a-node/setup/install/', type: 'setup', chain: 'algorand' },
+  ];
+
   // Helper function to filter RPC endpoints based on search and filter criteria
   const filterRPCEndpoints = (endpoints: RPCEndpoint[]): RPCEndpoint[] => {
     return endpoints.filter(endpoint => {
@@ -247,7 +372,11 @@ export default function RPCEndpointsPage() {
     ...ethereumProviders, ...ethereumEndpoints,
     ...bscProviders, ...bscEndpoints, ...bscWebsockets, ...bscSetup,
     ...polygonProviders, ...polygonEndpoints, ...polygonWebsockets, ...polygonSetup,
-    // Add other chains here
+    ...solanaProviders, ...solanaEndpoints, ...solanaSetup,
+    ...avalancheProviders, ...avalancheEndpoints, ...avalancheSetup,
+    ...fantomProviders, ...fantomEndpoints, ...fantomWebsockets, ...fantomSetup,
+    ...zkEVMProviders, ...zkEVMEndpoints,
+    ...algorandProviders, ...algorandSetup
   ];
   
   const filteredEndpoints = filterRPCEndpoints(allEndpoints);
