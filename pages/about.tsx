@@ -347,8 +347,19 @@ export default function AboutPage() {
               <TabLayout 
                 tabs={aboutSections} 
                 activeTab={activeSection} 
-                setActiveTab={setActiveSection} 
-              />
+                onTabChange={setActiveSection} 
+              >
+                {aboutSections.map((section) => (
+                  <div 
+                    key={section.id}
+                    className={`transition-opacity duration-300 ${
+                      activeSection === section.id ? 'block opacity-100' : 'hidden opacity-0'
+                    }`}
+                  >
+                    {section.content}
+                  </div>
+                ))}
+              </TabLayout>
             </div>
           </div>
         </section>
