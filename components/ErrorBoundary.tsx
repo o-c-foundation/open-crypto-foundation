@@ -12,40 +12,92 @@ interface State {
 class ErrorBoundary extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = { 
+    this.state = {
       hasError: false,
       error: null
     };
   }
 
   static getDerivedStateFromError(error: Error): State {
+    // Update state so the next render will show the fallback UI.
     return { hasError: true, error };
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    console.error("React Error Boundary caught an error:", error, errorInfo);
+    console.error('Error caught by boundary:', error);
+    console.error('Component stack:', errorInfo.componentStack);
+  }
+
+  resetError = (): void => {
+    this.setState({ hasError: false, error: null });
+  }
+
+  // Check if the error is specifically the auth destructuring error
+  isAuthError(): boolean {
+    return this.state.error?.message?.includes("Cannot destructure property 'auth'") || false;
   }
 
   render(): ReactNode {
     if (this.state.hasError) {
-      return (
-        <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-4 text-white">
-          <div className="bg-red-900/30 border border-red-700 rounded-lg p-6 max-w-2xl w-full">
-            <h1 className="text-2xl font-bold mb-4">Something went wrong</h1>
-            <div className="bg-black/30 p-4 rounded mb-4 overflow-auto">
-              <pre className="text-red-400 text-sm whitespace-pre-wrap break-words">
-                {this.state.error?.toString()}
-              </pre>
+      // For auth-specific error, attempt recovery and show minimal error
+      if (this.isAuthError()) {
+        return (
+          <div className="min-h-screen bg-dark flex items-center justify-center">
+            <div className="bg-dark-card border border-primary/20 rounded-lg p-6 max-w-xl mx-auto text-center">
+              <h2 className="text-xl font-semibold text-white mb-4">Connection Issue</h2>
+              <p className="text-light-muted mb-4">
+                There was an issue connecting to the wallet services. Please try refreshing the page.
+              </p>
+              <div className="flex justify-center">
+                <button
+                  onClick={() => window.location.reload()}
+                  className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-light transition-colors mr-3"
+                >
+                  Refresh Page
+                </button>
+                <button
+                  onClick={this.resetError}
+                  className="px-4 py-2 bg-dark-light/30 text-white rounded-md hover:bg-dark-light/50 transition-colors"
+                >
+                  Try Again
+                </button>
+              </div>
             </div>
-            <p className="mb-4">
+          </div>
+        );
+      }
+
+      // For other errors, show a generic error UI
+      return (
+        <div className="min-h-screen bg-dark flex items-center justify-center">
+          <div className="bg-dark-card border border-red-500/30 rounded-lg p-6 max-w-xl mx-auto">
+            <h2 className="text-xl font-semibold text-white mb-4">Something went wrong</h2>
+            <div className="bg-red-900/20 border border-red-900/30 rounded p-4 mb-4 text-red-400 text-sm overflow-auto">
+              {this.state.error?.toString()}
+            </div>
+            <p className="text-light-muted mb-6">
               Try refreshing the page or going back to the home page.
             </p>
-            <button 
-              onClick={() => window.location.href = '/'} 
-              className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md"
-            >
-              Go to Home Page
-            </button>
+            <div className="flex flex-wrap gap-3">
+              <button
+                onClick={() => window.location.reload()}
+                className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-light transition-colors"
+              >
+                Refresh Page
+              </button>
+              <a
+                href="/"
+                className="px-4 py-2 bg-dark-light/30 text-white rounded-md hover:bg-dark-light/50 transition-colors"
+              >
+                Go to Home Page
+              </a>
+              <button
+                onClick={this.resetError}
+                className="px-4 py-2 bg-dark-light/30 text-white rounded-md hover:bg-dark-light/50 transition-colors"
+              >
+                Try Again
+              </button>
+            </div>
           </div>
         </div>
       );

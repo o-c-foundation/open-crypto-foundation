@@ -7,18 +7,15 @@ import ErrorBoundary from '../components/ErrorBoundary'
 import { LanguageProvider } from '../contexts/LanguageContext'
 import dynamic from 'next/dynamic'
 
-// Dynamically import SolanaWalletProvider with SSR disabled
-const SolanaWalletProvider = dynamic(
-  () => import('../components/SolanaWalletProvider'),
-  { ssr: false }
-);
+// Use a completely client-side only app to avoid any SSR with wallet adapters
+function ClientOnlyApp({ Component, pageProps }: AppProps) {
+  // Dynamically import SolanaWalletProvider with SSR disabled
+  const SolanaWalletProvider = dynamic(
+    () => import('../components/SolanaWalletProvider'),
+    { ssr: false }
+  );
 
-export default function App({ Component, pageProps }: AppProps) {
-  const [mounted, setMounted] = useState(false);
-  
   useEffect(() => {
-    setMounted(true);
-    
     console.log('App mounted');
     
     // Add global error handler
@@ -33,6 +30,14 @@ export default function App({ Component, pageProps }: AppProps) {
         userAgent: navigator.userAgent
       });
     };
+    
+    // Patch error handling for auth property issues
+    window.addEventListener('error', (event) => {
+      if (event.error && event.error.toString().includes("Cannot destructure property 'auth'")) {
+        console.log("Caught auth destructuring error, attempting to continue...");
+        event.preventDefault();
+      }
+    });
     
     // Cleanup
     return () => {
@@ -52,15 +57,6 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [])
 
-  // Show minimal loader when not yet mounted to prevent hydration errors
-  if (!mounted) {
-    return (
-      <div className="min-h-screen bg-dark flex items-center justify-center">
-        <div className="animate-pulse text-white">Loading...</div>
-      </div>
-    );
-  }
-
   return (
     <ErrorBoundary>
       <Head>
@@ -79,4 +75,9 @@ export default function App({ Component, pageProps }: AppProps) {
       </div>
     </ErrorBoundary>
   )
-} 
+}
+
+// Export a dynamic component with no SSR to ensure the entire app runs only on client side
+export default dynamic(() => Promise.resolve(ClientOnlyApp), {
+  ssr: false,
+}); 
