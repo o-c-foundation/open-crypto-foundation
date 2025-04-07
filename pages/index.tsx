@@ -1,15 +1,152 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
-import { FaArrowRight, FaShieldAlt, FaBookOpen, FaTools, FaRegNewspaper, FaRocket, FaCoins, FaFire } from 'react-icons/fa'
+import { FaArrowRight, FaShieldAlt, FaBookOpen, FaTools, FaRegNewspaper, FaRocket, FaCoins, FaFire, FaBook, FaUserFriends, FaCheckCircle, FaLock } from 'react-icons/fa'
 import NewsletterSubscribe from '../components/NewsletterSubscribe'
+import ScrollToTop from '../components/ScrollToTop'
+import SolanaIcon from '../components/icons/SolanaIcon'
 
 export default function Home() {
   const [logoError, setLogoError] = useState(false);
   const [presaleBannerVisible, setPresaleBannerVisible] = useState(true);
+  const [isErrorRecoveryMode, setIsErrorRecoveryMode] = useState(false);
   const logoUrl = "https://bafkreidnf7j4gen5gwgnqxmi3fcprksdmorptbdenb4q76ejbpgbjqkzqq.ipfs.w3s.link/";
 
+  // Check if we're coming from an error
+  useEffect(() => {
+    // Check for error query param or localStorage flag
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasErrorParam = urlParams.has('error');
+    const hasLocalStorageError = localStorage.getItem('site_error') === 'true';
+    
+    if (hasErrorParam || hasLocalStorageError) {
+      setIsErrorRecoveryMode(true);
+      // Clear the error state from localStorage
+      localStorage.removeItem('site_error');
+    }
+    
+    // Set up global error handler for uncaught errors
+    const handleGlobalError = (event) => {
+      if (event.error && event.error.toString().includes("Cannot destructure property 'auth'")) {
+        localStorage.setItem('site_error', 'true');
+        console.log("Redirecting due to auth error");
+        window.location.href = '/?error=auth';
+        event.preventDefault();
+      }
+    };
+    
+    window.addEventListener('error', handleGlobalError);
+    
+    return () => {
+      window.removeEventListener('error', handleGlobalError);
+    };
+  }, []);
+  
+  // Simplified version of the Home page if we're in error recovery mode
+  if (isErrorRecoveryMode) {
+    return (
+      <>
+        <Head>
+          <title>Open Crypto Foundation - Empowering Safe DeFi Interactions</title>
+          <meta name="description" content="The Open Crypto Foundation provides tools and education to help users safely interact with DeFi protocols and avoid scams." />
+        </Head>
+        
+        <main className="min-h-screen bg-dark">
+          {/* Simple Hero Section for Error Recovery */}
+          <section className="py-16 md:py-24 bg-gradient-to-b from-dark-light to-dark text-white">
+            <div className="container mx-auto px-4">
+              <div className="max-w-4xl mx-auto text-center">
+                <div className="mb-8 flex justify-center">
+                  <Image 
+                    src="https://bafkreih4hdkhpjoxluzj526ehakmylfg5o2ri4wctumedqc3i5lv35k7ay.ipfs.w3s.link/"
+                    alt="Open Crypto Foundation Logo"
+                    width={120}
+                    height={120}
+                    priority
+                  />
+                </div>
+                <h1 className="text-4xl md:text-5xl font-bold mb-6">Open Crypto Foundation</h1>
+                <p className="text-xl text-light-muted mb-8">
+                  We've loaded a simplified version of our site to ensure you can access our content. 
+                  Some features like wallet connection may be temporarily unavailable.
+                </p>
+                
+                <div className="mt-10 flex flex-wrap justify-center gap-4">
+                  <Link 
+                    href="/manifesto" 
+                    className="px-6 py-3 bg-primary hover:bg-primary-light text-white rounded-md transition duration-300 flex items-center"
+                  >
+                    Read Our Manifesto <FaArrowRight className="ml-2" />
+                  </Link>
+                  
+                  <Link 
+                    href="/blog" 
+                    className="px-6 py-3 bg-dark-light hover:bg-dark-light/80 text-white rounded-md transition duration-300 flex items-center"
+                  >
+                    Visit Our Blog <FaArrowRight className="ml-2" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+          {/* Minimal Navigation Tiles */}
+          <section className="py-16 bg-dark">
+            <div className="container mx-auto px-4">
+              <div className="max-w-6xl mx-auto">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[
+                    {
+                      title: "Foundation Resources",
+                      icon: <FaBook className="text-primary text-4xl mb-4" />,
+                      description: "Explore our resources for safe crypto interactions",
+                      link: "/resources"
+                    },
+                    {
+                      title: "Security Guides",
+                      icon: <FaShieldAlt className="text-primary text-4xl mb-4" />,
+                      description: "Learn how to protect yourself from scams and exploits",
+                      link: "/resources/security-guide"
+                    },
+                    {
+                      title: "About Us",
+                      icon: <FaUserFriends className="text-primary text-4xl mb-4" />,
+                      description: "Learn about our mission and team",
+                      link: "/about"
+                    }
+                  ].map((item, index) => (
+                    <Link href={item.link} key={index}>
+                      <div className="bg-dark-card border border-dark-light/30 hover:border-primary/50 rounded-lg p-6 h-full transition-all duration-300 text-center">
+                        {item.icon}
+                        <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                        <p className="text-light-muted">{item.description}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Simple Newsletter */}
+          <section className="py-16 bg-dark-card text-white">
+            <div className="container mx-auto px-4">
+              <div className="max-w-xl mx-auto text-center">
+                <h2 className="text-2xl font-bold mb-4">Stay Updated</h2>
+                <p className="text-light-muted mb-8">Get the latest news and updates from the Open Crypto Foundation</p>
+                <NewsletterSubscribe />
+              </div>
+            </div>
+          </section>
+        </main>
+        
+        <ScrollToTop />
+      </>
+    );
+  }
+  
+  // Regular home page content follows
   return (
     <>
       <Head>
