@@ -31,18 +31,18 @@ const NewsletterSubscribe: React.FC<NewsletterSubscribeProps> = ({ className = '
       </p>
       
       <form onSubmit={handleSubmit} className="space-y-3">
-        <div className="flex">
+        <div className="space-y-2">
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Your email address"
-            className="flex-grow px-3 py-2 bg-gray-700 rounded-l-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+            className="w-full px-3 py-2 bg-gray-700 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
             required
           />
           <button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-md text-white flex items-center transition-colors"
+            className="w-full bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md text-white flex items-center justify-center transition-colors"
           >
             <FaPaperPlane className="mr-2" />
             <span>Subscribe</span>
