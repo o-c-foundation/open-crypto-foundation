@@ -7,7 +7,7 @@ import NewsletterSubscribe from '../components/NewsletterSubscribe'
 
 export default function Home() {
   const [logoError, setLogoError] = useState(false);
-  const logoUrl = "https://bafkreic3dkakjycfdlecqgqrnbmj7ghrwzfkfchqlthypadrudnwnp6npy.ipfs.w3s.link/";
+  const logoUrl = "https://bafkreidnf7j4gen5gwgnqxmi3fcprksdmorptbdenb4q76ejbpgbjqkzqq.ipfs.w3s.link/";
 
   return (
     <>
