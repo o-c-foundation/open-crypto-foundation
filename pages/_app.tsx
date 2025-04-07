@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../components/Layout'
 import ErrorBoundary from '../components/ErrorBoundary'
 import { LanguageProvider } from '../contexts/LanguageContext'
@@ -14,7 +14,11 @@ const SolanaWalletProvider = dynamic(
 );
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [mounted, setMounted] = useState(false);
+  
   useEffect(() => {
+    setMounted(true);
+    
     console.log('App mounted');
     
     // Add global error handler
@@ -47,6 +51,15 @@ export default function App({ Component, pageProps }: AppProps) {
       document.head.appendChild(meta)
     }
   }, [])
+
+  // Show minimal loader when not yet mounted to prevent hydration errors
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-dark flex items-center justify-center">
+        <div className="animate-pulse text-white">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <ErrorBoundary>
