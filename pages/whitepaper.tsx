@@ -18,6 +18,24 @@ export default function Whitepaper() {
             <h1 className="text-5xl font-bold mb-6 text-gradient">OCF Token Whitepaper</h1>
             <p className="text-xl text-gray-400 mb-8">A Technical Overview of the Open Crypto Foundation Cross-Chain Token Protocol v1.2</p>
             
+            <div className="bg-dark-card border border-dark-light/30 rounded-lg p-6 mb-8">
+              <div className="flex items-center mb-4">
+                <div className="bg-primary/10 p-3 rounded-full mr-4">
+                  <FaFileAlt className="text-primary" size={20} />
+                </div>
+                <h3 className="text-xl font-bold text-white">Presale Announcement</h3>
+              </div>
+              <p className="text-light-muted mb-4">
+                Our token presale is launching soon! The OCF token, described in this whitepaper, will be available at a special early-supporter 
+                discount. Visit our presale page to learn more about participation details and the token utility.
+              </p>
+              <div className="flex gap-3 mt-4">
+                <Link href="/presale" className="px-5 py-2 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors text-sm font-medium">
+                  View Presale Details
+                </Link>
+              </div>
+            </div>
+            
             <div className="flex flex-wrap gap-4 mb-8">
               <a href="#" className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 font-medium flex items-center">
                 <FaDownload className="mr-2" /> Download PDF

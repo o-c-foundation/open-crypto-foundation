@@ -368,27 +368,66 @@ export default function AboutPage() {
         <section className="py-16 bg-dark-light/30 border-y border-dark-light/30">
           <div className="container px-4 mx-auto">
             <div className="max-w-5xl mx-auto">
-              <h2 className="text-3xl font-bold text-white mb-12 text-center">Our Team</h2>
+              <h2 className="text-3xl font-bold text-white mb-6 text-center">Our Team</h2>
+              <p className="text-light-muted text-center mb-12 max-w-3xl mx-auto">
+                The Open Crypto Foundation is supported by a group of dedicated professionals with expertise in blockchain security, software development, education, and community building.
+              </p>
               
-              <div className="grid md:grid-cols-3 gap-8">
-                {/* Team members - retained existing structure but updated styling colors */}
+              <div className="grid md:grid-cols-3 gap-8 mt-8">
+                {/* Executive Director position */}
                 <div className="bg-dark-card border border-dark-light/30 rounded-lg overflow-hidden hover:border-primary/50 transition-colors">
                   <div className="h-48 bg-gradient-to-r from-dark-light to-dark flex items-center justify-center">
                     <div className="w-28 h-28 bg-dark-light rounded-full flex items-center justify-center">
-                      <span className="text-5xl font-bold text-primary">AT</span>
+                      <span className="text-5xl font-bold text-primary">ED</span>
                     </div>
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-1">Andrew Taylor</h3>
-                    <p className="text-primary mb-3">Co-Founder & Executive Director</p>
+                    <h3 className="text-xl font-bold text-white mb-1">Executive Director</h3>
+                    <p className="text-primary mb-3">Leadership & Strategy</p>
                     <p className="text-light-muted text-sm mb-4">
-                      Former security researcher with 15+ years in blockchain security and cryptography.
-                      Led security teams at multiple exchanges before founding OCF.
+                      Provides strategic direction and oversees the foundation's operations, partnerships, and initiatives.
                     </p>
                   </div>
                 </div>
                 
-                {/* Other team members would follow similar pattern */}
+                {/* Technical Lead position */}
+                <div className="bg-dark-card border border-dark-light/30 rounded-lg overflow-hidden hover:border-primary/50 transition-colors">
+                  <div className="h-48 bg-gradient-to-r from-dark-light to-dark flex items-center justify-center">
+                    <div className="w-28 h-28 bg-dark-light rounded-full flex items-center justify-center">
+                      <span className="text-5xl font-bold text-primary">TL</span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-white mb-1">Technical Lead</h3>
+                    <p className="text-primary mb-3">Security & Development</p>
+                    <p className="text-light-muted text-sm mb-4">
+                      Leads the development of security tools and protocols, guiding technical strategy and implementation.
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Education Director position */}
+                <div className="bg-dark-card border border-dark-light/30 rounded-lg overflow-hidden hover:border-primary/50 transition-colors">
+                  <div className="h-48 bg-gradient-to-r from-dark-light to-dark flex items-center justify-center">
+                    <div className="w-28 h-28 bg-dark-light rounded-full flex items-center justify-center">
+                      <span className="text-5xl font-bold text-primary">ED</span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-white mb-1">Education Director</h3>
+                    <p className="text-primary mb-3">Learning Resources & Training</p>
+                    <p className="text-light-muted text-sm mb-4">
+                      Oversees the development of educational content and training programs for crypto users of all levels.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-12 text-center">
+                <p className="text-light-muted">
+                  We're expanding our team! If you're passionate about crypto safety and education, 
+                  <a href="mailto:careers@opencryptofoundation.com" className="text-primary hover:text-primary-light ml-1">get in touch</a>.
+                </p>
               </div>
             </div>
           </div>

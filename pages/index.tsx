@@ -167,14 +167,14 @@ export default function Home() {
                   <FaFire className="text-white" size={18} />
                 </div>
                 <div>
-                  <span className="font-medium text-white">OCF Token Presale Now Open!</span>
-                  <span className="hidden md:inline ml-2 text-white/80">Early supporters get 50% discount before public launch</span>
+                  <span className="font-medium text-white">OCF Token Presale Coming Soon!</span>
+                  <span className="hidden md:inline ml-2 text-white/80">Get ready for early access with 50% discount</span>
                 </div>
               </div>
               <div className="flex items-center">
                 <Link href="/presale" className="bg-white hover:bg-gray-100 transition-colors text-primary font-medium px-4 py-1.5 rounded-lg flex items-center text-sm">
                   <FaCoins className="mr-1.5" size={14} />
-                  Join Presale
+                  Presale Details
                   <FaArrowRight className="ml-1.5" size={10} />
                 </Link>
                 <button 
@@ -233,7 +233,7 @@ export default function Home() {
                 href="/presale" 
                 className="px-8 py-3 bg-primary hover:bg-primary-light text-white rounded-md text-lg font-semibold transition-colors flex items-center justify-center"
               >
-                Join Token Presale <FaArrowRight className="ml-2" />
+                Presale Coming Soon <FaArrowRight className="ml-2" />
               </Link>
               <Link 
                 href="/claim" 
@@ -252,9 +252,9 @@ export default function Home() {
           <div className="max-w-4xl mx-auto bg-gradient-to-r from-dark-card to-primary/10 border border-primary/30 rounded-xl shadow-lg overflow-hidden">
             <div className="flex flex-col md:flex-row">
               <div className="p-8 md:w-2/3">
-                <h2 className="text-2xl font-bold text-white mb-2">OCF Token Presale</h2>
+                <h2 className="text-2xl font-bold text-white mb-2">OCF Token Presale Coming Soon</h2>
                 <p className="text-light-muted mb-6">
-                  Secure your OCF tokens at a 50% discount before our public launch. Limited allocation tickets are available now on Solana blockchain.
+                  Get ready to secure your OCF tokens at a 50% discount before our public launch. Limited allocation tickets will be available on the Solana blockchain in just 48 hours.
                 </p>
                 <div className="flex items-center">
                   <div className="flex items-center bg-dark-light/30 rounded-lg px-4 py-2 mr-6">
@@ -262,15 +262,15 @@ export default function Home() {
                     <span className="text-light-muted ml-2 font-medium">Discount</span>
                   </div>
                   <div className="flex items-center bg-dark-light/30 rounded-lg px-4 py-2">
-                    <span className="text-primary font-bold text-lg">30d</span>
-                    <span className="text-light-muted ml-2 font-medium">Remaining</span>
+                    <span className="text-primary font-bold text-lg">48h</span>
+                    <span className="text-light-muted ml-2 font-medium">Countdown</span>
                   </div>
                 </div>
               </div>
               <div className="bg-dark-light/20 p-8 flex items-center justify-center md:w-1/3">
                 <Link href="/presale" className="bg-primary hover:bg-primary-light transition-colors text-white py-3 px-6 rounded-lg font-medium flex items-center">
                   <FaCoins className="mr-2" />
-                  Join Presale Now
+                  View Presale Details
                 </Link>
               </div>
             </div>
