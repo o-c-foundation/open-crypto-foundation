@@ -17,6 +17,8 @@ export default function ClaimsAdmin() {
   const [filteredClaims, setFilteredClaims] = useState<Claim[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [copySuccess, setCopySuccess] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   
   // Simple hardcoded admin password (use a proper auth system in production)
   const adminPassword = 'opencrypto2025';
@@ -26,32 +28,21 @@ export default function ClaimsAdmin() {
     const authStatus = sessionStorage.getItem('adminAuthenticated');
     if (authStatus === 'true') {
       setIsAuthenticated(true);
-      loadClaims();
     }
   }, []);
   
   useEffect(() => {
     if (isAuthenticated) {
-      loadClaims();
+      fetchClaims();
       
       // Set up an interval to refresh claims data every 30 seconds
       const refreshInterval = setInterval(() => {
-        loadClaims();
+        fetchClaims();
       }, 30000);
-      
-      // Set up event listener for localStorage changes
-      const handleStorageChange = (e: StorageEvent) => {
-        if (e.key === 'claimLog') {
-          loadClaims();
-        }
-      };
-      
-      window.addEventListener('storage', handleStorageChange);
       
       // Clean up on unmount
       return () => {
         clearInterval(refreshInterval);
-        window.removeEventListener('storage', handleStorageChange);
       };
     }
   }, [isAuthenticated]);
@@ -71,16 +62,27 @@ export default function ClaimsAdmin() {
     setFilteredClaims(filtered);
   }, [searchQuery, claims]);
   
-  const loadClaims = () => {
+  const fetchClaims = async () => {
+    setIsLoading(true);
+    setError('');
+    
     try {
-      // Load claims from localStorage
-      const storedClaims = JSON.parse(localStorage.getItem('claimLog') || '[]');
-      setClaims(storedClaims);
-      setFilteredClaims(storedClaims);
+      // Fetch claims from the server API
+      const response = await fetch('/api/claims');
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch claims');
+      }
+      
+      const data = await response.json();
+      setClaims(data);
+      setFilteredClaims(data);
     } catch (err) {
-      console.error('Error loading claims:', err);
-      setClaims([]);
-      setFilteredClaims([]);
+      console.error('Error fetching claims:', err);
+      setError('Failed to load claims. Please refresh and try again.');
+      // Keep previous claims if there was an error
+    } finally {
+      setIsLoading(false);
     }
   };
   
@@ -90,7 +92,7 @@ export default function ClaimsAdmin() {
       setIsAuthenticated(true);
       // Store authentication status in session storage
       sessionStorage.setItem('adminAuthenticated', 'true');
-      loadClaims();
+      fetchClaims();
     } else {
       alert('Incorrect password');
     }
@@ -101,21 +103,26 @@ export default function ClaimsAdmin() {
     sessionStorage.removeItem('adminAuthenticated');
   };
   
-  const handleStatusChange = (index: number, status: 'pending' | 'completed') => {
-    const updatedClaims = [...claims];
-    updatedClaims[index].status = status;
-    setClaims(updatedClaims);
-    localStorage.setItem('claimLog', JSON.stringify(updatedClaims));
-    
-    // Update filtered claims too
-    const updatedFilteredClaims = [...filteredClaims];
-    const filteredIndex = filteredClaims.findIndex(
-      claim => claim.walletAddress === claims[index].walletAddress && 
-      claim.timestamp === claims[index].timestamp
-    );
-    if (filteredIndex !== -1) {
-      updatedFilteredClaims[filteredIndex].status = status;
-      setFilteredClaims(updatedFilteredClaims);
+  const handleStatusChange = async (claim: Claim, status: 'pending' | 'completed') => {
+    try {
+      // Update claim status on the server
+      const response = await fetch(`/api/claims/${claim.timestamp}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to update claim status');
+      }
+      
+      // If successful, update the UI
+      fetchClaims();
+    } catch (err) {
+      console.error('Error updating claim status:', err);
+      setError('Failed to update claim status. Please try again.');
     }
   };
   
@@ -160,7 +167,7 @@ export default function ClaimsAdmin() {
   };
   
   const refreshClaims = () => {
-    loadClaims();
+    fetchClaims();
   };
   
   if (!isAuthenticated) {
@@ -236,6 +243,12 @@ export default function ClaimsAdmin() {
           </div>
         </div>
         
+        {error && (
+          <div className="bg-red-900/20 border border-red-900/30 rounded-lg p-4 mb-6 text-red-400">
+            <p>{error}</p>
+          </div>
+        )}
+        
         <div className="bg-dark-card rounded-lg border border-dark-light/30 mb-8">
           <div className="p-6 border-b border-dark-light/30 flex flex-wrap justify-between items-center gap-4">
             <div className="flex-1 min-w-[200px]">
@@ -253,20 +266,32 @@ export default function ClaimsAdmin() {
             <div className="flex gap-3">
               <button 
                 onClick={refreshClaims}
-                className="px-4 py-2 bg-dark-light hover:bg-dark-light/80 text-white rounded-lg transition-colors flex items-center"
+                className={`px-4 py-2 bg-dark-light hover:bg-dark-light/80 text-white rounded-lg transition-colors flex items-center ${isLoading ? 'opacity-50' : ''}`}
                 title="Refresh claims list"
+                disabled={isLoading}
               >
-                <FaSyncAlt className="mr-2" /> Refresh
+                {isLoading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Loading...
+                  </>
+                ) : (
+                  <>
+                    <FaSyncAlt className="mr-2" /> Refresh
+                  </>
+                )}
               </button>
               <button 
                 onClick={exportToCSV}
                 className="px-4 py-2 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors flex items-center"
+                disabled={isLoading}
               >
                 <FaDownload className="mr-2" /> Export CSV
               </button>
               <button 
                 onClick={copyToClipboard}
                 className="px-4 py-2 bg-dark-light hover:bg-dark-light/80 text-white rounded-lg transition-colors flex items-center"
+                disabled={isLoading}
               >
                 <FaClipboard className="mr-2" /> 
                 {copySuccess ? copySuccess : 'Copy to Clipboard'}
@@ -324,14 +349,14 @@ export default function ClaimsAdmin() {
                           <div className="flex gap-2">
                             {claim.status === 'pending' ? (
                               <button
-                                onClick={() => handleStatusChange(originalIndex, 'completed')}
+                                onClick={() => handleStatusChange(claim, 'completed')}
                                 className="px-3 py-1 bg-green-900/20 hover:bg-green-900/30 text-green-400 rounded-md transition-colors flex items-center text-sm"
                               >
                                 <FaCheckCircle className="mr-1" /> Mark Completed
                               </button>
                             ) : (
                               <button
-                                onClick={() => handleStatusChange(originalIndex, 'pending')}
+                                onClick={() => handleStatusChange(claim, 'pending')}
                                 className="px-3 py-1 bg-yellow-900/20 hover:bg-yellow-900/30 text-yellow-400 rounded-md transition-colors flex items-center text-sm"
                               >
                                 <FaPaperPlane className="mr-1" /> Mark Pending
@@ -352,24 +377,26 @@ export default function ClaimsAdmin() {
           <h3 className="text-white text-lg mb-2">Admin Information</h3>
           <p className="mb-2">This admin panel allows you to track and manage token claim requests.</p>
           <ul className="list-disc pl-5 space-y-1">
-            <li>All claims are stored locally in the browser's localStorage.</li>
-            <li>For a production environment, it's recommended to implement a proper database solution.</li>
+            <li>All claims are now stored on the server in a JSON file.</li>
+            <li>Any claims submitted from any device will be visible here.</li>
             <li>You can mark claims as completed after tokens have been sent to the user.</li>
             <li>Export functionality allows you to download the entire log as a CSV file.</li>
           </ul>
         </div>
         
-        <div className="bg-yellow-900/20 border border-yellow-900/30 rounded-lg p-6 text-light-muted text-sm mt-6">
-          <h3 className="text-yellow-400 text-lg mb-2">⚠️ Important Limitation</h3>
+        <div className="bg-green-900/20 border border-green-900/30 rounded-lg p-6 text-light-muted text-sm mt-6">
+          <h3 className="text-green-400 text-lg mb-2">✅ Server-Side Storage Enabled</h3>
           <p className="mb-2">
-            <strong>This demo admin panel only shows claims submitted from the same browser/device.</strong>
+            <strong>This admin panel has been upgraded to use server-side storage.</strong>
           </p>
           <p className="mb-4">
-            Since this is using browser localStorage for data storage, you can only see claims that were submitted from the same computer. 
-            Claims submitted from other devices or browsers won't appear here because localStorage is device-specific.
+            Claims are now stored in a JSON file on the server, allowing you to see all claims submitted from any device.
+            For backward compatibility, claims are still also stored in localStorage, but the admin panel now primarily
+            uses the server's data.
           </p>
           <p className="font-medium">
-            For a production environment, implement a server-side database with proper API endpoints to track claims from all users regardless of their device.
+            Note: This implementation uses file-based storage which is suitable for demonstration but for production use,
+            a proper database like MongoDB, PostgreSQL, or a cloud database would be recommended.
           </p>
         </div>
       </div>
