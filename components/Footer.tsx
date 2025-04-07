@@ -53,7 +53,6 @@ export default function Footer() {
               <li><Link href="/tools/contract-scanner" className="hover:text-primary transition-colors">Contract Scanner</Link></li>
               <li><Link href="/tools/token-analyzer" className="hover:text-primary transition-colors">Token Analyzer</Link></li>
               <li><Link href="/tools/risk-calculator" className="hover:text-primary transition-colors">Risk Calculator</Link></li>
-              <li><Link href="/tools/scam-token-approver" className="hover:text-primary transition-colors">Scam Token Approver</Link></li>
             </ul>
           </div>
           

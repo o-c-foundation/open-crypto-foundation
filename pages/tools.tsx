@@ -134,12 +134,6 @@ export default function ToolsPage() {
           description: "Optimize gas fees for different transaction speeds",
           url: "https://etherscan.io/gastracker",
           isInternal: false
-        },
-        {
-          name: "Scam Token Approver",
-          description: "Safely approve tokens with minimum exposure",
-          url: "/tools/scam-token-approver",
-          isInternal: true
         }
       ]
     },
