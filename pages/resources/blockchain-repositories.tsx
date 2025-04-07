@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { FaGithub, FaEthereum, FaFilter, FaSearch, FaCode, FaTools, FaRobot, FaServer, FaShieldAlt, FaWallet } from 'react-icons/fa';
-import { SiSolana } from 'react-icons/si';
+import { FaGithub, FaEthereum, FaFilter, FaSearch, FaCode, FaTools, FaRobot, FaServer, FaShieldAlt, FaWallet, FaCoins } from 'react-icons/fa';
 import NewsletterSubscribe from '../../components/NewsletterSubscribe';
 import ScrollToTop from '../../components/ScrollToTop';
 
@@ -26,7 +25,7 @@ export default function BlockchainRepositoriesPage() {
   const chains = [
     { id: 'all', name: 'All Chains', icon: <FaFilter /> },
     { id: 'evm', name: 'EVM Compatible', icon: <FaEthereum /> },
-    { id: 'solana', name: 'Solana', icon: <SiSolana /> },
+    { id: 'solana', name: 'Solana', icon: <FaCoins /> },
   ];
 
   // EVM Repositories
@@ -675,7 +674,7 @@ export default function BlockchainRepositoriesPage() {
               {/* Solana Resources */}
               <div className="bg-gray-700 rounded-lg p-6">
                 <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
-                  <SiSolana className="mr-2 text-purple-400" /> Solana Development Resources
+                  <FaCoins className="mr-2 text-purple-400" /> Solana Development Resources
                 </h3>
                 <ul className="space-y-4">
                   <li>
