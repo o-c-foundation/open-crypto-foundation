@@ -91,12 +91,18 @@ export default function Home() {
               Founded just three weeks ago, our mission is to make decentralized finance safer, more transparent, 
               and accessible through education, tools, and community engagement.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/presale" className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-light transition-colors flex items-center font-medium">
-                Join Token Presale <FaCoins className="ml-2" />
+            <div className="flex flex-col md:flex-row gap-4 mt-8">
+              <Link 
+                href="/presale" 
+                className="px-8 py-3 bg-primary hover:bg-primary-light text-white rounded-md text-lg font-semibold transition-colors flex items-center justify-center"
+              >
+                Join Token Presale <FaArrowRight className="ml-2" />
               </Link>
-              <Link href="/tools" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center">
-                Explore Our Tools <FaArrowRight className="ml-2" />
+              <Link 
+                href="/claim" 
+                className="px-8 py-3 bg-dark-light hover:bg-dark-light/80 text-white rounded-md text-lg font-semibold transition-colors flex items-center justify-center border border-primary/30"
+              >
+                Whitelist Token Claim <FaCoins className="ml-2" />
               </Link>
             </div>
           </div>

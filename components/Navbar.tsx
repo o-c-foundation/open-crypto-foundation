@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { FaBars, FaTimes } from 'react-icons/fa'
+import { FaBars, FaTimes, FaCoins } from 'react-icons/fa'
 import Logo from './Logo'
 import { useLanguage } from '../contexts/LanguageContext'
 
@@ -51,6 +51,12 @@ export default function Navbar() {
     { name: 'Blog', href: '/blog' },
     { name: t('about'), href: '/about' },
     { name: t('manifesto'), href: '/manifesto' },
+    { 
+      name: 'Token Claim', 
+      path: '/claim', 
+      icon: <FaCoins />,
+      badge: 'New'
+    },
   ]
   
   const toggleDropdown = (name: string) => {
