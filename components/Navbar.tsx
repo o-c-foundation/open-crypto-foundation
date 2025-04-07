@@ -28,10 +28,6 @@ export default function Navbar() {
 
   const navigation: NavItem[] = [
     { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/about' },
-    { name: 'Manifesto', href: '/manifesto' },
-    { name: 'Whitepaper', href: '/whitepaper' },
-    { name: 'Roadmap', href: '/roadmap' },
     { 
       name: 'Resources',
       children: [
@@ -42,6 +38,10 @@ export default function Navbar() {
         { name: 'Developers', href: '/resources/developers', description: 'Essential resources for smart contract and DeFi developers' }
       ]
     },
+    { name: 'About Us', href: '/about' },
+    { name: 'Manifesto', href: '/manifesto' },
+    { name: 'Whitepaper', href: '/whitepaper' },
+    { name: 'Roadmap', href: '/roadmap' },
     { name: 'Token Claim', href: '/claim', icon: <FaCoins className="mr-1" />, badge: 'New' }
   ]
   
