@@ -555,7 +555,13 @@ export default function VerifiedLinksPage() {
         </section>
 
         {/* Newsletter */}
-        <NewsletterSubscribe />
+        <section className="py-16 bg-dark-light/30">
+          <div className="container px-4 mx-auto">
+            <div className="max-w-xl mx-auto">
+              <NewsletterSubscribe />
+            </div>
+          </div>
+        </section>
       </main>
 
       <ScrollToTop />
