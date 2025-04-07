@@ -13,7 +13,7 @@ import {
   FaLaptopCode,
   FaEthereum,
   FaCoins,
-  FaShield
+  FaLock
 } from 'react-icons/fa';
 import { SiSolana } from 'react-icons/si';
 import ScrollToTop from '../components/ScrollToTop';
@@ -196,7 +196,7 @@ const fundData = [
     address: '0x6789012345678901234567890123456789012345',
     explorerUrl: 'https://etherscan.io/address/0x6789012345678901234567890123456789012345',
     balance: '$3,750,000 USD',
-    icon: <FaShield className="text-blue-500" size={24} />
+    icon: <FaLock className="text-blue-500" size={24} />
   },
   {
     id: 'developer-grants',
