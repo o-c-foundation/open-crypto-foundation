@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { FaServer, FaGlobe, FaEthereum, FaCoins, FaFilter, FaSearch, FaExternalLinkAlt, FaInfoCircle } from 'react-icons/fa';
+import { FaServer, FaGlobe, FaEthereum, FaCoins, FaFilter, FaSearch, FaExternalLinkAlt, FaInfoCircle, FaNetworkWired } from 'react-icons/fa';
+import { SiBinance, SiPoly, SiFantom, SiAlgorand } from 'react-icons/si';
 import NewsletterSubscribe from '../../components/NewsletterSubscribe';
 import ScrollToTop from '../../components/ScrollToTop';
+import SolanaIcon from '../../components/icons/SolanaIcon';
 
 // Define types for our RPC endpoints
 interface RPCEndpoint {
@@ -36,17 +38,17 @@ export default function RPCEndpointsPage() {
   const [selectedChain, setSelectedChain] = useState('all');
   const [selectedType, setSelectedType] = useState('all');
 
-  // Network types
+  // Define chains with their icons
   const chains: Chain[] = [
-    { id: 'all', name: 'All Networks', icon: <FaFilter /> },
-    { id: 'ethereum', name: 'Ethereum', icon: <FaEthereum /> },
-    { id: 'bsc', name: 'BSC', icon: <FaCoins /> },
-    { id: 'polygon', name: 'Polygon', icon: <FaCoins /> },
-    { id: 'solana', name: 'Solana', icon: <FaCoins /> },
-    { id: 'avalanche', name: 'Avalanche', icon: <FaCoins /> },
-    { id: 'fantom', name: 'Fantom', icon: <FaCoins /> },
-    { id: 'zkEVM', name: 'Polygon zkEVM', icon: <FaCoins /> },
-    { id: 'algorand', name: 'Algorand', icon: <FaCoins /> },
+    { id: 'all', name: 'All Chains', icon: <FaNetworkWired /> },
+    { id: 'ethereum', name: 'Ethereum', icon: <FaEthereum className="text-blue-400" /> },
+    { id: 'bsc', name: 'BSC', icon: <SiBinance className="text-yellow-400" /> },
+    { id: 'polygon', name: 'Polygon', icon: <SiPoly className="text-purple-400" /> },
+    { id: 'solana', name: 'Solana', icon: <SolanaIcon className="text-green-500" size={16} /> },
+    { id: 'avalanche', name: 'Avalanche', icon: <FaCoins className="text-red-400" /> },
+    { id: 'fantom', name: 'Fantom', icon: <SiFantom className="text-blue-400" /> },
+    { id: 'zkEVM', name: 'Polygon zkEVM', icon: <SiPoly className="text-purple-300" /> },
+    { id: 'algorand', name: 'Algorand', icon: <SiAlgorand className="text-gray-500" /> },
   ];
 
   // RPC types
@@ -399,7 +401,7 @@ export default function RPCEndpointsPage() {
   // Chain display names mapping
   const chainNames: Record<string, string> = {
     'ethereum': 'Ethereum',
-    'bsc': 'Binance Smart Chain (BSC)',
+    'bsc': 'BNB Chain',
     'polygon': 'Polygon',
     'solana': 'Solana',
     'avalanche': 'Avalanche',
@@ -414,6 +416,23 @@ export default function RPCEndpointsPage() {
     'public': 'Public Endpoints',
     'websocket': 'WebSocket Endpoints',
     'setup': 'Run Your Own Node'
+  };
+
+  // Get icon for a given chain
+  const getChainIcon = (chainId: string) => {
+    const chain = chains.find(c => c.id === chainId);
+    return chain ? chain.icon : <FaFilter />;
+  };
+
+  // Get display string for a given type
+  const getTypeDisplay = (type: string): string => {
+    switch(type) {
+      case 'provider': return 'Service Providers';
+      case 'public': return 'Public Endpoints';
+      case 'websocket': return 'WebSocket Endpoints';
+      case 'setup': return 'Run Your Own Node';
+      default: return type;
+    }
   };
 
   return (
@@ -513,7 +532,7 @@ export default function RPCEndpointsPage() {
                       {chain === 'ethereum' && <FaEthereum className="text-blue-400 mr-3" size={24} />}
                       {chain === 'bsc' && <FaCoins className="text-yellow-400 mr-3" size={24} />}
                       {chain === 'polygon' && <FaCoins className="text-purple-400 mr-3" size={24} />}
-                      {chain === 'solana' && <FaCoins className="text-green-400 mr-3" size={24} />}
+                      {chain === 'solana' && <SolanaIcon className="text-green-500 mr-3" size={24} />}
                       {chain === 'avalanche' && <FaCoins className="text-red-400 mr-3" size={24} />}
                       {chain === 'fantom' && <FaCoins className="text-blue-400 mr-3" size={24} />}
                       <h2 className="text-2xl font-bold text-white">{chainNames[chain]}</h2>
