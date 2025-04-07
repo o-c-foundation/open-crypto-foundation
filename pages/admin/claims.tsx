@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
-import { FaDownload, FaClipboard, FaCheckCircle, FaPaperPlane, FaLock, FaSearch, FaSyncAlt } from 'react-icons/fa';
+import { FaDownload, FaClipboard, FaCheckCircle, FaPaperPlane, FaLock, FaSearch, FaSyncAlt, FaExternalLinkAlt } from 'react-icons/fa';
 
 // Interface for claim data
 interface Claim {
@@ -375,29 +375,42 @@ export default function ClaimsAdmin() {
         
         <div className="bg-primary/10 border border-primary/30 rounded-lg p-6 text-light-muted text-sm">
           <h3 className="text-white text-lg mb-2">Admin Information</h3>
-          <p className="mb-2">This admin panel allows you to track and manage token claim requests.</p>
+          <p className="mb-2">This admin panel is now deprecated. Please use the Google Forms response spreadsheet to view claim submissions.</p>
           <ul className="list-disc pl-5 space-y-1">
-            <li>All claims are now stored on the server in a JSON file.</li>
-            <li>Any claims submitted from any device will be visible here.</li>
-            <li>You can mark claims as completed after tokens have been sent to the user.</li>
-            <li>Export functionality allows you to download the entire log as a CSV file.</li>
+            <li>All claims are now stored directly in Google Sheets for reliability.</li>
+            <li>Any claims submitted from any device will be visible in your Google Sheet.</li>
+            <li>You can mark claims as completed in Google Sheets by updating the "Status" column.</li>
+            <li>Google Sheets allows you to export the data as CSV, Excel, or other formats.</li>
           </ul>
+          <a 
+            href="https://docs.google.com/spreadsheets/create" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center text-primary hover:text-primary-light transition-colors"
+          >
+            <FaExternalLinkAlt className="mr-2" size={14} />
+            Open Google Sheets
+          </a>
         </div>
         
-        <div className="bg-green-900/20 border border-green-900/30 rounded-lg p-6 text-light-muted text-sm mt-6">
-          <h3 className="text-green-400 text-lg mb-2">✅ Server-Side Storage Enabled</h3>
+        <div className="bg-yellow-900/20 border border-yellow-900/30 rounded-lg p-6 text-light-muted text-sm mt-6">
+          <h3 className="text-yellow-400 text-lg mb-2">⚠️ Important Update</h3>
           <p className="mb-2">
-            <strong>This admin panel has been upgraded to use server-side storage.</strong>
+            <strong>We've switched to using Google Forms & Sheets for claim submissions.</strong>
           </p>
           <p className="mb-4">
-            Claims are now stored in a JSON file on the server, allowing you to see all claims submitted from any device.
-            For backward compatibility, claims are still also stored in localStorage, but the admin panel now primarily
-            uses the server's data.
+            For maximum reliability, we now use Google Forms to collect claim submissions and Google Sheets to store and manage them.
+            This admin panel is showing older submissions only and will be fully replaced soon.
           </p>
           <p className="font-medium">
-            Note: This implementation uses file-based storage which is suitable for demonstration but for production use,
-            a proper database like MongoDB, PostgreSQL, or a cloud database would be recommended.
+            Please check your Google Form responses in Google Sheets to see all claim submissions.
+            To set up a Google Form for claims:
           </p>
+          <ol className="list-decimal pl-5 mt-2 space-y-1">
+            <li>Create a new Google Form with fields for wallet address, allocation amount, and timestamp</li>
+            <li>Get the form link and update it in the claim page</li>
+            <li>View responses in the connected Google Sheet</li>
+          </ol>
         </div>
       </div>
     </div>

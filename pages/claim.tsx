@@ -61,48 +61,35 @@ export default function ClaimPage() {
       return;
     }
 
-    setIsClaiming(true);
-    setError('');
-
+    // Construct Google Form URL with pre-filled values
+    // Replace this URL with your actual Google Form URL + form field IDs
+    const googleFormBaseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdX8q3mRiQXOPl1WMngOm3c4OPMwCYSJWBW5panzngQkVlkXA/viewform";
+    const walletAddressParam = `entry.123456789=${encodeURIComponent(claimWalletAddress)}`;
+    const allocationParam = `entry.987654321=${encodeURIComponent(allocation?.toString() || '0')}`;
+    const timestampParam = `entry.456789123=${encodeURIComponent(new Date().toISOString())}`;
+    
+    const googleFormUrl = `${googleFormBaseUrl}?${walletAddressParam}&${allocationParam}&${timestampParam}&usp=pp_url`;
+    
+    // For backward compatibility, also store in localStorage
     try {
-      // Call the API to create a new claim
-      const response = await fetch('/api/claims', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          walletAddress: claimWalletAddress,
-          allocation: allocation,
-        }),
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to submit claim');
-      }
-      
-      // For backward compatibility, also store in localStorage
-      try {
-        const existingClaims = JSON.parse(localStorage.getItem('claimLog') || '[]');
-        const newClaim = {
-          timestamp: new Date().toISOString(),
-          walletAddress: claimWalletAddress,
-          allocation: allocation,
-          status: 'pending'
-        };
-        localStorage.setItem('claimLog', JSON.stringify([...existingClaims, newClaim]));
-      } catch (err) {
-        console.error('Error updating localStorage:', err);
-        // Continue even if localStorage fails
-      }
-      
-      setClaimComplete(true);
+      const existingClaims = JSON.parse(localStorage.getItem('claimLog') || '[]');
+      const newClaim = {
+        timestamp: new Date().toISOString(),
+        walletAddress: claimWalletAddress,
+        allocation: allocation,
+        status: 'pending'
+      };
+      localStorage.setItem('claimLog', JSON.stringify([...existingClaims, newClaim]));
     } catch (err) {
-      setError('Error claiming tokens. Please try again.');
-      console.error(err);
-    } finally {
-      setIsClaiming(false);
+      console.error('Error updating localStorage:', err);
+      // Continue even if localStorage fails
     }
+    
+    // Open Google Form in a new tab
+    window.open(googleFormUrl, '_blank');
+    
+    // Show completion message
+    setClaimComplete(true);
   };
 
   return (
