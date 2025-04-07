@@ -6,8 +6,8 @@ import {
   SolflareWalletAdapter,
   TorusWalletAdapter,
   LedgerWalletAdapter,
-  BackpackWalletAdapter,
-  CoinbaseWalletAdapter
+  CloverWalletAdapter,
+  SolongWalletAdapter
 } from '@solana/wallet-adapter-wallets';
 import { clusterApiUrl } from '@solana/web3.js';
 import { FC, ReactNode, useMemo } from 'react';
@@ -36,8 +36,8 @@ const SolanaWalletProvider: FC<SolanaWalletProviderProps> = ({ children }) => {
     new SolflareWalletAdapter({ network }),
     new TorusWalletAdapter(),
     new LedgerWalletAdapter(),
-    new BackpackWalletAdapter(),
-    new CoinbaseWalletAdapter()
+    new CloverWalletAdapter(),
+    new SolongWalletAdapter()
   ], [network]);
 
   return (
