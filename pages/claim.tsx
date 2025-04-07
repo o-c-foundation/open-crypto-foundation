@@ -59,6 +59,16 @@ export default function ClaimPage() {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000)); // simulate network delay
       
+      // Store claim data in localStorage for admin tracking
+      const existingClaims = JSON.parse(localStorage.getItem('claimLog') || '[]');
+      const newClaim = {
+        timestamp: new Date().toISOString(),
+        walletAddress: claimWalletAddress,
+        allocation: allocation,
+        status: 'pending'
+      };
+      localStorage.setItem('claimLog', JSON.stringify([...existingClaims, newClaim]));
+      
       // Send email notification (in real implementation, this would be a server-side API call)
       // For demo/mockup purposes, we're just simulating this process
       console.log(`Email sent to info@opencryptofoundation.com with:
