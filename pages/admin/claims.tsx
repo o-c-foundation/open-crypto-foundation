@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
-import { FaDownload, FaClipboard, FaCheckCircle, FaPaperPlane, FaLock, FaSearch } from 'react-icons/fa';
+import { FaDownload, FaClipboard, FaCheckCircle, FaPaperPlane, FaLock, FaSearch, FaSyncAlt } from 'react-icons/fa';
 
 // Interface for claim data
 interface Claim {
@@ -33,6 +33,26 @@ export default function ClaimsAdmin() {
   useEffect(() => {
     if (isAuthenticated) {
       loadClaims();
+      
+      // Set up an interval to refresh claims data every 30 seconds
+      const refreshInterval = setInterval(() => {
+        loadClaims();
+      }, 30000);
+      
+      // Set up event listener for localStorage changes
+      const handleStorageChange = (e: StorageEvent) => {
+        if (e.key === 'claimLog') {
+          loadClaims();
+        }
+      };
+      
+      window.addEventListener('storage', handleStorageChange);
+      
+      // Clean up on unmount
+      return () => {
+        clearInterval(refreshInterval);
+        window.removeEventListener('storage', handleStorageChange);
+      };
     }
   }, [isAuthenticated]);
   
@@ -139,6 +159,10 @@ export default function ClaimsAdmin() {
     return claims.reduce((total, claim) => total + claim.allocation, 0);
   };
   
+  const refreshClaims = () => {
+    loadClaims();
+  };
+  
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-dark flex items-center justify-center">
@@ -227,6 +251,13 @@ export default function ClaimsAdmin() {
               </div>
             </div>
             <div className="flex gap-3">
+              <button 
+                onClick={refreshClaims}
+                className="px-4 py-2 bg-dark-light hover:bg-dark-light/80 text-white rounded-lg transition-colors flex items-center"
+                title="Refresh claims list"
+              >
+                <FaSyncAlt className="mr-2" /> Refresh
+              </button>
               <button 
                 onClick={exportToCSV}
                 className="px-4 py-2 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors flex items-center"
