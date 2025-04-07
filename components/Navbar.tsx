@@ -19,7 +19,13 @@ export default function Navbar() {
       description: 'Directory of trusted third-party tools for safer crypto trading and investment'
     },
     { name: t('services'), href: '/services' },
-    { name: 'Scam DB', href: '/scam-database', description: 'Comprehensive database of cryptocurrency scams and phishing websites' },
+    { 
+      name: 'Scam DB', 
+      children: [
+        { name: 'Scam Database', href: '/scam-database', description: 'Comprehensive database of cryptocurrency scams and phishing websites' },
+        { name: 'Verified Links', href: '/verified-links', description: 'Directory of verified official links to major wallets, exchanges and tools' }
+      ]
+    },
     { 
       name: t('resources'), 
       children: [

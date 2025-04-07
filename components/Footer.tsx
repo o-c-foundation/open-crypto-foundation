@@ -61,7 +61,8 @@ export default function Footer() {
             <ul className="space-y-3">
               <li><Link href="/resources/traders" className="hover:text-primary transition-colors">{t('forTraders')}</Link></li>
               <li><Link href="/resources/developers" className="hover:text-primary transition-colors">{t('forDevelopers')}</Link></li>
-              <li><Link href="/resources/scam-database" className="hover:text-primary transition-colors">Scam Database</Link></li>
+              <li><Link href="/scam-database" className="hover:text-primary transition-colors">Scam Database</Link></li>
+              <li><Link href="/verified-links" className="hover:text-primary transition-colors">Verified Links</Link></li>
               <li><Link href="/resources/guides" className="hover:text-primary transition-colors">Educational Guides</Link></li>
               <li><Link href="/resources/defi-fundamentals" className="hover:text-primary transition-colors">{t('defiFundamentals')}</Link></li>
               <li><Link href="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
