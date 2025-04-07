@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { FaCheckCircle, FaCoins, FaArrowRight, FaInfoCircle, FaHeart, FaFileAlt, FaRocket, FaUsers } from 'react-icons/fa';
+import Image from 'next/image';
+import { FaCheckCircle, FaCoins, FaArrowRight, FaInfoCircle, FaHeart, FaFileAlt, FaRocket, FaUsers, FaExclamationTriangle, FaExternalLinkAlt } from 'react-icons/fa';
 import NewsletterSubscribe from '../components/NewsletterSubscribe';
 import ScrollToTop from '../components/ScrollToTop';
 import SolanaIcon from '../components/icons/SolanaIcon';
@@ -14,6 +15,8 @@ export default function ClaimPage() {
   const [isClaiming, setIsClaiming] = useState(false);
   const [claimComplete, setClaimComplete] = useState(false);
   const [error, setError] = useState('');
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [showDevnetGuide, setShowDevnetGuide] = useState(false);
 
   // Function to check allocation amount
   const checkAllocation = async (e: React.FormEvent) => {
@@ -49,6 +52,12 @@ export default function ClaimPage() {
     // Validate wallet address
     if (!claimWalletAddress.trim()) {
       setError('Please enter a valid wallet address');
+      return;
+    }
+
+    // Verify terms acceptance
+    if (!termsAccepted) {
+      setError('Please accept the devnet token terms before claiming');
       return;
     }
 
@@ -116,10 +125,149 @@ export default function ClaimPage() {
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 OCF Token Claim Portal
               </h1>
-              <p className="text-xl text-light-muted mb-8">
+              <p className="text-xl text-light-muted mb-4">
                 Claim your allocated OCF tokens securely through our platform.
                 Check if your wallet address is whitelisted and claim your tokens.
               </p>
+              
+              {/* Devnet Notice */}
+              <div className="p-5 bg-yellow-900/20 border border-yellow-900/30 rounded-lg mb-8">
+                <div className="flex items-center justify-center mb-3">
+                  <FaExclamationTriangle className="text-yellow-400 mr-2" size={24} />
+                  <h3 className="text-xl font-bold text-white">Important: Devnet Tokens</h3>
+                </div>
+                <p className="text-light-muted mb-3">
+                  <strong>The tokens you claim here are on the Solana Devnet, not the Mainnet.</strong> These devnet tokens 
+                  can be redeemed for real mainnet tokens one day before the official launch. 
+                  You will need to configure your wallet to connect to the Solana Devnet to see your claimed tokens.
+                </p>
+                <button 
+                  onClick={() => setShowDevnetGuide(!showDevnetGuide)}
+                  className="text-primary hover:text-primary-light transition-colors focus:outline-none"
+                >
+                  {showDevnetGuide ? 'Hide Devnet Setup Guide' : 'Show Devnet Setup Guide'}
+                </button>
+              </div>
+              
+              {/* Devnet Setup Guide */}
+              {showDevnetGuide && (
+                <div className="p-6 bg-dark-light/10 border border-dark-light/30 rounded-lg mb-6 text-left">
+                  <h3 className="text-xl font-bold text-white mb-4 text-center">How to Connect to Solana Devnet</h3>
+                  
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {/* Phantom Wallet Guide */}
+                    <div className="bg-dark-card p-5 rounded-lg border border-dark-light/30">
+                      <div className="flex items-center mb-4">
+                        <Image 
+                          src="https://phantom.app/favicon.ico" 
+                          alt="Phantom Logo" 
+                          width={24} 
+                          height={24} 
+                          className="mr-2" 
+                        />
+                        <h4 className="text-lg font-semibold text-white">Phantom Wallet</h4>
+                      </div>
+                      <ol className="space-y-3">
+                        <li className="flex">
+                          <div className="bg-primary/20 rounded-full flex items-center justify-center w-6 h-6 mt-0.5 mr-3 flex-shrink-0">
+                            <span className="text-primary text-sm font-bold">1</span>
+                          </div>
+                          <p className="text-light-muted">Open Phantom wallet and click on the gear icon ⚙️ in the bottom right.</p>
+                        </li>
+                        <li className="flex">
+                          <div className="bg-primary/20 rounded-full flex items-center justify-center w-6 h-6 mt-0.5 mr-3 flex-shrink-0">
+                            <span className="text-primary text-sm font-bold">2</span>
+                          </div>
+                          <p className="text-light-muted">Select "Developer Settings".</p>
+                        </li>
+                        <li className="flex">
+                          <div className="bg-primary/20 rounded-full flex items-center justify-center w-6 h-6 mt-0.5 mr-3 flex-shrink-0">
+                            <span className="text-primary text-sm font-bold">3</span>
+                          </div>
+                          <p className="text-light-muted">Toggle "Change Network" to enable it.</p>
+                        </li>
+                        <li className="flex">
+                          <div className="bg-primary/20 rounded-full flex items-center justify-center w-6 h-6 mt-0.5 mr-3 flex-shrink-0">
+                            <span className="text-primary text-sm font-bold">4</span>
+                          </div>
+                          <p className="text-light-muted">Return to the main menu, click on the network name at the top, and select "Devnet".</p>
+                        </li>
+                        <li className="flex">
+                          <div className="bg-primary/20 rounded-full flex items-center justify-center w-6 h-6 mt-0.5 mr-3 flex-shrink-0">
+                            <span className="text-primary text-sm font-bold">5</span>
+                          </div>
+                          <p className="text-light-muted">You'll see a purple indicator showing you're on Devnet.</p>
+                        </li>
+                      </ol>
+                      <a 
+                        href="https://help.phantom.app/hc/en-us/articles/8071074929043-How-to-switch-networks-in-Phantom" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="inline-flex items-center text-primary hover:text-primary-light mt-4 transition-colors"
+                      >
+                        Official Phantom Guide <FaExternalLinkAlt className="ml-1" size={12} />
+                      </a>
+                    </div>
+                    
+                    {/* Solflare Wallet Guide */}
+                    <div className="bg-dark-card p-5 rounded-lg border border-dark-light/30">
+                      <div className="flex items-center mb-4">
+                        <Image 
+                          src="https://solflare.com/assets/images/favicon-32x32.png" 
+                          alt="Solflare Logo" 
+                          width={24} 
+                          height={24} 
+                          className="mr-2" 
+                        />
+                        <h4 className="text-lg font-semibold text-white">Solflare Wallet</h4>
+                      </div>
+                      <ol className="space-y-3">
+                        <li className="flex">
+                          <div className="bg-primary/20 rounded-full flex items-center justify-center w-6 h-6 mt-0.5 mr-3 flex-shrink-0">
+                            <span className="text-primary text-sm font-bold">1</span>
+                          </div>
+                          <p className="text-light-muted">Open Solflare wallet and click on the network dropdown at the top of the screen.</p>
+                        </li>
+                        <li className="flex">
+                          <div className="bg-primary/20 rounded-full flex items-center justify-center w-6 h-6 mt-0.5 mr-3 flex-shrink-0">
+                            <span className="text-primary text-sm font-bold">2</span>
+                          </div>
+                          <p className="text-light-muted">Select "Devnet" from the dropdown menu.</p>
+                        </li>
+                        <li className="flex">
+                          <div className="bg-primary/20 rounded-full flex items-center justify-center w-6 h-6 mt-0.5 mr-3 flex-shrink-0">
+                            <span className="text-primary text-sm font-bold">3</span>
+                          </div>
+                          <p className="text-light-muted">You'll see a label indicating you're on Devnet.</p>
+                        </li>
+                        <li className="flex">
+                          <div className="bg-primary/20 rounded-full flex items-center justify-center w-6 h-6 mt-0.5 mr-3 flex-shrink-0">
+                            <span className="text-primary text-sm font-bold">4</span>
+                          </div>
+                          <p className="text-light-muted">If you need to switch back to mainnet later, use the same dropdown.</p>
+                        </li>
+                      </ol>
+                      <a 
+                        href="https://docs.solflare.com/solflare/getting-started/networks" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="inline-flex items-center text-primary hover:text-primary-light mt-4 transition-colors"
+                      >
+                        Official Solflare Guide <FaExternalLinkAlt className="ml-1" size={12} />
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-dark-light/20 p-4 rounded-lg mt-6">
+                    <h4 className="text-white font-medium mb-2">What does this mean for you?</h4>
+                    <p className="text-light-muted text-sm">
+                      After claiming your tokens, you'll need to be on Devnet to see them in your wallet. When we launch on 
+                      mainnet, you'll receive an email with instructions on how to redeem your devnet tokens for real mainnet 
+                      tokens. This process will be available 24 hours before the public launch.
+                    </p>
+                  </div>
+                </div>
+              )}
               
               {/* Community Appreciation Message */}
               <div className="p-6 bg-primary/10 border border-primary/30 rounded-lg mt-8 mb-6">
@@ -214,7 +362,7 @@ export default function ClaimPage() {
                           <FaInfoCircle size={18} />
                         </div>
                         <p className="text-sm text-light-muted">
-                          After claiming, your tokens will be sent to your wallet within 10-15 minutes.
+                          After claiming, your tokens will be sent to your wallet within 10-15 minutes. Remember to connect to Solana Devnet to see them.
                         </p>
                       </div>
                     </div>
@@ -304,10 +452,35 @@ export default function ClaimPage() {
                                   disabled={isClaiming}
                                 />
                               </div>
+                              
+                              {/* Terms Agreement Checkbox */}
+                              <div className="mb-6 p-4 bg-yellow-900/10 border border-yellow-900/20 rounded-lg">
+                                <div className="flex items-start mb-2">
+                                  <div className="flex items-center h-5 mt-1">
+                                    <input
+                                      id="terms-checkbox"
+                                      type="checkbox"
+                                      checked={termsAccepted}
+                                      onChange={() => setTermsAccepted(!termsAccepted)}
+                                      className="w-4 h-4 bg-dark border-dark-light/50 rounded focus:ring-primary"
+                                    />
+                                  </div>
+                                  <label htmlFor="terms-checkbox" className="ml-3 text-sm text-light-muted">
+                                    <span className="font-medium text-white">I understand and agree that:</span>
+                                    <ul className="list-disc pl-5 mt-2 space-y-1">
+                                      <li>The tokens I'm claiming are on the Solana Devnet (test network), not mainnet.</li>
+                                      <li>I will need to configure my wallet to connect to Devnet to see these tokens.</li>
+                                      <li>I will be able to redeem these devnet tokens for real mainnet tokens 1 day before the official launch.</li>
+                                      <li>I will receive instructions via email on how to complete the mainnet token redemption.</li>
+                                    </ul>
+                                  </label>
+                                </div>
+                              </div>
+                              
                               <button
                                 type="submit"
                                 className="w-full py-3 px-6 bg-primary hover:bg-primary-light text-white rounded-lg font-medium transition-colors disabled:bg-primary/50 disabled:cursor-not-allowed"
-                                disabled={isClaiming || !claimWalletAddress}
+                                disabled={isClaiming || !claimWalletAddress || !termsAccepted}
                               >
                                 {isClaiming ? (
                                   <div className="flex items-center justify-center">
@@ -338,8 +511,8 @@ export default function ClaimPage() {
                         <div className="p-4 bg-dark-light/30 rounded-lg">
                           <p className="text-sm text-light-muted">
                             <FaInfoCircle className="inline-block mr-2" size={16} />
-                            Please note that token transfers may take some time to process. If you don't receive your tokens 
-                            after 15 minutes, please contact our support team.
+                            Remember to switch your wallet to <strong>Solana Devnet</strong> to see your tokens.
+                            These devnet tokens can be redeemed for real mainnet tokens 1 day before the public launch.
                           </p>
                         </div>
                       </div>
@@ -369,6 +542,15 @@ export default function ClaimPage() {
                 </div>
                 
                 <div className="bg-dark-card border border-dark-light/30 rounded-lg p-6">
+                  <h3 className="text-xl font-bold text-white mb-3">Why are tokens on Devnet instead of Mainnet?</h3>
+                  <p className="text-light-muted">
+                    We're distributing tokens on Devnet first as part of our controlled launch strategy. This allows us to test distribution systems, 
+                    gather feedback, and ensure everything works smoothly before the mainnet launch. Devnet tokens will be exchangeable for mainnet tokens 
+                    one day before our public launch.
+                  </p>
+                </div>
+                
+                <div className="bg-dark-card border border-dark-light/30 rounded-lg p-6">
                   <h3 className="text-xl font-bold text-white mb-3">How do I know if I'm whitelisted?</h3>
                   <p className="text-light-muted">
                     Enter your wallet address in the "Check Your Allocation" section above. If you're whitelisted, 
@@ -380,8 +562,9 @@ export default function ClaimPage() {
                 <div className="bg-dark-card border border-dark-light/30 rounded-lg p-6">
                   <h3 className="text-xl font-bold text-white mb-3">How long does it take to receive my tokens?</h3>
                   <p className="text-light-muted">
-                    After claiming, your tokens will be sent to your wallet within 10-15 minutes. If you don't receive your tokens 
-                    after this time period, please contact our support team.
+                    After claiming, your devnet tokens will be sent to your wallet within 10-15 minutes. Remember that you need to
+                    switch your wallet to Solana Devnet to see them. When it's time for the mainnet swap, you'll receive detailed instructions 
+                    by email.
                   </p>
                 </div>
                 

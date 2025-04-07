@@ -5,59 +5,36 @@ import { FaBars, FaTimes, FaCoins } from 'react-icons/fa'
 import Logo from './Logo'
 import { useLanguage } from '../contexts/LanguageContext'
 
+// Define navigation item type to fix TypeScript errors
+type NavItem = {
+  name: string;
+  href: string;
+  icon?: React.ReactNode;
+  badge?: string;
+  className?: string;
+  isSpecial?: boolean;
+  children?: Array<{
+    name: string;
+    href: string;
+    description?: string;
+  }>;
+};
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null)
   const router = useRouter()
   const { t } = useLanguage()
 
-  const navigation = [
-    { name: t('home'), href: '/' },
-    { 
-      name: t('tools'), 
-      href: '/tools',
-      description: 'Directory of trusted third-party tools for safer crypto trading and investment'
-    },
-    { name: 'Services', href: '/services' },
-    { 
-      name: 'Scam DB', 
-      children: [
-        { name: 'Scam Database', href: '/scam-database', description: 'Comprehensive database of cryptocurrency scams and phishing websites' },
-        { name: 'Verified Links', href: '/verified-links', description: 'Directory of verified official links to major wallets, exchanges and tools' }
-      ]
-    },
-    { 
-      name: t('resources'), 
-      children: [
-        { name: t('forTraders'), href: '/resources/traders', description: 'Resources for crypto traders and DeFi users' },
-        { name: 'Developer Read', href: '/resources/developers', description: 'Essential reading material for smart contract and DeFi developers' },
-        { name: 'Developer Tools', href: '/resources/blockchain-repositories', description: 'Comprehensive directory of blockchain development tools and repositories' },
-        { name: t('defiFundamentals'), href: '/resources/defi-fundamentals', description: 'Learn about cryptocurrency, blockchain technology, and decentralized finance' },
-        { name: t('securityGuide'), href: '/resources/security-guide', description: 'Protect your crypto assets with essential security knowledge and best practices' },
-        { name: t('walletGuide'), href: '/resources/wallet-guide', description: 'Set up and manage your crypto wallet, networks, tokens, and NFTs' },
-        { name: t('forEveryone'), href: '/resources/everyone', description: 'Resources for anyone interested in crypto safety' }
-      ]
-    },
-    {
-      name: 'Foundation',
-      children: [
-        { name: 'Whitepaper', href: '/whitepaper', description: 'Technical overview of the OCF token architecture and protocol' },
-        { name: 'Roadmap', href: '/roadmap', description: 'Detailed development timeline and milestone tracking' },
-        { name: 'Tokenomics', href: '/tokenomics', description: 'Token distribution, vesting, and economic model' },
-        { name: 'O.C.F. Wallets and Funds', href: '/wallets-and-funds', description: 'Transparent view of Open Crypto Foundation wallets and grant funds' },
-        { name: 'Security Audit', href: '/audit', description: 'Security verification and audit certification results' }
-      ]
-    },
-    { name: 'Blog', href: '/blog' },
-    { name: t('about'), href: '/about' },
-    { name: t('manifesto'), href: '/manifesto' },
-    { name: t('projects'), href: '/projects' },
-    { 
-      name: 'Token Claim', 
-      href: '/claim', 
-      icon: <FaCoins />,
-      badge: 'New'
-    },
+  const navigation: NavItem[] = [
+    { name: 'Home', href: '/' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Manifesto', href: '/manifesto' },
+    { name: 'Whitepaper', href: '/whitepaper' },
+    { name: 'Roadmap', href: '/roadmap' },
+    { name: 'Resources', href: '/resources' },
+    { name: 'Token Claim', href: '/claim', icon: <FaCoins className="mr-1" />, badge: 'New' },
+    { name: 'Connect Wallet', href: '#wallet', className: 'bg-primary text-white hover:bg-primary-light', isSpecial: true },
   ]
   
   const toggleDropdown = (name: string) => {
