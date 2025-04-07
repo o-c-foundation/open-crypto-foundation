@@ -8,7 +8,7 @@ import { useLanguage } from '../contexts/LanguageContext'
 // Define navigation item type to fix TypeScript errors
 type NavItem = {
   name: string;
-  href: string;
+  href?: string;
   icon?: React.ReactNode;
   badge?: string;
   className?: string;
@@ -32,9 +32,17 @@ export default function Navbar() {
     { name: 'Manifesto', href: '/manifesto' },
     { name: 'Whitepaper', href: '/whitepaper' },
     { name: 'Roadmap', href: '/roadmap' },
-    { name: 'Resources', href: '/resources' },
-    { name: 'Token Claim', href: '/claim', icon: <FaCoins className="mr-1" />, badge: 'New' },
-    { name: 'Connect Wallet', href: '#wallet', className: 'bg-primary text-white hover:bg-primary-light', isSpecial: true },
+    { 
+      name: 'Resources',
+      children: [
+        { name: 'For Traders', href: '/resources/traders', description: 'Resources for crypto traders and DeFi users' },
+        { name: 'Security Guide', href: '/resources/security-guide', description: 'Protect your crypto assets with essential security knowledge and best practices' },
+        { name: 'Wallet Guide', href: '/resources/wallet-guide', description: 'Set up and manage your crypto wallet, networks, tokens, and NFTs' },
+        { name: 'DeFi Fundamentals', href: '/resources/defi-fundamentals', description: 'Learn about cryptocurrency, blockchain technology, and decentralized finance' },
+        { name: 'Developers', href: '/resources/developers', description: 'Essential resources for smart contract and DeFi developers' }
+      ]
+    },
+    { name: 'Token Claim', href: '/claim', icon: <FaCoins className="mr-1" />, badge: 'New' }
   ]
   
   const toggleDropdown = (name: string) => {
