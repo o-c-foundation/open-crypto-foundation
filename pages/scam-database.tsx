@@ -277,15 +277,13 @@ export default function ScamDatabase() {
               A comprehensive directory of known cryptocurrency scams, phishing websites, and fraudulent projects.
               Powered by data from CryptoScamDB.
             </p>
-            <a 
-              href="https://github.com/CryptoScamDB/api.cryptoscamdb.org" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-white bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-lg transition-colors"
+            <Link 
+              href="/report-scam" 
+              className="inline-flex items-center text-white bg-red-600 hover:bg-red-700 px-6 py-3 rounded-lg transition-colors"
             >
-              <FaGithub className="mr-2" />
-              Contribute to the Database
-            </a>
+              <FaExclamationTriangle className="mr-2" />
+              Report Scam
+            </Link>
           </div>
         </div>
       </section>
