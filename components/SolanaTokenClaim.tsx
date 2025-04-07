@@ -1,17 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { getClaimableAmount, claimTokens } from '../utils/token-claim';
 import { FaCheckCircle, FaSpinner } from 'react-icons/fa';
+import { PublicKey, Transaction } from '@solana/web3.js';
 
 const SolanaTokenClaim = () => {
-  const { publicKey, connected } = useWallet();
+  const { publicKey, connected, sendTransaction } = useWallet();
   
   const [loading, setLoading] = useState(false);
   const [allocation, setAllocation] = useState<number | null>(null);
   const [claimed, setClaimed] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  
+  // Create a stable wallet adapter object
+  const walletAdapter = useMemo(() => {
+    if (!publicKey) return null;
+    
+    return {
+      publicKey,
+      sendTransaction: async (tx: Transaction, connection: any) => {
+        return await sendTransaction(tx, connection);
+      }
+    };
+  }, [publicKey, sendTransaction]);
   
   // Check claimable amount when wallet connects
   useEffect(() => {
@@ -47,16 +60,16 @@ const SolanaTokenClaim = () => {
     }
   };
   
-  const handleClaim = async () => {
-    if (!publicKey || !allocation) return;
+  // Use useCallback to memoize the claim function
+  const handleClaim = useCallback(async () => {
+    if (!publicKey || !allocation || !walletAdapter) return;
     
     setLoading(true);
     setError('');
     setSuccess('');
     
     try {
-      const wallet = useWallet();
-      const result = await claimTokens(wallet, allocation);
+      const result = await claimTokens(walletAdapter, allocation);
       
       if (result.success) {
         setClaimed(true);
@@ -70,7 +83,7 @@ const SolanaTokenClaim = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [publicKey, allocation, walletAdapter]);
   
   return (
     <div className="bg-dark-card rounded-lg border border-dark-light/30 p-8">
