@@ -27,7 +27,7 @@ export default function Home() {
     }
     
     // Set up global error handler for uncaught errors
-    const handleGlobalError = (event) => {
+    const handleGlobalError = (event: ErrorEvent) => {
       if (event.error && event.error.toString().includes("Cannot destructure property 'auth'")) {
         localStorage.setItem('site_error', 'true');
         console.log("Redirecting due to auth error");
@@ -234,6 +234,12 @@ export default function Home() {
                 className="px-8 py-3 bg-primary hover:bg-primary-light text-white rounded-md text-lg font-semibold transition-colors flex items-center justify-center"
               >
                 Join Token Presale <FaArrowRight className="ml-2" />
+              </Link>
+              <Link 
+                href="/claim" 
+                className="px-8 py-3 bg-dark-light hover:bg-dark-light/80 text-white rounded-md text-lg font-semibold transition-colors flex items-center justify-center border border-primary/30"
+              >
+                Whitelist Token Claim <FaCoins className="ml-2" />
               </Link>
             </div>
           </div>

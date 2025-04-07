@@ -52,6 +52,12 @@ export default function Navbar() {
     { name: t('about'), href: '/about' },
     { name: t('manifesto'), href: '/manifesto' },
     { name: t('projects'), href: '/projects' },
+    { 
+      name: 'Token Claim', 
+      href: '/claim', 
+      icon: <FaCoins />,
+      badge: 'New'
+    },
   ]
   
   const toggleDropdown = (name: string) => {
