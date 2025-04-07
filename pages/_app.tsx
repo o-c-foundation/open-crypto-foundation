@@ -5,7 +5,13 @@ import React, { useEffect } from 'react'
 import Layout from '../components/Layout'
 import ErrorBoundary from '../components/ErrorBoundary'
 import { LanguageProvider } from '../contexts/LanguageContext'
-import SolanaWalletProvider from '../components/SolanaWalletProvider'
+import dynamic from 'next/dynamic'
+
+// Dynamically import SolanaWalletProvider with SSR disabled
+const SolanaWalletProvider = dynamic(
+  () => import('../components/SolanaWalletProvider'),
+  { ssr: false }
+);
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
