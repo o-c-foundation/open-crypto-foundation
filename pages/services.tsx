@@ -10,31 +10,31 @@ const serviceTypes = [
   {
     id: 'token-audits',
     name: 'Token Audits',
-    icon: <FaFileContract className="text-purple-400" size={24} />,
+    icon: <FaFileContract className="text-primary" size={24} />,
     description: 'Comprehensive review of token smart contracts, tokenomics, and implementation to identify vulnerabilities, security issues, and potential exploits.'
   },
   {
     id: 'team-audits',
     name: 'Team Audits',
-    icon: <FaUsers className="text-purple-400" size={24} />,
+    icon: <FaUsers className="text-primary" size={24} />,
     description: 'Thorough background checks on project founders and team members, including verification of credentials, work history, and reputation in the industry.'
   },
   {
     id: 'dapp-audits',
     name: 'DApp Audits',
-    icon: <FaCodeBranch className="text-purple-400" size={24} />,
+    icon: <FaCodeBranch className="text-primary" size={24} />,
     description: 'End-to-end review of decentralized applications, analyzing smart contract interactions, front-end security, and potential attack vectors.'
   },
   {
     id: 'network-audits',
     name: 'Network Audits',
-    icon: <FaNetworkWired className="text-purple-400" size={24} />,
+    icon: <FaNetworkWired className="text-primary" size={24} />,
     description: 'Evaluation of blockchain networks, consensus mechanisms, scalability solutions, and security architectures to ensure robustness and reliability.'
   },
   {
     id: 'program-audits',
     name: 'Program Audits',
-    icon: <FaShieldAlt className="text-purple-400" size={24} />,
+    icon: <FaShieldAlt className="text-primary" size={24} />,
     description: 'Detailed code review of protocols, platforms, and programs to identify security flaws, logic errors, and compliance issues before deployment.'
   }
 ];
@@ -50,7 +50,7 @@ export default function Services() {
         <meta name="description" content="Professional audit services for crypto projects by Open Crypto Foundation" />
       </Head>
 
-      <div className="py-12 md:py-20">
+      <div className="py-12 md:py-20 bg-dark text-white">
         <div className="container px-4 md:px-0">
           {/* Hero section */}
           <div className="text-center mb-16">
@@ -83,14 +83,14 @@ export default function Services() {
               {serviceTypes.map((service) => (
                 <div 
                   key={service.id}
-                  className={`bg-gray-800 rounded-lg p-6 transition-opacity duration-300 ${
+                  className={`bg-dark-card border border-dark-light/30 rounded-lg p-6 transition-opacity duration-300 ${
                     activeService === service.id ? 'opacity-100' : 'hidden opacity-0'
                   }`}
                 >
                   <h4 className="text-lg font-semibold text-white mb-4">{service.name}</h4>
                   <p className="text-gray-300 mb-6">{service.description}</p>
                   
-                  <div className="bg-gray-700 p-5 rounded-lg mb-6">
+                  <div className="bg-dark-light/10 p-5 rounded-lg mb-6 border border-dark-light/20">
                     <h5 className="font-semibold text-white mb-3">What We Analyze</h5>
                     {service.id === 'token-audits' && (
                       <ul className="list-disc pl-5 text-gray-300 space-y-2">
@@ -148,7 +148,7 @@ export default function Services() {
                     )}
                   </div>
                   
-                  <div className="bg-purple-900 bg-opacity-30 border border-purple-700 rounded-lg p-5">
+                  <div className="bg-primary/10 border border-primary/30 rounded-lg p-5">
                     <h5 className="font-semibold text-white mb-3">Audit Deliverables</h5>
                     <ul className="list-disc pl-5 text-gray-300 space-y-2">
                       <li>Detailed audit report with findings and recommendations</li>
@@ -163,7 +163,7 @@ export default function Services() {
           </div>
 
           {/* Fund Allocation Section */}
-          <div className="max-w-4xl mx-auto bg-gray-800 rounded-xl shadow-xl overflow-hidden mb-16">
+          <div className="max-w-4xl mx-auto bg-dark-card rounded-xl shadow-xl overflow-hidden mb-16 border border-dark-light/30">
             <div className="p-8 md:p-12">
               <h3 className="text-xl font-semibold mb-6 text-white">Fund Allocation</h3>
               <p className="text-gray-300 mb-6 leading-relaxed">
@@ -171,30 +171,30 @@ export default function Services() {
               </p>
               
               <div className="grid gap-6 md:grid-cols-2 mb-8">
-                <div className="bg-gray-700 p-6 rounded-lg">
+                <div className="bg-dark-light/10 p-6 rounded-lg border border-dark-light/20">
                   <h4 className="text-lg font-semibold text-white mb-3">Operational Expenses</h4>
                   <p className="text-gray-300 mb-3">
                     50% of all revenue is allocated to cover operational expenses and salaries, ensuring we maintain a professional team and high-quality services.
                   </p>
-                  <div className="w-full bg-gray-600 rounded-full h-2.5">
-                    <div className="bg-purple-500 h-2.5 rounded-full" style={{ width: '50%' }}></div>
+                  <div className="w-full bg-dark-light/20 rounded-full h-2.5">
+                    <div className="bg-primary h-2.5 rounded-full" style={{ width: '50%' }}></div>
                   </div>
                 </div>
                 
-                <div className="bg-gray-700 p-6 rounded-lg">
+                <div className="bg-dark-light/10 p-6 rounded-lg border border-dark-light/20">
                   <h4 className="text-lg font-semibold text-white mb-3">Project Capital & Victim Recovery</h4>
                   <p className="text-gray-300 mb-3">
                     The other 50% is directed to providing capital for sustainable long-term projects and supporting a victim recovery fund for those affected by crypto scams.
                   </p>
-                  <div className="w-full bg-gray-600 rounded-full h-2.5">
-                    <div className="bg-purple-500 h-2.5 rounded-full" style={{ width: '50%' }}></div>
+                  <div className="w-full bg-dark-light/20 rounded-full h-2.5">
+                    <div className="bg-primary h-2.5 rounded-full" style={{ width: '50%' }}></div>
                   </div>
                 </div>
               </div>
               
-              <div className="bg-gray-700 p-6 rounded-lg">
+              <div className="bg-dark-light/10 p-6 rounded-lg border border-dark-light/20">
                 <div className="flex items-center mb-4">
-                  <FaHandHoldingUsd className="text-purple-400 mr-3" size={24} />
+                  <FaHandHoldingUsd className="text-primary mr-3" size={24} />
                   <h4 className="text-lg font-semibold text-white">Transparent Multisig Governance</h4>
                 </div>
                 <p className="text-gray-300">
@@ -205,7 +205,7 @@ export default function Services() {
           </div>
 
           {/* Certificate Section */}
-          <div className="max-w-4xl mx-auto bg-gray-800 rounded-xl shadow-xl overflow-hidden mb-16">
+          <div className="max-w-4xl mx-auto bg-dark-card rounded-xl shadow-xl overflow-hidden mb-16 border border-dark-light/30">
             <div className="p-8 md:p-12">
               <h3 className="text-xl font-semibold mb-4 text-white flex items-center">
                 <FaCheckCircle className="text-green-400 mr-2" size={20} />
@@ -234,7 +234,7 @@ export default function Services() {
             </p>
             <a 
               href="/contact" 
-              className="inline-block px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-colors"
+              className="inline-block px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg transition-colors"
             >
               Request an Audit
             </a>
