@@ -18,7 +18,7 @@ export default function Navbar() {
       href: '/tools',
       description: 'Directory of trusted third-party tools for safer crypto trading and investment'
     },
-    { name: t('services'), href: '/services' },
+    { name: 'Services', href: '/services' },
     { 
       name: 'Scam DB', 
       children: [
@@ -39,7 +39,7 @@ export default function Navbar() {
       ]
     },
     {
-      name: 'O.C. Foundation',
+      name: 'Foundation',
       children: [
         { name: 'Whitepaper', href: '/whitepaper', description: 'Technical overview of the OCF token architecture and protocol' },
         { name: 'Roadmap', href: '/roadmap', description: 'Detailed development timeline and milestone tracking' },
@@ -63,9 +63,9 @@ export default function Navbar() {
 
   return (
     <header className="bg-dark backdrop-blur-md bg-opacity-80 border-b border-dark-light/30 shadow-md sticky top-0 z-50">
-      <div className="container px-4 md:px-6">
-        <div className="flex justify-between items-center py-4">
-          <div className="flex items-center">
+      <div className="container-fluid px-3 md:px-4">
+        <div className="flex justify-between items-center py-3">
+          <div className="flex items-center mr-4">
             <Link href="/" className="flex items-center group">
               <div className="flex items-center justify-center mr-2 transition-all duration-300 group-hover:shadow-glow">
                 <Logo size="md" />
@@ -75,13 +75,13 @@ export default function Navbar() {
           </div>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6 lg:space-x-8">
+          <nav className="hidden md:flex space-x-4 lg:space-x-5">
             {navigation.map((item) => 
               !item.children ? (
                 <Link 
                   href={item.href} 
                   key={item.name}
-                  className={`text-light-muted hover:text-light px-1 py-2 relative group
+                  className={`text-light-muted hover:text-light px-1 py-2 relative group whitespace-nowrap
                     ${router.pathname === item.href ? 'text-light' : ''}
                   `}
                 >
@@ -92,17 +92,17 @@ export default function Navbar() {
               ) : (
                 <div className="relative" key={item.name}>
                   <button
-                    className={`text-light-muted hover:text-light px-1 py-2 inline-flex items-center relative group
+                    className={`text-light-muted hover:text-light px-1 py-2 inline-flex items-center relative group whitespace-nowrap
                       ${(router.pathname.startsWith('/resources') && item.name === t('resources')) || 
                         ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
                           router.pathname === '/tokenomics' || router.pathname === '/audit' ||
                           router.pathname === '/wallets-and-funds') && 
-                          item.name === 'O.C. Foundation') ? 'text-light' : ''}
+                          item.name === 'Foundation') ? 'text-light' : ''}
                     `}
                     onClick={() => toggleDropdown(item.name)}
                   >
                     <span>{item.name}</span>
-                    <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                     <span className={`absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300 
@@ -110,7 +110,7 @@ export default function Navbar() {
                          ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
                            router.pathname === '/tokenomics' || router.pathname === '/audit' ||
                            router.pathname === '/wallets-and-funds') && 
-                           item.name === 'O.C. Foundation') ? 'w-full' : 'group-hover:w-full'}`}></span>
+                           item.name === 'Foundation') ? 'w-full' : 'group-hover:w-full'}`}></span>
                   </button>
                   
                   {dropdownOpen === item.name && (
@@ -179,7 +179,7 @@ export default function Navbar() {
                           ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
                             router.pathname === '/tokenomics' || router.pathname === '/audit' ||
                             router.pathname === '/wallets-and-funds') && 
-                            item.name === 'O.C. Foundation')
+                            item.name === 'Foundation')
                           ? 'border-primary text-light bg-primary/5' 
                           : 'border-transparent hover:border-primary/50 hover:bg-dark-card'
                         }`}
