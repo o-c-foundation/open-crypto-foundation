@@ -358,6 +358,20 @@ export default function ClaimsAdmin() {
             <li>Export functionality allows you to download the entire log as a CSV file.</li>
           </ul>
         </div>
+        
+        <div className="bg-yellow-900/20 border border-yellow-900/30 rounded-lg p-6 text-light-muted text-sm mt-6">
+          <h3 className="text-yellow-400 text-lg mb-2">⚠️ Important Limitation</h3>
+          <p className="mb-2">
+            <strong>This demo admin panel only shows claims submitted from the same browser/device.</strong>
+          </p>
+          <p className="mb-4">
+            Since this is using browser localStorage for data storage, you can only see claims that were submitted from the same computer. 
+            Claims submitted from other devices or browsers won't appear here because localStorage is device-specific.
+          </p>
+          <p className="font-medium">
+            For a production environment, implement a server-side database with proper API endpoints to track claims from all users regardless of their device.
+          </p>
+        </div>
       </div>
     </div>
   );
