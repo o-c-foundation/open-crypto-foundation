@@ -15,7 +15,6 @@ import {
   FaCoins,
   FaLock
 } from 'react-icons/fa';
-import { SiSolana } from 'react-icons/si';
 import ScrollToTop from '../components/ScrollToTop';
 
 // Mock data for wallet balances - in a real implementation, this would come from an API
@@ -264,7 +263,7 @@ export default function WalletsAndFundsPage() {
                   ${activeChain === 'solana' ? 'bg-purple-600 text-white' : 'bg-dark-card border border-gray-700 text-gray-400 hover:bg-gray-800'}`}
                 onClick={() => handleChainChange('solana')}
               >
-                <SiSolana size={20} />
+                <FaCoins size={20} />
                 Solana
               </button>
               <button 
