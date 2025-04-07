@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaBook, FaCode, FaShieldAlt, FaUsers, FaLightbulb, FaExclamationTriangle } from 'react-icons/fa';
+import { FaBook, FaCode, FaShieldAlt, FaUsers, FaLightbulb, FaExclamationTriangle, FaGithub } from 'react-icons/fa';
 import NewsletterSubscribe from '../../components/NewsletterSubscribe';
 
 export default function DevelopersPage() {
@@ -168,6 +168,21 @@ export default function DevelopersPage() {
                 </p>
                 <Link href="/resources/defi-education" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
                   Access Library <span className="ml-1">→</span>
+                </Link>
+              </div>
+
+              <div className="bg-gray-700 rounded-xl p-6 border border-gray-600 hover:border-blue-500 transition-all duration-300 md:col-span-2">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-blue-900/40 rounded-lg flex items-center justify-center mr-4">
+                    <FaGithub className="text-blue-400 text-2xl" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white">Blockchain Repositories</h3>
+                </div>
+                <p className="text-gray-300 mb-4">
+                  Comprehensive directory of essential repositories for EVM and Solana blockchain development, including frameworks, tools, security utilities, bots, and infrastructure components.
+                </p>
+                <Link href="/resources/blockchain-repositories" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
+                  Browse Repositories <span className="ml-1">→</span>
                 </Link>
               </div>
             </div>
