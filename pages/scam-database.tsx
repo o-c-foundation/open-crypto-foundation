@@ -491,7 +491,7 @@ export default function ScamDatabase() {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Staying Safe</h3>
                 <p className="text-gray-300">
-                  Always verify URLs before connecting your wallet or entering sensitive information. Use this database to check suspicious sites and stay informed about emerging threats.
+                  Always verify URLs before connecting your wallet or entering sensitive information. Check our <Link href="/verified-links" className="text-blue-400 hover:underline">Verified Links</Link> page for official site URLs.
                 </p>
               </div>
               
