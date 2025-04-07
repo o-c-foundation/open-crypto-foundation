@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { FaGithub, FaEthereum, FaFilter, FaSearch, FaCode, FaTools, FaRobot, FaServer, FaShieldAlt, FaWallet, FaCoins } from 'react-icons/fa';
+import { FaGithub, FaEthereum, FaFilter, FaSearch, FaCode, FaTools, FaRobot, FaServer, FaShieldAlt, FaWallet, FaCoins, FaStar, FaExternalLinkAlt, FaSnowflake } from 'react-icons/fa';
+import { SiBinance, SiPoly, SiFantom } from 'react-icons/si';
 import NewsletterSubscribe from '../../components/NewsletterSubscribe';
 import ScrollToTop from '../../components/ScrollToTop';
+import SolanaIcon from '../../components/icons/SolanaIcon';
 
 export default function BlockchainRepositoriesPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -837,6 +839,26 @@ export default function BlockchainRepositoriesPage() {
     return matchesSearch && matchesChain && matchesCategory;
   });
 
+  // ChainIcon component to display the right icon based on chain
+  const ChainIcon = ({ chain }: { chain: string }) => {
+    switch (chain.toLowerCase()) {
+      case 'ethereum':
+        return <FaEthereum className="text-blue-400" size={16} />;
+      case 'bsc':
+        return <SiBinance className="text-yellow-400" size={16} />;
+      case 'polygon':
+        return <SiPoly className="text-purple-400" size={16} />;
+      case 'solana':
+        return <SolanaIcon className="text-green-500" />;
+      case 'avalanche':
+        return <FaSnowflake className="text-red-400" size={16} />;
+      case 'fantom':
+        return <SiFantom className="text-blue-300" size={16} />;
+      default:
+        return <FaCode className="text-gray-400" size={16} />;
+    }
+  };
+
   return (
     <>
       <Head>
@@ -923,39 +945,41 @@ export default function BlockchainRepositoriesPage() {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredRepositories.length > 0 ? (
                   filteredRepositories.map((repo, index) => (
-                    <div key={index} className="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300">
-                      <div className="p-6">
-                        <div className="flex items-center justify-between mb-3">
-                          <span className={`px-3 py-1 text-xs font-semibold rounded-full ${
-                            repo.chain === 'evm' ? 'bg-blue-900/30 text-blue-400' : repo.chain === 'bnb' ? 'bg-purple-900/30 text-purple-400' : 'bg-purple-900/30 text-purple-400'
-                          }`}>
-                            {repo.chain === 'evm' ? 'EVM' : repo.chain === 'bnb' ? 'BNB Chain' : 'Solana'}
-                          </span>
-                          <span className="text-gray-400 text-sm flex items-center">
-                            <FaGithub className="mr-1" /> {repo.stars}
-                          </span>
+                    <div 
+                      key={index} 
+                      className="bg-dark-card border border-dark-light/20 rounded-lg p-6 hover:border-primary/40 transition-colors"
+                    >
+                      <div className="flex justify-between mb-1">
+                        <div className="flex items-center text-light-muted mb-2">
+                          <ChainIcon chain={repo.chain} />
+                          <span className="ml-2 text-sm capitalize">{repo.chain}</span>
                         </div>
-                        
-                        <h3 className="text-xl font-bold text-white mb-2">{repo.title}</h3>
-                        <p className="text-gray-300 mb-4">{repo.description}</p>
-                        
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {repo.tags.map((tag, tagIndex) => (
-                            <span key={tagIndex} className="bg-gray-700 px-2 py-1 rounded-md text-xs text-gray-300">
-                              {tag}
-                            </span>
-                          ))}
+                        <div className="text-yellow-400 flex items-center text-sm">
+                          <FaStar className="mr-1" />
+                          <span>{repo.stars}</span>
                         </div>
-                        
-                        <a 
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-1">{repo.title}</h3>
+                      <p className="text-light-muted mb-4 min-h-[3em]">{repo.description}</p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {repo.tags.map((tag, i) => (
+                          <span 
+                            key={i} 
+                            className="text-xs bg-dark-light/30 text-light-muted px-2 py-1 rounded-full"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex justify-end">
+                        <Link 
                           href={repo.url} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="flex items-center text-blue-400 hover:text-blue-300 transition-colors font-medium"
+                          className="text-primary hover:text-primary-light flex items-center transition-colors"
                         >
-                          <FaGithub className="mr-2" />
-                          View Repository
-                        </a>
+                          View Repository <FaExternalLinkAlt className="ml-2" size={12} />
+                        </Link>
                       </div>
                     </div>
                   ))
