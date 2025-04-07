@@ -235,12 +235,6 @@ export default function Home() {
               >
                 Join Token Presale <FaArrowRight className="ml-2" />
               </Link>
-              <Link 
-                href="/claim" 
-                className="px-8 py-3 bg-dark-light hover:bg-dark-light/80 text-white rounded-md text-lg font-semibold transition-colors flex items-center justify-center border border-primary/30"
-              >
-                Whitelist Token Claim <FaCoins className="ml-2" />
-              </Link>
             </div>
           </div>
         </div>
