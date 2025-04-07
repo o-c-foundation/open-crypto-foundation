@@ -7,6 +7,7 @@ import NewsletterSubscribe from '../components/NewsletterSubscribe';
 import ScrollToTop from '../components/ScrollToTop';
 import dynamic from 'next/dynamic';
 import { PRESALE_CONFIG } from '../utils/presaleContract';
+import { useClientSideOnly } from '../hooks/useClientSideOnly';
 
 // Dynamically import the PresalePurchaseForm to avoid SSR errors with Solana wallet
 const PresalePurchaseForm = dynamic(
@@ -75,6 +76,7 @@ const presaleFAQs = [
 ];
 
 export default function PresalePage() {
+  const isClient = useClientSideOnly();
   const [daysLeft, setDaysLeft] = useState<number>(30);
   const [hoursLeft, setHoursLeft] = useState<number>(0);
   const [isPreSaleActive, setIsPreSaleActive] = useState<boolean>(false);
@@ -84,6 +86,7 @@ export default function PresalePage() {
     percentageRaised: 0,
     hardCapReached: false
   });
+  const [showModal, setShowModal] = useState(false);
 
   // Calculate time left in presale
   useEffect(() => {
@@ -157,6 +160,49 @@ export default function PresalePage() {
     return () => clearInterval(intervalId);
   }, []);
 
+  if (!isClient) {
+    return (
+      <div className="min-h-screen bg-dark">
+        <Head>
+          <title>OCF Token Presale | Open Crypto Foundation</title>
+          <meta name="description" content="Join the OCF token presale. Be an early supporter and get tokens at a discounted price." />
+        </Head>
+
+        <main>
+          <section className="py-20 bg-gradient-to-b from-dark-light to-dark">
+            <div className="container px-4 mx-auto">
+              <div className="max-w-4xl mx-auto text-center">
+                <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  OCF Token Presale
+                </h1>
+                <p className="text-xl text-light-muted mb-8">
+                  Loading presale details...
+                </p>
+              </div>
+            </div>
+          </section>
+          
+          <section className="py-16 bg-dark">
+            <div className="container px-4 mx-auto">
+              <div className="flex justify-center">
+                <div className="animate-pulse flex space-x-4">
+                  <div className="rounded-full bg-primary/20 h-12 w-12"></div>
+                  <div className="flex-1 space-y-4 py-1">
+                    <div className="h-4 bg-primary/20 rounded w-3/4"></div>
+                    <div className="space-y-2">
+                      <div className="h-4 bg-primary/20 rounded"></div>
+                      <div className="h-4 bg-primary/20 rounded w-5/6"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    );
+  }
+  
   return (
     <>
       <Head>

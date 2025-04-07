@@ -4,287 +4,260 @@ import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { LAMPORTS_PER_SOL } from '@solana/web3.js';
 import { FaWallet, FaInfoCircle, FaCheckCircle } from 'react-icons/fa';
 import { calculateTokenAmount, purchaseAllocationTickets, PRESALE_CONFIG, getUserAllocation } from '../utils/presaleContract';
+import { useClientSideOnly } from '../hooks/useClientSideOnly';
 
 interface PresalePurchaseFormProps {
   className?: string;
 }
 
 const PresalePurchaseForm: React.FC<PresalePurchaseFormProps> = ({ className = '' }) => {
+  // This component is only rendered client-side through dynamic import with ssr: false
   const { connection } = useConnection();
   const wallet = useWallet();
+  const isClient = useClientSideOnly();
   
   const [solAmount, setSolAmount] = useState<string>('');
-  const [estimatedTokens, setEstimatedTokens] = useState<string>('0');
-  const [walletBalance, setWalletBalance] = useState<number>(0);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [purchaseStatus, setPurchaseStatus] = useState<'none' | 'loading' | 'success' | 'error'>('none');
+  const [tokenAmount, setTokenAmount] = useState<number>(0);
+  const [usdAmount, setUsdAmount] = useState<number>(0);
+  const [errorMessage, setErrorMessage] = useState<string>('');
   const [statusMessage, setStatusMessage] = useState<string>('');
-  const [userAllocation, setUserAllocation] = useState<{
-    allocatedTokens: number;
-    vestedTokens: number;
-  }>({ allocatedTokens: 0, vestedTokens: 0 });
-
-  // Get wallet balance when wallet is connected
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const [walletBalance, setWalletBalance] = useState<number>(0);
+  const [userAllocation, setUserAllocation] = useState<number>(0);
+  
+  // Fetch wallet balance
   useEffect(() => {
     const getBalance = async () => {
       if (wallet.publicKey) {
         try {
           const balance = await connection.getBalance(wallet.publicKey);
           setWalletBalance(balance / LAMPORTS_PER_SOL);
-        } catch (error) {
-          console.error('Error fetching balance:', error);
-          setWalletBalance(0);
+        } catch (err) {
+          console.error('Error fetching balance:', err);
         }
-      } else {
-        setWalletBalance(0);
       }
     };
-
+    
     getBalance();
     
-    // Set up interval to refresh balance every 15 seconds
-    const intervalId = setInterval(getBalance, 15000);
+    // Set up interval to refresh balance
+    const intervalId = setInterval(getBalance, 30000);
     
     return () => clearInterval(intervalId);
   }, [wallet.publicKey, connection]);
-
-  // Get user's allocation when wallet is connected
+  
+  // Get user allocation
   useEffect(() => {
-    const fetchUserAllocation = async () => {
+    const getAllocation = async () => {
       if (wallet.publicKey) {
         try {
           const allocation = await getUserAllocation(connection, wallet.publicKey);
-          setUserAllocation(allocation);
-        } catch (error) {
-          console.error('Error fetching user allocation:', error);
+          if (typeof allocation === 'object' && 'allocatedTokens' in allocation) {
+            setUserAllocation(allocation.allocatedTokens);
+          } else {
+            setUserAllocation(allocation as number);
+          }
+        } catch (err) {
+          console.error('Error fetching allocation:', err);
         }
-      } else {
-        setUserAllocation({ allocatedTokens: 0, vestedTokens: 0 });
       }
     };
-
-    fetchUserAllocation();
-  }, [wallet.publicKey, connection]);
-
-  // Calculate estimated tokens when SOL amount changes
-  useEffect(() => {
-    if (solAmount && !isNaN(parseFloat(solAmount))) {
-      const tokenAmount = calculateTokenAmount(parseFloat(solAmount));
-      setEstimatedTokens(tokenAmount.toLocaleString(undefined, { maximumFractionDigits: 0 }));
-    } else {
-      setEstimatedTokens('0');
-    }
-  }, [solAmount]);
-
-  // Handle SOL amount input change
-  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    // Only allow numbers and decimals
-    if (value === '' || /^\d*\.?\d*$/.test(value)) {
-      setSolAmount(value);
-    }
-  };
-
-  // Set maximum amount (wallet balance)
-  const handleSetMaxAmount = () => {
-    if (wallet.connected && walletBalance > 0) {
-      // Leave a small amount for transaction fees
-      const max = Math.max(0, walletBalance - 0.01).toFixed(4);
-      setSolAmount(max);
-    }
-  };
-
-  // Handle purchase button click
-  const handlePurchase = async () => {
-    if (!wallet.connected) {
-      return;
-    }
-
-    if (!solAmount || parseFloat(solAmount) <= 0) {
-      setStatusMessage('Please enter a valid SOL amount');
-      setPurchaseStatus('error');
-      return;
-    }
-
-    // Convert to number
-    const solAmountNum = parseFloat(solAmount);
     
-    // Validate against min/max purchase
-    const usdValue = solAmountNum * PRESALE_CONFIG.solPriceUSD;
+    getAllocation();
+  }, [wallet.publicKey, connection]);
+  
+  // Handle SOL amount input change
+  const handleSolAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const amount = e.target.value.replace(/[^0-9.]/g, '');
+    setSolAmount(amount);
+    
+    if (amount === '') {
+      setTokenAmount(0);
+      setUsdAmount(0);
+    } else {
+      const solValue = parseFloat(amount);
+      if (!isNaN(solValue)) {
+        const usd = solValue * PRESALE_CONFIG.solPriceUSD;
+        setUsdAmount(usd);
+        setTokenAmount(calculateTokenAmount(solValue));
+        
+        // Validation
+        if (usd < PRESALE_CONFIG.minPurchaseUSD) {
+          setErrorMessage(`Minimum purchase amount is $${PRESALE_CONFIG.minPurchaseUSD}`);
+        } else if (usd > PRESALE_CONFIG.maxPurchaseUSD) {
+          setErrorMessage(`Maximum purchase amount is $${PRESALE_CONFIG.maxPurchaseUSD}`);
+        } else {
+          setErrorMessage('');
+        }
+      }
+    }
+  };
+  
+  // Handle purchase
+  const handlePurchase = async () => {
+    if (!wallet.publicKey || !wallet.signTransaction) {
+      setErrorMessage('Please connect your wallet');
+      return;
+    }
+    
+    const solValue = parseFloat(solAmount);
+    if (isNaN(solValue) || solValue <= 0) {
+      setErrorMessage('Please enter a valid amount');
+      return;
+    }
+    
+    const usdValue = solValue * PRESALE_CONFIG.solPriceUSD;
     if (usdValue < PRESALE_CONFIG.minPurchaseUSD) {
-      setStatusMessage(`Minimum purchase amount is $${PRESALE_CONFIG.minPurchaseUSD}`);
-      setPurchaseStatus('error');
+      setErrorMessage(`Minimum purchase amount is $${PRESALE_CONFIG.minPurchaseUSD}`);
       return;
     }
-
+    
     if (usdValue > PRESALE_CONFIG.maxPurchaseUSD) {
-      setStatusMessage(`Maximum purchase amount is $${PRESALE_CONFIG.maxPurchaseUSD}`);
-      setPurchaseStatus('error');
+      setErrorMessage(`Maximum purchase amount is $${PRESALE_CONFIG.maxPurchaseUSD}`);
       return;
     }
-
-    // Check if user has enough balance
-    if (solAmountNum > walletBalance) {
-      setStatusMessage('Insufficient SOL balance');
-      setPurchaseStatus('error');
+    
+    if (solValue > walletBalance) {
+      setErrorMessage('Insufficient SOL balance');
       return;
     }
-
+    
     try {
       setIsLoading(true);
-      setPurchaseStatus('loading');
-      setStatusMessage('Processing your purchase...');
-
-      // Execute the purchase
-      const receipt = await purchaseAllocationTickets(connection, wallet, solAmountNum);
+      setErrorMessage('');
+      setStatusMessage('Preparing transaction...');
       
-      // Update status
-      setPurchaseStatus('success');
-      setStatusMessage(`Successfully purchased allocation tickets for ${receipt.tokenAmount.toLocaleString()} OCF tokens!`);
+      // Update balance before transaction
+      if (wallet.publicKey) {
+        const balance = await connection.getBalance(wallet.publicKey);
+        const currentBalance = balance / LAMPORTS_PER_SOL;
+        
+        if (solValue > currentBalance) {
+          setErrorMessage('Insufficient SOL balance');
+          setIsLoading(false);
+          return;
+        }
+      }
       
-      // Reset form and update balances
+      setStatusMessage('Please approve the transaction in your wallet...');
+      
+      const receipt = await purchaseAllocationTickets(connection, wallet, solValue);
+      
+      setStatusMessage(`Transaction successful! You have purchased ${receipt.tokenAmount.toLocaleString()} OCF tokens.`);
+      setIsSuccess(true);
+      
+      // Reset form
       setSolAmount('');
-      setUserAllocation(prev => ({
-        allocatedTokens: prev.allocatedTokens + receipt.tokenAmount,
-        vestedTokens: prev.vestedTokens + receipt.vestingInfo.vestedAmount
-      }));
+      setTokenAmount(0);
+      setUsdAmount(0);
       
-      // Update wallet balance
+      // Update balance
       if (wallet.publicKey) {
         const balance = await connection.getBalance(wallet.publicKey);
         setWalletBalance(balance / LAMPORTS_PER_SOL);
       }
-    } catch (error) {
-      console.error('Purchase error:', error);
-      setPurchaseStatus('error');
-      setStatusMessage(`Error: ${error instanceof Error ? error.message : 'Unknown error occurred'}`);
+      
+      // Update allocation
+      if (wallet.publicKey) {
+        const allocation = await getUserAllocation(connection, wallet.publicKey);
+        if (typeof allocation === 'object' && 'allocatedTokens' in allocation) {
+          setUserAllocation(allocation.allocatedTokens);
+        } else {
+          setUserAllocation(allocation as number);
+        }
+      }
+      
+    } catch (err) {
+      console.error('Error processing purchase:', err);
+      setErrorMessage(err instanceof Error ? err.message : 'Transaction failed. Please try again.');
     } finally {
       setIsLoading(false);
     }
   };
-
+  
+  // If not client-side, return a minimal placeholder
+  if (!isClient) {
+    return <div className="animate-pulse bg-primary/20 h-40 rounded-lg"></div>;
+  }
+  
   return (
-    <div className={`bg-dark-card border border-dark-light/30 rounded-lg p-8 ${className}`}>
-      <h2 className="text-2xl font-bold text-white mb-6 text-center">Participate in Presale</h2>
-      
-      {/* Wallet Connection */}
+    <div className={`${className}`}>
       {!wallet.connected ? (
-        <div className="mb-8 flex flex-col items-center">
-          <p className="text-light-muted mb-4 text-center">Connect your Solana wallet to participate in the presale</p>
-          <WalletMultiButton className="!bg-primary hover:!bg-primary-light !transition-colors wallet-adapter-button" />
+        <div className="flex flex-col items-center space-y-6">
+          <div className="p-5 bg-primary/5 rounded-lg border border-primary/20 text-center w-full">
+            <FaWallet className="text-primary text-3xl mx-auto mb-4" />
+            <p className="text-light-muted mb-4">Connect your Solana wallet to participate in the OCF token presale</p>
+            <WalletMultiButton className="!bg-primary hover:!bg-primary-light !transition-colors" />
+          </div>
         </div>
       ) : (
         <>
-          {/* User's Current Allocation (only show if they have allocation) */}
-          {userAllocation.allocatedTokens > 0 && (
-            <div className="mb-6 p-4 bg-primary/10 border border-primary/30 rounded-lg">
-              <h3 className="text-white font-medium mb-2">Your Current Allocation</h3>
-              <div className="flex justify-between mb-1">
-                <span className="text-light-muted">Total Tokens:</span>
-                <span className="text-white font-medium">{userAllocation.allocatedTokens.toLocaleString()} OCF</span>
+          {/* Purchase Form */}
+          <div className="space-y-5">
+            {errorMessage && (
+              <div className="p-3 bg-red-900/20 border border-red-900/30 rounded-md">
+                <p className="text-red-400 text-sm">{errorMessage}</p>
               </div>
-              <div className="flex justify-between">
-                <span className="text-light-muted">Available at Launch:</span>
-                <span className="text-white font-medium">
-                  {(userAllocation.allocatedTokens * (PRESALE_CONFIG.vestingPercentageImmediate / 100)).toLocaleString()} OCF
-                </span>
+            )}
+            
+            {isSuccess && (
+              <div className="p-4 bg-green-900/20 border border-green-900/30 rounded-lg mb-4">
+                <div className="flex items-center">
+                  <FaCheckCircle className="text-green-500 mr-3" size={20} />
+                  <p className="text-light-muted">{statusMessage}</p>
+                </div>
               </div>
-            </div>
-          )}
-          
-          {/* SOL Amount Input */}
-          <div className="mb-6">
-            <div className="flex justify-between mb-2">
-              <label htmlFor="sol-amount" className="text-light-muted">Amount in SOL</label>
-              <span className="text-light-muted">Balance: {walletBalance.toFixed(4)} SOL</span>
-            </div>
-            <div className="relative">
-              <input
-                id="sol-amount"
-                type="text"
-                value={solAmount}
-                onChange={handleAmountChange}
-                placeholder="0.0"
-                className="w-full px-4 py-3 bg-dark-light rounded-lg border border-dark-light focus:outline-none focus:ring-2 focus:ring-primary text-white"
-                disabled={isLoading}
-              />
-              <button 
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 px-2 py-1 bg-primary/20 text-primary text-sm rounded hover:bg-primary/30 transition-colors"
-                onClick={handleSetMaxAmount}
-                disabled={isLoading || walletBalance <= 0}
-              >
-                MAX
-              </button>
-            </div>
-          </div>
-          
-          {/* Estimated Tokens */}
-          <div className="mb-6">
-            <div className="text-light-muted mb-2">You will receive (estimated)</div>
-            <div className="bg-dark-light rounded-lg p-4 text-center">
-              <div className="text-2xl font-bold text-white">{estimatedTokens} OCF</div>
-            </div>
-          </div>
-          
-          {/* Purchase Info */}
-          <div className="mb-6">
-            <div className="bg-dark-light/30 rounded-lg p-4">
-              <div className="flex justify-between mb-2">
-                <span className="text-light-muted">Presale Rate</span>
-                <span className="text-white">${PRESALE_CONFIG.tokenPrice} per OCF</span>
+            )}
+            
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <label htmlFor="solAmount" className="text-light-muted text-sm">Amount (SOL)</label>
+                <span className="text-light-muted text-xs">Balance: {walletBalance.toFixed(4)} SOL</span>
               </div>
-              <div className="flex justify-between mb-2">
-                <span className="text-light-muted">Min Purchase</span>
-                <span className="text-white">${PRESALE_CONFIG.minPurchaseUSD}</span>
-              </div>
-              <div className="flex justify-between mb-2">
-                <span className="text-light-muted">Max Purchase</span>
-                <span className="text-white">${PRESALE_CONFIG.maxPurchaseUSD}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-light-muted">SOL Price (est.)</span>
-                <span className="text-white">${PRESALE_CONFIG.solPriceUSD}</span>
+              <div className="relative">
+                <input
+                  id="solAmount"
+                  type="text"
+                  value={solAmount}
+                  onChange={handleSolAmountChange}
+                  disabled={isLoading}
+                  className="w-full px-4 py-3 bg-dark rounded-lg border border-dark-light/50 text-white focus:outline-none focus:border-primary/50"
+                  placeholder="Enter amount of SOL"
+                />
               </div>
             </div>
-          </div>
-          
-          {/* Status Message */}
-          {purchaseStatus !== 'none' && (
-            <div className={`mb-6 p-4 rounded-lg flex items-center ${
-              purchaseStatus === 'success' ? 'bg-green-900/20 border border-green-600/30' :
-              purchaseStatus === 'error' ? 'bg-red-900/20 border border-red-600/30' :
-              'bg-blue-900/20 border border-blue-600/30'
-            }`}>
-              {purchaseStatus === 'success' && <FaCheckCircle className="text-green-500 mr-3 flex-shrink-0" size={20} />}
-              {purchaseStatus === 'error' && <FaInfoCircle className="text-red-500 mr-3 flex-shrink-0" size={20} />}
-              {purchaseStatus === 'loading' && (
-                <svg className="animate-spin h-5 w-5 text-blue-500 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
+            
+            <div className="flex justify-between items-center p-3 bg-dark-light/10 rounded-lg">
+              <span className="text-light-muted">You'll receive:</span>
+              <span className="text-white font-semibold">{tokenAmount.toLocaleString()} OCF</span>
+            </div>
+            
+            <div className="flex justify-between items-center p-3 bg-dark-light/10 rounded-lg">
+              <span className="text-light-muted">USD equivalent:</span>
+              <span className="text-white font-semibold">${usdAmount.toFixed(2)}</span>
+            </div>
+            
+            <div className="flex justify-between items-center p-3 bg-dark-light/10 rounded-lg">
+              <span className="text-light-muted">Your allocation:</span>
+              <span className="text-white font-semibold">{userAllocation.toLocaleString()} OCF</span>
+            </div>
+            
+            <button
+              onClick={handlePurchase}
+              disabled={isLoading || !!errorMessage || solAmount === '' || parseFloat(solAmount) <= 0}
+              className="w-full py-3 px-6 bg-primary hover:bg-primary-light text-white rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isLoading ? (
+                <div className="flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  <span>{statusMessage || 'Processing...'}</span>
+                </div>
+              ) : (
+                'Purchase OCF Tokens'
               )}
-              <span className={`text-sm ${
-                purchaseStatus === 'success' ? 'text-green-400' :
-                purchaseStatus === 'error' ? 'text-red-400' :
-                'text-blue-400'
-              }`}>
-                {statusMessage}
-              </span>
-            </div>
-          )}
-          
-          {/* Purchase Button */}
-          <button
-            onClick={handlePurchase}
-            disabled={isLoading || !wallet.connected}
-            className={`w-full py-3 rounded-lg font-medium transition-colors ${
-              isLoading
-                ? 'bg-primary/50 text-white/70 cursor-not-allowed'
-                : 'bg-primary hover:bg-primary-light text-white'
-            }`}
-          >
-            {isLoading ? 'Processing...' : 'Purchase Allocation Tickets'}
-          </button>
+            </button>
+          </div>
           
           <div className="mt-4 flex items-center justify-center text-primary text-sm">
             <FaWallet className="mr-2" size={14} />
