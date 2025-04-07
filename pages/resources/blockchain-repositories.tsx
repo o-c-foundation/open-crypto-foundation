@@ -19,12 +19,14 @@ export default function BlockchainRepositoriesPage() {
     { id: 'infrastructure', name: 'Infrastructure', icon: <FaServer /> },
     { id: 'security', name: 'Security Tools', icon: <FaShieldAlt /> },
     { id: 'wallets', name: 'Wallets & Services', icon: <FaWallet /> },
+    { id: 'defi', name: 'DeFi Protocol Tools', icon: <FaCoins /> },
   ];
 
   // Chains
   const chains = [
     { id: 'all', name: 'All Chains', icon: <FaFilter /> },
     { id: 'evm', name: 'EVM Compatible', icon: <FaEthereum /> },
+    { id: 'bnb', name: 'BNB Chain', icon: <FaCoins /> },
     { id: 'solana', name: 'Solana', icon: <FaCoins /> },
   ];
 
@@ -94,6 +96,24 @@ export default function BlockchainRepositoriesPage() {
       stars: "5k+",
       tags: ["TypeScript", "Client", "Modern"]
     },
+    {
+      title: "OpenZeppelin Contracts",
+      description: "Library for secure smart contract development",
+      url: "https://github.com/OpenZeppelin/openzeppelin-contracts",
+      category: "frameworks",
+      chain: "evm",
+      stars: "22.3k+",
+      tags: ["Smart Contracts", "Security", "Standards", "Libraries"]
+    },
+    {
+      title: "Solidity",
+      description: "Contract-oriented programming language for Ethereum",
+      url: "https://github.com/ethereum/solidity",
+      category: "frameworks",
+      chain: "evm",
+      stars: "20.3k+",
+      tags: ["Language", "Compiler", "Smart Contracts"]
+    },
     
     // Developer Tools
     {
@@ -133,6 +153,26 @@ export default function BlockchainRepositoriesPage() {
       tags: ["Debugging", "Monitoring", "CLI"]
     },
     {
+      title: "Typechain",
+      description: "TypeScript bindings for Ethereum smart contracts",
+      url: "https://github.com/dethcrypto/TypeChain",
+      category: "tools",
+      chain: "evm",
+      stars: "4.3k+",
+      tags: ["TypeScript", "Types", "Smart Contracts"]
+    },
+    {
+      title: "Ethernal",
+      description: "Ethereum blockchain explorer for development",
+      url: "https://github.com/tryethernal/ethernal",
+      category: "tools",
+      chain: "evm",
+      stars: "1.1k+",
+      tags: ["Explorer", "Development", "Debugging"]
+    },
+    
+    // Security Tools
+    {
       title: "Slither",
       description: "Solidity static analysis framework",
       url: "https://github.com/crytic/slither",
@@ -158,6 +198,33 @@ export default function BlockchainRepositoriesPage() {
       chain: "evm",
       stars: "200+",
       tags: ["Security", "CLI", "Auditing"]
+    },
+    {
+      title: "Echidna",
+      description: "Fast smart contract fuzzer",
+      url: "https://github.com/crytic/echidna",
+      category: "security",
+      chain: "evm",
+      stars: "1.8k+",
+      tags: ["Security", "Fuzzing", "Testing"]
+    },
+    {
+      title: "Scribble",
+      description: "Runtime verification tool for Solidity",
+      url: "https://github.com/ConsenSys/scribble",
+      category: "security",
+      chain: "evm",
+      stars: "280+",
+      tags: ["Security", "Runtime Verification", "Assertions"]
+    },
+    {
+      title: "Securify",
+      description: "Security scanner for Ethereum smart contracts",
+      url: "https://github.com/eth-sri/securify2",
+      category: "security",
+      chain: "evm",
+      stars: "990+",
+      tags: ["Security", "Scanner", "Verification"]
     },
     
     // Bots & Automation
@@ -196,6 +263,24 @@ export default function BlockchainRepositoriesPage() {
       chain: "evm", 
       stars: "300+",
       tags: ["Automation", "Task Execution"]
+    },
+    {
+      title: "Defender Autotask",
+      description: "Serverless functions for executing on-chain operations",
+      url: "https://github.com/OpenZeppelin/defender-autotask-examples",
+      category: "bots",
+      chain: "evm",
+      stars: "200+",
+      tags: ["Automation", "Security", "Serverless"]
+    },
+    {
+      title: "Tenderly Actions",
+      description: "Create custom off-chain logic for Web3 projects",
+      url: "https://github.com/Tenderly/tenderly-actions-example",
+      category: "bots",
+      chain: "evm",
+      stars: "120+",
+      tags: ["Automation", "Off-chain", "Web3"]
     },
     
     // Infrastructure
@@ -244,6 +329,62 @@ export default function BlockchainRepositoriesPage() {
       stars: "3.6k+",
       tags: ["Indexing", "GraphQL", "Data"]
     },
+    {
+      title: "Node.js Ethereum Client",
+      description: "Lightweight Ethereum client for Node.js",
+      url: "https://github.com/ethereumjs/ethereumjs-monorepo",
+      category: "infrastructure",
+      chain: "evm",
+      stars: "6.1k+",
+      tags: ["Client", "JavaScript", "Node.js"]
+    },
+    {
+      title: "Nethermind",
+      description: "High-performance, highly configurable Ethereum client",
+      url: "https://github.com/NethermindEth/nethermind",
+      category: "infrastructure",
+      chain: "evm",
+      stars: "2.6k+",
+      tags: ["Node", "Client", ".NET"]
+    },
+    
+    // DeFi Protocol Tools
+    {
+      title: "Uniswap Interface",
+      description: "An open source interface for the Uniswap protocol",
+      url: "https://github.com/Uniswap/interface",
+      category: "defi",
+      chain: "evm",
+      stars: "4.3k+",
+      tags: ["DEX", "Interface", "React"]
+    },
+    {
+      title: "Uniswap v3 Core",
+      description: "Core smart contracts of Uniswap v3",
+      url: "https://github.com/Uniswap/v3-core",
+      category: "defi",
+      chain: "evm",
+      stars: "3.2k+",
+      tags: ["DEX", "Smart Contracts", "AMM"]
+    },
+    {
+      title: "Compound Protocol",
+      description: "The Compound On-Chain Interest Rate Protocol",
+      url: "https://github.com/compound-finance/compound-protocol",
+      category: "defi",
+      chain: "evm",
+      stars: "2.1k+",
+      tags: ["Lending", "Borrowing", "Interest Rates"]
+    },
+    {
+      title: "Aave Protocol",
+      description: "Non-custodial liquidity protocol for earning interest on deposits and borrowing assets",
+      url: "https://github.com/aave/aave-protocol",
+      category: "defi",
+      chain: "evm",
+      stars: "2.5k+",
+      tags: ["Lending", "Borrowing", "Liquidity"]
+    },
     
     // Wallets & Services
     {
@@ -272,6 +413,127 @@ export default function BlockchainRepositoriesPage() {
       chain: "evm",
       stars: "7k+",
       tags: ["Library", "Wallets", "Signing"]
+    },
+    {
+      title: "Rainbow Kit",
+      description: "React library that makes it easy to add wallet connection to dApp",
+      url: "https://github.com/rainbow-me/rainbowkit",
+      category: "wallets",
+      chain: "evm",
+      stars: "2.4k+",
+      tags: ["Wallet Connection", "React", "UI"]
+    },
+    {
+      title: "Web3Modal",
+      description: "Library for wallet connection with Web3.js/ethers.js",
+      url: "https://github.com/WalletConnect/web3modal",
+      category: "wallets",
+      chain: "evm",
+      stars: "4.5k+",
+      tags: ["Wallet Connection", "UI", "Library"]
+    }
+  ];
+
+  // BNB Chain Repositories
+  const bnbRepositories = [
+    // Frameworks & SDKs
+    {
+      title: "BNB Chain SDK",
+      description: "Development kit for BNB Chain",
+      url: "https://github.com/bnb-chain/javascript-sdk",
+      category: "frameworks",
+      chain: "bnb",
+      stars: "550+",
+      tags: ["JavaScript", "SDK", "Development"]
+    },
+    {
+      title: "Hardhat BNB Chain Plugin",
+      description: "Hardhat plugin for BNB Chain development",
+      url: "https://github.com/binance-chain-npm/hardhat-bnb-chain",
+      category: "frameworks",
+      chain: "bnb",
+      stars: "120+",
+      tags: ["Hardhat", "Plugin", "Development"]
+    },
+    {
+      title: "BSC Contract Library",
+      description: "Smart contract library for BNB Chain",
+      url: "https://github.com/bnb-chain/bsc-contract-template",
+      category: "frameworks",
+      chain: "bnb",
+      stars: "240+",
+      tags: ["Smart Contracts", "Templates", "Solidity"]
+    },
+    
+    // Developer Tools
+    {
+      title: "BSC Truffle Box",
+      description: "Truffle box for BNB Chain development",
+      url: "https://github.com/binance-chain/bsc-truffle-starter-box",
+      category: "tools",
+      chain: "bnb",
+      stars: "230+",
+      tags: ["Truffle", "Starter", "Development"]
+    },
+    {
+      title: "BNB Chain Tools",
+      description: "Collection of tools for BNB Chain",
+      url: "https://github.com/bnb-chain/bsc-develop-toolkit",
+      category: "tools",
+      chain: "bnb",
+      stars: "160+",
+      tags: ["Development", "Toolkit", "Utilities"]
+    },
+    
+    // Security Tools
+    {
+      title: "BSC Security Tools",
+      description: "Security tools for BNB Chain contracts",
+      url: "https://github.com/bnb-chain/bsc-security-tools",
+      category: "security",
+      chain: "bnb",
+      stars: "210+",
+      tags: ["Security", "Auditing", "Analysis"]
+    },
+    
+    // Infrastructure
+    {
+      title: "BNB Chain Node",
+      description: "Core client for BNB Chain",
+      url: "https://github.com/bnb-chain/bsc",
+      category: "infrastructure",
+      chain: "bnb",
+      stars: "1.7k+",
+      tags: ["Node", "Client", "Implementation"]
+    },
+    {
+      title: "BNB Chain Explorer",
+      description: "Block explorer for BNB Chain",
+      url: "https://github.com/bnb-chain/bsc-explorer",
+      category: "infrastructure",
+      chain: "bnb",
+      stars: "220+",
+      tags: ["Explorer", "Blocks", "Transactions"]
+    },
+    
+    // DeFi Protocol Tools
+    {
+      title: "PancakeSwap",
+      description: "Leading DEX on BNB Chain",
+      url: "https://github.com/pancakeswap/pancake-swap-core",
+      category: "defi",
+      chain: "bnb",
+      stars: "1.5k+",
+      tags: ["DEX", "AMM", "Swap"]
+    },
+    {
+      title: "Venus Protocol",
+      description: "Algorithmic money market and stablecoin protocol on BNB Chain",
+      url: "https://github.com/VenusProtocol/venus-protocol",
+      category: "defi",
+      chain: "bnb",
+      stars: "700+",
+      tags: ["Lending", "Stablecoins", "Money Market"]
     }
   ];
 
@@ -314,6 +576,33 @@ export default function BlockchainRepositoriesPage() {
       stars: "2.4k+",
       tags: ["Programs", "Libraries", "Examples"]
     },
+    {
+      title: "Metaplex",
+      description: "Protocol and tools for NFTs on Solana",
+      url: "https://github.com/metaplex-foundation/metaplex",
+      category: "frameworks",
+      chain: "solana",
+      stars: "1.7k+",
+      tags: ["NFTs", "Protocol", "Framework"]
+    },
+    {
+      title: "Solana Swift",
+      description: "Swift SDK for Solana",
+      url: "https://github.com/metaplex-foundation/solana-swift",
+      category: "frameworks",
+      chain: "solana",
+      stars: "170+",
+      tags: ["Swift", "iOS", "Mobile"]
+    },
+    {
+      title: "Solana.Unity-SDK",
+      description: "Unity SDK for Solana",
+      url: "https://github.com/magicblock-labs/Solana.Unity-SDK",
+      category: "frameworks",
+      chain: "solana",
+      stars: "350+",
+      tags: ["Unity", "Gaming", "SDK"]
+    },
     
     // Developer Tools
     {
@@ -352,6 +641,24 @@ export default function BlockchainRepositoriesPage() {
       stars: "2.4k+",
       tags: ["Tokens", "Testing", "Faucet"]
     },
+    {
+      title: "Solana RPC",
+      description: "RPC API for Solana",
+      url: "https://github.com/solana-labs/solana/tree/master/rpc",
+      category: "tools",
+      chain: "solana",
+      stars: "11.5k+",
+      tags: ["RPC", "API", "Client"]
+    },
+    {
+      title: "Backpack",
+      description: "Wallet, explorer, and development toolkit",
+      url: "https://github.com/coral-xyz/backpack",
+      category: "tools",
+      chain: "solana",
+      stars: "1.4k+",
+      tags: ["Wallet", "Explorer", "Development"]
+    },
     
     // Security
     {
@@ -372,6 +679,15 @@ export default function BlockchainRepositoriesPage() {
       stars: "70+",
       tags: ["Security", "Standards", "Documentation"]
     },
+    {
+      title: "Solana Verify",
+      description: "Automated security verification for Solana programs",
+      url: "https://github.com/coral-xyz/sealevel-attacks",
+      category: "security",
+      chain: "solana",
+      stars: "540+",
+      tags: ["Security", "Verification", "Testing"]
+    },
     
     // Bots & Automation
     {
@@ -391,6 +707,15 @@ export default function BlockchainRepositoriesPage() {
       chain: "solana",
       stars: "300+",
       tags: ["MEV", "Block Building", "Validators"]
+    },
+    {
+      title: "Triton",
+      description: "OTC trading bot for Solana",
+      url: "https://github.com/project-serum/triton",
+      category: "bots",
+      chain: "solana",
+      stars: "120+",
+      tags: ["Trading", "Bot", "OTC"]
     },
     
     // Infrastructure
@@ -421,6 +746,44 @@ export default function BlockchainRepositoriesPage() {
       stars: "100+",
       tags: ["API", "Infrastructure", "Data"]
     },
+    {
+      title: "Geyser Plugin",
+      description: "Plugin for Solana validator to stream account data",
+      url: "https://github.com/solana-labs/solana/tree/master/geyser-plugin-manager",
+      category: "infrastructure",
+      chain: "solana",
+      stars: "11.5k+",
+      tags: ["Plugin", "Data Streaming", "Validator"]
+    },
+    
+    // DeFi Protocol Tools
+    {
+      title: "Raydium",
+      description: "An on-chain liquidity provider for Solana",
+      url: "https://github.com/raydium-io/raydium-sdk",
+      category: "defi",
+      chain: "solana",
+      stars: "440+",
+      tags: ["AMM", "Liquidity", "DEX"]
+    },
+    {
+      title: "Orca SDK",
+      description: "SDK for Orca, a DEX on Solana",
+      url: "https://github.com/orca-so/orca-sdk",
+      category: "defi",
+      chain: "solana",
+      stars: "230+",
+      tags: ["DEX", "SDK", "Swap"]
+    },
+    {
+      title: "Solend",
+      description: "Lending protocol on Solana",
+      url: "https://github.com/solendprotocol/public",
+      category: "defi",
+      chain: "solana",
+      stars: "210+",
+      tags: ["Lending", "Borrowing", "DeFi"]
+    },
     
     // Wallets & Services
     {
@@ -449,11 +812,20 @@ export default function BlockchainRepositoriesPage() {
       chain: "solana",
       stars: "300+",
       tags: ["Wallet", "Extension", "Mobile"]
+    },
+    {
+      title: "Glow Wallet",
+      description: "Web3 wallet for Solana",
+      url: "https://github.com/glow-xyz",
+      category: "wallets",
+      chain: "solana",
+      stars: "150+",
+      tags: ["Wallet", "Web3", "Mobile"]
     }
   ];
 
   // Combine repositories
-  const allRepositories = [...evmRepositories, ...solanaRepositories];
+  const allRepositories = [...evmRepositories, ...bnbRepositories, ...solanaRepositories];
   
   // Filter repositories based on search, chain, and category
   const filteredRepositories = allRepositories.filter(repo => {
@@ -468,10 +840,10 @@ export default function BlockchainRepositoriesPage() {
   return (
     <>
       <Head>
-        <title>Blockchain Developer Repositories | Open Crypto Foundation</title>
+        <title>Developer Tools | Open Crypto Foundation</title>
         <meta 
           name="description" 
-          content="Comprehensive directory of essential EVM and Solana repositories, including developer tools, frameworks, bots, and security tools." 
+          content="Comprehensive directory of essential blockchain development tools, repositories, frameworks, and utilities for EVM, BNB Chain, and Solana development." 
         />
       </Head>
 
@@ -482,11 +854,11 @@ export default function BlockchainRepositoriesPage() {
         <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="mb-6 text-4xl md:text-5xl font-bold text-white">
-              Blockchain Developer Repositories
+              Developer Tools & Repositories
             </h1>
             <p className="mb-8 text-xl text-gray-300 leading-relaxed">
-              A comprehensive directory of essential repositories for EVM and Solana blockchain development, 
-              including frameworks, tools, security utilities, bots, and infrastructure components.
+              A comprehensive directory of essential repositories, frameworks, tools, security utilities, and development resources 
+              for building on EVM chains, BNB Chain, and Solana.
             </p>
           </div>
         </div>
@@ -559,9 +931,9 @@ export default function BlockchainRepositoriesPage() {
                     <div className="p-6">
                       <div className="flex items-center justify-between mb-3">
                         <span className={`px-3 py-1 text-xs font-semibold rounded-full ${
-                          repo.chain === 'evm' ? 'bg-blue-900/30 text-blue-400' : 'bg-purple-900/30 text-purple-400'
+                          repo.chain === 'evm' ? 'bg-blue-900/30 text-blue-400' : repo.chain === 'bnb' ? 'bg-purple-900/30 text-purple-400' : 'bg-purple-900/30 text-purple-400'
                         }`}>
-                          {repo.chain === 'evm' ? 'EVM' : 'Solana'}
+                          {repo.chain === 'evm' ? 'EVM' : repo.chain === 'bnb' ? 'BNB Chain' : 'Solana'}
                         </span>
                         <span className="text-gray-400 text-sm flex items-center">
                           <FaGithub className="mr-1" /> {repo.stars}

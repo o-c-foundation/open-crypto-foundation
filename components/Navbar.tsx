@@ -23,7 +23,8 @@ export default function Navbar() {
       name: t('resources'), 
       children: [
         { name: t('forTraders'), href: '/resources/traders', description: 'Resources for crypto traders and DeFi users' },
-        { name: t('forDevelopers'), href: '/resources/developers', description: 'Resources for smart contract and DeFi developers' },
+        { name: 'Developer Read', href: '/resources/developers', description: 'Essential reading material for smart contract and DeFi developers' },
+        { name: 'Developer Tools', href: '/resources/blockchain-repositories', description: 'Comprehensive directory of blockchain development tools and repositories' },
         { name: t('defiFundamentals'), href: '/resources/defi-fundamentals', description: 'Learn about cryptocurrency, blockchain technology, and decentralized finance' },
         { name: t('securityGuide'), href: '/resources/security-guide', description: 'Protect your crypto assets with essential security knowledge and best practices' },
         { name: t('walletGuide'), href: '/resources/wallet-guide', description: 'Set up and manage your crypto wallet, networks, tokens, and NFTs' },

@@ -9,10 +9,10 @@ export default function DevelopersPage() {
   return (
     <>
       <Head>
-        <title>For Developers | Open Crypto Foundation</title>
+        <title>Developer Read | Open Crypto Foundation</title>
         <meta 
           name="description" 
-          content="Resources, guidelines, and tools for smart contract and DeFi developers committed to building secure and transparent projects." 
+          content="Essential reading material, guidelines, and educational resources for smart contract and DeFi developers committed to building secure and transparent projects." 
         />
       </Head>
 
@@ -21,7 +21,7 @@ export default function DevelopersPage() {
         <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="mb-6 text-4xl md:text-5xl font-bold text-white">
-              For Developers Building the<br />
+              Developer Read<br />
               <span className="bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 text-transparent bg-clip-text">Future of Finance</span>
             </h1>
             <p className="mb-8 text-xl text-gray-300 leading-relaxed">
