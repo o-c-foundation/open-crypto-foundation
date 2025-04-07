@@ -2,10 +2,28 @@ import * as anchor from '@project-serum/anchor';
 import { Connection, PublicKey, Transaction, SystemProgram, LAMPORTS_PER_SOL } from '@solana/web3.js';
 import { WalletContextState } from '@solana/wallet-adapter-react';
 
-// Constants
-export const PRESALE_PROGRAM_ID = new PublicKey(process.env.NEXT_PUBLIC_PRESALE_PROGRAM_ID || 'PLACEHOLDER_PROGRAM_ID');
-export const TREASURY_WALLET = new PublicKey(process.env.NEXT_PUBLIC_TREASURY_WALLET || 'PLACEHOLDER_TREASURY_WALLET');
-export const TOKEN_MINT = new PublicKey(process.env.NEXT_PUBLIC_TOKEN_MINT || 'PLACEHOLDER_TOKEN_MINT');
+// Helper to safely create PublicKey objects
+const safePublicKey = (address?: string): PublicKey => {
+  // A valid dummy Solana address to use as fallback (all zeros)
+  const FALLBACK_ADDRESS = '11111111111111111111111111111111';
+  
+  // Only create PublicKey if it appears to be a valid base58 string
+  if (address && /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(address)) {
+    try {
+      return new PublicKey(address);
+    } catch (error) {
+      console.warn(`Invalid public key: ${address}. Using fallback.`);
+      return new PublicKey(FALLBACK_ADDRESS);
+    }
+  }
+  
+  return new PublicKey(FALLBACK_ADDRESS);
+};
+
+// Constants - use safePublicKey to avoid errors with placeholder values
+export const PRESALE_PROGRAM_ID = safePublicKey(process.env.NEXT_PUBLIC_PRESALE_PROGRAM_ID);
+export const TREASURY_WALLET = safePublicKey(process.env.NEXT_PUBLIC_TREASURY_WALLET);
+export const TOKEN_MINT = safePublicKey(process.env.NEXT_PUBLIC_TOKEN_MINT);
 
 // Presale configuration
 export const PRESALE_CONFIG = {

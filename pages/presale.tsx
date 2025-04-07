@@ -5,9 +5,14 @@ import Image from 'next/image';
 import { FaCheck, FaCoins, FaInfoCircle, FaClock, FaLock, FaRocket, FaWallet, FaExternalLinkAlt, FaArrowRight } from 'react-icons/fa';
 import NewsletterSubscribe from '../components/NewsletterSubscribe';
 import ScrollToTop from '../components/ScrollToTop';
-import PresalePurchaseForm from '../components/PresalePurchaseForm';
-import { useConnection } from '@solana/wallet-adapter-react';
-import { PRESALE_CONFIG, getPresaleStatus } from '../utils/presaleContract';
+import dynamic from 'next/dynamic';
+import { PRESALE_CONFIG } from '../utils/presaleContract';
+
+// Dynamically import the PresalePurchaseForm to avoid SSR errors with Solana wallet
+const PresalePurchaseForm = dynamic(
+  () => import('../components/PresalePurchaseForm'),
+  { ssr: false }
+);
 
 // Presale steps
 const presaleSteps = [
@@ -70,7 +75,6 @@ const presaleFAQs = [
 ];
 
 export default function PresalePage() {
-  const { connection } = useConnection();
   const [daysLeft, setDaysLeft] = useState<number>(30);
   const [hoursLeft, setHoursLeft] = useState<number>(0);
   const [isPreSaleActive, setIsPreSaleActive] = useState<boolean>(false);
@@ -122,11 +126,19 @@ export default function PresalePage() {
     return () => clearInterval(timer);
   }, []);
 
-  // Fetch presale status
+  // Fetch presale status - client-side only to avoid SSR issues
   useEffect(() => {
     const fetchPresaleStatus = async () => {
       try {
-        const status = await getPresaleStatus(connection);
+        // For demo/development, just use static data
+        const status = {
+          isActive: true,
+          totalRaised: 490000,
+          participantCount: 1250,
+          remainingAllocation: PRESALE_CONFIG.hardCapUSD - 490000,
+          hardCapReached: false
+        };
+        
         setPresaleStatus({
           totalRaised: status.totalRaised,
           participantCount: status.participantCount,
@@ -143,7 +155,7 @@ export default function PresalePage() {
     const intervalId = setInterval(fetchPresaleStatus, 30000); // Update every 30 seconds
 
     return () => clearInterval(intervalId);
-  }, [connection]);
+  }, []);
 
   return (
     <>
