@@ -5,13 +5,39 @@ import { FaServer, FaGlobe, FaEthereum, FaCoins, FaFilter, FaSearch, FaExternalL
 import NewsletterSubscribe from '../../components/NewsletterSubscribe';
 import ScrollToTop from '../../components/ScrollToTop';
 
+// Define types for our RPC endpoints
+interface RPCEndpoint {
+  name: string;
+  url: string;
+  type: 'provider' | 'public' | 'websocket' | 'setup';
+  chain: string;
+}
+
+interface Chain {
+  id: string;
+  name: string;
+  icon: React.ReactNode;
+}
+
+interface RPCType {
+  id: string;
+  name: string;
+}
+
+// Type for grouped endpoints
+interface GroupedEndpoints {
+  [chain: string]: {
+    [type: string]: RPCEndpoint[];
+  };
+}
+
 export default function RPCEndpointsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedChain, setSelectedChain] = useState('all');
   const [selectedType, setSelectedType] = useState('all');
 
   // Network types
-  const chains = [
+  const chains: Chain[] = [
     { id: 'all', name: 'All Networks', icon: <FaFilter /> },
     { id: 'ethereum', name: 'Ethereum', icon: <FaEthereum /> },
     { id: 'bsc', name: 'BSC', icon: <FaCoins /> },
@@ -24,7 +50,7 @@ export default function RPCEndpointsPage() {
   ];
 
   // RPC types
-  const rpcTypes = [
+  const rpcTypes: RPCType[] = [
     { id: 'all', name: 'All Types' },
     { id: 'provider', name: 'Service Providers' },
     { id: 'public', name: 'Public Endpoints' },
@@ -33,7 +59,7 @@ export default function RPCEndpointsPage() {
   ];
 
   // Ethereum RPC Endpoints
-  const ethereumProviders = [
+  const ethereumProviders: RPCEndpoint[] = [
     { name: 'Infura.io', url: 'https://infura.io', type: 'provider', chain: 'ethereum' },
     { name: 'Alchemy', url: 'https://www.alchemy.com', type: 'provider', chain: 'ethereum' },
     { name: 'GetBlock', url: 'https://getblock.io/nodes/eth/', type: 'provider', chain: 'ethereum' },
@@ -61,7 +87,7 @@ export default function RPCEndpointsPage() {
     { name: 'Stackup', url: 'https://www.stackup.sh/', type: 'provider', chain: 'ethereum' },
   ];
 
-  const ethereumEndpoints = [
+  const ethereumEndpoints: RPCEndpoint[] = [
     { name: 'Ankr', url: 'https://rpc.ankr.com/eth', type: 'public', chain: 'ethereum' },
     { name: 'BlockPI', url: 'https://ethereum.blockpi.network/v1/rpc/public', type: 'public', chain: 'ethereum' },
     { name: 'MyCrypto', url: 'https://api.mycryptoapi.com/eth', type: 'public', chain: 'ethereum' },
@@ -96,7 +122,7 @@ export default function RPCEndpointsPage() {
   ];
 
   // BSC RPC Endpoints
-  const bscProviders = [
+  const bscProviders: RPCEndpoint[] = [
     { name: 'ANKR', url: 'https://ankr.com', type: 'provider', chain: 'bsc' },
     { name: 'GetBlock', url: 'https://getblock.io', type: 'provider', chain: 'bsc' },
     { name: 'Pocket Network', url: 'https://mainnet.portal.pokt.network', type: 'provider', chain: 'bsc' },
@@ -109,7 +135,7 @@ export default function RPCEndpointsPage() {
     { name: 'Stackup', url: 'https://www.stackup.sh/', type: 'provider', chain: 'bsc' },
   ];
 
-  const bscEndpoints = [
+  const bscEndpoints: RPCEndpoint[] = [
     { name: '48.club', url: 'https://four.rpc.48.club', type: 'public', chain: 'bsc' },
     { name: 'Nodies', url: 'https://bsc-pokt.nodies.app', type: 'public', chain: 'bsc' },
     { name: 'Binance Data Seed', url: 'https://data-seed-prebsc-1-s1.binance.org:8545', type: 'public', chain: 'bsc' },
@@ -137,16 +163,16 @@ export default function RPCEndpointsPage() {
     { name: 'Terminet', url: 'https://bscapi.terminet.io/rpc', type: 'public', chain: 'bsc' },
   ];
 
-  const bscWebsockets = [
+  const bscWebsockets: RPCEndpoint[] = [
     { name: 'Nariox', url: 'wss://bsc-ws-node.nariox.org:443', type: 'websocket', chain: 'bsc' },
   ];
 
-  const bscSetup = [
+  const bscSetup: RPCEndpoint[] = [
     { name: 'Run Your Own Node', url: 'https://docs.binance.org/smart-chain/developer/fullnode.html', type: 'setup', chain: 'bsc' },
   ];
 
   // Polygon
-  const polygonProviders = [
+  const polygonProviders: RPCEndpoint[] = [
     { name: 'Infura.io', url: 'https://infura.io', type: 'provider', chain: 'polygon' },
     { name: 'GetBlock', url: 'https://getblock.io/nodes/matic/', type: 'provider', chain: 'polygon' },
     { name: 'MaticVigil', url: 'https://maticvigil.com', type: 'provider', chain: 'polygon' },
@@ -168,7 +194,7 @@ export default function RPCEndpointsPage() {
     { name: 'Stackup', url: 'https://www.stackup.sh/', type: 'provider', chain: 'polygon' },
   ];
 
-  const polygonEndpoints = [
+  const polygonEndpoints: RPCEndpoint[] = [
     { name: 'Polygon RPC', url: 'https://rpc-mainnet.matic.network', type: 'public', chain: 'polygon' },
     { name: 'MaticVigil', url: 'https://rpc-mainnet.maticvigil.com', type: 'public', chain: 'polygon' },
     { name: 'Bware Labs Full', url: 'https://matic-mainnet-full-rpc.bwarelabs.com', type: 'public', chain: 'polygon' },
@@ -183,18 +209,18 @@ export default function RPCEndpointsPage() {
     { name: 'Stackup', url: 'https://public.stackup.sh/api/v1/node/polygon-mainnet', type: 'public', chain: 'polygon' },
   ];
 
-  const polygonWebsockets = [
+  const polygonWebsockets: RPCEndpoint[] = [
     { name: 'Polygon RPC', url: 'wss://rpc-mainnet.matic.network', type: 'websocket', chain: 'polygon' },
     { name: 'GetBlock', url: 'wss://matic.getblock.io/api_key/mainnet/', type: 'websocket', chain: 'polygon' },
     { name: 'MaticVigil', url: 'wss://rpc-mainnet.maticvigil.com/ws', type: 'websocket', chain: 'polygon' },
   ];
 
-  const polygonSetup = [
+  const polygonSetup: RPCEndpoint[] = [
     { name: 'Run Your Own Node', url: 'https://docs.polygon.technology/docs/maintain/validate/validator-index', type: 'setup', chain: 'polygon' },
   ];
 
   // Helper function to filter RPC endpoints based on search and filter criteria
-  const filterRPCEndpoints = (endpoints) => {
+  const filterRPCEndpoints = (endpoints: RPCEndpoint[]): RPCEndpoint[] => {
     return endpoints.filter(endpoint => {
       // Filter by chain
       if (selectedChain !== 'all' && endpoint.chain !== selectedChain) {
@@ -217,7 +243,7 @@ export default function RPCEndpointsPage() {
   };
 
   // Combine all endpoints for the view
-  const allEndpoints = [
+  const allEndpoints: RPCEndpoint[] = [
     ...ethereumProviders, ...ethereumEndpoints,
     ...bscProviders, ...bscEndpoints, ...bscWebsockets, ...bscSetup,
     ...polygonProviders, ...polygonEndpoints, ...polygonWebsockets, ...polygonSetup,
@@ -227,7 +253,7 @@ export default function RPCEndpointsPage() {
   const filteredEndpoints = filterRPCEndpoints(allEndpoints);
   
   // Group endpoints by chain and type for display
-  const groupedEndpoints = {};
+  const groupedEndpoints: GroupedEndpoints = {};
   
   filteredEndpoints.forEach(endpoint => {
     if (!groupedEndpoints[endpoint.chain]) {
@@ -242,7 +268,7 @@ export default function RPCEndpointsPage() {
   });
 
   // Chain display names mapping
-  const chainNames = {
+  const chainNames: Record<string, string> = {
     'ethereum': 'Ethereum',
     'bsc': 'Binance Smart Chain (BSC)',
     'polygon': 'Polygon',
@@ -254,7 +280,7 @@ export default function RPCEndpointsPage() {
   };
 
   // RPC type display names mapping
-  const typeNames = {
+  const typeNames: Record<string, string> = {
     'provider': 'Service Providers',
     'public': 'Public Endpoints',
     'websocket': 'WebSocket Endpoints',
@@ -303,7 +329,7 @@ export default function RPCEndpointsPage() {
                     placeholder="Search by name or URL..."
                     className="w-full px-4 py-3 bg-dark-light rounded-lg border border-dark-light focus:outline-none focus:ring-2 focus:ring-primary text-white pl-10"
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   />
                   <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 </div>
@@ -313,7 +339,7 @@ export default function RPCEndpointsPage() {
                   <select
                     className="w-full md:w-48 px-4 py-3 bg-dark-light rounded-lg border border-dark-light focus:outline-none focus:ring-2 focus:ring-primary text-white"
                     value={selectedChain}
-                    onChange={(e) => setSelectedChain(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedChain(e.target.value)}
                   >
                     {chains.map(chain => (
                       <option key={chain.id} value={chain.id}>
@@ -328,7 +354,7 @@ export default function RPCEndpointsPage() {
                   <select
                     className="w-full md:w-48 px-4 py-3 bg-dark-light rounded-lg border border-dark-light focus:outline-none focus:ring-2 focus:ring-primary text-white"
                     value={selectedType}
-                    onChange={(e) => setSelectedType(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedType(e.target.value)}
                   >
                     {rpcTypes.map(type => (
                       <option key={type.id} value={type.id}>
