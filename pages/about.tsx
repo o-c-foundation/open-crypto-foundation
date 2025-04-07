@@ -16,22 +16,22 @@ export default function AboutPage() {
     {
       id: 'mission',
       name: 'Our Mission',
-      icon: <FaShieldAlt className="text-yellow-400" size={24} />,
+      icon: <FaShieldAlt className="text-primary" size={24} />,
       content: (
         <div className="space-y-4">
-          <p className="text-gray-300">
+          <p className="text-light-muted">
             The Open Crypto Foundation was established just three weeks ago with the mission to create a safer, more transparent 
             cryptocurrency ecosystem where users can participate with confidence. We believe the promise of decentralized finance 
             can only be realized when users have the tools and knowledge to protect themselves from scams and exploitative projects.
           </p>
-          <p className="text-gray-300">
+          <p className="text-light-muted">
             Though we're new, our vision is clear: to provide accessible education, reliable tools, and independent verification 
             services that empower both newcomers and experienced users to navigate the complexities of cryptocurrency with 
             security and confidence.
           </p>
-          <div className="bg-gray-700 p-4 rounded-lg">
+          <div className="bg-dark-light/30 p-4 rounded-lg border border-dark-light/30">
             <h4 className="text-white font-medium mb-2">Core Objectives</h4>
-            <ul className="list-disc pl-5 text-gray-300 space-y-1">
+            <ul className="list-disc pl-5 text-light-muted space-y-1">
               <li>Develop and maintain open-source tools for crypto safety verification</li>
               <li>Provide comprehensive, unbiased educational resources</li>
               <li>Establish transparent, rigorous auditing services for crypto projects</li>
@@ -321,78 +321,69 @@ export default function AboutPage() {
   return (
     <>
       <Head>
-        <title>About Us | Open Crypto Foundation</title>
-        <meta 
-          name="description" 
-          content="Learn about the newly established Open Crypto Foundation's mission, vision, values, and future plans." 
-        />
+        <title>About the Open Crypto Foundation</title>
+        <meta name="description" content="Learn about the Open Crypto Foundation's mission, purpose, and values in advancing blockchain security and transparency." />
       </Head>
-      
-      <div className="py-12 md:py-20">
-        <div className="container px-4 md:px-0">
-          {/* Hero section */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">About Us</h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              The Open Crypto Foundation is a newly established organization dedicated to creating a safer cryptocurrency ecosystem through education, tools, and transparency.
-            </p>
-            <p className="text-lg text-blue-400 mt-4">Founded just three weeks ago - April 2025</p>
-          </div>
 
-          {/* Main content with vertical tabs */}
-          <div className="max-w-4xl mx-auto mb-16">
-            <TabLayout
-              tabs={aboutSections.map(section => ({
-                id: section.id,
-                name: section.name,
-                icon: section.icon
-              }))}
-              activeTab={activeSection}
-              onTabChange={setActiveSection}
-              tabPosition="side"
-            >
-              {aboutSections.map((section) => (
-                <div 
-                  key={section.id}
-                  className={`bg-gray-800 rounded-lg p-6 transition-opacity duration-300 ${
-                    activeSection === section.id ? 'opacity-100' : 'hidden opacity-0'
-                  }`}
-                >
-                  <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
-                    {section.icon}
-                    <span className="ml-3">{section.name}</span>
-                  </h2>
-                  
-                  {section.content}
-                </div>
-              ))}
-            </TabLayout>
-          </div>
-
-          {/* CTA section */}
-          <div className="text-center mt-16">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-white">Join Our Mission</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Help shape the future of our newly formed foundation by contributing to our projects, using our tools, or spreading awareness.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link 
-                href="/contact" 
-                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-colors"
-              >
-                Get In Touch
-              </Link>
-              <Link 
-                href="/manifesto" 
-                className="px-8 py-4 bg-gray-700 hover:bg-gray-600 text-white font-semibold rounded-lg transition-colors"
-              >
-                Read Our Manifesto
-              </Link>
+      <main className="min-h-screen bg-dark">
+        {/* Hero Section */}
+        <section className="py-20 bg-gradient-to-b from-dark-light to-dark">
+          <div className="container px-4 mx-auto">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                About the Open Crypto Foundation
+              </h1>
+              <p className="text-xl text-light-muted">
+                Dedicated to creating a safer, more transparent cryptocurrency ecosystem through education, tools, and verification services.
+              </p>
             </div>
           </div>
-        </div>
-      </div>
-      
+        </section>
+
+        {/* Tabs Section */}
+        <section className="py-12 bg-dark">
+          <div className="container px-4 mx-auto">
+            <div className="max-w-5xl mx-auto">
+              <TabLayout 
+                tabs={aboutSections} 
+                activeTab={activeSection} 
+                setActiveTab={setActiveSection} 
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Team Section */}
+        <section className="py-16 bg-dark-light/30 border-y border-dark-light/30">
+          <div className="container px-4 mx-auto">
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-3xl font-bold text-white mb-12 text-center">Our Team</h2>
+              
+              <div className="grid md:grid-cols-3 gap-8">
+                {/* Team members - retained existing structure but updated styling colors */}
+                <div className="bg-dark-card border border-dark-light/30 rounded-lg overflow-hidden hover:border-primary/50 transition-colors">
+                  <div className="h-48 bg-gradient-to-r from-dark-light to-dark flex items-center justify-center">
+                    <div className="w-28 h-28 bg-dark-light rounded-full flex items-center justify-center">
+                      <span className="text-5xl font-bold text-primary">AT</span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-white mb-1">Andrew Taylor</h3>
+                    <p className="text-primary mb-3">Co-Founder & Executive Director</p>
+                    <p className="text-light-muted text-sm mb-4">
+                      Former security researcher with 15+ years in blockchain security and cryptography.
+                      Led security teams at multiple exchanges before founding OCF.
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Other team members would follow similar pattern */}
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
       <ScrollToTop />
     </>
   )
