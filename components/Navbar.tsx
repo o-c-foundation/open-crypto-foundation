@@ -39,11 +39,12 @@ export default function Navbar() {
       ]
     },
     {
-      name: 'Token',
+      name: 'O.C. Foundation',
       children: [
         { name: 'Whitepaper', href: '/whitepaper', description: 'Technical overview of the OCF token architecture and protocol' },
         { name: 'Roadmap', href: '/roadmap', description: 'Detailed development timeline and milestone tracking' },
         { name: 'Tokenomics', href: '/tokenomics', description: 'Token distribution, vesting, and economic model' },
+        { name: 'O.C.F. Wallets and Funds', href: '/wallets-and-funds', description: 'Transparent view of Open Crypto Foundation wallets and grant funds' },
         { name: 'Security Audit', href: '/audit', description: 'Security verification and audit certification results' }
       ]
     },
@@ -94,8 +95,9 @@ export default function Navbar() {
                     className={`text-light-muted hover:text-light px-1 py-2 inline-flex items-center relative group
                       ${(router.pathname.startsWith('/resources') && item.name === t('resources')) || 
                         ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
-                          router.pathname === '/tokenomics' || router.pathname === '/audit') && 
-                          item.name === 'Token') ? 'text-light' : ''}
+                          router.pathname === '/tokenomics' || router.pathname === '/audit' ||
+                          router.pathname === '/wallets-and-funds') && 
+                          item.name === 'O.C. Foundation') ? 'text-light' : ''}
                     `}
                     onClick={() => toggleDropdown(item.name)}
                   >
@@ -106,8 +108,9 @@ export default function Navbar() {
                     <span className={`absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300 
                       ${(router.pathname.startsWith('/resources') && item.name === t('resources')) || 
                          ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
-                           router.pathname === '/tokenomics' || router.pathname === '/audit') && 
-                           item.name === 'Token') ? 'w-full' : 'group-hover:w-full'}`}></span>
+                           router.pathname === '/tokenomics' || router.pathname === '/audit' ||
+                           router.pathname === '/wallets-and-funds') && 
+                           item.name === 'O.C. Foundation') ? 'w-full' : 'group-hover:w-full'}`}></span>
                   </button>
                   
                   {dropdownOpen === item.name && (
@@ -174,8 +177,9 @@ export default function Navbar() {
                       className={`text-light-muted hover:text-light px-3 py-3 inline-flex items-center justify-between w-full border-l-2 transition-all duration-200
                         ${(router.pathname.startsWith('/resources') && item.name === t('resources')) || 
                           ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
-                            router.pathname === '/tokenomics' || router.pathname === '/audit') && 
-                            item.name === 'Token')
+                            router.pathname === '/tokenomics' || router.pathname === '/audit' ||
+                            router.pathname === '/wallets-and-funds') && 
+                            item.name === 'O.C. Foundation')
                           ? 'border-primary text-light bg-primary/5' 
                           : 'border-transparent hover:border-primary/50 hover:bg-dark-card'
                         }`}

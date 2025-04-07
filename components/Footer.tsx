@@ -14,7 +14,7 @@ export default function Footer() {
   return (
     <footer className="py-16 bg-dark border-t border-dark-light/20 text-light-muted">
       <div className="container px-4 md:px-6">
-        <div className="grid grid-cols-1 gap-10 pb-10 border-b sm:grid-cols-2 md:grid-cols-4 border-dark-elevated">
+        <div className="grid grid-cols-1 gap-10 pb-10 border-b sm:grid-cols-2 md:grid-cols-5 border-dark-elevated">
           <div>
             <Link href="/" className="flex items-center space-x-2 mb-6 group">
               <div className="flex items-center justify-center transition-all duration-300 group-hover:shadow-glow">
@@ -67,6 +67,17 @@ export default function Footer() {
               <li><Link href="/resources/defi-fundamentals" className="hover:text-primary transition-colors">{t('defiFundamentals')}</Link></li>
               <li><Link href="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
               <li><Link href="/manifesto" className="hover:text-primary transition-colors">{t('manifesto')}</Link></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="mb-6 text-lg font-display font-bold text-light">O.C. Foundation</h3>
+            <ul className="space-y-3">
+              <li><Link href="/whitepaper" className="hover:text-primary transition-colors">Whitepaper</Link></li>
+              <li><Link href="/roadmap" className="hover:text-primary transition-colors">Roadmap</Link></li>
+              <li><Link href="/tokenomics" className="hover:text-primary transition-colors">Tokenomics</Link></li>
+              <li><Link href="/wallets-and-funds" className="hover:text-primary transition-colors">O.C.F. Wallets and Funds</Link></li>
+              <li><Link href="/audit" className="hover:text-primary transition-colors">Security Audit</Link></li>
             </ul>
           </div>
           
