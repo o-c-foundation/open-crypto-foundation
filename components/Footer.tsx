@@ -41,8 +41,8 @@ export default function Footer() {
             </div>
             <div className="flex items-center group">
               <FaEnvelope size={16} className="mr-2 opacity-70 group-hover:text-primary transition-colors" />
-              <a href="mailto:contact@opencryptofoundation.org" className="opacity-70 hover:text-light hover:opacity-100 transition-colors">
-                contact@opencryptofoundation.org
+              <a href="mailto:info@opencryptofoundation.com" className="opacity-70 hover:text-light hover:opacity-100 transition-colors">
+                info@opencryptofoundation.com
               </a>
             </div>
           </div>

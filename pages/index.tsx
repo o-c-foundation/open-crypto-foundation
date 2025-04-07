@@ -165,7 +165,7 @@ export default function Home() {
                 Learn About Our Mission
               </Link>
               <a 
-                href="mailto:contact@opencryptofoundation.org" 
+                href="mailto:info@opencryptofoundation.com" 
                 className="px-6 py-3 bg-transparent border border-white text-white rounded-lg hover:bg-white/10 transition-colors"
               >
                 Get Involved
