@@ -10,7 +10,7 @@ import ScrollToTop from '../../components/ScrollToTop';
 const blogPosts = [
   {
     id: 1,
-    title: "Understanding Common Cryptocurrency Scams in 2025",
+    title: "Understanding Cryptocurrency Scams in 2025",
     slug: "understanding-common-crypto-scams-2025",
     excerpt: "A detailed breakdown of the most prevalent scams targeting crypto users this year, and how to protect yourself from them.",
     date: "2025-06-15",
@@ -109,7 +109,7 @@ const blogPosts = [
       <p class="mb-4">By staying vigilant and following these guidelines, you can significantly reduce your risk of falling victim to cryptocurrency scams in 2025 and beyond.</p>
     `,
     tags: ["Security", "Scams", "Crypto Safety", "DeFi", "Investment Protection"],
-    imageUrl: "https://bafkreib5mogbk5syxtr2eompzt7kz2gcumxqj6bekamyj4ywwdieoegvgy.ipfs.w3s.link/",
+    imageUrl: "https://bafkreih77glvuhjh2277hymo3y4ad4zhu4plzph5e5pxarvmrywhou26cq.ipfs.w3s.link/",
     relatedPosts: [2, 6]
   },
   {
