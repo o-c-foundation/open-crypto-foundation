@@ -24,7 +24,7 @@ const NewsletterSubscribe: React.FC<NewsletterSubscribeProps> = ({ className = '
   };
 
   return (
-    <div className={`bg-gray-800 rounded-lg p-4 ${className}`}>
+    <div className={`bg-gray-800 rounded-lg p-4 shadow-lg ${className}`}>
       <h3 className="text-lg font-semibold text-white mb-2">Stay Updated</h3>
       <p className="text-gray-300 text-sm mb-3">
         Subscribe to our weekly newsletter for the latest updates, security alerts, and crypto education.

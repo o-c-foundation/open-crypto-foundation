@@ -214,7 +214,7 @@ export default function Blog() {
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Sidebar */}
-          <div className="lg:col-span-1 space-y-6">
+          <div className="lg:col-span-1 space-y-6 relative z-10">
             {/* Search */}
             <div className="bg-gray-800 rounded-lg p-4">
               <h3 className="text-lg font-semibold text-white mb-3">Search</h3>
@@ -258,7 +258,7 @@ export default function Blog() {
             </div>
             
             {/* Newsletter Subscription */}
-            <NewsletterSubscribe />
+            <NewsletterSubscribe className="sticky top-4" />
           </div>
           
           {/* Main Content - Article List */}
