@@ -58,13 +58,12 @@ export default function Home() {
             <div className="container mx-auto px-4 max-w-7xl">
               <div className="max-w-4xl mx-auto text-center">
                 <div className="mb-8 flex justify-center">
-                  <Image 
-                    src="https://bafkreidvb25k6khuuf7fliwnhj2iogmbqgnoj3zkq47fev4ivpyujlekim.ipfs.w3s.link/"
-                    alt="Open Crypto Foundation Logo"
-                    width={160}
-                    height={160}
-                    priority
-                  />
+                  <div className="bg-black/30 backdrop-blur-sm p-6 rounded-lg border border-primary/20">
+                    <blockquote className="text-xl italic font-light text-white">
+                      &ldquo;Alone we can do so little; together we can do so much.&rdquo;
+                    </blockquote>
+                    <p className="text-right mt-3 text-primary">— Helen Keller</p>
+                  </div>
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-6">Open Crypto Foundation</h1>
                 <p className="text-xl text-light-muted mb-8">
@@ -243,15 +242,11 @@ export default function Home() {
             
             {/* Right Column: Logo */}
             <div className="flex justify-center md:justify-end">
-              <div className="relative h-72 w-72 md:h-96 md:w-96">
-                <Image 
-                  src={logoUrl}
-                  alt="Open Crypto Foundation Logo" 
-                  fill
-                  style={{ objectFit: 'contain' }}
-                  priority
-                  onError={() => setLogoError(true)}
-                />
+              <div className="bg-black/30 backdrop-blur-sm p-10 rounded-lg border border-primary/20">
+                <blockquote className="text-2xl md:text-3xl italic font-light text-white">
+                  &ldquo;Alone we can do so little; together we can do so much.&rdquo;
+                </blockquote>
+                <p className="text-right mt-4 text-primary">— Helen Keller</p>
               </div>
             </div>
           </div>
