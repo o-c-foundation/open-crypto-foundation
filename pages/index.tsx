@@ -172,9 +172,9 @@ export default function Home() {
         </div>
         
         {/* Content */}
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl">
-          {/* Rest of the hero section */}
-          <div className="max-w-3xl backdrop-blur-sm bg-black/20 p-6 rounded-lg">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl flex justify-end">
+          {/* Text box aligned to the right */}
+          <div className="max-w-xl backdrop-blur-sm bg-black/20 p-6 rounded-lg">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
               <span className="text-gradient">The Open</span><br />
               <span className="text-gradient">Crypto</span><br />
