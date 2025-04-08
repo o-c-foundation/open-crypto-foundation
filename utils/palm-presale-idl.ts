@@ -1,159 +1,171 @@
-export const PALM_PRESALE_IDL = {
+import { Idl } from '@project-serum/anchor';
+
+export const PalmPresale: Idl = {
   "version": "0.1.0",
   "name": "palm_presale",
   "instructions": [
     {
-      "name": "createPresale",
+      "name": "initialize",
       "accounts": [
-        { "name": "authority", "isMut": true, "isSigner": true },
-        { "name": "presale", "isMut": true, "isSigner": false },
-        { "name": "tokenMint", "isMut": false, "isSigner": false },
-        { "name": "systemProgram", "isMut": false, "isSigner": false }
+        {
+          "name": "presaleState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "admin",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
       ],
       "args": [
-        { "name": "tokenMintAddress", "type": "publicKey" },
-        { "name": "softcapAmount", "type": "u64" },
-        { "name": "hardcapAmount", "type": "u64" },
-        { "name": "maxTokenAmountPerAddress", "type": "u64" },
-        { "name": "pricePerToken", "type": "u64" },
-        { "name": "startTime", "type": "u64" },
-        { "name": "endTime", "type": "u64" }
+        {
+          "name": "startTime",
+          "type": "i64"
+        },
+        {
+          "name": "endTime",
+          "type": "i64"
+        },
+        {
+          "name": "pricePerToken",
+          "type": "u64"
+        },
+        {
+          "name": "totalTokens",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "purchaseTokens",
+      "accounts": [
+        {
+          "name": "presaleState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "buyer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "admin",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
       ]
     },
     {
       "name": "updatePresale",
       "accounts": [
-        { "name": "authority", "isMut": true, "isSigner": true },
-        { "name": "presale", "isMut": true, "isSigner": false }
+        {
+          "name": "presaleState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "admin",
+          "isMut": false,
+          "isSigner": true
+        }
       ],
       "args": [
-        { "name": "maxTokenAmountPerAddress", "type": "u64" },
-        { "name": "pricePerToken", "type": "u64" },
-        { "name": "softcapAmount", "type": "u64" },
-        { "name": "hardcapAmount", "type": "u64" },
-        { "name": "startTime", "type": "u64" },
-        { "name": "endTime", "type": "u64" }
+        {
+          "name": "startTime",
+          "type": "i64"
+        },
+        {
+          "name": "endTime",
+          "type": "i64"
+        },
+        {
+          "name": "pricePerToken",
+          "type": "u64"
+        }
       ]
     },
     {
-      "name": "depositToken",
+      "name": "withdrawFunds",
       "accounts": [
-        { "name": "authority", "isMut": true, "isSigner": true },
-        { "name": "presale", "isMut": true, "isSigner": false },
-        { "name": "presaleVault", "isMut": true, "isSigner": false },
-        { "name": "tokenMint", "isMut": false, "isSigner": false },
-        { "name": "tokenAccount", "isMut": true, "isSigner": false },
-        { "name": "tokenProgram", "isMut": false, "isSigner": false },
-        { "name": "systemProgram", "isMut": false, "isSigner": false },
-        { "name": "rent", "isMut": false, "isSigner": false }
+        {
+          "name": "presaleState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "admin",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
       ],
-      "args": [
-        { "name": "amount", "type": "u64" }
-      ]
-    },
-    {
-      "name": "startPresale",
-      "accounts": [
-        { "name": "authority", "isMut": true, "isSigner": true },
-        { "name": "presale", "isMut": true, "isSigner": false }
-      ],
-      "args": [
-        { "name": "startTime", "type": "u64" },
-        { "name": "endTime", "type": "u64" }
-      ]
-    },
-    {
-      "name": "buyToken",
-      "accounts": [
-        { "name": "buyer", "isMut": true, "isSigner": true },
-        { "name": "presale", "isMut": true, "isSigner": false },
-        { "name": "tokenMint", "isMut": false, "isSigner": false },
-        { "name": "userTransaction", "isMut": true, "isSigner": false },
-        { "name": "systemProgram", "isMut": false, "isSigner": false }
-      ],
-      "args": [
-        { "name": "tokenAmount", "type": "u64" },
-        { "name": "quoteAmount", "type": "u64" }
-      ]
-    },
-    {
-      "name": "claimToken",
-      "accounts": [
-        { "name": "claimer", "isMut": true, "isSigner": true },
-        { "name": "presale", "isMut": true, "isSigner": false },
-        { "name": "userTransaction", "isMut": true, "isSigner": false },
-        { "name": "presaleVault", "isMut": true, "isSigner": false },
-        { "name": "tokenAccount", "isMut": true, "isSigner": false },
-        { "name": "tokenMint", "isMut": false, "isSigner": false },
-        { "name": "tokenProgram", "isMut": false, "isSigner": false },
-        { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
-        { "name": "systemProgram", "isMut": false, "isSigner": false },
-        { "name": "rent", "isMut": false, "isSigner": false }
-      ],
-      "args": [
-        { "name": "bump", "type": "u8" }
-      ]
-    },
-    {
-      "name": "withdrawSol",
-      "accounts": [
-        { "name": "authority", "isMut": true, "isSigner": true },
-        { "name": "presale", "isMut": true, "isSigner": false },
-        { "name": "systemProgram", "isMut": false, "isSigner": false }
-      ],
-      "args": [
-        { "name": "amount", "type": "u64" },
-        { "name": "bump", "type": "u8" }
-      ]
-    },
-    {
-      "name": "withdrawToken",
-      "accounts": [
-        { "name": "authority", "isMut": true, "isSigner": true },
-        { "name": "presale", "isMut": true, "isSigner": false },
-        { "name": "presaleVault", "isMut": true, "isSigner": false },
-        { "name": "tokenAccount", "isMut": true, "isSigner": false },
-        { "name": "tokenMint", "isMut": false, "isSigner": false },
-        { "name": "tokenProgram", "isMut": false, "isSigner": false },
-        { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
-        { "name": "systemProgram", "isMut": false, "isSigner": false },
-        { "name": "rent", "isMut": false, "isSigner": false }
-      ],
-      "args": [
-        { "name": "amount", "type": "u64" },
-        { "name": "bump", "type": "u8" }
-      ]
+      "args": []
     }
   ],
   "accounts": [
     {
-      "name": "Presale",
+      "name": "PresaleState",
       "type": {
         "kind": "struct",
         "fields": [
-          { "name": "authority", "type": "publicKey" },
-          { "name": "tokenMint", "type": "publicKey" },
-          { "name": "softcapAmount", "type": "u64" },
-          { "name": "hardcapAmount", "type": "u64" },
-          { "name": "totalAmount", "type": "u64" },
-          { "name": "pricePerToken", "type": "u64" },
-          { "name": "maxTokenAmountPerAddress", "type": "u64" },
-          { "name": "startTime", "type": "u64" },
-          { "name": "endTime", "type": "u64" },
-          { "name": "bump", "type": "u8" }
-        ]
-      }
-    },
-    {
-      "name": "UserTransaction",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          { "name": "buyer", "type": "publicKey" },
-          { "name": "tokenAmount", "type": "u64" },
-          { "name": "quoteAmount", "type": "u64" },
-          { "name": "isClaimed", "type": "bool" },
-          { "name": "bump", "type": "u8" }
+          {
+            "name": "admin",
+            "type": "publicKey"
+          },
+          {
+            "name": "startTime",
+            "type": "i64"
+          },
+          {
+            "name": "endTime",
+            "type": "i64"
+          },
+          {
+            "name": "pricePerToken",
+            "type": "u64"
+          },
+          {
+            "name": "totalTokens",
+            "type": "u64"
+          },
+          {
+            "name": "totalSold",
+            "type": "u64"
+          },
+          {
+            "name": "totalFundsCollected",
+            "type": "u64"
+          },
+          {
+            "name": "isPaused",
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
         ]
       }
     }
@@ -161,58 +173,33 @@ export const PALM_PRESALE_IDL = {
   "errors": [
     {
       "code": 6000,
-      "name": "InvalidTimestamp",
-      "msg": "The timestamp is invalid"
+      "name": "PresaleNotActive",
+      "msg": "Presale is not active yet or has ended"
     },
     {
       "code": 6001,
-      "name": "PresaleNotStarted",
-      "msg": "Presale has not started"
+      "name": "InsufficientTokens",
+      "msg": "Not enough tokens left in presale"
     },
     {
       "code": 6002,
-      "name": "PresaleEnded",
-      "msg": "Presale has already ended"
+      "name": "InvalidAmount",
+      "msg": "Amount must be greater than zero"
     },
     {
       "code": 6003,
-      "name": "PresaleInProgress",
-      "msg": "Presale is in progress"
+      "name": "PresalePaused",
+      "msg": "Presale is currently paused"
     },
     {
       "code": 6004,
-      "name": "PresaleNotEnded",
-      "msg": "Presale has not ended"
+      "name": "Unauthorized",
+      "msg": "Only admin can perform this action"
     },
     {
       "code": 6005,
-      "name": "SoftcapNotReached",
-      "msg": "Softcap not reached"
-    },
-    {
-      "code": 6006,
-      "name": "HardcapReached",
-      "msg": "Hardcap reached"
-    },
-    {
-      "code": 6007,
-      "name": "MaxAmountPerAddressReached",
-      "msg": "Max amount per address reached"
-    },
-    {
-      "code": 6008,
-      "name": "AlreadyClaimed",
-      "msg": "Already claimed"
-    },
-    {
-      "code": 6009,
-      "name": "InvalidMaxTokenAmountPerAddress",
-      "msg": "Invalid max token amount per address"
-    },
-    {
-      "code": 6010,
-      "name": "NothingToWithdraw",
-      "msg": "Nothing to withdraw"
+      "name": "PresaleStillActive",
+      "msg": "Cannot withdraw funds while presale is active"
     }
   ]
 }; 

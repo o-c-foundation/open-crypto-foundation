@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { FaSpinner, FaCheckCircle, FaExclamationTriangle, FaCoins, FaGift } from 'react-icons/fa';
+import { sendOCFTokens } from '../utils/token-claim';
 
 const TokenClaimForm = () => {
   const { publicKey, connected } = useWallet();
@@ -15,6 +16,7 @@ const TokenClaimForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
   const [showBanner, setShowBanner] = useState(false);
+  const [txSignature, setTxSignature] = useState<string | undefined>(undefined);
 
   // Update address field when wallet connects
   useEffect(() => {
@@ -56,35 +58,15 @@ const TokenClaimForm = () => {
       setSubmitting(true);
       setError('');
       
-      const formObject = new FormData();
+      // Call our token transfer function
+      const result = await sendOCFTokens(publicKey.toString());
       
-      // Add the access key
-      formObject.append('access_key', '45ca5e36-5eaf-480d-8f74-0465e4d8bef3');
-      
-      // Add subject and from_name
-      formObject.append('subject', 'New Token Claim Request from OCF Website');
-      formObject.append('from_name', 'OCF Token Claim System');
-      
-      // Add fixed amount of 6,000,000
-      formObject.append('amount', '6,000,000');
-      
-      // Add form data
-      Object.entries(formData).forEach(([key, value]) => {
-        formObject.append(key, value);
-      });
-      
-      // Add the wallet address from the connected wallet
-      formObject.set('address', publicKey.toString());
-      
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formObject
-      });
-      
-      const data = await response.json();
-      
-      if (data.success) {
+      if (result.success) {
         setSubmitted(true);
+        if (result.signature) {
+          setTxSignature(result.signature);
+        }
+        
         // Reset form
         setFormData({
           twitterHandle: '',
@@ -92,8 +74,9 @@ const TokenClaimForm = () => {
           message: ''
         });
       } else {
-        throw new Error(data.message || 'Form submission failed');
+        throw new Error(result.message);
       }
+      
     } catch (err: any) {
       setError(err.message || 'Something went wrong. Please try again.');
     } finally {
@@ -156,38 +139,22 @@ const TokenClaimForm = () => {
             <div className="p-6 bg-green-900/20 border border-green-900/30 rounded-lg">
               <div className="flex items-center justify-center mb-4">
                 <FaCheckCircle className="text-green-500 mr-2" size={24} />
-                <h3 className="text-xl font-semibold text-white">Claim Request Submitted!</h3>
+                <h3 className="text-xl font-semibold text-white">Tokens Successfully Claimed!</h3>
               </div>
-              <p className="text-center text-light-muted">
-                Thank you for your token claim request. Our oracle will automatically process your 6,000,000 OCF tokens 
-                on the Solana Devnet. Please allow 10-15 minutes for the tokens to arrive in your wallet. Remember to 
-                configure your wallet to connect to Devnet to view these tokens.
+              <p className="text-center text-light-muted mb-4">
+                Your 6,000,000 OCF tokens have been sent to your wallet on the Solana Devnet. 
+                Remember to configure your wallet to connect to Devnet to view these tokens.
               </p>
+              
+              {txSignature && (
+                <div className="mt-4 p-3 bg-dark-light/20 rounded border border-dark-light/30">
+                  <p className="text-xs text-light-muted mb-1">Transaction Signature:</p>
+                  <p className="text-xs text-primary break-all">{txSignature}</p>
+                </div>
+              )}
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
-              <input 
-                type="hidden" 
-                name="access_key" 
-                value="45ca5e36-5eaf-480d-8f74-0465e4d8bef3"
-              />
-              <input
-                type="hidden"
-                name="subject"
-                value="New Token Claim Request from OCF Website"
-              />
-              <input
-                type="hidden"
-                name="from_name"
-                value="OCF Token Claim System"
-              />
-              <input
-                type="checkbox"
-                name="botcheck"
-                className="hidden"
-                style={{ display: 'none' }}
-              />
-              
               <div>
                 <label htmlFor="address" className="block text-light-muted mb-2">Wallet Address</label>
                 <input
@@ -248,7 +215,7 @@ const TokenClaimForm = () => {
                 {submitting ? (
                   <div className="flex items-center justify-center">
                     <FaSpinner className="animate-spin mr-2" />
-                    <span>Submitting...</span>
+                    <span>Processing...</span>
                   </div>
                 ) : (
                   'Claim 6,000,000 OCF Tokens'
