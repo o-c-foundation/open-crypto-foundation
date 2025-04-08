@@ -61,7 +61,7 @@ export default function Home() {
                     <blockquote className="text-xl italic font-light text-white">
                       &ldquo;Alone we can do so little; together we can do so much.&rdquo;
                     </blockquote>
-                    <p className="text-right mt-3 text-primary">— Helen Keller</p>
+                    <p className="text-right mt-3 text-primary">??? Helen Keller</p>
                   </div>
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-6">Open Crypto Foundation</h1>
