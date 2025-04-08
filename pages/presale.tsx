@@ -4,8 +4,6 @@ import Link from 'next/link';
 import { FaClock, FaRocket, FaFileAlt, FaChartLine, FaInfoCircle } from 'react-icons/fa';
 import ScrollToTop from '../components/ScrollToTop';
 import NewsletterSubscribe from '../components/NewsletterSubscribe';
-import PresalePurchaseForm from '../components/PresalePurchaseForm';
-import PriceHikeCountdown from '../components/PriceHikeCountdown';
 import { useConnection } from '@solana/wallet-adapter-react';
 import { getPresaleStatus } from '../utils/presaleContract';
 import { PRESALE_CONFIG, getSolPrice } from '../utils/directSolTransfer';
@@ -13,15 +11,19 @@ import { PRESALE_CONFIG, getSolPrice } from '../utils/directSolTransfer';
 export default function PresalePage() {
   const { connection } = useConnection();
   const [presaleState, setPresaleState] = useState({
-    isActive: true,
-    totalRaised: PRESALE_CONFIG.totalRaisedUSD,
-    participantCount: 1250,
-    remainingAllocation: PRESALE_CONFIG.softCapUSD - PRESALE_CONFIG.totalRaisedUSD,
+    isActive: false,
+    totalRaised: 0,
+    participantCount: 0,
+    remainingAllocation: PRESALE_CONFIG.softCapUSD,
     hardCapReached: false,
     isLoading: false
   });
   
   const [currentSolPrice, setCurrentSolPrice] = useState(PRESALE_CONFIG.solPriceUSD);
+
+  // Calculate presale start date (48 hours from now)
+  const presaleStartDate = new Date();
+  presaleStartDate.setHours(presaleStartDate.getHours() + 48);
 
   // Fetch current SOL price
   useEffect(() => {
@@ -45,13 +47,13 @@ export default function PresalePage() {
     const fetchPresaleStatus = async () => {
       try {
         const status = await getPresaleStatus(connection);
-        setPresaleState({
+        setPresaleState(prevState => ({
           ...status,
           isLoading: false
-        });
+        }));
       } catch (error) {
         console.error('Error fetching presale status:', error);
-        setPresaleState(prev => ({ ...prev, isLoading: false }));
+        setPresaleState(prevState => ({ ...prevState, isLoading: false }));
       }
     };
 
@@ -83,10 +85,10 @@ export default function PresalePage() {
   return (
     <div className="min-h-screen bg-dark">
       <Head>
-        <title>OCF Token Presale | Open Crypto Foundation</title>
+        <title>OCF Token Presale Coming Soon | Open Crypto Foundation</title>
         <meta 
           name="description" 
-          content="Join the OCF token presale and be an early supporter of the Open Crypto Foundation." 
+          content="The OCF token presale is launching soon. Join the waitlist and be an early supporter of the Open Crypto Foundation." 
         />
       </Head>
 
@@ -102,19 +104,37 @@ export default function PresalePage() {
           
           <div className="container relative z-10 px-4 mx-auto">
             <div className="max-w-4xl mx-auto text-center mb-12">
-              {/* Price Hike Countdown */}
-              <div className="mb-8">
-                <PriceHikeCountdown 
-                  targetDate={PRESALE_CONFIG.nextPriceHike} 
-                  increasePercentage={PRESALE_CONFIG.nextPriceIncreasePercentage} 
-                />
+              {/* Presale Countdown */}
+              <div className="mb-10 bg-primary/10 border border-primary/30 rounded-xl p-6 backdrop-blur-xl">
+                <h3 className="text-2xl font-bold text-white mb-4">Presale Launching In</h3>
+                <div className="flex justify-center space-x-4 md:space-x-6">
+                  <div className="flex flex-col items-center">
+                    <div className="bg-dark-card border border-primary/30 rounded-lg p-3 w-16 md:w-20 h-16 md:h-20 flex items-center justify-center mb-2">
+                      <span className="text-2xl md:text-3xl font-bold text-white" id="countdown-days">48</span>
+                    </div>
+                    <span className="text-light-muted text-sm">Hours</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <div className="bg-dark-card border border-primary/30 rounded-lg p-3 w-16 md:w-20 h-16 md:h-20 flex items-center justify-center mb-2">
+                      <span className="text-2xl md:text-3xl font-bold text-white" id="countdown-hours">00</span>
+                    </div>
+                    <span className="text-light-muted text-sm">Minutes</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <div className="bg-dark-card border border-primary/30 rounded-lg p-3 w-16 md:w-20 h-16 md:h-20 flex items-center justify-center mb-2">
+                      <span className="text-2xl md:text-3xl font-bold text-white" id="countdown-minutes">00</span>
+                    </div>
+                    <span className="text-light-muted text-sm">Seconds</span>
+                  </div>
+                </div>
+                <p className="mt-6 text-primary">Get ready to participate when the presale goes live!</p>
               </div>
               
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-glow">
                 OCF Token Presale
               </h1>
               <p className="text-xl md:text-2xl text-light-muted mb-8">
-                Presale is now LIVE!
+                Join our upcoming presale and be an early supporter
               </p>
               
               {/* Current SOL Price */}
@@ -128,35 +148,6 @@ export default function PresalePage() {
                 </div>
               </div>
               
-              {/* Stats Bar */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-                <div className="bg-dark-card border border-primary/20 rounded-lg p-4">
-                  <p className="text-light-muted text-sm mb-1">Raised So Far</p>
-                  <p className="text-3xl font-bold text-white">
-                    {formatCurrency(presaleState.totalRaised)}
-                  </p>
-                  <p className="text-xs text-primary mt-1">
-                    Of {formatCurrency(PRESALE_CONFIG.softCapUSD)} Goal
-                  </p>
-                </div>
-                
-                <div className="bg-dark-card border border-primary/20 rounded-lg p-4">
-                  <p className="text-light-muted text-sm mb-1">Participants</p>
-                  <p className="text-3xl font-bold text-white">
-                    {presaleState.participantCount.toLocaleString()}
-                  </p>
-                  <p className="text-xs text-primary mt-1">Early Supporters</p>
-                </div>
-                
-                <div className="bg-dark-card border border-primary/20 rounded-lg p-4">
-                  <p className="text-light-muted text-sm mb-1">Remaining</p>
-                  <p className="text-3xl font-bold text-white">
-                    {formatCurrency(presaleState.remainingAllocation)}
-                  </p>
-                  <p className="text-xs text-primary mt-1">Available Allocation</p>
-                </div>
-              </div>
-              
               {/* Token Information */}
               <div className="bg-dark-card border border-primary/20 rounded-lg p-4 mb-6">
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
@@ -165,7 +156,7 @@ export default function PresalePage() {
                     <p className="text-lg font-semibold text-white">{tokenInfo.totalSupply}</p>
                   </div>
                   <div>
-                    <p className="text-light-muted text-sm mb-1">Remaining</p>
+                    <p className="text-light-muted text-sm mb-1">Available</p>
                     <p className="text-lg font-semibold text-white">{tokenInfo.remaining}</p>
                   </div>
                   <div>
@@ -184,11 +175,12 @@ export default function PresalePage() {
               </div>
             </div>
             
-            {/* Presale Purchase Form */}
+            {/* Presale Waitlist Form */}
             <div className="max-w-lg mx-auto">
               <div className="bg-dark-card border border-dark-light/30 rounded-lg p-6 backdrop-blur-lg bg-opacity-70">
-                <h2 className="text-2xl font-bold text-white mb-6 text-center">Get Your OCF Tokens</h2>
-                <PresalePurchaseForm className="mb-4" />
+                <h2 className="text-2xl font-bold text-white mb-6 text-center">Get Notified When Presale Launches</h2>
+                
+                <NewsletterSubscribe className="mb-4" />
                 
                 <div className="mt-6 pt-6 border-t border-dark-light/20">
                   <div className="flex justify-center space-x-6">
