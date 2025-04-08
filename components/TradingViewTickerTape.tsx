@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 interface TradingViewTickerTapeProps {
   className?: string;
+  hidden?: boolean;
 }
 
 declare global {
@@ -10,7 +11,9 @@ declare global {
   }
 }
 
-const TradingViewTickerTape: React.FC<TradingViewTickerTapeProps> = ({ className = '' }) => {
+const TradingViewTickerTape: React.FC<TradingViewTickerTapeProps> = ({ className = '', hidden = false }) => {
+  if (hidden) return null;
+  
   useEffect(() => {
     // Only execute in client-side environment
     if (typeof window !== 'undefined') {

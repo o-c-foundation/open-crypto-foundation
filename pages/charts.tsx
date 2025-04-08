@@ -1,8 +1,9 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import TradingViewWidget from '../components/charts/TradingViewWidget';
+import type { NextPage } from 'next';
 
-export default function Charts() {
+const Charts: NextPage = () => {
   return (
     <Layout
       title="Crypto Charts | OFC Foundation"
@@ -22,4 +23,6 @@ export default function Charts() {
       </div>
     </Layout>
   );
-} 
+};
+
+export default Charts; 
