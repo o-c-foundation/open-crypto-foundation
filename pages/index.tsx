@@ -193,8 +193,24 @@ export default function Home() {
       )}
       
       {/* Hero Section */}
-      <section className="pt-20 pb-24 bg-gradient-to-br from-black to-gray-900 text-white">
-        <div className="container px-4 mx-auto">
+      <section className="relative pt-20 pb-24 text-white">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-black opacity-70"></div>
+          <Image 
+            src="https://bafybeia7bqcimbxnphbbhakog5dndjx4vp6shcg77jhsewvjaqx67kjnqa.ipfs.w3s.link/"
+            alt="Background"
+            fill
+            priority
+            className="object-cover"
+            style={{ mixBlendMode: 'overlay' }}
+          />
+        </div>
+        
+        {/* Gradient overlay on top of the image for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 to-gray-900/70 z-0"></div>
+        
+        <div className="container px-4 mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="relative h-48 w-48 mx-auto mb-8">
               {logoError ? (
