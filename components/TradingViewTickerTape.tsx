@@ -100,8 +100,9 @@ const TradingViewTickerTape: React.FC<TradingViewTickerTapeProps> = ({ className
         
         const copyright = document.createElement('div');
         copyright.className = 'tradingview-widget-copyright';
+        copyright.style.display = 'none'; // Hide the copyright text
         
-        // Add copyright link
+        // Add copyright link (hidden but included for attribution)
         const copyrightLink = document.createElement('a');
         copyrightLink.href = 'https://www.tradingview.com/';
         copyrightLink.rel = 'noopener nofollow';
