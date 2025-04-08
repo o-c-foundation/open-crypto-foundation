@@ -71,6 +71,20 @@ const TradingViewTickerTape: React.FC<TradingViewTickerTapeProps> = ({ className
         if (existingScript) {
           existingScript.remove();
         }
+        
+        // Additionally, remove any presale banners that might be injected by other scripts
+        const presaleBanners = document.querySelectorAll('.presale-banner, .announcement-banner, [data-banner="presale"]');
+        presaleBanners.forEach(banner => {
+          banner.remove();
+        });
+        
+        // Specifically look for blue banners with presale text
+        const blueBanners = document.querySelectorAll('div[style*="background-color: #"]');
+        blueBanners.forEach(banner => {
+          if (banner.textContent && banner.textContent.includes('Presale')) {
+            banner.remove();
+          }
+        });
       };
 
       // Clean up any existing widgets first
@@ -94,8 +108,40 @@ const TradingViewTickerTape: React.FC<TradingViewTickerTapeProps> = ({ className
         widgetContainer.appendChild(container);
         widgetContainer.appendChild(script);
       }
+      
+      // Add a mutation observer to remove any dynamically added presale banners
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach(mutation => {
+          if (mutation.addedNodes.length) {
+            mutation.addedNodes.forEach(node => {
+              if (node.nodeType === 1) { // Element node
+                const element = node as Element;
+                if (element.classList.contains('presale-banner') || 
+                    element.classList.contains('announcement-banner') || 
+                    element.getAttribute('data-banner') === 'presale') {
+                  element.remove();
+                }
+                
+                // Check if it's a blue banner with presale text
+                if (element.textContent && element.textContent.includes('Presale')) {
+                  const style = window.getComputedStyle(element);
+                  if (style.backgroundColor.includes('blue') || style.backgroundColor.includes('rgb(0, 0, 255)')) {
+                    element.remove();
+                  }
+                }
+              }
+            });
+          }
+        });
+      });
+      
+      // Start observing the document body for changes
+      observer.observe(document.body, { childList: true, subtree: true });
 
-      return cleanupFunc;
+      return () => {
+        cleanupFunc();
+        observer.disconnect();
+      };
     }
   }, []);
 
