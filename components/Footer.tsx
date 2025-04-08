@@ -39,7 +39,7 @@ export default function Footer() {
               <a href="https://discord.gg/opencrypto" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-dark-elevated flex items-center justify-center hover:bg-primary hover:scale-110 hover:shadow-glow transition-all duration-300">
                 <FaDiscord size={18} className="text-light" />
               </a>
-              <a href="https://t.me/opencryptofoundation" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-dark-elevated flex items-center justify-center hover:bg-primary hover:scale-110 hover:shadow-glow transition-all duration-300">
+              <a href="https://t.me/ocfcommunity" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-dark-elevated flex items-center justify-center hover:bg-primary hover:scale-110 hover:shadow-glow transition-all duration-300">
                 <FaTelegram size={18} className="text-light" />
               </a>
             </div>
