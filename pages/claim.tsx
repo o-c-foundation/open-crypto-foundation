@@ -10,10 +10,10 @@ export default function ClaimPage() {
   return (
     <div className="min-h-screen bg-dark">
       <Head>
-        <title>OCF Token Claim | Open Crypto Foundation</title>
+        <title>OCF Airdrop | Open Crypto Foundation</title>
         <meta 
           name="description" 
-          content="Request your allocated OCF tokens. Submit your information securely to claim your tokens." 
+          content="Request your allocated OCF tokens. Submit your information securely to claim your OCF airdrop." 
         />
       </Head>
 
@@ -23,10 +23,10 @@ export default function ClaimPage() {
           <div className="container px-4 mx-auto">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                OCF Token Claim Portal
+                OCF Airdrop Portal
               </h1>
               <p className="text-xl text-light-muted mb-6">
-                Submit your token claim request through our secure form.
+                Submit your airdrop request through our secure form.
                 Connect your wallet to verify your address and complete the claim process.
               </p>
               
@@ -101,7 +101,7 @@ export default function ClaimPage() {
                   </div>
                   
                   <div className="bg-dark-card rounded-lg border border-dark-light/30 p-6">
-                    <h2 className="text-xl font-bold text-white mb-4">Claim Process</h2>
+                    <h2 className="text-xl font-bold text-white mb-4">Airdrop Process</h2>
                     <ol className="space-y-4 text-light-muted">
                       <li className="flex">
                         <span className="bg-primary/20 text-primary font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">1</span>
@@ -109,7 +109,7 @@ export default function ClaimPage() {
                       </li>
                       <li className="flex">
                         <span className="bg-primary/20 text-primary font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">2</span>
-                        <span>Submit the claim request</span>
+                        <span>Submit the airdrop request</span>
                       </li>
                       <li className="flex">
                         <span className="bg-primary/20 text-primary font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">3</span>

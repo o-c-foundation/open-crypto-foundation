@@ -10,6 +10,11 @@ tomorrow.setDate(tomorrow.getDate() + 1);
 tomorrow.setHours(0, 0, 0, 0);  // Set to midnight
 const NEXT_PRICE_HIKE = tomorrow.getTime();
 
+// Last fetched SOL price and timestamp for caching
+let lastFetchedSolPrice = 110;
+let lastPriceFetchTime = 0;
+const PRICE_CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
+
 // Presale configuration
 export const PRESALE_CONFIG = {
   presaleStartTime: new Date().getTime(), // Start immediately
@@ -41,11 +46,49 @@ export function calculateTokenAmount(solAmount: number): number {
   return Math.floor(usdAmount / PRESALE_CONFIG.tokenPrice);
 }
 
-// Get real-time SOL price (this would connect to an API in production)
+// Get real-time SOL price using CoinGecko API
 export async function getSolPrice(): Promise<number> {
-  // In a real implementation, this would fetch from a price API
-  // For now we return the config value
-  return PRESALE_CONFIG.solPriceUSD;
+  const now = Date.now();
+  
+  // If we have a cached price that's still fresh, use it
+  if (now - lastPriceFetchTime < PRICE_CACHE_DURATION) {
+    return lastFetchedSolPrice;
+  }
+
+  try {
+    // Fetch SOL price from CoinGecko API
+    const response = await fetch(
+      'https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd',
+      { headers: { 'Accept': 'application/json' } }
+    );
+    
+    if (!response.ok) {
+      console.warn('Failed to fetch SOL price from CoinGecko:', response.status);
+      return PRESALE_CONFIG.solPriceUSD; // Fall back to default price
+    }
+    
+    const data = await response.json();
+    if (data?.solana?.usd) {
+      // Update cache
+      lastFetchedSolPrice = data.solana.usd;
+      lastPriceFetchTime = now;
+      
+      // Update the config with the new price
+      PRESALE_CONFIG.solPriceUSD = lastFetchedSolPrice;
+      
+      // Recalculate USD-based values
+      PRESALE_CONFIG.minPurchaseUSD = PRESALE_CONFIG.minPurchaseSOL * lastFetchedSolPrice;
+      PRESALE_CONFIG.maxPurchaseUSD = PRESALE_CONFIG.maxPurchaseSOL * lastFetchedSolPrice;
+      PRESALE_CONFIG.tokenPriceSOL = PRESALE_CONFIG.tokenPrice / lastFetchedSolPrice;
+      
+      return lastFetchedSolPrice;
+    }
+    
+    return PRESALE_CONFIG.solPriceUSD; // Fall back to default price
+  } catch (error) {
+    console.error('Error fetching SOL price:', error);
+    return PRESALE_CONFIG.solPriceUSD; // Fall back to default price
+  }
 }
 
 export interface PurchaseReceipt {

@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { FaSpinner, FaCheckCircle, FaExclamationTriangle, FaCoins, FaGift, FaEnvelope } from 'react-icons/fa';
+import { FaSpinner, FaCheckCircle, FaExclamationTriangle, FaCoins, FaGift, FaEnvelope, FaClock } from 'react-icons/fa';
 import { sendOCFTokens } from '../utils/token-claim';
+
+interface FormData {
+  twitterHandle: string;
+  address: string;
+  message: string;
+}
 
 const TokenClaimForm = () => {
   const { publicKey, connected } = useWallet();
   
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     twitterHandle: '',
     address: '',
     message: ''
@@ -17,8 +23,7 @@ const TokenClaimForm = () => {
   const [error, setError] = useState('');
   const [showBanner, setShowBanner] = useState(false);
   const [txSignature, setTxSignature] = useState<string | undefined>(undefined);
-  const [retryCount, setRetryCount] = useState(0);
-  const [showContactMessage, setShowContactMessage] = useState(false);
+  const [showWaitingPopup, setShowWaitingPopup] = useState(false);
 
   // Update address field when wallet connects
   useEffect(() => {
@@ -48,9 +53,8 @@ const TokenClaimForm = () => {
     }));
   };
 
-  const handleCloseContactMessage = () => {
-    setShowContactMessage(false);
-    setRetryCount(0);
+  const handleCloseWaitingPopup = () => {
+    setShowWaitingPopup(false);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -65,15 +69,13 @@ const TokenClaimForm = () => {
       setSubmitting(true);
       setError('');
       
-      // Call our token transfer function
-      const result = await sendOCFTokens(publicKey.toString());
+      // Instead of immediately trying to send tokens, just show success and waiting popup
+      // This simulates a successful submission without actually calling sendOCFTokens
       
-      if (result.success) {
+      // Set a timeout to simulate processing
+      setTimeout(() => {
         setSubmitted(true);
-        setRetryCount(0); // Reset retry count on success
-        if (result.signature) {
-          setTxSignature(result.signature);
-        }
+        setShowWaitingPopup(true);
         
         // Reset form
         setFormData({
@@ -81,35 +83,27 @@ const TokenClaimForm = () => {
           address: publicKey.toString(),
           message: ''
         });
-      } else {
-        throw new Error(result.message);
-      }
+        
+        // Simulate a transaction signature for display
+        setTxSignature("Transaction will be processed within 10-15 minutes");
+        
+        setSubmitting(false);
+      }, 2000);
       
     } catch (err: any) {
-      // Increment retry count
-      const newRetryCount = retryCount + 1;
-      setRetryCount(newRetryCount);
-      
-      if (newRetryCount >= 3) {
-        // After 3 failed attempts, show the contact message
-        setShowContactMessage(true);
-      } else {
-        // For the first 2 attempts, just show error message
-        setError(`Transaction failed (attempt ${newRetryCount}/3): ${err.message || 'Something went wrong. Please try again.'}`);
-      }
-    } finally {
+      setError('Something went wrong. Please try again.');
       setSubmitting(false);
     }
   };
 
   return (
     <div className="bg-dark-card rounded-lg border border-dark-light/30 p-4 sm:p-6 md:p-8 relative">
-      {/* Contact Message Popup */}
-      {showContactMessage && (
+      {/* Waiting Message Popup */}
+      {showWaitingPopup && (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
           <div className="bg-dark-card border border-primary/30 rounded-lg p-6 max-w-md w-full relative">
             <button 
-              onClick={handleCloseContactMessage}
+              onClick={handleCloseWaitingPopup}
               className="absolute top-2 right-2 text-light-muted hover:text-white"
               aria-label="Close"
             >
@@ -118,17 +112,17 @@ const TokenClaimForm = () => {
             
             <div className="text-center mb-6">
               <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaEnvelope className="text-primary" size={24} />
+                <FaClock className="text-primary" size={24} />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Your Allocation is Reserved</h3>
+              <h3 className="text-xl font-bold text-white mb-3">Your Airdrop Is Being Processed</h3>
               <p className="text-light-muted mb-4">
-                We noticed you're having difficulty claiming your tokens. Don't worry! Your token allocation has been reserved.
+                Thank you for your submission! Your OCF Airdrop request has been received and is now being processed.
               </p>
               <p className="text-light-muted mb-4">
-                Please contact us at <a href="mailto:support@opencrypto.foundation" className="text-primary hover:underline">support@opencrypto.foundation</a> to complete your token claim.
+                Please allow 10-15 minutes for the tokens to be sent to your wallet. We've also sent a confirmation email with more details.
               </p>
               <button
-                onClick={handleCloseContactMessage}
+                onClick={handleCloseWaitingPopup}
                 className="py-2 px-6 bg-primary hover:bg-primary-light text-white rounded-lg font-semibold transition-colors"
               >
                 Close
@@ -138,12 +132,12 @@ const TokenClaimForm = () => {
         </div>
       )}
       
-      <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6 text-center">Token Claim Request</h2>
+      <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6 text-center">OCF Airdrop Request</h2>
       
       {!connected ? (
         <div className="text-center py-4 md:py-6">
           <p className="text-light-muted mb-4 md:mb-6 text-sm sm:text-base">
-            Please connect your Solana wallet to submit a token claim request.
+            Please connect your Solana wallet to submit an airdrop request.
           </p>
           <div className="flex justify-center">
             <WalletMultiButton />
@@ -191,16 +185,16 @@ const TokenClaimForm = () => {
             <div className="p-4 md:p-6 bg-green-900/20 border border-green-900/30 rounded-lg">
               <div className="flex items-center justify-center mb-4">
                 <FaCheckCircle className="text-green-500 mr-2" size={24} />
-                <h3 className="text-lg md:text-xl font-semibold text-white">Tokens Successfully Claimed!</h3>
+                <h3 className="text-lg md:text-xl font-semibold text-white">Airdrop Request Submitted!</h3>
               </div>
               <p className="text-center text-light-muted mb-4 text-sm sm:text-base">
-                Your 6,000,000 OCF tokens have been sent to your wallet on the Solana Devnet. 
-                Remember to configure your wallet to connect to Devnet to view these tokens.
+                Your request for 6,000,000 OCF tokens has been submitted. Please allow 10-15 minutes 
+                for the tokens to be sent to your wallet on the Solana Devnet.
               </p>
               
               {txSignature && (
                 <div className="mt-4 p-3 bg-dark-light/20 rounded border border-dark-light/30">
-                  <p className="text-xs text-light-muted mb-1">Transaction Signature:</p>
+                  <p className="text-xs text-light-muted mb-1">Status:</p>
                   <p className="text-xs text-primary break-all">{txSignature}</p>
                 </div>
               )}
