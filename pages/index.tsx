@@ -11,7 +11,7 @@ export default function Home() {
   const [logoError, setLogoError] = useState(false);
   const [presaleBannerVisible, setPresaleBannerVisible] = useState(true);
   const [isErrorRecoveryMode, setIsErrorRecoveryMode] = useState(false);
-  const logoUrl = "https://bafkreih7cgwgji2mtmdpbhyef27lst563gnyofx6e6d6tmgvc3qfr7cccu.ipfs.w3s.link/";
+  const logoUrl = "https://bafkreidvb25k6khuuf7fliwnhj2iogmbqgnoj3zkq47fev4ivpyujlekim.ipfs.w3s.link/";
 
   // Check if we're coming from an error
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function Home() {
               <div className="max-w-4xl mx-auto text-center">
                 <div className="mb-8 flex justify-center">
                   <Image 
-                    src="https://bafkreih7cgwgji2mtmdpbhyef27lst563gnyofx6e6d6tmgvc3qfr7cccu.ipfs.w3s.link/"
+                    src="https://bafkreidvb25k6khuuf7fliwnhj2iogmbqgnoj3zkq47fev4ivpyujlekim.ipfs.w3s.link/"
                     alt="Open Crypto Foundation Logo"
                     width={160}
                     height={160}
