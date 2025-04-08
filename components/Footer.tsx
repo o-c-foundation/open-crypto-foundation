@@ -90,7 +90,6 @@ export default function Footer() {
             <ul className="space-y-3">
               <li><Link href="/about" className="hover:text-primary transition-colors">{t('about')}</Link></li>
               <li><Link href="/about/philosophy" className="hover:text-primary transition-colors">Our Philosophy</Link></li>
-              <li><Link href="/about/team" className="hover:text-primary transition-colors">Team</Link></li>
               <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
               <li><Link href="/privacy" className="hover:text-primary transition-colors">{t('privacyPolicy')}</Link></li>
               <li><Link href="/terms" className="hover:text-primary transition-colors">{t('termsOfService')}</Link></li>
