@@ -173,9 +173,9 @@ export default function Home() {
         
         {/* Content */}
         <div className="container relative z-10 px-4 mx-auto max-w-7xl">
-          {/* Using right alignment with specific width to push content to the far right */}
-          <div className="flex justify-end">
-            <div className="max-w-lg backdrop-blur-sm bg-black/20 p-6 rounded-lg ml-auto">
+          {/* Using center alignment on mobile, right alignment on desktop */}
+          <div className="flex justify-center md:justify-end">
+            <div className="max-w-lg backdrop-blur-md bg-black/50 md:backdrop-blur-sm md:bg-black/20 p-6 rounded-lg ml-0 md:ml-auto">
               <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
                 <span className="text-gradient">The Open</span><br />
                 <span className="text-gradient">Crypto</span><br />
