@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import Layout from '../components/Layout';
 
-// HTML-only implementation of Charts page
-const Charts = () => {
+// JavaScript implementation of Charts page
+function Charts() {
   // Add TradingView widget script on client side
   useEffect(() => {
     // Make sure we're in the browser
@@ -83,9 +83,9 @@ const Charts = () => {
       </div>
     </div>
   );
-};
+}
 
-// Plain React component for layout
+// Plain JavaScript for layout
 Charts.getLayout = function getLayout(page) {
   return (
     <Layout
