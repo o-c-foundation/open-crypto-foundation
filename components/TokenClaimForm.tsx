@@ -49,6 +49,15 @@ const TokenClaimForm = () => {
       setError('');
       
       const formObject = new FormData();
+      
+      // Add the access key
+      formObject.append('access_key', '45ca5e36-5eaf-480d-8f74-0465e4d8bef3');
+      
+      // Add subject and from_name
+      formObject.append('subject', 'New Token Claim Request from OCF Website');
+      formObject.append('from_name', 'OCF Token Claim System');
+      
+      // Add form data
       Object.entries(formData).forEach(([key, value]) => {
         formObject.append(key, value);
       });
