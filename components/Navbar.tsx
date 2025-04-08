@@ -43,7 +43,7 @@ export default function Navbar() {
     { name: 'Manifesto', href: '/manifesto' },
     { name: 'Whitepaper', href: '/whitepaper' },
     { name: 'Roadmap', href: '/roadmap' },
-    { name: 'Token Claim', href: '/claim', icon: <FaCoins className="mr-1" />, badge: 'New' }
+    { name: 'OFC Airdrops', href: '/claim', icon: <FaCoins className="mr-1" />, badge: 'New' }
   ]
   
   const toggleDropdown = (name: string) => {
