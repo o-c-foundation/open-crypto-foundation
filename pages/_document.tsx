@@ -56,6 +56,33 @@ export default function Document() {
                     }
                   }
                 }
+                
+                // NEW: Target the exact selector path
+                var exactPath = document.querySelector("#__next > div > div > main > div.relative.bg-gradient-to-r.from-primary.to-primary-dark.py-3");
+                if (exactPath) {
+                  exactPath.style.display = 'none';
+                  console.log('Removed banner with exact path selector');
+                }
+                
+                // NEW: Look for gradient backgrounds with presale text
+                var gradientDivs = document.querySelectorAll('div[class*="from-primary"]');
+                for (var i = 0; i < gradientDivs.length; i++) {
+                  var div = gradientDivs[i];
+                  var text = div.textContent || '';
+                  if (text.includes('OCF Token Presale') || 
+                      text.includes('Get ready for early access') || 
+                      text.includes('50% discount')) {
+                    div.style.display = 'none';
+                    console.log('Removed primary gradient banner');
+                  }
+                }
+                
+                // NEW: Try to click the close button if it exists
+                var closeButton = document.querySelector('button[aria-label="Close banner"]');
+                if (closeButton) {
+                  closeButton.click();
+                  console.log('Clicked close banner button');
+                }
               }
               
               // Run on initial load
