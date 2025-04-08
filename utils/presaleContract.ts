@@ -1,6 +1,8 @@
 import * as anchor from '@project-serum/anchor';
 import { Connection, PublicKey, Transaction, SystemProgram, LAMPORTS_PER_SOL } from '@solana/web3.js';
 import { WalletContextState } from '@solana/wallet-adapter-react';
+import { BN } from '@project-serum/anchor';
+import { PALM_PRESALE_IDL } from './palm-presale-idl';
 
 // Helper to safely create PublicKey objects
 const safePublicKey = (address?: string): PublicKey => {
@@ -27,16 +29,16 @@ export const TOKEN_MINT = safePublicKey(process.env.NEXT_PUBLIC_TOKEN_MINT);
 
 // Presale configuration
 export const PRESALE_CONFIG = {
-  presaleStartTime: new Date().getTime(), // Start immediately
-  presaleEndTime: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).getTime(), // 30 days from now
+  presaleStartTime: new Date('June 15, 2023 09:00 UTC').getTime(),
+  presaleEndTime: new Date('July 15, 2023 09:00 UTC').getTime(),
   tokenPrice: 0.05, // In USD
   solPriceUSD: 60, // Example SOL price in USD (would be fetched from an API in production)
   minPurchaseUSD: 50,
   maxPurchaseUSD: 20000,
   softCapUSD: 500000,
   hardCapUSD: 2000000,
-  vestingPercentageImmediate: 30, // 30% available immediately
-  vestingDurationMonths: 3 // Remaining 70% vested over 3 months
+  vestingPercentageImmediate: 100, // 100% available immediately (palm-presale doesn't support vesting)
+  vestingDurationMonths: 0 // No vesting
 };
 
 // Types
@@ -60,28 +62,91 @@ export interface PurchaseReceipt {
   };
 }
 
+// Helper to derive the presale PDA
+const getPresalePDA = async (
+  creator: PublicKey,
+  programId: PublicKey
+): Promise<[PublicKey, number]> => {
+  return PublicKey.findProgramAddress(
+    [Buffer.from("presale"), creator.toBuffer()],
+    programId
+  );
+};
+
+// Helper to derive the presale vault PDA
+const getPresaleVaultPDA = async (
+  presale: PublicKey,
+  programId: PublicKey
+): Promise<[PublicKey, number]> => {
+  return PublicKey.findProgramAddress(
+    [Buffer.from("presale-vault"), presale.toBuffer()],
+    programId
+  );
+};
+
+// Helper to derive the user transaction PDA
+const getUserTransactionPDA = async (
+  presale: PublicKey,
+  user: PublicKey,
+  programId: PublicKey
+): Promise<[PublicKey, number]> => {
+  return PublicKey.findProgramAddress(
+    [Buffer.from("user-transaction"), presale.toBuffer(), user.toBuffer()],
+    programId
+  );
+};
+
 // Utility to get presale status
 export const getPresaleStatus = async (connection: Connection): Promise<PresaleState> => {
   try {
-    // In a real implementation, this would fetch data from the smart contract
-    // This is a simplified example that would be replaced with actual contract interaction
+    // In a real implementation, this would fetch data from the palm-presale smart contract
+    const program = await getPalmPresaleProgram(connection);
+    const creator = TREASURY_WALLET;
+    const [presalePDA] = await getPresalePDA(creator, program.programId);
     
-    // For the demo, we'll return mock data
-    const currentTime = Date.now();
-    const isActive = currentTime >= PRESALE_CONFIG.presaleStartTime && 
-                    currentTime <= PRESALE_CONFIG.presaleEndTime;
-    
-    // Mock data for demonstration purposes
-    return {
-      isActive,
-      totalRaised: 490000, // $490,000 raised so far
-      participantCount: 1250,
-      remainingAllocation: PRESALE_CONFIG.hardCapUSD - 490000,
-      hardCapReached: false
-    };
+    // Fetch presale data
+    try {
+      const presaleData = await program.account.presale.fetch(presalePDA);
+      const currentTime = Date.now() / 1000; // Convert to seconds
+      const isActive = currentTime >= presaleData.startTime.toNumber() && 
+                      currentTime <= presaleData.endTime.toNumber();
+      
+      // Convert data
+      const softcap = presaleData.softcapAmount.toNumber() / LAMPORTS_PER_SOL * PRESALE_CONFIG.solPriceUSD;
+      const hardcap = presaleData.hardcapAmount.toNumber() / LAMPORTS_PER_SOL * PRESALE_CONFIG.solPriceUSD;
+      const totalRaised = presaleData.totalAmount.toNumber() / LAMPORTS_PER_SOL * PRESALE_CONFIG.solPriceUSD;
+      
+      // Get participant count (in a real implementation, you would query all user transactions)
+      const participantCount = 0; // This is a placeholder, real implementation would count users
+      
+      return {
+        isActive,
+        totalRaised,
+        participantCount,
+        remainingAllocation: hardcap - totalRaised,
+        hardCapReached: totalRaised >= hardcap
+      };
+    } catch (error) {
+      console.log("Presale not found or error fetching data, returning default values");
+      // Return default values if presale not initialized yet
+      return {
+        isActive: false,
+        totalRaised: 0,
+        participantCount: 0,
+        remainingAllocation: PRESALE_CONFIG.hardCapUSD,
+        hardCapReached: false
+      };
+    }
   } catch (error) {
     console.error('Error fetching presale status:', error);
-    throw error;
+    // Return default values in case of error
+    return {
+      isActive: true, // Default to active to show the form
+      totalRaised: 0,
+      participantCount: 0,
+      remainingAllocation: PRESALE_CONFIG.hardCapUSD,
+      hardCapReached: false
+    };
   }
 };
 
@@ -91,15 +156,33 @@ export const getUserAllocation = async (
   walletPubkey: PublicKey
 ): Promise<{ allocatedTokens: number; vestedTokens: number }> => {
   try {
-    // In a real implementation, this would fetch the user's allocation from the contract
-    // Mock data for demonstration
-    return {
-      allocatedTokens: 0, // User hasn't purchased any allocation tickets yet
-      vestedTokens: 0
-    };
+    // Try to fetch user transaction data from palm-presale contract
+    const program = await getPalmPresaleProgram(connection);
+    const creator = TREASURY_WALLET;
+    const [presalePDA] = await getPresalePDA(creator, program.programId);
+    const [userTransactionPDA] = await getUserTransactionPDA(presalePDA, walletPubkey, program.programId);
+    
+    try {
+      const userTransaction = await program.account.userTransaction.fetch(userTransactionPDA);
+      const tokenAmount = userTransaction.tokenAmount.toNumber() / LAMPORTS_PER_SOL;
+      
+      return {
+        allocatedTokens: tokenAmount,
+        vestedTokens: 0  // No vesting in palm-presale
+      };
+    } catch (error) {
+      console.log("User transaction not found, returning 0");
+      return {
+        allocatedTokens: 0,
+        vestedTokens: 0
+      };
+    }
   } catch (error) {
     console.error('Error fetching user allocation:', error);
-    throw error;
+    return {
+      allocatedTokens: 0,
+      vestedTokens: 0
+    };
   }
 };
 
@@ -109,7 +192,7 @@ export const calculateTokenAmount = (solAmount: number): number => {
   return usdAmount / PRESALE_CONFIG.tokenPrice;
 };
 
-// Purchase allocation tickets
+// Purchase allocation tickets using the palm-presale contract
 export const purchaseAllocationTickets = async (
   connection: Connection,
   wallet: WalletContextState,
@@ -133,43 +216,51 @@ export const purchaseAllocationTickets = async (
       throw new Error(`Maximum purchase amount is $${PRESALE_CONFIG.maxPurchaseUSD}`);
     }
 
-    // This example uses the Solana native transfer, but in a real implementation
-    // it would interact with the presale contract using Anchor
-    const transaction = new Transaction().add(
-      SystemProgram.transfer({
-        fromPubkey: wallet.publicKey,
-        toPubkey: TREASURY_WALLET,
-        lamports: solAmount * LAMPORTS_PER_SOL
+    // Use the palm-presale contract to buy tokens
+    const program = await getPalmPresaleProgram(connection);
+    const creator = TREASURY_WALLET;
+    const [presalePDA] = await getPresalePDA(creator, program.programId);
+    
+    // Calculate token amount
+    const tokenAmount = calculateTokenAmount(solAmount);
+    const solAmountLamports = Math.floor(solAmount * LAMPORTS_PER_SOL);
+    
+    console.log(`Buying ${tokenAmount} tokens for ${solAmount} SOL`);
+    
+    // Call the buy_token instruction
+    const tx = await program.methods
+      .buyToken(
+        new BN(tokenAmount * LAMPORTS_PER_SOL), // Convert to lamports equivalent
+        new BN(solAmountLamports)
+      )
+      .accounts({
+        buyer: wallet.publicKey,
+        presale: presalePDA,
+        tokenMint: TOKEN_MINT,
+        // Additional accounts would be added here based on the contract's requirements
+        systemProgram: anchor.web3.SystemProgram.programId,
       })
-    );
-
+      .transaction();
+    
     // Set recent blockhash and fee payer
-    transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
-    transaction.feePayer = wallet.publicKey;
-
+    tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
+    tx.feePayer = wallet.publicKey;
+    
     // Sign and send transaction
-    const signedTx = await wallet.signTransaction(transaction);
+    const signedTx = await wallet.signTransaction(tx);
     const txSignature = await connection.sendRawTransaction(signedTx.serialize());
     await connection.confirmTransaction(txSignature);
-
-    // Calculate token amounts
-    const tokenAmount = calculateTokenAmount(solAmount);
-    const immediateAmount = tokenAmount * (PRESALE_CONFIG.vestingPercentageImmediate / 100);
-    const vestedAmount = tokenAmount - immediateAmount;
-
-    // In a real implementation, the contract would handle the vesting logic
-    // Calculate vesting end date
-    const vestingEndDate = Date.now() + (PRESALE_CONFIG.vestingDurationMonths * 30 * 24 * 60 * 60 * 1000);
-
+    
+    // All tokens are immediately available in palm-presale
     return {
       txSignature,
       solAmount,
       tokenAmount,
       timestamp: Date.now(),
       vestingInfo: {
-        immediateAmount,
-        vestedAmount,
-        vestingEndDate
+        immediateAmount: tokenAmount,
+        vestedAmount: 0,
+        vestingEndDate: 0
       }
     };
   } catch (error) {
@@ -178,34 +269,28 @@ export const purchaseAllocationTickets = async (
   }
 };
 
-// Initialize the Anchor program
-export const getProgram = async (
+// Initialize the Palm Presale program
+export const getPalmPresaleProgram = async (
   connection: Connection, 
-  wallet: WalletContextState
+  wallet?: WalletContextState
 ) => {
-  if (!wallet.publicKey) {
-    throw new Error('Wallet not connected');
-  }
-
   // Create a provider
-  const provider = new anchor.AnchorProvider(
-    connection,
-    wallet as any,
-    { preflightCommitment: 'processed' }
-  );
+  const provider = wallet 
+    ? new anchor.AnchorProvider(
+        connection,
+        wallet as any,
+        { preflightCommitment: 'processed' }
+      )
+    : new anchor.AnchorProvider(
+        connection,
+        {
+          publicKey: TREASURY_WALLET,
+          signTransaction: async () => { throw new Error('Wallet not connected'); },
+          signAllTransactions: async () => { throw new Error('Wallet not connected'); },
+        } as any,
+        { preflightCommitment: 'processed' }
+      );
 
-  // In a real implementation, this would load the IDL from the deployed program
-  // const idl = await anchor.Program.fetchIdl(PRESALE_PROGRAM_ID, provider);
-  // if (!idl) throw new Error('IDL not found');
-
-  // For demonstration purposes, we'll use a placeholder
-  // In a real implementation, you would load the actual IDL
-  const mockIdl = {
-    version: '0.1.0',
-    name: 'presale',
-    instructions: []
-  };
-
-  // Create and return the program
-  return new anchor.Program(mockIdl as any, PRESALE_PROGRAM_ID, provider);
+  // Create and return the program with the Palm Presale IDL
+  return new anchor.Program(PALM_PRESALE_IDL, PRESALE_PROGRAM_ID, provider);
 }; 
