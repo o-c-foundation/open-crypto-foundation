@@ -8,7 +8,8 @@ import ScrollToTop from '../components/ScrollToTop'
 import SolanaIcon from '../components/icons/SolanaIcon'
 import Layout from '../components/Layout'
 
-export default function Home() {
+// Define the Home page component
+function Home() {
   const [logoError, setLogoError] = useState(false);
   const [isErrorRecoveryMode, setIsErrorRecoveryMode] = useState(false);
   const logoUrl = "https://bafkreidvb25k6khuuf7fliwnhj2iogmbqgnoj3zkq47fev4ivpyujlekim.ipfs.w3s.link/";
@@ -46,10 +47,7 @@ export default function Home() {
   // Simplified version of the Home page if we're in error recovery mode
   if (isErrorRecoveryMode) {
     return (
-      <Layout
-        title="Open Crypto Foundation - Empowering Safe DeFi Interactions"
-        description="The Open Crypto Foundation provides tools and education to help users safely interact with DeFi protocols and avoid scams."
-      >
+      <>
         <main>
           {/* Simple Hero Section for Error Recovery */}
           <section className="py-16 md:py-24 bg-gradient-to-b from-dark-light to-dark text-white">
@@ -139,16 +137,13 @@ export default function Home() {
         </main>
         
         <ScrollToTop />
-      </Layout>
+      </>
     );
   }
   
   // Regular home page content follows
   return (
-    <Layout
-      title="Open Crypto Foundation | Promoting Safe DeFi"
-      description="The newly launched Open Crypto Foundation is dedicated to promoting safe decentralized finance practices and educating users about blockchain technology."
-    >
+    <>
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 text-white">
         {/* Background Image with Overlay */}
@@ -305,6 +300,22 @@ export default function Home() {
         </div>
       </section>
       <ScrollToTop />
+    </>
+  );
+}
+
+// Define custom layout for the Home page
+Home.getLayout = (page: React.ReactElement) => {
+  const { isErrorRecoveryMode } = page.props || {};
+  
+  return (
+    <Layout 
+      title="Open Crypto Foundation | Promoting Safe DeFi"
+      description="The newly launched Open Crypto Foundation is dedicated to promoting safe decentralized finance practices and educating users about blockchain technology."
+    >
+      {page}
     </Layout>
-  )
-} 
+  );
+};
+
+export default Home; 

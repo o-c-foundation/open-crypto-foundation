@@ -2,17 +2,34 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
+import Layout from '../components/Layout'
 import ErrorBoundary from '../components/ErrorBoundary'
 import { LanguageProvider } from '../contexts/LanguageContext'
 import dynamic from 'next/dynamic'
 
+// Define types for pages that have custom layouts
+type NextPageWithLayout = {
+  getLayout?: (page: React.ReactElement) => React.ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
 // Use a completely client-side only app to avoid any SSR
-function ClientOnlyApp({ Component, pageProps }: AppProps) {
+function ClientOnlyApp({ Component, pageProps }: AppPropsWithLayout) {
   // Dynamically import SolanaWalletProvider with SSR disabled to avoid hydration errors
   const SolanaWalletProvider = dynamic(
     () => import('../components/SolanaWalletProvider'),
     { ssr: false }
   );
+
+  // Use the layout defined at the page level, or use the default Layout component
+  const getLayout = Component.getLayout || ((page) => (
+    <Layout>
+      {page}
+    </Layout>
+  ))
 
   useEffect(() => {
     console.log('App mounted');
@@ -66,7 +83,7 @@ function ClientOnlyApp({ Component, pageProps }: AppProps) {
       <div className="min-h-screen">
         <SolanaWalletProvider>
           <LanguageProvider>
-            <Component {...pageProps} />
+            {getLayout(<Component {...pageProps} />)}
           </LanguageProvider>
         </SolanaWalletProvider>
       </div>
