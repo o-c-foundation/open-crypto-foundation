@@ -4,52 +4,64 @@ import Link from 'next/link';
 import { FaClock, FaRocket, FaFileAlt, FaChartLine, FaInfoCircle } from 'react-icons/fa';
 import ScrollToTop from '../components/ScrollToTop';
 import NewsletterSubscribe from '../components/NewsletterSubscribe';
+import PresalePurchaseForm from '../components/PresalePurchaseForm';
+import { useConnection } from '@solana/wallet-adapter-react';
+import { getPresaleStatus, PRESALE_CONFIG } from '../utils/presaleContract';
 
 export default function PresalePage() {
-  // Countdown state
-  const [countdown, setCountdown] = useState({
-    hours: 48,
-    minutes: 0,
-    seconds: 0
+  const { connection } = useConnection();
+  const [presaleState, setPresaleState] = useState({
+    isActive: false,
+    totalRaised: 0,
+    participantCount: 0,
+    remainingAllocation: 0,
+    hardCapReached: false,
+    isLoading: true
   });
 
-  // Update countdown every second
+  // Fetch presale status
   useEffect(() => {
-    const startTime = new Date();
-    startTime.setHours(startTime.getHours() + 48); // 48 hours from now
-    
-    const timer = setInterval(() => {
-      const now = new Date();
-      const difference = startTime.getTime() - now.getTime();
-      
-      if (difference <= 0) {
-        clearInterval(timer);
-        // Could redirect to actual presale page when time is up
-        return;
+    const fetchPresaleStatus = async () => {
+      try {
+        const status = await getPresaleStatus(connection);
+        setPresaleState({
+          ...status,
+          isLoading: false
+        });
+      } catch (error) {
+        console.error('Error fetching presale status:', error);
+        setPresaleState(prev => ({ ...prev, isLoading: false }));
       }
-      
-      const hours = Math.floor(difference / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-      
-      setCountdown({ hours, minutes, seconds });
-    }, 1000);
-    
-    return () => clearInterval(timer);
-  }, []);
+    };
+
+    fetchPresaleStatus();
+    // Refresh every 30 seconds
+    const intervalId = setInterval(fetchPresaleStatus, 30000);
+    return () => clearInterval(intervalId);
+  }, [connection]);
+
+  // Format currency with commas
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(amount);
+  };
 
   return (
     <div className="min-h-screen bg-dark">
       <Head>
-        <title>OCF Token Presale Coming Soon | Open Crypto Foundation</title>
+        <title>OCF Token Presale | Open Crypto Foundation</title>
         <meta 
           name="description" 
-          content="The OCF token presale is starting soon. Get ready to be an early supporter of the Open Crypto Foundation." 
+          content="Join the OCF token presale and be an early supporter of the Open Crypto Foundation." 
         />
       </Head>
 
       <main>
-        {/* Hero Section with Background and Timer */}
+        {/* Hero Section with Background */}
         <section className="relative py-20 md:py-32 overflow-hidden">
           {/* Blurry Background */}
           <div className="absolute inset-0 z-0">
@@ -59,72 +71,68 @@ export default function PresalePage() {
           </div>
           
           <div className="container relative z-10 px-4 mx-auto">
-            <div className="max-w-4xl mx-auto text-center">
+            <div className="max-w-4xl mx-auto text-center mb-12">
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-glow">
                 OCF Token Presale
               </h1>
-              <p className="text-xl md:text-2xl text-light-muted mb-10">
-                Launching in:
+              <p className="text-xl md:text-2xl text-light-muted mb-8">
+                {presaleState.isActive ? "Presale is now LIVE!" : "Presale launching soon!"}
               </p>
               
-              {/* Large Countdown Timer */}
-              <div className="flex justify-center items-center gap-4 md:gap-6 mb-12">
-                <div className="flex flex-col items-center">
-                  <div className="w-16 md:w-24 h-16 md:h-24 bg-dark-card rounded-lg border border-primary/30 shadow-glow flex items-center justify-center">
-                    <span className="text-3xl md:text-5xl font-bold text-primary">
-                      {String(countdown.hours).padStart(2, '0')}
-                    </span>
-                  </div>
-                  <span className="text-xs md:text-sm text-light-muted mt-2">Hours</span>
+              {/* Stats Bar */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                <div className="bg-dark-card border border-primary/20 rounded-lg p-4">
+                  <p className="text-light-muted text-sm mb-1">Raised So Far</p>
+                  <p className="text-3xl font-bold text-white">
+                    {formatCurrency(presaleState.totalRaised)}
+                  </p>
+                  <p className="text-xs text-primary mt-1">
+                    Of {formatCurrency(PRESALE_CONFIG.hardCapUSD)} Hard Cap
+                  </p>
                 </div>
-                <span className="text-3xl md:text-5xl text-primary font-bold">:</span>
-                <div className="flex flex-col items-center">
-                  <div className="w-16 md:w-24 h-16 md:h-24 bg-dark-card rounded-lg border border-primary/30 shadow-glow flex items-center justify-center">
-                    <span className="text-3xl md:text-5xl font-bold text-primary">
-                      {String(countdown.minutes).padStart(2, '0')}
-                    </span>
-                  </div>
-                  <span className="text-xs md:text-sm text-light-muted mt-2">Minutes</span>
+                
+                <div className="bg-dark-card border border-primary/20 rounded-lg p-4">
+                  <p className="text-light-muted text-sm mb-1">Participants</p>
+                  <p className="text-3xl font-bold text-white">
+                    {presaleState.participantCount.toLocaleString()}
+                  </p>
+                  <p className="text-xs text-primary mt-1">Early Supporters</p>
                 </div>
-                <span className="text-3xl md:text-5xl text-primary font-bold">:</span>
-                <div className="flex flex-col items-center">
-                  <div className="w-16 md:w-24 h-16 md:h-24 bg-dark-card rounded-lg border border-primary/30 shadow-glow flex items-center justify-center">
-                    <span className="text-3xl md:text-5xl font-bold text-primary">
-                      {String(countdown.seconds).padStart(2, '0')}
-                    </span>
-                  </div>
-                  <span className="text-xs md:text-sm text-light-muted mt-2">Seconds</span>
-                </div>
-              </div>
-              
-              <div className="bg-dark-card border border-dark-light/30 rounded-lg p-6 mb-8 backdrop-blur-lg bg-opacity-70">
-                <h2 className="text-2xl font-bold text-white mb-4">Get Ready for the OCF Token Presale</h2>
-                <p className="text-light-muted mb-4">
-                  Our token presale is launching in just 48 hours! Be among the first to support 
-                  the Open Crypto Foundation mission and get access to OCF tokens at a special early-supporter price.
-                </p>
-                <div className="flex justify-center mt-6">
-                  <Link href="/roadmap" className="inline-flex items-center text-primary hover:text-primary-light transition-colors mr-6">
-                    <FaRocket className="mr-2" size={16} />
-                    View Our Roadmap
-                  </Link>
-                  <Link href="/whitepaper" className="inline-flex items-center text-primary hover:text-primary-light transition-colors">
-                    <FaFileAlt className="mr-2" size={16} />
-                    Read Whitepaper
-                  </Link>
+                
+                <div className="bg-dark-card border border-primary/20 rounded-lg p-4">
+                  <p className="text-light-muted text-sm mb-1">Remaining</p>
+                  <p className="text-3xl font-bold text-white">
+                    {formatCurrency(presaleState.remainingAllocation)}
+                  </p>
+                  <p className="text-xs text-primary mt-1">Available Allocation</p>
                 </div>
               </div>
-              
-              {/* Subscribe for notification */}
-              <div className="mt-8">
-                <h3 className="text-xl text-white mb-4">Get Notified When Presale Goes Live</h3>
-                <NewsletterSubscribe />
+            </div>
+            
+            {/* Presale Purchase Form */}
+            <div className="max-w-lg mx-auto">
+              <div className="bg-dark-card border border-dark-light/30 rounded-lg p-6 backdrop-blur-lg bg-opacity-70">
+                <h2 className="text-2xl font-bold text-white mb-6 text-center">Get Your OCF Tokens</h2>
+                <PresalePurchaseForm className="mb-4" />
+                
+                <div className="mt-6 pt-6 border-t border-dark-light/20">
+                  <div className="flex justify-center space-x-6">
+                    <Link href="/roadmap" className="inline-flex items-center text-primary hover:text-primary-light transition-colors">
+                      <FaRocket className="mr-2" size={16} />
+                      View Roadmap
+                    </Link>
+                    <Link href="/whitepaper" className="inline-flex items-center text-primary hover:text-primary-light transition-colors">
+                      <FaFileAlt className="mr-2" size={16} />
+                      Read Whitepaper
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
         
-        {/* Basic Information Section */}
+        {/* Project Information Section */}
         <section className="py-16 bg-dark">
           <div className="container px-4 mx-auto">
             <div className="max-w-4xl mx-auto">

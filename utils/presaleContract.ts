@@ -27,8 +27,8 @@ export const TOKEN_MINT = safePublicKey(process.env.NEXT_PUBLIC_TOKEN_MINT);
 
 // Presale configuration
 export const PRESALE_CONFIG = {
-  presaleStartTime: new Date('June 15, 2025 09:00 UTC').getTime(),
-  presaleEndTime: new Date('July 15, 2025 09:00 UTC').getTime(),
+  presaleStartTime: new Date().getTime(), // Start immediately
+  presaleEndTime: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).getTime(), // 30 days from now
   tokenPrice: 0.05, // In USD
   solPriceUSD: 60, // Example SOL price in USD (would be fetched from an API in production)
   minPurchaseUSD: 50,
