@@ -35,13 +35,7 @@ const nextConfig = {
     };
     
     return config;
-  },
-  // Remove these as they're causing issues
-  // experimental: {
-  //   runtime: 'edge',
-  // },
-  // unstable_runtimeJS: true,
-  // unstable_JsPreload: false
+  }
 }
 
-module.exports = nextConfig 
+module.exports = nextConfig
