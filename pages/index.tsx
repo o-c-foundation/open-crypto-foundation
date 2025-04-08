@@ -196,7 +196,7 @@ export default function Home() {
       <section className="relative pt-20 pb-24 text-white">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-black opacity-40"></div>
+          <div className="absolute inset-0 bg-black opacity-50"></div>
           <Image 
             src="https://bafybeia7bqcimbxnphbbhakog5dndjx4vp6shcg77jhsewvjaqx67kjnqa.ipfs.w3s.link/"
             alt="Background"
@@ -208,7 +208,7 @@ export default function Home() {
         </div>
         
         {/* Gradient overlay on top of the image for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/50 to-gray-900/40 z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-gray-900/50 z-0"></div>
         
         <div className="container px-4 mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -244,7 +244,7 @@ export default function Home() {
               Founded just three weeks ago, our mission is to make decentralized finance safer, more transparent, 
               and accessible through education, tools, and community engagement.
             </p>
-            <div className="flex flex-col md:flex-row gap-4 mt-8">
+            <div className="flex flex-col md:flex-row justify-center gap-4 mt-8 mx-auto">
               <Link 
                 href="/presale" 
                 className="px-8 py-3 bg-primary hover:bg-primary-light text-white rounded-md text-lg font-semibold transition-colors flex items-center justify-center"
