@@ -159,13 +159,14 @@ export default function Home() {
       <section className="relative pt-32 pb-24 text-white">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-black opacity-60"></div>
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]"></div>
           <Image 
             src="https://bafybeia7bqcimbxnphbbhakog5dndjx4vp6shcg77jhsewvjaqx67kjnqa.ipfs.w3s.link/"
             alt="Blockchain Background"
             fill
             style={{ objectFit: 'cover' }}
             priority
+            className="blur-[1px]"
             onError={() => console.error('Failed to load hero image')}
           />
         </div>
@@ -173,13 +174,13 @@ export default function Home() {
         {/* Content */}
         <div className="container relative z-10 px-4 mx-auto max-w-7xl">
           {/* Rest of the hero section */}
-          <div className="max-w-3xl">
+          <div className="max-w-3xl backdrop-blur-sm bg-black/20 p-6 rounded-lg">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
               <span className="text-gradient">The Open</span><br />
               <span className="text-gradient">Crypto</span><br />
               <span className="text-gradient">Foundation</span>
             </h1>
-            <p className="text-xl md:text-2xl text-light-muted mb-8">
+            <p className="text-xl md:text-2xl text-white mb-8">
               Founded to make decentralized finance safer, more transparent, and accessible through education, tools, and community engagement.
             </p>
             <div className="flex flex-wrap gap-4">
