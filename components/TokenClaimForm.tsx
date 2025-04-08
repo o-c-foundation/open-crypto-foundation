@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { FaSpinner, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa';
+import { FaSpinner, FaCheckCircle, FaExclamationTriangle, FaCoins, FaGift } from 'react-icons/fa';
 
 const TokenClaimForm = () => {
   const { publicKey, connected } = useWallet();
@@ -14,6 +14,7 @@ const TokenClaimForm = () => {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [showBanner, setShowBanner] = useState(false);
 
   // Update address field when wallet connects
   useEffect(() => {
@@ -22,6 +23,16 @@ const TokenClaimForm = () => {
         ...prev,
         address: publicKey.toString()
       }));
+      
+      // Show congratulatory banner when wallet connects
+      setShowBanner(true);
+      
+      // Hide banner after 8 seconds
+      const timer = setTimeout(() => {
+        setShowBanner(false);
+      }, 8000);
+      
+      return () => clearTimeout(timer);
     }
   }, [publicKey]);
 
@@ -105,6 +116,33 @@ const TokenClaimForm = () => {
         </div>
       ) : (
         <>
+          {/* Congratulatory Banner */}
+          {showBanner && (
+            <div className="relative mb-6 overflow-hidden animate-fadeIn">
+              <div className="bg-gradient-to-r from-primary/20 to-blue-600/20 border border-primary rounded-lg p-6 animate-pulse">
+                <div className="flex items-center justify-center">
+                  <div className="absolute -left-6 -top-6 w-24 h-24 bg-primary/10 rounded-full animate-ping"></div>
+                  <div className="absolute -right-6 -bottom-6 w-16 h-16 bg-blue-500/10 rounded-full animate-ping"></div>
+                  
+                  <div className="flex items-center space-x-4 relative z-10">
+                    <div className="bg-gradient-to-br from-primary to-blue-500 p-3 rounded-full animate-bounce">
+                      <FaGift className="text-white text-2xl" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-1">Congratulations!</h3>
+                      <p className="text-white text-lg">
+                        You've been allocated <span className="font-bold text-primary">6,000,000 OCF</span> tokens
+                      </p>
+                    </div>
+                    <div className="ml-2">
+                      <FaCoins className="text-yellow-400 text-2xl animate-pulse" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        
           {error && (
             <div className="p-4 bg-red-900/20 border border-red-900/30 rounded-lg mb-6">
               <div className="flex items-center">
