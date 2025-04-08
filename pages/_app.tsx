@@ -6,16 +6,9 @@ import Layout from '../components/Layout'
 import ErrorBoundary from '../components/ErrorBoundary'
 import { LanguageProvider } from '../contexts/LanguageContext'
 import dynamic from 'next/dynamic'
-import SolanaWalletProvider from '../context/SolanaWalletProvider'
 
-// Use a completely client-side only app to avoid any SSR with wallet adapters
+// Use a completely client-side only app to avoid any SSR
 function ClientOnlyApp({ Component, pageProps }: AppProps) {
-  // Dynamically import SolanaWalletProvider with SSR disabled
-  const SolanaWalletProvider = dynamic(
-    () => import('../components/SolanaWalletProvider'),
-    { ssr: false }
-  );
-
   useEffect(() => {
     console.log('App mounted');
     
@@ -66,13 +59,11 @@ function ClientOnlyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="https://bafkreih4hdkhpjoxluzj526ehakmylfg5o2ri4wctumedqc3i5lv35k7ay.ipfs.w3s.link/" />
       </Head>
       <div className="min-h-screen">
-        <SolanaWalletProvider>
-          <LanguageProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </LanguageProvider>
-        </SolanaWalletProvider>
+        <LanguageProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </LanguageProvider>
       </div>
     </ErrorBoundary>
   )
