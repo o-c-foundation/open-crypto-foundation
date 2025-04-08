@@ -34,11 +34,11 @@ export default function ClaimPage() {
               <div className="p-5 bg-blue-900/20 border border-blue-900/30 rounded-lg mb-8">
                 <div className="flex items-center justify-center mb-3">
                   <FaInfoCircle className="text-blue-400 mr-2" size={24} />
-                  <h3 className="text-xl font-bold text-white">Manual Verification Process</h3>
+                  <h3 className="text-xl font-bold text-white">Automatic Airdrop Process</h3>
                 </div>
                 <p className="text-light-muted">
-                  <strong>All token claim requests will be manually verified by our team.</strong> Upon approval, 
-                  tokens will be sent to your provided wallet address. Please ensure all information is accurate to avoid delays.
+                  <strong>Our oracle automatically airdrops tokens to eligible wallets.</strong> Please allow 10-15 minutes 
+                  for the tokens to arrive in your wallet. If your request is flagged for any reason, it will be sent for manual review.
                 </p>
               </div>
               
@@ -97,15 +97,15 @@ export default function ClaimPage() {
                       </li>
                       <li className="flex">
                         <span className="bg-primary/20 text-primary font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">2</span>
-                        <span>Fill out the claim request form</span>
+                        <span>Submit the claim request</span>
                       </li>
                       <li className="flex">
                         <span className="bg-primary/20 text-primary font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">3</span>
-                        <span>Our team verifies your eligibility</span>
+                        <span>Oracle automatically processes your request</span>
                       </li>
                       <li className="flex">
                         <span className="bg-primary/20 text-primary font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">4</span>
-                        <span>Approved tokens are sent to your wallet</span>
+                        <span>Receive 6,000,000 OCF tokens in your wallet</span>
                       </li>
                     </ol>
                   </div>

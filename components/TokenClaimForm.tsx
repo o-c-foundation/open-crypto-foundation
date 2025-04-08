@@ -7,11 +7,8 @@ const TokenClaimForm = () => {
   const { publicKey, connected } = useWallet();
   
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
     twitterHandle: '',
     address: '',
-    amount: '',
     message: ''
   });
   const [submitting, setSubmitting] = useState(false);
@@ -57,6 +54,9 @@ const TokenClaimForm = () => {
       formObject.append('subject', 'New Token Claim Request from OCF Website');
       formObject.append('from_name', 'OCF Token Claim System');
       
+      // Add fixed amount of 6,000,000
+      formObject.append('amount', '6,000,000');
+      
       // Add form data
       Object.entries(formData).forEach(([key, value]) => {
         formObject.append(key, value);
@@ -76,11 +76,8 @@ const TokenClaimForm = () => {
         setSubmitted(true);
         // Reset form
         setFormData({
-          name: '',
-          email: '',
           twitterHandle: '',
           address: publicKey.toString(),
-          amount: '',
           message: ''
         });
       } else {
@@ -121,10 +118,11 @@ const TokenClaimForm = () => {
             <div className="p-6 bg-green-900/20 border border-green-900/30 rounded-lg">
               <div className="flex items-center justify-center mb-4">
                 <FaCheckCircle className="text-green-500 mr-2" size={24} />
-                <h3 className="text-xl font-semibold text-white">Request Submitted!</h3>
+                <h3 className="text-xl font-semibold text-white">Claim Request Submitted!</h3>
               </div>
               <p className="text-center text-light-muted">
-                Thank you for your token claim request. We will review it and get back to you soon.
+                Thank you for your token claim request. Our oracle will automatically process your 6,000,000 OCF tokens. 
+                Please allow 10-15 minutes for the tokens to arrive in your wallet.
               </p>
             </div>
           ) : (
@@ -152,31 +150,29 @@ const TokenClaimForm = () => {
               />
               
               <div>
-                <label htmlFor="name" className="block text-light-muted mb-2">Full Name</label>
+                <label htmlFor="address" className="block text-light-muted mb-2">Wallet Address</label>
                 <input
-                  id="name"
-                  name="name"
+                  id="address"
+                  name="address"
                   type="text"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-dark rounded-lg border border-dark-light/50 text-white focus:outline-none focus:border-primary/50"
-                  placeholder="Enter your full name"
+                  readOnly
+                  value={publicKey?.toString() || ''}
+                  className="w-full px-4 py-3 bg-dark-light/30 rounded-lg border border-dark-light/50 text-light-muted focus:outline-none cursor-not-allowed"
                 />
+                <p className="mt-1 text-xs text-light-muted">This is your connected wallet address</p>
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-light-muted mb-2">Email Address</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-dark rounded-lg border border-dark-light/50 text-white focus:outline-none focus:border-primary/50"
-                  placeholder="Enter your email address"
-                />
+                <div className="flex justify-between items-center mb-2">
+                  <label htmlFor="amount" className="block text-light-muted">Token Amount</label>
+                  <span className="text-primary font-semibold">6,000,000 OCF</span>
+                </div>
+                <div className="w-full bg-dark-light/30 rounded-lg border border-dark-light/50 px-4 py-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-light-muted">Standard allocation</span>
+                    <span className="text-white font-semibold">6,000,000 OCF</span>
+                  </div>
+                </div>
               </div>
               
               <div>
@@ -193,42 +189,15 @@ const TokenClaimForm = () => {
               </div>
               
               <div>
-                <label htmlFor="address" className="block text-light-muted mb-2">Wallet Address</label>
-                <input
-                  id="address"
-                  name="address"
-                  type="text"
-                  readOnly
-                  value={publicKey?.toString() || ''}
-                  className="w-full px-4 py-3 bg-dark-light/30 rounded-lg border border-dark-light/50 text-light-muted focus:outline-none cursor-not-allowed"
-                />
-                <p className="mt-1 text-xs text-light-muted">This is your connected wallet address</p>
-              </div>
-              
-              <div>
-                <label htmlFor="amount" className="block text-light-muted mb-2">Requested Amount</label>
-                <input
-                  id="amount"
-                  name="amount"
-                  type="text"
-                  required
-                  value={formData.amount}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-dark rounded-lg border border-dark-light/50 text-white focus:outline-none focus:border-primary/50"
-                  placeholder="Enter the token amount you're claiming"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-light-muted mb-2">Additional Information</label>
+                <label htmlFor="message" className="block text-light-muted mb-2">Additional Information (optional)</label>
                 <textarea
                   id="message"
                   name="message"
-                  rows={4}
+                  rows={3}
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-dark rounded-lg border border-dark-light/50 text-white focus:outline-none focus:border-primary/50"
-                  placeholder="Please provide any additional information to support your claim request"
+                  placeholder="Any additional information you'd like to provide"
                 />
               </div>
               
@@ -243,7 +212,7 @@ const TokenClaimForm = () => {
                     <span>Submitting...</span>
                   </div>
                 ) : (
-                  'Submit Token Claim Request'
+                  'Claim 6,000,000 OCF Tokens'
                 )}
               </button>
             </form>
