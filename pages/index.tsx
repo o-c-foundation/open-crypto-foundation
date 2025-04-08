@@ -11,7 +11,7 @@ export default function Home() {
   const [logoError, setLogoError] = useState(false);
   const [presaleBannerVisible, setPresaleBannerVisible] = useState(true);
   const [isErrorRecoveryMode, setIsErrorRecoveryMode] = useState(false);
-  const logoUrl = "https://bafkreidnf7j4gen5gwgnqxmi3fcprksdmorptbdenb4q76ejbpgbjqkzqq.ipfs.w3s.link/";
+  const logoUrl = "https://bafkreih7cgwgji2mtmdpbhyef27lst563gnyofx6e6d6tmgvc3qfr7cccu.ipfs.w3s.link/";
 
   // Check if we're coming from an error
   useEffect(() => {
@@ -59,10 +59,10 @@ export default function Home() {
               <div className="max-w-4xl mx-auto text-center">
                 <div className="mb-8 flex justify-center">
                   <Image 
-                    src="https://bafkreih4hdkhpjoxluzj526ehakmylfg5o2ri4wctumedqc3i5lv35k7ay.ipfs.w3s.link/"
+                    src="https://bafkreih7cgwgji2mtmdpbhyef27lst563gnyofx6e6d6tmgvc3qfr7cccu.ipfs.w3s.link/"
                     alt="Open Crypto Foundation Logo"
-                    width={120}
-                    height={120}
+                    width={160}
+                    height={160}
                     priority
                   />
                 </div>
@@ -196,29 +196,29 @@ export default function Home() {
       <section className="relative pt-20 pb-24 text-white">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-black opacity-70"></div>
+          <div className="absolute inset-0 bg-black opacity-40"></div>
           <Image 
             src="https://bafybeia7bqcimbxnphbbhakog5dndjx4vp6shcg77jhsewvjaqx67kjnqa.ipfs.w3s.link/"
             alt="Background"
             fill
             priority
             className="object-cover"
-            style={{ mixBlendMode: 'overlay' }}
+            style={{ mixBlendMode: 'normal' }}
           />
         </div>
         
         {/* Gradient overlay on top of the image for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 to-gray-900/70 z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-black/50 to-gray-900/40 z-0"></div>
         
         <div className="container px-4 mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="relative h-48 w-48 mx-auto mb-8">
+            <div className="relative h-64 w-64 mx-auto mb-8">
               {logoError ? (
                 <img 
                   src={logoUrl}
                   alt="Open Crypto Foundation Logo" 
-                  width={192}
-                  height={192}
+                  width={256}
+                  height={256}
                   className="max-w-full h-auto"
                 />
               ) : (
