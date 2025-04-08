@@ -46,7 +46,6 @@ export default function Navbar() {
         { name: 'DeFi Fundamentals', href: '/resources/defi-fundamentals', description: 'Learn about cryptocurrency, blockchain technology, and decentralized finance' }
       ]
     },
-    { name: 'Airdrops', href: '/airdrops', current: false },
     { name: 'OFC Airdrops', href: '/claim', icon: <FaCoins className="mr-1" />, badge: 'New' }
   ]
   
