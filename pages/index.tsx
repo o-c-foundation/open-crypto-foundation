@@ -9,7 +9,6 @@ import SolanaIcon from '../components/icons/SolanaIcon'
 
 export default function Home() {
   const [logoError, setLogoError] = useState(false);
-  const [presaleBannerVisible, setPresaleBannerVisible] = useState(true);
   const [isErrorRecoveryMode, setIsErrorRecoveryMode] = useState(false);
   const logoUrl = "https://bafkreidvb25k6khuuf7fliwnhj2iogmbqgnoj3zkq47fev4ivpyujlekim.ipfs.w3s.link/";
 
@@ -156,41 +155,6 @@ export default function Home() {
         />
       </Head>
       
-      {/* Presale Banner */}
-      {presaleBannerVisible && (
-        <div className="relative bg-gradient-to-r from-primary to-primary-dark py-3">
-          <div className="container px-4 mx-auto">
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div className="flex items-center mb-3 md:mb-0">
-                <div className="bg-white/20 p-1.5 rounded-full mr-3">
-                  <FaFire className="text-white" size={18} />
-                </div>
-                <div>
-                  <span className="font-medium text-white">OCF Token Presale Coming Soon!</span>
-                  <span className="hidden md:inline ml-2 text-white/80">Get ready for early access with 50% discount</span>
-                </div>
-              </div>
-              <div className="flex items-center">
-                <Link href="/presale" className="bg-white hover:bg-gray-100 transition-colors text-primary font-medium px-4 py-1.5 rounded-lg flex items-center text-sm">
-                  <FaCoins className="mr-1.5" size={14} />
-                  Presale Details
-                  <FaArrowRight className="ml-1.5" size={10} />
-                </Link>
-                <button 
-                  onClick={() => setPresaleBannerVisible(false)}
-                  className="ml-3 text-white/70 hover:text-white transition-colors"
-                  aria-label="Close banner"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-      
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 text-white">
         {/* Background Image with Overlay */}
@@ -198,112 +162,43 @@ export default function Home() {
           <div className="absolute inset-0 bg-black opacity-60"></div>
           <Image 
             src="https://bafybeia7bqcimbxnphbbhakog5dndjx4vp6shcg77jhsewvjaqx67kjnqa.ipfs.w3s.link/"
-            alt="Background"
+            alt="Blockchain Background"
             fill
+            style={{ objectFit: 'cover' }}
             priority
-            className="object-cover"
-            style={{ mixBlendMode: 'normal' }}
+            onError={() => console.error('Failed to load hero image')}
           />
         </div>
         
-        {/* Grid lines overlay for design */}
-        <div className="absolute inset-0 z-0 opacity-20">
-          <div className="w-full h-full" style={{
-            backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)',
-            backgroundSize: '40px 40px'
-          }}></div>
-        </div>
-        
-        {/* Gradient overlay on top of the image for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/70 to-gray-900/60 z-0"></div>
-        
-        <div className="container px-4 mx-auto relative z-10 max-w-7xl">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left Column: Title and Description */}
-            <div className="text-left">
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight">
-                The Open<br />
-                Crypto<br />
-                Foundation
-              </h1>
-              
-              <p className="text-xl text-gray-300 mb-10 max-w-lg">
-                Founded to make decentralized finance safer, more transparent, 
-                and accessible through education, tools, and community engagement.
-              </p>
-              
+        {/* Content */}
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl">
+          {/* Rest of the hero section */}
+          <div className="max-w-3xl">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              <span className="text-gradient">The Open</span><br />
+              <span className="text-gradient">Crypto</span><br />
+              <span className="text-gradient">Foundation</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-light-muted mb-8">
+              Founded to make decentralized finance safer, more transparent, and accessible through education, tools, and community engagement.
+            </p>
+            <div className="flex flex-wrap gap-4">
               <Link 
                 href="/about" 
-                className="inline-flex items-center px-8 py-3 bg-white hover:bg-gray-100 text-black rounded-md text-lg font-semibold transition-colors"
+                className="px-6 py-3 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors flex items-center"
               >
-                Learn More about OCF <FaArrowRight className="ml-2" />
+                Learn More About OCF <FaArrowRight className="ml-2" />
               </Link>
-            </div>
-            
-            {/* Right Column: Logo */}
-            <div className="flex justify-center md:justify-end">
-              <div className="bg-black/30 backdrop-blur-sm p-10 rounded-lg border border-primary/20">
-                <blockquote className="text-2xl md:text-3xl italic font-light text-white">
-                  &ldquo;Alone we can do so little; together we can do so much.&rdquo;
-                </blockquote>
-                <p className="text-right mt-4 text-primary">— Helen Keller</p>
-              </div>
+              <Link 
+                href="/manifesto" 
+                className="px-6 py-3 bg-dark-card hover:bg-dark-elevated border border-primary/30 text-white rounded-lg transition-colors"
+              >
+                Read Our Manifesto
+              </Link>
             </div>
           </div>
         </div>
       </section>
-      
-      {/* Presale & Token Claim Actions */}
-      <div className="relative -mt-16 mb-16 z-10">
-        <div className="container px-4 mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row gap-4 justify-end">
-            <Link 
-              href="/presale" 
-              className="px-8 py-3 bg-primary hover:bg-primary-light text-white rounded-md text-lg font-semibold transition-colors flex items-center justify-center"
-            >
-              Presale Coming Soon <FaArrowRight className="ml-2" />
-            </Link>
-            <Link 
-              href="/claim" 
-              className="px-8 py-3 bg-dark-light hover:bg-dark-light/80 text-white rounded-md text-lg font-semibold transition-colors flex items-center justify-center border border-primary/30"
-            >
-              Token Claim Request <FaCoins className="ml-2" />
-            </Link>
-          </div>
-        </div>
-      </div>
-      
-      {/* Presale CTA Card - Prominently displayed */}
-      <div className="relative mb-12 z-10">
-        <div className="container px-4 mx-auto max-w-7xl">
-          <div className="bg-gradient-to-r from-dark-card to-primary/10 border border-primary/30 rounded-xl shadow-lg overflow-hidden">
-            <div className="flex flex-col md:flex-row">
-              <div className="p-8 md:w-2/3">
-                <h2 className="text-2xl font-bold text-white mb-2">OCF Token Presale Coming Soon</h2>
-                <p className="text-light-muted mb-6">
-                  Get ready to secure your OCF tokens at a 50% discount before our public launch. Limited allocation tickets will be available on the Solana blockchain in just 48 hours.
-                </p>
-                <div className="flex items-center">
-                  <div className="flex items-center bg-dark-light/30 rounded-lg px-4 py-2 mr-6">
-                    <span className="text-primary font-bold text-2xl">50%</span>
-                    <span className="text-light-muted ml-2 font-medium">Discount</span>
-                  </div>
-                  <div className="flex items-center bg-dark-light/30 rounded-lg px-4 py-2">
-                    <span className="text-primary font-bold text-lg">48h</span>
-                    <span className="text-light-muted ml-2 font-medium">Countdown</span>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-dark-light/20 p-8 flex items-center justify-center md:w-1/3">
-                <Link href="/presale" className="bg-primary hover:bg-primary-light transition-colors text-white py-3 px-6 rounded-lg font-medium flex items-center">
-                  <FaCoins className="mr-2" />
-                  View Presale Details
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       
       {/* Features Section */}
       <section className="py-20 bg-gray-900">
