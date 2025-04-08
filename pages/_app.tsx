@@ -9,6 +9,12 @@ import dynamic from 'next/dynamic'
 
 // Use a completely client-side only app to avoid any SSR
 function ClientOnlyApp({ Component, pageProps }: AppProps) {
+  // Dynamically import SolanaWalletProvider with SSR disabled to avoid hydration errors
+  const SolanaWalletProvider = dynamic(
+    () => import('../components/SolanaWalletProvider'),
+    { ssr: false }
+  );
+
   useEffect(() => {
     console.log('App mounted');
     
@@ -59,11 +65,13 @@ function ClientOnlyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="https://bafkreih4hdkhpjoxluzj526ehakmylfg5o2ri4wctumedqc3i5lv35k7ay.ipfs.w3s.link/" />
       </Head>
       <div className="min-h-screen">
-        <LanguageProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </LanguageProvider>
+        <SolanaWalletProvider>
+          <LanguageProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </LanguageProvider>
+        </SolanaWalletProvider>
       </div>
     </ErrorBoundary>
   )
