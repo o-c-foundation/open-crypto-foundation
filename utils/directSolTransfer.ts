@@ -4,25 +4,33 @@ import { WalletContextState } from '@solana/wallet-adapter-react';
 // Treasury wallet from environment variables
 const TREASURY_WALLET_ADDRESS = process.env.NEXT_PUBLIC_TREASURY_WALLET || '5W2Lfp8saRiaK1bboAAwDnWtsghmQBahk5UMatump9Et';
 
+// Calculate timestamp for next price hike (12:00am EST 4/9/2025, about 12 hours from now)
+const tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);
+tomorrow.setHours(0, 0, 0, 0);  // Set to midnight
+const NEXT_PRICE_HIKE = tomorrow.getTime();
+
 // Presale configuration
 export const PRESALE_CONFIG = {
   presaleStartTime: new Date().getTime(), // Start immediately
   presaleEndTime: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).getTime(), // 30 days from now
   tokenPrice: 0.0001, // Price per token in USD (based on $100K market cap for 1B tokens)
-  solPriceUSD: 60, // Current SOL price in USD
+  solPriceUSD: 110, // Current SOL price in USD
   minPurchaseSOL: 2.5, // Minimum purchase in SOL
   maxPurchaseSOL: 10, // Maximum purchase in SOL
-  minPurchaseUSD: 2.5 * 60, // Calculated from SOL
-  maxPurchaseUSD: 10 * 60, // Calculated from SOL
-  softCapSOL: 833.33, // 50K USD equivalent
-  hardCapSOL: 2000, // 120K USD equivalent
+  minPurchaseUSD: 2.5 * 110, // Calculated from SOL and current price
+  maxPurchaseUSD: 10 * 110, // Calculated from SOL and current price
+  softCapSOL: 455, // Approx 50K USD equivalent at $110/SOL
+  hardCapSOL: 1091, // Approx 120K USD equivalent at $110/SOL
   softCapUSD: 50000, // Soft cap in USD
   hardCapUSD: 120000, // Hard cap in USD
-  totalRaisedSOL: 208.17, // Current amount raised (≈ $12,490)
+  totalRaisedSOL: 113.5, // Current amount raised (≈ $12,490)
   totalRaisedUSD: 12490, // Current amount raised in USD
   tokensRemaining: 210549861, // Tokens remaining in presale
   totalTokenSupply: 1000000000, // Total token supply (1 billion)
-  tokenPriceSOL: 0.0001 / 60, // Price per token in SOL
+  tokenPriceSOL: 0.0001 / 110, // Price per token in SOL
+  nextPriceHike: NEXT_PRICE_HIKE, // Timestamp for next price hike
+  nextPriceIncreasePercentage: 10, // Price will increase by 10%
   vestingPercentageImmediate: 30, // 30% available immediately
   vestingDurationMonths: 3 // Remaining 70% vested over 3 months
 };
@@ -31,6 +39,13 @@ export const PRESALE_CONFIG = {
 export function calculateTokenAmount(solAmount: number): number {
   const usdAmount = solAmount * PRESALE_CONFIG.solPriceUSD;
   return Math.floor(usdAmount / PRESALE_CONFIG.tokenPrice);
+}
+
+// Get real-time SOL price (this would connect to an API in production)
+export async function getSolPrice(): Promise<number> {
+  // In a real implementation, this would fetch from a price API
+  // For now we return the config value
+  return PRESALE_CONFIG.solPriceUSD;
 }
 
 export interface PurchaseReceipt {

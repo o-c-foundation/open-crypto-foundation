@@ -5,9 +5,10 @@ import { FaClock, FaRocket, FaFileAlt, FaChartLine, FaInfoCircle } from 'react-i
 import ScrollToTop from '../components/ScrollToTop';
 import NewsletterSubscribe from '../components/NewsletterSubscribe';
 import PresalePurchaseForm from '../components/PresalePurchaseForm';
+import PriceHikeCountdown from '../components/PriceHikeCountdown';
 import { useConnection } from '@solana/wallet-adapter-react';
 import { getPresaleStatus } from '../utils/presaleContract';
-import { PRESALE_CONFIG } from '../utils/directSolTransfer';
+import { PRESALE_CONFIG, getSolPrice } from '../utils/directSolTransfer';
 
 export default function PresalePage() {
   const { connection } = useConnection();
@@ -19,6 +20,25 @@ export default function PresalePage() {
     hardCapReached: false,
     isLoading: false
   });
+  
+  const [currentSolPrice, setCurrentSolPrice] = useState(PRESALE_CONFIG.solPriceUSD);
+
+  // Fetch current SOL price
+  useEffect(() => {
+    const fetchSolPrice = async () => {
+      try {
+        const price = await getSolPrice();
+        setCurrentSolPrice(price);
+      } catch (error) {
+        console.error('Error fetching SOL price:', error);
+      }
+    };
+
+    fetchSolPrice();
+    // Refresh SOL price every minute
+    const intervalId = setInterval(fetchSolPrice, 60000);
+    return () => clearInterval(intervalId);
+  }, []);
 
   // Fetch presale status
   useEffect(() => {
@@ -55,8 +75,9 @@ export default function PresalePage() {
   const tokenInfo = {
     totalSupply: PRESALE_CONFIG.totalTokenSupply.toLocaleString(),
     priceUSD: '$' + PRESALE_CONFIG.tokenPrice.toFixed(6),
-    priceSol: (PRESALE_CONFIG.tokenPrice / PRESALE_CONFIG.solPriceUSD).toFixed(8) + ' SOL',
+    priceSol: (PRESALE_CONFIG.tokenPrice / currentSolPrice).toFixed(8) + ' SOL',
     remaining: PRESALE_CONFIG.tokensRemaining.toLocaleString(),
+    tokensPerSOL: Math.floor(currentSolPrice / PRESALE_CONFIG.tokenPrice).toLocaleString(),
   };
 
   return (
@@ -81,12 +102,31 @@ export default function PresalePage() {
           
           <div className="container relative z-10 px-4 mx-auto">
             <div className="max-w-4xl mx-auto text-center mb-12">
+              {/* Price Hike Countdown */}
+              <div className="mb-8">
+                <PriceHikeCountdown 
+                  targetDate={PRESALE_CONFIG.nextPriceHike} 
+                  increasePercentage={PRESALE_CONFIG.nextPriceIncreasePercentage} 
+                />
+              </div>
+              
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-glow">
                 OCF Token Presale
               </h1>
               <p className="text-xl md:text-2xl text-light-muted mb-8">
                 Presale is now LIVE!
               </p>
+              
+              {/* Current SOL Price */}
+              <div className="mb-8 bg-dark-card border border-primary/20 rounded-lg p-3 inline-block">
+                <div className="flex items-center justify-center">
+                  <img src="/solana-logo.png" alt="Solana" className="h-6 mr-2" />
+                  <p className="text-white">
+                    <span className="text-light-muted mr-2">Current SOL Price:</span>
+                    <span className="font-bold">${currentSolPrice}</span>
+                  </p>
+                </div>
+              </div>
               
               {/* Stats Bar */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
@@ -119,7 +159,7 @@ export default function PresalePage() {
               
               {/* Token Information */}
               <div className="bg-dark-card border border-primary/20 rounded-lg p-4 mb-6">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                   <div>
                     <p className="text-light-muted text-sm mb-1">Total Supply</p>
                     <p className="text-lg font-semibold text-white">{tokenInfo.totalSupply}</p>
@@ -135,6 +175,10 @@ export default function PresalePage() {
                   <div>
                     <p className="text-light-muted text-sm mb-1">Price (SOL)</p>
                     <p className="text-lg font-semibold text-white">{tokenInfo.priceSol}</p>
+                  </div>
+                  <div>
+                    <p className="text-light-muted text-sm mb-1">Tokens per SOL</p>
+                    <p className="text-lg font-semibold text-primary">{tokenInfo.tokensPerSOL}</p>
                   </div>
                 </div>
               </div>
