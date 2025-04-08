@@ -2,7 +2,6 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
-import Layout from '../components/Layout'
 import ErrorBoundary from '../components/ErrorBoundary'
 import { LanguageProvider } from '../contexts/LanguageContext'
 import dynamic from 'next/dynamic'
@@ -67,9 +66,7 @@ function ClientOnlyApp({ Component, pageProps }: AppProps) {
       <div className="min-h-screen">
         <SolanaWalletProvider>
           <LanguageProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
+            <Component {...pageProps} />
           </LanguageProvider>
         </SolanaWalletProvider>
       </div>

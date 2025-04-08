@@ -6,6 +6,7 @@ import { FaArrowRight, FaShieldAlt, FaBookOpen, FaTools, FaRegNewspaper, FaRocke
 import NewsletterSubscribe from '../components/NewsletterSubscribe'
 import ScrollToTop from '../components/ScrollToTop'
 import SolanaIcon from '../components/icons/SolanaIcon'
+import Layout from '../components/Layout'
 
 export default function Home() {
   const [logoError, setLogoError] = useState(false);
@@ -45,13 +46,11 @@ export default function Home() {
   // Simplified version of the Home page if we're in error recovery mode
   if (isErrorRecoveryMode) {
     return (
-      <>
-        <Head>
-          <title>Open Crypto Foundation - Empowering Safe DeFi Interactions</title>
-          <meta name="description" content="The Open Crypto Foundation provides tools and education to help users safely interact with DeFi protocols and avoid scams." />
-        </Head>
-        
-        <main className="min-h-screen bg-dark">
+      <Layout
+        title="Open Crypto Foundation - Empowering Safe DeFi Interactions"
+        description="The Open Crypto Foundation provides tools and education to help users safely interact with DeFi protocols and avoid scams."
+      >
+        <main>
           {/* Simple Hero Section for Error Recovery */}
           <section className="py-16 md:py-24 bg-gradient-to-b from-dark-light to-dark text-white">
             <div className="container mx-auto px-4 max-w-7xl">
@@ -61,7 +60,7 @@ export default function Home() {
                     <blockquote className="text-xl italic font-light text-white">
                       &ldquo;Alone we can do so little; together we can do so much.&rdquo;
                     </blockquote>
-                    <p className="text-right mt-3 text-primary">??? Helen Keller</p>
+                    <p className="text-right mt-3 text-primary">— Helen Keller</p>
                   </div>
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-6">Open Crypto Foundation</h1>
@@ -140,21 +139,16 @@ export default function Home() {
         </main>
         
         <ScrollToTop />
-      </>
+      </Layout>
     );
   }
   
   // Regular home page content follows
   return (
-    <>
-      <Head>
-        <title>Open Crypto Foundation | Promoting Safe DeFi</title>
-        <meta 
-          name="description" 
-          content="The newly launched Open Crypto Foundation is dedicated to promoting safe decentralized finance practices and educating users about blockchain technology." 
-        />
-      </Head>
-      
+    <Layout
+      title="Open Crypto Foundation | Promoting Safe DeFi"
+      description="The newly launched Open Crypto Foundation is dedicated to promoting safe decentralized finance practices and educating users about blockchain technology."
+    >
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 text-white">
         {/* Background Image with Overlay */}
@@ -310,6 +304,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </>
+      <ScrollToTop />
+    </Layout>
   )
 } 
