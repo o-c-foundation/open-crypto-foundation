@@ -12,10 +12,16 @@ interface SolanaWalletProviderProps {
   children: ReactNode;
 }
 
-const SolanaWalletProvider: FC<SolanaWalletProviderProps> = ({ children }) => {
+// In Next.js 14, we need to be more explicit with the types
+const SolanaWalletProvider = ({ children }: SolanaWalletProviderProps) => {
   // Use devnet cluster for presale demo
   const network = WalletAdapterNetwork.Devnet;
-  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+  
+  // Use environment variable for endpoint if available, fall back to clusterApiUrl
+  const endpoint = useMemo(() => 
+    process.env.NEXT_PUBLIC_SOLANA_RPC_ENDPOINT || clusterApiUrl(network), 
+    [network]
+  );
 
   // Initialize the wallet adapters
   const wallets = useMemo(
@@ -26,14 +32,19 @@ const SolanaWalletProvider: FC<SolanaWalletProviderProps> = ({ children }) => {
     [network]
   );
 
+  // Use explicit type casting to help TypeScript understand the component structure
+  const ConnectionProviderComponent = ConnectionProvider as any;
+  const WalletProviderComponent = WalletProvider as any;
+  const WalletModalProviderComponent = WalletModalProvider as any;
+
   return (
-    <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider wallets={wallets} autoConnect>
-        <WalletModalProvider>
+    <ConnectionProviderComponent endpoint={endpoint}>
+      <WalletProviderComponent wallets={wallets} autoConnect>
+        <WalletModalProviderComponent>
           {children}
-        </WalletModalProvider>
-      </WalletProvider>
-    </ConnectionProvider>
+        </WalletModalProviderComponent>
+      </WalletProviderComponent>
+    </ConnectionProviderComponent>
   );
 };
 
