@@ -37,7 +37,7 @@ export default function Whitepaper() {
             </div>
             
             <div className="flex flex-wrap gap-4 mb-8">
-              <a href="#" className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 font-medium flex items-center">
+              <a href="/docs/OCF_Token_Whitepaper.pdf" download className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 font-medium flex items-center">
                 <FaDownload className="mr-2" /> Download PDF
               </a>
               <Link href="/roadmap" className="px-6 py-3 border border-primary/50 text-primary rounded-lg hover:bg-primary/10 transition-all duration-200 font-medium flex items-center">
