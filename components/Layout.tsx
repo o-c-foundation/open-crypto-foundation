@@ -42,10 +42,10 @@ export default function Layout({ children, title, description }: LayoutProps) {
         <div className="absolute w-1/3 h-1/6 rounded-full bg-primary/5 blur-[100px] bottom-0 right-1/3"></div>
       </div>
       
-      {/* TradingView Ticker Tape at top of every page */}
-      <TradingViewTickerTape />
-      
       <Navbar />
+      
+      {/* TradingView Ticker Tape below navbar */}
+      <TradingViewTickerTape />
       
       <main className="flex-grow">
         {children}
