@@ -53,6 +53,18 @@ export default function ClaimPage() {
                   Your early participation helps us build a stronger foundation for the entire ecosystem.
                 </p>
               </div>
+              
+              {/* Devnet Disclaimer */}
+              <div className="p-5 bg-yellow-900/20 border border-yellow-800/30 rounded-lg mt-6">
+                <div className="flex items-center justify-center mb-3">
+                  <FaInfoCircle className="text-yellow-500 mr-2" size={24} />
+                  <h3 className="text-xl font-bold text-white">Devnet Tokens Disclaimer</h3>
+                </div>
+                <p className="text-light-muted">
+                  <strong>Important:</strong> The tokens you are claiming now are on the Solana Devnet. These Devnet tokens can be redeemed 1:1 
+                  for the mainnet version when we launch. To see these tokens in your wallet, you'll need to configure it to connect to Solana Devnet.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -105,7 +117,11 @@ export default function ClaimPage() {
                       </li>
                       <li className="flex">
                         <span className="bg-primary/20 text-primary font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">4</span>
-                        <span>Receive 6,000,000 OCF tokens in your wallet</span>
+                        <span>Receive 6,000,000 OCF tokens on Devnet</span>
+                      </li>
+                      <li className="flex">
+                        <span className="bg-primary/20 text-primary font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">5</span>
+                        <span>Redeem 1:1 for mainnet tokens at launch</span>
                       </li>
                     </ol>
                   </div>

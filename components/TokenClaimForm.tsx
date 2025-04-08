@@ -159,8 +159,9 @@ const TokenClaimForm = () => {
                 <h3 className="text-xl font-semibold text-white">Claim Request Submitted!</h3>
               </div>
               <p className="text-center text-light-muted">
-                Thank you for your token claim request. Our oracle will automatically process your 6,000,000 OCF tokens. 
-                Please allow 10-15 minutes for the tokens to arrive in your wallet.
+                Thank you for your token claim request. Our oracle will automatically process your 6,000,000 OCF tokens 
+                on the Solana Devnet. Please allow 10-15 minutes for the tokens to arrive in your wallet. Remember to 
+                configure your wallet to connect to Devnet to view these tokens.
               </p>
             </div>
           ) : (
