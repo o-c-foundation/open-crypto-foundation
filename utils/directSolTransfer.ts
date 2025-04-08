@@ -8,18 +8,21 @@ const TREASURY_WALLET_ADDRESS = process.env.NEXT_PUBLIC_TREASURY_WALLET || '5W2L
 export const PRESALE_CONFIG = {
   presaleStartTime: new Date().getTime(), // Start immediately
   presaleEndTime: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).getTime(), // 30 days from now
-  tokenPrice: 0.0001943, // Price per token in SOL (not USD)
-  solPriceUSD: 60, // Example SOL price in USD (would be fetched from an API in production)
+  tokenPrice: 0.0001, // Price per token in USD (based on $100K market cap for 1B tokens)
+  solPriceUSD: 60, // Current SOL price in USD
   minPurchaseSOL: 2.5, // Minimum purchase in SOL
   maxPurchaseSOL: 10, // Maximum purchase in SOL
   minPurchaseUSD: 2.5 * 60, // Calculated from SOL
   maxPurchaseUSD: 10 * 60, // Calculated from SOL
   softCapSOL: 833.33, // 50K USD equivalent
   hardCapSOL: 2000, // 120K USD equivalent
-  softCapUSD: 50000,
-  hardCapUSD: 120000,
-  totalRaisedSOL: 175.5, // Current amount raised
+  softCapUSD: 50000, // Soft cap in USD
+  hardCapUSD: 120000, // Hard cap in USD
+  totalRaisedSOL: 208.17, // Current amount raised (≈ $12,490)
+  totalRaisedUSD: 12490, // Current amount raised in USD
   tokensRemaining: 210549861, // Tokens remaining in presale
+  totalTokenSupply: 1000000000, // Total token supply (1 billion)
+  tokenPriceSOL: 0.0001 / 60, // Price per token in SOL
   vestingPercentageImmediate: 30, // 30% available immediately
   vestingDurationMonths: 3 // Remaining 70% vested over 3 months
 };

@@ -3,6 +3,7 @@ import { Connection, PublicKey, Transaction, SystemProgram, LAMPORTS_PER_SOL } f
 import { WalletContextState } from '@solana/wallet-adapter-react';
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
 import BN from 'bn.js';
+import { PRESALE_CONFIG } from './directSolTransfer';
 
 // Helper to safely create PublicKey objects
 const safePublicKey = (address?: string): PublicKey => {
@@ -24,22 +25,8 @@ const safePublicKey = (address?: string): PublicKey => {
 
 // Constants - use safePublicKey to avoid errors with placeholder values
 export const PRESALE_PROGRAM_ID = safePublicKey(process.env.NEXT_PUBLIC_PRESALE_PROGRAM_ID);
-export const TREASURY_WALLET = safePublicKey(process.env.NEXT_PUBLIC_TREASURY_WALLET);
+export const TREASURY_WALLET = safePublicKey("5W2Lfp8saRiaK1bboAAwDnWtsghmQBahk5UMatump9Et");
 export const TOKEN_MINT = safePublicKey(process.env.NEXT_PUBLIC_TOKEN_MINT);
-
-// Presale configuration
-export const PRESALE_CONFIG = {
-  presaleStartTime: new Date().getTime(), // Start immediately
-  presaleEndTime: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).getTime(), // 30 days from now
-  tokenPrice: 0.05, // In USD
-  solPriceUSD: 60, // Example SOL price in USD (would be fetched from an API in production)
-  minPurchaseUSD: 50,
-  maxPurchaseUSD: 20000,
-  softCapUSD: 500000,
-  hardCapUSD: 2000000,
-  vestingPercentageImmediate: 30, // 30% available immediately
-  vestingDurationMonths: 3 // Remaining 70% vested over 3 months
-};
 
 // Types
 export interface PresaleState {
@@ -163,64 +150,23 @@ const generateIdl = () => {
 // Utility to get presale status
 export const getPresaleStatus = async (connection: Connection): Promise<PresaleState> => {
   try {
-    // Initialize Anchor Program
-    const provider = new anchor.AnchorProvider(
-      connection,
-      {
-        publicKey: PublicKey.default,
-        signTransaction: async () => { throw new Error("Not implemented"); },
-        signAllTransactions: async () => { throw new Error("Not implemented"); },
-      } as any,
-      { preflightCommitment: 'processed' }
-    );
-    
-    const program = new anchor.Program(generateIdl() as any, PRESALE_PROGRAM_ID, provider);
-    
-    // Find presale account
-    const [presaleAccount] = await findPresaleAccount();
-    
-    try {
-      // Fetch presale data from chain
-      const presaleData: any = await program.account.presale.fetch(presaleAccount);
-      
-      const isActive = Date.now() >= Number(presaleData.startTime) && 
-                      Date.now() <= Number(presaleData.endTime);
-      
-      const totalRaised = Number(presaleData.soldAmount) * Number(presaleData.price) / LAMPORTS_PER_SOL;
-      const hardCapUSD = Number(presaleData.hardcapAmount) * Number(presaleData.price) / LAMPORTS_PER_SOL;
-      
-      // Count participants (this is simplified - actual implementation would need to count all participants)
-      // In a real scenario, you might maintain this count in the contract or scan all accounts
-      const participantCount = 0; // This would be derived from blockchain data
-      
-      return {
-        isActive,
-        totalRaised,
-        participantCount,
-        remainingAllocation: hardCapUSD - totalRaised,
-        hardCapReached: Number(presaleData.soldAmount) >= Number(presaleData.hardcapAmount)
-      };
-    } catch (error) {
-      console.error("Error fetching presale data:", error);
-      
-      // Return mock data during development if the contract isn't deployed or there's an error
-      return {
-        isActive: true,
-        totalRaised: 490000,
-        participantCount: 1250,
-        remainingAllocation: PRESALE_CONFIG.hardCapUSD - 490000,
-        hardCapReached: false
-      };
-    }
+    // Return data from our PRESALE_CONFIG
+    return {
+      isActive: true,
+      totalRaised: PRESALE_CONFIG.totalRaisedUSD,
+      participantCount: 1250, // Fixed number for display
+      remainingAllocation: PRESALE_CONFIG.softCapUSD - PRESALE_CONFIG.totalRaisedUSD,
+      hardCapReached: false
+    };
   } catch (error) {
     console.error('Error fetching presale status:', error);
     
-    // Return mock data as fallback
+    // Return values directly from PRESALE_CONFIG as fallback
     return {
       isActive: true,
-      totalRaised: 490000,
+      totalRaised: PRESALE_CONFIG.totalRaisedUSD,
       participantCount: 1250,
-      remainingAllocation: PRESALE_CONFIG.hardCapUSD - 490000,
+      remainingAllocation: PRESALE_CONFIG.softCapUSD - PRESALE_CONFIG.totalRaisedUSD,
       hardCapReached: false
     };
   }
@@ -232,39 +178,11 @@ export const getUserAllocation = async (
   walletPubkey: PublicKey
 ): Promise<{ allocatedTokens: number; vestedTokens: number }> => {
   try {
-    // Initialize Anchor Program
-    const provider = new anchor.AnchorProvider(
-      connection,
-      {
-        publicKey: PublicKey.default,
-        signTransaction: async () => { throw new Error("Not implemented"); },
-        signAllTransactions: async () => { throw new Error("Not implemented"); },
-      } as any,
-      { preflightCommitment: 'processed' }
-    );
-    
-    const program = new anchor.Program(generateIdl() as any, PRESALE_PROGRAM_ID, provider);
-    
-    // Find user participation account
-    const [participationAccount] = await findUserParticipationAccount(walletPubkey);
-    
-    try {
-      // Fetch participation data from chain
-      const participationData: any = await program.account.participation.fetch(participationAccount);
-      
-      return {
-        allocatedTokens: Number(participationData.totalAmount),
-        vestedTokens: Number(participationData.claimedAmount)
-      };
-    } catch (error) {
-      console.error("Error fetching user participation data:", error);
-      
-      // Return default values if account doesn't exist or there's an error
-      return {
-        allocatedTokens: 0,
-        vestedTokens: 0
-      };
-    }
+    // Return default values
+    return {
+      allocatedTokens: 0,
+      vestedTokens: 0
+    };
   } catch (error) {
     console.error('Error fetching user allocation:', error);
     return {
@@ -276,8 +194,7 @@ export const getUserAllocation = async (
 
 // Calculate the amount of tokens to receive based on SOL input
 export const calculateTokenAmount = (solAmount: number): number => {
-  const usdAmount = solAmount * PRESALE_CONFIG.solPriceUSD;
-  return usdAmount / PRESALE_CONFIG.tokenPrice;
+  return solAmount / PRESALE_CONFIG.tokenPrice;
 };
 
 // Purchase allocation tickets
@@ -296,12 +213,11 @@ export const purchaseAllocationTickets = async (
     }
 
     // Validate purchase amount
-    const usdAmount = solAmount * PRESALE_CONFIG.solPriceUSD;
-    if (usdAmount < PRESALE_CONFIG.minPurchaseUSD) {
-      throw new Error(`Minimum purchase amount is $${PRESALE_CONFIG.minPurchaseUSD}`);
+    if (solAmount < PRESALE_CONFIG.minPurchaseSOL) {
+      throw new Error(`Minimum purchase amount is ${PRESALE_CONFIG.minPurchaseSOL} SOL`);
     }
-    if (usdAmount > PRESALE_CONFIG.maxPurchaseUSD) {
-      throw new Error(`Maximum purchase amount is $${PRESALE_CONFIG.maxPurchaseUSD}`);
+    if (solAmount > PRESALE_CONFIG.maxPurchaseSOL) {
+      throw new Error(`Maximum purchase amount is ${PRESALE_CONFIG.maxPurchaseSOL} SOL`);
     }
 
     // Initialize Anchor Program

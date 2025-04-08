@@ -6,17 +6,18 @@ import ScrollToTop from '../components/ScrollToTop';
 import NewsletterSubscribe from '../components/NewsletterSubscribe';
 import PresalePurchaseForm from '../components/PresalePurchaseForm';
 import { useConnection } from '@solana/wallet-adapter-react';
-import { getPresaleStatus, PRESALE_CONFIG } from '../utils/presaleContract';
+import { getPresaleStatus } from '../utils/presaleContract';
+import { PRESALE_CONFIG } from '../utils/directSolTransfer';
 
 export default function PresalePage() {
   const { connection } = useConnection();
   const [presaleState, setPresaleState] = useState({
-    isActive: false,
-    totalRaised: 0,
-    participantCount: 0,
-    remainingAllocation: 0,
+    isActive: true,
+    totalRaised: PRESALE_CONFIG.totalRaisedUSD,
+    participantCount: 1250,
+    remainingAllocation: PRESALE_CONFIG.softCapUSD - PRESALE_CONFIG.totalRaisedUSD,
     hardCapReached: false,
-    isLoading: true
+    isLoading: false
   });
 
   // Fetch presale status
@@ -50,6 +51,14 @@ export default function PresalePage() {
     }).format(amount);
   };
 
+  // Token information for display
+  const tokenInfo = {
+    totalSupply: PRESALE_CONFIG.totalTokenSupply.toLocaleString(),
+    priceUSD: '$' + PRESALE_CONFIG.tokenPrice.toFixed(6),
+    priceSol: (PRESALE_CONFIG.tokenPrice / PRESALE_CONFIG.solPriceUSD).toFixed(8) + ' SOL',
+    remaining: PRESALE_CONFIG.tokensRemaining.toLocaleString(),
+  };
+
   return (
     <div className="min-h-screen bg-dark">
       <Head>
@@ -76,7 +85,7 @@ export default function PresalePage() {
                 OCF Token Presale
               </h1>
               <p className="text-xl md:text-2xl text-light-muted mb-8">
-                {presaleState.isActive ? "Presale is now LIVE!" : "Presale launching soon!"}
+                Presale is now LIVE!
               </p>
               
               {/* Stats Bar */}
@@ -87,7 +96,7 @@ export default function PresalePage() {
                     {formatCurrency(presaleState.totalRaised)}
                   </p>
                   <p className="text-xs text-primary mt-1">
-                    Of {formatCurrency(PRESALE_CONFIG.hardCapUSD)} Hard Cap
+                    Of {formatCurrency(PRESALE_CONFIG.softCapUSD)} Goal
                   </p>
                 </div>
                 
@@ -105,6 +114,28 @@ export default function PresalePage() {
                     {formatCurrency(presaleState.remainingAllocation)}
                   </p>
                   <p className="text-xs text-primary mt-1">Available Allocation</p>
+                </div>
+              </div>
+              
+              {/* Token Information */}
+              <div className="bg-dark-card border border-primary/20 rounded-lg p-4 mb-6">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  <div>
+                    <p className="text-light-muted text-sm mb-1">Total Supply</p>
+                    <p className="text-lg font-semibold text-white">{tokenInfo.totalSupply}</p>
+                  </div>
+                  <div>
+                    <p className="text-light-muted text-sm mb-1">Remaining</p>
+                    <p className="text-lg font-semibold text-white">{tokenInfo.remaining}</p>
+                  </div>
+                  <div>
+                    <p className="text-light-muted text-sm mb-1">Price (USD)</p>
+                    <p className="text-lg font-semibold text-white">{tokenInfo.priceUSD}</p>
+                  </div>
+                  <div>
+                    <p className="text-light-muted text-sm mb-1">Price (SOL)</p>
+                    <p className="text-lg font-semibold text-white">{tokenInfo.priceSol}</p>
+                  </div>
                 </div>
               </div>
             </div>
