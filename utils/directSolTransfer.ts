@@ -2,18 +2,24 @@ import * as web3 from '@solana/web3.js';
 import { WalletContextState } from '@solana/wallet-adapter-react';
 
 // Treasury wallet from environment variables
-const TREASURY_WALLET_ADDRESS = process.env.NEXT_PUBLIC_TREASURY_WALLET || '';
+const TREASURY_WALLET_ADDRESS = process.env.NEXT_PUBLIC_TREASURY_WALLET || '5W2Lfp8saRiaK1bboAAwDnWtsghmQBahk5UMatump9Et';
 
 // Presale configuration
 export const PRESALE_CONFIG = {
   presaleStartTime: new Date().getTime(), // Start immediately
   presaleEndTime: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).getTime(), // 30 days from now
-  tokenPrice: 0.05, // In USD
+  tokenPrice: 0.0001943, // Price per token in SOL (not USD)
   solPriceUSD: 60, // Example SOL price in USD (would be fetched from an API in production)
-  minPurchaseUSD: 50,
-  maxPurchaseUSD: 20000,
-  softCapUSD: 500000,
-  hardCapUSD: 2000000,
+  minPurchaseSOL: 2.5, // Minimum purchase in SOL
+  maxPurchaseSOL: 10, // Maximum purchase in SOL
+  minPurchaseUSD: 2.5 * 60, // Calculated from SOL
+  maxPurchaseUSD: 10 * 60, // Calculated from SOL
+  softCapSOL: 833.33, // 50K USD equivalent
+  hardCapSOL: 2000, // 120K USD equivalent
+  softCapUSD: 50000,
+  hardCapUSD: 120000,
+  totalRaisedSOL: 175.5, // Current amount raised
+  tokensRemaining: 210549861, // Tokens remaining in presale
   vestingPercentageImmediate: 30, // 30% available immediately
   vestingDurationMonths: 3 // Remaining 70% vested over 3 months
 };
@@ -51,58 +57,53 @@ export async function sendSolToTreasury(
     throw new Error('Treasury wallet address not configured');
   }
 
-  try {
-    // Convert SOL amount to lamports
-    const lamports = solAmount * web3.LAMPORTS_PER_SOL;
-    
-    // Create a transaction to send SOL to the treasury
-    const transaction = new web3.Transaction().add(
-      web3.SystemProgram.transfer({
-        fromPubkey: wallet.publicKey,
-        toPubkey: new web3.PublicKey(TREASURY_WALLET_ADDRESS),
-        lamports,
-      }),
-    );
+  // Convert SOL amount to lamports
+  const lamports = solAmount * web3.LAMPORTS_PER_SOL;
+  
+  // Create a transaction to send SOL to the treasury
+  const transaction = new web3.Transaction().add(
+    web3.SystemProgram.transfer({
+      fromPubkey: wallet.publicKey,
+      toPubkey: new web3.PublicKey(TREASURY_WALLET_ADDRESS),
+      lamports,
+    }),
+  );
 
-    // Get recent blockhash
-    const { blockhash } = await connection.getLatestBlockhash();
-    transaction.recentBlockhash = blockhash;
-    transaction.feePayer = wallet.publicKey;
+  // Get recent blockhash
+  const { blockhash } = await connection.getLatestBlockhash();
+  transaction.recentBlockhash = blockhash;
+  transaction.feePayer = wallet.publicKey;
 
-    // Sign the transaction
-    const signedTransaction = await wallet.signTransaction(transaction);
-    
-    // Send and confirm the transaction
-    const signature = await connection.sendRawTransaction(signedTransaction.serialize());
-    
-    // Wait for confirmation
-    await connection.confirmTransaction(signature, 'confirmed');
-    
-    // Calculate token amount based on SOL amount
-    const tokenAmount = calculateTokenAmount(solAmount);
-    
-    // Return receipt with transaction details
-    return {
-      txSignature: signature,
-      solAmount,
-      tokenAmount,
-      timestamp: Date.now(),
-    };
-  } catch (error) {
-    console.error('Error sending SOL to treasury:', error);
-    throw error;
-  }
+  // Sign the transaction
+  const signedTransaction = await wallet.signTransaction(transaction);
+  
+  // Send and confirm the transaction
+  const signature = await connection.sendRawTransaction(signedTransaction.serialize());
+  
+  // Wait for confirmation
+  await connection.confirmTransaction(signature, 'confirmed');
+  
+  // Calculate token amount based on SOL amount
+  const tokenAmount = calculateTokenAmount(solAmount);
+  
+  // Return receipt with transaction details
+  return {
+    txSignature: signature,
+    solAmount,
+    tokenAmount,
+    timestamp: Date.now(),
+  };
 }
 
 /**
- * Check if a wallet has participated in the presale
- * This is a mock implementation since we're not using a smart contract
+ * Simple function to check if a wallet has participated in the presale
+ * This would typically check against a database in a real implementation
  */
 export async function getUserAllocation(
   connection: web3.Connection,
   walletPubkey: web3.PublicKey
 ): Promise<number> {
-  // This would normally query the contract, but for now just return 0
-  // In a real implementation, you'd fetch this from a database
+  // This would check a database or other source for user allocation
+  // For now, just return 0 to indicate no prior participation
   return 0;
 } 

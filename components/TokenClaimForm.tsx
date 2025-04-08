@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { FaSpinner, FaCheckCircle, FaExclamationTriangle, FaCoins, FaGift } from 'react-icons/fa';
+import { FaSpinner, FaCheckCircle, FaExclamationTriangle, FaCoins, FaGift, FaEnvelope } from 'react-icons/fa';
 import { sendOCFTokens } from '../utils/token-claim';
 
 const TokenClaimForm = () => {
@@ -17,6 +17,8 @@ const TokenClaimForm = () => {
   const [error, setError] = useState('');
   const [showBanner, setShowBanner] = useState(false);
   const [txSignature, setTxSignature] = useState<string | undefined>(undefined);
+  const [retryCount, setRetryCount] = useState(0);
+  const [showContactMessage, setShowContactMessage] = useState(false);
 
   // Update address field when wallet connects
   useEffect(() => {
@@ -46,6 +48,11 @@ const TokenClaimForm = () => {
     }));
   };
 
+  const handleCloseContactMessage = () => {
+    setShowContactMessage(false);
+    setRetryCount(0);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -63,6 +70,7 @@ const TokenClaimForm = () => {
       
       if (result.success) {
         setSubmitted(true);
+        setRetryCount(0); // Reset retry count on success
         if (result.signature) {
           setTxSignature(result.signature);
         }
@@ -78,14 +86,57 @@ const TokenClaimForm = () => {
       }
       
     } catch (err: any) {
-      setError(err.message || 'Something went wrong. Please try again.');
+      // Increment retry count
+      const newRetryCount = retryCount + 1;
+      setRetryCount(newRetryCount);
+      
+      if (newRetryCount >= 3) {
+        // After 3 failed attempts, show the contact message
+        setShowContactMessage(true);
+      } else {
+        // For the first 2 attempts, just show error message
+        setError(`Transaction failed (attempt ${newRetryCount}/3): ${err.message || 'Something went wrong. Please try again.'}`);
+      }
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <div className="bg-dark-card rounded-lg border border-dark-light/30 p-8">
+    <div className="bg-dark-card rounded-lg border border-dark-light/30 p-8 relative">
+      {/* Contact Message Popup */}
+      {showContactMessage && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+          <div className="bg-dark-card border border-primary/30 rounded-lg p-6 max-w-md w-full relative">
+            <button 
+              onClick={handleCloseContactMessage}
+              className="absolute top-2 right-2 text-light-muted hover:text-white"
+            >
+              ✕
+            </button>
+            
+            <div className="text-center mb-6">
+              <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <FaEnvelope className="text-primary" size={24} />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Your Allocation is Reserved</h3>
+              <p className="text-light-muted mb-4">
+                We noticed you're having difficulty claiming your tokens. Don't worry! Your token allocation has been reserved.
+              </p>
+              <p className="text-light-muted mb-4">
+                Please contact us at <a href="mailto:support@opencrypto.foundation" className="text-primary hover:underline">support@opencrypto.foundation</a> to complete your token claim.
+              </p>
+              <button
+                onClick={handleCloseContactMessage}
+                className="py-2 px-6 bg-primary hover:bg-primary-light text-white rounded-lg font-semibold transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      
       <h2 className="text-2xl font-bold text-white mb-6 text-center">Token Claim Request</h2>
       
       {!connected ? (

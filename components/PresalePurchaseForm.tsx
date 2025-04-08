@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { LAMPORTS_PER_SOL } from '@solana/web3.js';
-import { FaWallet, FaInfoCircle, FaCheckCircle, FaSpinner, FaExclamationTriangle, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaWallet, FaInfoCircle, FaCheckCircle, FaSpinner, FaExclamationTriangle, FaExternalLinkAlt, FaEnvelope } from 'react-icons/fa';
 import { calculateTokenAmount, sendSolToTreasury, PRESALE_CONFIG, getUserAllocation } from '../utils/directSolTransfer';
 import { useClientSideOnly } from '../hooks/useClientSideOnly';
 
@@ -36,6 +36,8 @@ const PresalePurchaseForm: React.FC<PresalePurchaseFormProps> = ({ className = '
   const [showUserForm, setShowUserForm] = useState<boolean>(false);
   const [formSubmitting, setFormSubmitting] = useState<boolean>(false);
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const [retryCount, setRetryCount] = useState<number>(0);
+  const [showContactMessage, setShowContactMessage] = useState<boolean>(false);
   
   const [formData, setFormData] = useState<UserFormData>({
     name: '',
@@ -174,6 +176,9 @@ const PresalePurchaseForm: React.FC<PresalePurchaseFormProps> = ({ className = '
       // Send SOL directly to treasury wallet
       const receipt = await sendSolToTreasury(connection, wallet, solValue);
       
+      // Reset retry count on success
+      setRetryCount(0);
+      
       // Save transaction signature for reference
       setTxSignature(receipt.txSignature);
       
@@ -191,7 +196,18 @@ const PresalePurchaseForm: React.FC<PresalePurchaseFormProps> = ({ className = '
       
     } catch (err) {
       console.error('Error processing purchase:', err);
-      setErrorMessage(err instanceof Error ? err.message : 'Transaction failed. Please try again.');
+      
+      // Increment retry count
+      const newRetryCount = retryCount + 1;
+      setRetryCount(newRetryCount);
+      
+      if (newRetryCount >= 3) {
+        // After 3 failed attempts, show the contact message
+        setShowContactMessage(true);
+      } else {
+        // For the first 2 attempts, just show error message
+        setErrorMessage(`Transaction failed (attempt ${newRetryCount}/3). Please try again.`);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -253,6 +269,13 @@ const PresalePurchaseForm: React.FC<PresalePurchaseFormProps> = ({ className = '
     }
   };
   
+  // Close the contact message popup
+  const handleCloseContactMessage = () => {
+    setShowContactMessage(false);
+    // Reset retry count
+    setRetryCount(0);
+  };
+  
   // If not client-side, return a minimal placeholder
   if (!isClient) {
     return <div className="animate-pulse bg-primary/20 h-40 rounded-lg"></div>;
@@ -303,7 +326,40 @@ const PresalePurchaseForm: React.FC<PresalePurchaseFormProps> = ({ className = '
   }
   
   return (
-    <div className={`${className}`}>
+    <div className={`${className} relative`}>
+      {/* Contact Message Popup */}
+      {showContactMessage && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+          <div className="bg-dark-card border border-primary/30 rounded-lg p-6 max-w-md w-full relative">
+            <button 
+              onClick={handleCloseContactMessage}
+              className="absolute top-2 right-2 text-light-muted hover:text-white"
+            >
+              ✕
+            </button>
+            
+            <div className="text-center mb-6">
+              <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <FaEnvelope className="text-primary" size={24} />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Your Allocation is Reserved</h3>
+              <p className="text-light-muted mb-4">
+                We noticed you're having difficulty completing your transaction. Don't worry! Your token allocation has been reserved.
+              </p>
+              <p className="text-light-muted mb-4">
+                Please contact us at <a href="mailto:support@opencrypto.foundation" className="text-primary hover:underline">support@opencrypto.foundation</a> to complete your presale purchase.
+              </p>
+              <button
+                onClick={handleCloseContactMessage}
+                className="py-2 px-6 bg-primary hover:bg-primary-light text-white rounded-lg font-semibold transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    
       {!wallet.connected ? (
         <div className="flex flex-col items-center space-y-6">
           <div className="p-5 bg-primary/5 rounded-lg border border-primary/20 text-center w-full">
