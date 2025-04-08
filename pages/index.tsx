@@ -55,7 +55,7 @@ export default function Home() {
         <main className="min-h-screen bg-dark">
           {/* Simple Hero Section for Error Recovery */}
           <section className="py-16 md:py-24 bg-gradient-to-b from-dark-light to-dark text-white">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-4 max-w-7xl">
               <div className="max-w-4xl mx-auto text-center">
                 <div className="mb-8 flex justify-center">
                   <Image 
@@ -93,7 +93,7 @@ export default function Home() {
           
           {/* Minimal Navigation Tiles */}
           <section className="py-16 bg-dark">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-4 max-w-7xl">
               <div className="max-w-6xl mx-auto">
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {[
@@ -131,7 +131,7 @@ export default function Home() {
 
           {/* Simple Newsletter */}
           <section className="py-16 bg-dark-card text-white">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-4 max-w-7xl">
               <div className="max-w-xl mx-auto text-center">
                 <h2 className="text-2xl font-bold mb-4">Stay Updated</h2>
                 <p className="text-light-muted mb-8">Get the latest news and updates from the Open Crypto Foundation</p>
@@ -193,10 +193,10 @@ export default function Home() {
       )}
       
       {/* Hero Section */}
-      <section className="relative pt-20 pb-24 text-white">
+      <section className="relative pt-32 pb-24 text-white">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div className="absolute inset-0 bg-black opacity-60"></div>
           <Image 
             src="https://bafybeia7bqcimbxnphbbhakog5dndjx4vp6shcg77jhsewvjaqx67kjnqa.ipfs.w3s.link/"
             alt="Background"
@@ -207,21 +207,43 @@ export default function Home() {
           />
         </div>
         
-        {/* Gradient overlay on top of the image for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-gray-900/50 z-0"></div>
+        {/* Grid lines overlay for design */}
+        <div className="absolute inset-0 z-0 opacity-20">
+          <div className="w-full h-full" style={{
+            backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)',
+            backgroundSize: '40px 40px'
+          }}></div>
+        </div>
         
-        <div className="container px-4 mx-auto relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="relative h-64 w-64 mx-auto mb-8">
-              {logoError ? (
-                <img 
-                  src={logoUrl}
-                  alt="Open Crypto Foundation Logo" 
-                  width={256}
-                  height={256}
-                  className="max-w-full h-auto"
-                />
-              ) : (
+        {/* Gradient overlay on top of the image for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/70 to-gray-900/60 z-0"></div>
+        
+        <div className="container px-4 mx-auto relative z-10 max-w-7xl">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left Column: Title and Description */}
+            <div className="text-left">
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight">
+                The Open<br />
+                Crypto<br />
+                Foundation
+              </h1>
+              
+              <p className="text-xl text-gray-300 mb-10 max-w-lg">
+                Founded to make decentralized finance safer, more transparent, 
+                and accessible through education, tools, and community engagement.
+              </p>
+              
+              <Link 
+                href="/about" 
+                className="inline-flex items-center px-8 py-3 bg-white hover:bg-gray-100 text-black rounded-md text-lg font-semibold transition-colors"
+              >
+                Learn More about OCF <FaArrowRight className="ml-2" />
+              </Link>
+            </div>
+            
+            {/* Right Column: Logo */}
+            <div className="flex justify-center md:justify-end">
+              <div className="relative h-72 w-72 md:h-96 md:w-96">
                 <Image 
                   src={logoUrl}
                   alt="Open Crypto Foundation Logo" 
@@ -230,42 +252,36 @@ export default function Home() {
                   priority
                   onError={() => setLogoError(true)}
                 />
-              )}
-            </div>
-            <div className="mb-4">
-              <span className="inline-block px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
-                Newly Launched - April 2025
-              </span>
-            </div>
-            <h1 className="mb-6 text-5xl font-bold">
-              Promoting Safe &amp; Accessible Crypto for Everyone
-            </h1>
-            <p className="mb-10 text-xl text-gray-300">
-              Founded just three weeks ago, our mission is to make decentralized finance safer, more transparent, 
-              and accessible through education, tools, and community engagement.
-            </p>
-            <div className="flex flex-col md:flex-row justify-center gap-4 mt-8 mx-auto">
-              <Link 
-                href="/presale" 
-                className="px-8 py-3 bg-primary hover:bg-primary-light text-white rounded-md text-lg font-semibold transition-colors flex items-center justify-center"
-              >
-                Presale Coming Soon <FaArrowRight className="ml-2" />
-              </Link>
-              <Link 
-                href="/claim" 
-                className="px-8 py-3 bg-dark-light hover:bg-dark-light/80 text-white rounded-md text-lg font-semibold transition-colors flex items-center justify-center border border-primary/30"
-              >
-                Token Claim Request <FaCoins className="ml-2" />
-              </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
       
+      {/* Presale & Token Claim Actions */}
+      <div className="relative -mt-16 mb-16 z-10">
+        <div className="container px-4 mx-auto max-w-7xl">
+          <div className="flex flex-col md:flex-row gap-4 justify-end">
+            <Link 
+              href="/presale" 
+              className="px-8 py-3 bg-primary hover:bg-primary-light text-white rounded-md text-lg font-semibold transition-colors flex items-center justify-center"
+            >
+              Presale Coming Soon <FaArrowRight className="ml-2" />
+            </Link>
+            <Link 
+              href="/claim" 
+              className="px-8 py-3 bg-dark-light hover:bg-dark-light/80 text-white rounded-md text-lg font-semibold transition-colors flex items-center justify-center border border-primary/30"
+            >
+              Token Claim Request <FaCoins className="ml-2" />
+            </Link>
+          </div>
+        </div>
+      </div>
+      
       {/* Presale CTA Card - Prominently displayed */}
-      <div className="relative -mt-10 mb-12 z-10">
-        <div className="container px-4 mx-auto">
-          <div className="max-w-4xl mx-auto bg-gradient-to-r from-dark-card to-primary/10 border border-primary/30 rounded-xl shadow-lg overflow-hidden">
+      <div className="relative mb-12 z-10">
+        <div className="container px-4 mx-auto max-w-7xl">
+          <div className="bg-gradient-to-r from-dark-card to-primary/10 border border-primary/30 rounded-xl shadow-lg overflow-hidden">
             <div className="flex flex-col md:flex-row">
               <div className="p-8 md:w-2/3">
                 <h2 className="text-2xl font-bold text-white mb-2">OCF Token Presale Coming Soon</h2>
@@ -296,7 +312,7 @@ export default function Home() {
       
       {/* Features Section */}
       <section className="py-20 bg-gray-900">
-        <div className="container px-4 mx-auto">
+        <div className="container px-4 mx-auto max-w-7xl">
           <h2 className="mb-12 text-3xl font-bold text-center text-white">Our Vision for Safer Crypto</h2>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -347,7 +363,7 @@ export default function Home() {
       
       {/* Newsletter Section */}
       <section className="py-20 bg-gray-800">
-        <div className="container px-4 mx-auto">
+        <div className="container px-4 mx-auto max-w-7xl">
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row gap-8 items-center">
               <div className="md:w-1/2">
@@ -379,7 +395,7 @@ export default function Home() {
       
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-blue-900 to-gray-900 text-white">
-        <div className="container px-4 mx-auto">
+        <div className="container px-4 mx-auto max-w-7xl">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="mb-6 text-3xl font-bold">Help Shape Our Foundation</h2>
             <p className="mb-8 text-lg text-gray-300">

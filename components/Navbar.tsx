@@ -55,9 +55,9 @@ export default function Navbar() {
   }
 
   return (
-    <header className="bg-dark backdrop-blur-md bg-opacity-80 border-b border-dark-light/30 shadow-md sticky top-0 z-50">
-      <div className="container-fluid px-3 md:px-4">
-        <div className="flex justify-between items-center py-3">
+    <header className="bg-transparent backdrop-blur-sm border-b border-dark-light/10 sticky top-0 z-50">
+      <div className="container-fluid px-3 md:px-6 max-w-7xl mx-auto">
+        <div className="flex justify-between items-center py-4">
           <div className="flex items-center mr-4">
             <Link href="/" className="flex items-center group">
               <div className="flex items-center justify-center mr-2 transition-all duration-300 group-hover:shadow-glow">
@@ -147,7 +147,7 @@ export default function Navbar() {
       
       {/* Mobile Navigation Menu */}
       {isOpen && (
-        <div className="md:hidden py-4 border-t border-dark-light/30 bg-dark-elevated backdrop-blur-md">
+        <div className="md:hidden py-4 border-t border-dark-light/10 bg-black/50 backdrop-blur-md">
           <div className="container px-4">
             <nav className="flex flex-col space-y-2">
               {navigation.map((item) => 
