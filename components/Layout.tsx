@@ -4,6 +4,7 @@ import Footer from './Footer'
 import { useClientSideOnly } from '../hooks/useClientSideOnly'
 import TradingViewTickerTape from './TradingViewTickerTape'
 import Head from 'next/head'
+import BlueBannerRemover from './BlueBannerRemover'
 
 interface LayoutProps {
   children: ReactNode
@@ -29,6 +30,9 @@ export default function Layout({ children, title, description }: LayoutProps) {
   
   return (
     <div className="relative min-h-screen bg-dark text-light flex flex-col">
+      {/* Add the BlueBannerRemover component to remove the presale banner */}
+      <BlueBannerRemover />
+      
       {title && (
         <Head>
           <title>{title}</title>
