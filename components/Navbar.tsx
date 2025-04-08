@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { FaBars, FaTimes, FaCoins } from 'react-icons/fa'
+import { FaBars, FaTimes, FaCoins, FaChartBar } from 'react-icons/fa'
 import Logo from './Logo'
 import { useLanguage } from '../contexts/LanguageContext'
 
@@ -18,6 +18,7 @@ type NavItem = {
     href: string;
     description?: string;
   }>;
+  current?: boolean;
 };
 
 export default function Navbar() {
@@ -27,9 +28,15 @@ export default function Navbar() {
   const { t } = useLanguage()
 
   const navigation: NavItem[] = [
-    { name: 'Home', href: '/' },
-    { 
+    { name: 'Home', href: '/', current: false },
+    { name: 'About', href: '/about', current: false },
+    { name: 'Charts', href: '/charts', current: false, icon: <FaChartBar className="mr-1" /> },
+    { name: 'Manifesto', href: '/manifesto', current: false },
+    { name: 'Whitepaper', href: '/whitepaper', current: false },
+    { name: 'Roadmap', href: '/roadmap', current: false },
+    {
       name: 'Resources',
+      current: false,
       children: [
         { name: 'Scam Database', href: '/scam-database', description: 'Comprehensive database of cryptocurrency scams and phishing websites' },
         { name: 'Investors and Traders', href: '/resources/traders', description: 'Resources for crypto traders and DeFi users' },
@@ -39,10 +46,7 @@ export default function Navbar() {
         { name: 'DeFi Fundamentals', href: '/resources/defi-fundamentals', description: 'Learn about cryptocurrency, blockchain technology, and decentralized finance' }
       ]
     },
-    { name: 'About Us', href: '/about' },
-    { name: 'Manifesto', href: '/manifesto' },
-    { name: 'Whitepaper', href: '/whitepaper' },
-    { name: 'Roadmap', href: '/roadmap' },
+    { name: 'Airdrops', href: '/airdrops', current: false },
     { name: 'OFC Airdrops', href: '/claim', icon: <FaCoins className="mr-1" />, badge: 'New' }
   ]
   
@@ -78,7 +82,15 @@ export default function Navbar() {
                     ${router.pathname === item.href ? 'text-light' : ''}
                   `}
                 >
-                  <span>{item.name}</span>
+                  <span className="flex items-center">
+                    {item.icon && item.icon}
+                    {item.name}
+                    {item.badge && (
+                      <span className="ml-1 px-1.5 py-0.5 text-xs bg-primary text-white rounded-full">
+                        {item.badge}
+                      </span>
+                    )}
+                  </span>
                   <span className={`absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300 
                     ${router.pathname === item.href ? 'w-full' : 'group-hover:w-full'}`}></span>
                 </Link>
@@ -162,7 +174,15 @@ export default function Navbar() {
                       }`}
                     onClick={() => setIsOpen(false)}
                   >
-                    {item.name}
+                    <span className="flex items-center">
+                      {item.icon && item.icon}
+                      {item.name}
+                      {item.badge && (
+                        <span className="ml-1 px-1.5 py-0.5 text-xs bg-primary text-white rounded-full">
+                          {item.badge}
+                        </span>
+                      )}
+                    </span>
                   </Link>
                 ) : (
                   <div key={item.name}>
