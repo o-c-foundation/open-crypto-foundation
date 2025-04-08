@@ -24,36 +24,48 @@ const TradingViewTickerTape: React.FC<TradingViewTickerTapeProps> = ({ className
       script.innerHTML = JSON.stringify({
         symbols: [
           {
-            description: "Solana",
-            proName: "BINANCE:SOLUSDT"
+            description: "USDT",
+            proName: "BINANCEUS:USDTUSD"
           },
           {
-            description: "Bitcoin",
-            proName: "BINANCE:BTCUSDT"
+            description: "BITCOIN",
+            proName: "BINANCEUS:BTCUSD"
           },
           {
-            description: "Ethereum",
-            proName: "BINANCE:ETHUSDT"
+            description: "ETHEREUM",
+            proName: "BINANCEUS:ETHUSD"
           },
           {
-            description: "XRP",
-            proName: "BINANCE:XRPUSDT"
+            description: "SOLANA",
+            proName: "BINANCEUS:SOLUSD"
           },
           {
-            description: "DOGE",
-            proName: "BINANCE:DOGEUSDT"
+            description: "SUI",
+            proName: "BINANCEUS:SUIUSD"
           },
           {
             description: "BNB",
-            proName: "BINANCE:BNBUSDT"
+            proName: "BINANCEUS:BNBUSD"
+          },
+          {
+            description: "TRUMP",
+            proName: "BINANCEUS:TRUMPUSD"
           },
           {
             description: "PEPE",
-            proName: "BINANCE:PEPEUSDT"
+            proName: "BINANCEUS:PEPEUSD"
+          },
+          {
+            description: "RAYDIUM",
+            proName: "CRYPTO:RAYUSD"
+          },
+          {
+            description: "FARTCOIN",
+            proName: "CRYPTO:FARTCOINUSD"
           }
         ],
         showSymbolLogo: true,
-        isTransparent: false,
+        isTransparent: true,
         displayMode: "adaptive",
         colorTheme: "dark",
         locale: "en"
@@ -88,7 +100,20 @@ const TradingViewTickerTape: React.FC<TradingViewTickerTapeProps> = ({ className
         
         const copyright = document.createElement('div');
         copyright.className = 'tradingview-widget-copyright';
-        copyright.style.display = 'none'; // Hide the copyright
+        
+        // Add copyright link
+        const copyrightLink = document.createElement('a');
+        copyrightLink.href = 'https://www.tradingview.com/';
+        copyrightLink.rel = 'noopener nofollow';
+        copyrightLink.target = '_blank';
+        
+        const spanElement = document.createElement('span');
+        spanElement.className = 'blue-text';
+        spanElement.textContent = 'Track all markets on TradingView';
+        
+        copyrightLink.appendChild(spanElement);
+        copyright.appendChild(copyrightLink);
+        
         container.appendChild(copyright);
         
         widgetContainer.appendChild(container);
