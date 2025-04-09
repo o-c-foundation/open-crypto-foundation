@@ -73,17 +73,68 @@ export default function Presale() {
     // Define the callback globally so Turnstile can access it
     window.onTurnstileVerify = onTurnstileVerify;
     
+    // Check if Turnstile script is loaded, if not, load it manually
+    const turnstileScript = document.querySelector('script[src="https://challenges.cloudflare.com/turnstile/v0/api.js"]');
+    
+    if (!turnstileScript) {
+      console.log('Turnstile script not found, loading manually...');
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      script.async = true;
+      script.defer = true;
+      script.onload = initializeTurnstile;
+      document.head.appendChild(script);
+    } else {
+      // Script exists, initialize after a short delay to ensure it's loaded
+      setTimeout(initializeTurnstile, 1000);
+    }
+    
     return () => {
       // Clean up global callback
       delete window.onTurnstileVerify;
     };
   }, []);
-
+  
+  // Initialize Turnstile widget
+  const initializeTurnstile = () => {
+    if (!turnstileRef.current || !window.turnstile) {
+      console.log("Turnstile not ready yet, will retry in 1 second");
+      setTimeout(initializeTurnstile, 1000); // Retry after 1s
+      return;
+    }
+    
+    console.log("Initializing Turnstile widget with site key:", TURNSTILE_SITE_KEY);
+    
+    try {
+      window.turnstile.render(turnstileRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: (token) => {
+          console.log("Turnstile verification successful");
+          setTurnstileToken(token);
+        },
+        'expired-callback': () => {
+          console.log("Turnstile token expired");
+          setTurnstileToken('');
+        },
+        'error-callback': () => {
+          console.log("Turnstile error occurred");
+          setError('Error with security verification. Please try again.');
+        },
+        theme: 'dark'
+      });
+    } catch (err) {
+      console.error("Error rendering Turnstile:", err);
+    }
+  };
+  
   // Reset Turnstile on error
   const resetTurnstile = () => {
     if (window.turnstile && turnstileRef.current) {
       window.turnstile.reset(turnstileRef.current);
     }
+    
+    // Re-initialize the widget if needed
+    setTimeout(initializeTurnstile, 500);
   };
 
   const handleSubmit = async (e) => {
@@ -119,7 +170,6 @@ export default function Presale() {
       
       if (!validationData.success) {
         setError('Security check validation failed. Please try again.');
-        resetTurnstile();
         setIsSubmitting(false);
         return;
       }
@@ -169,14 +219,12 @@ Discovery Source: ${discoverySource}`,
         setDiscoverySource('');
         setAgreeToTerms(false);
         setTurnstileToken('');
-        resetTurnstile();
       } else {
         throw new Error(data.message || "Something went wrong");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
       setError('There was an error submitting your application. Please try again later.');
-      resetTurnstile();
     } finally {
       setIsSubmitting(false);
     }
@@ -387,11 +435,9 @@ Discovery Source: ${discoverySource}`,
                       <div className="mb-6">
                         <div 
                           className="cf-turnstile" 
-                          data-sitekey={TURNSTILE_SITE_KEY}
-                          data-callback="onTurnstileVerify"
-                          data-theme="dark"
                           ref={turnstileRef}
                         ></div>
+                        <div className="mt-2 text-xs text-light-muted text-center">Please complete the security check above to enable the submit button</div>
                       </div>
 
                       <div className="mb-6">
