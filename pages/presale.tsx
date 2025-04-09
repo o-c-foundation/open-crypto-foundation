@@ -270,7 +270,7 @@ Discovery Source: ${discoverySource}`,
                   )}
                 />
                 <p className="mt-4 text-light-muted">
-                  Price will increase by 50% when the countdown ends!
+                  Pre Sale officially opening when timer hits 0!
                 </p>
               </div>
 
