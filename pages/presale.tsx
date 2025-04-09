@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FaInfoCircle, FaCheck } from 'react-icons/fa';
 import Countdown from 'react-countdown';
 
@@ -6,6 +6,26 @@ const PRESALE_END_DATE = new Date('2025-04-09T13:00:00Z'); // 4/9/2025 9:00 AM E
 const TOTAL_SUPPLY = 1_000_000_000;
 const REMAINING_TOKENS = 210_549_861;
 const USD_PRICE = 0.0001;
+const TURNSTILE_SITE_KEY = "YOUR_TURNSTILE_SITE_KEY"; // Replace with your actual site key
+
+// Extend Window interface to include Turnstile
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        container: string | HTMLElement,
+        options: {
+          sitekey: string;
+          callback?: (token: string) => void;
+          'expired-callback'?: () => void;
+          'error-callback'?: () => void;
+          theme?: 'light' | 'dark' | 'auto';
+        }
+      ) => string;
+      reset: (widgetId: string) => void;
+    };
+  }
+}
 
 export default function Presale() {
   const [name, setName] = useState('');
@@ -19,6 +39,8 @@ export default function Presale() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const turnstileRef = useRef(null);
 
   useEffect(() => {
     // Fetch live Solana price from API
@@ -40,6 +62,18 @@ export default function Presale() {
     };
   }, []);
 
+  // Turnstile callback function
+  const onTurnstileVerify = (token) => {
+    setTurnstileToken(token);
+  };
+
+  // Reset Turnstile on error
+  const resetTurnstile = () => {
+    if (window.turnstile && turnstileRef.current) {
+      window.turnstile.reset(turnstileRef.current);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -51,8 +85,33 @@ export default function Presale() {
       setIsSubmitting(false);
       return;
     }
+
+    // Check if Turnstile token exists
+    if (!turnstileToken) {
+      setError('Please complete the security check.');
+      setIsSubmitting(false);
+      return;
+    }
     
     try {
+      // Server-side validation of Turnstile token
+      const validationResponse = await fetch('/api/validate-turnstile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token: turnstileToken }),
+      });
+      
+      const validationData = await validationResponse.json();
+      
+      if (!validationData.success) {
+        setError('Security check validation failed. Please try again.');
+        resetTurnstile();
+        setIsSubmitting(false);
+        return;
+      }
+      
       // Web3Forms integration
       const apiKey = "YOUR-WEB3FORMS-API-KEY"; // Replace with your actual Web3Forms API key
       
@@ -73,6 +132,7 @@ Wallet Addresses: ${walletAddresses}
 Telegram Username: ${telegramUsername}
 Crypto Knowledge: ${cryptoKnowledge}
 Discovery Source: ${discoverySource}`,
+        turnstileToken,
       };
       
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -96,12 +156,15 @@ Discovery Source: ${discoverySource}`,
         setCryptoKnowledge('');
         setDiscoverySource('');
         setAgreeToTerms(false);
+        setTurnstileToken('');
+        resetTurnstile();
       } else {
         throw new Error(data.message || "Something went wrong");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
       setError('There was an error submitting your application. Please try again later.');
+      resetTurnstile();
     } finally {
       setIsSubmitting(false);
     }
@@ -308,6 +371,17 @@ Discovery Source: ${discoverySource}`,
                         </select>
                       </div>
 
+                      {/* Cloudflare Turnstile Widget */}
+                      <div className="mb-6">
+                        <div 
+                          className="cf-turnstile" 
+                          data-sitekey={TURNSTILE_SITE_KEY}
+                          data-callback="onTurnstileVerify"
+                          data-theme="dark"
+                          ref={turnstileRef}
+                        ></div>
+                      </div>
+
                       <div className="mb-6">
                         <div className="flex items-start">
                           <div className="flex items-center h-5">
@@ -334,9 +408,9 @@ Discovery Source: ${discoverySource}`,
 
                       <button
                         type="submit"
-                        disabled={isSubmitting}
+                        disabled={isSubmitting || !turnstileToken}
                         className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white ${
-                          isSubmitting 
+                          isSubmitting || !turnstileToken
                             ? "bg-primary/60 cursor-not-allowed" 
                             : "bg-primary hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
                         }`}
