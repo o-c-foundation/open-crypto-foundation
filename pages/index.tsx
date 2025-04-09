@@ -306,7 +306,7 @@ const Home: NextPageWithLayout = () => {
             </div>
             
             {/* Right side - TradingView Widget */}
-            <div className="w-full lg:w-1/5 backdrop-blur-md bg-gradient-to-br from-black/70 to-dark-elevated rounded-xl p-6 shadow-2xl border border-primary/20 overflow-hidden">
+            <div className="w-full lg:w-1/5 lg:min-w-[700px] xl:min-w-[900px] backdrop-blur-md bg-gradient-to-br from-black/70 to-dark-elevated rounded-xl p-6 shadow-2xl border border-primary/20 overflow-hidden mr-[-200px] xl:mr-[-300px]">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-xl font-bold text-white">Live Crypto Markets</h3>
                 <div className="hidden md:block">
