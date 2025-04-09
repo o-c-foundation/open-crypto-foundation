@@ -13,15 +13,15 @@ export default function Presale() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-      <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+    <div className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8 bg-dark-card rounded-lg shadow-lg">
+      <h2 className="text-3xl font-extrabold tracking-tight text-light sm:text-4xl">
         <span className="block">Participate in our Presale</span>
       </h2>
       <div className="mt-8 sm:flex">
         <div className="mt-3 sm:mt-0 sm:ml-3">
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="name" className="block text-sm font-medium text-light-muted">
                 Name
               </label>
               <div className="mt-1">
@@ -31,14 +31,14 @@ export default function Presale() {
                   type="text"
                   name="name"
                   id="name"
-                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  className="shadow-sm focus:ring-primary focus:border-primary block w-full sm:text-sm border-dark-light rounded-md"
                   placeholder="Enter your name"
                 />
               </div>
             </div>
 
             <div className="mt-3">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-sm font-medium text-light-muted">
                 Email
               </label>  
               <div className="mt-1">
@@ -49,33 +49,33 @@ export default function Presale() {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  className="shadow-sm focus:ring-primary focus:border-primary block w-full sm:text-sm border-dark-light rounded-md"
                   placeholder="Enter your email"
                 />
               </div>
             </div>
 
             <div className="mt-3">
-              <label htmlFor="amount" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="amount" className="block text-sm font-medium text-light-muted">
                 Contribution Amount  
               </label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <span className="text-gray-500 sm:text-sm">
+                  <span className="text-light-muted sm:text-sm">
                     $
                   </span>
                 </div>
                 <input
                   value={amount}
-                  onChange={(e) => setAmount(Number(e.target.value))}
+                  onChange={(e) => setAmount(e.target.value)}
                   type="number"
                   name="amount"
                   id="amount"
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
+                  className="focus:ring-primary focus:border-primary block w-full pl-7 pr-12 sm:text-sm border-dark-light rounded-md"
                   placeholder="0.00"
                 />
                 <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                  <span className="text-gray-500 sm:text-sm" id="amount-currency">
+                  <span className="text-light-muted sm:text-sm" id="amount-currency">
                     USD
                   </span>
                 </div>
@@ -91,11 +91,11 @@ export default function Presale() {
                     id="terms"
                     name="terms"
                     type="checkbox"
-                    className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                    className="focus:ring-primary h-4 w-4 text-primary border-dark-light rounded"
                   />
                 </div>
                 <div className="ml-3 text-sm">
-                  <label htmlFor="terms" className="font-medium text-gray-700">
+                  <label htmlFor="terms" className="font-medium text-light">
                     I agree to the terms and conditions
                   </label>
                 </div>
@@ -105,7 +105,7 @@ export default function Presale() {
             <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm"
+                className="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:ml-3 sm:w-auto sm:text-sm"
               >
                 Submit
               </button>
