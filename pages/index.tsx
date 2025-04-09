@@ -191,73 +191,75 @@ const Home: NextPageWithLayout = () => {
             </div>
             
             {/* Right side - TradingView Widget */}
-            <div className="w-full lg:w-auto backdrop-blur-md bg-black/30 rounded-lg p-4">
+            <div className="w-full lg:w-auto backdrop-blur-md bg-black/30 rounded-lg p-4 shadow-lg border border-primary/20">
+              <h3 className="text-xl font-bold text-white mb-3 text-center">Live Crypto Markets</h3>
               <div className="tradingview-widget-container">
                 <div className="tradingview-widget-container__widget"></div>
+                <div className="tradingview-widget-copyright text-center text-xs text-light-muted mt-2">
+                  <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank" className="text-primary hover:text-primary-light">
+                    Track all markets on TradingView
+                  </a>
+                </div>
                 <script
                   type="text/javascript"
-                  src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js"
+                  src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js"
                   async
                   dangerouslySetInnerHTML={{
                     __html: JSON.stringify({
-                      "colorTheme": "dark",
-                      "dateRange": "12M",
-                      "showChart": false,
-                      "locale": "en",
-                      "largeChartUrl": "https://opencryptofoundation.com/charts",
-                      "isTransparent": true,
-                      "showSymbolLogo": true,
-                      "showFloatingTooltip": false,
-                      "width": "550",
-                      "height": "650",
-                      "tabs": [
+                      "width": 550,
+                      "height": 550,
+                      "symbolsGroups": [
                         {
-                          "title": "Top 10 Crypto Coins",
+                          "name": "crypto",
+                          "originalName": "Indices",
                           "symbols": [
                             {
-                              "s": "BINANCEUS:BNBUSD",
-                              "d": "BNB"
+                              "name": "COINBASE:BTCUSD"
                             },
                             {
-                              "s": "COINBASE:BTCUSD",
-                              "d": "BITCOIN"
+                              "name": "COINBASE:ETHUSD"
                             },
                             {
-                              "s": "COINBASE:ETHUSD",
-                              "d": "ETHEREUM"
+                              "name": "COINBASE:SOLUSD"
                             },
                             {
-                              "s": "COINBASE:SOLUSD",
-                              "d": "SOLANA"
+                              "name": "COINBASE:XRPUSD"
                             },
                             {
-                              "s": "COINBASE:XRPUSD",
-                              "d": "RIPPLE"
+                              "name": "COINBASE:SUIUSD"
                             },
                             {
-                              "s": "COINBASE:DOGEUSD",
-                              "d": "DOGECOIN"
+                              "name": "COINBASE:DOGEUSD"
                             },
                             {
-                              "s": "COINBASE:TRUMPUSD",
-                              "d": "TRUMP"
+                              "name": "COINBASE:ADAUSD"
                             },
                             {
-                              "s": "COINBASE:PEPEUSD",
-                              "d": "PEPE"
+                              "name": "COINBASE:LINKUSD"
                             },
                             {
-                              "s": "KRAKEN:FARTCOINUSD",
-                              "d": "FARTCOIN"
+                              "name": "COINBASE:TRUMPUSD"
                             },
                             {
-                              "s": "COINBASE:SHIBUSD",
-                              "d": "SHIB"
+                              "name": "COINBASE:PEPEUSD"
+                            },
+                            {
+                              "name": "BINANCE:BNBUSD"
+                            },
+                            {
+                              "name": "CRYPTOCOM:FARTCOINUSD"
+                            },
+                            {
+                              "name": "KRAKEN:JUPUSD"
                             }
-                          ],
-                          "originalTitle": "Indices"
+                          ]
                         }
-                      ]
+                      ],
+                      "showSymbolLogo": true,
+                      "isTransparent": true,
+                      "colorTheme": "dark",
+                      "locale": "en",
+                      "largeChartUrl": "https://opencryptofoundation.com/charts"
                     })
                   }}
                 />
