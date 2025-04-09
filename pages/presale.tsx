@@ -175,7 +175,7 @@ export default function Presale() {
       }
       
       // Web3Forms integration
-      const apiKey = "da8c4b94-f4b5-40a9-9ec1-64f21b5e0b79"; // Real Web3Forms API key
+      const apiKey = "45ca5e36-5eaf-480d-8f74-0465e4d8bef3"; // Real Web3Forms API key
       
       const formData = {
         apikey: apiKey,
