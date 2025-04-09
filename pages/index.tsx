@@ -283,7 +283,7 @@ const Home: NextPageWithLayout = () => {
           <div className="flex flex-col lg:flex-row items-center justify-center lg:items-stretch gap-10">
             {/* Left side - Foundation info */}
             <div className="w-full lg:w-4/5 backdrop-blur-md bg-gradient-to-br from-dark-elevated to-black/70 p-8 rounded-xl shadow-2xl border border-primary/20">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 whitespace-nowrap">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 lg:whitespace-nowrap">
                 <span className="text-gradient">Open Crypto Foundation</span>
               </h1>
               
