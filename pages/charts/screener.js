@@ -47,7 +47,7 @@ function Screener() {
       <h1 className="text-3xl font-bold mb-6 text-center">Cryptocurrency Screener</h1>
       <p className="text-lg text-center mb-8">Find and filter cryptocurrency assets based on performance, market cap, and technical indicators.</p>
       
-      <div className="bg-gray-800 rounded-lg p-4 shadow-lg mb-8 overflow-hidden">
+      <div className="bg-dark-card rounded-lg border border-dark-light/30 p-6 shadow-xl mb-8 overflow-hidden">
         <div className="tradingview-widget-container">
           <div id="tradingview_screener" className="w-full"></div>
           <div className="tradingview-widget-copyright mt-2">
@@ -62,7 +62,7 @@ function Screener() {
         </div>
       </div>
       
-      <div className="text-sm text-gray-400 text-center mt-4">
+      <div className="text-sm text-light-muted text-center mt-4">
         <p>Screener powered by TradingView. The information provided is for general information purposes only and does not constitute financial advice.</p>
       </div>
     </div>

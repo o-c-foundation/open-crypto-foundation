@@ -63,7 +63,7 @@ function Charts() {
       <h1 className="text-3xl font-bold mb-6 text-center">Cryptocurrency Charts</h1>
       <p className="text-lg text-center mb-8">Monitor real-time price movements and market trends for major cryptocurrencies.</p>
       
-      <div className="bg-gray-800 rounded-lg p-4 shadow-lg mb-8">
+      <div className="bg-dark-card rounded-lg border border-dark-light/30 p-6 shadow-xl mb-8">
         <div className="tradingview-widget-container w-full h-[600px]">
           <div id="tradingview_widget" className="w-full h-[calc(100%-32px)]"></div>
           <div className="tradingview-widget-copyright mt-2">
@@ -78,7 +78,7 @@ function Charts() {
         </div>
       </div>
       
-      <div className="text-sm text-gray-400 text-center mt-4">
+      <div className="text-sm text-light-muted text-center mt-4">
         <p>Charts powered by TradingView. The information provided is for general information purposes only and does not constitute financial advice.</p>
       </div>
     </div>
