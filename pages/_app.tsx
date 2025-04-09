@@ -76,6 +76,7 @@ function ClientOnlyApp({ Component, pageProps }: AppPropsWithLayout) {
         <title>Open Crypto Foundation</title>
         <meta name="description" content="Empowering safe DeFi interactions with tools and education" />
         <link rel="icon" href="https://bafkreih4hdkhpjoxluzj526ehakmylfg5o2ri4wctumedqc3i5lv35k7ay.ipfs.w3s.link/" />
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
       </Head>
       <div className="min-h-screen">
         <SolanaWalletProvider>
