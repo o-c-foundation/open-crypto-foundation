@@ -74,9 +74,9 @@ export default function Navbar() {
 
   return (
     <header className="bg-transparent backdrop-blur-sm border-b border-dark-light/10 sticky top-0 z-50">
-      <div className="container-fluid px-0 md:px-0 max-w-7xl mx-auto">
+      <div className="w-full">
         <div className="flex justify-between items-center py-4">
-          <div className="flex items-center pl-2 md:pl-4">
+          <div className="flex items-center">
             <Link href="/" className="flex items-center group">
               <div className="flex items-center justify-center mr-2 transition-all duration-300 group-hover:shadow-glow">
                 <Logo size="md" />
