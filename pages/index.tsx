@@ -276,13 +276,13 @@ const Home: NextPageWithLayout = () => {
         
         {/* Content */}
         <div className="container relative z-10 px-4 mx-auto max-w-full">
-          <div className="flex flex-col lg:flex-row lg:justify-start items-center gap-8 lg:gap-16">
+          <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-10">
             {/* Left side - Foundation info */}
-            <div className="w-full lg:w-[45%] xl:w-[40%] relative p-8 border-8 border-yellow-500/60 backdrop-blur-md bg-black/50 rounded-lg">
+            <div className="w-full lg:w-2/5 backdrop-blur-md bg-gradient-to-br from-dark-elevated to-black/70 p-8 rounded-xl shadow-2xl border border-primary/20">
               <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                <span className="text-white">The Open</span><br />
-                <span className="text-white">Crypto</span><br />
-                <span className="text-white">Foundation</span>
+                <span className="text-gradient">The Open</span><br />
+                <span className="text-gradient">Crypto</span><br />
+                <span className="text-gradient">Foundation</span>
               </h1>
               <p className="text-xl md:text-2xl text-white mb-8">
                 Founded to make decentralized finance safer, more transparent, and accessible through education, tools, and community engagement.
@@ -290,13 +290,13 @@ const Home: NextPageWithLayout = () => {
               <div className="flex flex-wrap gap-4">
                 <Link 
                   href="/about" 
-                  className="px-6 py-3 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors flex items-center"
+                  className="px-6 py-3 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors flex items-center shadow-lg"
                 >
                   Learn More About OCF <FaArrowRight className="ml-2" />
                 </Link>
                 <Link 
                   href="/manifesto" 
-                  className="px-6 py-3 bg-dark-card hover:bg-dark-elevated border border-primary/30 text-white rounded-lg transition-colors"
+                  className="px-6 py-3 bg-dark-card hover:bg-dark-elevated border border-primary/30 text-white rounded-lg transition-colors shadow-lg"
                 >
                   Read Our Manifesto
                 </Link>
@@ -304,12 +304,19 @@ const Home: NextPageWithLayout = () => {
             </div>
             
             {/* Right side - TradingView Widget */}
-            <div className="w-full lg:w-[55%] xl:w-[60%] backdrop-blur-md bg-black/30 rounded-lg p-4 shadow-lg border border-primary/20 overflow-x-auto md:overflow-x-visible">
-              <h3 className="text-xl font-bold text-white mb-3 text-center">Live Crypto Markets</h3>
+            <div className="w-full lg:w-3/5 backdrop-blur-md bg-gradient-to-br from-black/70 to-dark-elevated rounded-xl p-6 shadow-2xl border border-primary/20 overflow-x-auto md:overflow-x-visible">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-bold text-white">Live Crypto Markets</h3>
+                <div className="hidden md:block">
+                  <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank" className="text-primary text-xs hover:text-primary-light transition-colors">
+                    Powered by TradingView
+                  </a>
+                </div>
+              </div>
               <div ref={tradingViewRef} className="tradingview-widget-container">
                 {/* Widget will be loaded here by the useEffect */}
               </div>
-              <div className="tradingview-widget-copyright text-center text-xs text-light-muted mt-2">
+              <div className="text-center text-xs text-light-muted mt-3 md:hidden">
                 <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank" className="text-primary hover:text-primary-light">
                   Track all markets on TradingView
                 </a>
