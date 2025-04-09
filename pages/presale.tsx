@@ -1,17 +1,47 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaInfoCircle } from 'react-icons/fa';
+import Countdown from 'react-countdown';
+
+const PRESALE_END_DATE = new Date('2025-04-09T13:00:00Z'); // 4/9/2025 9:00 AM EST
+const TOTAL_SUPPLY = 1_000_000_000;
+const REMAINING_TOKENS = 210_549_861;
+const USD_PRICE = 0.0001;
 
 export default function Presale() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');  
   const [amount, setAmount] = useState(0);
   const [agreeToTerms, setAgreeToTerms] = useState(false);
+  const [solanaPrice, setSolanaPrice] = useState(0);
+
+  useEffect(() => {
+    // Fetch live Solana price from API
+    const fetchSolanaPrice = async () => {
+      try {
+        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd');
+        const data = await response.json();
+        setSolanaPrice(data.solana.usd);
+      } catch (error) {
+        console.error('Error fetching Solana price:', error);
+      }
+    };
+
+    fetchSolanaPrice();
+    const interval = setInterval(fetchSolanaPrice, 60000); // Update every 60 seconds
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({name, email, amount, agreeToTerms});
     // TODO: Handle form submission
-  }
+  };
+
+  const tokensPerSol = solanaPrice > 0 ? 1 / (USD_PRICE / solanaPrice) : 0;
+  const solPrice = USD_PRICE / solanaPrice;
 
   return (
     <div className="min-h-screen bg-dark">
@@ -21,23 +51,54 @@ export default function Presale() {
           <div className="container px-4 mx-auto">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Participate in our Presale
+                OCF Token Presale
               </h1>
               <p className="text-xl text-light-muted mb-6">
-                Get in early and secure your OCF tokens before the public launch.
-                Fill out the form below to make your contribution.
+                Presale is now LIVE!
               </p>
               
-              {/* Info Notice */}
-              <div className="p-5 bg-blue-900/20 border border-blue-900/30 rounded-lg mb-8">
-                <div className="flex items-center justify-center mb-3">
-                  <FaInfoCircle className="text-blue-400 mr-2" size={24} />
-                  <h3 className="text-xl font-bold text-white">Presale Details</h3>
-                </div>
-                <p className="text-light-muted">
-                  The OCF token presale is now live! Contribute ETH to receive OCF tokens at a discounted rate. 
-                  Tokens will be distributed shortly after the presale ends.
+              {/* Countdown Timer */}
+              <div className="bg-dark-card rounded-lg shadow-lg p-6 mb-8">
+                <h2 className="text-2xl font-bold text-white mb-4">Presale Ends In</h2>
+                <Countdown
+                  date={PRESALE_END_DATE}
+                  renderer={({ days, hours, minutes, seconds, completed }) => (
+                    <div className="text-4xl md:text-5xl font-bold text-primary">
+                      {days}d {hours}h {minutes}m {seconds}s
+                    </div>
+                  )}
+                />
+                <p className="mt-4 text-light-muted">
+                  Price will increase by 50% when the countdown ends!
                 </p>
+              </div>
+
+              {/* Presale Stats */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="bg-dark-card rounded-lg shadow-lg p-4">
+                  <h3 className="text-xl font-bold text-white">Total Supply</h3>
+                  <p className="text-2xl font-bold text-primary">{TOTAL_SUPPLY.toLocaleString()}</p>
+                </div>
+                <div className="bg-dark-card rounded-lg shadow-lg p-4">
+                  <h3 className="text-xl font-bold text-white">Remaining</h3>
+                  <p className="text-2xl font-bold text-primary">{REMAINING_TOKENS.toLocaleString()}</p>
+                </div>
+                <div className="bg-dark-card rounded-lg shadow-lg p-4">
+                  <h3 className="text-xl font-bold text-white">Price (USD)</h3>
+                  <p className="text-2xl font-bold text-primary">${USD_PRICE.toFixed(6)}</p>
+                </div>
+                <div className="bg-dark-card rounded-lg shadow-lg p-4">
+                  <h3 className="text-xl font-bold text-white">Price (SOL)</h3>
+                  <p className="text-2xl font-bold text-primary">{solPrice.toFixed(8)} SOL</p>
+                </div>
+                <div className="bg-dark-card rounded-lg shadow-lg p-4">
+                  <h3 className="text-xl font-bold text-white">Tokens per SOL</h3>
+                  <p className="text-2xl font-bold text-primary">{tokensPerSol.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
+                </div>
+                <div className="bg-dark-card rounded-lg shadow-lg p-4">
+                  <h3 className="text-xl font-bold text-white">Current SOL Price</h3>
+                  <p className="text-2xl font-bold text-primary">${solanaPrice.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+                </div>
               </div>
             </div>
           </div>
