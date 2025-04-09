@@ -163,9 +163,9 @@ const Home: NextPageWithLayout = () => {
         
         {/* Content */}
         <div className="container relative z-10 px-4 mx-auto max-w-7xl">
-          {/* Using center alignment on mobile, right alignment on desktop */}
-          <div className="flex justify-center md:justify-end">
-            <div className="max-w-lg backdrop-blur-md bg-black/50 md:backdrop-blur-sm md:bg-black/20 p-6 rounded-lg ml-0 md:ml-auto">
+          <div className="flex flex-col lg:flex-row lg:justify-between items-center gap-8">
+            {/* Left side - Foundation info */}
+            <div className="max-w-lg backdrop-blur-md bg-black/50 p-6 rounded-lg">
               <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
                 <span className="text-gradient">The Open</span><br />
                 <span className="text-gradient">Crypto</span><br />
@@ -187,6 +187,80 @@ const Home: NextPageWithLayout = () => {
                 >
                   Read Our Manifesto
                 </Link>
+              </div>
+            </div>
+            
+            {/* Right side - TradingView Widget */}
+            <div className="w-full lg:w-auto backdrop-blur-md bg-black/30 rounded-lg p-4">
+              <div className="tradingview-widget-container">
+                <div className="tradingview-widget-container__widget"></div>
+                <script
+                  type="text/javascript"
+                  src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js"
+                  async
+                  dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                      "colorTheme": "dark",
+                      "dateRange": "12M",
+                      "showChart": false,
+                      "locale": "en",
+                      "largeChartUrl": "https://opencryptofoundation.com/charts",
+                      "isTransparent": true,
+                      "showSymbolLogo": true,
+                      "showFloatingTooltip": false,
+                      "width": "550",
+                      "height": "650",
+                      "tabs": [
+                        {
+                          "title": "Top 10 Crypto Coins",
+                          "symbols": [
+                            {
+                              "s": "BINANCEUS:BNBUSD",
+                              "d": "BNB"
+                            },
+                            {
+                              "s": "COINBASE:BTCUSD",
+                              "d": "BITCOIN"
+                            },
+                            {
+                              "s": "COINBASE:ETHUSD",
+                              "d": "ETHEREUM"
+                            },
+                            {
+                              "s": "COINBASE:SOLUSD",
+                              "d": "SOLANA"
+                            },
+                            {
+                              "s": "COINBASE:XRPUSD",
+                              "d": "RIPPLE"
+                            },
+                            {
+                              "s": "COINBASE:DOGEUSD",
+                              "d": "DOGECOIN"
+                            },
+                            {
+                              "s": "COINBASE:TRUMPUSD",
+                              "d": "TRUMP"
+                            },
+                            {
+                              "s": "COINBASE:PEPEUSD",
+                              "d": "PEPE"
+                            },
+                            {
+                              "s": "KRAKEN:FARTCOINUSD",
+                              "d": "FARTCOIN"
+                            },
+                            {
+                              "s": "COINBASE:SHIBUSD",
+                              "d": "SHIB"
+                            }
+                          ],
+                          "originalTitle": "Indices"
+                        }
+                      ]
+                    })
+                  }}
+                />
               </div>
             </div>
           </div>

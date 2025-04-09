@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { useClientSideOnly } from '../hooks/useClientSideOnly'
-import TradingViewTickerTape from './TradingViewTickerTape'
 import Head from 'next/head'
 import BlueBannerRemover from './BlueBannerRemover'
 import { useRouter } from 'next/router'
@@ -11,16 +10,11 @@ interface LayoutProps {
   children?: ReactNode
   title?: string
   description?: string
-  hideTicker?: boolean
 }
 
-export default function Layout({ children, title, description, hideTicker = false }: LayoutProps) {
+export default function Layout({ children, title, description }: LayoutProps) {
   const isClient = useClientSideOnly();
   const router = useRouter();
-  
-  // Automatically hide ticker on the charts page
-  const isChartsPage = router.pathname === '/charts';
-  const shouldHideTicker = hideTicker || isChartsPage;
   
   // Simple layout for server-side rendering to prevent hydration errors
   if (!isClient) {
@@ -54,9 +48,6 @@ export default function Layout({ children, title, description, hideTicker = fals
       </div>
       
       <Navbar />
-      
-      {/* TradingView Ticker Tape below navbar */}
-      <TradingViewTickerTape hidden={shouldHideTicker} />
       
       <main className="flex-grow">
         {children}
