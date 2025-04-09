@@ -6,8 +6,4 @@ declare global {
       [elemName: string]: any;
     }
   }
-  
-  interface Window {
-    TradingView?: any;
-  }
 }
