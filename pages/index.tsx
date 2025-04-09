@@ -76,13 +76,21 @@ const Home: NextPageWithLayout = () => {
     "isTransparent": true,
     "colorTheme": "dark",
     "locale": "en",
-    "largeChartUrl": "https://opencryptofoundation.com/charts"
+    "largeChartUrl": "https://opencryptofoundation.com/charts",
+    "mobileLayoutEnabled": true
   };
 
   // Initialize TradingView Widget
   useEffect(() => {
     // Only run in browser, not during SSR
     if (typeof window === 'undefined') return;
+    
+    // Check if we're on mobile and adjust the configuration
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      tradingViewConfig.width = "100%";
+      tradingViewConfig.height = "450";
+    }
     
     // Clean up any existing scripts first to avoid duplicates
     if (tradingViewRef.current) {
@@ -270,11 +278,11 @@ const Home: NextPageWithLayout = () => {
         <div className="container relative z-10 px-4 mx-auto max-w-full">
           <div className="flex flex-col lg:flex-row lg:justify-start items-center gap-8 lg:gap-16">
             {/* Left side - Foundation info */}
-            <div className="max-w-lg backdrop-blur-md bg-black/50 p-6 rounded-lg">
+            <div className="max-w-xl lg:max-w-2xl lg:ml-4 backdrop-blur-md bg-black/50 p-6 rounded-lg">
               <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                <span className="text-gradient">The Open</span><br />
-                <span className="text-gradient">Crypto</span><br />
-                <span className="text-gradient">Foundation</span>
+                <span className="text-white">The Open</span><br />
+                <span className="text-white">Crypto</span><br />
+                <span className="text-white">Foundation</span>
               </h1>
               <p className="text-xl md:text-2xl text-white mb-8">
                 Founded to make decentralized finance safer, more transparent, and accessible through education, tools, and community engagement.
@@ -296,7 +304,7 @@ const Home: NextPageWithLayout = () => {
             </div>
             
             {/* Right side - TradingView Widget */}
-            <div className="w-full lg:w-auto backdrop-blur-md bg-black/30 rounded-lg p-4 shadow-lg border border-primary/20 lg:min-w-[920px] lg:ml-auto">
+            <div className="w-full lg:w-auto backdrop-blur-md bg-black/30 rounded-lg p-4 shadow-lg border border-primary/20 lg:min-w-[920px] lg:ml-auto overflow-x-auto md:overflow-x-visible">
               <h3 className="text-xl font-bold text-white mb-3 text-center">Live Crypto Markets</h3>
               <div ref={tradingViewRef} className="tradingview-widget-container">
                 {/* Widget will be loaded here by the useEffect */}
