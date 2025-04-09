@@ -7,9 +7,10 @@ import NewsletterSubscribe from '../components/NewsletterSubscribe'
 import ScrollToTop from '../components/ScrollToTop'
 import SolanaIcon from '../components/icons/SolanaIcon'
 import Layout from '../components/Layout'
+import type { NextPageWithLayout } from '../types/next-page'
 
 // Define the Home page component
-function Home() {
+const Home: NextPageWithLayout = () => {
   const [logoError, setLogoError] = useState(false);
   const [isErrorRecoveryMode, setIsErrorRecoveryMode] = useState(false);
   const logoUrl = "https://bafkreidvb25k6khuuf7fliwnhj2iogmbqgnoj3zkq47fev4ivpyujlekim.ipfs.w3s.link/";
@@ -302,12 +303,10 @@ function Home() {
       <ScrollToTop />
     </>
   );
-}
+};
 
 // Define custom layout for the Home page
 Home.getLayout = (page: React.ReactElement) => {
-  const { isErrorRecoveryMode } = page.props || {};
-  
   return (
     <Layout 
       title="Open Crypto Foundation | Promoting Safe DeFi"

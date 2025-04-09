@@ -6,6 +6,7 @@ import { FaUsers, FaChartLine, FaShieldAlt, FaHandshake, FaHistory, FaMedal, FaL
 import { useLanguage } from '../contexts/LanguageContext'
 import TabLayout from '../components/TabLayout'
 import ScrollToTop from '../components/ScrollToTop'
+import Layout from '../components/Layout'
 
 export default function AboutPage() {
   const { t } = useLanguage()
@@ -317,124 +318,52 @@ export default function AboutPage() {
       ),
     }
   ]
-
+  
+  // Handle the click event for tab navigation
+  const handleSectionChange = (sectionId: string) => {
+    setActiveSection(sectionId)
+  }
+  
   return (
-    <>
-      <Head>
-        <title>About the Open Crypto Foundation</title>
-        <meta name="description" content="Learn about the Open Crypto Foundation's mission, purpose, and values in advancing blockchain security and transparency." />
-      </Head>
-
-      <main className="min-h-screen bg-dark">
-        {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-b from-dark-light to-dark">
-          <div className="container px-4 mx-auto">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                About the Open Crypto Foundation
-              </h1>
-              <p className="text-xl text-light-muted">
-                Dedicated to creating a safer, more transparent cryptocurrency ecosystem through education, tools, and verification services.
-              </p>
-            </div>
+    <Layout
+      title="About Us | Open Crypto Foundation"
+      description="Learn about the Open Crypto Foundation's mission to create a safer crypto ecosystem through education, tools, and community."
+    >
+      <div className="container mx-auto px-4 py-12 max-w-6xl">
+        {/* Page header */}
+        <div className="mb-12 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">About The Foundation</h1>
+          <p className="text-xl text-light-muted max-w-3xl mx-auto">
+            Building a safer cryptocurrency ecosystem through education, tools, and independent verification.
+          </p>
+        </div>
+        
+        {/* About page content using TabLayout */}
+        <TabLayout
+          tabs={aboutSections}
+          activeTab={activeSection}
+          onTabChange={handleSectionChange}
+        />
+        
+        {/* Call to action section */}
+        <div className="mt-16 bg-dark-card border border-dark-light/20 rounded-xl p-8 text-center">
+          <h3 className="text-2xl font-bold mb-3">Join Us In Our Mission</h3>
+          <p className="text-light-muted mb-6 max-w-3xl mx-auto">
+            We're looking for passionate individuals and organizations to help build a safer crypto ecosystem.
+            Whether you're a developer, educator, or enthusiast, there's a place for you at the Open Crypto Foundation.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/about/philosophy" className="px-6 py-3 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors">
+              Our Philosophy
+            </Link>
+            <Link href="/contact" className="px-6 py-3 border border-primary/30 hover:border-primary hover:bg-dark-elevated text-white rounded-lg transition-colors">
+              Contact Us
+            </Link>
           </div>
-        </section>
-
-        {/* Tabs Section */}
-        <section className="py-12 bg-dark">
-          <div className="container px-4 mx-auto">
-            <div className="max-w-5xl mx-auto">
-              <TabLayout 
-                tabs={aboutSections} 
-                activeTab={activeSection} 
-                onTabChange={setActiveSection} 
-              >
-                {aboutSections.map((section) => (
-                  <div 
-                    key={section.id}
-                    className={`transition-opacity duration-300 ${
-                      activeSection === section.id ? 'block opacity-100' : 'hidden opacity-0'
-                    }`}
-                  >
-                    {section.content}
-                  </div>
-                ))}
-              </TabLayout>
-            </div>
-          </div>
-        </section>
-
-        {/* Team Section */}
-        <section className="py-16 bg-dark-light/30 border-y border-dark-light/30">
-          <div className="container px-4 mx-auto">
-            <div className="max-w-5xl mx-auto">
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">Our Team</h2>
-              <p className="text-light-muted text-center mb-12 max-w-3xl mx-auto">
-                The Open Crypto Foundation is supported by a group of dedicated professionals with expertise in blockchain security, software development, education, and community building.
-              </p>
-              
-              <div className="grid md:grid-cols-3 gap-8 mt-8">
-                {/* Executive Director position */}
-                <div className="bg-dark-card border border-dark-light/30 rounded-lg overflow-hidden hover:border-primary/50 transition-colors">
-                  <div className="h-48 bg-gradient-to-r from-dark-light to-dark flex items-center justify-center">
-                    <div className="w-28 h-28 bg-dark-light rounded-full flex items-center justify-center">
-                      <span className="text-5xl font-bold text-primary">ED</span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-1">Executive Director</h3>
-                    <p className="text-primary mb-3">Leadership & Strategy</p>
-                    <p className="text-light-muted text-sm mb-4">
-                      Provides strategic direction and oversees the foundation's operations, partnerships, and initiatives.
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Technical Lead position */}
-                <div className="bg-dark-card border border-dark-light/30 rounded-lg overflow-hidden hover:border-primary/50 transition-colors">
-                  <div className="h-48 bg-gradient-to-r from-dark-light to-dark flex items-center justify-center">
-                    <div className="w-28 h-28 bg-dark-light rounded-full flex items-center justify-center">
-                      <span className="text-5xl font-bold text-primary">TL</span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-1">Technical Lead</h3>
-                    <p className="text-primary mb-3">Security & Development</p>
-                    <p className="text-light-muted text-sm mb-4">
-                      Leads the development of security tools and protocols, guiding technical strategy and implementation.
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Education Director position */}
-                <div className="bg-dark-card border border-dark-light/30 rounded-lg overflow-hidden hover:border-primary/50 transition-colors">
-                  <div className="h-48 bg-gradient-to-r from-dark-light to-dark flex items-center justify-center">
-                    <div className="w-28 h-28 bg-dark-light rounded-full flex items-center justify-center">
-                      <span className="text-5xl font-bold text-primary">ED</span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-1">Education Director</h3>
-                    <p className="text-primary mb-3">Learning Resources & Training</p>
-                    <p className="text-light-muted text-sm mb-4">
-                      Oversees the development of educational content and training programs for crypto users of all levels.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="mt-12 text-center">
-                <p className="text-light-muted">
-                  We're expanding our team! If you're passionate about crypto safety and education, 
-                  <a href="mailto:careers@opencryptofoundation.com" className="text-primary hover:text-primary-light ml-1">get in touch</a>.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
+        </div>
+      </div>
+      
       <ScrollToTop />
-    </>
+    </Layout>
   )
 } 

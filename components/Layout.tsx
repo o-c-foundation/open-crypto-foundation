@@ -8,7 +8,7 @@ import BlueBannerRemover from './BlueBannerRemover'
 import { useRouter } from 'next/router'
 
 interface LayoutProps {
-  children: ReactNode
+  children?: ReactNode
   title?: string
   description?: string
   hideTicker?: boolean

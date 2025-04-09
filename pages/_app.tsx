@@ -1,17 +1,14 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, ReactElement, ReactNode } from 'react'
 import Layout from '../components/Layout'
 import ErrorBoundary from '../components/ErrorBoundary'
 import { LanguageProvider } from '../contexts/LanguageContext'
 import dynamic from 'next/dynamic'
+import type { NextPageWithLayout } from '../types/next-page'
 
 // Define types for pages that have custom layouts
-type NextPageWithLayout = {
-  getLayout?: (page: React.ReactElement) => React.ReactNode
-}
-
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
@@ -25,8 +22,8 @@ function ClientOnlyApp({ Component, pageProps }: AppPropsWithLayout) {
   );
 
   // Use the layout defined at the page level, or use the default Layout component
-  const getLayout = Component.getLayout || ((page) => (
-    <Layout>
+  const getLayout = Component.getLayout || ((page: ReactElement) => (
+    <Layout title="Open Crypto Foundation" description="Empowering safe DeFi interactions with tools and education">
       {page}
     </Layout>
   ))

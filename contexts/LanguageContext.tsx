@@ -8,6 +8,10 @@ interface LanguageContextType {
   t: (key: string) => string;
 }
 
+interface LanguageProviderProps {
+  children?: ReactNode;
+}
+
 const translations = {
   en: {
     'home': 'Home',
@@ -70,7 +74,7 @@ const translations = {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
+export function LanguageProvider({ children }: LanguageProviderProps) {
   const [language, setLanguage] = useState<Language>('en');
 
   // Load saved language preference on initial load
