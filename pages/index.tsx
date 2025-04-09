@@ -200,69 +200,6 @@ const Home: NextPageWithLayout = () => {
                     Track all markets on TradingView
                   </a>
                 </div>
-                <script
-                  type="text/javascript"
-                  src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js"
-                  async
-                  dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                      "width": 550,
-                      "height": 550,
-                      "symbolsGroups": [
-                        {
-                          "name": "crypto",
-                          "originalName": "Indices",
-                          "symbols": [
-                            {
-                              "name": "COINBASE:BTCUSD"
-                            },
-                            {
-                              "name": "COINBASE:ETHUSD"
-                            },
-                            {
-                              "name": "COINBASE:SOLUSD"
-                            },
-                            {
-                              "name": "COINBASE:XRPUSD"
-                            },
-                            {
-                              "name": "COINBASE:SUIUSD"
-                            },
-                            {
-                              "name": "COINBASE:DOGEUSD"
-                            },
-                            {
-                              "name": "COINBASE:ADAUSD"
-                            },
-                            {
-                              "name": "COINBASE:LINKUSD"
-                            },
-                            {
-                              "name": "COINBASE:TRUMPUSD"
-                            },
-                            {
-                              "name": "COINBASE:PEPEUSD"
-                            },
-                            {
-                              "name": "BINANCE:BNBUSD"
-                            },
-                            {
-                              "name": "CRYPTOCOM:FARTCOINUSD"
-                            },
-                            {
-                              "name": "KRAKEN:JUPUSD"
-                            }
-                          ]
-                        }
-                      ],
-                      "showSymbolLogo": true,
-                      "isTransparent": true,
-                      "colorTheme": "dark",
-                      "locale": "en",
-                      "largeChartUrl": "https://opencryptofoundation.com/charts"
-                    })
-                  }}
-                />
               </div>
             </div>
           </div>
