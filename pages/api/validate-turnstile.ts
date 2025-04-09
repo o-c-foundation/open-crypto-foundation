@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-// Replace with your actual secret key
-const TURNSTILE_SECRET_KEY = 'YOUR_TURNSTILE_SECRET_KEY';
+// Cloudflare Turnstile secret key
+const TURNSTILE_SECRET_KEY = '0x4AAAAAABG_7VpKXi4ydYPUB2WyMQXHvtE';
 
 type TurnstileResponse = {
   success: boolean;

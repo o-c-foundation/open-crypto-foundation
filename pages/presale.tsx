@@ -6,7 +6,7 @@ const PRESALE_END_DATE = new Date('2025-04-09T13:00:00Z'); // 4/9/2025 9:00 AM E
 const TOTAL_SUPPLY = 1_000_000_000;
 const REMAINING_TOKENS = 210_549_861;
 const USD_PRICE = 0.0001;
-const TURNSTILE_SITE_KEY = "YOUR_TURNSTILE_SITE_KEY"; // Replace with your actual site key
+const TURNSTILE_SITE_KEY = "0x4AAAAAABG_7VaoGTjyeZoD"; // Cloudflare Turnstile site key
 
 // Extend Window interface to include Turnstile
 declare global {
