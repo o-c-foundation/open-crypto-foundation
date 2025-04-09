@@ -62,7 +62,8 @@ export default function Navbar() {
       icon: <FaChartBar className="mr-1" />,
       children: [
         { name: 'Live Charts', href: '/charts', description: 'Real-time interactive charts for cryptocurrencies with advanced tools' },
-        { name: 'Screener', href: '/charts/screener', description: 'Cryptocurrency market screener to find and filter assets based on performance metrics' }
+        { name: 'Screener', href: '/charts/screener', description: 'Cryptocurrency market screener to find and filter assets based on performance metrics' },
+        { name: 'Heatmaps', href: '/charts/heatmap', description: 'Visual representation of market performance with crypto and DeFi token heatmaps' }
       ]
     },
     { name: 'Manifesto', href: '/manifesto', current: false, icon: <FaScroll className="mr-1" /> },
