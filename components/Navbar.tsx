@@ -13,7 +13,8 @@ import {
   FaFileAlt, 
   FaRoad, 
   FaShoppingCart,
-  FaLayerGroup
+  FaLayerGroup,
+  FaFilter
 } from 'react-icons/fa'
 import Logo from './Logo'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -55,7 +56,15 @@ export default function Navbar() {
         { name: 'DeFi Fundamentals', href: '/resources/defi-fundamentals', description: 'Learn about cryptocurrency, blockchain technology, and decentralized finance' }
       ]
     },
-    { name: 'Charts', href: '/charts', current: false, icon: <FaChartBar className="mr-1" /> },
+    {
+      name: 'Charts',
+      current: false,
+      icon: <FaChartBar className="mr-1" />,
+      children: [
+        { name: 'Live Charts', href: '/charts', description: 'Real-time interactive charts for cryptocurrencies with advanced tools' },
+        { name: 'Screener', href: '/charts/screener', description: 'Cryptocurrency market screener to find and filter assets based on performance metrics' }
+      ]
+    },
     { name: 'Manifesto', href: '/manifesto', current: false, icon: <FaScroll className="mr-1" /> },
     { name: 'About', href: '/about', current: false, icon: <FaInfoCircle className="mr-1" /> },
     { name: 'Whitepaper', href: '/whitepaper', current: false, icon: <FaFileAlt className="mr-1" /> },
