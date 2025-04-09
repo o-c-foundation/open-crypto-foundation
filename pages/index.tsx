@@ -283,15 +283,13 @@ const Home: NextPageWithLayout = () => {
           <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-10">
             {/* Left side - Foundation info */}
             <div className="w-full lg:w-2/5 backdrop-blur-md bg-gradient-to-br from-dark-elevated to-black/70 p-8 rounded-xl shadow-2xl border border-primary/20">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                <span className="text-gradient">The Open</span><br />
-                <span className="text-gradient">Crypto</span><br />
-                <span className="text-gradient">Foundation</span>
+              <h1 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
+                <span className="text-gradient">Open Crypto Foundation</span>
               </h1>
-              <p className="text-xl md:text-2xl text-white mb-8">
+              <p className="text-xl md:text-2xl text-white mb-10">
                 Founded to make decentralized finance safer, more transparent, and accessible through education, tools, and community engagement.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                 <Link 
                   href="/about" 
                   className="px-6 py-3 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors flex items-center shadow-lg"
