@@ -18,7 +18,7 @@ const Home: NextPageWithLayout = () => {
 
   // TradingView Widget Configuration
   const tradingViewConfig = {
-    "width": "900",
+    "width": "100%",
     "height": "550",
     "symbolsGroups": [
       {
@@ -90,6 +90,10 @@ const Home: NextPageWithLayout = () => {
     if (isMobile) {
       tradingViewConfig.width = "100%";
       tradingViewConfig.height = "450";
+    } else {
+      // For desktop, ensure widget fits container
+      tradingViewConfig.width = "100%";
+      tradingViewConfig.height = "550";
     }
     
     // Clean up any existing scripts first to avoid duplicates
@@ -304,7 +308,7 @@ const Home: NextPageWithLayout = () => {
             </div>
             
             {/* Right side - TradingView Widget */}
-            <div className="w-full lg:w-3/5 backdrop-blur-md bg-gradient-to-br from-black/70 to-dark-elevated rounded-xl p-6 shadow-2xl border border-primary/20 overflow-x-auto md:overflow-x-visible">
+            <div className="w-full lg:w-3/5 backdrop-blur-md bg-gradient-to-br from-black/70 to-dark-elevated rounded-xl p-6 shadow-2xl border border-primary/20 overflow-hidden">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-xl font-bold text-white">Live Crypto Markets</h3>
                 <div className="hidden md:block">
@@ -313,7 +317,7 @@ const Home: NextPageWithLayout = () => {
                   </a>
                 </div>
               </div>
-              <div ref={tradingViewRef} className="tradingview-widget-container">
+              <div ref={tradingViewRef} className="tradingview-widget-container w-full">
                 {/* Widget will be loaded here by the useEffect */}
               </div>
               <div className="text-center text-xs text-light-muted mt-3 md:hidden">
