@@ -20,11 +20,11 @@ const Home: NextPageWithLayout = () => {
   const tradingViewConfig = {
     "colorTheme": "dark",
     "dateRange": "12M",
-    "showChart": true,
+    "showChart": false,
     "locale": "en",
     "width": "100%",
     "height": "100%",
-    "largeChartUrl": "",
+    "largeChartUrl": "https://opencryptofoundation.com/charts",
     "isTransparent": true,
     "showSymbolLogo": true,
     "showFloatingTooltip": false,
