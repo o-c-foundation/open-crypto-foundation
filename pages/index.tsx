@@ -280,12 +280,20 @@ const Home: NextPageWithLayout = () => {
         
         {/* Content */}
         <div className="container relative z-10 px-4 mx-auto max-w-full">
-          <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-10">
+          <div className="flex flex-col lg:flex-row items-center justify-center lg:items-stretch gap-10">
             {/* Left side - Foundation info */}
-            <div className="w-full lg:w-4/5 -ml-4 lg:-ml-24 xl:-ml-40 backdrop-blur-md bg-gradient-to-br from-dark-elevated to-black/70 p-8 rounded-xl shadow-2xl border border-primary/20">
+            <div className="w-full lg:w-4/5 backdrop-blur-md bg-gradient-to-br from-dark-elevated to-black/70 p-8 rounded-xl shadow-2xl border border-primary/20">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 whitespace-nowrap">
                 <span className="text-gradient">Open Crypto Foundation</span>
               </h1>
+              
+              <div className="mb-8 bg-black/30 backdrop-blur-sm p-6 rounded-lg border border-primary/20">
+                <blockquote className="text-xl italic font-light text-white">
+                  &ldquo;The greatest accomplishment of humanity is not its works of art, science, or technology, but the recognition of its own dysfunction.&rdquo;
+                </blockquote>
+                <p className="text-right mt-3 text-primary">— Eckhart Tolle</p>
+              </div>
+              
               <p className="text-xl md:text-2xl text-white mb-10 max-w-4xl">
                 Founded to make decentralized finance safer, more transparent, and accessible through education, tools, and community engagement.
               </p>
@@ -306,7 +314,7 @@ const Home: NextPageWithLayout = () => {
             </div>
             
             {/* Right side - TradingView Widget */}
-            <div className="w-full lg:w-1/5 lg:min-w-[700px] xl:min-w-[900px] backdrop-blur-md bg-gradient-to-br from-black/70 to-dark-elevated rounded-xl p-6 shadow-2xl border border-primary/20 overflow-hidden mr-[-200px] xl:mr-[-300px]">
+            <div className="w-full lg:w-1/5 lg:min-w-[700px] xl:min-w-[900px] backdrop-blur-md bg-gradient-to-br from-black/70 to-dark-elevated rounded-xl p-6 shadow-2xl border border-primary/20 overflow-hidden">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-xl font-bold text-white">Live Crypto Markets</h3>
                 <div className="hidden md:block">
