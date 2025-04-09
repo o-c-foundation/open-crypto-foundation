@@ -34,6 +34,8 @@ export default function Navbar() {
     { name: 'Manifesto', href: '/manifesto', current: false },
     { name: 'Whitepaper', href: '/whitepaper', current: false },
     { name: 'Roadmap', href: '/roadmap', current: false },
+    { name: 'Token Presale', href: '/token-presale', current: false },
+    { name: 'Presale', href: '/presale', current: false },
     {
       name: 'Resources',
       current: false,
