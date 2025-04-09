@@ -18,83 +18,87 @@ const Home: NextPageWithLayout = () => {
 
   // TradingView Widget Configuration
   const tradingViewConfig = {
+    "colorTheme": "dark",
+    "dateRange": "12M",
+    "showChart": true,
+    "locale": "en",
     "width": "100%",
-    "height": "550",
-    "symbolsGroups": [
+    "height": "100%",
+    "largeChartUrl": "",
+    "isTransparent": true,
+    "showSymbolLogo": true,
+    "showFloatingTooltip": false,
+    "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+    "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+    "gridLineColor": "rgba(42, 46, 57, 0)",
+    "scaleFontColor": "rgba(219, 219, 219, 1)",
+    "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+    "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+    "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+    "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+    "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+    "tabs": [
       {
-        "name": "Cryptocurrency  ",
-        "originalName": "Indices",
+        "title": "Coins  ",
         "symbols": [
           {
-            "name": "COINBASE:BTCUSD"
+            "s": "COINBASE:BTCUSD"
           },
           {
-            "name": "COINBASE:ETHUSD"
+            "s": "COINBASE:ETHUSD"
           },
           {
-            "name": "COINBASE:SOLUSD"
+            "s": "COINBASE:SOLUSD"
           },
           {
-            "name": "COINBASE:SUIUSD"
+            "s": "COINBASE:DOGEUSD"
           },
           {
-            "name": "COINBASE:XRPUSD"
+            "s": "COINBASE:SUIUSD"
           },
           {
-            "name": "COINBASE:DOGEUSD"
+            "s": "COINBASE:XRPUSD"
+          },
+          {
+            "s": "COINBASE:UNIUSD"
           }
-        ]
+        ],
+        "originalTitle": "Indices"
       },
       {
-        "name": "Meme Tokens  ",
-        "originalName": "Forex",
+        "title": "Meme Tokens  ",
         "symbols": [
           {
-            "name": "RAYDIUM:FARTCOINSOL_BZC9NZ.USD",
-            "displayName": "FARTCOIN"
+            "s": "CRYPTO:PEPEUSD"
           },
           {
-            "name": "CRYPTO:PEPEUSD",
-            "displayName": "PEPE "
+            "s": "KRAKEN:TRUMPUSD"
           },
           {
-            "name": "UNISWAP:SPXWETH_52C77B.USD",
-            "displayName": "SPX6900"
+            "s": "CRYPTO:BRETT2USD"
           },
           {
-            "name": "ORCA:JLPUSDC_6NUIVM.USD",
-            "displayName": "JUPITER"
+            "s": "CRYPTO:FARTCOINUSD"
           },
           {
-            "name": "RAYDIUM:POPCATUSDC_HBS7A3.USD",
-            "displayName": "POPCAT"
+            "s": "CRYPTO:BONKUSD"
+          },
+          {
+            "s": "KRAKEN:MOODENGUSD"
+          },
+          {
+            "s": "CRYPTO:RAYUSD"
           }
-        ]
+        ],
+        "originalTitle": "Forex"
       }
-    ],
-    "showSymbolLogo": true,
-    "isTransparent": true,
-    "colorTheme": "dark",
-    "locale": "en",
-    "largeChartUrl": "https://opencryptofoundation.com/charts",
-    "mobileLayoutEnabled": true
+    ]
   };
 
   // Initialize TradingView Widget
   useEffect(() => {
     // Only run in browser, not during SSR
     if (typeof window === 'undefined') return;
-    
-    // Check if we're on mobile and adjust the configuration
-    const isMobile = window.innerWidth < 768;
-    if (isMobile) {
-      tradingViewConfig.width = "100%";
-      tradingViewConfig.height = "450";
-    } else {
-      // For desktop, ensure widget fits container
-      tradingViewConfig.width = "100%";
-      tradingViewConfig.height = "550";
-    }
     
     // Clean up any existing scripts first to avoid duplicates
     if (tradingViewRef.current) {
@@ -107,9 +111,22 @@ const Home: NextPageWithLayout = () => {
     const widgetContainer = document.createElement('div');
     widgetContainer.className = 'tradingview-widget-container__widget';
     
+    // Create the copyright element
+    const copyrightElement = document.createElement('div');
+    copyrightElement.className = 'tradingview-widget-copyright';
+    const copyrightLink = document.createElement('a');
+    copyrightLink.href = 'https://www.tradingview.com/';
+    copyrightLink.rel = 'noopener nofollow';
+    copyrightLink.target = '_blank';
+    const copyrightSpan = document.createElement('span');
+    copyrightSpan.className = 'blue-text';
+    copyrightSpan.textContent = 'Track all markets on TradingView';
+    copyrightLink.appendChild(copyrightSpan);
+    copyrightElement.appendChild(copyrightLink);
+    
     // Create the script element
     const script = document.createElement('script');
-    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js';
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js';
     script.type = 'text/javascript';
     script.async = true;
     
@@ -119,6 +136,7 @@ const Home: NextPageWithLayout = () => {
     // Add elements to the DOM
     if (tradingViewRef.current) {
       tradingViewRef.current.appendChild(widgetContainer);
+      tradingViewRef.current.appendChild(copyrightElement);
       tradingViewRef.current.appendChild(script);
     }
     
