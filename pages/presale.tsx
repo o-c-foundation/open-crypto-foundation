@@ -24,6 +24,7 @@ declare global {
       ) => string;
       reset: (widgetId: string) => void;
     };
+    onTurnstileVerify?: (token: string) => void; // Add global callback property
   }
 }
 
@@ -66,6 +67,17 @@ export default function Presale() {
   const onTurnstileVerify = (token) => {
     setTurnstileToken(token);
   };
+
+  // Add this useEffect to ensure Turnstile is properly initialized
+  useEffect(() => {
+    // Define the callback globally so Turnstile can access it
+    window.onTurnstileVerify = onTurnstileVerify;
+    
+    return () => {
+      // Clean up global callback
+      delete window.onTurnstileVerify;
+    };
+  }, []);
 
   // Reset Turnstile on error
   const resetTurnstile = () => {
@@ -113,7 +125,7 @@ export default function Presale() {
       }
       
       // Web3Forms integration
-      const apiKey = "YOUR-WEB3FORMS-API-KEY"; // Replace with your actual Web3Forms API key
+      const apiKey = "da8c4b94-f4b5-40a9-9ec1-64f21b5e0b79"; // Real Web3Forms API key
       
       const formData = {
         apikey: apiKey,
