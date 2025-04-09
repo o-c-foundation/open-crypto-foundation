@@ -343,7 +343,9 @@ export default function AboutPage() {
           tabs={aboutSections}
           activeTab={activeSection}
           onTabChange={handleSectionChange}
-        />
+        >
+          {aboutSections.find(section => section.id === activeSection)?.content}
+        </TabLayout>
         
         {/* Call to action section */}
         <div className="mt-16 bg-dark-card border border-dark-light/20 rounded-xl p-8 text-center">
