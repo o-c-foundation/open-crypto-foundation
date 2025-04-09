@@ -7,8 +7,9 @@ import { useLanguage } from '../contexts/LanguageContext'
 import TabLayout from '../components/TabLayout'
 import ScrollToTop from '../components/ScrollToTop'
 import Layout from '../components/Layout'
+import { NextPageWithLayout } from '../types/next-page'
 
-export default function AboutPage() {
+const AboutPage: NextPageWithLayout = () => {
   const { t } = useLanguage()
   const [activeSection, setActiveSection] = useState('mission')
   
@@ -325,10 +326,12 @@ export default function AboutPage() {
   }
   
   return (
-    <Layout
-      title="About Us | Open Crypto Foundation"
-      description="Learn about the Open Crypto Foundation's mission to create a safer crypto ecosystem through education, tools, and community."
-    >
+    <>
+      <Head>
+        <title>About Us | Open Crypto Foundation</title>
+        <meta name="description" content="Learn about the Open Crypto Foundation's mission to create a safer crypto ecosystem through education, tools, and community." />
+      </Head>
+      
       <div className="container mx-auto px-4 py-12 max-w-6xl">
         {/* Page header */}
         <div className="mb-12 text-center">
@@ -366,6 +369,18 @@ export default function AboutPage() {
       </div>
       
       <ScrollToTop />
-    </Layout>
+    </>
   )
-} 
+}
+
+// Define getLayout property to use the Layout component
+AboutPage.getLayout = (page: React.ReactElement) => (
+  <Layout
+    title="About Us | Open Crypto Foundation"
+    description="Learn about the Open Crypto Foundation's mission to create a safer crypto ecosystem through education, tools, and community."
+  >
+    {page}
+  </Layout>
+)
+
+export default AboutPage 
