@@ -255,12 +255,12 @@ Discovery Source: ${discoverySource}`,
                 OCF Token Presale
               </h1>
               <p className="text-xl text-light-muted mb-6">
-                Presale is now LIVE!
+                Presale Coming Soon!
               </p>
               
               {/* Countdown Timer */}
               <div className="bg-dark-card rounded-lg shadow-lg p-6 mb-8">
-                <h2 className="text-2xl font-bold text-white mb-4">Presale Ends In</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">Presale Begins In</h2>
                 <Countdown
                   date={PRESALE_END_DATE}
                   renderer={({ days, hours, minutes, seconds, completed }) => (
