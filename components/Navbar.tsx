@@ -1,7 +1,20 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { FaBars, FaTimes, FaCoins, FaChartBar } from 'react-icons/fa'
+import { 
+  FaBars, 
+  FaTimes, 
+  FaCoins, 
+  FaChartBar, 
+  FaHome, 
+  FaBook, 
+  FaScroll, 
+  FaInfoCircle, 
+  FaFileAlt, 
+  FaRoad, 
+  FaShoppingCart,
+  FaLayerGroup
+} from 'react-icons/fa'
 import Logo from './Logo'
 import { useLanguage } from '../contexts/LanguageContext'
 
@@ -28,16 +41,11 @@ export default function Navbar() {
   const { t } = useLanguage()
 
   const navigation: NavItem[] = [
-    { name: 'Home', href: '/', current: false },
-    { name: 'About', href: '/about', current: false },
-    { name: 'Charts', href: '/charts', current: false, icon: <FaChartBar className="mr-1" /> },
-    { name: 'Manifesto', href: '/manifesto', current: false },
-    { name: 'Whitepaper', href: '/whitepaper', current: false },
-    { name: 'Roadmap', href: '/roadmap', current: false },
-    { name: 'Presale', href: '/presale', current: false },
+    { name: 'Home', href: '/', current: false, icon: <FaHome className="mr-1" /> },
     {
       name: 'Resources',
       current: false,
+      icon: <FaLayerGroup className="mr-1" />,
       children: [
         { name: 'Scam Database', href: '/scam-database', description: 'Comprehensive database of cryptocurrency scams and phishing websites' },
         { name: 'Investors and Traders', href: '/resources/traders', description: 'Resources for crypto traders and DeFi users' },
@@ -47,6 +55,12 @@ export default function Navbar() {
         { name: 'DeFi Fundamentals', href: '/resources/defi-fundamentals', description: 'Learn about cryptocurrency, blockchain technology, and decentralized finance' }
       ]
     },
+    { name: 'Charts', href: '/charts', current: false, icon: <FaChartBar className="mr-1" /> },
+    { name: 'Manifesto', href: '/manifesto', current: false, icon: <FaScroll className="mr-1" /> },
+    { name: 'About', href: '/about', current: false, icon: <FaInfoCircle className="mr-1" /> },
+    { name: 'Whitepaper', href: '/whitepaper', current: false, icon: <FaFileAlt className="mr-1" /> },
+    { name: 'Roadmap', href: '/roadmap', current: false, icon: <FaRoad className="mr-1" /> },
+    { name: 'Presale', href: '/presale', current: false, icon: <FaShoppingCart className="mr-1" /> },
     { name: 'OFC Airdrops', href: '/claim', icon: <FaCoins className="mr-1" />, badge: 'New' }
   ]
   
