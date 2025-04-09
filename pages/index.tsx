@@ -267,8 +267,8 @@ const Home: NextPageWithLayout = () => {
         </div>
         
         {/* Content */}
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl">
-          <div className="flex flex-col lg:flex-row lg:justify-between items-center gap-8">
+        <div className="container relative z-10 px-4 mx-auto max-w-full">
+          <div className="flex flex-col lg:flex-row lg:justify-start items-center gap-8 lg:gap-16">
             {/* Left side - Foundation info */}
             <div className="max-w-lg backdrop-blur-md bg-black/50 p-6 rounded-lg">
               <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
@@ -296,7 +296,7 @@ const Home: NextPageWithLayout = () => {
             </div>
             
             {/* Right side - TradingView Widget */}
-            <div className="w-full lg:w-auto backdrop-blur-md bg-black/30 rounded-lg p-4 shadow-lg border border-primary/20 lg:min-w-[920px]">
+            <div className="w-full lg:w-auto backdrop-blur-md bg-black/30 rounded-lg p-4 shadow-lg border border-primary/20 lg:min-w-[920px] lg:ml-auto">
               <h3 className="text-xl font-bold text-white mb-3 text-center">Live Crypto Markets</h3>
               <div ref={tradingViewRef} className="tradingview-widget-container">
                 {/* Widget will be loaded here by the useEffect */}
