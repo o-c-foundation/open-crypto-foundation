@@ -278,7 +278,7 @@ const Home: NextPageWithLayout = () => {
         <div className="container relative z-10 px-4 mx-auto max-w-full">
           <div className="flex flex-col lg:flex-row lg:justify-start items-center gap-8 lg:gap-16">
             {/* Left side - Foundation info */}
-            <div className="w-full lg:w-[45%] xl:w-[40%] relative p-8 border-8 border-yellow-500/60 backdrop-blur-md bg-black/50 rounded-lg">
+            <div className="w-full lg:w-[45%] xl:w-[40%] relative p-8 border-[12px] border-yellow-500/70 backdrop-blur-md bg-black/50 rounded-lg">
               <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
                 <span className="text-white">The Open</span><br />
                 <span className="text-white">Crypto</span><br />
