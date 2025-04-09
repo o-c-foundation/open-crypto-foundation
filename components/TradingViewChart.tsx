@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 // Define the TradingView types globally
 declare global {
   interface Window {
-    TradingView: any;
+    TradingView?: any;
   }
 }
 
