@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -14,6 +14,80 @@ const Home: NextPageWithLayout = () => {
   const [logoError, setLogoError] = useState(false);
   const [isErrorRecoveryMode, setIsErrorRecoveryMode] = useState(false);
   const logoUrl = "https://bafkreidvb25k6khuuf7fliwnhj2iogmbqgnoj3zkq47fev4ivpyujlekim.ipfs.w3s.link/";
+  const tradingViewRef = useRef<HTMLDivElement>(null);
+
+  // TradingView Widget Configuration
+  const tradingViewConfig = {
+    "width": 550,
+    "height": 550,
+    "symbolsGroups": [
+      {
+        "name": "crypto",
+        "originalName": "Indices",
+        "symbols": [
+          { "name": "COINBASE:BTCUSD" },
+          { "name": "COINBASE:ETHUSD" },
+          { "name": "COINBASE:SOLUSD" },
+          { "name": "COINBASE:XRPUSD" },
+          { "name": "COINBASE:SUIUSD" },
+          { "name": "COINBASE:DOGEUSD" },
+          { "name": "COINBASE:ADAUSD" },
+          { "name": "COINBASE:LINKUSD" },
+          { "name": "COINBASE:TRUMPUSD" },
+          { "name": "COINBASE:PEPEUSD" },
+          { "name": "BINANCE:BNBUSD" },
+          { "name": "CRYPTOCOM:FARTCOINUSD" },
+          { "name": "KRAKEN:JUPUSD" }
+        ]
+      }
+    ],
+    "showSymbolLogo": true,
+    "isTransparent": true,
+    "colorTheme": "dark",
+    "locale": "en",
+    "largeChartUrl": "https://opencryptofoundation.com/charts"
+  };
+
+  // Initialize TradingView Widget
+  useEffect(() => {
+    // Only run in browser, not during SSR
+    if (typeof window === 'undefined') return;
+    
+    // Clean up any existing scripts first to avoid duplicates
+    if (tradingViewRef.current) {
+      while (tradingViewRef.current.firstChild) {
+        tradingViewRef.current.removeChild(tradingViewRef.current.firstChild);
+      }
+    }
+    
+    // Create the widget container
+    const widgetContainer = document.createElement('div');
+    widgetContainer.className = 'tradingview-widget-container__widget';
+    
+    // Create the script element
+    const script = document.createElement('script');
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js';
+    script.type = 'text/javascript';
+    script.async = true;
+    
+    // Set the config
+    script.innerHTML = JSON.stringify(tradingViewConfig);
+    
+    // Add elements to the DOM
+    if (tradingViewRef.current) {
+      tradingViewRef.current.appendChild(widgetContainer);
+      tradingViewRef.current.appendChild(script);
+    }
+    
+    return () => {
+      // Clean up on unmount
+      if (tradingViewRef.current) {
+        while (tradingViewRef.current.firstChild) {
+          tradingViewRef.current.removeChild(tradingViewRef.current.firstChild);
+        }
+      }
+    };
+  }, []);
 
   // Check if we're coming from an error
   useEffect(() => {
@@ -193,13 +267,13 @@ const Home: NextPageWithLayout = () => {
             {/* Right side - TradingView Widget */}
             <div className="w-full lg:w-auto backdrop-blur-md bg-black/30 rounded-lg p-4 shadow-lg border border-primary/20">
               <h3 className="text-xl font-bold text-white mb-3 text-center">Live Crypto Markets</h3>
-              <div className="tradingview-widget-container" id="tradingview-widget">
-                <div className="tradingview-widget-container__widget"></div>
-                <div className="tradingview-widget-copyright text-center text-xs text-light-muted mt-2">
-                  <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank" className="text-primary hover:text-primary-light">
-                    Track all markets on TradingView
-                  </a>
-                </div>
+              <div ref={tradingViewRef} className="tradingview-widget-container">
+                {/* Widget will be loaded here by the useEffect */}
+              </div>
+              <div className="tradingview-widget-copyright text-center text-xs text-light-muted mt-2">
+                <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank" className="text-primary hover:text-primary-light">
+                  Track all markets on TradingView
+                </a>
               </div>
             </div>
           </div>
