@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { FaInfoCircle, FaCheck } from 'react-icons/fa';
+import { FaInfoCircle, FaCheck, FaCreditCard, FaPaypal, FaBitcoin } from 'react-icons/fa';
+import { SiCashapp } from 'react-icons/si';
 import Countdown from 'react-countdown';
 
 const PRESALE_END_DATE = new Date('2025-04-09T13:00:00Z'); // 4/9/2025 9:00 AM EST
@@ -35,6 +36,7 @@ export default function Presale() {
   const [telegramUsername, setTelegramUsername] = useState('');
   const [cryptoKnowledge, setCryptoKnowledge] = useState('');
   const [discoverySource, setDiscoverySource] = useState('');
+  const [tokenAmount, setTokenAmount] = useState('');
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [solanaPrice, setSolanaPrice] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -143,7 +145,7 @@ export default function Presale() {
     setError('');
     
     // Validate form
-    if (!name || !email || !walletAddresses || !telegramUsername || !cryptoKnowledge || !discoverySource || !agreeToTerms) {
+    if (!name || !email || !walletAddresses || !telegramUsername || !cryptoKnowledge || !discoverySource || !tokenAmount || !agreeToTerms) {
       setError('Please complete all fields and accept the terms of service.');
       setIsSubmitting(false);
       return;
@@ -184,6 +186,7 @@ export default function Presale() {
         email,
         walletAddresses,
         telegramUsername,
+        tokenAmount,
         cryptoKnowledge,
         discoverySource,
         message: `New investor application received.
@@ -192,6 +195,7 @@ Name: ${name}
 Email: ${email}
 Wallet Addresses: ${walletAddresses}
 Telegram Username: ${telegramUsername}
+Tokens Requested: ${tokenAmount}
 Crypto Knowledge: ${cryptoKnowledge}
 Discovery Source: ${discoverySource}`,
         turnstileToken,
@@ -217,6 +221,7 @@ Discovery Source: ${discoverySource}`,
         setTelegramUsername('');
         setCryptoKnowledge('');
         setDiscoverySource('');
+        setTokenAmount('');
         setAgreeToTerms(false);
         setTurnstileToken('');
       } else {
@@ -232,6 +237,12 @@ Discovery Source: ${discoverySource}`,
 
   const tokensPerSol = solanaPrice > 0 ? 1 / (USD_PRICE / solanaPrice) : 0;
   const solPrice = USD_PRICE / solanaPrice;
+  
+  // Calculate USD equivalents for min and max SOL purchases
+  const minSolAmount = 2;
+  const maxSolAmount = 10;
+  const minUsdEquivalent = (minSolAmount * solanaPrice).toFixed(2);
+  const maxUsdEquivalent = (maxSolAmount * solanaPrice).toFixed(2);
 
   return (
     <div className="min-h-screen bg-dark">
@@ -388,6 +399,60 @@ Discovery Source: ${discoverySource}`,
                         />
                       </div>
                       
+                      {/* New Token Amount Field */}
+                      <div className="mb-4">
+                        <label htmlFor="tokenAmount" className="block text-sm font-medium text-light-muted mb-1">
+                          How many tokens do you want to buy?
+                        </label>
+                        <input
+                          value={tokenAmount}
+                          onChange={(e) => setTokenAmount(e.target.value)}
+                          type="text"
+                          name="tokenAmount"
+                          id="tokenAmount"
+                          className="w-full px-3 py-2 placeholder-light-muted/50 border border-dark-light rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-light bg-dark-elevated"
+                          placeholder="Enter the amount of tokens you wish to purchase"
+                          required
+                        />
+                      </div>
+
+                      {/* Purchase Information Boxes */}
+                      <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-dark-elevated rounded-lg p-4 border border-dark-light/30">
+                          <div className="flex items-start">
+                            <FaInfoCircle className="text-primary mt-1 mr-2 flex-shrink-0" />
+                            <div>
+                              <h4 className="text-white text-sm font-medium">Purchase Limits</h4>
+                              <p className="text-light-muted text-xs mt-1">
+                                Minimum: <span className="text-primary font-medium">2 SOL</span> (approx. ${minUsdEquivalent} USD)<br />
+                                Maximum: <span className="text-primary font-medium">10 SOL</span> (approx. ${maxUsdEquivalent} USD)
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="bg-dark-elevated rounded-lg p-4 border border-dark-light/30">
+                          <div className="flex items-start">
+                            <FaInfoCircle className="text-primary mt-1 mr-2 flex-shrink-0" />
+                            <div>
+                              <h4 className="text-white text-sm font-medium">Accepted Payment Methods</h4>
+                              <div className="text-light-muted text-xs mt-1">
+                                <div className="flex flex-wrap items-center gap-1 mt-1">
+                                  <FaCreditCard className="text-light-muted" title="Credit Cards" />
+                                  <span className="mr-2">Visa, Mastercard, Discover</span>
+                                  <FaPaypal className="text-light-muted" title="PayPal" />
+                                  <span className="mr-2">PayPal</span>
+                                  <SiCashapp className="text-light-muted" title="Cash App" />
+                                  <span className="mr-2">Cash App</span>
+                                  <FaBitcoin className="text-light-muted" title="Cryptocurrencies" />
+                                  <span>All major cryptocurrencies</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
                       <div className="mb-4">
                         <label htmlFor="cryptoKnowledge" className="block text-sm font-medium text-light-muted mb-1">
                           How would you rate your cryptocurrency and DeFi knowledge/understanding?
