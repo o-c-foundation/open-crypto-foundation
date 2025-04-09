@@ -18,26 +18,57 @@ const Home: NextPageWithLayout = () => {
 
   // TradingView Widget Configuration
   const tradingViewConfig = {
-    "width": 720,
-    "height": 550,
+    "width": "900",
+    "height": "550",
     "symbolsGroups": [
       {
-        "name": "crypto",
+        "name": "Cryptocurrency  ",
         "originalName": "Indices",
         "symbols": [
-          { "name": "COINBASE:BTCUSD" },
-          { "name": "COINBASE:ETHUSD" },
-          { "name": "COINBASE:SOLUSD" },
-          { "name": "COINBASE:XRPUSD" },
-          { "name": "COINBASE:SUIUSD" },
-          { "name": "COINBASE:DOGEUSD" },
-          { "name": "COINBASE:ADAUSD" },
-          { "name": "COINBASE:LINKUSD" },
-          { "name": "COINBASE:TRUMPUSD" },
-          { "name": "COINBASE:PEPEUSD" },
-          { "name": "BINANCE:BNBUSD" },
-          { "name": "CRYPTOCOM:FARTCOINUSD" },
-          { "name": "KRAKEN:JUPUSD" }
+          {
+            "name": "COINBASE:BTCUSD"
+          },
+          {
+            "name": "COINBASE:ETHUSD"
+          },
+          {
+            "name": "COINBASE:SOLUSD"
+          },
+          {
+            "name": "COINBASE:SUIUSD"
+          },
+          {
+            "name": "COINBASE:XRPUSD"
+          },
+          {
+            "name": "COINBASE:DOGEUSD"
+          }
+        ]
+      },
+      {
+        "name": "Meme Tokens  ",
+        "originalName": "Forex",
+        "symbols": [
+          {
+            "name": "RAYDIUM:FARTCOINSOL_BZC9NZ.USD",
+            "displayName": "FARTCOIN"
+          },
+          {
+            "name": "CRYPTO:PEPEUSD",
+            "displayName": "PEPE "
+          },
+          {
+            "name": "UNISWAP:SPXWETH_52C77B.USD",
+            "displayName": "SPX6900"
+          },
+          {
+            "name": "ORCA:JLPUSDC_6NUIVM.USD",
+            "displayName": "JUPITER"
+          },
+          {
+            "name": "RAYDIUM:POPCATUSDC_HBS7A3.USD",
+            "displayName": "POPCAT"
+          }
         ]
       }
     ],
@@ -265,7 +296,7 @@ const Home: NextPageWithLayout = () => {
             </div>
             
             {/* Right side - TradingView Widget */}
-            <div className="w-full lg:w-auto backdrop-blur-md bg-black/30 rounded-lg p-4 shadow-lg border border-primary/20 lg:min-w-[720px]">
+            <div className="w-full lg:w-auto backdrop-blur-md bg-black/30 rounded-lg p-4 shadow-lg border border-primary/20 lg:min-w-[920px]">
               <h3 className="text-xl font-bold text-white mb-3 text-center">Live Crypto Markets</h3>
               <div ref={tradingViewRef} className="tradingview-widget-container">
                 {/* Widget will be loaded here by the useEffect */}
