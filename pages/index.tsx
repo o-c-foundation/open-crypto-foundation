@@ -18,7 +18,7 @@ const Home: NextPageWithLayout = () => {
 
   // TradingView Widget Configuration
   const tradingViewConfig = {
-    "width": 700,
+    "width": 720,
     "height": 550,
     "symbolsGroups": [
       {
