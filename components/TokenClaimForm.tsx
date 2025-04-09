@@ -8,6 +8,7 @@ interface FormData {
   twitterHandle: string;
   address: string;
   message: string;
+  socialProof: string;
 }
 
 const TokenClaimForm = () => {
@@ -16,7 +17,8 @@ const TokenClaimForm = () => {
   const [formData, setFormData] = useState<FormData>({
     twitterHandle: '',
     address: '',
-    message: ''
+    message: '',
+    socialProof: ''
   });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -81,7 +83,8 @@ const TokenClaimForm = () => {
         setFormData({
           twitterHandle: '',
           address: publicKey.toString(),
-          message: ''
+          message: '',
+          socialProof: ''
         });
         
         // Simulate a transaction signature for display
@@ -160,7 +163,7 @@ const TokenClaimForm = () => {
                     <div>
                       <h3 className="text-lg md:text-xl font-bold text-white mb-1">Congratulations!</h3>
                       <p className="text-white text-base md:text-lg">
-                        You've been allocated <span className="font-bold text-primary">6,000,000 OCF</span> tokens
+                        You've been allocated <span className="font-bold text-primary">2,000,000 OCF</span> tokens
                       </p>
                     </div>
                     <div className="mt-2 md:mt-0 md:ml-2">
@@ -188,8 +191,8 @@ const TokenClaimForm = () => {
                 <h3 className="text-lg md:text-xl font-semibold text-white">Airdrop Request Submitted!</h3>
               </div>
               <p className="text-center text-light-muted mb-4 text-sm sm:text-base">
-                Your request for 6,000,000 OCF tokens has been submitted. Please allow 10-15 minutes 
-                for the tokens to be sent to your wallet on the Solana Devnet.
+                Your request for 2,000,000 OCF tokens has been submitted. Please allow 10-15 minutes 
+                for the tokens to be sent to your wallet.
               </p>
               
               {txSignature && (
@@ -217,12 +220,12 @@ const TokenClaimForm = () => {
               <div>
                 <div className="flex justify-between items-center mb-1 md:mb-2">
                   <label htmlFor="amount" className="block text-light-muted text-sm">Token Amount</label>
-                  <span className="text-primary font-semibold text-sm md:text-base">6,000,000 OCF</span>
+                  <span className="text-primary font-semibold text-sm md:text-base">2,000,000 OCF</span>
                 </div>
                 <div className="w-full bg-dark-light/30 rounded-lg border border-dark-light/50 px-3 md:px-4 py-2 md:py-3">
                   <div className="flex justify-between items-center">
                     <span className="text-light-muted text-xs md:text-sm">Standard allocation</span>
-                    <span className="text-white font-semibold text-sm md:text-base">6,000,000 OCF</span>
+                    <span className="text-white font-semibold text-sm md:text-base">2,000,000 OCF</span>
                   </div>
                 </div>
               </div>
@@ -238,6 +241,25 @@ const TokenClaimForm = () => {
                   className="w-full px-3 md:px-4 py-2 md:py-3 bg-dark rounded-lg border border-dark-light/50 text-white focus:outline-none focus:border-primary/50 text-sm"
                   placeholder="@username"
                 />
+              </div>
+              
+              <div>
+                <label htmlFor="socialProof" className="block text-light-muted mb-1 md:mb-2 text-sm">
+                  <span className="flex items-center">
+                    <span>Social Task Proof</span>
+                    <span className="ml-2 text-xs py-0.5 px-2 bg-primary/20 text-primary rounded-full">+Bonus Tokens</span>
+                  </span>
+                </label>
+                <textarea
+                  id="socialProof"
+                  name="socialProof"
+                  rows={2}
+                  value={formData.socialProof}
+                  onChange={handleChange}
+                  className="w-full px-3 md:px-4 py-2 md:py-3 bg-dark rounded-lg border border-dark-light/50 text-white focus:outline-none focus:border-primary/50 text-sm"
+                  placeholder="Links to your tweets, screenshot links, or Telegram username of friends you invited"
+                />
+                <p className="mt-1 text-xs text-light-muted">Provide proof of completed social tasks to increase your airdrop allocation</p>
               </div>
               
               <div>
@@ -264,7 +286,7 @@ const TokenClaimForm = () => {
                     <span>Processing...</span>
                   </div>
                 ) : (
-                  'Claim 6,000,000 OCF Tokens'
+                  'Claim 2,000,000 OCF Tokens'
                 )}
               </button>
             </form>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { FaInfoCircle, FaHeart, FaFileAlt, FaRocket, FaUsers } from 'react-icons/fa';
+import { FaInfoCircle, FaHeart, FaFileAlt, FaRocket, FaUsers, FaTwitter, FaTelegram, FaYoutube } from 'react-icons/fa';
 import TokenClaimForm from '../components/TokenClaimForm';
 import NewsletterSubscribe from '../components/NewsletterSubscribe';
 import ScrollToTop from '../components/ScrollToTop';
@@ -54,16 +54,44 @@ export default function ClaimPage() {
                 </p>
               </div>
               
-              {/* Devnet Disclaimer */}
-              <div className="p-5 bg-yellow-900/20 border border-yellow-800/30 rounded-lg mt-6">
+              {/* Additional Allocation Methods */}
+              <div className="p-5 bg-green-900/20 border border-green-800/30 rounded-lg mt-6">
                 <div className="flex items-center justify-center mb-3">
-                  <FaInfoCircle className="text-yellow-500 mr-2" size={24} />
-                  <h3 className="text-xl font-bold text-white">Devnet Tokens Disclaimer</h3>
+                  <FaInfoCircle className="text-green-500 mr-2" size={24} />
+                  <h3 className="text-xl font-bold text-white">Earn More Airdrop Tokens!</h3>
                 </div>
-                <p className="text-light-muted">
-                  <strong>Important:</strong> The tokens you are claiming now are on the Solana Devnet. These Devnet tokens can be redeemed 1:1 
-                  for the mainnet version when we launch. To see these tokens in your wallet, you'll need to configure it to connect to Solana Devnet.
-                </p>
+                <div className="text-light-muted">
+                  <p className="mb-3">
+                    <strong>Not eligible or want to increase your allocation?</strong> Complete these tasks to earn additional tokens before launch:
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-left">
+                    <div className="bg-dark-card p-3 rounded-lg border border-dark-light/30">
+                      <div className="flex items-center mb-2">
+                        <FaTwitter className="text-primary mr-2" />
+                        <h4 className="font-semibold text-white">Twitter Tasks</h4>
+                      </div>
+                      <ul className="text-sm space-y-2 pl-6 list-disc">
+                        <li>Follow <a href="https://twitter.com/OCF_Foundation" className="text-primary" target="_blank" rel="noopener noreferrer">@OCF_Foundation</a></li>
+                        <li>Like & Retweet our pinned post</li>
+                        <li>Tweet about OCF and tag 3 friends</li>
+                      </ul>
+                    </div>
+                    <div className="bg-dark-card p-3 rounded-lg border border-dark-light/30">
+                      <div className="flex items-center mb-2">
+                        <FaTelegram className="text-primary mr-2" />
+                        <h4 className="font-semibold text-white">Telegram Tasks</h4>
+                      </div>
+                      <ul className="text-sm space-y-2 pl-6 list-disc">
+                        <li>Join our <a href="https://t.me/OCF_Official" className="text-primary" target="_blank" rel="noopener noreferrer">Telegram group</a></li>
+                        <li>Invite 3 friends to the group</li>
+                        <li>Participate in group discussions</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p className="mt-3 text-sm italic">
+                    Submit proof of completion in the form below to have your allocation increased.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -117,11 +145,11 @@ export default function ClaimPage() {
                       </li>
                       <li className="flex">
                         <span className="bg-primary/20 text-primary font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">4</span>
-                        <span>Receive 6,000,000 OCF tokens on Devnet</span>
+                        <span>Receive 2,000,000 OCF tokens</span>
                       </li>
                       <li className="flex">
                         <span className="bg-primary/20 text-primary font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">5</span>
-                        <span>Redeem 1:1 for mainnet tokens at launch</span>
+                        <span>Complete additional tasks for more tokens</span>
                       </li>
                     </ol>
                   </div>
