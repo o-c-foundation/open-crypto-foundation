@@ -18,7 +18,7 @@ const Home: NextPageWithLayout = () => {
 
   // TradingView Widget Configuration
   const tradingViewConfig = {
-    "width": 550,
+    "width": 700,
     "height": 550,
     "symbolsGroups": [
       {
@@ -265,7 +265,7 @@ const Home: NextPageWithLayout = () => {
             </div>
             
             {/* Right side - TradingView Widget */}
-            <div className="w-full lg:w-auto backdrop-blur-md bg-black/30 rounded-lg p-4 shadow-lg border border-primary/20">
+            <div className="w-full lg:w-auto backdrop-blur-md bg-black/30 rounded-lg p-4 shadow-lg border border-primary/20 lg:min-w-[720px]">
               <h3 className="text-xl font-bold text-white mb-3 text-center">Live Crypto Markets</h3>
               <div ref={tradingViewRef} className="tradingview-widget-container">
                 {/* Widget will be loaded here by the useEffect */}
