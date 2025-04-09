@@ -74,9 +74,9 @@ export default function Navbar() {
 
   return (
     <header className="bg-transparent backdrop-blur-sm border-b border-dark-light/10 sticky top-0 z-50">
-      <div className="container-fluid px-3 md:px-6 max-w-7xl mx-auto">
+      <div className="container-fluid px-0 md:px-0 max-w-7xl mx-auto">
         <div className="flex justify-between items-center py-4">
-          <div className="flex items-center mr-4">
+          <div className="flex items-center pl-2 md:pl-4">
             <Link href="/" className="flex items-center group">
               <div className="flex items-center justify-center mr-2 transition-all duration-300 group-hover:shadow-glow">
                 <Logo size="md" />
@@ -85,8 +85,8 @@ export default function Navbar() {
             </Link>
           </div>
           
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-4 lg:space-x-5">
+          {/* Desktop Navigation - keep centered */}
+          <nav className="hidden md:flex space-x-4 lg:space-x-5 pr-4">
             {navigation.map((item) => 
               !item.children ? (
                 <Link 
