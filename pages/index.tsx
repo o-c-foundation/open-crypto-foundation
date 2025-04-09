@@ -193,7 +193,7 @@ const Home: NextPageWithLayout = () => {
             {/* Right side - TradingView Widget */}
             <div className="w-full lg:w-auto backdrop-blur-md bg-black/30 rounded-lg p-4 shadow-lg border border-primary/20">
               <h3 className="text-xl font-bold text-white mb-3 text-center">Live Crypto Markets</h3>
-              <div className="tradingview-widget-container">
+              <div className="tradingview-widget-container" id="tradingview-widget">
                 <div className="tradingview-widget-container__widget"></div>
                 <div className="tradingview-widget-copyright text-center text-xs text-light-muted mt-2">
                   <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank" className="text-primary hover:text-primary-light">
