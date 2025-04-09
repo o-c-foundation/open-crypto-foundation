@@ -67,7 +67,7 @@ export default function Presale() {
                 </div>
                 <input
                   value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
+                  onChange={(e) => setAmount(Number(e.target.value))}
                   type="number"
                   name="amount"
                   id="amount"
