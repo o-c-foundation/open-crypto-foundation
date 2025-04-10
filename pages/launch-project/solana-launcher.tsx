@@ -8,7 +8,7 @@ import ScrollToTop from '../../components/ScrollToTop';
 
 export default function SolanaSPLTools() {
   return (
-    <Layout>
+    <div className="min-h-screen bg-dark">
       <Head>
         <title>Solana SPL Tools | Open Crypto Foundation</title>
         <meta 
@@ -482,6 +482,18 @@ export default function SolanaSPLTools() {
       </main>
       
       <ScrollToTop />
+    </div>
+  );
+}
+
+// Define custom layout for the page
+SolanaSPLTools.getLayout = function getLayout(page) {
+  return (
+    <Layout 
+      title="Solana SPL Tools | Open Crypto Foundation"
+      description="Free, open-source tools for the Solana SPL Token ecosystem with zero platform fees"
+    >
+      {page}
     </Layout>
   );
-} 
+}; 
