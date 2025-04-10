@@ -78,7 +78,8 @@ export default function Navbar() {
       icon: <FaRocket className="mr-1" />,
       children: [
         { name: 'Launch Services', href: '/launch-project', description: 'Partner with us to develop, vet, and launch your project with enhanced security and credibility' },
-        { name: 'Solana Project Launcher', href: '/launch-project/solana-launcher', description: 'Open-source toolkit for creating Solana tokens, AMM pools, and markets with transaction bundling' }
+        { name: 'Solana Project Launcher', href: '/launch-project/solana-launcher', description: 'Open-source toolkit for creating Solana tokens, AMM pools, and markets with transaction bundling' },
+        { name: 'ERC-20 Token Creator', href: '/launch-project/erc20-launcher', description: 'Free, open-source ERC-20 token creator for multiple blockchain networks with no additional fees' }
       ]
     },
     { name: 'Presale', href: '/presale', current: false, icon: <FaShoppingCart className="mr-1" /> },
@@ -164,10 +165,16 @@ export default function Navbar() {
                               key={child.name}
                               href={child.href}
                               className={`block p-3 hover:bg-dark-elevated rounded-lg text-light-muted hover:text-light transition-all duration-200 border border-transparent hover:border-primary/20 
-                                ${router.pathname === child.href || (router.pathname === '/launch-project/solana-launcher' && child.href === '/launch-project/solana-launcher') ? 'bg-primary/5 border-primary/20' : ''}`}
+                                ${router.pathname === child.href || 
+                                   (router.pathname === '/launch-project/solana-launcher' && child.href === '/launch-project/solana-launcher') ||
+                                   (router.pathname === '/launch-project/erc20-launcher' && child.href === '/launch-project/erc20-launcher')
+                                   ? 'bg-primary/5 border-primary/20' : ''}`}
                               onClick={() => setDropdownOpen(null)}
                             >
-                              <p className={`text-base font-medium ${router.pathname === child.href || (router.pathname === '/launch-project/solana-launcher' && child.href === '/launch-project/solana-launcher') ? 'text-primary' : 'text-light'}`}>{child.name}</p>
+                              <p className={`text-base font-medium ${router.pathname === child.href || 
+                                (router.pathname === '/launch-project/solana-launcher' && child.href === '/launch-project/solana-launcher') || 
+                                (router.pathname === '/launch-project/erc20-launcher' && child.href === '/launch-project/erc20-launcher')
+                                ? 'text-primary' : 'text-light'}`}>{child.name}</p>
                               {child.description && (
                                 <p className="mt-1 text-sm text-light-muted">{child.description}</p>
                               )}
@@ -251,7 +258,8 @@ export default function Navbar() {
                             href={child.href}
                             className={`block p-3 text-light-muted hover:text-light transition-all duration-200 rounded-r-lg
                               ${router.pathname === child.href || 
-                                (router.pathname === '/launch-project/solana-launcher' && child.href === '/launch-project/solana-launcher')
+                                (router.pathname === '/launch-project/solana-launcher' && child.href === '/launch-project/solana-launcher') ||
+                                (router.pathname === '/launch-project/erc20-launcher' && child.href === '/launch-project/erc20-launcher')
                                 ? 'bg-primary/10 text-light' 
                                 : 'hover:bg-dark-card'
                               }`}
