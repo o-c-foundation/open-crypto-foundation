@@ -14,7 +14,8 @@ import {
   FaRoad, 
   FaShoppingCart,
   FaLayerGroup,
-  FaFilter
+  FaFilter,
+  FaRocket
 } from 'react-icons/fa'
 import Logo from './Logo'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -70,6 +71,7 @@ export default function Navbar() {
     { name: 'About', href: '/about', current: false, icon: <FaInfoCircle className="mr-1" /> },
     { name: 'Whitepaper', href: '/whitepaper', current: false, icon: <FaFileAlt className="mr-1" /> },
     { name: 'Roadmap', href: '/roadmap', current: false, icon: <FaRoad className="mr-1" /> },
+    { name: 'Launch your Project', href: '/launch-project', current: false, icon: <FaRocket className="mr-1" /> },
     { name: 'Presale', href: '/presale', current: false, icon: <FaShoppingCart className="mr-1" /> },
     { name: 'OFC Airdrops', href: '/claim', icon: <FaCoins className="mr-1" />, badge: 'New' }
   ]
