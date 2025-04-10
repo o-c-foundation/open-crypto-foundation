@@ -15,7 +15,8 @@ import {
   FaShoppingCart,
   FaLayerGroup,
   FaFilter,
-  FaRocket
+  FaRocket,
+  FaCode
 } from 'react-icons/fa'
 import Logo from './Logo'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -71,7 +72,15 @@ export default function Navbar() {
     { name: 'About', href: '/about', current: false, icon: <FaInfoCircle className="mr-1" /> },
     { name: 'Whitepaper', href: '/whitepaper', current: false, icon: <FaFileAlt className="mr-1" /> },
     { name: 'Roadmap', href: '/roadmap', current: false, icon: <FaRoad className="mr-1" /> },
-    { name: 'Launch your Project', href: '/launch-project', current: false, icon: <FaRocket className="mr-1" /> },
+    {
+      name: 'Launch your Project',
+      current: false,
+      icon: <FaRocket className="mr-1" />,
+      children: [
+        { name: 'Launch Services', href: '/launch-project', description: 'Partner with us to develop, vet, and launch your project with enhanced security and credibility' },
+        { name: 'Solana Project Launcher', href: '/launch-project/solana-launcher', description: 'Open-source toolkit for creating Solana tokens, AMM pools, and markets with transaction bundling' }
+      ]
+    },
     { name: 'Presale', href: '/presale', current: false, icon: <FaShoppingCart className="mr-1" /> },
     { name: 'OFC Airdrops', href: '/claim', icon: <FaCoins className="mr-1" />, badge: 'New' }
   ]
@@ -128,7 +137,8 @@ export default function Navbar() {
                         ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
                           router.pathname === '/tokenomics' || router.pathname === '/audit' ||
                           router.pathname === '/wallets-and-funds') && 
-                          item.name === 'Foundation') ? 'text-light' : ''}
+                          item.name === 'Foundation') ||
+                        (router.pathname.startsWith('/launch-project') && item.name === 'Launch your Project') ? 'text-light' : ''}
                     `}
                     onClick={() => toggleDropdown(item.name)}
                   >
@@ -141,7 +151,8 @@ export default function Navbar() {
                          ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
                            router.pathname === '/tokenomics' || router.pathname === '/audit' ||
                            router.pathname === '/wallets-and-funds') && 
-                           item.name === 'Foundation') ? 'w-full' : 'group-hover:w-full'}`}></span>
+                           item.name === 'Foundation') ||
+                         (router.pathname.startsWith('/launch-project') && item.name === 'Launch your Project') ? 'w-full' : 'group-hover:w-full'}`}></span>
                   </button>
                   
                   {dropdownOpen === item.name && (
@@ -152,10 +163,11 @@ export default function Navbar() {
                             <Link
                               key={child.name}
                               href={child.href}
-                              className="block p-3 hover:bg-dark-elevated rounded-lg text-light-muted hover:text-light transition-all duration-200 border border-transparent hover:border-primary/20"
+                              className={`block p-3 hover:bg-dark-elevated rounded-lg text-light-muted hover:text-light transition-all duration-200 border border-transparent hover:border-primary/20 
+                                ${router.pathname === child.href || (router.pathname === '/launch-project/solana-launcher' && child.href === '/launch-project/solana-launcher') ? 'bg-primary/5 border-primary/20' : ''}`}
                               onClick={() => setDropdownOpen(null)}
                             >
-                              <p className="text-base font-medium text-light">{child.name}</p>
+                              <p className={`text-base font-medium ${router.pathname === child.href || (router.pathname === '/launch-project/solana-launcher' && child.href === '/launch-project/solana-launcher') ? 'text-primary' : 'text-light'}`}>{child.name}</p>
                               {child.description && (
                                 <p className="mt-1 text-sm text-light-muted">{child.description}</p>
                               )}
@@ -218,7 +230,8 @@ export default function Navbar() {
                           ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
                             router.pathname === '/tokenomics' || router.pathname === '/audit' ||
                             router.pathname === '/wallets-and-funds') && 
-                            item.name === 'Foundation')
+                            item.name === 'Foundation') ||
+                          (router.pathname.startsWith('/launch-project') && item.name === 'Launch your Project')
                           ? 'border-primary text-light bg-primary/5' 
                           : 'border-transparent hover:border-primary/50 hover:bg-dark-card'
                         }`}
@@ -237,7 +250,8 @@ export default function Navbar() {
                             key={child.name}
                             href={child.href}
                             className={`block p-3 text-light-muted hover:text-light transition-all duration-200 rounded-r-lg
-                              ${router.pathname === child.href 
+                              ${router.pathname === child.href || 
+                                (router.pathname === '/launch-project/solana-launcher' && child.href === '/launch-project/solana-launcher')
                                 ? 'bg-primary/10 text-light' 
                                 : 'hover:bg-dark-card'
                               }`}

@@ -33,7 +33,7 @@ export default function SolanaLauncher() {
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link 
-                  href="https://github.com/opencryptofoundation/solana-token-launcher" 
+                  href="https://github.com/o-c-foundation/Solana-Token-Laucnher" 
                   target="_blank"
                   className="px-8 py-4 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors shadow-lg inline-flex items-center"
                 >
@@ -72,14 +72,14 @@ export default function SolanaLauncher() {
                   <h3 className="text-xl font-bold text-white mb-4">Quick Start</h3>
                   <div className="bg-dark-elevated rounded-lg p-4 font-mono text-sm text-light-muted overflow-x-auto">
                     <p className="mb-2"># Clone the repository</p>
-                    <p className="mb-4">git clone https://github.com/opencryptofoundation/solana-token-launcher</p>
+                    <p className="mb-4">git clone https://github.com/o-c-foundation/Solana-Token-Laucnher</p>
                     <p className="mb-2"># Install dependencies</p>
                     <p className="mb-4">npm install</p>
                     <p className="mb-2"># Run the CLI tool</p>
                     <p>npx solana-token-launcher create</p>
                   </div>
                   <Link 
-                    href="https://github.com/opencryptofoundation/solana-token-launcher#readme"
+                    href="https://github.com/o-c-foundation/Solana-Token-Laucnher#readme"
                     target="_blank" 
                     className="mt-4 text-primary hover:text-primary-light flex items-center"
                   >
@@ -352,7 +352,7 @@ export default function SolanaLauncher() {
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link 
-                  href="https://github.com/opencryptofoundation/solana-token-launcher" 
+                  href="https://github.com/o-c-foundation/Solana-Token-Laucnher" 
                   target="_blank"
                   className="px-8 py-4 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors shadow-lg inline-flex items-center"
                 >
