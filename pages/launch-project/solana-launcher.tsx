@@ -1,19 +1,19 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { FaRocket, FaCheck, FaCoins, FaCode, FaExchangeAlt, FaLock, FaCogs, FaGithub, FaDownload, FaArrowRight } from 'react-icons/fa';
+import { FaRocket, FaCheck, FaCoins, FaCode, FaExchangeAlt, FaFire, FaWallet, FaGithub, FaLink, FaArrowRight, FaPaperPlane, FaTimes } from 'react-icons/fa';
 import Layout from '../../components/Layout';
 import NewsletterSubscribe from '../../components/NewsletterSubscribe';
 import ScrollToTop from '../../components/ScrollToTop';
 
-export default function SolanaLauncher() {
+export default function SolanaSPLTools() {
   return (
-    <div className="min-h-screen bg-dark">
+    <Layout>
       <Head>
-        <title>Solana Token Launcher | Open Crypto Foundation</title>
+        <title>Solana SPL Tools | Open Crypto Foundation</title>
         <meta 
           name="description" 
-          content="Free, open-source toolkit for creating Solana tokens, AMM pools, and markets with transaction bundling" 
+          content="Free, open-source tools for the Solana SPL Token ecosystem with zero platform fees" 
         />
       </Head>
 
@@ -23,27 +23,28 @@ export default function SolanaLauncher() {
           <div className="container px-4 mx-auto">
             <div className="max-w-4xl mx-auto text-center">
               <div className="mb-6 inline-block p-3 bg-primary/20 rounded-full">
-                <FaRocket className="text-primary text-3xl" />
+                <FaCoins className="text-primary text-3xl" />
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Solana Token Launcher
+                Solana SPL Tools
               </h1>
               <p className="text-xl text-light-muted mb-8">
-                Free, open-source toolkit for creating Solana tokens, AMM pools, and markets with secure transaction bundling
+                Comprehensive suite of utilities for the Solana blockchain with zero platform fees
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link 
-                  href="https://github.com/o-c-foundation/Solana-Token-Laucnher" 
+                  href="https://open-crypto-foundation-spl-tools.vercel.app/" 
                   target="_blank"
                   className="px-8 py-4 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors shadow-lg inline-flex items-center"
                 >
-                  <FaGithub className="mr-2" /> View on GitHub
+                  <FaLink className="mr-2" /> Launch App
                 </Link>
                 <Link 
-                  href="#features" 
+                  href="https://github.com/o-c-foundation/Open-Crypto-Foundation-SPL-Tools" 
+                  target="_blank"
                   className="px-8 py-4 bg-dark-card hover:bg-dark-elevated border border-primary/30 text-white rounded-lg transition-colors shadow-lg inline-flex items-center"
                 >
-                  Learn More <FaArrowRight className="ml-2" />
+                  <FaGithub className="mr-2" /> View on GitHub
                 </Link>
               </div>
             </div>
@@ -56,35 +57,66 @@ export default function SolanaLauncher() {
             <div className="max-w-5xl mx-auto">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
-                  <h2 className="text-3xl font-bold text-white mb-6">What is the Solana Token Launcher?</h2>
+                  <h2 className="text-3xl font-bold text-white mb-6">What are Solana SPL Tools?</h2>
                   <p className="text-light-muted mb-4">
-                    The Solana Token Launcher is an open-source toolkit designed to simplify the process of creating 
-                    and deploying tokens on the Solana blockchain. Built with security and transparency in mind, it 
-                    offers a straightforward way for developers to launch tokens, create liquidity pools, and set up 
-                    markets without requiring deep technical knowledge of Solana's programming model.
+                    The Open Crypto Foundation SPL Tools is a comprehensive suite of utilities for the Solana blockchain 
+                    that allows you to interact with SPL tokens. From token creation to mass distribution, 
+                    these tools simplify complex operations on the Solana network.
                   </p>
                   <p className="text-light-muted mb-4">
-                    Developed by the Open Crypto Foundation, this tool emphasizes security best practices and includes 
-                    transaction bundling to ensure atomic execution of complex operations, reducing risk during token launches.
+                    All tools are completely free to use with <span className="text-primary font-medium">absolutely no platform fees</span>. 
+                    You only pay the standard Solana network fees for your transactions.
                   </p>
                 </div>
                 <div className="bg-dark-card p-6 rounded-xl border border-primary/20 shadow-lg">
-                  <h3 className="text-xl font-bold text-white mb-4">Quick Start</h3>
-                  <div className="bg-dark-elevated rounded-lg p-4 font-mono text-sm text-light-muted overflow-x-auto">
-                    <p className="mb-2"># Clone the repository</p>
-                    <p className="mb-4">git clone https://github.com/o-c-foundation/Solana-Token-Laucnher</p>
-                    <p className="mb-2"># Install dependencies</p>
-                    <p className="mb-4">npm install</p>
-                    <p className="mb-2"># Run the CLI tool</p>
-                    <p>npx solana-token-launcher create</p>
-                  </div>
-                  <Link 
-                    href="https://github.com/o-c-foundation/Solana-Token-Laucnher#readme"
-                    target="_blank" 
-                    className="mt-4 text-primary hover:text-primary-light flex items-center"
-                  >
-                    <FaDownload className="mr-2" /> View full installation guide
-                  </Link>
+                  <h3 className="text-xl font-bold text-white mb-4">Available Tools</h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-start">
+                      <div className="bg-primary/10 p-2 rounded-lg mr-3">
+                        <FaPaperPlane className="text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-light font-medium">MultiSender</p>
+                        <p className="text-sm text-light-muted">Send tokens to multiple wallets in one transaction</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="bg-primary/10 p-2 rounded-lg mr-3">
+                        <FaCoins className="text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-light font-medium">Token Creation</p>
+                        <p className="text-sm text-light-muted">Create custom SPL tokens with configurable parameters</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="bg-primary/10 p-2 rounded-lg mr-3">
+                        <FaFire className="text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-light font-medium">Token Burning</p>
+                        <p className="text-sm text-light-muted">Safely burn tokens and reclaim SOL</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="bg-primary/10 p-2 rounded-lg mr-3">
+                        <FaTimes className="text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-light font-medium">Account Closing</p>
+                        <p className="text-sm text-light-muted">Close unnecessary token accounts and recover SOL</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="bg-primary/10 p-2 rounded-lg mr-3">
+                        <FaWallet className="text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-light font-medium">Fee Claiming</p>
+                        <p className="text-sm text-light-muted">Claim accumulated transfer fees from Token-2022 tokens</p>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -92,7 +124,7 @@ export default function SolanaLauncher() {
         </section>
         
         {/* Features Section */}
-        <section id="features" className="py-16 bg-dark">
+        <section className="py-16 bg-dark">
           <div className="container px-4 mx-auto">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-3xl font-bold text-white text-center mb-12">Key Features</h2>
@@ -101,23 +133,49 @@ export default function SolanaLauncher() {
                 <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/20 mr-4">
+                      <FaPaperPlane className="text-primary text-xl" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white">MultiSender</h3>
+                  </div>
+                  <p className="text-light-muted mb-4">
+                    The MultiSender tool allows you to send SPL tokens to multiple addresses in a single 
+                    transaction, saving time and transaction fees.
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-center text-light-muted">
+                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Perfect for airdrops
+                    </li>
+                    <li className="flex items-center text-light-muted">
+                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Efficient token distribution
+                    </li>
+                    <li className="flex items-center text-light-muted">
+                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Team payments and community rewards
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/20 mr-4">
                       <FaCoins className="text-primary text-xl" />
                     </div>
                     <h3 className="text-xl font-bold text-white">Token Creation</h3>
                   </div>
                   <p className="text-light-muted mb-4">
-                    Create SPL tokens with customizable parameters including name, symbol, decimals, 
-                    and supply. Supports both fungible and non-fungible tokens with metadata integration.
+                    Create your own SPL token with customizable parameters for your project or community.
                   </p>
                   <ul className="space-y-2">
                     <li className="flex items-center text-light-muted">
-                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> SPL token standard
+                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Set supply and decimals
                     </li>
                     <li className="flex items-center text-light-muted">
-                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Customizable metadata
+                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Add metadata
                     </li>
                     <li className="flex items-center text-light-muted">
-                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Configurable token supply
+                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Standard SPL tokens and Token-2022 features
+                    </li>
+                    <li className="flex items-center text-light-muted">
+                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Optional custom transfer fees
                     </li>
                   </ul>
                 </div>
@@ -125,23 +183,22 @@ export default function SolanaLauncher() {
                 <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/20 mr-4">
-                      <FaExchangeAlt className="text-primary text-xl" />
+                      <FaFire className="text-primary text-xl" />
                     </div>
-                    <h3 className="text-xl font-bold text-white">AMM Pool Creation</h3>
+                    <h3 className="text-xl font-bold text-white">Token Burning</h3>
                   </div>
                   <p className="text-light-muted mb-4">
-                    Easily set up liquidity pools on major Solana DEXs including Raydium, Orca, 
-                    and Jupiter. Configure initial liquidity, fee tiers, and pool parameters.
+                    Safely burn unwanted tokens and reclaim SOL from token accounts.
                   </p>
                   <ul className="space-y-2">
                     <li className="flex items-center text-light-muted">
-                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Multi-DEX support
+                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Burn specific amounts from your wallets
                     </li>
                     <li className="flex items-center text-light-muted">
-                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Configurable fee tiers
+                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Recover rent fees from empty accounts
                     </li>
                     <li className="flex items-center text-light-muted">
-                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Initial liquidity provisioning
+                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Clean up unwanted airdrops
                     </li>
                   </ul>
                 </div>
@@ -149,49 +206,47 @@ export default function SolanaLauncher() {
                 <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/20 mr-4">
-                      <FaLock className="text-primary text-xl" />
+                      <FaTimes className="text-primary text-xl" />
                     </div>
-                    <h3 className="text-xl font-bold text-white">Transaction Bundling</h3>
+                    <h3 className="text-xl font-bold text-white">Account Closing</h3>
                   </div>
                   <p className="text-light-muted mb-4">
-                    Bundle multiple transactions into a single atomic operation, ensuring all steps complete
-                    or none do. Reduces risks during token launches and prevents partial execution issues.
+                    Close token accounts that are no longer needed to clean up your wallet.
                   </p>
                   <ul className="space-y-2">
                     <li className="flex items-center text-light-muted">
-                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Atomic execution
+                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Recover SOL from token accounts with zero balance
                     </li>
                     <li className="flex items-center text-light-muted">
-                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Versioned transactions
+                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Clean up your wallet from unwanted token accounts
                     </li>
                     <li className="flex items-center text-light-muted">
-                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Address lookup tables support
+                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Batch close multiple accounts at once
                     </li>
                   </ul>
                 </div>
-                
-                <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg">
+
+                <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg md:col-span-2">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/20 mr-4">
-                      <FaCode className="text-primary text-xl" />
+                      <FaWallet className="text-primary text-xl" />
                     </div>
-                    <h3 className="text-xl font-bold text-white">Developer-Friendly</h3>
+                    <h3 className="text-xl font-bold text-white">Fee Claiming</h3>
                   </div>
                   <p className="text-light-muted mb-4">
-                    Built with TypeScript for improved type safety and developer experience. 
-                    Includes comprehensive documentation, examples, and CLI tools for easy use.
+                    For Token-2022 token creators, easily claim accumulated transfer fees.
                   </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-center text-light-muted">
-                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> TypeScript codebase
-                    </li>
-                    <li className="flex items-center text-light-muted">
-                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Intuitive CLI interface
-                    </li>
-                    <li className="flex items-center text-light-muted">
-                      <FaCheck className="text-primary mr-2 flex-shrink-0" /> Detailed documentation
-                    </li>
-                  </ul>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <div className="bg-dark-elevated p-4 rounded-lg">
+                      <p className="text-light-muted"><FaCheck className="text-primary mr-2 inline-block" /> View all collected fees</p>
+                    </div>
+                    <div className="bg-dark-elevated p-4 rounded-lg">
+                      <p className="text-light-muted"><FaCheck className="text-primary mr-2 inline-block" /> Withdraw fees to your wallet</p>
+                    </div>
+                    <div className="bg-dark-elevated p-4 rounded-lg">
+                      <p className="text-light-muted"><FaCheck className="text-primary mr-2 inline-block" /> Manage fee accounts</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -204,166 +259,77 @@ export default function SolanaLauncher() {
             <div className="max-w-5xl mx-auto">
               <h2 className="text-3xl font-bold text-white text-center mb-12">How It Works</h2>
               
-              <div className="relative">
-                {/* Timeline line */}
-                <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary/30 hidden md:block"></div>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg text-center">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
+                    <span className="text-primary text-2xl font-bold">1</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4">Connect Wallet</h3>
+                  <p className="text-light-muted">
+                    Connect your Solana wallet like Phantom, Solflare, or other compatible wallets to access the tools.
+                  </p>
+                </div>
                 
-                <div className="space-y-12">
-                  <div className="flex flex-col md:flex-row">
-                    <div className="md:w-16 md:flex-shrink-0 flex justify-center md:block">
-                      <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-glow z-10">1</div>
-                    </div>
-                    <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg ml-0 md:ml-6 mt-4 md:mt-0">
-                      <h3 className="text-xl font-bold text-white mb-4">Install & Configure</h3>
-                      <p className="text-light-muted">
-                        Install the Solana Token Launcher package and configure your Solana wallet. 
-                        Set up your environment with the Solana CLI and ensure you have SOL for transaction fees.
-                      </p>
-                    </div>
+                <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg text-center">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
+                    <span className="text-primary text-2xl font-bold">2</span>
                   </div>
-                  
-                  <div className="flex flex-col md:flex-row">
-                    <div className="md:w-16 md:flex-shrink-0 flex justify-center md:block">
-                      <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-glow z-10">2</div>
-                    </div>
-                    <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg ml-0 md:ml-6 mt-4 md:mt-0">
-                      <h3 className="text-xl font-bold text-white mb-4">Design Your Token</h3>
-                      <p className="text-light-muted">
-                        Use the CLI or configuration file to define your token parameters including name, 
-                        symbol, decimals, and supply. Add optional metadata like logo, description, and website.
-                      </p>
-                    </div>
+                  <h3 className="text-xl font-bold text-white mb-4">Select Tool</h3>
+                  <p className="text-light-muted">
+                    Choose the Solana SPL tool you need from the intuitive interface. Each tool has a streamlined workflow.
+                  </p>
+                </div>
+                
+                <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg text-center">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
+                    <span className="text-primary text-2xl font-bold">3</span>
                   </div>
-                  
-                  <div className="flex flex-col md:flex-row">
-                    <div className="md:w-16 md:flex-shrink-0 flex justify-center md:block">
-                      <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-glow z-10">3</div>
-                    </div>
-                    <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg ml-0 md:ml-6 mt-4 md:mt-0">
-                      <h3 className="text-xl font-bold text-white mb-4">Plan Your Launch</h3>
-                      <p className="text-light-muted">
-                        Configure your launch parameters including initial liquidity, selected DEXs, 
-                        and any additional operations like token locking or vesting schedules.
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex flex-col md:flex-row">
-                    <div className="md:w-16 md:flex-shrink-0 flex justify-center md:block">
-                      <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-glow z-10">4</div>
-                    </div>
-                    <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg ml-0 md:ml-6 mt-4 md:mt-0">
-                      <h3 className="text-xl font-bold text-white mb-4">Preview & Confirm</h3>
-                      <p className="text-light-muted">
-                        Review the generated transaction bundle before execution. The tool will display 
-                        all operations that will be performed and their estimated costs.
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex flex-col md:flex-row">
-                    <div className="md:w-16 md:flex-shrink-0 flex justify-center md:block">
-                      <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-glow z-10">5</div>
-                    </div>
-                    <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg ml-0 md:ml-6 mt-4 md:mt-0">
-                      <h3 className="text-xl font-bold text-white mb-4">Launch & Verify</h3>
-                      <p className="text-light-muted">
-                        Execute the transaction bundle in a single atomic operation. Once confirmed, 
-                        the tool will provide links to verify your token and pools on Solana explorers and DEXs.
-                      </p>
-                    </div>
-                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4">Execute Operation</h3>
+                  <p className="text-light-muted">
+                    Follow the guided steps to complete your operation, confirm the transaction in your wallet, and see the results instantly.
+                  </p>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-        
-        {/* Technical Details Section */}
-        <section className="py-16 bg-dark">
-          <div className="container px-4 mx-auto">
-            <div className="max-w-5xl mx-auto">
-              <h2 className="text-3xl font-bold text-white text-center mb-12">Technical Details</h2>
               
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg h-full">
-                    <h3 className="text-xl font-bold text-white mb-4">System Architecture</h3>
-                    <p className="text-light-muted mb-4">
-                      The Solana Token Launcher is built on top of the Solana Web3.js library and integrates with 
-                      multiple Solana protocols. It uses a modular architecture with the following components:
-                    </p>
-                    <ul className="space-y-2">
-                      <li className="flex items-center text-light-muted">
-                        <FaCogs className="text-primary mr-2 flex-shrink-0" /> Core Token Module
-                      </li>
-                      <li className="flex items-center text-light-muted">
-                        <FaCogs className="text-primary mr-2 flex-shrink-0" /> Liquidity Pool Module
-                      </li>
-                      <li className="flex items-center text-light-muted">
-                        <FaCogs className="text-primary mr-2 flex-shrink-0" /> Transaction Builder
-                      </li>
-                      <li className="flex items-center text-light-muted">
-                        <FaCogs className="text-primary mr-2 flex-shrink-0" /> Verification Service
-                      </li>
-                      <li className="flex items-center text-light-muted">
-                        <FaCogs className="text-primary mr-2 flex-shrink-0" /> CLI Interface
-                      </li>
-                    </ul>
+              <div className="mt-12 bg-dark-elevated p-6 rounded-xl border border-primary/20">
+                <div className="flex flex-col md:flex-row items-center justify-between">
+                  <div className="mb-6 md:mb-0">
+                    <h3 className="text-xl font-bold text-white mb-2">Ready to use Solana SPL Tools?</h3>
+                    <p className="text-light-muted">Launch the app now and start managing your SPL tokens efficiently.</p>
                   </div>
-                </div>
-                <div>
-                  <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg h-full">
-                    <h3 className="text-xl font-bold text-white mb-4">Security Considerations</h3>
-                    <p className="text-light-muted mb-4">
-                      Security is a primary focus of the Solana Token Launcher. Key security features include:
-                    </p>
-                    <ul className="space-y-2">
-                      <li className="flex items-center text-light-muted">
-                        <FaLock className="text-primary mr-2 flex-shrink-0" /> Local key management (no private key upload)
-                      </li>
-                      <li className="flex items-center text-light-muted">
-                        <FaLock className="text-primary mr-2 flex-shrink-0" /> Optional multisig support
-                      </li>
-                      <li className="flex items-center text-light-muted">
-                        <FaLock className="text-primary mr-2 flex-shrink-0" /> Simulation before execution
-                      </li>
-                      <li className="flex items-center text-light-muted">
-                        <FaLock className="text-primary mr-2 flex-shrink-0" /> Fee estimation and limits
-                      </li>
-                      <li className="flex items-center text-light-muted">
-                        <FaLock className="text-primary mr-2 flex-shrink-0" /> Audit logging for all operations
-                      </li>
-                    </ul>
-                  </div>
+                  <Link 
+                    href="https://open-crypto-foundation-spl-tools.vercel.app/" 
+                    target="_blank"
+                    className="px-8 py-4 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors shadow-lg inline-flex items-center whitespace-nowrap"
+                  >
+                    Launch SPL Tools <FaArrowRight className="ml-2" />
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </section>
         
-        {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-b from-dark-elevated to-dark">
+        {/* No Fees Section */}
+        <section className="py-16 bg-gradient-to-b from-primary/10 to-dark">
           <div className="container px-4 mx-auto">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl font-bold text-white mb-6">Start Building on Solana</h2>
+              <h2 className="text-3xl font-bold text-white mb-6">Zero Platform Fees</h2>
               <p className="text-xl text-light-muted mb-8">
-                Get started with the Solana Token Launcher today and launch your token with confidence.
+                Our Solana SPL Tools are completely free to use. Unlike other platforms,
+                you only pay <span className="text-primary font-bold">standard Solana network fees</span> for your transactions.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Link 
-                  href="https://github.com/o-c-foundation/Solana-Token-Laucnher" 
-                  target="_blank"
-                  className="px-8 py-4 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors shadow-lg inline-flex items-center"
-                >
-                  <FaGithub className="mr-2" /> View on GitHub
-                </Link>
-                <Link 
-                  href="mailto:projects@opencryptofoundation.com" 
-                  className="px-8 py-4 bg-dark-card hover:bg-dark-elevated border border-primary/30 text-white rounded-lg transition-colors shadow-lg"
-                >
-                  Contact for Support
-                </Link>
+              <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                  <div className="text-left">
+                    <h3 className="text-lg font-bold text-white mb-1">What you'll pay:</h3>
+                    <p className="text-light-muted">Only standard Solana network fees</p>
+                  </div>
+                  <div className="text-left">
+                    <h3 className="text-lg font-bold text-light-muted line-through mb-1">What you won't pay:</h3>
+                    <p className="text-light-muted">No platform fees, no hidden charges, no subscription</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -377,46 +343,125 @@ export default function SolanaLauncher() {
               
               <div className="space-y-6">
                 <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg">
-                  <h3 className="text-xl font-bold text-white mb-3">Is the Solana Token Launcher completely free?</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Are these tools really free to use?</h3>
                   <p className="text-light-muted">
-                    Yes, the Solana Token Launcher is completely free and open-source. You only pay the standard 
-                    Solana network fees for your transactions. There are no additional fees for using our toolkit.
+                    Yes, all Solana SPL Tools are completely free to use. There are no platform fees, hidden charges, or subscriptions. 
+                    You only pay the standard Solana network fees for your transactions.
                   </p>
                 </div>
                 
                 <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg">
-                  <h3 className="text-xl font-bold text-white mb-3">What technical knowledge do I need?</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">How do I use the MultiSender tool?</h3>
                   <p className="text-light-muted">
-                    Basic familiarity with command line tools and cryptocurrency wallets is recommended. 
-                    The tool is designed to be user-friendly, but some understanding of Solana concepts 
-                    like wallets, SPL tokens, and liquidity pools will help you make the most of it.
+                    After connecting your wallet, select the MultiSender tool, choose the token you want to send, 
+                    and upload a CSV file with recipient addresses and amounts. Review the transaction details, confirm 
+                    in your wallet, and the tokens will be sent to multiple recipients in a single transaction.
                   </p>
                 </div>
                 
                 <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg">
-                  <h3 className="text-xl font-bold text-white mb-3">Can I use this for meme coins?</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">What types of tokens can I create?</h3>
                   <p className="text-light-muted">
-                    Yes, the toolkit can be used for any type of SPL token, including meme coins. However, we 
-                    encourage responsible token creation and tokenomics that are fair to all participants.
+                    You can create standard SPL tokens or Token-2022 tokens with advanced features. 
+                    You can set parameters like supply, decimals, and metadata. Token-2022 tokens can also include 
+                    features like transfer fees, which can be claimed later using our Fee Claiming tool.
                   </p>
                 </div>
                 
                 <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg">
-                  <h3 className="text-xl font-bold text-white mb-3">How does transaction bundling improve security?</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Is my wallet secure when using these tools?</h3>
                   <p className="text-light-muted">
-                    Transaction bundling ensures that all steps in your token launch (creating the token, setting up 
-                    pools, adding liquidity) either all succeed or all fail. This prevents partial execution issues 
-                    that could leave your project in an inconsistent state or vulnerable to front-running attacks.
+                    Yes, our tools are non-custodial, meaning we never have access to your private keys or funds. 
+                    All transactions are signed locally in your wallet, and you'll always be prompted to review 
+                    and approve any transaction before it's submitted to the network.
                   </p>
                 </div>
                 
                 <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg">
-                  <h3 className="text-xl font-bold text-white mb-3">Can I contribute to the project?</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Can I recover SOL from my token accounts?</h3>
                   <p className="text-light-muted">
-                    Absolutely! The Solana Token Launcher is open source and we welcome contributions. Check out our 
-                    GitHub repository for contribution guidelines, open issues, and development roadmap.
+                    Yes, using the Account Closing tool, you can recover the SOL that was used as rent for token accounts 
+                    that have zero balance. This helps you clean up your wallet and reclaim SOL that would otherwise be locked.
                   </p>
                 </div>
+                
+                <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg">
+                  <h3 className="text-xl font-bold text-white mb-3">Do I need technical knowledge to use these tools?</h3>
+                  <p className="text-light-muted">
+                    No technical knowledge is required. Our intuitive interface guides you through each process 
+                    step by step. However, basic familiarity with Solana wallets and SPL tokens will be helpful.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* Technology Stack Section */}
+        <section className="py-16 bg-dark">
+          <div className="container px-4 mx-auto">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-white text-center mb-12">Technology Stack</h2>
+              
+              <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-4">Frontend</h3>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-light-muted">
+                        <FaCheck className="text-primary mr-2 flex-shrink-0" /> Next.js for frontend and API routes
+                      </li>
+                      <li className="flex items-center text-light-muted">
+                        <FaCheck className="text-primary mr-2 flex-shrink-0" /> TailwindCSS for styling
+                      </li>
+                      <li className="flex items-center text-light-muted">
+                        <FaCheck className="text-primary mr-2 flex-shrink-0" /> @solana/wallet-adapter for wallet connectivity
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-4">Blockchain Interaction</h3>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-light-muted">
+                        <FaCheck className="text-primary mr-2 flex-shrink-0" /> @solana/web3.js for blockchain interactions
+                      </li>
+                      <li className="flex items-center text-light-muted">
+                        <FaCheck className="text-primary mr-2 flex-shrink-0" /> @solana/spl-token for token operations
+                      </li>
+                      <li className="flex items-center text-light-muted">
+                        <FaCheck className="text-primary mr-2 flex-shrink-0" /> Open-source and auditable code
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* CTA Section */}
+        <section className="py-16 bg-gradient-to-b from-dark-elevated to-dark">
+          <div className="container px-4 mx-auto">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl font-bold text-white mb-6">Start Using Solana SPL Tools Today</h2>
+              <p className="text-xl text-light-muted mb-8">
+                Manage your SPL tokens efficiently with our free, open-source tools
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link 
+                  href="https://open-crypto-foundation-spl-tools.vercel.app/" 
+                  target="_blank"
+                  className="px-8 py-4 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors shadow-lg inline-flex items-center"
+                >
+                  <FaRocket className="mr-2" /> Launch App
+                </Link>
+                <Link 
+                  href="https://github.com/o-c-foundation/Open-Crypto-Foundation-SPL-Tools" 
+                  target="_blank"
+                  className="px-8 py-4 bg-dark-card hover:bg-dark-elevated border border-primary/30 text-white rounded-lg transition-colors shadow-lg inline-flex items-center"
+                >
+                  <FaGithub className="mr-2" /> View Source Code
+                </Link>
               </div>
             </div>
           </div>
@@ -428,7 +473,7 @@ export default function SolanaLauncher() {
             <div className="max-w-xl mx-auto">
               <div className="text-center mb-8">
                 <h2 className="text-2xl font-bold text-white mb-2">Stay Updated</h2>
-                <p className="text-light-muted">Subscribe to receive updates about the Solana Token Launcher and other OCF tools.</p>
+                <p className="text-light-muted">Subscribe to receive updates about Solana SPL Tools and other OCF tools.</p>
               </div>
               <NewsletterSubscribe />
             </div>
@@ -437,18 +482,6 @@ export default function SolanaLauncher() {
       </main>
       
       <ScrollToTop />
-    </div>
-  );
-}
-
-// Define custom layout for the page
-SolanaLauncher.getLayout = function getLayout(page) {
-  return (
-    <Layout 
-      title="Solana Token Launcher | Open Crypto Foundation"
-      description="Free, open-source toolkit for creating Solana tokens, AMM pools, and markets with transaction bundling"
-    >
-      {page}
     </Layout>
   );
-}; 
+} 

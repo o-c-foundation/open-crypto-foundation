@@ -78,7 +78,7 @@ export default function Navbar() {
       icon: <FaRocket className="mr-1" />,
       children: [
         { name: 'Launch Services', href: '/launch-project', description: 'Partner with us to develop, vet, and launch your project with enhanced security and credibility' },
-        { name: 'Solana Project Launcher', href: '/launch-project/solana-launcher', description: 'Open-source toolkit for creating Solana tokens, AMM pools, and markets with transaction bundling' },
+        { name: 'Solana SPL Tools', href: '/launch-project/solana-launcher', description: 'Free, open-source tools for the Solana SPL Token ecosystem with zero platform fees' },
         { name: 'ERC-20 Token Creator', href: '/launch-project/erc20-launcher', description: 'Free, open-source ERC-20 token creator for multiple blockchain networks with no additional fees' }
       ]
     },
