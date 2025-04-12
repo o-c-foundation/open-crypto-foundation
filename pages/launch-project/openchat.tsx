@@ -382,6 +382,10 @@ export default function OpenChatPage() {
         <section className="py-16 animated-gradient-subtle">
           <div className="container px-4 mx-auto">
             <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-bold text-white mb-2">Stay Updated</h2>
+                <p className="text-light-muted">Subscribe to receive updates about OpenChat and other OCF tools.</p>
+              </div>
               <NewsletterSubscribe />
             </div>
           </div>

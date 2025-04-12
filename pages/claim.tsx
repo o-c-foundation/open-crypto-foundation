@@ -71,7 +71,7 @@ export default function ClaimPage() {
                         <h4 className="font-semibold text-white">Twitter Tasks</h4>
                       </div>
                       <ul className="text-sm space-y-2 pl-6 list-disc">
-                        <li>Follow <a href="https://twitter.com/OCF_Foundation" className="text-primary" target="_blank" rel="noopener noreferrer">@OCF_Foundation</a></li>
+                        <li>Follow <a href="https://twitter.com/opencryptofdn" className="text-primary" target="_blank" rel="noopener noreferrer">@opencryptofdn</a></li>
                         <li>Like & Retweet our pinned post</li>
                         <li>Tweet about OCF and tag 3 friends</li>
                       </ul>
@@ -82,7 +82,7 @@ export default function ClaimPage() {
                         <h4 className="font-semibold text-white">Telegram Tasks</h4>
                       </div>
                       <ul className="text-sm space-y-2 pl-6 list-disc">
-                        <li>Join our <a href="https://t.me/OCF_Official" className="text-primary" target="_blank" rel="noopener noreferrer">Telegram group</a></li>
+                        <li>Join our <a href="https://t.me/ocfcommunity" className="text-primary" target="_blank" rel="noopener noreferrer">Telegram group</a></li>
                         <li>Invite 3 friends to the group</li>
                         <li>Participate in group discussions</li>
                       </ul>
