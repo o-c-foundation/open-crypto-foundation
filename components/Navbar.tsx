@@ -73,7 +73,7 @@ export default function Navbar() {
     { name: 'Whitepaper', href: '/whitepaper', current: false, icon: <FaFileAlt className="mr-1" /> },
     { name: 'Roadmap', href: '/roadmap', current: false, icon: <FaRoad className="mr-1" /> },
     {
-      name: 'Launch your Project',
+      name: 'OCF Apps',
       current: false,
       icon: <FaRocket className="mr-1" />,
       children: [
@@ -139,7 +139,7 @@ export default function Navbar() {
                           router.pathname === '/tokenomics' || router.pathname === '/audit' ||
                           router.pathname === '/wallets-and-funds') && 
                           item.name === 'Foundation') ||
-                        (router.pathname.startsWith('/launch-project') && item.name === 'Launch your Project') ? 'text-light' : ''}
+                        (router.pathname.startsWith('/launch-project') && item.name === 'OCF Apps') ? 'text-light' : ''}
                     `}
                     onClick={() => toggleDropdown(item.name)}
                   >
@@ -153,7 +153,7 @@ export default function Navbar() {
                            router.pathname === '/tokenomics' || router.pathname === '/audit' ||
                            router.pathname === '/wallets-and-funds') && 
                            item.name === 'Foundation') ||
-                         (router.pathname.startsWith('/launch-project') && item.name === 'Launch your Project') ? 'w-full' : 'group-hover:w-full'}`}></span>
+                         (router.pathname.startsWith('/launch-project') && item.name === 'OCF Apps') ? 'w-full' : 'group-hover:w-full'}`}></span>
                   </button>
                   
                   {dropdownOpen === item.name && (
@@ -238,7 +238,7 @@ export default function Navbar() {
                             router.pathname === '/tokenomics' || router.pathname === '/audit' ||
                             router.pathname === '/wallets-and-funds') && 
                             item.name === 'Foundation') ||
-                          (router.pathname.startsWith('/launch-project') && item.name === 'Launch your Project')
+                          (router.pathname.startsWith('/launch-project') && item.name === 'OCF Apps')
                           ? 'border-primary text-light bg-primary/5' 
                           : 'border-transparent hover:border-primary/50 hover:bg-dark-card'
                         }`}
