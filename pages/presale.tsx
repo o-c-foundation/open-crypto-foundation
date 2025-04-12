@@ -3,9 +3,9 @@ import { FaInfoCircle, FaCheck, FaCreditCard, FaPaypal, FaBitcoin } from 'react-
 import { SiCashapp } from 'react-icons/si';
 import Countdown from 'react-countdown';
 
-const PRESALE_END_DATE = new Date('2025-04-09T13:00:00Z'); // 4/9/2025 9:00 AM EST
+const PRESALE_END_DATE = new Date('2025-04-13T23:59:00-04:00'); // 4/13/2025 11:59 PM EST
 const TOTAL_SUPPLY = 1_000_000_000;
-const REMAINING_TOKENS = 210_549_861;
+const REMAINING_TOKENS = 100_000_000;
 const USD_PRICE = 0.0001;
 const TURNSTILE_SITE_KEY = "0x4AAAAAABG_7VaoGTjyeZoD"; // Cloudflare Turnstile site key
 
@@ -255,12 +255,12 @@ Discovery Source: ${discoverySource}`,
                 OCF Token Presale
               </h1>
               <p className="text-xl text-light-muted mb-6">
-                Presale Coming Soon!
+                Presale ending Soon!
               </p>
               
               {/* Countdown Timer */}
               <div className="bg-dark-card rounded-lg shadow-lg p-6 mb-8">
-                <h2 className="text-2xl font-bold text-white mb-4">Presale Begins In</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">Presale Ends in</h2>
                 <Countdown
                   date={PRESALE_END_DATE}
                   renderer={({ days, hours, minutes, seconds, completed }) => (
@@ -270,7 +270,7 @@ Discovery Source: ${discoverySource}`,
                   )}
                 />
                 <p className="mt-4 text-light-muted">
-                  Pre Sale officially opening when timer hits 0!
+                  Pre Sale officially ends when timer hits 0!
                 </p>
               </div>
 
