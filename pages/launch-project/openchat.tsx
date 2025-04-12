@@ -382,10 +382,7 @@ export default function OpenChatPage() {
         <section className="py-16 bg-dark-light/5">
           <div className="container px-4 mx-auto">
             <div className="max-w-5xl mx-auto">
-              <NewsletterSubscribe 
-                title="Stay Updated" 
-                description="Subscribe to receive updates about OpenChat and other OCF tools."
-              />
+              <NewsletterSubscribe />
             </div>
           </div>
         </section>
