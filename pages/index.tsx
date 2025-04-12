@@ -298,10 +298,10 @@ const Home: NextPageWithLayout = () => {
         
         {/* Content */}
         <div className="container relative z-10 px-4 mx-auto max-w-full">
-          <div className="flex flex-col lg:flex-row items-center justify-center lg:items-stretch gap-10">
-            {/* Left side - Foundation info */}
-            <div className="w-full lg:w-4/5 backdrop-blur-md bg-gradient-to-br from-dark-elevated to-black/70 p-8 rounded-xl shadow-2xl border border-primary/20">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 lg:whitespace-nowrap">
+          <div className="flex flex-col items-center justify-center">
+            {/* Foundation info - centered */}
+            <div className="w-full max-w-3xl backdrop-blur-md animated-gradient-subtle p-8 rounded-xl shadow-2xl border border-primary/20">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-center">
                 <span className="text-gradient">Open Crypto Foundation</span>
               </h1>
               
@@ -312,10 +312,10 @@ const Home: NextPageWithLayout = () => {
                 <p className="text-right mt-3 text-primary">— Eckhart Tolle</p>
               </div>
               
-              <p className="text-xl md:text-2xl text-white mb-10 max-w-4xl">
+              <p className="text-xl md:text-2xl text-white mb-10 max-w-4xl mx-auto text-center">
                 Founded to make decentralized finance safer, more transparent, and accessible through education, tools, and community engagement.
               </p>
-              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+              <div className="flex flex-wrap gap-4 justify-center">
                 <Link 
                   href="/about" 
                   className="px-6 py-3 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors flex items-center shadow-lg"
@@ -330,37 +330,17 @@ const Home: NextPageWithLayout = () => {
                 </Link>
               </div>
             </div>
-            
-            {/* Right side - TradingView Widget */}
-            <div className="w-full lg:w-1/5 lg:min-w-[700px] xl:min-w-[900px] backdrop-blur-md bg-gradient-to-br from-black/70 to-dark-elevated rounded-xl p-6 shadow-2xl border border-primary/20 overflow-hidden">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-bold text-white">Live Crypto Markets</h3>
-                <div className="hidden md:block">
-                  <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank" className="text-primary text-xs hover:text-primary-light transition-colors">
-                    Powered by TradingView
-                  </a>
-                </div>
-              </div>
-              <div ref={tradingViewRef} className="tradingview-widget-container w-full">
-                {/* Widget will be loaded here by the useEffect */}
-              </div>
-              <div className="text-center text-xs text-light-muted mt-3 md:hidden">
-                <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank" className="text-primary hover:text-primary-light">
-                  Track all markets on TradingView
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </section>
       
       {/* Features Section */}
-      <section className="py-20 bg-dark">
+      <section className="py-20 animated-gradient-light">
         <div className="container px-4 mx-auto max-w-7xl">
           <h2 className="mb-12 text-3xl font-bold text-center text-white">Our Vision for Safer Crypto</h2>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-6 bg-dark-card rounded-xl border border-dark-light/30">
+            <div className="p-6 bg-card-gradient rounded-xl border border-dark-light/30">
               <div className="w-12 h-12 mb-4 flex items-center justify-center bg-primary/20 text-primary rounded-lg">
                 <FaShieldAlt size={24} />
               </div>
@@ -374,7 +354,7 @@ const Home: NextPageWithLayout = () => {
               </Link>
             </div>
             
-            <div className="p-6 bg-dark-card rounded-xl border border-dark-light/30">
+            <div className="p-6 bg-card-gradient rounded-xl border border-dark-light/30">
               <div className="w-12 h-12 mb-4 flex items-center justify-center bg-primary/20 text-primary rounded-lg">
                 <FaBookOpen size={24} />
               </div>
@@ -388,7 +368,7 @@ const Home: NextPageWithLayout = () => {
               </Link>
             </div>
             
-            <div className="p-6 bg-dark-card rounded-xl border border-dark-light/30">
+            <div className="p-6 bg-card-gradient rounded-xl border border-dark-light/30">
               <div className="w-12 h-12 mb-4 flex items-center justify-center bg-primary/20 text-primary rounded-lg">
                 <FaRocket size={24} />
               </div>
@@ -406,7 +386,7 @@ const Home: NextPageWithLayout = () => {
       </section>
       
       {/* Newsletter Section */}
-      <section className="py-20 bg-dark-elevated">
+      <section className="py-20 animated-gradient-subtle">
         <div className="container px-4 mx-auto max-w-7xl">
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row gap-8 items-center">
@@ -438,7 +418,7 @@ const Home: NextPageWithLayout = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-dark-light to-dark text-white">
+      <section className="py-20 animated-gradient text-white">
         <div className="container px-4 mx-auto max-w-7xl">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="mb-6 text-3xl font-bold">Help Shape Our Foundation</h2>
@@ -447,20 +427,26 @@ const Home: NextPageWithLayout = () => {
               shape our future. We believe in the transformative potential of decentralized finance, but only if it's 
               built on a foundation of security, education, and user protection.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/about" className="px-6 py-3 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors">
-                Learn About Our Mission
-              </Link>
-              <a 
-                href="mailto:info@opencryptofoundation.com" 
-                className="px-6 py-3 bg-transparent border border-primary/30 text-white rounded-lg hover:bg-primary/10 transition-colors"
+            
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link 
+                href="/about#join" 
+                className="px-6 py-3 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors flex items-center shadow-lg"
               >
-                Get Involved
-              </a>
+                Get Involved <FaArrowRight className="ml-2" />
+              </Link>
+              
+              <Link 
+                href="/contact" 
+                className="px-6 py-3 bg-dark-card hover:bg-dark-elevated border border-primary/30 text-white rounded-lg transition-colors shadow-lg"
+              >
+                Contact Us
+              </Link>
             </div>
           </div>
         </div>
       </section>
+      
       <ScrollToTop />
     </>
   );

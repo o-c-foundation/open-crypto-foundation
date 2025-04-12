@@ -19,7 +19,7 @@ export default function Layout({ children, title, description }: LayoutProps) {
   // Simple layout for server-side rendering to prevent hydration errors
   if (!isClient) {
     return (
-      <div className="relative min-h-screen bg-dark text-light flex flex-col">
+      <div className="relative min-h-screen animated-gradient text-light flex flex-col">
         <div className="w-full h-16"></div> {/* Navbar placeholder */}
         <main className="flex-grow">
           {children}
@@ -30,7 +30,7 @@ export default function Layout({ children, title, description }: LayoutProps) {
   }
   
   return (
-    <div className="relative min-h-screen bg-dark text-light flex flex-col">
+    <div className="relative min-h-screen animated-gradient text-light flex flex-col">
       {/* Add the BlueBannerRemover component to remove the presale banner */}
       <BlueBannerRemover />
       

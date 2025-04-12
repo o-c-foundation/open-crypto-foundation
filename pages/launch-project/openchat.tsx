@@ -23,7 +23,7 @@ export default function OpenChatPage() {
 
       <main>
         {/* Hero section */}
-        <section className="py-20 bg-gradient-to-b from-dark-light to-dark text-white">
+        <section className="py-20 bg-gradient-to-b from-dark-light to-dark text-white animated-gradient-subtle">
           <div className="container px-4 mx-auto">
             <div className="max-w-4xl mx-auto text-center">
               <div className="mb-6 inline-block p-3 bg-primary/20 rounded-full">
@@ -47,7 +47,7 @@ export default function OpenChatPage() {
                 <Link 
                   href="https://github.com/o-c-foundation/Open-Chat-" 
                   target="_blank"
-                  className="px-8 py-4 bg-dark-card hover:bg-dark-elevated border border-primary/30 text-white rounded-lg transition-colors shadow-lg inline-flex items-center"
+                  className="px-8 py-4 bg-card-gradient hover:bg-dark-elevated border border-primary/30 text-white rounded-lg transition-colors shadow-lg inline-flex items-center"
                 >
                   <FaGithub className="mr-2" /> View on GitHub
                 </Link>
@@ -60,7 +60,7 @@ export default function OpenChatPage() {
         </section>
 
         {/* What is OpenChat section */}
-        <section className="py-16 bg-dark-light/5">
+        <section className="py-16 animated-gradient-light">
           <div className="container px-4 mx-auto">
             <div className="max-w-5xl mx-auto">
               <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -76,7 +76,7 @@ export default function OpenChatPage() {
                     without incurring real cryptocurrency costs, making it an ideal platform for learning, testing, and development.
                   </p>
                 </div>
-                <div className="bg-dark-card p-6 rounded-xl border border-primary/20 shadow-lg">
+                <div className="bg-card-gradient p-6 rounded-xl border border-primary/20 shadow-lg">
                   <h3 className="text-xl font-bold text-white mb-4">Available Features</h3>
                   <ul className="space-y-3">
                     <li className="flex items-start">
@@ -123,7 +123,7 @@ export default function OpenChatPage() {
         </section>
 
         {/* How It Works */}
-        <section className="py-16 bg-dark">
+        <section className="py-16 animated-gradient">
           <div className="container px-4 mx-auto">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-3xl font-bold text-white text-center mb-12">How OpenChat Works</h2>
@@ -137,7 +137,7 @@ export default function OpenChatPage() {
                     <div className="md:w-16 md:flex-shrink-0 flex justify-center md:block">
                       <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-glow z-10">1</div>
                     </div>
-                    <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg ml-0 md:ml-6 mt-4 md:mt-0">
+                    <div className="bg-card-gradient rounded-xl p-6 border border-dark-light/30 shadow-lg ml-0 md:ml-6 mt-4 md:mt-0">
                       <h3 className="text-xl font-bold text-white mb-4">Connect Your Wallet</h3>
                       <p className="text-light-muted">
                         Link your Web3 wallet (like MetaMask) to authenticate and establish your identity on the platform.
@@ -149,7 +149,7 @@ export default function OpenChatPage() {
                     <div className="md:w-16 md:flex-shrink-0 flex justify-center md:block">
                       <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-glow z-10">2</div>
                     </div>
-                    <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg ml-0 md:ml-6 mt-4 md:mt-0">
+                    <div className="bg-card-gradient rounded-xl p-6 border border-dark-light/30 shadow-lg ml-0 md:ml-6 mt-4 md:mt-0">
                       <h3 className="text-xl font-bold text-white mb-4">Create a Session</h3>
                       <p className="text-light-muted">
                         Generate a temporary session for seamless messaging without approving each transaction.
@@ -161,7 +161,7 @@ export default function OpenChatPage() {
                     <div className="md:w-16 md:flex-shrink-0 flex justify-center md:block">
                       <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-glow z-10">3</div>
                     </div>
-                    <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg ml-0 md:ml-6 mt-4 md:mt-0">
+                    <div className="bg-card-gradient rounded-xl p-6 border border-dark-light/30 shadow-lg ml-0 md:ml-6 mt-4 md:mt-0">
                       <h3 className="text-xl font-bold text-white mb-4">Start Messaging</h3>
                       <p className="text-light-muted">
                         Send direct messages to any wallet address or create group chats for team communication.
@@ -173,7 +173,7 @@ export default function OpenChatPage() {
                     <div className="md:w-16 md:flex-shrink-0 flex justify-center md:block">
                       <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-glow z-10">4</div>
                     </div>
-                    <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30 shadow-lg ml-0 md:ml-6 mt-4 md:mt-0">
+                    <div className="bg-card-gradient rounded-xl p-6 border border-dark-light/30 shadow-lg ml-0 md:ml-6 mt-4 md:mt-0">
                       <h3 className="text-xl font-bold text-white mb-4">On-Chain Storage</h3>
                       <p className="text-light-muted">
                         Messages are securely stored on the blockchain, ensuring permanence and censorship resistance.
@@ -382,7 +382,10 @@ export default function OpenChatPage() {
         <section className="py-16 bg-dark-light/5">
           <div className="container px-4 mx-auto">
             <div className="max-w-5xl mx-auto">
-              <NewsletterSubscribe />
+              <NewsletterSubscribe 
+                title="Stay Updated" 
+                description="Subscribe to receive updates about OpenChat and other OCF tools."
+              />
             </div>
           </div>
         </section>

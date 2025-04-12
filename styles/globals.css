@@ -6,12 +6,46 @@
   --foreground-rgb: 255, 255, 255;
   --background-rgb: 0, 0, 0;
   --primary-rgb: 0, 102, 255;
+  --dark-blue-rgb: 8, 18, 42;
+  --dark-purple-rgb: 15, 14, 36;
+  --dark-gray-rgb: 18, 20, 28;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
   font-feature-settings: "ss01", "ss02";
+}
+
+/* Animated Background Gradients */
+.animated-gradient {
+  background: linear-gradient(130deg, rgb(var(--dark-blue-rgb)), rgb(var(--background-rgb)), rgb(var(--dark-purple-rgb)), rgb(var(--dark-gray-rgb)));
+  background-size: 300% 300%;
+  animation: gradient-shift 20s ease infinite;
+}
+
+.animated-gradient-subtle {
+  background: linear-gradient(130deg, rgba(var(--dark-blue-rgb), 0.8), rgba(var(--background-rgb), 0.8), rgba(var(--dark-purple-rgb), 0.8), rgba(var(--dark-gray-rgb), 0.8));
+  background-size: 300% 300%;
+  animation: gradient-shift 25s ease infinite;
+}
+
+.animated-gradient-light {
+  background: linear-gradient(130deg, rgba(var(--dark-blue-rgb), 0.4), rgba(var(--background-rgb), 0.5), rgba(var(--dark-purple-rgb), 0.4), rgba(var(--dark-gray-rgb), 0.5));
+  background-size: 300% 300%;
+  animation: gradient-shift 30s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Utility Classes */
@@ -69,7 +103,7 @@ body {
 
 html,
 body {
-  @apply bg-dark text-light;
+  @apply animated-gradient text-light;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -123,5 +157,9 @@ h4 {
   
   .text-gradient {
     @apply bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent;
+  }
+
+  .bg-card-gradient {
+    @apply animated-gradient-subtle;
   }
 } 
