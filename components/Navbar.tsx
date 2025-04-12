@@ -80,7 +80,8 @@ export default function Navbar() {
         { name: 'Launch Services', href: '/launch-project', description: 'Partner with us to develop, vet, and launch your project with enhanced security and credibility' },
         { name: 'Solana SPL Tools', href: '/launch-project/solana-launcher', description: 'Free, open-source tools for the Solana SPL Token ecosystem with zero platform fees' },
         { name: 'ERC-20 Token Creator', href: '/launch-project/erc20-launcher', description: 'Free, open-source ERC-20 token creator for multiple blockchain networks with no additional fees' },
-        { name: 'OpenDrive', href: '/launch-project/opendrive', description: 'Secure, decentralized storage platform powered by IPFS with end-to-end encryption and content addressing' }
+        { name: 'OpenDrive', href: '/launch-project/opendrive', description: 'Secure, decentralized storage platform powered by IPFS with end-to-end encryption and content addressing' },
+        { name: 'OpenChat', href: '/launch-project/openchat', description: 'Decentralized messaging platform for secure blockchain communication with direct messages and group chats' }
       ]
     },
     { name: 'Presale', href: '/presale', current: false, icon: <FaShoppingCart className="mr-1" /> },
@@ -169,14 +170,16 @@ export default function Navbar() {
                                 ${router.pathname === child.href || 
                                    (router.pathname === '/launch-project/solana-launcher' && child.href === '/launch-project/solana-launcher') ||
                                    (router.pathname === '/launch-project/erc20-launcher' && child.href === '/launch-project/erc20-launcher') ||
-                                   (router.pathname === '/launch-project/opendrive' && child.href === '/launch-project/opendrive')
+                                   (router.pathname === '/launch-project/opendrive' && child.href === '/launch-project/opendrive') ||
+                                   (router.pathname === '/launch-project/openchat' && child.href === '/launch-project/openchat')
                                    ? 'bg-primary/5 border-primary/20' : ''}`}
                               onClick={() => setDropdownOpen(null)}
                             >
                               <p className={`text-base font-medium ${router.pathname === child.href || 
                                 (router.pathname === '/launch-project/solana-launcher' && child.href === '/launch-project/solana-launcher') || 
                                 (router.pathname === '/launch-project/erc20-launcher' && child.href === '/launch-project/erc20-launcher') ||
-                                (router.pathname === '/launch-project/opendrive' && child.href === '/launch-project/opendrive')
+                                (router.pathname === '/launch-project/opendrive' && child.href === '/launch-project/opendrive') ||
+                                (router.pathname === '/launch-project/openchat' && child.href === '/launch-project/openchat')
                                 ? 'text-primary' : 'text-light'}`}>{child.name}</p>
                               {child.description && (
                                 <p className="mt-1 text-sm text-light-muted">{child.description}</p>
@@ -263,7 +266,8 @@ export default function Navbar() {
                               ${router.pathname === child.href || 
                                 (router.pathname === '/launch-project/solana-launcher' && child.href === '/launch-project/solana-launcher') ||
                                 (router.pathname === '/launch-project/erc20-launcher' && child.href === '/launch-project/erc20-launcher') ||
-                                (router.pathname === '/launch-project/opendrive' && child.href === '/launch-project/opendrive')
+                                (router.pathname === '/launch-project/opendrive' && child.href === '/launch-project/opendrive') ||
+                                (router.pathname === '/launch-project/openchat' && child.href === '/launch-project/openchat')
                                 ? 'bg-primary/10 text-light' 
                                 : 'hover:bg-dark-card'
                               }`}
