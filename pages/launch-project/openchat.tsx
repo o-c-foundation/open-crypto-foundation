@@ -187,10 +187,10 @@ export default function OpenChatPage() {
         </section>
 
         {/* Testnet Only Information */}
-        <section className="py-16 bg-dark-light/5">
+        <section className="py-16 animated-gradient-light">
           <div className="container px-4 mx-auto">
             <div className="max-w-5xl mx-auto">
-              <div className="bg-dark-elevated border border-primary/20 rounded-xl p-8 space-y-6">
+              <div className="bg-card-gradient border border-primary/20 rounded-xl p-8 space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-primary/10 rounded-full">
                     <RiTestTubeFill className="text-primary text-3xl" />
@@ -228,7 +228,7 @@ export default function OpenChatPage() {
         </section>
 
         {/* Technology Stack */}
-        <section className="py-16 bg-dark">
+        <section className="py-16 animated-gradient-subtle">
           <div className="container px-4 mx-auto">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-3xl font-bold text-white text-center mb-12">Technology Stack</h2>
@@ -236,56 +236,56 @@ export default function OpenChatPage() {
                 OpenChat is built with modern web technologies and blockchain development tools to deliver a smooth, responsive experience:
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-8">
-                <div className="bg-dark-card border border-dark-light rounded-lg p-4 flex flex-col items-center text-center">
+                <div className="bg-card-gradient border border-dark-light rounded-lg p-4 flex flex-col items-center text-center">
                   <div className="w-12 h-12 flex items-center justify-center mb-2">
                     <BiCodeCurly className="text-primary text-3xl" />
                   </div>
                   <h3 className="font-medium text-white">Next.js 13</h3>
                   <p className="text-sm text-light-muted">App Router</p>
                 </div>
-                <div className="bg-dark-card border border-dark-light rounded-lg p-4 flex flex-col items-center text-center">
+                <div className="bg-card-gradient border border-dark-light rounded-lg p-4 flex flex-col items-center text-center">
                   <div className="w-12 h-12 flex items-center justify-center mb-2">
                     <FaReact className="text-primary text-3xl" />
                   </div>
                   <h3 className="font-medium text-white">React</h3>
                   <p className="text-sm text-light-muted">UI Framework</p>
                 </div>
-                <div className="bg-dark-card border border-dark-light rounded-lg p-4 flex flex-col items-center text-center">
+                <div className="bg-card-gradient border border-dark-light rounded-lg p-4 flex flex-col items-center text-center">
                   <div className="w-12 h-12 flex items-center justify-center mb-2">
                     <FaTerminal className="text-primary text-3xl" />
                   </div>
                   <h3 className="font-medium text-white">TypeScript</h3>
                   <p className="text-sm text-light-muted">Type Safety</p>
                 </div>
-                <div className="bg-dark-card border border-dark-light rounded-lg p-4 flex flex-col items-center text-center">
+                <div className="bg-card-gradient border border-dark-light rounded-lg p-4 flex flex-col items-center text-center">
                   <div className="w-12 h-12 flex items-center justify-center mb-2">
                     <FaCss3Alt className="text-primary text-3xl" />
                   </div>
                   <h3 className="font-medium text-white">Tailwind CSS</h3>
                   <p className="text-sm text-light-muted">Styling</p>
                 </div>
-                <div className="bg-dark-card border border-dark-light rounded-lg p-4 flex flex-col items-center text-center">
+                <div className="bg-card-gradient border border-dark-light rounded-lg p-4 flex flex-col items-center text-center">
                   <div className="w-12 h-12 flex items-center justify-center mb-2">
                     <FaEthereum className="text-primary text-3xl" />
                   </div>
                   <h3 className="font-medium text-white">Ethers.js</h3>
                   <p className="text-sm text-light-muted">Blockchain Interaction</p>
                 </div>
-                <div className="bg-dark-card border border-dark-light rounded-lg p-4 flex flex-col items-center text-center">
+                <div className="bg-card-gradient border border-dark-light rounded-lg p-4 flex flex-col items-center text-center">
                   <div className="w-12 h-12 flex items-center justify-center mb-2">
                     <FaWallet className="text-primary text-3xl" />
                   </div>
                   <h3 className="font-medium text-white">Web3Modal</h3>
                   <p className="text-sm text-light-muted">Wallet Connection</p>
                 </div>
-                <div className="bg-dark-card border border-dark-light rounded-lg p-4 flex flex-col items-center text-center">
+                <div className="bg-card-gradient border border-dark-light rounded-lg p-4 flex flex-col items-center text-center">
                   <div className="w-12 h-12 flex items-center justify-center mb-2">
                     <FaServer className="text-primary text-3xl" />
                   </div>
                   <h3 className="font-medium text-white">Liveblocks</h3>
                   <p className="text-sm text-light-muted">Real-time Collaboration</p>
                 </div>
-                <div className="bg-dark-card border border-dark-light rounded-lg p-4 flex flex-col items-center text-center">
+                <div className="bg-card-gradient border border-dark-light rounded-lg p-4 flex flex-col items-center text-center">
                   <div className="w-12 h-12 flex items-center justify-center mb-2">
                     <FaTools className="text-primary text-3xl" />
                   </div>
@@ -298,25 +298,25 @@ export default function OpenChatPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16 bg-dark-light/5">
+        <section className="py-16 animated-gradient-light">
           <div className="container px-4 mx-auto">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-3xl font-bold text-white text-center mb-12">Frequently Asked Questions</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-6">
-                  <div className="bg-dark-card border border-dark-light rounded-lg p-6">
+                  <div className="bg-card-gradient border border-dark-light rounded-lg p-6">
                     <h3 className="text-xl font-bold text-white mb-3">Is OpenChat completely free to use?</h3>
                     <p className="text-light-muted">
                       Yes, OpenChat is free to use as it operates on testnet networks. You'll only need testnet tokens, which have no real-world value and can be obtained from testnet faucets.
                     </p>
                   </div>
-                  <div className="bg-dark-card border border-dark-light rounded-lg p-6">
+                  <div className="bg-card-gradient border border-dark-light rounded-lg p-6">
                     <h3 className="text-xl font-bold text-white mb-3">Do I need to create an account to use OpenChat?</h3>
                     <p className="text-light-muted">
                       No traditional account is required. Simply connect your Web3 wallet, and your wallet address serves as your identity on the platform.
                     </p>
                   </div>
-                  <div className="bg-dark-card border border-dark-light rounded-lg p-6">
+                  <div className="bg-card-gradient border border-dark-light rounded-lg p-6">
                     <h3 className="text-xl font-bold text-white mb-3">Are my messages private?</h3>
                     <p className="text-light-muted">
                       While messages are secured through encryption, they are stored on public testnet blockchains. We recommend not sharing sensitive information through the platform.
@@ -324,19 +324,19 @@ export default function OpenChatPage() {
                   </div>
                 </div>
                 <div className="space-y-6">
-                  <div className="bg-dark-card border border-dark-light rounded-lg p-6">
+                  <div className="bg-card-gradient border border-dark-light rounded-lg p-6">
                     <h3 className="text-xl font-bold text-white mb-3">Which wallets are supported?</h3>
                     <p className="text-light-muted">
                       OpenChat supports most popular Web3 wallets, including MetaMask, WalletConnect-compatible wallets, and other Ethereum-compatible browser extensions.
                     </p>
                   </div>
-                  <div className="bg-dark-card border border-dark-light rounded-lg p-6">
+                  <div className="bg-card-gradient border border-dark-light rounded-lg p-6">
                     <h3 className="text-xl font-bold text-white mb-3">What networks does OpenChat support?</h3>
                     <p className="text-light-muted">
                       Currently, OpenChat supports various Ethereum testnets. The platform will continue to expand support for additional EVM-compatible testnets in the future.
                     </p>
                   </div>
-                  <div className="bg-dark-card border border-dark-light rounded-lg p-6">
+                  <div className="bg-card-gradient border border-dark-light rounded-lg p-6">
                     <h3 className="text-xl font-bold text-white mb-3">Are there plans for a mainnet version?</h3>
                     <p className="text-light-muted">
                       Yes, a mainnet version is part of our roadmap. Currently, we're focusing on testnet deployment to refine the platform and gather user feedback.
@@ -349,7 +349,7 @@ export default function OpenChatPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-dark">
+        <section className="py-16 animated-gradient">
           <div className="container px-4 mx-auto">
             <div className="max-w-5xl mx-auto">
               <div className="bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/20 rounded-xl p-8 flex flex-col items-center text-center">
@@ -368,7 +368,7 @@ export default function OpenChatPage() {
                   <Link 
                     href="https://github.com/o-c-foundation/Open-Chat-" 
                     target="_blank"
-                    className="px-8 py-4 bg-dark-card hover:bg-dark-elevated border border-primary/30 text-white rounded-lg transition-colors shadow-lg inline-flex items-center"
+                    className="px-8 py-4 bg-card-gradient hover:bg-dark-elevated border border-primary/30 text-white rounded-lg transition-colors shadow-lg inline-flex items-center"
                   >
                     <FaGithub className="mr-2" /> View on GitHub
                   </Link>
@@ -379,13 +379,10 @@ export default function OpenChatPage() {
         </section>
 
         {/* Newsletter Section */}
-        <section className="py-16 bg-dark-light/5">
+        <section className="py-16 animated-gradient-subtle">
           <div className="container px-4 mx-auto">
             <div className="max-w-5xl mx-auto">
-              <NewsletterSubscribe 
-                title="Stay Updated" 
-                description="Subscribe to receive updates about OpenChat and other OCF tools."
-              />
+              <NewsletterSubscribe />
             </div>
           </div>
         </section>
