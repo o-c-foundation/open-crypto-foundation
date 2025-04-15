@@ -212,8 +212,8 @@ export default function OCFToken() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
               <div className="bg-dark-elevated p-4 rounded-lg border border-gray-800">
-                <p className="text-gray-400 mb-1 text-sm">Total Supply</p>
-                <p className="text-white font-bold text-xl">100,000,000 OCF</p>
+                <p className="text-gray-400 mb-1 text-sm">Circulating Supply</p>
+                <p className="text-white font-bold text-xl">1,000,000,000 OCF</p>
               </div>
               <div className="bg-dark-elevated p-4 rounded-lg border border-gray-800">
                 <p className="text-gray-400 mb-1 text-sm">Network</p>
