@@ -1,28 +1,107 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import Layout from '../../components/Layout';
 import { FaChartLine, FaExchangeAlt, FaShieldAlt, FaCoins, FaArrowRight, FaEthereum, FaSun } from 'react-icons/fa';
 
-export default function DexAggregator() {
-  // Initialize the Jupiter Terminal widget when component mounts
-  useEffect(() => {
-    // Load Jupiter Terminal Widget for Solana
-    const jupiterScript = document.createElement('script');
-    jupiterScript.src = 'https://terminal.jup.ag/v4/terminal.js';
-    jupiterScript.async = true;
-    document.body.appendChild(jupiterScript);
-
-    // Load Rango Widget for EVM chains
-    const rangoScript = document.createElement('script');
-    rangoScript.src = 'https://widget.rango.exchange/widget.js';
-    rangoScript.async = true;
-    document.body.appendChild(rangoScript);
-
-    // Cleanup function to remove scripts when component unmounts
-    return () => {
-      document.body.removeChild(jupiterScript);
-      document.body.removeChild(rangoScript);
+// Add TypeScript interfaces for external libraries
+declare global {
+  interface Window {
+    Jupiter?: {
+      init: (config: any) => {
+        render: (options: { containerName: string }) => void;
+      };
     };
+    RangoWidget?: any;
+  }
+}
+
+export default function DexAggregator() {
+  const [widgetsLoaded, setWidgetsLoaded] = useState(false);
+  
+  // Use a single useEffect to handle both widgets
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    // Clean up any previous instances
+    const cleanup = () => {
+      const jupiterNode = document.getElementById('jupiter-terminal');
+      const rangoNode = document.getElementById('rango-widget');
+      if (jupiterNode) jupiterNode.innerHTML = '';
+      if (rangoNode) rangoNode.innerHTML = '';
+      
+      // Remove all script tags that might have been injected by widgets
+      const oldScripts = document.querySelectorAll('script[src*="terminal.jup.ag"], script[src*="widget.rango.exchange"]');
+      oldScripts.forEach(script => script.parentNode?.removeChild(script));
+    };
+    
+    // Clean up first to ensure a fresh state
+    cleanup();
+    
+    // Wait for DOM to be ready
+    setTimeout(() => {
+      // Load Jupiter Terminal (Solana)
+      const jupiterScript = document.createElement('script');
+      jupiterScript.src = 'https://terminal.jup.ag/v4/terminal.js';
+      jupiterScript.async = true;
+      jupiterScript.onload = () => {
+        setTimeout(() => {
+          if (window.Jupiter && document.getElementById('jupiter-terminal')) {
+            try {
+              window.Jupiter.init({
+                displayMode: 'widget',
+                containerStyles: { 
+                  height: '550px',
+                  width: '100%', 
+                },
+                formProps: {
+                  fixedOutputMint: false,
+                  fixedInputMint: false
+                },
+              }).render({
+                containerName: 'jupiter-terminal'
+              });
+              console.log('Jupiter Terminal initialized');
+            } catch (error) {
+              console.error('Error initializing Jupiter Terminal:', error);
+            }
+          } else {
+            console.warn('Jupiter not available or container not found');
+          }
+        }, 500); // Give time for Jupiter to register globally
+      };
+      document.body.appendChild(jupiterScript);
+      
+      // Load Rango Widget (EVM)
+      const rangoScript = document.createElement('script');
+      rangoScript.src = 'https://widget.rango.exchange/widget.js';
+      rangoScript.async = true;
+      rangoScript.onload = () => {
+        setTimeout(() => {
+          if (window.RangoWidget && document.getElementById('rango-widget')) {
+            try {
+              new window.RangoWidget({
+                apiKey: 'c6381a79-2817-4602-83bf-6a641a409e32', // Demo API key
+                containerID: 'rango-widget',
+                theme: 'dark',
+                width: '100%',
+                height: '550px',
+              });
+              console.log('Rango Widget initialized');
+            } catch (error) {
+              console.error('Error initializing Rango Widget:', error);
+            }
+          } else {
+            console.warn('RangoWidget not available or container not found');
+          }
+        }, 500); // Give time for Rango to register globally
+      };
+      document.body.appendChild(rangoScript);
+      
+      setWidgetsLoaded(true);
+    }, 300); // Wait for DOM to be fully ready
+    
+    // Cleanup when component unmounts
+    return cleanup;
   }, []);
 
   return (
@@ -61,8 +140,16 @@ export default function DexAggregator() {
                 </p>
                 
                 {/* Rango Widget for EVM Chains */}
-                <div className="h-[600px] rounded-xl overflow-hidden bg-dark-elevated border border-gray-800">
+                <div className="h-[550px] rounded-xl overflow-hidden bg-dark-elevated border border-gray-800 relative">
                   <div id="rango-widget" className="w-full h-full"></div>
+                  {!widgetsLoaded && (
+                    <div className="absolute inset-0 flex items-center justify-center text-white bg-dark-elevated bg-opacity-80">
+                      <div className="flex flex-col items-center">
+                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary mb-4"></div>
+                        <p>Loading EVM swap widget...</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -79,15 +166,23 @@ export default function DexAggregator() {
                 </p>
                 
                 {/* Jupiter Terminal Widget for Solana */}
-                <div className="h-[600px] rounded-xl overflow-hidden bg-dark-elevated border border-gray-800">
+                <div className="h-[550px] rounded-xl overflow-hidden bg-dark-elevated border border-gray-800 relative">
                   <div id="jupiter-terminal" className="w-full h-full"></div>
+                  {!widgetsLoaded && (
+                    <div className="absolute inset-0 flex items-center justify-center text-white bg-dark-elevated bg-opacity-80">
+                      <div className="flex flex-col items-center">
+                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary mb-4"></div>
+                        <p>Loading Solana swap widget...</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
+      
       {/* Benefits Section */}
       <section className="py-16 animated-gradient-light">
         <div className="container mx-auto px-4">
@@ -181,42 +276,6 @@ export default function DexAggregator() {
           </div>
         </div>
       </section>
-
-      {/* Widget Integration Scripts */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            // Initialize Jupiter Terminal
-            window.addEventListener('load', function() {
-              if (window.Jupiter) {
-                window.Jupiter.init({
-                  displayMode: 'widget',
-                  containerStyles: { 
-                    height: '600px',
-                  },
-                  formProps: { 
-                    fixedOutputMint: false, 
-                    fixedInputMint: false 
-                  },
-                }).render({
-                  containerName: 'jupiter-terminal'
-                });
-              }
-              
-              // Initialize Rango Widget
-              if (window.RangoWidget) {
-                new window.RangoWidget({
-                  apiKey: 'c6381a79-2817-4602-83bf-6a641a409e32', // Default demo API key
-                  containerID: 'rango-widget',
-                  theme: 'dark',
-                  width: '100%',
-                  height: '600px',
-                });
-              }
-            });
-          `,
-        }}
-      />
     </Layout>
   );
 } 
