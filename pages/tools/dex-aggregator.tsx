@@ -106,10 +106,6 @@ const DexAggregator: NextPageWithLayout = () => {
                 </div>
                 <p className="text-light-muted mb-6">
                   Swap SPL tokens on Solana with the fastest and most efficient DEX aggregator in the ecosystem.
-                  <br />
-                  <span className="text-xs text-primary mt-2 block">
-                    Connected to Chainstack RPC: 27WjGsyL2myFxLukr8SenGPhWU6Wf6W6YeAAtvqRPJCs9UqEU9yg3Zym3fCa2Q4xfR2fMTdmFfewF3ZjC7jUgC5H
-                  </span>
                 </p>
                 
                 {/* Jupiter Terminal Widget for Solana - Using integrated mode */}
