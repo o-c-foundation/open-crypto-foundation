@@ -327,6 +327,317 @@ export default function Whitepaper() {
                   <p className="text-gray-400 mt-4">These optimizations reduce transaction latency by an average of 47% compared to standard Wormhole relayers while improving cost efficiency through batched processing.</p>
                 </div>
               </section>
+              
+              <section id="security">
+                <h2 className="text-3xl font-bold text-gradient mb-6">5. Security Model</h2>
+                <p className="text-gray-400 mb-4">
+                  The OCF protocol implements a comprehensive security model addressing the unique challenges of cross-chain communication and multi-chain asset management. The model is designed to mitigate common attack vectors while preserving the security properties of each underlying blockchain.
+                </p>
+                
+                <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
+                  <h3 className="text-xl font-semibold text-white mb-3">5.1 Threat Model</h3>
+                  <p className="text-gray-400 mb-4">
+                    The security model assumes the following threat vectors:
+                  </p>
+                  
+                  <ul className="list-disc pl-6 space-y-2 text-gray-400">
+                    <li>Byzantine validator behavior up to the threshold limit (f ≤ ⌊(n-1)/3⌋)</li>
+                    <li>Network partition attacks affecting message delivery</li>
+                    <li>Replay attacks against cross-chain messages</li>
+                    <li>Eclipse attacks isolating specific validators</li>
+                    <li>Long-range attacks on chains with probabilistic finality</li>
+                    <li>Smart contract vulnerabilities in bridge components</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
+                  <h3 className="text-xl font-semibold text-white mb-3">5.2 Defense Mechanisms</h3>
+                  <p className="text-gray-400 mb-4">
+                    The protocol implements multiple defense layers to protect against these threats:
+                  </p>
+                  
+                  <ul className="list-disc pl-6 space-y-2 text-gray-400">
+                    <li><strong>Multi-signature validation</strong> requiring threshold consensus for all cross-chain operations</li>
+                    <li><strong>Cryptographic proof verification</strong> for all state transitions</li>
+                    <li><strong>Replay protection</strong> through unique nonce tracking and chain-specific identifiers</li>
+                    <li><strong>Message sequencing</strong> with causal ordering guarantees</li>
+                    <li><strong>Economic security</strong> through slashing conditions and validator bonding</li>
+                    <li><strong>Formal verification</strong> of all critical contract components</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
+                  <h3 className="text-xl font-semibold text-white mb-3">5.3 Auditing and Monitoring</h3>
+                  <p className="text-gray-400 mb-4">
+                    The protocol maintains rigorous security practices:
+                  </p>
+                  
+                  <ul className="list-disc pl-6 space-y-2 text-gray-400">
+                    <li>Independent security audits by multiple specialized firms</li>
+                    <li>Continuous monitoring system tracking cross-chain message flows</li>
+                    <li>Anomaly detection system for identifying suspicious activities</li>
+                    <li>Regular chaos engineering exercises to test resilience</li>
+                    <li>Comprehensive bug bounty program with tiered rewards</li>
+                  </ul>
+                </div>
+              </section>
+              
+              <section id="implementation">
+                <h2 className="text-3xl font-bold text-gradient mb-6">6. Network Implementations</h2>
+                <p className="text-gray-400 mb-4">
+                  The OCF token is implemented natively on multiple blockchain networks, with specialized optimizations for each execution environment while maintaining consistent core functionality.
+                </p>
+                
+                <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
+                  <h3 className="text-xl font-semibold text-white mb-3">6.1 Ethereum Implementation</h3>
+                  <p className="text-gray-400 mb-4">
+                    The Ethereum implementation uses an ERC-20 compatible token with extended functionality:
+                  </p>
+                  
+                  <ul className="list-disc pl-6 space-y-2 text-gray-400">
+                    <li>ERC-2612 permit functionality for gasless approvals</li>
+                    <li>Gas-optimized storage layout to minimize transaction costs</li>
+                    <li>Proxy-based architecture for upgradability</li>
+                    <li>Integration with Wormhole message passing layer</li>
+                    <li>Native meta-transaction support for improved UX</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
+                  <h3 className="text-xl font-semibold text-white mb-3">6.2 Solana Implementation</h3>
+                  <p className="text-gray-400 mb-4">
+                    The Solana implementation uses an SPL Token with enhanced capabilities:
+                  </p>
+                  
+                  <ul className="list-disc pl-6 space-y-2 text-gray-400">
+                    <li>Compressed account structure for storage efficiency</li>
+                    <li>Program Derived Address (PDA) based authority model</li>
+                    <li>Native Wormhole portal integration with transaction attestation</li>
+                    <li>Optimized instruction design for high-throughput transactions</li>
+                    <li>On-chain transaction metadata support</li>
+                  </ul>
+                  
+                  <p className="text-gray-400 mt-3">
+                    Contract address: <code className="text-green-400 font-mono">GfmoS7ycz9q3FETmJ9m9n71oab3M9n5RRBYL9aQ1Yppv</code>
+                  </p>
+                </div>
+                
+                <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
+                  <h3 className="text-xl font-semibold text-white mb-3">6.3 BNB Chain Implementation</h3>
+                  <p className="text-gray-400 mb-4">
+                    The BNB Chain implementation uses a BEP-20 compatible token with specialized features:
+                  </p>
+                  
+                  <ul className="list-disc pl-6 space-y-2 text-gray-400">
+                    <li>BEP-20 compatibility with BSC-specific optimizations</li>
+                    <li>Reduced gas consumption through proxy implementation</li>
+                    <li>Cross-chain messaging via specialized BNB adapter</li>
+                    <li>Enhanced meta-transaction support for MEV protection</li>
+                    <li>Native integration with BNB Chain security model</li>
+                  </ul>
+                </div>
+              </section>
+              
+              <section id="token">
+                <h2 className="text-3xl font-bold text-gradient mb-6">7. Token Utility & Economics</h2>
+                <p className="text-gray-400 mb-4">
+                  The OCF token is the utility and governance token of the Open Crypto Foundation ecosystem, with a total supply of 1,000,000,000 OCF. The token implements several key mechanisms that provide value to holders while ensuring long-term sustainability of the protocol.
+                </p>
+                
+                <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
+                  <h3 className="text-xl font-semibold text-white mb-3">7.1 Token Distribution</h3>
+                  <p className="text-gray-400 mb-4">
+                    The total token supply of 1 billion OCF is distributed according to the following allocation:
+                  </p>
+                  
+                  <ul className="list-disc pl-6 space-y-2 text-gray-400">
+                    <li><strong>Public Sale (20%)</strong>: 200,000,000 OCF allocated for initial token sale events</li>
+                    <li><strong>Ecosystem Growth (25%)</strong>: 250,000,000 OCF reserved for ecosystem incentives, grants, and community rewards</li>
+                    <li><strong>Core Team (15%)</strong>: 150,000,000 OCF allocated to founding team and early contributors</li>
+                    <li><strong>Treasury (15%)</strong>: 150,000,000 OCF held in DAO-controlled treasury for ongoing operations and development</li>
+                    <li><strong>Protocol Security (10%)</strong>: 100,000,000 OCF dedicated to network security and validator incentives</li>
+                    <li><strong>Strategic Partners (8%)</strong>: 80,000,000 OCF allocated to strategic investors and partners</li>
+                    <li><strong>Cross-Chain Liquidity (7%)</strong>: 70,000,000 OCF providing initial liquidity across supported chains</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
+                  <h3 className="text-xl font-semibold text-white mb-3">7.2 Cross-Chain Distribution</h3>
+                  <p className="text-gray-400 mb-4">
+                    OCF tokens are implemented natively on multiple blockchain networks, with total supply distributed as follows:
+                  </p>
+                  
+                  <ul className="list-disc pl-6 space-y-2 text-gray-400">
+                    <li><strong>Ethereum (ERC-20)</strong>: 350,000,000 OCF (35% of total supply)</li>
+                    <li><strong>Solana (SPL Token)</strong>: 350,000,000 OCF (35% of total supply)</li>
+                    <li><strong>BNB Chain (BEP-20)</strong>: 300,000,000 OCF (30% of total supply)</li>
+                  </ul>
+                  
+                  <p className="text-gray-400 mt-4">
+                    Cross-chain parity is maintained through the OCF bridging protocol, ensuring consistent token economics across all supported networks.
+                  </p>
+                </div>
+                
+                <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
+                  <h3 className="text-xl font-semibold text-white mb-3">7.3 Token Utility</h3>
+                  <p className="text-gray-400 mb-4">
+                    The OCF token provides several key utility functions within the ecosystem:
+                  </p>
+                  
+                  <ul className="list-disc pl-6 space-y-2 text-gray-400">
+                    <li><strong>Governance Participation</strong>: Token holders can vote on protocol upgrades, treasury allocations, and strategic decisions</li>
+                    <li><strong>Validator Staking</strong>: Stake OCF tokens to participate in network validation and earn rewards</li>
+                    <li><strong>Cross-Chain Transaction Fees</strong>: Pay for cross-chain transactions with dynamic fee adjustment</li>
+                    <li><strong>Security Bonding</strong>: Validators post OCF security bonds subject to slashing for protocol violations</li>
+                    <li><strong>Priority Transaction Access</strong>: Staked tokens provide prioritized processing during network congestion</li>
+                    <li><strong>Protocol Feature Access</strong>: Advanced features require minimum OCF token holdings</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
+                  <h3 className="text-xl font-semibold text-white mb-3">7.4 Vesting and Circulating Supply</h3>
+                  <p className="text-gray-400 mb-4">
+                    Token allocations follow a structured vesting schedule to ensure long-term alignment and prevent market disruption:
+                  </p>
+                  
+                  <ul className="list-disc pl-6 space-y-2 text-gray-400">
+                    <li><strong>Public Sale</strong>: 40% immediate, 60% over 3 months</li>
+                    <li><strong>Ecosystem Growth</strong>: 10% immediate, 90% over 36 months</li>
+                    <li><strong>Core Team</strong>: 12 month cliff, 100% over 36 months after cliff</li>
+                    <li><strong>Treasury</strong>: 15% immediate, 85% over 48 months</li>
+                    <li><strong>Protocol Security</strong>: 20% immediate, 80% over 24 months</li>
+                    <li><strong>Strategic Partners</strong>: 6 month cliff, 100% over 24 months after cliff</li>
+                    <li><strong>Cross-Chain Liquidity</strong>: 100% immediate</li>
+                  </ul>
+                  
+                  <p className="text-gray-400 mt-4">Based on these schedules, the projected circulating supply over time is:</p>
+                  
+                  <ul className="list-disc pl-6 space-y-2 text-gray-400">
+                    <li>Initial Circulation: 157 million tokens (15.7%)</li>
+                    <li>6 months: 268 million tokens (26.8%)</li>
+                    <li>12 months: 392 million tokens (39.2%)</li>
+                    <li>24 months: 685 million tokens (68.5%)</li>
+                    <li>36 months: 913 million tokens (91.3%)</li>
+                    <li>48 months: 1 billion tokens (100%)</li>
+                  </ul>
+                </div>
+              </section>
+              
+              <section id="governance">
+                <h2 className="text-3xl font-bold text-gradient mb-6">8. Governance Framework</h2>
+                <p className="text-gray-400 mb-4">
+                  The OCF DAO (Decentralized Autonomous Organization) is the governing body of the Open Crypto Foundation ecosystem. Through the OCF token, community members collectively make decisions about protocol upgrades, treasury management, and strategic direction.
+                </p>
+                
+                <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
+                  <h3 className="text-xl font-semibold text-white mb-3">8.1 Governance Architecture</h3>
+                  <p className="text-gray-400 mb-4">
+                    The governance system implements a multi-tiered approach:
+                  </p>
+                  
+                  <ul className="list-disc pl-6 space-y-2 text-gray-400">
+                    <li><strong>Token-based Voting</strong>: Direct on-chain voting with weight proportional to token holdings</li>
+                    <li><strong>Proposal System</strong>: Structured process for submitting, discussing, and voting on changes</li>
+                    <li><strong>Timelock Mechanism</strong>: Delay between approval and implementation for security</li>
+                    <li><strong>Emergency Mechanisms</strong>: Special provisions for critical security issues</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
+                  <h3 className="text-xl font-semibold text-white mb-3">8.2 Governance Process</h3>
+                  <p className="text-gray-400 mb-4">
+                    The governance process follows a standardized workflow:
+                  </p>
+                  
+                  <ol className="list-decimal pl-6 space-y-2 text-gray-400">
+                    <li><strong>Proposal Submission</strong>: Any OCF token holder with at least 100,000 tokens can submit governance proposals</li>
+                    <li><strong>Community Discussion</strong>: 7-day mandatory discussion period on the governance forum</li>
+                    <li><strong>Voting Period</strong>: 5-day voting period with votes weighted by token holdings</li>
+                    <li><strong>Implementation</strong>: Automatic execution of approved proposals that meet quorum requirements</li>
+                  </ol>
+                  
+                  <p className="text-gray-400 mt-4">A minimum of 5% of the total token supply must participate for a vote to be valid. Standard proposals require a simple majority (>50%), while core protocol changes require a supermajority (>66%).</p>
+                </div>
+                
+                <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
+                  <h3 className="text-xl font-semibold text-white mb-3">8.3 Progressive Decentralization</h3>
+                  <p className="text-gray-400 mb-4">
+                    The governance framework implements a phased approach to decentralization:
+                  </p>
+                  
+                  <ul className="list-disc pl-6 space-y-2 text-gray-400">
+                    <li><strong>Phase 1 (Bootstrap)</strong>: Limited governance scope with core team oversight</li>
+                    <li><strong>Phase 2 (Expansion)</strong>: Expanded governance powers with graduated parameter control</li>
+                    <li><strong>Phase 3 (Full Decentralization)</strong>: Complete protocol control by token holders</li>
+                  </ul>
+                  
+                  <p className="text-gray-400 mt-4">Each phase incorporates specific safeguards appropriate to its level of decentralization, with clearly defined transition criteria between phases.</p>
+                </div>
+              </section>
+              
+              <section id="future">
+                <h2 className="text-3xl font-bold text-gradient mb-6">9. Future Directions</h2>
+                <p className="text-gray-400 mb-4">
+                  The OCF protocol roadmap outlines several key development directions focused on expanding functionality, improving security, and enhancing user experience.
+                </p>
+                
+                <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
+                  <h3 className="text-xl font-semibold text-white mb-3">9.1 Protocol Expansion</h3>
+                  <p className="text-gray-400 mb-4">
+                    Planned protocol expansions include:
+                  </p>
+                  
+                  <ul className="list-disc pl-6 space-y-2 text-gray-400">
+                    <li>Additional blockchain network integrations (Layer 2 solutions, emerging L1 chains)</li>
+                    <li>Enhanced cross-chain messaging capabilities beyond token transfers</li>
+                    <li>Cross-chain smart contract composability framework</li>
+                    <li>Integration with decentralized identity systems</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
+                  <h3 className="text-xl font-semibold text-white mb-3">9.2 Technical Innovations</h3>
+                  <p className="text-gray-400 mb-4">
+                    Research and development initiatives include:
+                  </p>
+                  
+                  <ul className="list-disc pl-6 space-y-2 text-gray-400">
+                    <li>Zero-knowledge proof integration for enhanced privacy and efficiency</li>
+                    <li>Optimistic verification models with economic security guarantees</li>
+                    <li>Advanced threshold cryptography schemes with improved performance</li>
+                    <li>Cross-chain state synchronization protocols</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
+                  <h3 className="text-xl font-semibold text-white mb-3">9.3 Ecosystem Development</h3>
+                  <p className="text-gray-400 mb-4">
+                    Ecosystem growth initiatives include:
+                  </p>
+                  
+                  <ul className="list-disc pl-6 space-y-2 text-gray-400">
+                    <li>Developer grants program for cross-chain applications</li>
+                    <li>Educational resources and technical documentation</li>
+                    <li>Cross-chain interoperability standards development</li>
+                    <li>Integration partnerships with major DeFi protocols</li>
+                  </ul>
+                </div>
+              </section>
+              
+              <section id="conclusion">
+                <h2 className="text-3xl font-bold text-gradient mb-6">10. Conclusion</h2>
+                <p className="text-gray-400 mb-4">
+                  The OCF token protocol represents a significant advancement in cross-chain interoperability, combining robust security guarantees with practical efficiency and usability. By leveraging threshold cryptography, Byzantine fault-tolerant consensus, and specialized optimizations for each supported blockchain, the protocol addresses the fundamental challenges of secure cross-chain communication while maintaining the security properties of each underlying network.
+                </p>
+                
+                <p className="text-gray-400 mb-4">
+                  With a total supply of 1 billion tokens, implemented consistently across Ethereum, Solana, and BNB Chain, the OCF token provides the economic foundation for the protocol's security, governance, and utility functions. The progressive decentralization roadmap ensures that control gradually transitions to the community while maintaining essential security safeguards.
+                </p>
+                
+                <p className="text-gray-400 mb-4">
+                  As the blockchain ecosystem continues to evolve toward a multi-chain future, interoperability solutions like the OCF protocol will play an increasingly critical role in enabling seamless asset transfers, cross-chain application development, and unified liquidity across the fragmented blockchain landscape. Through ongoing research, development, and community governance, the OCF protocol will continue to adapt and expand to meet the emerging needs of decentralized applications and their users.
+                </p>
+              </section>
             </div>
           </div>
           
