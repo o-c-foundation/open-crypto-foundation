@@ -171,11 +171,12 @@ export default function Navbar() {
             {/* Main navigation dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button
-                className="flex items-center justify-center p-2 rounded-full text-gray-400 hover:text-white focus:outline-none"
+                className="flex items-center justify-center px-3 py-1.5 rounded-lg text-gray-200 hover:text-white hover:bg-dark-card/40 focus:outline-none transition-all duration-200 border border-gray-700/40"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Toggle navigation menu"
               >
-                {isOpen ? <FaTimes size={24} /> : <FaEllipsisV size={24} />}
+                <span className="mr-2 text-sm font-medium">Menu</span>
+                {isOpen ? <FaTimes size={16} /> : <FaChevronDown size={16} />}
               </button>
 
               <Transition
