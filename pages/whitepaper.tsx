@@ -550,7 +550,7 @@ export default function Whitepaper() {
                   </p>
                   
                   <ol className="list-decimal pl-6 space-y-2 text-gray-400">
-                    <li><strong>Proposal Submission</strong>: Any OCF token holder with at least 100,000 tokens can submit governance proposals</li>
+                    <li><strong>Proposal Submission</strong>: Any OCF token holder with at least 100,000 tokens (1% of circulating supply) can submit governance proposals</li>
                     <li><strong>Community Discussion</strong>: 7-day mandatory discussion period on the governance forum</li>
                     <li><strong>Voting Period</strong>: 5-day voting period with votes weighted by token holdings</li>
                     <li><strong>Implementation</strong>: Automatic execution of approved proposals that meet quorum requirements</li>
