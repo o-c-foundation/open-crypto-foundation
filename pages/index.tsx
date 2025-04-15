@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import Image from 'next/image'
 import { FaArrowRight, FaShieldAlt, FaBookOpen, FaTools, FaRegNewspaper, FaRocket, FaCoins, FaFire, FaBook, FaUserFriends, FaCheckCircle, FaLock } from 'react-icons/fa'
 import NewsletterSubscribe from '../components/NewsletterSubscribe'
 import ScrollToTop from '../components/ScrollToTop'
@@ -282,19 +281,8 @@ const Home: NextPageWithLayout = () => {
     <>
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 text-white">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-[4px]"></div>
-          <Image 
-            src="https://bafybeia7bqcimbxnphbbhakog5dndjx4vp6shcg77jhsewvjaqx67kjnqa.ipfs.w3s.link/"
-            alt="Blockchain Background"
-            fill
-            style={{ objectFit: 'cover' }}
-            priority
-            className="blur-[3px]"
-            onError={() => console.error('Failed to load hero image')}
-          />
-        </div>
+        {/* Gradient Background */}
+        <div className="absolute inset-0 z-0 hero-gradient"></div>
         
         {/* Content */}
         <div className="container relative z-10 px-4 mx-auto max-w-full">

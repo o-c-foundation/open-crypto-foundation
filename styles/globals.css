@@ -9,6 +9,9 @@
   --dark-blue-rgb: 8, 18, 42;
   --dark-purple-rgb: 15, 14, 36;
   --dark-gray-rgb: 18, 20, 28;
+  --purple-rgb: 107, 70, 193;
+  --blue-rgb: 0, 102, 255;
+  --white-rgb: 255, 255, 255;
 }
 
 body {
@@ -34,6 +37,19 @@ body {
   background: linear-gradient(130deg, rgba(var(--dark-blue-rgb), 0.4), rgba(var(--background-rgb), 0.5), rgba(var(--dark-purple-rgb), 0.4), rgba(var(--dark-gray-rgb), 0.5));
   background-size: 300% 300%;
   animation: gradient-shift 30s ease infinite;
+}
+
+/* New Hero Gradient */
+.hero-gradient {
+  background: linear-gradient(130deg, 
+    rgba(var(--purple-rgb), 0.7), 
+    rgba(var(--blue-rgb), 0.8), 
+    rgba(var(--white-rgb), 0.2), 
+    rgba(var(--purple-rgb), 0.7));
+  background-size: 300% 300%;
+  animation: gradient-shift 15s ease infinite;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 @keyframes gradient-shift {
