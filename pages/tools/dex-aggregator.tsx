@@ -1,10 +1,54 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Layout from '../../components/Layout';
 import { FaChartLine, FaExchangeAlt, FaShieldAlt, FaCoins, FaEthereum, FaSun } from 'react-icons/fa';
 import type { NextPageWithLayout } from '../../types/next-page';
 
+// Add TypeScript interfaces for external libraries
+declare global {
+  interface Window {
+    Jupiter?: {
+      init: (config: any) => any;
+    };
+  }
+}
+
 const DexAggregator: NextPageWithLayout = () => {
+  // Reference to track if Jupiter script is loaded
+  const jupiterScriptLoaded = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    // Load Jupiter script if not already loaded
+    if (!jupiterScriptLoaded.current) {
+      const jupiterScript = document.createElement('script');
+      jupiterScript.src = 'https://terminal.jup.ag/v4/terminal.js';
+      jupiterScript.async = true;
+      jupiterScript.onload = () => {
+        jupiterScriptLoaded.current = true;
+        
+        // Initialize Jupiter with the specified parameters
+        if (window.Jupiter) {
+          window.Jupiter.init({
+            displayMode: "integrated",
+            integratedTargetId: "integrated-terminal",
+            endpoint: "https://solana-mainnet.core.chainstack.com/ff2a1adced524a99c90cc768cdfb889f",
+          });
+        }
+      };
+      document.body.appendChild(jupiterScript);
+    }
+
+    // Cleanup function
+    return () => {
+      const script = document.querySelector('script[src="https://terminal.jup.ag/v4/terminal.js"]');
+      if (script) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -62,17 +106,15 @@ const DexAggregator: NextPageWithLayout = () => {
                 </div>
                 <p className="text-light-muted mb-6">
                   Swap SPL tokens on Solana with the fastest and most efficient DEX aggregator in the ecosystem.
+                  <br />
+                  <span className="text-xs text-primary mt-2 block">
+                    Connected to Chainstack RPC: 27WjGsyL2myFxLukr8SenGPhWU6Wf6W6YeAAtvqRPJCs9UqEU9yg3Zym3fCa2Q4xfR2fMTdmFfewF3ZjC7jUgC5H
+                  </span>
                 </p>
                 
-                {/* Jupiter Terminal Widget for Solana - Using direct iframe */}
+                {/* Jupiter Terminal Widget for Solana - Using integrated mode */}
                 <div className="h-[600px] rounded-xl overflow-hidden bg-dark-elevated border border-gray-800">
-                  <iframe 
-                    src="https://terminal.jup.ag/swap"
-                    title="Jupiter Terminal for Solana swaps"
-                    frameBorder="0"
-                    className="w-full h-full"
-                    allow="clipboard-write"
-                  />
+                  <div id="integrated-terminal" className="w-full h-full"></div>
                 </div>
               </div>
             </div>
