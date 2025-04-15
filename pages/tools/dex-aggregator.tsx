@@ -1,111 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Layout from '../../components/Layout';
-import { FaChartLine, FaExchangeAlt, FaShieldAlt, FaCoins, FaArrowRight, FaEthereum, FaSun } from 'react-icons/fa';
+import { FaChartLine, FaExchangeAlt, FaShieldAlt, FaCoins, FaEthereum, FaSun } from 'react-icons/fa';
+import type { NextPageWithLayout } from '../../types/next-page';
 
-// Add TypeScript interfaces for external libraries
-declare global {
-  interface Window {
-    Jupiter?: {
-      init: (config: any) => {
-        render: (options: { containerName: string }) => void;
-      };
-    };
-    RangoWidget?: any;
-  }
-}
-
-export default function DexAggregator() {
-  const [widgetsLoaded, setWidgetsLoaded] = useState(false);
-  
-  // Use a single useEffect to handle both widgets
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    // Clean up any previous instances
-    const cleanup = () => {
-      const jupiterNode = document.getElementById('jupiter-terminal');
-      const rangoNode = document.getElementById('rango-widget');
-      if (jupiterNode) jupiterNode.innerHTML = '';
-      if (rangoNode) rangoNode.innerHTML = '';
-      
-      // Remove all script tags that might have been injected by widgets
-      const oldScripts = document.querySelectorAll('script[src*="terminal.jup.ag"], script[src*="widget.rango.exchange"]');
-      oldScripts.forEach(script => script.parentNode?.removeChild(script));
-    };
-    
-    // Clean up first to ensure a fresh state
-    cleanup();
-    
-    // Wait for DOM to be ready
-    setTimeout(() => {
-      // Load Jupiter Terminal (Solana)
-      const jupiterScript = document.createElement('script');
-      jupiterScript.src = 'https://terminal.jup.ag/v4/terminal.js';
-      jupiterScript.async = true;
-      jupiterScript.onload = () => {
-        setTimeout(() => {
-          if (window.Jupiter && document.getElementById('jupiter-terminal')) {
-            try {
-              window.Jupiter.init({
-                displayMode: 'widget',
-                containerStyles: { 
-                  height: '550px',
-                  width: '100%', 
-                },
-                formProps: {
-                  fixedOutputMint: false,
-                  fixedInputMint: false
-                },
-              }).render({
-                containerName: 'jupiter-terminal'
-              });
-              console.log('Jupiter Terminal initialized');
-            } catch (error) {
-              console.error('Error initializing Jupiter Terminal:', error);
-            }
-          } else {
-            console.warn('Jupiter not available or container not found');
-          }
-        }, 500); // Give time for Jupiter to register globally
-      };
-      document.body.appendChild(jupiterScript);
-      
-      // Load Rango Widget (EVM)
-      const rangoScript = document.createElement('script');
-      rangoScript.src = 'https://widget.rango.exchange/widget.js';
-      rangoScript.async = true;
-      rangoScript.onload = () => {
-        setTimeout(() => {
-          if (window.RangoWidget && document.getElementById('rango-widget')) {
-            try {
-              new window.RangoWidget({
-                apiKey: 'c6381a79-2817-4602-83bf-6a641a409e32', // Demo API key
-                containerID: 'rango-widget',
-                theme: 'dark',
-                width: '100%',
-                height: '550px',
-              });
-              console.log('Rango Widget initialized');
-            } catch (error) {
-              console.error('Error initializing Rango Widget:', error);
-            }
-          } else {
-            console.warn('RangoWidget not available or container not found');
-          }
-        }, 500); // Give time for Rango to register globally
-      };
-      document.body.appendChild(rangoScript);
-      
-      setWidgetsLoaded(true);
-    }, 300); // Wait for DOM to be fully ready
-    
-    // Cleanup when component unmounts
-    return cleanup;
-  }, []);
-
+const DexAggregator: NextPageWithLayout = () => {
   return (
-    <Layout title="DEX Aggregator | Open Crypto Foundation">
+    <>
       <Head>
         <meta name="description" content="Find the best prices across decentralized exchanges for both EVM chains and Solana with our DEX aggregator." />
       </Head>
@@ -139,17 +40,15 @@ export default function DexAggregator() {
                   Swap tokens across Ethereum, Arbitrum, Optimism, Polygon, BNB Chain, and other EVM-compatible networks.
                 </p>
                 
-                {/* Rango Widget for EVM Chains */}
-                <div className="h-[550px] rounded-xl overflow-hidden bg-dark-elevated border border-gray-800 relative">
-                  <div id="rango-widget" className="w-full h-full"></div>
-                  {!widgetsLoaded && (
-                    <div className="absolute inset-0 flex items-center justify-center text-white bg-dark-elevated bg-opacity-80">
-                      <div className="flex flex-col items-center">
-                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary mb-4"></div>
-                        <p>Loading EVM swap widget...</p>
-                      </div>
-                    </div>
-                  )}
+                {/* Rango Widget for EVM Chains - Using direct iframe */}
+                <div className="h-[600px] rounded-xl overflow-hidden bg-dark-elevated border border-gray-800">
+                  <iframe 
+                    src="https://widget.rango.exchange/?apiKey=c6381a79-2817-4602-83bf-6a641a409e32&theme=dark"
+                    title="Rango Exchange Widget for EVM chains"
+                    frameBorder="0"
+                    className="w-full h-full"
+                    allow="clipboard-write"
+                  />
                 </div>
               </div>
 
@@ -165,17 +64,15 @@ export default function DexAggregator() {
                   Swap SPL tokens on Solana with the fastest and most efficient DEX aggregator in the ecosystem.
                 </p>
                 
-                {/* Jupiter Terminal Widget for Solana */}
-                <div className="h-[550px] rounded-xl overflow-hidden bg-dark-elevated border border-gray-800 relative">
-                  <div id="jupiter-terminal" className="w-full h-full"></div>
-                  {!widgetsLoaded && (
-                    <div className="absolute inset-0 flex items-center justify-center text-white bg-dark-elevated bg-opacity-80">
-                      <div className="flex flex-col items-center">
-                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary mb-4"></div>
-                        <p>Loading Solana swap widget...</p>
-                      </div>
-                    </div>
-                  )}
+                {/* Jupiter Terminal Widget for Solana - Using direct iframe */}
+                <div className="h-[600px] rounded-xl overflow-hidden bg-dark-elevated border border-gray-800">
+                  <iframe 
+                    src="https://terminal.jup.ag/swap"
+                    title="Jupiter Terminal for Solana swaps"
+                    frameBorder="0"
+                    className="w-full h-full"
+                    allow="clipboard-write"
+                  />
                 </div>
               </div>
             </div>
@@ -276,6 +173,20 @@ export default function DexAggregator() {
           </div>
         </div>
       </section>
+    </>
+  );
+};
+
+// Define custom layout for the DEX Aggregator page to fix duplicate layout issues
+DexAggregator.getLayout = (page) => {
+  return (
+    <Layout 
+      title="DEX Aggregator | Open Crypto Foundation"
+      description="Find the best prices across decentralized exchanges for both EVM chains and Solana with our DEX aggregator."
+    >
+      {page}
     </Layout>
   );
-} 
+};
+
+export default DexAggregator; 
