@@ -161,6 +161,7 @@ export default function Navbar() {
     <header className="bg-transparent backdrop-blur-sm border-b border-dark-light/10 sticky top-0 z-50">
       <div className="w-full px-4">
         <div className="flex justify-between items-center py-4">
+          {/* Left side - Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center group">
               <div className="flex items-center justify-center mr-2 transition-all duration-300 group-hover:shadow-glow">
@@ -170,34 +171,8 @@ export default function Navbar() {
             </Link>
           </div>
           
-          {/* Right side controls */}
-          <div className="flex items-center space-x-4">
-            {/* Search button */}
-            <div className="relative">
-              <button
-                onClick={toggleSearch}
-                className="p-2 rounded-full text-gray-400 hover:text-white focus:outline-none"
-                aria-label={searchOpen ? "Close search" : "Open search"}
-              >
-                <FaSearch className="text-xl" />
-              </button>
-
-              <Transition
-                show={searchOpen}
-                enter="transition ease-out duration-200"
-                enterFrom="transform opacity-0 scale-95"
-                enterTo="transform opacity-100 scale-100"
-                leave="transition ease-in duration-150"
-                leaveFrom="transform opacity-100 scale-100"
-                leaveTo="transform opacity-0 scale-95"
-              >
-                <div className="absolute right-0 top-10 w-screen max-w-md p-4 bg-dark-elevated rounded-xl border border-gray-800 shadow-2xl">
-                  <SearchBar onToggle={toggleSearch} />
-                </div>
-              </Transition>
-            </div>
-
-            {/* Main navigation dropdown */}
+          {/* Center - Menu dropdown */}
+          <div className="flex-grow flex justify-center">
             <div className="relative" ref={dropdownRef}>
               <button
                 className="flex items-center justify-center px-3 py-1.5 rounded-lg text-gray-200 hover:text-white hover:bg-dark-card/40 focus:outline-none transition-all duration-200 border border-gray-700/40"
@@ -217,7 +192,7 @@ export default function Navbar() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <div className="absolute right-0 top-12 w-64 bg-dark-elevated rounded-xl border border-gray-800 shadow-2xl py-2">
+                <div className="absolute left-1/2 -translate-x-1/2 top-12 w-64 bg-dark-elevated rounded-xl border border-gray-800 shadow-2xl py-2">
                   {menuItems.map((item) => 
                     !item.submenu ? (
                       <Link 
@@ -288,6 +263,33 @@ export default function Navbar() {
                       </div>
                     )
                   )}
+                </div>
+              </Transition>
+            </div>
+          </div>
+          
+          {/* Right side - Search */}
+          <div className="flex items-center">
+            <div className="relative">
+              <button
+                onClick={toggleSearch}
+                className="p-2 rounded-full text-gray-400 hover:text-white focus:outline-none"
+                aria-label={searchOpen ? "Close search" : "Open search"}
+              >
+                <FaSearch className="text-xl" />
+              </button>
+
+              <Transition
+                show={searchOpen}
+                enter="transition ease-out duration-200"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-150"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+              >
+                <div className="absolute right-0 top-10 w-screen max-w-md p-4 bg-dark-elevated rounded-xl border border-gray-800 shadow-2xl">
+                  <SearchBar onToggle={toggleSearch} />
                 </div>
               </Transition>
             </div>
