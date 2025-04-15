@@ -54,40 +54,69 @@ export default function Navbar() {
     {
       name: 'Overview',
       submenu: [
+        { name: 'About', href: '/about' },
         { name: 'Manifesto', href: '/manifesto' },
         { name: 'Whitepaper', href: '/whitepaper' },
         { name: 'OCF Token', href: '/ocf-token' },
         { name: 'Tokenomics', href: '/tokenomics' },
         { name: 'Roadmap', href: '/roadmap' },
+        { name: 'Services', href: '/services' },
       ]
     },
     {
       name: 'Tools',
       submenu: [
+        { name: 'Tools Overview', href: '/tools' },
         { name: 'DEX Aggregator', href: '/tools/dex-aggregator' },
         { name: 'Wallet Connect', href: '/tools/wallet-connect' },
         { name: 'Token Analyzer', href: '/tools/token-analyzer' },
         { name: 'Token Investigator', href: '/tools/token-investigator' },
+        { name: 'Contract Analyzer', href: '/tools/contract-analyzer' },
+        { name: 'Contract Scanner', href: '/tools/contract-scanner' },
       ]
     },
     {
       name: 'Launch Projects',
       submenu: [
+        { name: 'Launch Projects Overview', href: '/launch-project' },
         { name: 'OpenChat', href: '/launch-project/openchat' },
         { name: 'OpenDrive', href: '/launch-project/opendrive' },
         { name: 'ERC20 Launcher', href: '/launch-project/erc20-launcher' },
+        { name: 'Solana Launcher', href: '/launch-project/solana-launcher' },
       ]
     },
     {
       name: 'Resources',
       submenu: [
-        { name: 'Guides', href: '/resources/guides' },
         { name: 'DeFi Fundamentals', href: '/resources/defi-fundamentals' },
         { name: 'For Traders', href: '/resources/traders' },
         { name: 'For Developers', href: '/resources/developers' },
+        { name: 'Wallet Guide', href: '/resources/wallet-guide' },
+        { name: 'Security Guide', href: '/resources/security-guide' },
+        { name: 'Blockchain Repositories', href: '/resources/blockchain-repositories' },
+        { name: 'RPC Endpoints', href: '/resources/rpc-endpoints' },
+      ]
+    },
+    {
+      name: 'Security',
+      submenu: [
+        { name: 'Audit', href: '/audit' },
+        { name: 'Scam Database', href: '/scam-database' },
+        { name: 'Report Scam', href: '/report-scam' },
+        { name: 'Verified Links', href: '/verified-links' },
+        { name: 'Wallets & Funds', href: '/wallets-and-funds' },
       ]
     },
     { name: 'Claim', href: '/claim' },
+    { name: 'Presale', href: '/presale' },
+    {
+      name: 'Legal',
+      submenu: [
+        { name: 'Terms of Service', href: '/terms' },
+        { name: 'Privacy Policy', href: '/privacy' },
+        { name: 'Cookie Policy', href: '/cookies' },
+      ]
+    },
   ]
 
   // Close menu when clicking outside
