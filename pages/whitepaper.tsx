@@ -556,7 +556,7 @@ export default function Whitepaper() {
                     <li><strong>Implementation</strong>: Automatic execution of approved proposals that meet quorum requirements</li>
                   </ol>
                   
-                  <p className="text-gray-400 mt-4">A minimum of 5% of the total token supply must participate for a vote to be valid. Standard proposals require a simple majority (>50%), while core protocol changes require a supermajority (>66%).</p>
+                  <p className="text-gray-400 mt-4">A minimum of 5% of the total token supply must participate for a vote to be valid. Standard proposals require a simple majority ({'>'}50%), while core protocol changes require a supermajority ({'>'}66%).</p>
                 </div>
                 
                 <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
