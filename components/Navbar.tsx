@@ -72,6 +72,7 @@ export default function Navbar() {
     { name: 'About', href: '/about', current: false, icon: <FaInfoCircle className="mr-1" /> },
     { name: 'Whitepaper', href: '/whitepaper', current: false, icon: <FaFileAlt className="mr-1" /> },
     { name: 'Roadmap', href: '/roadmap', current: false, icon: <FaRoad className="mr-1" /> },
+    { name: 'OCF Token', href: '/ocf-token', current: false, icon: <FaCoins className="mr-1" /> },
     {
       name: 'OCF Apps',
       current: false,
