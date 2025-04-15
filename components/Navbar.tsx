@@ -83,9 +83,7 @@ export default function Navbar() {
         { name: 'OpenDrive', href: '/launch-project/opendrive', description: 'Secure, decentralized storage platform powered by IPFS with end-to-end encryption and content addressing' },
         { name: 'OpenChat', href: '/launch-project/openchat', description: 'Decentralized messaging platform for secure blockchain communication with direct messages and group chats' }
       ]
-    },
-    { name: 'Presale', href: '/presale', current: false, icon: <FaShoppingCart className="mr-1" /> },
-    { name: 'OFC Airdrops', href: '/claim', icon: <FaCoins className="mr-1" />, badge: 'New' }
+    }
   ]
   
   const toggleDropdown = (name: string) => {

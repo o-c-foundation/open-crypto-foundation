@@ -119,12 +119,6 @@ export default function ClaimPage() {
                           <span>Roadmap</span>
                         </Link>
                       </li>
-                      <li>
-                        <Link href="/presale" className="flex items-center text-primary hover:text-primary-light transition-colors">
-                          <FaUsers className="mr-2" size={16} />
-                          <span>Token Presale</span>
-                        </Link>
-                      </li>
                     </ul>
                   </div>
                   
