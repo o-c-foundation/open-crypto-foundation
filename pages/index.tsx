@@ -381,62 +381,6 @@ const Home: NextPageWithLayout = () => {
         </div>
       </section>
       
-      {/* Tools Highlight Section */}
-      <section className="py-16 bg-dark">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Essential Cryptocurrency Tools & Resources</h2>
-            <p className="text-light-muted">
-              Our blockchain toolkit provides everything you need for secure crypto management, cross-chain trading, and DeFi participation. From wallet security to token analytics, we've built solutions for both beginners and experienced cryptocurrency investors.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-            <div className="p-5 md:p-6 bg-card-gradient rounded-xl border border-dark-light/30">
-              <div className="w-10 h-10 md:w-12 md:h-12 mb-4 flex items-center justify-center bg-primary/20 text-primary rounded-lg">
-                <FaShieldAlt size={20} />
-              </div>
-              <h3 className="mb-2 md:mb-3 text-lg md:text-xl font-bold text-white">Security Tools</h3>
-              <p className="mb-4 text-light-muted text-sm md:text-base">
-                We're developing a suite of open source tools to help you verify smart contracts, analyze tokens, 
-                and identify potential security risks before investing.
-              </p>
-              <Link href="/tools" className="text-primary hover:text-primary-light font-medium inline-flex items-center text-sm md:text-base">
-                Follow Our Progress <FaArrowRight className="ml-1" size={12} />
-              </Link>
-            </div>
-            
-            <div className="p-5 md:p-6 bg-card-gradient rounded-xl border border-dark-light/30">
-              <div className="w-10 h-10 md:w-12 md:h-12 mb-4 flex items-center justify-center bg-primary/20 text-primary rounded-lg">
-                <FaBookOpen size={20} />
-              </div>
-              <h3 className="mb-2 md:mb-3 text-lg md:text-xl font-bold text-white">Educational Resources</h3>
-              <p className="mb-4 text-light-muted text-sm md:text-base">
-                We're in the early stages of building a comprehensive knowledge base for safe crypto 
-                practices, from beginner guides to advanced technical documentation.
-              </p>
-              <Link href="/resources/defi-fundamentals" className="text-primary hover:text-primary-light font-medium inline-flex items-center text-sm md:text-base">
-                See Our First Resources <FaArrowRight className="ml-1" size={12} />
-              </Link>
-            </div>
-            
-            <div className="p-5 md:p-6 bg-card-gradient rounded-xl border border-dark-light/30 sm:col-span-2 md:col-span-1">
-              <div className="w-10 h-10 md:w-12 md:h-12 mb-4 flex items-center justify-center bg-primary/20 text-primary rounded-lg">
-                <FaRocket size={20} />
-              </div>
-              <h3 className="mb-2 md:mb-3 text-lg md:text-xl font-bold text-white">Growth Roadmap</h3>
-              <p className="mb-4 text-light-muted text-sm md:text-base">
-                As a new foundation, we have ambitious plans to establish open standards and best practices 
-                for token launches, protocol development, and responsible DeFi innovation.
-              </p>
-              <Link href="/roadmap" className="text-primary hover:text-primary-light font-medium inline-flex items-center text-sm md:text-base">
-                View Our Roadmap <FaArrowRight className="ml-1" size={12} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Community Section */}
       <section className="py-16 front-page-gradient">
         <div className="container mx-auto px-4">
