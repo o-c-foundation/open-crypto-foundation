@@ -199,6 +199,16 @@ export default function Navbar() {
     }
   }
 
+  const [searchInputValue, setSearchInputValue] = useState('');
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchInputValue.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchInputValue.trim())}`);
+      setSearchInputValue('');
+    }
+  }
+
   return (
     <header className="bg-transparent backdrop-blur-sm border-b border-dark-light/10 sticky top-0 z-50">
       <div className="w-full px-4">
@@ -403,9 +413,25 @@ export default function Navbar() {
             </div>
           </div>
           
-          {/* Right side - Search */}
+          {/* Right side - Always visible Search */}
           <div className="flex items-center">
-            <div className="relative">
+            <div className="relative hidden md:block">
+              <form onSubmit={handleSearchSubmit} className="flex items-center">
+                <div className="relative flex items-center">
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchInputValue}
+                    onChange={(e) => setSearchInputValue(e.target.value)}
+                    className="bg-dark-card/60 border border-gray-700/50 rounded-lg pl-8 pr-2 py-1.5 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/50 w-40 lg:w-48 xl:w-56 transition-all duration-300 ease-in-out"
+                  />
+                  <FaSearch className="absolute left-2.5 text-gray-400 text-sm" />
+                </div>
+              </form>
+            </div>
+            
+            {/* Mobile search button */}
+            <div className="md:hidden relative">
               <button
                 onClick={toggleSearch}
                 className="p-1.5 sm:p-2 rounded-full text-gray-400 hover:text-white focus:outline-none"
@@ -423,7 +449,7 @@ export default function Navbar() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <div className={`absolute right-0 top-10 w-screen ${isMobile ? 'max-w-xs' : 'max-w-md'} p-3 sm:p-4 bg-dark-elevated rounded-xl border border-gray-800 shadow-2xl`}>
+                <div className="absolute right-0 top-10 w-screen max-w-xs p-3 sm:p-4 bg-dark-elevated rounded-xl border border-gray-800 shadow-2xl">
                   <SearchBar onToggle={toggleSearch} />
                 </div>
               </Transition>
