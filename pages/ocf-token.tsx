@@ -196,20 +196,7 @@ export default function OCFToken() {
             </Link>
           </div>
           
-          <div className="bg-dark-card p-8 rounded-xl border border-gray-800 mb-12">
-            <div className="flex items-center gap-3 mb-6 flex-wrap">
-              <div className="bg-primary/20 p-3 rounded-lg">
-                <FaCoins size={24} className="text-primary" />
-              </div>
-              <h2 className="text-2xl font-bold text-white">OCF Contract Address</h2>
-              <div className="ml-auto mt-2 sm:mt-0">
-                <div className="px-4 py-2 bg-dark-elevated rounded-lg border border-gray-700 font-mono text-sm text-gray-300 flex items-center">
-                  <span className="mr-2 sm:block hidden">Contract:</span> 
-                  <span className="text-green-400">GfmoS7ycz9q3FETmJ9m9n71oab3M9n5RRBYL9aQ1Yppv</span>
-                </div>
-              </div>
-            </div>
-            
+          <div className="bg-dark-card p-8 rounded-xl border border-gray-800 mb-12">            
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
               <div className="bg-dark-elevated p-4 rounded-lg border border-gray-800">
                 <p className="text-gray-400 mb-1 text-sm">Circulating Supply</p>
