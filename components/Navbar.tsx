@@ -22,7 +22,8 @@ import {
   FaSearch,
   FaEllipsisV,
   FaTools,
-  FaShieldAlt
+  FaShieldAlt,
+  FaExchangeAlt
 } from 'react-icons/fa'
 import Logo from './Logo'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -102,6 +103,7 @@ export default function Navbar() {
         { name: 'Solana Launcher', href: '/launch-project/solana-launcher' },
       ]
     },
+    { name: 'OpenExchange', href: '/openexchange' },
     { name: 'Claim', href: '/claim' },
     {
       name: 'Legal',
@@ -175,13 +177,14 @@ export default function Navbar() {
         { name: 'Solana Launcher', href: '/launch-project/solana-launcher' },
       ]
     },
-    { 
-      name: 'Resources', 
+    {
+      name: 'Resources',
       icon: <FaBook className="text-primary" />,
       submenu: resourcesItems
         .filter(item => item.href !== undefined)
         .map(item => ({ name: item.name, href: item.href as string }))
     },
+    { name: 'OpenExchange', href: '/openexchange', icon: <FaExchangeAlt className="text-primary" /> },
     { name: 'Claim', href: '/claim', icon: <FaCoins className="text-primary" /> },
     { 
       name: 'Legal',
@@ -331,38 +334,38 @@ export default function Navbar() {
                 <div className="absolute left-0 w-64 top-10 bg-dark-elevated rounded-xl border border-gray-800 shadow-2xl py-2">
                   {menuItems.map((item) => 
                     !item.submenu ? (
-                      <Link 
-                        href={item.href} 
-                        key={item.name}
+                <Link 
+                  href={item.href} 
+                  key={item.name}
                         className={`block px-4 py-2.5 md:py-2 text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${
                           router.pathname === item.href ? 'text-primary' : ''
                         }`}
                         onClick={() => setMainMenuOpen(false)}
-                      >
-                        <span className="flex items-center">
-                          {item.name}
-                        </span>
-                      </Link>
-                    ) : (
+                >
+                  <span className="flex items-center">
+                    {item.name}
+                  </span>
+                </Link>
+              ) : (
                       <div key={item.name}>
-                        <button
+                  <button
                           className={`flex items-center justify-between w-full px-4 py-2.5 md:py-2 text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${
-                            ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
+                        ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
                               router.pathname === '/tokenomics' || router.pathname === '/ocf-token') && 
                               item.name === 'Overview') ||
                             (router.pathname.startsWith('/launch-project') && item.name === 'Launch Projects')
                               ? 'text-primary' : ''
                           }`}
                           onClick={() => toggleSubmenu(item.name)}
-                        >
-                          <span>{item.name}</span>
+                  >
+                    <span>{item.name}</span>
                           <FaChevronDown 
                             className={`ml-2 h-4 w-4 transition-transform ${
                               openSubmenu === item.name ? 'transform rotate-180' : ''
                             }`} 
                           />
-                        </button>
-                        
+                  </button>
+                  
                         <Transition
                           show={openSubmenu === item.name}
                           enter="transition ease-out duration-200"
@@ -374,9 +377,9 @@ export default function Navbar() {
                         >
                           <div className="pl-4 py-1 bg-dark-card/30">
                             {item.submenu.map((child) => (
-                              <Link
-                                key={child.name}
-                                href={child.href}
+                            <Link
+                              key={child.name}
+                              href={child.href}
                                 className={`block px-4 py-2.5 md:py-2 text-sm text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${
                                   router.pathname === child.href || 
                                   (router.pathname === '/launch-project/erc20-launcher' && child.href === '/launch-project/erc20-launcher') ||
@@ -390,9 +393,9 @@ export default function Navbar() {
                                 }}
                               >
                                 {child.name}
-                              </Link>
-                            ))}
-                          </div>
+                            </Link>
+                          ))}
+                        </div>
                         </Transition>
                       </div>
                     )
@@ -400,10 +403,10 @@ export default function Navbar() {
                 </div>
               </Transition>
             </div>
-
+          
             {/* Tools dropdown */}
             <div className="relative" ref={toolsDropdownRef}>
-              <button
+            <button 
                 className="flex items-center justify-center px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-gray-200 hover:text-white hover:bg-dark-card/40 focus:outline-none transition-all duration-200 border border-gray-700/40"
                 onClick={() => {
                   setToolsMenuOpen(!toolsMenuOpen)
@@ -415,7 +418,7 @@ export default function Navbar() {
                 <FaTools className="mr-1" size={14} />
                 <span className="mr-1 sm:mr-2 text-xs sm:text-sm font-medium">Tools</span>
                 <FaChevronDown size={14} />
-              </button>
+            </button>
 
               <Transition
                 show={toolsMenuOpen}
@@ -441,10 +444,10 @@ export default function Navbar() {
                       </span>
                     </Link>
                   ))}
-                </div>
+          </div>
               </Transition>
-            </div>
-
+      </div>
+      
             {/* Resources dropdown */}
             <div className="relative" ref={resourcesDropdownRef}>
               <button
@@ -472,17 +475,17 @@ export default function Navbar() {
               >
                 <div className="absolute right-0 w-56 top-10 bg-dark-elevated rounded-xl border border-gray-800 shadow-2xl py-2">
                   {resourcesItems.map((item) => (
-                    <Link 
-                      href={item.href} 
-                      key={item.name}
+                  <Link 
+                    href={item.href} 
+                    key={item.name}
                       className={`block px-4 py-2.5 md:py-2 text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${
                         router.pathname === item.href ? 'text-primary' : ''
                       }`}
                       onClick={() => setResourcesMenuOpen(false)}
-                    >
-                      <span className="flex items-center">
-                        {item.name}
-                      </span>
+                  >
+                    <span className="flex items-center">
+                      {item.name}
+                        </span>
                     </Link>
                   ))}
                 </div>
@@ -551,15 +554,15 @@ export default function Navbar() {
                           <span className="flex items-center">
                             {category.icon && <span className="mr-3 w-5">{category.icon}</span>}
                             {category.name}
-                          </span>
-                        </Link>
-                      ) : (
+                    </span>
+                  </Link>
+                ) : (
                         <div key={category.name}>
-                          <button
+                    <button
                             className={`flex items-center justify-between w-full px-4 py-2.5 text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${
                               (category.name === 'Tools' && router.pathname.startsWith('/tools')) ||
                               (category.name === 'Resources' && router.pathname.startsWith('/resources')) ||
-                              ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
+                          ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
                                 router.pathname === '/tokenomics' || router.pathname === '/ocf-token') && 
                                 category.name === 'Overview') ||
                               (router.pathname.startsWith('/launch-project') && category.name === 'Launch Projects')
@@ -576,8 +579,8 @@ export default function Navbar() {
                                 openSubmenu === category.name ? 'transform rotate-180' : ''
                               }`} 
                             />
-                          </button>
-                          
+                    </button>
+                    
                           <Transition
                             show={openSubmenu === category.name}
                             enter="transition ease-out duration-200"
@@ -589,21 +592,21 @@ export default function Navbar() {
                           >
                             <div className="pl-4 py-1 bg-dark-card/30">
                               {category.submenu.map((item) => (
-                                <Link
+                          <Link
                                   key={item.name}
                                   href={item.href}
                                   className={`block px-4 py-2.5 text-sm text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${
                                     router.pathname === item.href ? 'text-primary' : ''
-                                  }`}
-                                  onClick={() => {
+                              }`}
+                            onClick={() => {
                                     setOpenSubmenu(null)
                                     setMobileMenuOpen(false)
-                                  }}
-                                >
+                            }}
+                          >
                                   {item.name}
-                                </Link>
-                              ))}
-                            </div>
+                          </Link>
+                        ))}
+                      </div>
                           </Transition>
                         </div>
                       )
