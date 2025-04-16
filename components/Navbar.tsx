@@ -415,7 +415,7 @@ export default function Navbar() {
           
           {/* Right side - Always visible Search */}
           <div className="flex items-center">
-            <div className="relative hidden md:block">
+            <div className="relative hidden md:block -ml-[200px]">
               <form onSubmit={handleSearchSubmit} className="flex items-center">
                 <div className="relative flex items-center">
                   <input
