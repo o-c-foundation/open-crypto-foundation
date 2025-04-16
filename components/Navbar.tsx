@@ -83,6 +83,29 @@ export default function Navbar() {
       ]
     },
     {
+      name: 'Launch Projects',
+      submenu: [
+        { name: 'Launch Projects Overview', href: '/launch-project' },
+        { name: 'OpenChat', href: '/launch-project/openchat' },
+        { name: 'OpenDrive', href: '/launch-project/opendrive' },
+        { name: 'ERC20 Launcher', href: '/launch-project/erc20-launcher' },
+        { name: 'Solana Launcher', href: '/launch-project/solana-launcher' },
+      ]
+    },
+    { name: 'Claim', href: '/claim' },
+    {
+      name: 'Legal',
+      submenu: [
+        { name: 'Terms of Service', href: '/terms' },
+        { name: 'Privacy Policy', href: '/privacy' },
+        { name: 'Cookie Policy', href: '/cookies' },
+      ]
+    },
+  ]
+
+  // New separate dropdown for Tools, Resources & Security
+  const resourcesToolsItems: MenuItem[] = [
+    {
       name: 'Tools',
       submenu: [
         { name: 'Tools Overview', href: '/tools' },
@@ -92,16 +115,6 @@ export default function Navbar() {
         { name: 'Token Investigator', href: '/tools/token-investigator' },
         { name: 'Contract Analyzer', href: '/tools/contract-analyzer' },
         { name: 'Contract Scanner', href: '/tools/contract-scanner' },
-      ]
-    },
-    {
-      name: 'Launch Projects',
-      submenu: [
-        { name: 'Launch Projects Overview', href: '/launch-project' },
-        { name: 'OpenChat', href: '/launch-project/openchat' },
-        { name: 'OpenDrive', href: '/launch-project/opendrive' },
-        { name: 'ERC20 Launcher', href: '/launch-project/erc20-launcher' },
-        { name: 'Solana Launcher', href: '/launch-project/solana-launcher' },
       ]
     },
     {
@@ -124,16 +137,6 @@ export default function Navbar() {
         { name: 'Report Scam', href: '/report-scam' },
         { name: 'Verified Links', href: '/verified-links' },
         { name: 'Wallets & Funds', href: '/wallets-and-funds' },
-      ]
-    },
-    { name: 'Claim', href: '/claim' },
-    { name: 'Presale', href: '/presale' },
-    {
-      name: 'Legal',
-      submenu: [
-        { name: 'Terms of Service', href: '/terms' },
-        { name: 'Privacy Policy', href: '/privacy' },
-        { name: 'Cookie Policy', href: '/cookies' },
       ]
     },
   ]
@@ -192,8 +195,9 @@ export default function Navbar() {
             </Link>
           </div>
           
-          {/* Center - Menu dropdown */}
-          <div className="flex-grow flex justify-center">
+          {/* Center area - now has two dropdowns */}
+          <div className="flex-grow flex justify-center gap-2 sm:gap-4">
+            {/* Main Menu dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button
                 className="flex items-center justify-center px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-gray-200 hover:text-white hover:bg-dark-card/40 focus:outline-none transition-all duration-200 border border-gray-700/40"
@@ -213,7 +217,7 @@ export default function Navbar() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <div className={`absolute ${isMobile ? 'w-screen left-1/2 -translate-x-1/2 max-h-[80vh] overflow-y-auto' : 'left-1/2 -translate-x-1/2 w-64'} top-10 bg-dark-elevated rounded-xl border border-gray-800 shadow-2xl py-2`}>
+                <div className={`absolute ${isMobile ? 'w-screen left-1/2 -translate-x-1/2 max-h-[80vh] overflow-y-auto' : 'left-0 w-64'} top-10 bg-dark-elevated rounded-xl border border-gray-800 shadow-2xl py-2`}>
                   {menuItems.map((item) => 
                     !item.submenu ? (
                       <Link 
@@ -232,12 +236,10 @@ export default function Navbar() {
                       <div key={item.name}>
                         <button
                           className={`flex items-center justify-between w-full px-4 py-2.5 md:py-2 text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${
-                            (router.pathname.startsWith('/resources') && item.name === t('resources')) || 
                             ((router.pathname === '/whitepaper' || router.pathname === '/roadmap' || 
                               router.pathname === '/tokenomics' || router.pathname === '/ocf-token') && 
                               item.name === 'Overview') ||
-                            (router.pathname.startsWith('/launch-project') && item.name === 'Launch Projects') ||
-                            (router.pathname.startsWith('/tools') && item.name === 'Tools')
+                            (router.pathname.startsWith('/launch-project') && item.name === 'Launch Projects')
                               ? 'text-primary' : ''
                           }`}
                           onClick={() => toggleSubmenu(item.name)}
@@ -284,6 +286,91 @@ export default function Navbar() {
                       </div>
                     )
                   )}
+                </div>
+              </Transition>
+            </div>
+
+            {/* New Tools & Resources dropdown */}
+            <div className="relative">
+              <button
+                className="flex items-center justify-center px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-gray-200 hover:text-white hover:bg-dark-card/40 focus:outline-none transition-all duration-200 border border-gray-700/40"
+                onClick={() => {
+                  setIsOpen(false); // Close main menu if open
+                  setOpenSubmenu(null);
+                  document.dispatchEvent(new MouseEvent('mousedown', {
+                    bubbles: true,
+                    cancelable: true,
+                  }));
+                  setTimeout(() => {
+                    setIsOpen(true); // Then open this menu
+                    setOpenSubmenu('ResourcesTools');
+                  }, 50);
+                }}
+                aria-label="Toggle tools and resources menu"
+              >
+                <span className="mr-1 sm:mr-2 text-xs sm:text-sm font-medium">Tools & Resources</span>
+                <FaChevronDown size={isMobile ? 14 : 16} />
+              </button>
+
+              <Transition
+                show={isOpen && openSubmenu === 'ResourcesTools'}
+                enter="transition ease-out duration-200"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-150"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+              >
+                <div className={`absolute ${isMobile ? 'w-screen right-1/2 translate-x-1/2 max-h-[80vh] overflow-y-auto' : 'right-0 w-64'} top-10 bg-dark-elevated rounded-xl border border-gray-800 shadow-2xl py-2`}>
+                  {resourcesToolsItems.map((item) => (
+                    <div key={item.name}>
+                      <button
+                        className={`flex items-center justify-between w-full px-4 py-2.5 md:py-2 text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${
+                          (router.pathname.startsWith('/resources') && item.name === 'Resources') || 
+                          (router.pathname.startsWith('/tools') && item.name === 'Tools') ||
+                          ((router.pathname === '/audit' || router.pathname === '/scam-database' || 
+                            router.pathname.startsWith('/report-scam')) && item.name === 'Security')
+                            ? 'text-primary' : ''
+                        }`}
+                        onClick={() => toggleSubmenu(item.name)}
+                      >
+                        <span>{item.name}</span>
+                        <FaChevronDown 
+                          className={`ml-2 h-4 w-4 transition-transform ${
+                            openSubmenu === item.name ? 'transform rotate-180' : ''
+                          }`} 
+                        />
+                      </button>
+                      
+                      <Transition
+                        show={openSubmenu === item.name}
+                        enter="transition ease-out duration-200"
+                        enterFrom="transform opacity-0"
+                        enterTo="transform opacity-100"
+                        leave="transition ease-in duration-150"
+                        leaveFrom="transform opacity-100"
+                        leaveTo="transform opacity-0"
+                      >
+                        <div className="pl-4 py-1 bg-dark-card/30">
+                          {item.submenu && item.submenu.map((child) => (
+                            <Link
+                              key={child.name}
+                              href={child.href}
+                              className={`block px-4 py-2.5 md:py-2 text-sm text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${
+                                router.pathname === child.href ? 'text-primary' : ''
+                              }`}
+                              onClick={() => {
+                                setOpenSubmenu(null)
+                                setIsOpen(false)
+                              }}
+                            >
+                              {child.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </Transition>
+                    </div>
+                  ))}
                 </div>
               </Transition>
             </div>
