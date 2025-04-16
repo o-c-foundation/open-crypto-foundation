@@ -294,7 +294,7 @@ const Home: NextPageWithLayout = () => {
       <ScrollToTop />
 
       {/* Hero Section */}
-      <section className="py-16 md:py-24 animated-gradient-subtle">
+      <section className="py-16 md:py-24 front-page-gradient">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-3xl md:text-5xl font-bold mb-6">Empowering the Crypto & Blockchain Ecosystem</h1>
@@ -326,7 +326,7 @@ const Home: NextPageWithLayout = () => {
       </section>
       
       {/* Features Section */}
-      <section className="py-16 animated-gradient-light">
+      <section className="py-16 front-page-gradient">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Comprehensive Blockchain & DeFi Ecosystem</h2>
@@ -438,7 +438,7 @@ const Home: NextPageWithLayout = () => {
       </section>
 
       {/* Community Section */}
-      <section className="py-16 animated-gradient-subtle">
+      <section className="py-16 front-page-gradient">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">

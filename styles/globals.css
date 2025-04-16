@@ -27,6 +27,17 @@ body {
   animation: gradient-shift 20s ease infinite;
 }
 
+/* New Front Page Gradient with Dark Blue, Green, White and Purple */
+.front-page-gradient {
+  background: linear-gradient(130deg, 
+    rgba(8, 18, 42, 1), 
+    rgba(0, 128, 64, 1), 
+    rgba(255, 255, 255, 0.8), 
+    rgba(107, 70, 193, 1));
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
 .animated-gradient-subtle {
   background: linear-gradient(130deg, rgba(var(--dark-blue-rgb), 0.8), rgba(var(--background-rgb), 0.8), rgba(var(--dark-purple-rgb), 0.8), rgba(var(--dark-gray-rgb), 0.8));
   background-size: 300% 300%;
