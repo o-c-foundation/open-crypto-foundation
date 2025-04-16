@@ -20,7 +20,9 @@ import {
   FaChevronDown,
   FaChevronRight,
   FaSearch,
-  FaEllipsisV
+  FaEllipsisV,
+  FaTools,
+  FaShieldAlt
 } from 'react-icons/fa'
 import Logo from './Logo'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -40,12 +42,16 @@ interface MenuItem {
 }
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [mainMenuOpen, setMainMenuOpen] = useState(false)
+  const [toolsMenuOpen, setToolsMenuOpen] = useState(false)
+  const [resourcesMenuOpen, setResourcesMenuOpen] = useState(false)
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null)
   const [searchOpen, setSearchOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
-  const dropdownRef = useRef<HTMLDivElement>(null)
+  const mainDropdownRef = useRef<HTMLDivElement>(null)
+  const toolsDropdownRef = useRef<HTMLDivElement>(null)
+  const resourcesDropdownRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
   const { t } = useLanguage()
 
@@ -103,49 +109,56 @@ export default function Navbar() {
     },
   ]
 
-  // New separate dropdown for Tools, Resources & Security
-  const resourcesToolsItems: MenuItem[] = [
-    {
-      name: 'Tools',
-      submenu: [
-        { name: 'Tools Overview', href: '/tools' },
-        { name: 'DEX Aggregator', href: '/tools/dex-aggregator' },
-        { name: 'Wallet Connect', href: '/tools/wallet-connect' },
-        { name: 'Token Analyzer', href: '/tools/token-analyzer' },
-        { name: 'Token Investigator', href: '/tools/token-investigator' },
-        { name: 'Contract Analyzer', href: '/tools/contract-analyzer' },
-        { name: 'Contract Scanner', href: '/tools/contract-scanner' },
-      ]
-    },
-    {
-      name: 'Resources',
-      submenu: [
-        { name: 'DeFi Fundamentals', href: '/resources/defi-fundamentals' },
-        { name: 'For Traders', href: '/resources/traders' },
-        { name: 'For Developers', href: '/resources/developers' },
-        { name: 'Wallet Guide', href: '/resources/wallet-guide' },
-        { name: 'Security Guide', href: '/resources/security-guide' },
-        { name: 'Blockchain Repositories', href: '/resources/blockchain-repositories' },
-        { name: 'RPC Endpoints', href: '/resources/rpc-endpoints' },
-      ]
-    },
-    {
-      name: 'Security',
-      submenu: [
-        { name: 'Audit', href: '/audit' },
-        { name: 'Scam Database', href: '/scam-database' },
-        { name: 'Report Scam', href: '/report-scam' },
-        { name: 'Verified Links', href: '/verified-links' },
-        { name: 'Wallets & Funds', href: '/wallets-and-funds' },
-      ]
-    },
+  // Tools dropdown items
+  const toolsItems: MenuItem[] = [
+    { name: 'Tools Overview', href: '/tools' },
+    { name: 'DEX Aggregator', href: '/tools/dex-aggregator' },
+    { name: 'Wallet Connect', href: '/tools/wallet-connect' },
+    { name: 'Token Analyzer', href: '/tools/token-analyzer' },
+    { name: 'Token Investigator', href: '/tools/token-investigator' },
+    { name: 'Contract Analyzer', href: '/tools/contract-analyzer' },
+    { name: 'Contract Scanner', href: '/tools/contract-scanner' },
   ]
 
-  // Close menu when clicking outside
+  // Resources dropdown items (combining resources and security)
+  const resourcesItems: MenuItem[] = [
+    // Resources section
+    { name: 'DeFi Fundamentals', href: '/resources/defi-fundamentals' },
+    { name: 'For Traders', href: '/resources/traders' },
+    { name: 'For Developers', href: '/resources/developers' },
+    { name: 'Wallet Guide', href: '/resources/wallet-guide' },
+    { name: 'Security Guide', href: '/resources/security-guide' },
+    { name: 'Blockchain Repositories', href: '/resources/blockchain-repositories' },
+    { name: 'RPC Endpoints', href: '/resources/rpc-endpoints' },
+    // Security section
+    { name: 'Audit', href: '/audit' },
+    { name: 'Scam Database', href: '/scam-database' },
+    { name: 'Report Scam', href: '/report-scam' },
+    { name: 'Verified Links', href: '/verified-links' },
+    { name: 'Wallets & Funds', href: '/wallets-and-funds' },
+  ]
+
+  // Close menus when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false)
+      if (mainDropdownRef.current && !mainDropdownRef.current.contains(event.target as Node)) {
+        setMainMenuOpen(false)
+      }
+      
+      if (toolsDropdownRef.current && !toolsDropdownRef.current.contains(event.target as Node)) {
+        setToolsMenuOpen(false)
+      }
+      
+      if (resourcesDropdownRef.current && !resourcesDropdownRef.current.contains(event.target as Node)) {
+        setResourcesMenuOpen(false)
+      }
+      
+      // Reset the submenu regardless of which menu was clicked outside of
+      if (
+        (mainDropdownRef.current && !mainDropdownRef.current.contains(event.target as Node)) &&
+        (toolsDropdownRef.current && !toolsDropdownRef.current.contains(event.target as Node)) &&
+        (resourcesDropdownRef.current && !resourcesDropdownRef.current.contains(event.target as Node))
+      ) {
         setOpenSubmenu(null)
       }
     }
@@ -159,7 +172,9 @@ export default function Navbar() {
   // Close menu on route change
   useEffect(() => {
     const handleRouteChange = () => {
-      setIsOpen(false)
+      setMainMenuOpen(false)
+      setToolsMenuOpen(false)
+      setResourcesMenuOpen(false)
       setOpenSubmenu(null)
       setSearchOpen(false)
     }
@@ -176,7 +191,12 @@ export default function Navbar() {
 
   const toggleSearch = () => {
     setSearchOpen(!searchOpen)
-    if (isOpen) setIsOpen(false)
+    // Close all menus when search is opened
+    if (!searchOpen) {
+      setMainMenuOpen(false)
+      setToolsMenuOpen(false)
+      setResourcesMenuOpen(false)
+    }
   }
 
   return (
@@ -195,21 +215,25 @@ export default function Navbar() {
             </Link>
           </div>
           
-          {/* Center area - now has two dropdowns */}
+          {/* Center area - now has three separate dropdowns */}
           <div className="flex-grow flex justify-center gap-2 sm:gap-4">
             {/* Main Menu dropdown */}
-            <div className="relative" ref={dropdownRef}>
+            <div className="relative" ref={mainDropdownRef}>
               <button
                 className="flex items-center justify-center px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-gray-200 hover:text-white hover:bg-dark-card/40 focus:outline-none transition-all duration-200 border border-gray-700/40"
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => {
+                  setMainMenuOpen(!mainMenuOpen)
+                  setToolsMenuOpen(false)
+                  setResourcesMenuOpen(false)
+                }}
                 aria-label="Toggle navigation menu"
               >
                 <span className="mr-1 sm:mr-2 text-xs sm:text-sm font-medium">Menu</span>
-                {isOpen ? <FaTimes size={isMobile ? 14 : 16} /> : <FaChevronDown size={isMobile ? 14 : 16} />}
+                {mainMenuOpen ? <FaTimes size={isMobile ? 14 : 16} /> : <FaChevronDown size={isMobile ? 14 : 16} />}
               </button>
 
               <Transition
-                show={isOpen}
+                show={mainMenuOpen}
                 enter="transition ease-out duration-200"
                 enterFrom="transform opacity-0 scale-95"
                 enterTo="transform opacity-100 scale-100"
@@ -226,7 +250,7 @@ export default function Navbar() {
                         className={`block px-4 py-2.5 md:py-2 text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${
                           router.pathname === item.href ? 'text-primary' : ''
                         }`}
-                        onClick={() => setIsOpen(false)}
+                        onClick={() => setMainMenuOpen(false)}
                       >
                         <span className="flex items-center">
                           {item.name}
@@ -275,7 +299,7 @@ export default function Navbar() {
                                 }`}
                                 onClick={() => {
                                   setOpenSubmenu(null)
-                                  setIsOpen(false)
+                                  setMainMenuOpen(false)
                                 }}
                               >
                                 {child.name}
@@ -290,30 +314,24 @@ export default function Navbar() {
               </Transition>
             </div>
 
-            {/* New Tools & Resources dropdown */}
-            <div className="relative">
+            {/* Tools dropdown */}
+            <div className="relative" ref={toolsDropdownRef}>
               <button
                 className="flex items-center justify-center px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-gray-200 hover:text-white hover:bg-dark-card/40 focus:outline-none transition-all duration-200 border border-gray-700/40"
                 onClick={() => {
-                  setIsOpen(false); // Close main menu if open
-                  setOpenSubmenu(null);
-                  document.dispatchEvent(new MouseEvent('mousedown', {
-                    bubbles: true,
-                    cancelable: true,
-                  }));
-                  setTimeout(() => {
-                    setIsOpen(true); // Then open this menu
-                    setOpenSubmenu('ResourcesTools');
-                  }, 50);
+                  setToolsMenuOpen(!toolsMenuOpen)
+                  setMainMenuOpen(false)
+                  setResourcesMenuOpen(false)
                 }}
-                aria-label="Toggle tools and resources menu"
+                aria-label="Toggle tools menu"
               >
-                <span className="mr-1 sm:mr-2 text-xs sm:text-sm font-medium">Tools & Resources</span>
-                <FaChevronDown size={isMobile ? 14 : 16} />
+                <FaTools className="mr-1" size={isMobile ? 12 : 14} />
+                <span className="mr-1 sm:mr-2 text-xs sm:text-sm font-medium">Tools</span>
+                <FaChevronDown size={isMobile ? 12 : 14} />
               </button>
 
               <Transition
-                show={isOpen && openSubmenu === 'ResourcesTools'}
+                show={toolsMenuOpen}
                 enter="transition ease-out duration-200"
                 enterFrom="transform opacity-0 scale-95"
                 enterTo="transform opacity-100 scale-100"
@@ -321,55 +339,64 @@ export default function Navbar() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <div className={`absolute ${isMobile ? 'w-screen right-1/2 translate-x-1/2 max-h-[80vh] overflow-y-auto' : 'right-0 w-64'} top-10 bg-dark-elevated rounded-xl border border-gray-800 shadow-2xl py-2`}>
-                  {resourcesToolsItems.map((item) => (
-                    <div key={item.name}>
-                      <button
-                        className={`flex items-center justify-between w-full px-4 py-2.5 md:py-2 text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${
-                          (router.pathname.startsWith('/resources') && item.name === 'Resources') || 
-                          (router.pathname.startsWith('/tools') && item.name === 'Tools') ||
-                          ((router.pathname === '/audit' || router.pathname === '/scam-database' || 
-                            router.pathname.startsWith('/report-scam')) && item.name === 'Security')
-                            ? 'text-primary' : ''
-                        }`}
-                        onClick={() => toggleSubmenu(item.name)}
-                      >
-                        <span>{item.name}</span>
-                        <FaChevronDown 
-                          className={`ml-2 h-4 w-4 transition-transform ${
-                            openSubmenu === item.name ? 'transform rotate-180' : ''
-                          }`} 
-                        />
-                      </button>
-                      
-                      <Transition
-                        show={openSubmenu === item.name}
-                        enter="transition ease-out duration-200"
-                        enterFrom="transform opacity-0"
-                        enterTo="transform opacity-100"
-                        leave="transition ease-in duration-150"
-                        leaveFrom="transform opacity-100"
-                        leaveTo="transform opacity-0"
-                      >
-                        <div className="pl-4 py-1 bg-dark-card/30">
-                          {item.submenu && item.submenu.map((child) => (
-                            <Link
-                              key={child.name}
-                              href={child.href}
-                              className={`block px-4 py-2.5 md:py-2 text-sm text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${
-                                router.pathname === child.href ? 'text-primary' : ''
-                              }`}
-                              onClick={() => {
-                                setOpenSubmenu(null)
-                                setIsOpen(false)
-                              }}
-                            >
-                              {child.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </Transition>
-                    </div>
+                <div className={`absolute ${isMobile ? 'w-screen left-1/2 -translate-x-1/2 max-h-[80vh] overflow-y-auto' : 'left-0 w-56'} top-10 bg-dark-elevated rounded-xl border border-gray-800 shadow-2xl py-2`}>
+                  {toolsItems.map((item) => (
+                    <Link 
+                      href={item.href} 
+                      key={item.name}
+                      className={`block px-4 py-2.5 md:py-2 text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${
+                        router.pathname === item.href ? 'text-primary' : ''
+                      }`}
+                      onClick={() => setToolsMenuOpen(false)}
+                    >
+                      <span className="flex items-center">
+                        {item.name}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </Transition>
+            </div>
+
+            {/* Resources dropdown */}
+            <div className="relative" ref={resourcesDropdownRef}>
+              <button
+                className="flex items-center justify-center px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-gray-200 hover:text-white hover:bg-dark-card/40 focus:outline-none transition-all duration-200 border border-gray-700/40"
+                onClick={() => {
+                  setResourcesMenuOpen(!resourcesMenuOpen)
+                  setMainMenuOpen(false)
+                  setToolsMenuOpen(false)
+                }}
+                aria-label="Toggle resources menu"
+              >
+                <FaBook className="mr-1" size={isMobile ? 12 : 14} />
+                <span className="mr-1 sm:mr-2 text-xs sm:text-sm font-medium">Resources</span>
+                <FaChevronDown size={isMobile ? 12 : 14} />
+              </button>
+
+              <Transition
+                show={resourcesMenuOpen}
+                enter="transition ease-out duration-200"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-150"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+              >
+                <div className={`absolute ${isMobile ? 'w-screen right-1/2 translate-x-1/2 max-h-[80vh] overflow-y-auto' : 'right-0 w-56'} top-10 bg-dark-elevated rounded-xl border border-gray-800 shadow-2xl py-2`}>
+                  {resourcesItems.map((item) => (
+                    <Link 
+                      href={item.href} 
+                      key={item.name}
+                      className={`block px-4 py-2.5 md:py-2 text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${
+                        router.pathname === item.href ? 'text-primary' : ''
+                      }`}
+                      onClick={() => setResourcesMenuOpen(false)}
+                    >
+                      <span className="flex items-center">
+                        {item.name}
+                      </span>
+                    </Link>
                   ))}
                 </div>
               </Transition>
