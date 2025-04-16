@@ -423,7 +423,7 @@ export default function Navbar() {
                     placeholder="Search..."
                     value={searchInputValue}
                     onChange={(e) => setSearchInputValue(e.target.value)}
-                    className="bg-dark-card/60 border border-gray-700/50 rounded-lg pl-8 pr-2 py-1.5 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/50 w-40 lg:w-48 xl:w-56 transition-all duration-300 ease-in-out"
+                    className="bg-dark-card/60 border border-gray-700/50 rounded-lg pl-8 pr-2 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/50 w-[330px] h-[36px] transition-all duration-300 ease-in-out"
                   />
                   <FaSearch className="absolute left-2.5 text-gray-400 text-sm" />
                 </div>
