@@ -204,7 +204,7 @@ export default function OCFToken() {
                 <FaCoins size={24} className="text-primary" />
                 <div>
                   <h3 className="text-xl font-bold text-white">ICO Announcement</h3>
-                  <p className="text-gray-200">Token sale starting on <span className="text-primary font-semibold">April 18, 2025 at 5PM EST</span></p>
+                  <p className="text-gray-200">Token Live on <span className="text-primary font-semibold">Meteora, PumpSwap, Orca & Raydium on April 18, 2025 at 5PM EST</span></p>
                 </div>
               </div>
             </div>
