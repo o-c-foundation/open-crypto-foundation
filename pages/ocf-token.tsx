@@ -173,16 +173,17 @@ export default function OCFToken() {
   return (
     <>
       <Head>
-        <title>OCF Token | Open Crypto Foundation</title>
-        <meta name="description" content="Learn about the OCF Token, its DAO governance structure, benefits for holders, and how it powers the Open Crypto Foundation ecosystem." />
+        <title>OCF Token | Cryptocurrency Governance & DeFi Utility | Open Crypto Foundation</title>
+        <meta name="description" content="Discover the OCF governance token powering decentralized finance (DeFi) innovation. Learn about our blockchain technology, DAO structure, token utility, cross-chain capabilities, and cryptocurrency investment benefits." />
+        <meta name="keywords" content="OCF token, cryptocurrency, blockchain, DeFi, DAO governance, crypto investment, utility token, Solana, SPL token, digital asset, crypto staking, blockchain protocol" />
       </Head>
 
       <ScrollToTop />
 
       <div className="container px-4 py-16 mx-auto">
         <div className="max-w-4xl mx-auto mb-16">
-          <h1 className="text-5xl font-bold mb-6 text-gradient">OCF Token</h1>
-          <p className="text-xl text-gray-400 mb-8">The governance token that powers the Open Crypto Foundation ecosystem, enabling decentralized decision-making and community ownership of the platform.</p>
+          <h1 className="text-5xl font-bold mb-6 text-gradient">OCF Token: Decentralized Governance & Utility</h1>
+          <p className="text-xl text-gray-400 mb-8">The governance cryptocurrency that powers the Open Crypto Foundation blockchain ecosystem, enabling decentralized decision-making, cross-chain interoperability, and DeFi utility for the next generation of crypto innovators.</p>
           
           <div className="flex flex-wrap gap-4 mb-12">
             <Link href="/whitepaper" className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 font-medium flex items-center gap-2">
@@ -196,7 +197,20 @@ export default function OCFToken() {
             </Link>
           </div>
           
-          <div className="bg-dark-card p-8 rounded-xl border border-gray-800 mb-12">            
+          <div className="bg-dark-card p-8 rounded-xl border border-gray-800 mb-12">
+            <div className="flex items-center gap-3 mb-6 flex-wrap">
+              <div className="bg-primary/20 p-3 rounded-lg">
+                <FaCoins size={24} className="text-primary" />
+              </div>
+              <h2 className="text-2xl font-bold text-white">OCF Contract Address</h2>
+              <div className="ml-auto mt-2 sm:mt-0">
+                <div className="px-4 py-2 bg-dark-elevated rounded-lg border border-gray-700 font-mono text-sm text-gray-300 flex items-center">
+                  <span className="mr-2 sm:block hidden">Contract:</span> 
+                  <span className="text-green-400">GfmoS7ycz9q3FETmJ9m9n71oab3M9n5RRBYL9aQ1Yppv</span>
+                </div>
+              </div>
+            </div>
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
               <div className="bg-dark-elevated p-4 rounded-lg border border-gray-800">
                 <p className="text-gray-400 mb-1 text-sm">Circulating Supply</p>
@@ -209,33 +223,34 @@ export default function OCFToken() {
             </div>
             
             <p className="text-gray-400">
-              The OCF token is the governance and utility token that powers the Open Crypto Foundation ecosystem. 
-              It enables holders to participate in the DAO, vote on key decisions, and access premium features 
-              across all OCF applications and services.
+              The OCF token is the governance and utility cryptocurrency that powers the Open Crypto Foundation blockchain ecosystem. 
+              It enables holders to participate in the DAO, vote on key decisions, and access premium DeFi features 
+              across all OCF applications and services. With Solana's high-performance blockchain technology, OCF token offers 
+              fast transactions and low fees for cryptocurrency enthusiasts and investors.
             </p>
           </div>
         </div>
         
         <div className="max-w-4xl mx-auto mb-16">
           <div className="mb-12">
-            <h2 className="text-3xl font-bold mb-8 text-white">OCF DAO: <span className="text-gradient">Decentralized Governance</span></h2>
+            <h2 className="text-3xl font-bold mb-8 text-white">OCF DAO: <span className="text-gradient">Decentralized Blockchain Governance</span></h2>
             
             <div className="bg-dark-card p-8 rounded-xl border border-gray-800 mb-8">
               <p className="text-gray-400 mb-6">
                 The OCF DAO (Decentralized Autonomous Organization) is the governing body of the Open Crypto Foundation ecosystem. 
-                Through the OCF token, community members collectively make decisions about protocol upgrades, treasury management, 
-                and strategic direction, ensuring the platform remains truly decentralized and community-owned.
+                Through the OCF cryptocurrency token, community members collectively make decisions about protocol upgrades, treasury management, 
+                and strategic direction, ensuring the blockchain platform remains truly decentralized, secure, and community-owned in the evolving crypto landscape.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <div className="bg-dark-elevated p-4 rounded-lg border border-gray-800 flex flex-col items-center text-center">
                   <FaUsers size={32} className="text-primary mb-3" />
-                  <p className="text-white font-semibold mb-1">Community-Owned</p>
+                  <p className="text-white font-semibold mb-1">Community-Owned Blockchain</p>
                   <p className="text-gray-400 text-sm">No central authority or controlling entity</p>
                 </div>
                 <div className="bg-dark-elevated p-4 rounded-lg border border-gray-800 flex flex-col items-center text-center">
                   <FaGlobe size={32} className="text-primary mb-3" />
-                  <p className="text-white font-semibold mb-1">Globally Accessible</p>
+                  <p className="text-white font-semibold mb-1">Globally Accessible Crypto</p>
                   <p className="text-gray-400 text-sm">Open to anyone with OCF tokens, regardless of location</p>
                 </div>
                 <div className="bg-dark-elevated p-4 rounded-lg border border-gray-800 flex flex-col items-center text-center">
@@ -245,7 +260,7 @@ export default function OCFToken() {
                 </div>
               </div>
               
-              <h3 className="text-xl font-bold text-white mb-4">The OCF DAO Governance Process</h3>
+              <h3 className="text-xl font-bold text-white mb-4">The OCF DAO Blockchain Governance Process</h3>
               <div className="space-y-6">
                 {governanceProcess.map((step, index) => (
                   <GovernanceStep key={index} {...step} />
@@ -255,7 +270,7 @@ export default function OCFToken() {
           </div>
           
           <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8 text-white">Benefits of <span className="text-gradient">Holding OCF Token</span></h2>
+            <h2 className="text-3xl font-bold mb-8 text-white">Benefits of <span className="text-gradient">Holding OCF Cryptocurrency</span></h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               {benefits.map((benefit, index) => (
                 <BenefitCard key={index} {...benefit} />
@@ -264,11 +279,11 @@ export default function OCFToken() {
           </div>
           
           <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8 text-white">DAO <span className="text-gradient">Treasury Allocation</span></h2>
+            <h2 className="text-3xl font-bold mb-8 text-white">DAO <span className="text-gradient">Crypto Treasury Allocation</span></h2>
             <p className="text-gray-400 mb-6">
-              The OCF DAO controls a significant treasury of tokens that are used to fund ongoing development, 
-              community initiatives, and ecosystem growth. Token holders vote on how these funds are allocated 
-              across various categories:
+              The OCF DAO controls a significant treasury of cryptocurrency tokens that are used to fund ongoing blockchain development, 
+              crypto community initiatives, and DeFi ecosystem growth. Token holders vote on how these funds are allocated 
+              across various categories to strengthen the platform's position in the digital asset marketplace:
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -279,7 +294,7 @@ export default function OCFToken() {
           </div>
           
           <div className="bg-dark-card p-8 rounded-xl border border-gray-800">
-            <h2 className="text-2xl font-bold mb-6 text-white">How to <span className="text-gradient">Participate in the DAO</span></h2>
+            <h2 className="text-2xl font-bold mb-6 text-white">How to <span className="text-gradient">Participate in the Blockchain DAO</span></h2>
             
             <div className="space-y-6">
               <div className="flex gap-4">
@@ -287,10 +302,10 @@ export default function OCFToken() {
                   <span className="font-bold text-primary text-lg">1</span>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Acquire OCF Tokens</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">Acquire OCF Cryptocurrency</h3>
                   <p className="text-gray-400 mb-4">
-                    Purchase OCF tokens through supported exchanges or earn them through community contributions 
-                    and participation in the ecosystem.
+                    Purchase OCF tokens through supported cryptocurrency exchanges or earn them through community contributions 
+                    and participation in the blockchain ecosystem.
                   </p>
                 </div>
               </div>
@@ -300,10 +315,10 @@ export default function OCFToken() {
                   <span className="font-bold text-primary text-lg">2</span>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Join the Governance Forum</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">Join the DeFi Governance Forum</h3>
                   <p className="text-gray-400 mb-4">
-                    Create an account on the OCF Governance Forum to participate in discussions, 
-                    learn about upcoming proposals, and engage with the community.
+                    Create an account on the OCF Governance Forum to participate in discussions about blockchain innovations, 
+                    learn about upcoming crypto proposals, and engage with the DeFi community.
                   </p>
                 </div>
               </div>
@@ -313,10 +328,10 @@ export default function OCFToken() {
                   <span className="font-bold text-primary text-lg">3</span>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Delegate or Vote</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">Delegate or Vote on Blockchain Proposals</h3>
                   <p className="text-gray-400 mb-4">
-                    Use your OCF tokens to vote directly on proposals or delegate your voting power to trusted 
-                    community members who align with your vision for the protocol.
+                    Use your OCF cryptocurrency tokens to vote directly on proposals or delegate your voting power to trusted 
+                    community members who align with your vision for the blockchain protocol.
                   </p>
                 </div>
               </div>
@@ -326,10 +341,10 @@ export default function OCFToken() {
                   <span className="font-bold text-primary text-lg">4</span>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Submit Proposals</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">Submit DeFi Protocol Proposals</h3>
                   <p className="text-gray-400">
-                    Once you meet the token threshold, you can submit your own proposals for consideration by the community, 
-                    helping shape the future of the Open Crypto Foundation ecosystem.
+                    Once you meet the token threshold, you can submit your own proposals for consideration by the crypto community, 
+                    helping shape the future of the Open Crypto Foundation's blockchain ecosystem and DeFi innovations.
                   </p>
                 </div>
               </div>

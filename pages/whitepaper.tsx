@@ -8,15 +8,16 @@ export default function Whitepaper() {
   return (
     <>
       <Head>
-        <title>OCF Token Whitepaper | Open Crypto Foundation</title>
-        <meta name="description" content="Comprehensive technical whitepaper detailing the Open Crypto Foundation's cross-chain token architecture, security model, and ecosystem" />
+        <title>OCF Cryptocurrency Whitepaper | Blockchain Interoperability & DeFi Protocol | Open Crypto Foundation</title>
+        <meta name="description" content="Comprehensive technical whitepaper detailing the Open Crypto Foundation's cross-chain cryptocurrency architecture, blockchain security model, DeFi protocol implementation, and decentralized tokenomics ecosystem." />
+        <meta name="keywords" content="cryptocurrency whitepaper, blockchain interoperability, cross-chain DeFi, OCF token, decentralized finance, crypto protocol, blockchain security, zero-knowledge proofs, threshold signatures, multi-chain architecture, tokenomics, Solana SPL token" />
       </Head>
 
       <div className="container px-4 py-16 mx-auto">
         <div className="max-w-4xl mx-auto mb-16">
           <div className="mb-12">
-            <h1 className="text-5xl font-bold mb-6 text-gradient">OCF Token Whitepaper</h1>
-            <p className="text-xl text-gray-400 mb-8">A Technical Overview of the Open Crypto Foundation Cross-Chain Token Protocol v1.2</p>
+            <h1 className="text-5xl font-bold mb-6 text-gradient">OCF Blockchain Protocol Whitepaper</h1>
+            <p className="text-xl text-gray-400 mb-8">A Technical Overview of the Open Crypto Foundation Cross-Chain Cryptocurrency Protocol v1.2</p>
             
             <div className="flex flex-wrap gap-4 mb-8">
               <a href="/docs/OCF_Token_Whitepaper.pdf" download className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 font-medium flex items-center">
@@ -31,22 +32,22 @@ export default function Whitepaper() {
             </div>
             
             <div className="bg-dark-card p-6 rounded-xl border border-gray-800 mb-10">
-              <h2 className="text-2xl font-bold text-white mb-4">Abstract</h2>
+              <h2 className="text-2xl font-bold text-white mb-4">Abstract: Next-Generation Blockchain Protocol</h2>
               <p className="text-gray-400">
-                This whitepaper presents a novel cross-chain token architecture designed to facilitate secure, efficient interoperability across heterogeneous blockchain networks. 
+                This whitepaper presents a novel cross-chain cryptocurrency architecture designed to facilitate secure, efficient blockchain interoperability across heterogeneous blockchain networks. 
                 The Open Crypto Foundation (OCF) token implements a multi-layered validation framework with threshold signature schemes and zero-knowledge attestations to ensure 
-                transaction finality while minimizing trust assumptions. By leveraging Wormhole's proven cross-chain messaging infrastructure augmented with our proprietary validation protocol, 
-                we introduce a robust system for deterministic state verification while preserving the security properties of each underlying blockchain. 
-                Our implementation encompasses specialized deployments on Ethereum (EVM), Solana (SPL), and BNB Chain with a comprehensive security model 
-                that addresses the unique challenges of cross-chain communication. This paper delineates the technical specifications, security considerations, 
-                formal verification methodologies, and economic mechanisms that underpin the OCF token ecosystem.
+                transaction finality while minimizing trust assumptions in decentralized finance (DeFi) applications. By leveraging Wormhole's proven cross-chain messaging infrastructure augmented with our proprietary blockchain validation protocol, 
+                we introduce a robust system for deterministic state verification while preserving the security properties of each underlying distributed ledger. 
+                Our cryptocurrency implementation encompasses specialized deployments on Ethereum (EVM), Solana (SPL), and BNB Chain with a comprehensive blockchain security model 
+                that addresses the unique challenges of cross-chain communication in the DeFi ecosystem. This paper delineates the technical specifications, cryptographic security considerations, 
+                formal verification methodologies, and tokenomics mechanisms that underpin the OCF cryptocurrency ecosystem's sustainable operation.
               </p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
             <div className="bg-dark-card p-5 rounded-xl border border-gray-800 md:col-span-1">
-              <h3 className="font-bold text-white mb-4">Table of Contents</h3>
+              <h3 className="font-bold text-white mb-4">Whitepaper Contents</h3>
               <ul className="space-y-2 text-sm">
                 <li>
                   <a href="#introduction" className="text-primary hover:text-primary-light transition-colors flex items-center">
@@ -55,7 +56,7 @@ export default function Whitepaper() {
                 </li>
                 <li>
                   <a href="#architecture" className="text-primary hover:text-primary-light transition-colors flex items-center">
-                    2. Architecture <FaChevronRight className="ml-auto" size={12} />
+                    2. Blockchain Architecture <FaChevronRight className="ml-auto" size={12} />
                   </a>
                 </li>
                 <li>
@@ -70,27 +71,27 @@ export default function Whitepaper() {
                 </li>
                 <li>
                   <a href="#security" className="text-primary hover:text-primary-light transition-colors flex items-center">
-                    5. Security Model <FaChevronRight className="ml-auto" size={12} />
+                    5. Cryptocurrency Security Model <FaChevronRight className="ml-auto" size={12} />
                   </a>
                 </li>
                 <li>
                   <a href="#implementation" className="text-primary hover:text-primary-light transition-colors flex items-center">
-                    6. Network Implementations <FaChevronRight className="ml-auto" size={12} />
+                    6. Blockchain Network Implementations <FaChevronRight className="ml-auto" size={12} />
                   </a>
                 </li>
                 <li>
                   <a href="#token" className="text-primary hover:text-primary-light transition-colors flex items-center">
-                    7. Token Utility & Economics <FaChevronRight className="ml-auto" size={12} />
+                    7. Token Utility & Tokenomics <FaChevronRight className="ml-auto" size={12} />
                   </a>
                 </li>
                 <li>
                   <a href="#governance" className="text-primary hover:text-primary-light transition-colors flex items-center">
-                    8. Governance Framework <FaChevronRight className="ml-auto" size={12} />
+                    8. DeFi Governance Framework <FaChevronRight className="ml-auto" size={12} />
                   </a>
                 </li>
                 <li>
                   <a href="#future" className="text-primary hover:text-primary-light transition-colors flex items-center">
-                    9. Future Directions <FaChevronRight className="ml-auto" size={12} />
+                    9. Future Blockchain Directions <FaChevronRight className="ml-auto" size={12} />
                   </a>
                 </li>
                 <li>
@@ -103,32 +104,32 @@ export default function Whitepaper() {
             
             <div className="md:col-span-3 space-y-12">
               <section id="introduction">
-                <h2 className="text-3xl font-bold text-gradient mb-6">1. Introduction</h2>
+                <h2 className="text-3xl font-bold text-gradient mb-6">1. Introduction to Blockchain Interoperability</h2>
                 <p className="text-gray-400 mb-4">
-                  The proliferation of heterogeneous blockchain architectures has created an increasingly fragmented ecosystem, with disparate networks operating under fundamentally different consensus mechanisms, execution environments, and trust models. This fragmentation impedes the free flow of digital assets and information, introducing substantial friction for users and developers while constraining the composability that underpins decentralized applications.
+                  The proliferation of heterogeneous blockchain architectures has created an increasingly fragmented cryptocurrency ecosystem, with disparate networks operating under fundamentally different consensus mechanisms, execution environments, and trust models. This fragmentation impedes the free flow of digital assets and information, introducing substantial friction for DeFi users and developers while constraining the composability that underpins decentralized applications and crypto protocols.
                 </p>
                 <p className="text-gray-400 mb-4">
-                  Existing cross-chain solutions typically fall into one of three categories: trusted bridges reliant on centralized validators, optimistic bridges employing fraud proofs with challenge periods, and validity proof systems leveraging zero-knowledge cryptography. Each approach presents inherent trade-offs between security, efficiency, and decentralization. Trusted bridges introduce substantial counterparty risk, as evidenced by numerous high-profile exploits. Optimistic systems impose significant latency constraints due to challenge period requirements. Validity proof systems, while theoretically optimal, face practical limitations in computational overhead and implementation complexity.
+                  Existing cross-chain cryptocurrency solutions typically fall into one of three categories: trusted bridges reliant on centralized validators, optimistic bridges employing fraud proofs with challenge periods, and validity proof systems leveraging zero-knowledge cryptography. Each approach presents inherent trade-offs between blockchain security, efficiency, and decentralization. Trusted bridges introduce substantial counterparty risk, as evidenced by numerous high-profile crypto exploits. Optimistic systems impose significant latency constraints due to challenge period requirements. Validity proof systems, while theoretically optimal for DeFi applications, face practical limitations in computational overhead and implementation complexity.
                 </p>
                 <p className="text-gray-400 mb-6">
-                  The Open Crypto Foundation token protocol introduces a hybrid approach that combines the security advantages of threshold cryptography with the efficiency of optimized message passing protocols, specifically leveraging Wormhole's established infrastructure while introducing additional security and verification layers. Our implementation minimizes trust assumptions through a novel consensus mechanism that ensures transaction finality across disparate blockchain environments without compromising the security properties of any participating network.
+                  The Open Crypto Foundation token protocol introduces a hybrid blockchain approach that combines the security advantages of threshold cryptography with the efficiency of optimized message passing protocols, specifically leveraging Wormhole's established infrastructure while introducing additional cryptocurrency security and verification layers. Our implementation minimizes trust assumptions through a novel consensus mechanism that ensures transaction finality across disparate blockchain environments without compromising the security properties of any participating network or DeFi application.
                 </p>
                 
                 <div className="bg-dark-elevated p-6 rounded-xl border border-gray-800 my-6">
-                  <h3 className="text-xl font-semibold text-white mb-3">1.1 Design Objectives</h3>
+                  <h3 className="text-xl font-semibold text-white mb-3">1.1 Cryptocurrency Design Objectives</h3>
                   <ul className="list-disc pl-6 space-y-2 text-gray-400">
-                    <li><strong>Security Preservation</strong>: Maintain the security guarantees of each underlying blockchain without introducing additional trust assumptions</li>
-                    <li><strong>Deterministic Finality</strong>: Provide definitive transaction finality across networks with heterogeneous consensus mechanisms</li>
-                    <li><strong>Decentralized Governance</strong>: Implement progressive decentralization with cross-chain governance capabilities</li>
-                    <li><strong>Economic Sustainability</strong>: Design self-sustaining economic models with aligned incentives for all participants</li>
-                    <li><strong>Protocol Composability</strong>: Enable seamless integration with existing DeFi protocols and smart contract platforms</li>
-                    <li><strong>Scalability</strong>: Support high transaction throughput without compromising security or decentralization</li>
+                    <li><strong>Blockchain Security Preservation</strong>: Maintain the security guarantees of each underlying blockchain without introducing additional trust assumptions</li>
+                    <li><strong>Deterministic Transaction Finality</strong>: Provide definitive transaction finality across networks with heterogeneous consensus mechanisms</li>
+                    <li><strong>Decentralized DeFi Governance</strong>: Implement progressive decentralization with cross-chain governance capabilities</li>
+                    <li><strong>Tokenomics Sustainability</strong>: Design self-sustaining economic models with aligned incentives for all crypto participants</li>
+                    <li><strong>DeFi Protocol Composability</strong>: Enable seamless integration with existing DeFi protocols and smart contract platforms</li>
+                    <li><strong>Blockchain Scalability</strong>: Support high transaction throughput without compromising security or decentralization</li>
                   </ul>
                 </div>
               </section>
               
               <section id="architecture">
-                <h2 className="text-3xl font-bold text-gradient mb-6">2. Architecture</h2>
+                <h2 className="text-3xl font-bold text-gradient mb-6">2. Blockchain Architecture</h2>
                 <p className="text-gray-400 mb-4">
                   The OCF token architecture implements a layered approach to cross-chain interoperability, with specialized components handling different aspects of the protocol's functionality. This modular design allows for component-specific optimizations while maintaining a coherent security model across the entire system.
                 </p>
@@ -329,7 +330,7 @@ export default function Whitepaper() {
               </section>
               
               <section id="security">
-                <h2 className="text-3xl font-bold text-gradient mb-6">5. Security Model</h2>
+                <h2 className="text-3xl font-bold text-gradient mb-6">5. Cryptocurrency Security Model</h2>
                 <p className="text-gray-400 mb-4">
                   The OCF protocol implements a comprehensive security model addressing the unique challenges of cross-chain communication and multi-chain asset management. The model is designed to mitigate common attack vectors while preserving the security properties of each underlying blockchain.
                 </p>
@@ -383,7 +384,7 @@ export default function Whitepaper() {
               </section>
               
               <section id="implementation">
-                <h2 className="text-3xl font-bold text-gradient mb-6">6. Network Implementations</h2>
+                <h2 className="text-3xl font-bold text-gradient mb-6">6. Blockchain Network Implementations</h2>
                 <p className="text-gray-400 mb-4">
                   The OCF token is implemented natively on multiple blockchain networks, with specialized optimizations for each execution environment while maintaining consistent core functionality.
                 </p>
@@ -439,7 +440,7 @@ export default function Whitepaper() {
               </section>
               
               <section id="token">
-                <h2 className="text-3xl font-bold text-gradient mb-6">7. Token Utility & Economics</h2>
+                <h2 className="text-3xl font-bold text-gradient mb-6">7. Token Utility & Tokenomics</h2>
                 <p className="text-gray-400 mb-4">
                   The OCF token is the utility and governance token of the Open Crypto Foundation ecosystem, with a total supply of 1,000,000,000 OCF. The token implements several key mechanisms that provide value to holders while ensuring long-term sustainability of the protocol.
                 </p>
@@ -524,7 +525,7 @@ export default function Whitepaper() {
               </section>
               
               <section id="governance">
-                <h2 className="text-3xl font-bold text-gradient mb-6">8. Governance Framework</h2>
+                <h2 className="text-3xl font-bold text-gradient mb-6">8. DeFi Governance Framework</h2>
                 <p className="text-gray-400 mb-4">
                   The OCF DAO (Decentralized Autonomous Organization) is the governing body of the Open Crypto Foundation ecosystem. Through the OCF token, community members collectively make decisions about protocol upgrades, treasury management, and strategic direction.
                 </p>
@@ -576,7 +577,7 @@ export default function Whitepaper() {
               </section>
               
               <section id="future">
-                <h2 className="text-3xl font-bold text-gradient mb-6">9. Future Directions</h2>
+                <h2 className="text-3xl font-bold text-gradient mb-6">9. Future Blockchain Directions</h2>
                 <p className="text-gray-400 mb-4">
                   The OCF protocol roadmap outlines several key development directions focused on expanding functionality, improving security, and enhancing user experience.
                 </p>

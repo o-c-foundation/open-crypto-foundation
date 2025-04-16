@@ -183,6 +183,12 @@ const Home: NextPageWithLayout = () => {
   if (isErrorRecoveryMode) {
     return (
       <>
+        <Head>
+          <title>Open Crypto Foundation | Blockchain Security & DeFi Ecosystem</title>
+          <meta name="description" content="Open Crypto Foundation provides blockchain security tools, cross-chain DeFi solutions, and cryptocurrency education. Explore our digital asset management platform, crypto trading toolkits, and decentralized finance (DeFi) resources." />
+          <meta name="keywords" content="blockchain security, cryptocurrency, DeFi ecosystem, OCF token, crypto trading, digital assets, cross-chain solutions, decentralized finance, blockchain technology, crypto wallet security, blockchain education, Web3 tools" />
+        </Head>
+
         <main>
           {/* Simple Hero Section for Error Recovery */}
           <section className="py-16 md:py-24 bg-gradient-to-b from-dark-light to-dark text-white">
@@ -279,54 +285,56 @@ const Home: NextPageWithLayout = () => {
   // Regular home page content follows
   return (
     <>
+      <Head>
+        <title>Open Crypto Foundation | Blockchain Security & DeFi Ecosystem</title>
+        <meta name="description" content="Open Crypto Foundation provides blockchain security tools, cross-chain DeFi solutions, and cryptocurrency education. Explore our digital asset management platform, crypto trading toolkits, and decentralized finance (DeFi) resources." />
+        <meta name="keywords" content="blockchain security, cryptocurrency, DeFi ecosystem, OCF token, crypto trading, digital assets, cross-chain solutions, decentralized finance, blockchain technology, crypto wallet security, blockchain education, Web3 tools" />
+      </Head>
+
+      <ScrollToTop />
+
       {/* Hero Section */}
-      <section className="relative pt-20 md:pt-32 pb-16 md:pb-24 text-white">
-        {/* Gradient Background */}
-        <div className="absolute inset-0 z-0 hero-gradient"></div>
-        
-        {/* Content */}
-        <div className="container relative z-10 px-4 mx-auto max-w-full">
-          <div className="flex flex-col items-center justify-center">
-            {/* Foundation info - centered */}
-            <div className="w-full max-w-3xl backdrop-blur-md animated-gradient-subtle p-5 md:p-8 rounded-xl shadow-2xl border border-primary/20">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 text-center">
-                <span className="text-gradient">Open Crypto Foundation</span>
-              </h1>
-              
-              <div className="mb-6 md:mb-8 bg-black/30 backdrop-blur-sm p-4 md:p-6 rounded-lg border border-primary/20">
-                <blockquote className="text-base md:text-xl italic font-light text-white">
-                  &ldquo;The greatest accomplishment of humanity is not its works of art, science, or technology, but the recognition of its own dysfunction.&rdquo;
-                </blockquote>
-                <p className="text-right mt-2 md:mt-3 text-primary">— Eckhart Tolle</p>
-              </div>
-              
-              <p className="text-lg sm:text-xl md:text-2xl text-white mb-6 md:mb-10 max-w-4xl mx-auto text-center">
-                Founded to make decentralized finance safer, more transparent, and accessible through education, tools, and community engagement.
-              </p>
-              <div className="flex flex-wrap gap-3 md:gap-4 justify-center">
-                <Link 
-                  href="/about" 
-                  className="px-4 md:px-6 py-2.5 md:py-3 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors flex items-center shadow-lg text-sm sm:text-base"
-                >
-                  Learn More About OCF <FaArrowRight className="ml-2" />
-                </Link>
-                <Link 
-                  href="/manifesto" 
-                  className="px-4 md:px-6 py-2.5 md:py-3 bg-dark-card hover:bg-dark-elevated border border-primary/30 text-white rounded-lg transition-colors shadow-lg text-sm sm:text-base"
-                >
-                  Read Our Manifesto
-                </Link>
-              </div>
+      <section className="py-16 md:py-24 animated-gradient-subtle">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-3xl md:text-5xl font-bold mb-6">Empowering the Crypto & Blockchain Ecosystem</h1>
+            <p className="text-xl text-light-muted mb-8">
+              The Open Crypto Foundation is building the infrastructure for a secure, accessible, and decentralized digital asset future. Our blockchain tools, DeFi solutions, and educational resources help cryptocurrency users, developers, and investors navigate the evolving crypto landscape.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href="/tools" className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 flex items-center">
+                Explore Crypto Tools <FaArrowRight className="ml-2" />
+              </Link>
+              <Link href="/ocf-token" className="px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-all duration-200">
+                OCF Token Utility
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trading View Widget Section */}
+      <section className="py-12 bg-dark">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="bg-dark-card p-6 rounded-xl border border-dark-light">
+              <h2 className="text-2xl font-bold mb-6 text-center">Live Cryptocurrency Market Data</h2>
+              <div className="h-96" ref={tradingViewRef}></div>
             </div>
           </div>
         </div>
       </section>
       
       {/* Features Section */}
-      <section className="py-12 md:py-20 animated-gradient-light">
-        <div className="container px-4 mx-auto max-w-7xl">
-          <h2 className="mb-8 md:mb-12 text-2xl md:text-3xl font-bold text-center text-white">Our Vision for Safer Crypto</h2>
-          
+      <section className="py-16 animated-gradient-light">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Comprehensive Blockchain & DeFi Ecosystem</h2>
+            <p className="text-light-muted">
+              The Open Crypto Foundation offers a suite of tools, resources, and services designed to meet the evolving needs of the cryptocurrency community. Our blockchain solutions aim to enhance security, accessibility, and education in the digital asset space.
+            </p>
+          </div>
+
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             <div className="p-5 md:p-6 bg-card-gradient rounded-xl border border-dark-light/30">
               <div className="w-10 h-10 md:w-12 md:h-12 mb-4 flex items-center justify-center bg-primary/20 text-primary rounded-lg">
@@ -373,79 +381,127 @@ const Home: NextPageWithLayout = () => {
         </div>
       </section>
       
-      {/* Newsletter Section */}
-      <section className="py-12 md:py-20 animated-gradient-subtle">
-        <div className="container px-4 mx-auto max-w-7xl">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center">
-              <div className="w-full md:w-1/2">
-                <h2 className="mb-3 md:mb-4 text-2xl md:text-3xl font-bold text-white">Be Part of Our Early Community</h2>
-                <p className="text-light-muted mb-4 md:mb-6 text-sm md:text-base">
-                  Join our newsletter to follow our progress, receive updates on crypto security, 
-                  and learn about opportunities to contribute to the Open Crypto Foundation's mission.
-                </p>
-                <div className="flex items-center mb-2">
-                  <FaRegNewspaper className="text-primary mr-2" />
-                  <span className="text-light-muted text-xs md:text-sm">Development updates</span>
-                </div>
-                <div className="flex items-center mb-2">
-                  <FaRegNewspaper className="text-primary mr-2" />
-                  <span className="text-light-muted text-xs md:text-sm">Security alerts</span>
-                </div>
-                <div className="flex items-center">
-                  <FaRegNewspaper className="text-primary mr-2" />
-                  <span className="text-light-muted text-xs md:text-sm">Contribution opportunities</span>
-                </div>
-              </div>
-              <div className="w-full md:w-1/2">
-                <NewsletterSubscribe className="md:max-w-md" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* CTA Section */}
-      <section className="py-12 md:py-20 animated-gradient text-white">
-        <div className="container px-4 mx-auto max-w-7xl">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="mb-4 md:mb-6 text-2xl md:text-3xl font-bold">Help Shape Our Foundation</h2>
-            <p className="mb-6 md:mb-8 text-base md:text-lg text-light-muted">
-              As a newly formed organization, we're looking for passionate individuals and partners to help 
-              shape our future. We believe in the transformative potential of decentralized finance, but only if it's 
-              built on a foundation of security, education, and user protection.
+      {/* Tools Highlight Section */}
+      <section className="py-16 bg-dark">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Essential Cryptocurrency Tools & Resources</h2>
+            <p className="text-light-muted">
+              Our blockchain toolkit provides everything you need for secure crypto management, cross-chain trading, and DeFi participation. From wallet security to token analytics, we've built solutions for both beginners and experienced cryptocurrency investors.
             </p>
-            
-            <div className="flex flex-wrap gap-3 md:gap-4 justify-center">
-              <Link 
-                href="/about#join" 
-                className="px-4 md:px-6 py-2.5 md:py-3 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors flex items-center shadow-lg text-sm sm:text-base"
-              >
-                Get Involved <FaArrowRight className="ml-2" />
+          </div>
+
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+            <div className="p-5 md:p-6 bg-card-gradient rounded-xl border border-dark-light/30">
+              <div className="w-10 h-10 md:w-12 md:h-12 mb-4 flex items-center justify-center bg-primary/20 text-primary rounded-lg">
+                <FaShieldAlt size={20} />
+              </div>
+              <h3 className="mb-2 md:mb-3 text-lg md:text-xl font-bold text-white">Security Tools</h3>
+              <p className="mb-4 text-light-muted text-sm md:text-base">
+                We're developing a suite of open source tools to help you verify smart contracts, analyze tokens, 
+                and identify potential security risks before investing.
+              </p>
+              <Link href="/tools" className="text-primary hover:text-primary-light font-medium inline-flex items-center text-sm md:text-base">
+                Follow Our Progress <FaArrowRight className="ml-1" size={12} />
               </Link>
-              
-              <Link 
-                href="/contact" 
-                className="px-4 md:px-6 py-2.5 md:py-3 bg-dark-card hover:bg-dark-elevated border border-primary/30 text-white rounded-lg transition-colors shadow-lg text-sm sm:text-base"
-              >
-                Contact Us
+            </div>
+            
+            <div className="p-5 md:p-6 bg-card-gradient rounded-xl border border-dark-light/30">
+              <div className="w-10 h-10 md:w-12 md:h-12 mb-4 flex items-center justify-center bg-primary/20 text-primary rounded-lg">
+                <FaBookOpen size={20} />
+              </div>
+              <h3 className="mb-2 md:mb-3 text-lg md:text-xl font-bold text-white">Educational Resources</h3>
+              <p className="mb-4 text-light-muted text-sm md:text-base">
+                We're in the early stages of building a comprehensive knowledge base for safe crypto 
+                practices, from beginner guides to advanced technical documentation.
+              </p>
+              <Link href="/resources/defi-fundamentals" className="text-primary hover:text-primary-light font-medium inline-flex items-center text-sm md:text-base">
+                See Our First Resources <FaArrowRight className="ml-1" size={12} />
+              </Link>
+            </div>
+            
+            <div className="p-5 md:p-6 bg-card-gradient rounded-xl border border-dark-light/30 sm:col-span-2 md:col-span-1">
+              <div className="w-10 h-10 md:w-12 md:h-12 mb-4 flex items-center justify-center bg-primary/20 text-primary rounded-lg">
+                <FaRocket size={20} />
+              </div>
+              <h3 className="mb-2 md:mb-3 text-lg md:text-xl font-bold text-white">Growth Roadmap</h3>
+              <p className="mb-4 text-light-muted text-sm md:text-base">
+                As a new foundation, we have ambitious plans to establish open standards and best practices 
+                for token launches, protocol development, and responsible DeFi innovation.
+              </p>
+              <Link href="/roadmap" className="text-primary hover:text-primary-light font-medium inline-flex items-center text-sm md:text-base">
+                View Our Roadmap <FaArrowRight className="ml-1" size={12} />
               </Link>
             </div>
           </div>
         </div>
       </section>
-      
-      <ScrollToTop />
+
+      {/* Community Section */}
+      <section className="py-16 animated-gradient-subtle">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl font-bold mb-6">Join the Blockchain Community</h2>
+                <p className="text-light-muted mb-6">
+                  The Open Crypto Foundation is more than just a set of tools - we're building a global community dedicated to advancing blockchain technology, cryptocurrency adoption, and decentralized finance innovation.
+                </p>
+                <div className="space-y-4 mb-8">
+                  <div className="flex items-start">
+                    <FaCheckCircle className="text-primary mt-1 mr-3" />
+                    <p>Connect with fellow crypto enthusiasts and blockchain developers</p>
+                  </div>
+                  <div className="flex items-start">
+                    <FaCheckCircle className="text-primary mt-1 mr-3" />
+                    <p>Stay updated on the latest DeFi trends and cryptocurrency news</p>
+                  </div>
+                  <div className="flex items-start">
+                    <FaCheckCircle className="text-primary mt-1 mr-3" />
+                    <p>Participate in blockchain governance through our OCF token DAO</p>
+                  </div>
+                  <div className="flex items-start">
+                    <FaCheckCircle className="text-primary mt-1 mr-3" />
+                    <p>Access exclusive digital asset resources and educational content</p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-4">
+                  <Link 
+                    href="/about#join" 
+                    className="px-4 md:px-6 py-2.5 md:py-3 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors flex items-center shadow-lg text-sm sm:text-base"
+                  >
+                    Get Involved <FaArrowRight className="ml-2" />
+                  </Link>
+                  
+                  <Link 
+                    href="/contact" 
+                    className="px-4 md:px-6 py-2.5 md:py-3 bg-dark-card hover:bg-dark-elevated border border-primary/30 text-white rounded-lg transition-colors shadow-lg text-sm sm:text-base"
+                  >
+                    Contact Us
+                  </Link>
+                </div>
+              </div>
+              <div className="bg-dark-card p-8 rounded-xl border border-dark-light">
+                <h3 className="text-2xl font-bold mb-6">Subscribe to Our Crypto Newsletter</h3>
+                <p className="text-light-muted mb-6">
+                  Get the latest blockchain updates, cryptocurrency news, and exclusive DeFi insights delivered straight to your inbox. Join thousands of digital asset enthusiasts staying ahead of the curve.
+                </p>
+                <NewsletterSubscribe />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
 
-// Define custom layout for the Home page
-Home.getLayout = (page: React.ReactElement) => {
+// Define the layout for the Home page
+Home.getLayout = (page) => {
   return (
     <Layout 
-      title="Open Crypto Foundation | Promoting Safe DeFi"
-      description="The newly launched Open Crypto Foundation is dedicated to promoting safe decentralized finance practices and educating users about blockchain technology."
+      title="Open Crypto Foundation | Blockchain Security & DeFi Ecosystem"
+      description="Open Crypto Foundation provides blockchain security tools, cross-chain DeFi solutions, and cryptocurrency education. Explore our digital asset management platform, crypto trading toolkits, and decentralized finance (DeFi) resources."
     >
       {page}
     </Layout>

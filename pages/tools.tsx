@@ -20,149 +20,149 @@ export default function ToolsPage() {
   // Tool categories with their respective tools
   const toolCategories = [
     {
-      name: "Contract Analysis",
+      name: "Smart Contract Analysis",
       icon: <FaFileContract className="text-primary" />,
-      description: "Analyze smart contracts for security vulnerabilities, backdoors, and suspicious code.",
+      description: "Analyze blockchain smart contracts for security vulnerabilities, backdoors, and suspicious code patterns.",
       tools: [
         {
           name: "Contract Scanner",
-          description: "Scan smart contracts for common vulnerabilities and suspicious functionality",
+          description: "Scan Ethereum and Solana smart contracts for common vulnerabilities and suspicious functionality",
           url: "/tools/contract-scanner",
           isInternal: true
         },
         {
           name: "Etherscan",
-          description: "Official blockchain explorer for reading and verifying contract code",
+          description: "Official Ethereum blockchain explorer for reading and verifying contract code",
           url: "https://etherscan.io",
           isInternal: false
         },
         {
           name: "Token Sniffer",
-          description: "Analyzes tokens for honeypot characteristics and scam indicators",
+          description: "Analyzes cryptocurrency tokens for honeypot characteristics and scam indicators",
           url: "https://tokensniffer.com",
           isInternal: false
         },
         {
           name: "Solidity Visual Developer",
-          description: "Visual security analysis for Solidity contracts",
+          description: "Visual security analysis for Solidity smart contracts on EVM blockchains",
           url: "https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-visual-auditor",
           isInternal: false
         }
       ]
     },
     {
-      name: "Token Investigation",
+      name: "Cryptocurrency Token Investigation",
       icon: <FaSearchDollar className="text-primary" />,
-      description: "Research tokens and their distribution patterns, liquidity, and other risk factors.",
+      description: "Research digital assets and their distribution patterns, liquidity pools, and other crypto risk factors.",
       tools: [
         {
           name: "Token Analyzer",
-          description: "Analyze token distribution, risks, and potential red flags",
+          description: "Analyze token distribution, tokenomics risks, and potential crypto red flags",
           url: "/tools/token-analyzer",
           isInternal: true
         },
         {
           name: "DEXTools",
-          description: "Token analytics, trading charts, and liquidity tracking",
+          description: "Cryptocurrency analytics, trading charts, and decentralized liquidity tracking",
           url: "https://www.dextools.io",
           isInternal: false
         },
         {
           name: "CoinGecko",
-          description: "Comprehensive cryptocurrency database and analytics",
+          description: "Comprehensive cryptocurrency market database and digital asset analytics",
           url: "https://www.coingecko.com",
           isInternal: false
         },
         {
           name: "DexScreener",
-          description: "Multi-chain DEX trading charts and token info",
+          description: "Multi-chain DEX trading charts and blockchain token information",
           url: "https://dexscreener.com",
           isInternal: false
         }
       ]
     },
     {
-      name: "Risk Assessment",
+      name: "Blockchain Risk Assessment",
       icon: <FaExclamationTriangle className="text-primary" />,
-      description: "Evaluate the overall risk profile of projects and investments.",
+      description: "Evaluate the overall risk profile of crypto projects and DeFi investment opportunities.",
       tools: [
         {
           name: "Risk Calculator",
-          description: "Calculate the risk score of a project based on multiple factors",
+          description: "Calculate the risk score of a blockchain project based on multiple security factors",
           url: "/tools/risk-calculator",
           isInternal: true
         },
         {
           name: "DefiLlama",
-          description: "DeFi TVL rankings and analytics",
+          description: "DeFi TVL rankings and decentralized finance protocol analytics",
           url: "https://defillama.com",
           isInternal: false
         },
         {
           name: "CertiK Alert",
-          description: "Real-time blockchain security alerts and incident tracker",
+          description: "Real-time blockchain security alerts and cryptocurrency incident tracker",
           url: "https://www.certik.com/leaderboard",
           isInternal: false
         },
         {
           name: "Web3 Rekt Database",
-          description: "Historical database of cryptocurrency hacks and exploits",
+          description: "Historical database of cryptocurrency hacks, DeFi exploits, and blockchain vulnerabilities",
           url: "https://rekt.news/leaderboard",
           isInternal: false
         }
       ]
     },
     {
-      name: "Wallet & Transaction Safety",
+      name: "Crypto Wallet & Transaction Safety",
       icon: <FaUserShield className="text-primary" />,
-      description: "Secure your wallet and analyze transactions for safety.",
+      description: "Secure your cryptocurrency wallet and analyze blockchain transactions for security threats.",
       tools: [
         {
           name: "Permission Checker",
-          description: "Check and revoke contract permissions for your wallet",
+          description: "Check and revoke smart contract permissions for your crypto wallet addresses",
           url: "https://revoke.cash",
           isInternal: false
         },
         {
           name: "Transaction Simulator",
-          description: "Simulate transactions before sending to verify outcome",
+          description: "Simulate blockchain transactions before sending to verify outcome and prevent scams",
           url: "https://tenderly.co",
           isInternal: false
         },
         {
           name: "Gas Tracker",
-          description: "Optimize gas fees for different transaction speeds",
+          description: "Optimize gas fees for different Ethereum transaction speeds and EVM networks",
           url: "https://etherscan.io/gastracker",
           isInternal: false
         }
       ]
     },
     {
-      name: "Monitoring Tools",
+      name: "DeFi Monitoring Tools",
       icon: <FaChartLine className="text-primary" />,
-      description: "Track and monitor your portfolio, gas prices, and market changes.",
+      description: "Track and monitor your crypto portfolio, gas prices, and digital asset market changes.",
       tools: [
         {
           name: "Portfolio Tracker",
-          description: "Track your crypto portfolio across multiple chains",
+          description: "Track your cryptocurrency portfolio across multiple blockchain networks",
           url: "https://zapper.fi",
           isInternal: false
         },
         {
           name: "DeBank",
-          description: "Portfolio dashboard and DeFi analytics",
+          description: "DeFi portfolio dashboard and decentralized finance analytics platform",
           url: "https://debank.com",
           isInternal: false
         },
         {
           name: "Nansen",
-          description: "On-chain analytics platform tracking smart money movement",
+          description: "On-chain analytics platform tracking crypto smart money movement and trends",
           url: "https://www.nansen.ai",
           isInternal: false
         },
         {
           name: "Whale Alert",
-          description: "Track large cryptocurrency transactions",
+          description: "Track large cryptocurrency transactions and blockchain whale movements",
           url: "https://whale-alert.io",
           isInternal: false
         }
@@ -173,10 +173,14 @@ export default function ToolsPage() {
   return (
     <>
       <Head>
-        <title>DeFi Safety Tools | Open Crypto Foundation</title>
+        <title>Crypto Security & DeFi Safety Tools | Blockchain Analytics | Open Crypto Foundation</title>
         <meta 
           name="description" 
-          content="A curated directory of essential tools to help you navigate DeFi safely - contract scanners, risk assessors, wallet protectors, and more." 
+          content="Comprehensive directory of cryptocurrency security tools to navigate DeFi safely - smart contract analyzers, blockchain analytics, wallet protection, and crypto risk assessment platforms for digital asset security." 
+        />
+        <meta 
+          name="keywords" 
+          content="cryptocurrency security, blockchain tools, DeFi safety, smart contract analysis, crypto wallet protection, token analytics, blockchain explorer, crypto risk assessment, digital asset security, decentralized finance tools" 
         />
       </Head>
       
@@ -185,105 +189,100 @@ export default function ToolsPage() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex items-center justify-center mb-6">
               <FaTools className="text-4xl mr-3 text-primary" />
-              <h1 className="text-4xl font-bold">DeFi Safety Tools</h1>
+              <h1 className="text-4xl font-bold">Cryptocurrency & DeFi Security Tools</h1>
             </div>
             <p className="text-xl text-gray-300 mb-8">
-              A curated collection of essential tools to help you navigate the DeFi ecosystem safely and confidently.
+              A curated collection of essential blockchain tools to help you navigate the cryptocurrency and DeFi ecosystem safely and make informed digital asset investment decisions.
             </p>
             <div className="p-6 bg-dark-card rounded-lg border border-dark-light/30 text-left">
               <h2 className="text-xl font-bold mb-3 flex items-center text-white">
-                <FaShieldAlt className="text-primary mr-2" /> How to Use This Directory
+                <FaShieldAlt className="text-primary mr-2" /> How to Protect Your Crypto Investments
               </h2>
               <p className="mb-4 text-gray-300">
-                We've carefully selected and reviewed these tools to help you protect yourself in the DeFi ecosystem. 
-                Each tool addresses a specific aspect of crypto safety and can be used as part of a comprehensive 
-                security strategy.
+                We've carefully selected and reviewed these blockchain security tools to help you protect your cryptocurrency assets in the DeFi ecosystem. 
+                Each tool addresses a specific aspect of digital asset safety and can be used as part of a comprehensive 
+                security strategy for your crypto portfolio.
               </p>
-              <div className="flex items-start space-x-2 text-gray-300">
-                <FaCheck className="text-green-400 mt-1 flex-shrink-0" />
-                <p>
-                  <strong className="text-white">Tools with the</strong> <FaExternalLinkAlt className="inline text-xs" /> <strong className="text-white">icon</strong> link to external services we recommend but don't operate.
-                </p>
-              </div>
+              <p className="text-gray-300">
+                For maximum protection, we recommend using multiple tools across different categories before interacting with any new smart contract or cryptocurrency token.
+              </p>
             </div>
           </div>
         </div>
       </section>
       
-      <section className="py-12 bg-dark">
+      <section className="py-16 bg-dark">
         <div className="container px-4 mx-auto">
-          {toolCategories.map((category, index) => (
-            <div key={index} className="mb-16">
-              <div className="flex items-center mb-6">
-                <div className="mr-3 text-2xl">
-                  {React.cloneElement(category.icon, { className: "text-primary" })}
-                </div>
-                <h2 className="text-2xl font-bold text-white">{category.name}</h2>
-              </div>
-              <p className="text-gray-300 mb-6 max-w-4xl">
-                {category.description}
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {category.tools.map((tool, toolIndex) => (
-                  <div key={toolIndex} className="bg-dark-card border border-dark-light/30 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                    {tool.isInternal ? (
-                      <Link href={tool.url} className="block p-6">
-                        <h3 className="text-lg font-bold mb-2 text-white">{tool.name}</h3>
-                        <p className="text-gray-300 text-sm mb-4">{tool.description}</p>
-                        <div className="flex items-center text-primary text-sm">
-                          <FaLink className="mr-2" />
-                          <span>Open tool</span>
-                        </div>
-                      </Link>
-                    ) : (
-                      <a href={tool.url} target="_blank" rel="noopener noreferrer" className="block p-6">
-                        <h3 className="text-lg font-bold mb-2 flex items-center text-white">
-                          {tool.name} 
-                          <FaExternalLinkAlt className="ml-2 text-xs text-gray-400" />
-                        </h3>
-                        <p className="text-gray-300 text-sm mb-4">{tool.description}</p>
-                        <div className="flex items-center text-primary text-sm">
-                          <FaExternalLinkAlt className="mr-2" />
-                          <span>Visit site</span>
-                        </div>
-                      </a>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+          <h2 className="text-3xl font-bold mb-12 text-center text-white">Essential Blockchain Security Toolkit</h2>
           
-          <div className="max-w-4xl mx-auto mt-12 p-6 bg-primary/10 rounded-lg border border-primary/30">
-            <h2 className="text-xl font-bold mb-4 text-white flex items-center">
-              <FaShieldAlt className="text-primary mr-2" /> Best Practices for Safe DeFi Navigation
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="text-lg font-semibold text-white mb-3">Before Using Any DeFi Service</h3>
-                <ul className="list-disc pl-5 text-gray-300 space-y-2">
-                  <li>Verify contracts on block explorers</li>
-                  <li>Check official links through multiple sources</li>
-                  <li>Research the team and project history</li>
-                  <li>Use a dedicated wallet with limited funds</li>
-                  <li>Simulate transactions before confirming</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-white mb-3">Regular Security Maintenance</h3>
-                <ul className="list-disc pl-5 text-gray-300 space-y-2">
-                  <li>Review and revoke unused token approvals</li>
-                  <li>Monitor your wallet for suspicious activities</li>
-                  <li>Keep your device software updated</li>
-                  <li>Use hardware wallets for significant holdings</li>
-                  <li>Never share your private keys or seed phrases</li>
-                </ul>
+          <div className="max-w-5xl mx-auto">
+            {/* Tool Categories */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+              {toolCategories.map((category, index) => (
+                <div key={index} className="bg-dark-card rounded-xl border border-dark-light/30 p-6 hover:border-primary/30 transition-all duration-300">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="bg-dark-elevated p-3 rounded-lg">
+                      {category.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white">{category.name}</h3>
+                      <p className="text-gray-400">{category.description}</p>
+                    </div>
+                  </div>
+                  
+                  <ul className="space-y-4 mt-6">
+                    {category.tools.map((tool, toolIndex) => (
+                      <li key={toolIndex} className="flex items-start">
+                        <div className="mr-3 mt-1">
+                          <FaCheck className="text-primary" />
+                        </div>
+                        <div>
+                          <div className="flex items-center flex-wrap">
+                            <h4 className="font-semibold text-white mr-2">{tool.name}</h4>
+                            {/* Tool link with appropriate styling based on internal/external */}
+                            {tool.isInternal ? (
+                              <Link href={tool.url} className="inline-flex items-center text-primary hover:text-primary-light text-sm">
+                                <FaLink className="mr-1" size={12} /> OCF Tool
+                              </Link>
+                            ) : (
+                              <a 
+                                href={tool.url} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center text-gray-500 hover:text-gray-300 text-sm"
+                              >
+                                <FaExternalLinkAlt className="mr-1" size={10} /> External
+                              </a>
+                            )}
+                          </div>
+                          <p className="text-gray-400 text-sm">{tool.description}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            
+            {/* Call to Action */}
+            <div className="max-w-3xl mx-auto text-center">
+              <h3 className="text-2xl font-bold mb-4 text-white">Building a Safer Cryptocurrency Ecosystem</h3>
+              <p className="text-gray-400 mb-8">
+                The Open Crypto Foundation is committed to developing and promoting tools that make the blockchain space safer for everyone. 
+                We're continuously expanding our catalog of DeFi security resources and building proprietary crypto protection tools.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link href="/services" className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200">
+                  Explore Our Security Services
+                </Link>
+                <Link href="/report-scam" className="px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-all duration-200">
+                  Report a Crypto Scam
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
     </>
-  );
+  )
 } 
