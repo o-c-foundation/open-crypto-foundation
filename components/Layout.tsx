@@ -4,6 +4,7 @@ import Footer from './Footer'
 import { useClientSideOnly } from '../hooks/useClientSideOnly'
 import Head from 'next/head'
 import BlueBannerRemover from './BlueBannerRemover'
+import CookiesBanner from './CookiesBanner'
 import { useRouter } from 'next/router'
 
 interface LayoutProps {
@@ -54,6 +55,9 @@ export default function Layout({ children, title, description }: LayoutProps) {
       </main>
       
       <Footer />
+      
+      {/* Cookie Consent Banner - Only shown once per session */}
+      <CookiesBanner />
     </div>
   );
 } 
