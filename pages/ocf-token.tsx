@@ -198,15 +198,32 @@ export default function OCFToken() {
           </div>
           
           <div className="bg-dark-card p-8 rounded-xl border border-gray-800 mb-12">
+            {/* ICO Announcement Banner */}
+            <div className="bg-gradient-to-r from-primary/30 to-purple-800/30 p-4 rounded-lg border border-primary/30 mb-6">
+              <div className="flex items-center gap-3">
+                <FaCoins size={24} className="text-primary" />
+                <div>
+                  <h3 className="text-xl font-bold text-white">ICO Announcement</h3>
+                  <p className="text-gray-200">Token sale starting on <span className="text-primary font-semibold">April 18, 2025 at 5PM EST</span></p>
+                </div>
+              </div>
+            </div>
+            
             <div className="flex items-center gap-3 mb-6 flex-wrap">
               <div className="bg-primary/20 p-3 rounded-lg">
                 <FaCoins size={24} className="text-primary" />
               </div>
               <h2 className="text-2xl font-bold text-white">OCF Contract Address</h2>
               <div className="ml-auto mt-2 sm:mt-0">
-                <div className="px-4 py-2 bg-dark-elevated rounded-lg border border-gray-700 font-mono text-sm text-gray-300 flex items-center">
-                  <span className="mr-2 sm:block hidden">Contract:</span> 
-                  <span className="text-green-400">GfmoS7ycz9q3FETmJ9m9n71oab3M9n5RRBYL9aQ1Yppv</span>
+                <div className="px-4 py-2 bg-dark-elevated rounded-lg border border-gray-700 font-mono text-sm text-gray-300 flex items-center backdrop-blur-sm relative overflow-hidden">
+                  <FaLock className="text-yellow-500 mr-2" />
+                  <div className="filter blur-sm select-none">
+                    <span className="mr-2 sm:block hidden">Contract:</span> 
+                    <span className="text-gray-400">••••••••••••••••••••••••••••••••••••</span>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="bg-dark-elevated/80 px-2 py-1 rounded text-xs text-primary">Available at launch</span>
+                  </div>
                 </div>
               </div>
             </div>
