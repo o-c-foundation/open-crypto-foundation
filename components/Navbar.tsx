@@ -113,7 +113,6 @@ export default function Navbar() {
   const toolsItems: MenuItem[] = [
     { name: 'Tools Overview', href: '/tools' },
     { name: 'DEX Aggregator', href: '/tools/dex-aggregator' },
-    { name: 'Wallet Connect', href: '/tools/wallet-connect' },
     { name: 'Token Analyzer', href: '/tools/token-analyzer' },
     { name: 'Token Investigator', href: '/tools/token-investigator' },
     { name: 'Contract Analyzer', href: '/tools/contract-analyzer' },
