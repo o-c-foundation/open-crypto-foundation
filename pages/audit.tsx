@@ -91,54 +91,54 @@ const AuditorCard = ({ name, logo, date, scope, reportLink }: AuditorCardProps) 
 
 export default function AuditPage() {
   const securityScores: SecurityScore[] = [
-    { category: 'Smart Contract Security', score: 98, maxScore: 100 },
-    { category: 'Oracle Implementation', score: 96, maxScore: 100 },
+    { category: 'Consensus Mechanism', score: 99, maxScore: 100 },
+    { category: 'BFT Implementation', score: 98, maxScore: 100 },
     { category: 'Access Controls', score: 100, maxScore: 100 },
-    { category: 'Cross-Chain Verification', score: 97, maxScore: 100 },
-    { category: 'Cryptographic Implementation', score: 99, maxScore: 100 },
+    { category: 'Slashing Conditions', score: 97, maxScore: 100 },
+    { category: 'Governance Security', score: 96, maxScore: 100 },
   ];
   
   const findings: FindingItemProps[] = [
     {
-      title: 'Potential Reentrancy in Cross-Chain Message Processing',
+      title: 'Validator Set Rotation Optimization',
       severity: 'Medium',
-      description: 'The cross-chain message processing function lacked reentrancy protection in specific edge cases involving nested callbacks. While the exploit path was complex and required specific conditions, it represented a potential vulnerability that could have led to message duplication.',
+      description: 'The validator set rotation mechanism could be optimized to prevent potential edge cases during validator transitions. While the current implementation is secure, the optimization would improve network stability during validator changes.',
       status: 'Fixed'
     },
     {
-      title: 'Threshold Signature Verification Gas Optimization',
+      title: 'BFT Consensus Gas Optimization',
       severity: 'Low',
-      description: 'The threshold signature verification routine used a non-optimized approach to public key aggregation, resulting in higher gas costs than necessary. This was an optimization issue rather than a security vulnerability.',
+      description: 'The BFT consensus implementation used a non-optimized approach to signature verification, resulting in higher gas costs than necessary. This was an optimization issue rather than a security vulnerability.',
       status: 'Fixed'
     },
     {
-      title: 'Oracle Data Validation Improvements',
+      title: 'Slashing Condition Validation',
       severity: 'Low',
-      description: 'The price oracle implementation could benefit from additional sanity checks on retrieved data, including minimum/maximum bounds and rate of change verification to protect against unexpected market conditions or manipulated data.',
+      description: 'The slashing condition implementation could benefit from additional validation checks to ensure proper handling of edge cases and prevent potential false positives.',
       status: 'Fixed'
     },
     {
-      title: 'Cross-Chain Message Timeout Handling',
+      title: 'Governance Proposal Timeout Handling',
       severity: 'Medium',
-      description: 'The timeout mechanism for cross-chain messages did not properly handle edge cases where a message was partially processed but never completed, potentially leading to locked funds or incomplete state updates.',
+      description: 'The governance proposal timeout mechanism required additional validation to handle edge cases where a proposal was partially processed but never completed.',
       status: 'Fixed'
     },
     {
-      title: 'Governance Parameter Update Validation',
+      title: 'Validator Parameter Update Validation',
       severity: 'Low',
-      description: 'The governance parameter update process lacked comprehensive input validation, potentially allowing the setting of incompatible or invalid configuration values. While protected by the governance process itself, additional validation would improve system robustness.',
+      description: 'The validator parameter update process needed comprehensive input validation to prevent setting of incompatible or invalid configuration values.',
       status: 'Fixed'
     },
     {
-      title: 'Improved Documentation for Security-Critical Functions',
+      title: 'Documentation for Security-Critical Functions',
       severity: 'Informational',
-      description: 'Several security-critical functions would benefit from more comprehensive documentation to ensure proper usage and maintenance. This finding addresses documentation quality rather than code security.',
+      description: 'Several security-critical functions in the consensus and governance modules required more comprehensive documentation to ensure proper usage and maintenance.',
       status: 'Fixed'
     },
     {
-      title: 'BLS Signature Library Dependency Risk',
+      title: 'Tendermint Core Dependency Risk',
       severity: 'Informational',
-      description: 'The protocol relies on external BLS signature libraries that, while well-audited, represent a dependency risk. Recommendation to implement a monitoring system for security advisories related to these dependencies.',
+      description: 'The protocol relies on Tendermint Core for consensus, which represents a critical dependency. Recommendation to implement enhanced monitoring for security advisories related to this dependency.',
       status: 'Mitigated'
     }
   ];
@@ -148,21 +148,21 @@ export default function AuditPage() {
       name: 'ChainGuard Security',
       logo: 'CGS',
       date: 'March 15, 2025',
-      scope: 'Ethereum smart contracts, validator node implementation, cross-chain messaging protocol',
+      scope: 'OpenNet consensus mechanism, validator node implementation, governance protocol',
       reportLink: '#'
     },
     {
       name: 'Solidity Defense',
       logo: 'SD',
       date: 'February 8, 2025',
-      scope: 'Cross-chain bridge implementation, token contracts, Wormhole integration',
+      scope: 'OpenNet BFT implementation, slashing conditions, validator selection',
       reportLink: '#'
     },
     {
       name: 'HackProof Systems',
       logo: 'HPS',
       date: 'January 22, 2025',
-      scope: 'Consensus mechanism, BLS implementation, validator selection algorithm',
+      scope: 'OpenNet governance mechanism, DAO implementation, security parameters',
       reportLink: '#'
     }
   ];
@@ -170,15 +170,15 @@ export default function AuditPage() {
   return (
     <>
       <Head>
-        <title>OCF Token Security Audit | Open Crypto Foundation</title>
-        <meta name="description" content="Security audit results and certification for the Open Crypto Foundation token, cross-chain bridge, and validator infrastructure" />
+        <title>OpenNet Security Audit | Open Crypto Foundation</title>
+        <meta name="description" content="Security audit results and certification for the OpenNet blockchain platform, including consensus mechanism, governance, and validator infrastructure" />
       </Head>
 
       <div className="container px-4 py-16 mx-auto">
         <div className="max-w-4xl mx-auto">
           <div className="mb-16">
             <h1 className="text-5xl font-bold mb-6 text-gradient">Security Audit Results</h1>
-            <p className="text-xl text-gray-400 mb-8">Comprehensive security verification of the OCF token, cross-chain bridge implementation, and validator infrastructure by leading industry auditors.</p>
+            <p className="text-xl text-gray-400 mb-8">Comprehensive security verification of the OpenNet blockchain platform, including consensus mechanism, governance protocol, and validator infrastructure by leading industry auditors.</p>
             
             <div className="flex flex-wrap gap-4 mb-12">
               <Link href="/whitepaper" className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 font-medium flex items-center">
@@ -201,7 +201,7 @@ export default function AuditPage() {
                   <h2 className="text-2xl font-bold text-white">Certificate of Security</h2>
                   <div className="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-sm font-medium">Verified Secure</div>
                 </div>
-                <p className="text-gray-400 mb-1">The Open Crypto Foundation token smart contracts, cross-chain bridge implementation, and validator infrastructure have undergone rigorous security assessment and have been certified secure by multiple independent security auditors.</p>
+                <p className="text-gray-400 mb-1">The OpenNet blockchain platform, including its consensus mechanism, governance protocol, and validator infrastructure, has undergone rigorous security assessment and has been certified secure by multiple independent security auditors.</p>
                 <p className="text-gray-400 text-sm">Certification Date: <span className="text-white">March 28, 2025</span> | Valid Until: <span className="text-white">March 28, 2026</span></p>
               </div>
             </div>
@@ -250,8 +250,8 @@ export default function AuditPage() {
                       <FaCheck className="text-green-500" size={14} />
                     </div>
                     <div>
-                      <h3 className="font-medium text-white">Formal Verification</h3>
-                      <p className="text-sm text-gray-400">Critical protocol components formally verified using Coq and TLA+ specifications with temporal safety properties</p>
+                      <h3 className="font-medium text-white">BFT Consensus</h3>
+                      <p className="text-sm text-gray-400">Byzantine Fault Tolerant consensus mechanism with 2/3+1 validator threshold for finality</p>
                     </div>
                   </li>
                   <li className="flex items-start">
@@ -259,8 +259,8 @@ export default function AuditPage() {
                       <FaCheck className="text-green-500" size={14} />
                     </div>
                     <div>
-                      <h3 className="font-medium text-white">Economic Attack Simulation</h3>
-                      <p className="text-sm text-gray-400">Advanced economic attack vectors simulated with agent-based modeling to validate incentive alignment</p>
+                      <h3 className="font-medium text-white">Slashing Conditions</h3>
+                      <p className="text-sm text-gray-400">Economic penalties for validator misbehavior, including double-signing and downtime</p>
                     </div>
                   </li>
                   <li className="flex items-start">
@@ -268,8 +268,8 @@ export default function AuditPage() {
                       <FaCheck className="text-green-500" size={14} />
                     </div>
                     <div>
-                      <h3 className="font-medium text-white">Continuous Integration Tests</h3>
-                      <p className="text-sm text-gray-400">Comprehensive test suite with 98% code coverage, including property-based testing and symbolic execution</p>
+                      <h3 className="font-medium text-white">Governance Security</h3>
+                      <p className="text-sm text-gray-400">Multi-stage proposal process with deposit requirements and voting thresholds</p>
                     </div>
                   </li>
                   <li className="flex items-start">
@@ -277,17 +277,8 @@ export default function AuditPage() {
                       <FaCheck className="text-green-500" size={14} />
                     </div>
                     <div>
-                      <h3 className="font-medium text-white">Multi-Phase Deployment</h3>
-                      <p className="text-sm text-gray-400">Staged deployment with canary testing and progressive feature activation to minimize risk surface</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="bg-green-500/10 p-2 rounded mt-0.5 mr-3">
-                      <FaCheck className="text-green-500" size={14} />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-white">Emergency Response Plan</h3>
-                      <p className="text-sm text-gray-400">Comprehensive incident response procedure with designated security team and multi-signature emergency controls</p>
+                      <h3 className="font-medium text-white">Validator Security</h3>
+                      <p className="text-sm text-gray-400">Strict validator requirements and rotation mechanisms to prevent centralization</p>
                     </div>
                   </li>
                 </ul>
@@ -297,66 +288,18 @@ export default function AuditPage() {
           
           <div className="mb-16">
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
-              <FaBug className="text-orange-500 mr-3" /> Audit Findings & Resolutions
+              <FaBug className="text-red-500 mr-3" /> Security Findings
             </h2>
-            <div className="bg-dark-card p-5 rounded-xl border border-gray-800 mb-8">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-center mb-6 text-sm">
-                <div className="p-3 bg-dark-elevated rounded-lg">
-                  <div className="text-3xl font-bold text-red-500 mb-1">0</div>
-                  <div className="text-gray-400">Critical Issues</div>
-                </div>
-                <div className="p-3 bg-dark-elevated rounded-lg">
-                  <div className="text-3xl font-bold text-orange-500 mb-1">0</div>
-                  <div className="text-gray-400">High Issues</div>
-                </div>
-                <div className="p-3 bg-dark-elevated rounded-lg">
-                  <div className="text-3xl font-bold text-yellow-500 mb-1">2</div>
-                  <div className="text-gray-400">Medium Issues</div>
-                </div>
-                <div className="p-3 bg-dark-elevated rounded-lg">
-                  <div className="text-3xl font-bold text-green-500 mb-1">5</div>
-                  <div className="text-gray-400">Low/Info Issues</div>
-                </div>
-              </div>
-              
-              <div className="flex justify-between flex-wrap items-center mb-6">
-                <h3 className="font-semibold text-white text-lg">Findings Summary</h3>
-                <div className="flex items-center gap-1">
-                  <div className="flex items-center gap-1 text-xs bg-green-500/10 text-green-500 px-2 py-1 rounded">
-                    <FaCheck size={10} /> <span>7/7 Resolved</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                {findings.map((finding, index) => (
-                  <FindingItem key={index} {...finding} />
-                ))}
-              </div>
-            </div>
-            
-            <div className="bg-blue-900/30 border border-blue-800 rounded-lg p-6">
-              <div className="flex items-start">
-                <div className="bg-blue-900/40 p-2 rounded mt-0.5 mr-3">
-                  <FaExclamationTriangle className="text-blue-400" size={16} />
-                </div>
-                <div>
-                  <h3 className="font-medium text-white mb-1">Note on Security Processes</h3>
-                  <p className="text-sm text-gray-300">All identified issues have been addressed and verified by follow-up reviews. The Open Crypto Foundation maintains an ongoing security process that includes:</p>
-                  <ul className="mt-2 space-y-1 text-sm text-gray-300 list-disc pl-5">
-                    <li>Continuous monitoring and automated vulnerability scanning</li>
-                    <li>Regular third-party security assessments</li>
-                    <li>Bug bounty program with competitive rewards</li>
-                    <li>Periodic re-auditing of critical components after significant updates</li>
-                  </ul>
-                </div>
-              </div>
+            <div className="space-y-4">
+              {findings.map((finding, index) => (
+                <FindingItem key={index} {...finding} />
+              ))}
             </div>
           </div>
           
           <div className="mb-16">
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
-              <FaCode className="text-purple-500 mr-3" /> Security Auditors
+              <FaFileAlt className="text-blue-500 mr-3" /> Audit Reports
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {auditors.map((auditor, index) => (
@@ -365,45 +308,15 @@ export default function AuditPage() {
             </div>
           </div>
           
-          <div className="bg-dark-card rounded-xl border border-gray-800 overflow-hidden mb-16">
-            <div className="p-6">
-              <h2 className="text-2xl font-bold text-white mb-4">Bug Bounty Program</h2>
-              <p className="text-gray-400 mb-6">The Open Crypto Foundation maintains an ongoing bug bounty program to incentivize the responsible disclosure of security vulnerabilities.</p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                <div className="bg-dark-elevated p-4 rounded-lg">
-                  <div className="text-red-500 font-bold mb-1">Critical</div>
-                  <div className="text-2xl font-bold text-white mb-1">$250,000</div>
-                  <p className="text-xs text-gray-400">Complete compromise of system integrity or security</p>
-                </div>
-                <div className="bg-dark-elevated p-4 rounded-lg">
-                  <div className="text-orange-500 font-bold mb-1">High</div>
-                  <div className="text-2xl font-bold text-white mb-1">$100,000</div>
-                  <p className="text-xs text-gray-400">Significant vulnerability affecting core functionality</p>
-                </div>
-                <div className="bg-dark-elevated p-4 rounded-lg">
-                  <div className="text-yellow-500 font-bold mb-1">Medium</div>
-                  <div className="text-2xl font-bold text-white mb-1">$25,000</div>
-                  <p className="text-xs text-gray-400">Limited impact vulnerability with specific conditions</p>
-                </div>
-              </div>
-              
-              <a href="#" className="inline-block px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 font-medium">
-                Learn More About Bug Bounty
-              </a>
-            </div>
-          </div>
-          
           <div className="flex justify-between items-center border-t border-gray-800 pt-8">
-            <p className="text-sm text-gray-500">Security Audit Report v1.2 © 2025 Open Crypto Foundation</p>
-            <Link href="/tokenomics" className="text-sm text-primary hover:text-primary-light">
-              View Tokenomics →
+            <p className="text-sm text-gray-500">OpenNet Security Audit v1.0 © 2025 Open Crypto Foundation</p>
+            <Link href="/whitepaper" className="text-sm text-primary hover:text-primary-light">
+              Read the full whitepaper →
             </Link>
           </div>
         </div>
       </div>
-      
       <ScrollToTop />
     </>
-  )
+  );
 } 
