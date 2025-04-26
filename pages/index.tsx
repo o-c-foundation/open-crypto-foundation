@@ -168,8 +168,12 @@ const Home: NextPageWithLayout = () => {
           scale: 1.00,
           scaleMobile: 1.00,
           color: 0x3f84ff,
-          size: 1.30,
-          backgroundColor: 0x100622
+          size: 1.50,
+          backgroundColor: 0x0a0a1a,
+          points: 12.00,
+          maxDistance: 25.00,
+          spacing: 20.00,
+          showDots: true
         })
       );
     }
@@ -325,21 +329,21 @@ const Home: NextPageWithLayout = () => {
       {/* Hero Section with Vanta.js Globe */}
       <section className="relative py-16 md:py-24 text-white overflow-hidden">
         <div ref={vantaRef} className="absolute inset-0 z-0" />
-        <div className="absolute inset-0 bg-gradient-to-b from-dark/80 to-dark z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-dark/60 to-dark z-10" />
         <div className="container mx-auto px-4 max-w-7xl relative z-20">
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-8 flex justify-center">
-              <div className="bg-black/30 backdrop-blur-sm p-6 rounded-lg border border-primary/20">
+              <div className="bg-black/40 backdrop-blur-md p-6 rounded-lg border border-primary/30">
                 <blockquote className="text-xl italic font-light text-white">
                   &ldquo;Alone we can do so little; together we can do so much.&rdquo;
                 </blockquote>
-                <p className="text-sm text-gray-400 mt-2">- Helen Keller</p>
+                <p className="text-sm text-gray-300 mt-2">- Helen Keller</p>
               </div>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gradient">
               Open Crypto Foundation
             </h1>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-gray-200 mb-8">
               Building the future of decentralized finance with secure, scalable, and interoperable blockchain solutions.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
