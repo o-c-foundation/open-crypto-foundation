@@ -7,6 +7,8 @@ import ScrollToTop from '../components/ScrollToTop'
 import SolanaIcon from '../components/icons/SolanaIcon'
 import Layout from '../components/Layout'
 import type { NextPageWithLayout } from '../types/next-page'
+import * as THREE from 'three'
+import GLOBE from 'vanta/dist/vanta.globe.min'
 
 // Define the Home page component
 const Home: NextPageWithLayout = () => {
@@ -14,6 +16,8 @@ const Home: NextPageWithLayout = () => {
   const [isErrorRecoveryMode, setIsErrorRecoveryMode] = useState(false);
   const logoUrl = "https://bafkreidvb25k6khuuf7fliwnhj2iogmbqgnoj3zkq47fev4ivpyujlekim.ipfs.w3s.link/";
   const tradingViewRef = useRef<HTMLDivElement>(null);
+  const vantaRef = useRef<HTMLDivElement>(null);
+  const [vantaEffect, setVantaEffect] = useState<any>(null);
 
   // TradingView Widget Configuration
   const tradingViewConfig = {
@@ -148,6 +152,31 @@ const Home: NextPageWithLayout = () => {
       }
     };
   }, []);
+
+  // Initialize Vanta.js effect
+  useEffect(() => {
+    if (!vantaEffect && vantaRef.current) {
+      setVantaEffect(
+        GLOBE({
+          el: vantaRef.current,
+          THREE: THREE,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          color: 0x3f84ff,
+          size: 1.30,
+          backgroundColor: 0x100622
+        })
+      );
+    }
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [vantaEffect]);
 
   // Check if we're coming from an error
   useEffect(() => {
@@ -293,20 +322,32 @@ const Home: NextPageWithLayout = () => {
 
       <ScrollToTop />
 
-      {/* Hero Section */}
-      <section className="py-16 md:py-24 front-page-gradient">
-        <div className="container mx-auto px-4">
+      {/* Hero Section with Vanta.js Globe */}
+      <section className="relative py-16 md:py-24 text-white overflow-hidden">
+        <div ref={vantaRef} className="absolute inset-0 z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-dark/80 to-dark z-10" />
+        <div className="container mx-auto px-4 max-w-7xl relative z-20">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-3xl md:text-5xl font-bold mb-6">Empowering the Crypto & Blockchain Ecosystem</h1>
-            <p className="text-xl text-light-muted mb-8">
-              The Open Crypto Foundation is building the infrastructure for a secure, accessible, and decentralized digital asset future. Our blockchain tools, DeFi solutions, and educational resources help cryptocurrency users, developers, and investors navigate the evolving crypto landscape.
+            <div className="mb-8 flex justify-center">
+              <div className="bg-black/30 backdrop-blur-sm p-6 rounded-lg border border-primary/20">
+                <blockquote className="text-xl italic font-light text-white">
+                  &ldquo;Alone we can do so little; together we can do so much.&rdquo;
+                </blockquote>
+                <p className="text-sm text-gray-400 mt-2">- Helen Keller</p>
+              </div>
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gradient">
+              Open Crypto Foundation
+            </h1>
+            <p className="text-xl text-gray-300 mb-8">
+              Building the future of decentralized finance with secure, scalable, and interoperable blockchain solutions.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/tools" className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 flex items-center">
-                Explore Crypto Tools <FaArrowRight className="ml-2" />
+              <Link href="/whitepaper" className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 font-medium flex items-center">
+                <FaBookOpen className="mr-2" /> Read Whitepaper
               </Link>
-              <Link href="/ocf-token" className="px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-all duration-200">
-                OCF Token Utility
+              <Link href="/tokenomics" className="px-6 py-3 border border-primary/50 text-primary rounded-lg hover:bg-primary/10 transition-all duration-200 font-medium flex items-center">
+                <FaCoins className="mr-2" /> Tokenomics
               </Link>
             </div>
           </div>
