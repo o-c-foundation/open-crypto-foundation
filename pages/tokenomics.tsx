@@ -140,7 +140,7 @@ export default function Tokenomics() {
       icon: FaCoins,
       tokenType: 'ERC-20',
       color: 'bg-blue-900/40',
-      allocation: '35,000,000',
+      allocation: '350,000,000',
       features: [
         'Gas-optimized token contract with OpenZeppelin standards',
         'ERC-2612 permit functionality for gasless approvals',
@@ -154,7 +154,7 @@ export default function Tokenomics() {
       icon: FaCoins,
       tokenType: 'SPL Token',
       color: 'bg-purple-900/40',
-      allocation: '35,000,000',
+      allocation: '350,000,000',
       features: [
         'Custom SPL token program with compressed account structure',
         'Optimized for high-throughput transactions',
@@ -168,7 +168,7 @@ export default function Tokenomics() {
       icon: FaCoins,
       tokenType: 'BEP-20',
       color: 'bg-yellow-900/40',
-      allocation: '30,000,000',
+      allocation: '300,000,000',
       features: [
         'BEP-20 compatible with BSC-specific optimizations',
         'Reduced gas consumption through proxy implementation',
@@ -246,7 +246,7 @@ export default function Tokenomics() {
                   <h2 className="text-2xl font-bold text-white">Token Allocation</h2>
                 </div>
                 
-                <p className="text-gray-400 mb-6">Total Supply: <span className="text-white font-semibold">100,000,000 OCF</span></p>
+                <p className="text-gray-400 mb-6">Total Supply: <span className="text-white font-semibold">1,000,000,000 OCF</span></p>
                 
                 <DonutChart segments={tokenAllocations} />
                 
@@ -304,27 +304,27 @@ export default function Tokenomics() {
                   <ul className="space-y-1 text-sm">
                     <li className="flex justify-between">
                       <span className="text-gray-400">Initial Circulation:</span>
-                      <span className="text-white">15.7 million tokens (15.7%)</span>
+                      <span className="text-white">157 million tokens (15.7%)</span>
                     </li>
                     <li className="flex justify-between">
                       <span className="text-gray-400">6 months:</span>
-                      <span className="text-white">26.8 million tokens (26.8%)</span>
+                      <span className="text-white">268 million tokens (26.8%)</span>
                     </li>
                     <li className="flex justify-between">
                       <span className="text-gray-400">12 months:</span>
-                      <span className="text-white">39.2 million tokens (39.2%)</span>
+                      <span className="text-white">392 million tokens (39.2%)</span>
                     </li>
                     <li className="flex justify-between">
                       <span className="text-gray-400">24 months:</span>
-                      <span className="text-white">68.5 million tokens (68.5%)</span>
+                      <span className="text-white">685 million tokens (68.5%)</span>
                     </li>
                     <li className="flex justify-between">
                       <span className="text-gray-400">36 months:</span>
-                      <span className="text-white">91.3 million tokens (91.3%)</span>
+                      <span className="text-white">913 million tokens (91.3%)</span>
                     </li>
                     <li className="flex justify-between">
                       <span className="text-gray-400">48 months:</span>
-                      <span className="text-white">100 million tokens (100%)</span>
+                      <span className="text-white">1 billion tokens (100%)</span>
                     </li>
                   </ul>
                 </div>

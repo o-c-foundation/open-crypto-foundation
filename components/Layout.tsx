@@ -4,7 +4,6 @@ import Footer from './Footer'
 import { useClientSideOnly } from '../hooks/useClientSideOnly'
 import Head from 'next/head'
 import BlueBannerRemover from './BlueBannerRemover'
-import CookiesBanner from './CookiesBanner'
 import { useRouter } from 'next/router'
 
 interface LayoutProps {

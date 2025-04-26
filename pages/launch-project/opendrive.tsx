@@ -546,9 +546,9 @@ export default function OpenDrivePage() {
         </section>
         
         {/* Newsletter Section */}
-        <section className="py-16 bg-dark-card">
-          <div className="container mx-auto px-4">
-            <div className="max-w-xl mx-auto">
+        <section className="py-16 animated-gradient-subtle">
+          <div className="container px-4 mx-auto">
+            <div className="max-w-5xl mx-auto">
               <div className="text-center mb-8">
                 <h2 className="text-2xl font-bold text-white mb-2">Stay Updated</h2>
                 <p className="text-light-muted">Subscribe to receive updates about OpenDrive and other OCF tools.</p>
