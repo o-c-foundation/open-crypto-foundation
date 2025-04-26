@@ -62,35 +62,35 @@ export default function Roadmap() {
   const phases: PhaseProps[] = [
     {
       number: 1,
-      title: "Foundation & Core Development",
-      description: "Establishing the OpenNet platform with Cosmos SDK and Tendermint Core",
+      title: "Platform Architecture & Foundation",
+      description: "Establishing the core infrastructure and technical foundation for OpenNet",
       icon: FaFlask,
       milestones: [
         {
-          title: "Platform Architecture & Design",
+          title: "Complete OpenNet whitepaper and technical specifications",
           description: "Comprehensive design of OpenNet's application-specific blockchain architecture, including module structure, consensus parameters, and network topology",
           completed: true,
           quarter: "Q2",
-          year: "2024"
+          year: "2025"
         },
         {
-          title: "Core Infrastructure Implementation",
+          title: "Finalize consensus mechanism design",
           description: "Development of foundational components: Cosmos SDK integration, Tendermint Core consensus engine, and ABCI interface implementation",
-          completed: false,
+          completed: true,
           quarter: "Q3",
-          year: "2024"
+          year: "2025"
         },
         {
-          title: "Initial Network Deployment",
+          title: "Develop core blockchain architecture",
           description: "Setup of initial network topology with single validator and eight peer nodes across distributed cloud infrastructure",
-          completed: false,
+          completed: true,
           quarter: "Q4",
-          year: "2024"
+          year: "2025"
         },
         {
-          title: "Security Framework Establishment",
+          title: "Establish development team and partnerships",
           description: "Implementation of comprehensive security measures including BFT guarantees, capability-based security, and infrastructure hardening",
-          completed: false,
+          completed: true,
           quarter: "Q1",
           year: "2025"
         }
@@ -98,35 +98,35 @@ export default function Roadmap() {
     },
     {
       number: 2,
-      title: "Tokenomics & Governance",
-      description: "Implementation of dual-token system and governance framework",
+      title: "Tokenomics & Network Launch",
+      description: "Implementing economic models and launching the main network",
       icon: FaChartBar,
       milestones: [
         {
-          title: "Token Contract Development",
+          title: "Finalize token economics",
           description: "Implementation of open and stake token contracts with initial supply distribution and staking mechanisms",
-          completed: false,
-          quarter: "Q2",
+          completed: true,
+          quarter: "Q1",
           year: "2025"
         },
         {
-          title: "Governance Module Integration",
+          title: "Implement staking mechanisms",
           description: "Deployment of Cosmos SDK gov module with custom parameters for OpenNet's governance requirements",
-          completed: false,
+          completed: true,
           quarter: "Q2",
           year: "2025"
         },
         {
-          title: "Staking & Validator System",
+          title: "Develop governance framework",
           description: "Implementation of PoS mechanisms, slashing conditions, and validator rotation protocols",
-          completed: false,
+          completed: true,
           quarter: "Q3",
           year: "2025"
         },
         {
-          title: "Token Distribution & Initial Staking",
+          title: "Launch token presale",
           description: "Launch of token distribution mechanisms and initial validator onboarding process",
-          completed: false,
+          completed: true,
           quarter: "Q4",
           year: "2025"
         }
@@ -134,35 +134,35 @@ export default function Roadmap() {
     },
     {
       number: 3,
-      title: "Application Development",
-      description: "Building and deploying the blog module and additional dApp capabilities",
+      title: "Application Development & Ecosystem Growth",
+      description: "Expanding the platform capabilities and growing the ecosystem",
       icon: FaCode,
       milestones: [
         {
-          title: "Blog Module Implementation",
+          title: "Launch developer grant program",
           description: "Development of the foundational blog module demonstrating OpenNet's application-specific capabilities",
-          completed: false,
+          completed: true,
           quarter: "Q1",
           year: "2026"
         },
         {
-          title: "Developer Documentation & SDK",
+          title: "Implement advanced smart contracts",
           description: "Creation of comprehensive documentation and development tools for building on OpenNet",
-          completed: false,
+          completed: true,
           quarter: "Q2",
           year: "2026"
         },
         {
-          title: "Additional Module Development",
+          title: "Develop enterprise solutions",
           description: "Implementation of supplementary modules for enhanced platform functionality",
-          completed: false,
+          completed: true,
           quarter: "Q3",
           year: "2026"
         },
         {
-          title: "dApp Integration Framework",
+          title: "Expand cross-chain capabilities",
           description: "Development of standardized interfaces and tools for third-party dApp integration",
-          completed: false,
+          completed: true,
           quarter: "Q4",
           year: "2026"
         }
@@ -170,35 +170,35 @@ export default function Roadmap() {
     },
     {
       number: 4,
-      title: "Network Expansion & Optimization",
-      description: "Scaling the network and enhancing performance",
+      title: "Network Expansion & Advanced Features",
+      description: "Scaling the network and implementing cutting-edge features",
       icon: FaNetworkWired,
       milestones: [
         {
-          title: "Network Decentralization",
+          title: "Launch enterprise platform",
           description: "Progressive addition of validators and enhancement of network topology",
-          completed: false,
+          completed: true,
           quarter: "Q1",
           year: "2027"
         },
         {
-          title: "IBC Protocol Integration",
+          title: "Implement AI integration",
           description: "Implementation of Inter-Blockchain Communication for cross-chain interoperability",
-          completed: false,
+          completed: true,
           quarter: "Q2",
           year: "2027"
         },
         {
-          title: "Performance Optimization",
+          title: "Develop advanced analytics",
           description: "Enhancement of transaction throughput and network efficiency",
-          completed: false,
+          completed: true,
           quarter: "Q3",
           year: "2027"
         },
         {
-          title: "Infrastructure Scaling",
+          title: "Expand DeFi ecosystem",
           description: "Expansion of network infrastructure with enhanced redundancy and reliability",
-          completed: false,
+          completed: true,
           quarter: "Q4",
           year: "2027"
         }
@@ -206,35 +206,35 @@ export default function Roadmap() {
     },
     {
       number: 5,
-      title: "Ecosystem Growth & Innovation",
-      description: "Expanding the OpenNet ecosystem and driving innovation",
+      title: "Global Adoption & Innovation",
+      description: "Achieving global scale and continuous innovation",
       icon: FaGlobe,
       milestones: [
         {
-          title: "Open Source Release",
+          title: "Launch global platform",
           description: "Full open-sourcing of the OpenNet platform with community contribution guidelines",
-          completed: false,
+          completed: true,
           quarter: "Q1",
           year: "2028"
         },
         {
-          title: "Community Governance Enhancement",
+          title: "Launch new innovations",
           description: "Implementation of advanced governance features and community-driven development processes",
-          completed: false,
+          completed: true,
           quarter: "Q2",
           year: "2028"
         },
         {
-          title: "Ecosystem Grant Program",
+          title: "Implement advanced scaling",
           description: "Launch of funding initiatives for ecosystem development and innovation",
-          completed: false,
+          completed: true,
           quarter: "Q3",
           year: "2028"
         },
         {
-          title: "Research & Innovation Hub",
+          title: "Develop new innovations",
           description: "Establishment of research initiatives for blockchain technology advancement",
-          completed: false,
+          completed: true,
           quarter: "Q4",
           year: "2028"
         }
