@@ -104,7 +104,6 @@ export default function Navbar() {
       ]
     },
     { name: 'OpenExchange', href: '/openexchange' },
-    { name: 'Claim', href: '/claim' },
     {
       name: 'Legal',
       submenu: [
@@ -118,7 +117,6 @@ export default function Navbar() {
   // Tools dropdown items
   const toolsItems: MenuItem[] = [
     { name: 'Tools Overview', href: '/tools' },
-    { name: 'DEX Aggregator', href: '/tools/dex-aggregator' },
     { name: 'Token Analyzer', href: '/tools/token-analyzer' },
     { name: 'Token Investigator', href: '/tools/token-investigator' },
     { name: 'Contract Analyzer', href: '/tools/contract-analyzer' },
@@ -185,7 +183,6 @@ export default function Navbar() {
         .map(item => ({ name: item.name, href: item.href as string }))
     },
     { name: 'OpenExchange', href: '/openexchange', icon: <FaExchangeAlt className="text-primary" /> },
-    { name: 'Claim', href: '/claim', icon: <FaCoins className="text-primary" /> },
     { 
       name: 'Legal',
       icon: <FaFileAlt className="text-primary" />,
