@@ -54,9 +54,6 @@ export default function Layout({ children, title, description }: LayoutProps) {
       </main>
       
       <Footer />
-      
-      {/* Cookie Consent Banner - Only shown once per session */}
-      <CookiesBanner />
     </div>
   );
 } 
