@@ -93,6 +93,7 @@ export default function Navbar() {
         { name: 'Services', href: '/services' },
       ]
     },
+    { name: 'OpenLabs', href: '/openlabs' },
     {
       name: 'Launch Projects',
       submenu: [
@@ -157,6 +158,7 @@ export default function Navbar() {
         { name: 'Services', href: '/services' },
       ]
     },
+    { name: 'OpenLabs', href: '/openlabs', icon: <FaCode className="text-primary" /> },
     { 
       name: 'Tools', 
       icon: <FaTools className="text-primary" />,
