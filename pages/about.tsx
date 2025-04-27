@@ -22,23 +22,26 @@ const AboutPage: NextPageWithLayout = () => {
       content: (
         <div className="space-y-4">
           <p className="text-light-muted">
-            The Open Crypto Foundation was established just three weeks ago with the mission to create a safer, more transparent 
-            cryptocurrency ecosystem where users can participate with confidence. We believe the promise of decentralized finance 
-            can only be realized when users have the tools and knowledge to protect themselves from scams and exploitative projects.
+            The Open Crypto Foundation (OCF) represents a paradigm shift in the blockchain ecosystem, 
+            establishing a robust framework for secure, transparent, and interoperable decentralized 
+            applications. Our mission encompasses the development of cutting-edge cryptographic solutions, 
+            the implementation of advanced consensus mechanisms, and the creation of a comprehensive 
+            ecosystem that prioritizes security, scalability, and user sovereignty.
           </p>
           <p className="text-light-muted">
-            Though we're new, our vision is clear: to provide accessible education, reliable tools, and independent verification 
-            services that empower both newcomers and experienced users to navigate the complexities of cryptocurrency with 
-            security and confidence.
+            Through our subsidiary OpenLabs, we are pioneering the OpenNet blockchain protocol, a 
+            next-generation distributed ledger technology that integrates zero-knowledge proofs, 
+            sharding mechanisms, and cross-chain interoperability protocols to deliver unprecedented 
+            performance and security guarantees.
           </p>
           <div className="bg-dark-light/30 p-4 rounded-lg border border-dark-light/30">
-            <h4 className="text-white font-medium mb-2">Core Objectives</h4>
+            <h4 className="text-white font-medium mb-2">Strategic Objectives</h4>
             <ul className="list-disc pl-5 text-light-muted space-y-1">
-              <li>Develop and maintain open-source tools for crypto safety verification</li>
-              <li>Provide comprehensive, unbiased educational resources</li>
-              <li>Establish transparent, rigorous auditing services for crypto projects</li>
-              <li>Support victims of cryptocurrency scams and exploits</li>
-              <li>Advocate for industry standards that prioritize user protection</li>
+              <li>Architect and implement the OpenNet blockchain infrastructure</li>
+              <li>Develop advanced cryptographic primitives and security protocols</li>
+              <li>Establish comprehensive auditing frameworks for smart contracts</li>
+              <li>Create decentralized governance mechanisms for protocol evolution</li>
+              <li>Implement cross-chain interoperability solutions</li>
             </ul>
           </div>
         </div>
@@ -51,24 +54,26 @@ const AboutPage: NextPageWithLayout = () => {
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            Despite being just three weeks old, the Open Crypto Foundation aims to serve as a nonprofit organization 
-            dedicated to advancing the security, transparency, and accessibility of blockchain technology and cryptocurrency 
-            ecosystems. We are establishing ourselves as an independent entity focused solely on the betterment of the space 
-            through education, research, and tooling.
+            The Open Crypto Foundation operates as a decentralized autonomous organization (DAO) 
+            dedicated to advancing the state of blockchain technology through rigorous research, 
+            innovative development, and comprehensive education. Our organizational structure 
+            implements a multi-tiered governance model that ensures both technical excellence 
+            and community-driven decision-making.
           </p>
           <p className="text-gray-300">
-            As a newly formed foundation, we're committed to principles of neutrality and objectivity, ensuring that our work 
-            will benefit the entire ecosystem rather than any specific project or platform. Our organizational structure is 
-            designed to maintain independence while collaborating with various stakeholders in the blockchain space.
+            OpenLabs, our technical research and development arm, spearheads the implementation 
+            of the OpenNet protocol, incorporating novel consensus algorithms, privacy-preserving 
+            computation, and scalable transaction processing mechanisms. This initiative represents 
+            a significant advancement in distributed systems architecture.
           </p>
           <div className="bg-gray-700 p-4 rounded-lg">
-            <h4 className="text-white font-medium mb-2">Key Focus Areas</h4>
+            <h4 className="text-white font-medium mb-2">Technical Focus Areas</h4>
             <ul className="list-disc pl-5 text-gray-300 space-y-1">
-              <li>Cross-chain security research and implementation</li>
-              <li>Educational initiatives for users of all experience levels</li>
-              <li>Development of open-source security tools and frameworks</li>
-              <li>Standardization of security practices across the industry</li>
-              <li>Support for innovative projects that enhance ecosystem safety</li>
+              <li>Zero-knowledge proof systems and privacy-preserving computation</li>
+              <li>Distributed consensus mechanisms and Byzantine fault tolerance</li>
+              <li>Cross-chain communication protocols and atomic swaps</li>
+              <li>Smart contract formal verification and security analysis</li>
+              <li>Decentralized identity and reputation systems</li>
             </ul>
           </div>
         </div>
@@ -81,17 +86,19 @@ const AboutPage: NextPageWithLayout = () => {
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            The Open Crypto Foundation was founded just three weeks ago in response to the growing prevalence of scams and 
-            exploitative projects in the cryptocurrency space. Our organization emerged as a collective effort by concerned 
-            community members to address these challenges and promote safety and transparency in the blockchain ecosystem.
+            The Open Crypto Foundation emerged from a recognition of critical limitations in existing 
+            blockchain architectures. Our inception was driven by the need for a more robust, scalable, 
+            and secure foundation for decentralized applications, leading to the conceptualization and 
+            development of the OpenNet protocol.
           </p>
           
           <div className="bg-gray-700 p-5 rounded-lg">
-            <h4 className="text-white font-medium mb-3">Why Now?</h4>
+            <h4 className="text-white font-medium mb-3">Technical Evolution</h4>
             <p className="text-gray-300">
-              The crypto space is at a critical juncture. With growing mainstream adoption and increasing technical complexity, 
-              the need for independent safety standards and education has never been more urgent. Our foundation was established 
-              to meet this immediate need and create lasting infrastructure for a safer ecosystem.
+              The blockchain space requires continuous innovation in cryptographic primitives, 
+              consensus mechanisms, and network architecture. Our foundation was established to 
+              address these technical challenges through systematic research and development, 
+              with OpenLabs serving as our innovation engine.
             </p>
           </div>
           
@@ -101,10 +108,10 @@ const AboutPage: NextPageWithLayout = () => {
                 <span className="text-white font-bold">Now</span>
               </div>
               <div>
-                <h4 className="text-white font-medium">Formation Phase</h4>
+                <h4 className="text-white font-medium">Protocol Development Phase</h4>
                 <p className="text-gray-300">
-                  Currently building our core infrastructure, establishing partnerships, and developing our initial 
-                  educational resources and security tools.
+                  Implementing core OpenNet protocol features, including sharding mechanisms, 
+                  zero-knowledge proof systems, and cross-chain communication protocols.
                 </p>
               </div>
             </div>
@@ -114,10 +121,11 @@ const AboutPage: NextPageWithLayout = () => {
                 <span className="text-white font-bold">2025</span>
               </div>
               <div>
-                <h4 className="text-white font-medium">Initial Goals (3-6 months)</h4>
+                <h4 className="text-white font-medium">Technical Milestones (3-6 months)</h4>
                 <p className="text-gray-300">
-                  Launch our first suite of open-source security tools, including Contract Scanner and Risk Calculator. 
-                  Establish educational resources and begin development of our scam database.
+                  Deploy OpenNet testnet with initial sharding implementation, launch 
+                  privacy-preserving computation framework, and establish formal verification 
+                  tools for smart contracts.
                 </p>
               </div>
             </div>
@@ -127,10 +135,11 @@ const AboutPage: NextPageWithLayout = () => {
                 <span className="text-white font-bold">2025</span>
               </div>
               <div>
-                <h4 className="text-white font-medium">Expansion Plans (6-12 months)</h4>
+                <h4 className="text-white font-medium">Protocol Enhancement (6-12 months)</h4>
                 <p className="text-gray-300">
-                  Introduce professional audit services and victim recovery fund. Expand educational resources 
-                  and establish partnerships with major blockchain platforms and educational institutions.
+                  Implement advanced cross-chain interoperability solutions, deploy mainnet 
+                  with full sharding capabilities, and introduce decentralized governance 
+                  mechanisms.
                 </p>
               </div>
             </div>
@@ -140,10 +149,11 @@ const AboutPage: NextPageWithLayout = () => {
                 <span className="text-white font-bold">2026</span>
               </div>
               <div>
-                <h4 className="text-white font-medium">Long-term Vision</h4>
+                <h4 className="text-white font-medium">Advanced Development</h4>
                 <p className="text-gray-300">
-                  Develop advanced AI-powered security tools, expand global educational initiatives, and 
-                  advocate for industry standards that protect users worldwide.
+                  Deploy quantum-resistant cryptographic primitives, implement advanced 
+                  privacy-preserving computation frameworks, and establish a self-sustaining 
+                  ecosystem of decentralized applications.
                 </p>
               </div>
             </div>
@@ -158,35 +168,31 @@ const AboutPage: NextPageWithLayout = () => {
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            Though we're only three weeks old, the Open Crypto Foundation is actively seeking collaborations with organizations 
-            that share our commitment to creating a safer cryptocurrency ecosystem. We're currently in early discussions with 
-            potential partners across blockchain platforms, educational institutions, security firms, and consumer protection 
-            organizations.
+            The Open Crypto Foundation actively collaborates with leading research institutions, 
+            blockchain projects, and technology companies to advance the state of distributed 
+            systems technology. Our partnerships focus on joint research initiatives, protocol 
+            development, and the establishment of industry standards.
           </p>
           
           <div className="bg-gray-700 p-5 rounded-lg mb-4">
-            <h4 className="text-white font-medium mb-3">Partnership Goals</h4>
+            <h4 className="text-white font-medium mb-3">Technical Collaborations</h4>
             <p className="text-gray-300">
-              As a newly established foundation, we're looking to form strategic partnerships that will help us achieve our 
-              mission more effectively. We believe that collaboration across the ecosystem is essential to addressing the 
-              complex challenges of cryptocurrency security and education.
-            </p>
-            <p className="text-gray-300 mt-3">
-              If your organization is interested in partnering with us, please reach out through our contact page. We're 
-              particularly interested in collaborations focused on education, security research, and community outreach.
+              We engage in strategic technical partnerships that enhance our research capabilities 
+              and accelerate protocol development. Our collaborations span cryptographic research, 
+              distributed systems architecture, and blockchain interoperability.
             </p>
           </div>
           
           <div className="bg-gray-700 p-5 rounded-lg">
-            <h4 className="text-white font-medium border-b border-gray-600 pb-2 mb-3">Target Collaboration Areas</h4>
+            <h4 className="text-white font-medium border-b border-gray-600 pb-2 mb-3">Research Areas</h4>
             <ul className="space-y-3">
               <li className="flex items-start">
                 <div className="w-10 h-10 bg-gray-800 rounded-full mr-3 flex items-center justify-center mt-1">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"></div>
                 </div>
                 <div>
-                  <h5 className="text-white text-sm">Blockchain Networks</h5>
-                  <p className="text-gray-400 text-xs">Collaborative research on cross-chain security implementations</p>
+                  <h5 className="text-white text-sm">Cryptographic Research</h5>
+                  <p className="text-gray-400 text-xs">Advanced zero-knowledge proof systems and privacy-preserving computation</p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -194,8 +200,8 @@ const AboutPage: NextPageWithLayout = () => {
                   <div className="w-8 h-8 rounded-full bg-gradient-to-r from-red-500 to-pink-500"></div>
                 </div>
                 <div>
-                  <h5 className="text-white text-sm">Security Firms</h5>
-                  <p className="text-gray-400 text-xs">Joint development of audit standards and security tooling</p>
+                  <h5 className="text-white text-sm">Distributed Systems</h5>
+                  <p className="text-gray-400 text-xs">Novel consensus mechanisms and network protocols</p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -203,8 +209,8 @@ const AboutPage: NextPageWithLayout = () => {
                   <div className="w-8 h-8 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"></div>
                 </div>
                 <div>
-                  <h5 className="text-white text-sm">Academic Institutions</h5>
-                  <p className="text-gray-400 text-xs">Research collaborations and educational resource development</p>
+                  <h5 className="text-white text-sm">Protocol Development</h5>
+                  <p className="text-gray-400 text-xs">Cross-chain interoperability and smart contract formal verification</p>
                 </div>
               </li>
             </ul>
@@ -219,53 +225,36 @@ const AboutPage: NextPageWithLayout = () => {
       content: (
         <div className="space-y-5">
           <p className="text-gray-300">
-            Despite being just three weeks old, the Open Crypto Foundation was established with a clear set of values 
-            that will guide our growth and development. These principles ensure we remain focused on our mission and 
-            accountable to the communities we aim to serve.
+            The Open Crypto Foundation operates on a foundation of technical excellence, 
+            cryptographic security, and decentralized governance. Our values reflect our 
+            commitment to advancing the state of blockchain technology while maintaining 
+            the highest standards of security and transparency.
           </p>
           
           <div className="bg-gray-700 p-5 rounded-lg mb-4">
-            <h4 className="text-white font-medium mb-3">Transparency</h4>
+            <h4 className="text-white font-medium mb-3">Technical Excellence</h4>
             <p className="text-gray-300">
-              We commit to operating with complete transparency, from our funding sources to our audit methodologies. 
-              All our tools will be open-source, our evaluations clearly documented, and our processes subject to 
-              public review and feedback.
+              We maintain rigorous standards in protocol development, cryptographic implementation, 
+              and system architecture. Our commitment to technical excellence drives our research 
+              initiatives and development processes.
             </p>
           </div>
           
           <div className="bg-gray-700 p-5 rounded-lg mb-4">
-            <h4 className="text-white font-medium mb-3">Independence</h4>
+            <h4 className="text-white font-medium mb-3">Security First</h4>
             <p className="text-gray-300">
-              Our assessments and recommendations will remain independent from commercial interests. We will not accept payment 
-              in exchange for favorable reviews, and our governance structure is designed to ensure no single entity can 
-              unduly influence our work.
+              Security considerations permeate every aspect of our work, from protocol design 
+              to implementation. We employ formal verification methods, comprehensive auditing 
+              processes, and advanced cryptographic primitives to ensure system integrity.
             </p>
           </div>
           
           <div className="bg-gray-700 p-5 rounded-lg mb-4">
-            <h4 className="text-white font-medium mb-3">Accessibility</h4>
+            <h4 className="text-white font-medium mb-3">Decentralized Governance</h4>
             <p className="text-gray-300">
-              We are committed to making cryptocurrency safety accessible to everyone, regardless of technical background. 
-              Our educational materials will be designed to be understandable to beginners while remaining valuable to experts, 
-              and our tools built with usability as a core focus.
-            </p>
-          </div>
-          
-          <div className="bg-gray-700 p-5 rounded-lg mb-4">
-            <h4 className="text-white font-medium mb-3">Community-Centered</h4>
-            <p className="text-gray-300">
-              We exist to serve the crypto community, and plan to actively involve community members in our work through 
-              open feedback, collaborative research, and participatory governance. Our planned victim recovery fund reflects 
-              our commitment to supporting those harmed by scams and exploits.
-            </p>
-          </div>
-          
-          <div className="bg-gray-700 p-5 rounded-lg">
-            <h4 className="text-white font-medium mb-3">Evidence-Based</h4>
-            <p className="text-gray-300">
-              Our recommendations and tools will be based on rigorous research and data analysis. We'll continuously evaluate 
-              emerging threats and adapt our approaches based on empirical evidence of what works in protecting users 
-              from harm.
+              Our organizational structure implements decentralized governance mechanisms 
+              that ensure protocol evolution through community consensus while maintaining 
+              technical integrity and security guarantees.
             </p>
           </div>
         </div>
