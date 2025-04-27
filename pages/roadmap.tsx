@@ -69,28 +69,28 @@ export default function Roadmap() {
         {
           title: "Complete OpenNet whitepaper and technical specifications",
           description: "Comprehensive design of OpenNet's application-specific blockchain architecture, including module structure, consensus parameters, and network topology",
-          completed: true,
+          completed: false,
           quarter: "Q2",
           year: "2025"
         },
         {
           title: "Finalize consensus mechanism design",
           description: "Development of foundational components: Cosmos SDK integration, Tendermint Core consensus engine, and ABCI interface implementation",
-          completed: true,
+          completed: false,
           quarter: "Q3",
           year: "2025"
         },
         {
           title: "Develop core blockchain architecture",
           description: "Setup of initial network topology with single validator and eight peer nodes across distributed cloud infrastructure",
-          completed: true,
+          completed: false,
           quarter: "Q4",
           year: "2025"
         },
         {
           title: "Establish development team and partnerships",
           description: "Implementation of comprehensive security measures including BFT guarantees, capability-based security, and infrastructure hardening",
-          completed: true,
+          completed: false,
           quarter: "Q1",
           year: "2025"
         }
@@ -105,28 +105,28 @@ export default function Roadmap() {
         {
           title: "Finalize token economics",
           description: "Implementation of open and stake token contracts with initial supply distribution and staking mechanisms",
-          completed: true,
+          completed: false,
           quarter: "Q1",
           year: "2025"
         },
         {
           title: "Implement staking mechanisms",
           description: "Deployment of Cosmos SDK gov module with custom parameters for OpenNet's governance requirements",
-          completed: true,
+          completed: false,
           quarter: "Q2",
           year: "2025"
         },
         {
           title: "Develop governance framework",
           description: "Implementation of PoS mechanisms, slashing conditions, and validator rotation protocols",
-          completed: true,
+          completed: false,
           quarter: "Q3",
           year: "2025"
         },
         {
           title: "Launch token presale",
           description: "Launch of token distribution mechanisms and initial validator onboarding process",
-          completed: true,
+          completed: false,
           quarter: "Q4",
           year: "2025"
         }
@@ -141,28 +141,28 @@ export default function Roadmap() {
         {
           title: "Launch developer grant program",
           description: "Development of the foundational blog module demonstrating OpenNet's application-specific capabilities",
-          completed: true,
+          completed: false,
           quarter: "Q1",
           year: "2026"
         },
         {
           title: "Implement advanced smart contracts",
           description: "Creation of comprehensive documentation and development tools for building on OpenNet",
-          completed: true,
+          completed: false,
           quarter: "Q2",
           year: "2026"
         },
         {
           title: "Develop enterprise solutions",
           description: "Implementation of supplementary modules for enhanced platform functionality",
-          completed: true,
+          completed: false,
           quarter: "Q3",
           year: "2026"
         },
         {
           title: "Expand cross-chain capabilities",
           description: "Development of standardized interfaces and tools for third-party dApp integration",
-          completed: true,
+          completed: false,
           quarter: "Q4",
           year: "2026"
         }
@@ -177,28 +177,28 @@ export default function Roadmap() {
         {
           title: "Launch enterprise platform",
           description: "Progressive addition of validators and enhancement of network topology",
-          completed: true,
+          completed: false,
           quarter: "Q1",
           year: "2027"
         },
         {
           title: "Implement AI integration",
           description: "Implementation of Inter-Blockchain Communication for cross-chain interoperability",
-          completed: true,
+          completed: false,
           quarter: "Q2",
           year: "2027"
         },
         {
           title: "Develop advanced analytics",
           description: "Enhancement of transaction throughput and network efficiency",
-          completed: true,
+          completed: false,
           quarter: "Q3",
           year: "2027"
         },
         {
           title: "Expand DeFi ecosystem",
           description: "Expansion of network infrastructure with enhanced redundancy and reliability",
-          completed: true,
+          completed: false,
           quarter: "Q4",
           year: "2027"
         }
@@ -213,28 +213,28 @@ export default function Roadmap() {
         {
           title: "Launch global platform",
           description: "Full open-sourcing of the OpenNet platform with community contribution guidelines",
-          completed: true,
+          completed: false,
           quarter: "Q1",
           year: "2028"
         },
         {
           title: "Launch new innovations",
           description: "Implementation of advanced governance features and community-driven development processes",
-          completed: true,
+          completed: false,
           quarter: "Q2",
           year: "2028"
         },
         {
           title: "Implement advanced scaling",
           description: "Launch of funding initiatives for ecosystem development and innovation",
-          completed: true,
+          completed: false,
           quarter: "Q3",
           year: "2028"
         },
         {
           title: "Develop new innovations",
           description: "Establishment of research initiatives for blockchain technology advancement",
-          completed: true,
+          completed: false,
           quarter: "Q4",
           year: "2028"
         }
