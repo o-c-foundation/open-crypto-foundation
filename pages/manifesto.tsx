@@ -219,22 +219,255 @@ export default function Manifesto() {
     {
       id: "mission",
       name: "Our Mission",
-      icon: <FaShieldAlt className="text-purple-400" />
+      icon: <FaShieldAlt className="text-purple-400" />,
+      content: (
+        <div className="space-y-6">
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h3 className="text-2xl font-bold text-white mb-4">Technical Vision</h3>
+            <p className="text-gray-300 mb-4">
+              The Open Crypto Foundation (OCF) represents a paradigm shift in blockchain architecture and security. 
+              Our mission encompasses the development of advanced cryptographic primitives, the implementation of 
+              novel consensus mechanisms, and the establishment of a comprehensive framework for secure, scalable, 
+              and interoperable decentralized applications.
+            </p>
+            <p className="text-gray-300">
+              Through OpenLabs, our research and development arm, we are pioneering the OpenNet protocol - a 
+              next-generation blockchain infrastructure that integrates zero-knowledge proofs, sharding mechanisms, 
+              and cross-chain interoperability protocols to deliver unprecedented performance and security guarantees.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+              <h4 className="text-xl font-semibold text-white mb-3">Technical Objectives</h4>
+              <ul className="space-y-2 text-gray-300">
+                <li className="flex items-start">
+                  <FaCheckCircle className="text-green-500 mt-1 mr-2 flex-shrink-0" />
+                  <span>Develop quantum-resistant cryptographic primitives</span>
+                </li>
+                <li className="flex items-start">
+                  <FaCheckCircle className="text-green-500 mt-1 mr-2 flex-shrink-0" />
+                  <span>Implement advanced privacy-preserving computation frameworks</span>
+                </li>
+                <li className="flex items-start">
+                  <FaCheckCircle className="text-green-500 mt-1 mr-2 flex-shrink-0" />
+                  <span>Establish formal verification tools for smart contracts</span>
+                </li>
+                <li className="flex items-start">
+                  <FaCheckCircle className="text-green-500 mt-1 mr-2 flex-shrink-0" />
+                  <span>Create decentralized governance mechanisms</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+              <h4 className="text-xl font-semibold text-white mb-3">Research Focus</h4>
+              <ul className="space-y-2 text-gray-300">
+                <li className="flex items-start">
+                  <FaCodeBranch className="text-blue-500 mt-1 mr-2 flex-shrink-0" />
+                  <span>Zero-knowledge proof systems and zk-SNARKs</span>
+                </li>
+                <li className="flex items-start">
+                  <FaCodeBranch className="text-blue-500 mt-1 mr-2 flex-shrink-0" />
+                  <span>Distributed consensus algorithms</span>
+                </li>
+                <li className="flex items-start">
+                  <FaCodeBranch className="text-blue-500 mt-1 mr-2 flex-shrink-0" />
+                  <span>Cross-chain communication protocols</span>
+                </li>
+                <li className="flex items-start">
+                  <FaCodeBranch className="text-blue-500 mt-1 mr-2 flex-shrink-0" />
+                  <span>Smart contract formal verification</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h4 className="text-xl font-semibold text-white mb-3">Technical Architecture</h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h5 className="text-white font-medium mb-2">Layer 1 Infrastructure</h5>
+                <p className="text-gray-300 text-sm">
+                  OpenNet's base layer implements novel sharding mechanisms and Byzantine fault-tolerant consensus protocols.
+                </p>
+              </div>
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h5 className="text-white font-medium mb-2">Privacy Layer</h5>
+                <p className="text-gray-300 text-sm">
+                  Advanced zero-knowledge proof systems enable private transactions and confidential smart contracts.
+                </p>
+              </div>
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h5 className="text-white font-medium mb-2">Interoperability Layer</h5>
+                <p className="text-gray-300 text-sm">
+                  Cross-chain communication protocols enable seamless interaction with other blockchain networks.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
     },
     {
       id: "problem",
       name: "The Problem",
-      icon: <FaExclamationTriangle className="text-red-400" />
+      icon: <FaExclamationTriangle className="text-red-400" />,
+      content: (
+        <div className="space-y-6">
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h3 className="text-2xl font-bold text-white mb-4">Technical Challenges</h3>
+            <p className="text-gray-300 mb-4">
+              The current blockchain ecosystem faces fundamental technical limitations that compromise security, 
+              scalability, and interoperability. These challenges manifest in critical vulnerabilities, inefficient 
+              consensus mechanisms, and fragmented network architectures.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h4 className="text-white font-medium mb-2">Security Vulnerabilities</h4>
+                <ul className="text-gray-300 text-sm space-y-1">
+                  <li>• Smart contract exploits and reentrancy attacks</li>
+                  <li>• Consensus mechanism vulnerabilities</li>
+                  <li>• Cross-chain bridge security flaws</li>
+                  <li>• Privacy protocol weaknesses</li>
+                </ul>
+              </div>
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h4 className="text-white font-medium mb-2">Scalability Limitations</h4>
+                <ul className="text-gray-300 text-sm space-y-1">
+                  <li>• Network congestion and high gas fees</li>
+                  <li>• Limited transaction throughput</li>
+                  <li>• Storage scalability challenges</li>
+                  <li>• Cross-shard communication overhead</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h4 className="text-xl font-semibold text-white mb-3">Technical Analysis</h4>
+            <div className="space-y-4">
+              {majorScams.map((scam, index) => (
+                <div key={index} className="bg-gray-700 p-4 rounded-lg">
+                  <h5 className="text-white font-medium mb-2">{scam.name} ({scam.year})</h5>
+                  <p className="text-gray-300 text-sm mb-2">{scam.description}</p>
+                  <div className="text-gray-400 text-xs">
+                    <p><span className="font-medium">Technical Impact:</span> {scam.impact}</p>
+                    <p><span className="font-medium">Current Status:</span> {scam.status}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )
     },
     {
       id: "incentives",
       name: "Misaligned Incentives",
-      icon: <FaChartLine className="text-yellow-400" />
+      icon: <FaChartLine className="text-yellow-400" />,
+      content: (
+        <div className="space-y-6">
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h3 className="text-2xl font-bold text-white mb-4">Protocol Economics</h3>
+            <p className="text-gray-300 mb-4">
+              The current blockchain ecosystem suffers from fundamental economic misalignments that compromise 
+              protocol security and user protection. These issues stem from centralized control points, 
+              extractive fee structures, and insufficient incentive mechanisms for security and transparency.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h4 className="text-white font-medium mb-2">Centralization Risks</h4>
+                <ul className="text-gray-300 text-sm space-y-1">
+                  <li>• Concentrated validator power and stake pools</li>
+                  <li>• Centralized development teams and governance</li>
+                  <li>• Single points of failure in infrastructure</li>
+                  <li>• Limited protocol evolution mechanisms</li>
+                </ul>
+              </div>
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h4 className="text-white font-medium mb-2">Economic Vulnerabilities</h4>
+                <ul className="text-gray-300 text-sm space-y-1">
+                  <li>• Extractive fee models and rent-seeking</li>
+                  <li>• Insufficient security incentives</li>
+                  <li>• Misaligned token economics</li>
+                  <li>• Limited protocol sustainability</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h4 className="text-xl font-semibold text-white mb-3">Platform Analysis</h4>
+            <div className="space-y-4">
+              {platformFees.map((platform, index) => (
+                <div key={index} className="bg-gray-700 p-4 rounded-lg">
+                  <h5 className="text-white font-medium mb-2">{platform.platform}</h5>
+                  <div className="text-gray-300 text-sm space-y-1">
+                    <p><span className="font-medium">Revenue Model:</span> {platform.source}</p>
+                    <p><span className="font-medium">Annual Revenue:</span> {platform.annualRevenue}</p>
+                    <p className="text-gray-400 text-xs">{platform.notes}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )
     },
     {
       id: "regulatory",
       name: "Regulatory Failures",
-      icon: <FaBalanceScale className="text-blue-400" />
+      icon: <FaBalanceScale className="text-blue-400" />,
+      content: (
+        <div className="space-y-6">
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h3 className="text-2xl font-bold text-white mb-4">Governance Challenges</h3>
+            <p className="text-gray-300 mb-4">
+              The current regulatory landscape fails to address the technical complexities of blockchain 
+              technology, resulting in inadequate protection for users and systemic risks to the ecosystem. 
+              This stems from a fundamental misunderstanding of cryptographic primitives, consensus mechanisms, 
+              and decentralized governance structures.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h4 className="text-white font-medium mb-2">Technical Oversight</h4>
+                <ul className="text-gray-300 text-sm space-y-1">
+                  <li>• Inadequate smart contract auditing standards</li>
+                  <li>• Limited understanding of consensus mechanisms</li>
+                  <li>• Insufficient cross-chain regulation</li>
+                  <li>• Weak privacy protocol oversight</li>
+                </ul>
+              </div>
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h4 className="text-white font-medium mb-2">Systemic Risks</h4>
+                <ul className="text-gray-300 text-sm space-y-1">
+                  <li>• Unregulated cross-chain bridges</li>
+                  <li>• Centralized infrastructure dependencies</li>
+                  <li>• Insufficient security requirements</li>
+                  <li>• Limited protocol evolution oversight</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h4 className="text-xl font-semibold text-white mb-3">Regulatory Analysis</h4>
+            <div className="space-y-4">
+              {regulatoryFailures.map((failure, index) => (
+                <div key={index} className="bg-gray-700 p-4 rounded-lg">
+                  <h5 className="text-white font-medium mb-2">{failure.issue}</h5>
+                  <p className="text-gray-300 text-sm mb-2">{failure.description}</p>
+                  <div className="text-gray-400 text-xs">
+                    <p><span className="font-medium">Example:</span> {failure.example}</p>
+                    <p><span className="font-medium">Consequence:</span> {failure.consequence}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )
     },
     {
       id: "human",
@@ -244,12 +477,179 @@ export default function Manifesto() {
     {
       id: "principles",
       name: "Core Principles",
-      icon: <FaRegLightbulb className="text-orange-400" />
+      icon: <FaRegLightbulb className="text-orange-400" />,
+      content: (
+        <div className="space-y-6">
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h3 className="text-2xl font-bold text-white mb-4">Technical Principles</h3>
+            <p className="text-gray-300 mb-4">
+              Our foundation operates on a set of core technical principles that guide our research, 
+              development, and governance decisions. These principles ensure the integrity, security, 
+              and sustainability of our protocols and infrastructure.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h4 className="text-white font-medium mb-2">Protocol Design</h4>
+                <ul className="text-gray-300 text-sm space-y-2">
+                  <li className="flex items-start">
+                    <FaCheckCircle className="text-green-500 mt-1 mr-2 flex-shrink-0" />
+                    <span>Formal verification of all critical components</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FaCheckCircle className="text-green-500 mt-1 mr-2 flex-shrink-0" />
+                    <span>Decentralized consensus mechanisms</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FaCheckCircle className="text-green-500 mt-1 mr-2 flex-shrink-0" />
+                    <span>Privacy-preserving computation</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FaCheckCircle className="text-green-500 mt-1 mr-2 flex-shrink-0" />
+                    <span>Cross-chain interoperability</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h4 className="text-white font-medium mb-2">Security Framework</h4>
+                <ul className="text-gray-300 text-sm space-y-2">
+                  <li className="flex items-start">
+                    <FaCheckCircle className="text-green-500 mt-1 mr-2 flex-shrink-0" />
+                    <span>Zero-trust architecture</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FaCheckCircle className="text-green-500 mt-1 mr-2 flex-shrink-0" />
+                    <span>Continuous security auditing</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FaCheckCircle className="text-green-500 mt-1 mr-2 flex-shrink-0" />
+                    <span>Quantum-resistant cryptography</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FaCheckCircle className="text-green-500 mt-1 mr-2 flex-shrink-0" />
+                    <span>Decentralized governance</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h4 className="text-xl font-semibold text-white mb-3">Implementation Strategy</h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h5 className="text-white font-medium mb-2">Research Phase</h5>
+                <p className="text-gray-300 text-sm">
+                  Comprehensive analysis of existing protocols and identification of technical gaps.
+                </p>
+              </div>
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h5 className="text-white font-medium mb-2">Development Phase</h5>
+                <p className="text-gray-300 text-sm">
+                  Implementation of core protocols with formal verification and security audits.
+                </p>
+              </div>
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h5 className="text-white font-medium mb-2">Deployment Phase</h5>
+                <p className="text-gray-300 text-sm">
+                  Gradual rollout with continuous monitoring and community feedback integration.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
     },
     {
       id: "solution",
       name: "Our Solution",
-      icon: <FaHandHoldingUsd className="text-pink-400" />
+      icon: <FaShieldAlt className="text-green-400" />,
+      content: (
+        <div className="space-y-6">
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h3 className="text-2xl font-bold text-white mb-4">Technical Architecture</h3>
+            <p className="text-gray-300 mb-4">
+              The OpenNet protocol represents a comprehensive solution to the technical challenges facing 
+              the blockchain ecosystem. Our architecture integrates advanced cryptographic primitives, 
+              novel consensus mechanisms, and cross-chain interoperability protocols to deliver a secure, 
+              scalable, and sustainable infrastructure.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h4 className="text-white font-medium mb-2">Core Components</h4>
+                <ul className="text-gray-300 text-sm space-y-2">
+                  <li className="flex items-start">
+                    <FaCodeBranch className="text-blue-500 mt-1 mr-2 flex-shrink-0" />
+                    <span>Sharded blockchain architecture</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FaCodeBranch className="text-blue-500 mt-1 mr-2 flex-shrink-0" />
+                    <span>Zero-knowledge proof systems</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FaCodeBranch className="text-blue-500 mt-1 mr-2 flex-shrink-0" />
+                    <span>Cross-chain communication protocols</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FaCodeBranch className="text-blue-500 mt-1 mr-2 flex-shrink-0" />
+                    <span>Decentralized governance mechanisms</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h4 className="text-white font-medium mb-2">Security Features</h4>
+                <ul className="text-gray-300 text-sm space-y-2">
+                  <li className="flex items-start">
+                    <FaShieldAlt className="text-green-500 mt-1 mr-2 flex-shrink-0" />
+                    <span>Formal verification of smart contracts</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FaShieldAlt className="text-green-500 mt-1 mr-2 flex-shrink-0" />
+                    <span>Quantum-resistant cryptography</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FaShieldAlt className="text-green-500 mt-1 mr-2 flex-shrink-0" />
+                    <span>Privacy-preserving computation</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FaShieldAlt className="text-green-500 mt-1 mr-2 flex-shrink-0" />
+                    <span>Continuous security monitoring</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h4 className="text-xl font-semibold text-white mb-3">Implementation Roadmap</h4>
+            <div className="space-y-4">
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h5 className="text-white font-medium mb-2">Phase 1: Foundation (Q1-Q2 2024)</h5>
+                <ul className="text-gray-300 text-sm space-y-1">
+                  <li>• Core protocol architecture development</li>
+                  <li>• Initial sharding implementation</li>
+                  <li>• Basic cross-chain communication</li>
+                </ul>
+              </div>
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h5 className="text-white font-medium mb-2">Phase 2: Enhancement (Q3-Q4 2024)</h5>
+                <ul className="text-gray-300 text-sm space-y-1">
+                  <li>• Advanced privacy features</li>
+                  <li>• Full sharding implementation</li>
+                  <li>• Enhanced cross-chain protocols</li>
+                </ul>
+              </div>
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <h5 className="text-white font-medium mb-2">Phase 3: Maturity (2025)</h5>
+                <ul className="text-gray-300 text-sm space-y-1">
+                  <li>• Quantum-resistant cryptography</li>
+                  <li>• Self-sustaining ecosystem</li>
+                  <li>• Full protocol evolution</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
     },
     {
       id: "commitment",
@@ -861,7 +1261,7 @@ export default function Manifesto() {
               <div className={`transition-all duration-300 ${activeTab === 'solution' ? 'block' : 'hidden'}`}>
                 <div className="bg-gray-800 rounded-lg p-6">
                   <h2 className="text-2xl font-bold mb-6 text-white flex items-center">
-                    <FaHandHoldingUsd className="text-blue-400 mr-3" />
+                    <FaShieldAlt className="text-green-400 mr-3" />
                     Our Solution
                   </h2>
                   
