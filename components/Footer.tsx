@@ -54,9 +54,7 @@ export default function Footer() {
           <div>
             <h3 className="mb-6 text-lg font-display font-bold text-light">{t('tools')}</h3>
             <ul className="space-y-3">
-              <li><Link href="/tools/contract-scanner" className="hover:text-primary transition-colors">Contract Scanner</Link></li>
-              <li><Link href="/tools/token-analyzer" className="hover:text-primary transition-colors">Token Analyzer</Link></li>
-              <li><Link href="/tools/risk-calculator" className="hover:text-primary transition-colors">Risk Calculator</Link></li>
+              <li><Link href="/tools" className="hover:text-primary transition-colors">Tools Overview</Link></li>
             </ul>
           </div>
           

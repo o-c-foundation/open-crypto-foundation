@@ -123,11 +123,7 @@ export default function Navbar() {
 
   // Tools dropdown items
   const toolsItems: MenuItem[] = [
-    { name: 'Tools Overview', href: '/tools' },
-    { name: 'Token Analyzer', href: '/tools/token-analyzer' },
-    { name: 'Token Investigator', href: '/tools/token-investigator' },
-    { name: 'Contract Analyzer', href: '/tools/contract-analyzer' },
-    { name: 'Contract Scanner', href: '/tools/contract-scanner' },
+    { name: 'Tools Overview', href: '/tools' }
   ]
 
   // Resources dropdown items (combining resources and security)
