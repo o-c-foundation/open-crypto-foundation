@@ -40,7 +40,10 @@ interface SubmenuItem {
 interface MenuItem {
   name: string;
   href?: string;
-  submenu?: SubmenuItem[];
+  submenu?: {
+    name: string;
+    href: string;
+  }[];
   icon?: React.ReactNode;
 }
 
@@ -79,12 +82,44 @@ export default function Navbar() {
   }, []);
 
   // Define menu structure
-  const menuItems = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Tokenomics', href: '/tokenomics' },
-    { name: 'Whitepaper', href: '/whitepaper' },
-    { name: 'Contact', href: '/contact' }
+  const menuItems: MenuItem[] = [
+    { 
+      name: 'Overview',
+      submenu: [
+        { name: 'About', href: '/about' },
+        { name: 'Tokenomics', href: '/tokenomics' },
+        { name: 'Whitepaper', href: '/whitepaper' }
+      ]
+    },
+    { name: 'OpenLabs', href: '/openlabs' },
+    { 
+      name: 'Launch Projects',
+      submenu: [
+        { name: 'Launch Projects Overview', href: '/launch-project' },
+        { name: 'OpenChat', href: '/launch-project/openchat' },
+        { name: 'OpenDrive', href: '/launch-project/opendrive' },
+        { name: 'ERC20 Launcher', href: '/launch-project/erc20-launcher' },
+        { name: 'Solana Launcher', href: '/launch-project/solana-launcher' }
+      ]
+    },
+    { 
+      name: 'Open Exchange',
+      submenu: [
+        { name: 'OpenExchange', href: '/openexchange' },
+        { name: 'Exchange Fees', href: '/openexchange/fees' },
+        { name: 'Risk Disclosure', href: '/openexchange/legal/risk-disclosure' },
+        { name: 'Product Compliance', href: '/openexchange/legal/product-compliance' },
+        { name: 'Legal Documents', href: '/openexchange/legal/legal-documents' }
+      ]
+    },
+    { 
+      name: 'Legal',
+      submenu: [
+        { name: 'Terms of Service', href: '/terms' },
+        { name: 'Privacy Policy', href: '/privacy' },
+        { name: 'Cookie Policy', href: '/cookies' }
+      ]
+    }
   ]
 
   // Tools dropdown items
