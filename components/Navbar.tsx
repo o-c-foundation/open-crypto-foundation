@@ -110,7 +110,8 @@ export default function Navbar() {
         { name: 'OpenExchange', href: '/openexchange' },
         { name: 'Exchange Fees', href: '/openexchange/fees' },
         { name: 'Risk Disclosure', href: '/openexchange/legal/risk-disclosure' },
-        { name: 'Product Compliance', href: '/openexchange/legal/product-compliance' }
+        { name: 'Product Compliance', href: '/openexchange/legal/product-compliance' },
+        { name: 'Legal Documents', href: '/openexchange/legal/legal-documents' }
       ]
     },
     {
@@ -448,6 +449,9 @@ export default function Navbar() {
                   </Link>
                   <Link href="/openexchange/legal/product-compliance" className={`block px-4 py-2.5 md:py-2 text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${router.pathname === '/openexchange/legal/product-compliance' ? 'text-primary' : ''}`} onClick={() => setOpenSubmenu(null)}>
                     Product Compliance
+                  </Link>
+                  <Link href="/openexchange/legal/legal-documents" className={`block px-4 py-2.5 md:py-2 text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${router.pathname === '/openexchange/legal/legal-documents' ? 'text-primary' : ''}`} onClick={() => setOpenSubmenu(null)}>
+                    Legal Documents
                   </Link>
                 </div>
               </Transition>
