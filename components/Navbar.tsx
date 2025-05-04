@@ -411,14 +411,47 @@ export default function Navbar() {
               </Transition>
             </div>
           
-            {/* Open Exchange standalone tab */}
-            <Link
-              href="/openexchange"
-              className="flex items-center justify-center px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-gray-200 hover:text-white hover:bg-dark-card/40 focus:outline-none transition-all duration-200 border border-gray-700/40"
-            >
-              <FaExchangeAlt className="mr-1" size={14} />
-              <span className="mr-1 sm:mr-2 text-xs sm:text-sm font-medium">Open Exchange</span>
-            </Link>
+            {/* Open Exchange dropdown */}
+            <div className="relative">
+              <button
+                className="flex items-center justify-center px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-gray-200 hover:text-white hover:bg-dark-card/40 focus:outline-none transition-all duration-200 border border-gray-700/40"
+                onClick={() => {
+                  setOpenSubmenu(openSubmenu === 'Open Exchange' ? null : 'Open Exchange')
+                  setMainMenuOpen(false)
+                  setToolsMenuOpen(false)
+                  setResourcesMenuOpen(false)
+                }}
+                aria-label="Toggle Open Exchange menu"
+              >
+                <FaExchangeAlt className="mr-1" size={14} />
+                <span className="mr-1 sm:mr-2 text-xs sm:text-sm font-medium">Open Exchange</span>
+                <FaChevronDown size={14} />
+              </button>
+              <Transition
+                show={openSubmenu === 'Open Exchange'}
+                enter="transition ease-out duration-200"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-150"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+              >
+                <div className="absolute left-0 w-64 top-10 bg-dark-elevated rounded-xl border border-gray-800 shadow-2xl py-2">
+                  <Link href="/openexchange" className={`block px-4 py-2.5 md:py-2 text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${router.pathname === '/openexchange' ? 'text-primary' : ''}`} onClick={() => setOpenSubmenu(null)}>
+                    OpenExchange
+                  </Link>
+                  <Link href="/openexchange/fees" className={`block px-4 py-2.5 md:py-2 text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${router.pathname === '/openexchange/fees' ? 'text-primary' : ''}`} onClick={() => setOpenSubmenu(null)}>
+                    Exchange Fees
+                  </Link>
+                  <Link href="/openexchange/legal/risk-disclosure" className={`block px-4 py-2.5 md:py-2 text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${router.pathname === '/openexchange/legal/risk-disclosure' ? 'text-primary' : ''}`} onClick={() => setOpenSubmenu(null)}>
+                    Risk Disclosure
+                  </Link>
+                  <Link href="/openexchange/legal/product-compliance" className={`block px-4 py-2.5 md:py-2 text-light-muted hover:text-light hover:bg-dark-card/50 transition-all duration-200 ${router.pathname === '/openexchange/legal/product-compliance' ? 'text-primary' : ''}`} onClick={() => setOpenSubmenu(null)}>
+                    Product Compliance
+                  </Link>
+                </div>
+              </Transition>
+            </div>
 
             {/* Tools dropdown */}
             <div className="relative" ref={toolsDropdownRef}>

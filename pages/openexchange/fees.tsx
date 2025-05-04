@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaExchangeAlt, FaCoins, FaChartLine, FaPercentage } from 'react-icons/fa'
 import Layout from '../../components/Layout'
+import type { ReactElement } from 'react'
 
 interface FeeTable {
   title: string
@@ -92,24 +93,28 @@ const ExchangeFees = () => {
   ]
 
   return (
-    <Layout>
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex items-center mb-8">
-          <FaExchangeAlt className="text-primary mr-3" size={24} />
-          <h1 className="text-3xl font-bold text-white">Exchange Fees</h1>
-        </div>
-        <div className="space-y-8">
-          {tables.map((table, index) => (
-            <FeeTable key={index} table={table} />
-          ))}
-          <div className="bg-dark-card p-4 rounded-lg">
-            <h3 className="text-lg font-semibold text-white mb-2">Futures Lending Borrowing & Transaction Charges</h3>
-            <p className="text-gray-300">Valatility dependent</p>
-          </div>
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="flex items-center mb-8">
+        <FaExchangeAlt className="text-primary mr-3" size={24} />
+        <h1 className="text-3xl font-bold text-white">Exchange Fees</h1>
+      </div>
+      <div className="space-y-8">
+        {tables.map((table, index) => (
+          <FeeTable key={index} table={table} />
+        ))}
+        <div className="bg-dark-card p-4 rounded-lg">
+          <h3 className="text-lg font-semibold text-white mb-2">Futures Lending Borrowing & Transaction Charges</h3>
+          <p className="text-gray-300">Valatility dependent</p>
         </div>
       </div>
-    </Layout>
+    </div>
   )
 }
+
+ExchangeFees.getLayout = (page: ReactElement) => (
+  <Layout title="Exchange Fees | Open Exchange">
+    {page}
+  </Layout>
+)
 
 export default ExchangeFees 

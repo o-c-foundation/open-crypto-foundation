@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaShieldAlt, FaServer, FaLock, FaCheckCircle, FaFileAlt } from 'react-icons/fa'
 import Layout from '../../../components/Layout'
+import type { ReactElement } from 'react'
 
 interface ComplianceSection {
   title: string
@@ -77,17 +78,22 @@ const ProductCompliance = () => {
   ]
 
   return (
-    <Layout>
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-white mb-8">Product Compliance</h1>
-        <div className="space-y-8">
-          {sections.map((section, index) => (
-            <ComplianceSection key={index} section={section} />
-          ))}
-        </div>
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold text-white mb-8">Product Compliance</h1>
+      <div className="space-y-8">
+        {sections.map((section, index) => (
+          <ComplianceSection key={index} section={section} />
+        ))}
       </div>
-    </Layout>
+    </div>
   )
 }
+
+import type { ReactElement } from 'react'
+ProductCompliance.getLayout = (page: ReactElement) => (
+  <Layout title="Product Compliance | Open Exchange Legal">
+    {page}
+  </Layout>
+)
 
 export default ProductCompliance 
