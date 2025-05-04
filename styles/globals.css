@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 0, 0, 0;
+  --primary-rgb: 0, 102, 255;
+  --dark-blue-rgb: 8, 18, 42;
+  --dark-purple-rgb: 15, 14, 36;
+  --dark-gray-rgb: 18, 20, 28;
+  --purple-rgb: 107, 70, 193;
+  --blue-rgb: 0, 102, 255;
+  --white-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  font-feature-settings: "ss01", "ss02";
+}
+
+/* Animated Background Gradients */
+.animated-gradient {
+  background: linear-gradient(130deg, rgb(var(--dark-blue-rgb)), rgb(var(--background-rgb)), rgb(var(--dark-purple-rgb)), rgb(var(--dark-gray-rgb)));
+  background-size: 300% 300%;
+  animation: gradient-shift 20s ease infinite;
+}
+
+/* New Front Page Gradient with Dark Blue, Green, White and Purple */
+.front-page-gradient {
+  background: linear-gradient(130deg, 
+    rgba(5, 10, 30, 1), 
+    rgba(0, 0, 0, 1), 
+    rgba(0, 50, 30, 1), 
+    rgba(40, 20, 70, 1));
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+.animated-gradient-subtle {
+  background: linear-gradient(130deg, rgba(var(--dark-blue-rgb), 0.8), rgba(var(--background-rgb), 0.8), rgba(var(--dark-purple-rgb), 0.8), rgba(var(--dark-gray-rgb), 0.8));
+  background-size: 300% 300%;
+  animation: gradient-shift 25s ease infinite;
+}
+
+.animated-gradient-light {
+  background: linear-gradient(130deg, rgba(var(--dark-blue-rgb), 0.4), rgba(var(--background-rgb), 0.5), rgba(var(--dark-purple-rgb), 0.4), rgba(var(--dark-gray-rgb), 0.5));
+  background-size: 300% 300%;
+  animation: gradient-shift 30s ease infinite;
+}
+
+/* New Hero Gradient */
+.hero-gradient {
+  background: linear-gradient(130deg, 
+    rgba(var(--purple-rgb), 0.7), 
+    rgba(var(--blue-rgb), 0.8), 
+    rgba(var(--white-rgb), 0.2), 
+    rgba(var(--purple-rgb), 0.7));
+  background-size: 300% 300%;
+  animation: gradient-shift 15s ease infinite;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Utility Classes */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0066FF;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+html,
+body {
+  @apply animated-gradient text-light;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-display font-bold;
+}
+
+h1 {
+  @apply text-4xl md:text-5xl lg:text-6xl;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl;
+}
+
+h4 {
+  @apply text-xl md:text-2xl;
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-2 font-medium transition-all duration-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark;
+  }
+  
+  .btn-primary {
+    @apply text-white bg-primary hover:bg-primary-dark focus:ring-primary;
+  }
+  
+  .btn-secondary {
+    @apply text-white bg-dark-elevated hover:bg-dark-light focus:ring-light-faded border border-light-faded/20;
+  }
+  
+  .card {
+    @apply bg-dark-card border border-dark-light rounded-lg p-6 transition-all duration-300 hover:border-primary/50;
+  }
+  
+  .glow-effect {
+    @apply relative;
+  }
+  
+  .glow-effect::before {
+    @apply content-[''] absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-primary/20 rounded-full blur-[60px] opacity-0 transition-opacity duration-500;
+  }
+  
+  .glow-effect:hover::before {
+    @apply opacity-70;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent;
+  }
+
+  .bg-card-gradient {
+    @apply animated-gradient-subtle;
+  }
+} 
