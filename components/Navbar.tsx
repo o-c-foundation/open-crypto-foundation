@@ -104,10 +104,10 @@ export default function Navbar() {
         { name: 'Solana Launcher', href: '/launch-project/solana-launcher' },
       ]
     },
-    { name: 'Open Exchange', href: '/openexchange' },
     {
-      name: 'OpenExchange Legal',
+      name: 'Open Exchange',
       submenu: [
+        { name: 'OpenExchange', href: '/openexchange' },
         { name: 'Risk Disclosure', href: '/openexchange/legal/risk-disclosure' }
       ]
     },
