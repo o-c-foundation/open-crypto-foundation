@@ -119,17 +119,20 @@ export default function Tokenomics() {
   ];
 
   const openTokenAllocations: DonutChartSegment[] = [
-    { name: 'Initial Treasury', percentage: 100, color: '#8B5CF6', description: '10,000,000,000 open allocated to validator account' }
+    { name: 'Public Airdrop Account', percentage: 25, color: '#4F46E5', description: 'Pending distribution to the public' },
+    { name: 'Open Crypto Foundation', percentage: 30, color: '#8B5CF6', description: 'Allocated to Open Crypto Foundation' },
+    { name: 'OpenExchange', percentage: 20, color: '#EC4899', description: 'Allocated to OpenExchange' },
+    { name: 'Staking Pool', percentage: 10, color: '#10B981', description: 'Allocated to staking pool' },
+    { name: 'Bridge Inter-Chain Liquidity', percentage: 5, color: '#F59E0B', description: 'Allocated to bridge inter-chain liquidity' },
+    { name: 'Rewards & Recovery', percentage: 10, color: '#3B82F6', description: 'Allocated to rewards, future airdrops and victim recovery program' }
   ];
 
-  const stakeTokenAllocations: DonutChartSegment[] = [
-    { name: 'Initial Bonding', percentage: 0.1, color: '#EC4899', description: '1,000,000 stake bonded by genesis validator' },
-    { name: 'Available for Delegation', percentage: 99.9, color: '#10B981', description: '999,000,000 stake available for delegation' }
-  ];
-
-  const vestingSchedules: VestingSchedule[] = [
-    { category: 'Initial Treasury', immediate: '100%', cliff: 'None', vesting: 'None' },
-    { category: 'Genesis Validator', immediate: '100%', cliff: 'None', vesting: 'None' }
+  const wopenTokenAllocations: DonutChartSegment[] = [
+    { name: 'Public Airdrop Account', percentage: 15, color: '#4F46E5', description: 'Pending distribution to the public' },
+    { name: 'Open Crypto Foundation', percentage: 10, color: '#8B5CF6', description: 'Allocated to Open Crypto Foundation' },
+    { name: 'OpenExchange', percentage: 15, color: '#EC4899', description: 'Allocated to OpenExchange' },
+    { name: 'Bridge Inter-Chain Liquidity', percentage: 5, color: '#F59E0B', description: 'Allocated to bridge inter-chain liquidity' },
+    { name: 'Reserved', percentage: 55, color: '#3B82F6', description: 'Reserved for future use' }
   ];
 
   const networks: NetworkCardProps[] = [
@@ -138,47 +141,59 @@ export default function Tokenomics() {
       icon: FaNetworkWired,
       tokenType: 'Native',
       color: 'bg-blue-900/40',
-      allocation: '10,000,000,000 open / 1,000,000,000 stake',
+      allocation: '10,000,000,000 OPEN / 1,000,000,000 circulating',
       features: [
-        'Cosmos SDK and Tendermint Core integration',
-        'Dual-token system with clear utility separation',
-        'Advanced governance mechanisms via stake token',
-        'BFT consensus with slashing conditions',
+        'Native token on OpenNet',
+        'Exchange Routes: OpenExchange on OpenNet or Ethereum',
+        'Advanced governance mechanisms',
         'Cross-chain communication protocols'
+      ]
+    },
+    {
+      name: 'Solana',
+      icon: FaNetworkWired,
+      tokenType: 'Wrapped',
+      color: 'bg-purple-900/40',
+      allocation: '1,000,000,000 WOPEN / 1,000,000,000 circulating',
+      features: [
+        'Wrapped version of OPEN on Solana',
+        'Exchange Routes: OpenExchange Solana, PumpSwap Solana',
+        'Full Solana ecosystem compatibility',
+        'High-speed transactions'
       ]
     }
   ];
 
   const utilityFeatures: UtilityFeature[] = [
     {
-      icon: FaServer,
-      title: 'Network Security',
-      description: 'stake tokens are required for validator participation and network security through PoS consensus mechanism.'
-    },
-    {
       icon: FaExchangeAlt,
       title: 'Transaction Fees',
-      description: 'open tokens are used for paying computational and storage costs associated with transactions.'
+      description: 'OPEN tokens are used for paying computational and storage costs associated with transactions.'
     },
     {
       icon: FaShieldAlt,
-      title: 'Slashing Mechanism',
-      description: 'Validators bond stake as collateral, subject to slashing for protocol violations or malicious behavior.'
+      title: 'Network Security',
+      description: 'OPEN tokens are used for network security and validator participation.'
     },
     {
       icon: FaVoteYea,
       title: 'Governance Rights',
-      description: 'stake tokens represent voting power within the OpenNet ecosystem\'s governance framework.'
+      description: 'OPEN tokens represent voting power within the OpenNet ecosystem\'s governance framework.'
     },
     {
       icon: FaCode,
       title: 'dApp Utility',
-      description: 'open tokens serve as the native currency within applications built upon OpenNet.'
+      description: 'OPEN tokens serve as the native currency within applications built upon OpenNet.'
     },
     {
       icon: FaCogs,
       title: 'Platform Services',
-      description: 'open tokens may be utilized for accessing specialized tools and services within the ecosystem.'
+      description: 'OPEN tokens may be utilized for accessing specialized tools and services within the ecosystem.'
+    },
+    {
+      icon: FaExchangeAlt,
+      title: 'Cross-Chain Utility',
+      description: 'WOPEN tokens enable seamless interaction with the Solana ecosystem and its applications.'
     }
   ];
 
@@ -249,15 +264,15 @@ export default function Tokenomics() {
                   <div className="bg-primary/20 p-3 rounded-lg">
                     <FaChartPie size={24} className="text-primary" />
                   </div>
-                  <h2 className="text-2xl font-bold text-white">stake Token Allocation</h2>
+                  <h2 className="text-2xl font-bold text-white">wopen Token Allocation</h2>
                 </div>
                 
-                <p className="text-gray-400 mb-6">Total Supply: <span className="text-white font-semibold">1,000,000,000 stake</span></p>
+                <p className="text-gray-400 mb-6">Total Supply: <span className="text-white font-semibold">10,000,000,000 wopen</span></p>
                 
-                <DonutChart segments={stakeTokenAllocations} />
+                <DonutChart segments={wopenTokenAllocations} />
                 
                 <div className="mt-6 space-y-2">
-                  {stakeTokenAllocations.map((segment, index) => (
+                  {wopenTokenAllocations.map((segment, index) => (
                     <div key={index} className="flex items-center justify-between">
                       <div className="flex items-center">
                         <div className="w-4 h-4 rounded-full mr-2" style={{ backgroundColor: segment.color }} />
