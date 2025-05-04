@@ -28,7 +28,7 @@ const OpenExchangePage: NextPageWithLayout = () => {
               Trade securely, access top digital assets, and experience lightning-fast transactions on a reliable and scalable crypto exchange platform.
             </p>
             <a 
-              href="https://trade.openexchange.site/" 
+              href="https://trade.openexchnage.site/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="px-8 py-4 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors shadow-lg inline-block"
@@ -114,7 +114,7 @@ const OpenExchangePage: NextPageWithLayout = () => {
                 Large crypto trades with private, personalized, and high-touch services.
               </p>
               <a 
-                href="https://trade.openexchange.site/" 
+                href="https://trade.openexchnage.site/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inline-block px-4 py-2 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors"
@@ -131,7 +131,7 @@ const OpenExchangePage: NextPageWithLayout = () => {
                 Free, instant, and user-friendly cryptocurrency trading with real-time rates.
               </p>
               <a 
-                href="https://trade.openexchange.site/" 
+                href="https://trade.openexchnage.site/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inline-block px-4 py-2 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors"
@@ -148,7 +148,7 @@ const OpenExchangePage: NextPageWithLayout = () => {
                 Instant cryptocurrency transactions with deep liquidity and infinite opportunities.
               </p>
               <a 
-                href="https://trade.openexchange.site/" 
+                href="https://trade.openexchnage.site/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inline-block px-4 py-2 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors"
@@ -165,7 +165,7 @@ const OpenExchangePage: NextPageWithLayout = () => {
                 Trade crypto at a predetermined price and on a specified date in the future for a better return.
               </p>
               <a 
-                href="https://trade.openexchange.site/" 
+                href="https://trade.openexchnage.site/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inline-block px-4 py-2 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors"
@@ -182,7 +182,7 @@ const OpenExchangePage: NextPageWithLayout = () => {
                 Seize opportunities in market fluctuations without the need to possess the underlying asset.
               </p>
               <a 
-                href="https://trade.openexchange.site/" 
+                href="https://trade.openexchnage.site/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inline-block px-4 py-2 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors"
@@ -199,7 +199,7 @@ const OpenExchangePage: NextPageWithLayout = () => {
                 Take advantage of market opportunities by emulating the strategies of successful traders.
               </p>
               <a 
-                href="https://trade.openexchange.site/" 
+                href="https://trade.openexchnage.site/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inline-block px-4 py-2 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors"
@@ -221,7 +221,7 @@ const OpenExchangePage: NextPageWithLayout = () => {
               We are a next-generation crypto exchange committed to empowering users with secure, fast, and user-friendly digital asset trading. Whether you're a beginner or a pro, our platform provides the tools and support you need to trade with confidence.
             </p>
             <a 
-              href="https://trade.openexchange.site/" 
+              href="https://trade.openexchnage.site/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="px-8 py-4 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors shadow-lg inline-block"

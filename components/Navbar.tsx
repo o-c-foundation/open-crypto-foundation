@@ -104,7 +104,7 @@ export default function Navbar() {
         { name: 'Solana Launcher', href: '/launch-project/solana-launcher' },
       ]
     },
-    { name: 'OpenExchange', href: '/openexchange' },
+    { name: 'Open Exchange', href: '/openexchange' },
     {
       name: 'Legal',
       submenu: [
@@ -184,7 +184,7 @@ export default function Navbar() {
         .filter(item => item.href !== undefined)
         .map(item => ({ name: item.name, href: item.href as string }))
     },
-    { name: 'OpenExchange', href: '/openexchange', icon: <FaExchangeAlt className="text-primary" /> },
+    { name: 'Open Exchange', href: '/openexchange', icon: <FaExchangeAlt className="text-primary" /> },
     { 
       name: 'Legal',
       icon: <FaFileAlt className="text-primary" />,
