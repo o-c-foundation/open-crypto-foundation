@@ -79,12 +79,12 @@ export default function Navbar() {
   }, []);
 
   // Define menu structure
-  const menuItems: MenuItem[] = [
+  const menuItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Tokenomics', href: '/tokenomics' },
     { name: 'Whitepaper', href: '/whitepaper' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Contact', href: '/contact' }
   ]
 
   // Tools dropdown items

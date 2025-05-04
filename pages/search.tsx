@@ -6,11 +6,11 @@ import { FaSearch, FaArrowRight } from 'react-icons/fa';
 
 // Mock search database - this would be replaced with actual search logic
 const searchDatabase = [
-  { title: 'Tokenomics', path: '/tokenomics', content: 'Explore the token economics of the OCF ecosystem', category: 'Token' },
-  { title: 'Whitepaper', path: '/whitepaper', content: 'Read the OCF whitepaper and technical documentation', category: 'Resources' },
-  { title: 'Manifesto', path: '/manifesto', content: 'Discover the vision and mission of the Open Crypto Foundation', category: 'About' },
-  { title: 'DeFi Fundamentals', path: '/resources/defi-fundamentals', content: 'Learn about the fundamentals of decentralized finance', category: 'Resources' },
-  { title: 'For Traders', path: '/resources/traders', content: 'Resources and tools for cryptocurrency traders', category: 'Resources' },
+  { title: 'Tokenomics', path: '/tokenomics', content: 'Learn about the token distribution and economics', category: 'Token' },
+  { title: 'Whitepaper', path: '/whitepaper', content: 'Read the detailed technical documentation', category: 'Documentation' },
+  { title: 'Manifesto', path: '/manifesto', content: 'Understand the core principles and vision', category: 'About' },
+  { title: 'DeFi Fundamentals', path: '/resources/defi-fundamentals', content: 'Learn the basics of decentralized finance', category: 'Resources' },
+  { title: 'For Traders', path: '/resources/traders', content: 'Resources and guides for traders', category: 'Resources' }
 ];
 
 const Search = () => {
