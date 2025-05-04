@@ -106,6 +106,12 @@ export default function Navbar() {
     },
     { name: 'Open Exchange', href: '/openexchange' },
     {
+      name: 'OpenExchange Legal',
+      submenu: [
+        { name: 'Risk Disclosure', href: '/openexchange/legal/risk-disclosure' }
+      ]
+    },
+    {
       name: 'Legal',
       submenu: [
         { name: 'Terms of Service', href: '/terms' },
