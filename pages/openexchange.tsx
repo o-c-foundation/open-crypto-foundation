@@ -1,251 +1,237 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import Image from 'next/image'
-import { FaExchangeAlt, FaShieldAlt, FaUserSecret, FaCoins, FaQuestion, FaCreditCard, FaRandom, FaGlobe, FaMoneyBillWave } from 'react-icons/fa'
-import { useLanguage } from '../contexts/LanguageContext'
-import TabLayout from '../components/TabLayout'
-import ScrollToTop from '../components/ScrollToTop'
+import { FaShieldAlt, FaExchangeAlt, FaGlobe, FaChartLine, FaCopy, FaUsers } from 'react-icons/fa'
 import Layout from '../components/Layout'
+import ScrollToTop from '../components/ScrollToTop'
 import { NextPageWithLayout } from '../types/next-page'
 
 const OpenExchangePage: NextPageWithLayout = () => {
-  const { t } = useLanguage()
-  const [activeSection, setActiveSection] = useState('overview')
-  
-  // Tabs configuration
-  const exchangeSections = [
-    {
-      id: 'overview',
-      name: 'Overview',
-      icon: <FaExchangeAlt className="text-primary" size={24} />,
-      content: (
-        <div className="space-y-4">
-          <div className="bg-dark-card p-6 rounded-xl border border-dark-light/30 shadow-glow-sm">
-            <h3 className="text-2xl font-bold text-gradient mb-4">OpenExchange: Fast, Secure, Anonymous</h3>
-            <p className="text-light-muted">
-              OpenExchange is our premier cryptocurrency exchange service that provides a secure and anonymous 
-              platform for buying, selling, and trading cryptocurrencies. With maximum protection and reliability, 
-              OpenExchange ensures that your transactions are safe and efficient.
+  return (
+    <div className="min-h-screen bg-dark">
+      <Head>
+        <title>Open Exchange - Secure Crypto Trading Platform | Open Crypto Foundation</title>
+        <meta name="description" content="Trade securely, access top digital assets, and experience lightning-fast transactions on a reliable and scalable crypto exchange platform." />
+      </Head>
+
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-to-b from-dark-light to-dark">
+        <div className="container px-4 mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Enter the World of Digital Assets
+            </h1>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+              Open Exchange
+            </h2>
+            <p className="text-xl text-light-muted mb-8">
+              Trade securely, access top digital assets, and experience lightning-fast transactions on a reliable and scalable crypto exchange platform.
             </p>
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-dark-light/30 p-4 rounded-lg border border-dark-light/30 flex flex-col items-center text-center">
-                <FaShieldAlt className="text-primary mb-3" size={32} />
-                <h4 className="text-white font-medium mb-2">Maximum Protection</h4>
-                <p className="text-light-muted text-sm">Our exchange is designed with security as the top priority, ensuring all transactions have the highest level of protection.</p>
-              </div>
-              <div className="bg-dark-light/30 p-4 rounded-lg border border-dark-light/30 flex flex-col items-center text-center">
-                <FaExchangeAlt className="text-blue-400 mb-3" size={32} />
-                <h4 className="text-white font-medium mb-2">Reliable Exchange</h4>
-                <p className="text-light-muted text-sm">We guarantee quality service and reliable operations for all your cryptocurrency exchange needs.</p>
-              </div>
-              <div className="bg-dark-light/30 p-4 rounded-lg border border-dark-light/30 flex flex-col items-center text-center">
-                <FaUserSecret className="text-purple-400 mb-3" size={32} />
-                <h4 className="text-white font-medium mb-2">Complete Anonymity</h4>
-                <p className="text-light-muted text-sm">Your personal data remains secure with our commitment to providing complete anonymity for all users.</p>
+            <a 
+              href="https://trade.openexchange.site/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-8 py-4 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors shadow-lg inline-block"
+            >
+              Join Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-16 bg-dark-light/5">
+        <div className="container px-4 mx-auto">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-white mb-6">About OpenExchange</h2>
+            <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30">
+              <h3 className="text-2xl font-bold text-primary mb-4">Empowering Tomorrow's Finances</h3>
+              <h4 className="text-xl font-bold text-white mb-4">Trade Crypto with Confidence</h4>
+              <p className="text-light-muted mb-6">
+                We're a leading crypto exchange making digital asset trading accessible, secure, and efficient. Enjoy a user-friendly interface, advanced tools, fast transactions, and 24/7 support - all backed by robust security and cold wallet storage.
+              </p>
+              <div className="flex items-center justify-center bg-primary/10 rounded-lg p-4">
+                <span className="text-2xl font-bold text-primary">100+</span>
+                <span className="text-light-muted ml-2">Countries served</span>
               </div>
             </div>
-            <div className="mt-8 flex justify-center">
+          </div>
+        </div>
+      </section>
+
+      {/* Key Features Section */}
+      <section className="py-16">
+        <div className="container px-4 mx-auto">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-6">Why Choose Our Platform?</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <FaShieldAlt className="text-primary text-xl" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Safe & Secure</h3>
+              <p className="text-light-muted">
+                This platform uses a robust defense strategy against potential threats, incorporating measures such as MFA and cold storage.
+              </p>
+            </div>
+            <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <FaExchangeAlt className="text-primary text-xl" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Fast Transaction</h3>
+              <p className="text-light-muted">
+                Providing traders with a swift and seamless trading experience, we ensure lightning-fast order execution and real-time updates.
+              </p>
+            </div>
+            <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <FaGlobe className="text-primary text-xl" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Supports all Major Cryptos</h3>
+              <p className="text-light-muted">
+                This platform accommodates a variety of cryptocurrencies, including Bitcoin, Ethereum, Litecoin, and a wide array of altcoins.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-16 bg-dark-light/5">
+        <div className="container px-4 mx-auto">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-6">Explore Our Services</h2>
+            <p className="text-xl text-light-muted">Available Trading Options</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <FaChartLine className="text-primary text-xl" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">OTC DESK</h3>
+              <p className="text-light-muted mb-4">
+                Large crypto trades with private, personalized, and high-touch services.
+              </p>
               <a 
-                href="https://openexchange.app/" 
+                href="https://trade.openexchange.site/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="px-6 py-3 bg-gradient-to-r from-primary to-primary-light text-dark font-bold rounded-lg hover:shadow-glow transition-all duration-300"
+                className="inline-block px-4 py-2 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors"
               >
-                Visit OpenExchange
+                Join Now
+              </a>
+            </div>
+            <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <FaExchangeAlt className="text-primary text-xl" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">CONVERT</h3>
+              <p className="text-light-muted mb-4">
+                Free, instant, and user-friendly cryptocurrency trading with real-time rates.
+              </p>
+              <a 
+                href="https://trade.openexchange.site/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block px-4 py-2 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors"
+              >
+                Join Now
+              </a>
+            </div>
+            <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <FaGlobe className="text-primary text-xl" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">SPOT</h3>
+              <p className="text-light-muted mb-4">
+                Instant cryptocurrency transactions with deep liquidity and infinite opportunities.
+              </p>
+              <a 
+                href="https://trade.openexchange.site/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block px-4 py-2 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors"
+              >
+                Join Now
+              </a>
+            </div>
+            <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <FaChartLine className="text-primary text-xl" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">FUTURES</h3>
+              <p className="text-light-muted mb-4">
+                Trade crypto at a predetermined price and on a specified date in the future for a better return.
+              </p>
+              <a 
+                href="https://trade.openexchange.site/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block px-4 py-2 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors"
+              >
+                Join Now
+              </a>
+            </div>
+            <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <FaExchangeAlt className="text-primary text-xl" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">OPTIONS</h3>
+              <p className="text-light-muted mb-4">
+                Seize opportunities in market fluctuations without the need to possess the underlying asset.
+              </p>
+              <a 
+                href="https://trade.openexchange.site/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block px-4 py-2 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors"
+              >
+                Join Now
+              </a>
+            </div>
+            <div className="bg-dark-card rounded-xl p-6 border border-dark-light/30">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <FaCopy className="text-primary text-xl" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">COPY TRADING</h3>
+              <p className="text-light-muted mb-4">
+                Take advantage of market opportunities by emulating the strategies of successful traders.
+              </p>
+              <a 
+                href="https://trade.openexchange.site/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block px-4 py-2 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors"
+              >
+                Join Now
               </a>
             </div>
           </div>
         </div>
-      )
-    },
-    {
-      id: 'features',
-      name: 'Features',
-      icon: <FaCoins className="text-yellow-400" size={24} />,
-      content: (
-        <div className="space-y-4">
-          <p className="text-light-muted">
-            OpenExchange offers a comprehensive suite of features designed to make cryptocurrency exchanges 
-            seamless, secure, and accessible to everyone.
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-            <div className="bg-dark-light/30 p-5 rounded-lg border border-dark-light/30">
-              <div className="flex items-center mb-3">
-                <FaCreditCard className="text-green-400 mr-3" size={24} />
-                <h4 className="text-white font-medium">Buy & Sell Crypto with Fiat</h4>
-              </div>
-              <p className="text-light-muted">
-                Easily purchase cryptocurrencies using various fiat payment methods or sell your crypto assets for traditional currencies.
-              </p>
-            </div>
-            
-            <div className="bg-dark-light/30 p-5 rounded-lg border border-dark-light/30">
-              <div className="flex items-center mb-3">
-                <FaRandom className="text-blue-400 mr-3" size={24} />
-                <h4 className="text-white font-medium">Bridge Between Chains</h4>
-              </div>
-              <p className="text-light-muted">
-                Transfer your assets seamlessly between different blockchain networks with our secure bridge functionality.
-              </p>
-            </div>
-            
-            <div className="bg-dark-light/30 p-5 rounded-lg border border-dark-light/30">
-              <div className="flex items-center mb-3">
-                <FaExchangeAlt className="text-purple-400 mr-3" size={24} />
-                <h4 className="text-white font-medium">Swap Any Token</h4>
-              </div>
-              <p className="text-light-muted">
-                Exchange virtually any cryptocurrency token for another with competitive rates and minimal slippage.
-              </p>
-            </div>
-            
-            <div className="bg-dark-light/30 p-5 rounded-lg border border-dark-light/30">
-              <div className="flex items-center mb-3">
-                <FaShieldAlt className="text-red-400 mr-3" size={24} />
-                <h4 className="text-white font-medium">Enhanced Security</h4>
-              </div>
-              <p className="text-light-muted">
-                Advanced security measures protect your assets and transactions, including multi-signature wallets and cold storage.
-              </p>
-            </div>
-            
-            <div className="bg-dark-light/30 p-5 rounded-lg border border-dark-light/30">
-              <div className="flex items-center mb-3">
-                <FaMoneyBillWave className="text-yellow-400 mr-3" size={24} />
-                <h4 className="text-white font-medium">Fixed Rate Options</h4>
-              </div>
-              <p className="text-light-muted">
-                Lock in your exchange rate before confirming your transaction to avoid price fluctuations during processing.
-              </p>
-            </div>
-            
-            <div className="bg-dark-light/30 p-5 rounded-lg border border-dark-light/30">
-              <div className="flex items-center mb-3">
-                <FaGlobe className="text-teal-400 mr-3" size={24} />
-                <h4 className="text-white font-medium">Global Accessibility</h4>
-              </div>
-              <p className="text-light-muted">
-                Access our exchange services from almost anywhere in the world with multiple language support.
-              </p>
-            </div>
-          </div>
-        </div>
-      )
-    },
-    {
-      id: 'faq',
-      name: 'FAQ',
-      icon: <FaQuestion className="text-red-400" size={24} />,
-      content: (
-        <div className="space-y-6">
-          <p className="text-light-muted mb-6">
-            Find answers to commonly asked questions about OpenExchange services and features.
-          </p>
-          
-          <div className="bg-dark-card rounded-lg border border-dark-light/30 divide-y divide-dark-light/30">
-            <div className="p-5">
-              <h4 className="text-white font-medium mb-3">How does OpenExchange ensure transaction security?</h4>
-              <p className="text-light-muted">
-                OpenExchange employs multiple layers of security, including encryption for all sensitive data, 
-                cold storage for funds, regular security audits, and monitoring systems that detect and prevent 
-                suspicious activities. We also implement strict KYC and AML procedures where required by regulations.
-              </p>
-            </div>
-            
-            <div className="p-5">
-              <h4 className="text-white font-medium mb-3">What cryptocurrencies are supported?</h4>
-              <p className="text-light-muted">
-                OpenExchange supports a wide range of cryptocurrencies across multiple blockchain networks, 
-                including but not limited to Bitcoin, Ethereum, BNB, Solana, and many ERC-20 and other tokens. 
-                The list of supported cryptocurrencies is constantly expanding.
-              </p>
-            </div>
-            
-            <div className="p-5">
-              <h4 className="text-white font-medium mb-3">How are exchange rates determined?</h4>
-              <p className="text-light-muted">
-                Exchange rates are determined by market conditions, liquidity providers, and network fees. 
-                For fixed-rate exchanges, we lock in the rate displayed at the time of transaction initiation 
-                to protect users from price fluctuations during processing.
-              </p>
-            </div>
-            
-            <div className="p-5">
-              <h4 className="text-white font-medium mb-3">What payment methods are accepted for fiat transactions?</h4>
-              <p className="text-light-muted">
-                OpenExchange accepts various payment methods including credit/debit cards, bank transfers, 
-                and supported third-party payment processors. Available payment methods may vary depending 
-                on your region and the currencies being exchanged.
-              </p>
-            </div>
-            
-            <div className="p-5">
-              <h4 className="text-white font-medium mb-3">How long do transactions take to complete?</h4>
-              <p className="text-light-muted">
-                Transaction times vary depending on the cryptocurrencies involved and network conditions. 
-                Most cryptocurrency exchanges are processed within minutes, while fiat transactions may take 
-                longer due to banking processes. Bridge transactions between chains typically take 10-30 minutes 
-                depending on the networks involved.
-              </p>
-            </div>
-            
-            <div className="p-5">
-              <h4 className="text-white font-medium mb-3">Is there a limit on transaction amounts?</h4>
-              <p className="text-light-muted">
-                Yes, there are minimum and maximum transaction limits that vary based on the cryptocurrencies 
-                being exchanged and the payment methods used. These limits are in place for security reasons 
-                and to ensure liquidity. Specific limits are displayed during the transaction process.
-              </p>
-            </div>
-          </div>
-        </div>
-      )
-    }
-  ]
-  
-  const handleSectionChange = (sectionId: string) => {
-    setActiveSection(sectionId)
-  }
+      </section>
 
-  return (
-    <div className="pb-12 pt-6">
-      <Head>
-        <title>OpenExchange - Cryptocurrency Exchange | Open Crypto Foundation</title>
-        <meta name="description" content="Fast, secure, and anonymous cryptocurrency exchange service by Open Crypto Foundation. Buy, sell, and swap any token with OpenExchange." />
-      </Head>
-      
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gradient mb-4">OpenExchange</h1>
-          <p className="text-xl text-light-muted max-w-3xl mx-auto">
-            A fast, secure, and anonymous cryptocurrency exchange platform.
-          </p>
+      {/* Next-Gen Exchange Section */}
+      <section className="py-16">
+        <div className="container px-4 mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-white mb-6">Next-Gen Exchange</h2>
+            <h3 className="text-2xl font-bold text-primary mb-6">Open Exchange Built for All Traders</h3>
+            <p className="text-xl text-light-muted mb-8">
+              We are a next-generation crypto exchange committed to empowering users with secure, fast, and user-friendly digital asset trading. Whether you're a beginner or a pro, our platform provides the tools and support you need to trade with confidence.
+            </p>
+            <a 
+              href="https://trade.openexchange.site/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-8 py-4 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors shadow-lg inline-block"
+            >
+              Join The Revolution
+            </a>
+          </div>
         </div>
-        
-        <TabLayout
-          tabs={exchangeSections}
-          activeTab={activeSection}
-          onTabChange={handleSectionChange}
-        >
-          {/* Display active tab content */}
-          {exchangeSections.find(section => section.id === activeSection)?.content}
-        </TabLayout>
-        
-        <div className="mt-16 text-center">
-          <h3 className="text-2xl font-bold text-white mb-6">Ready to Exchange?</h3>
-          <a 
-            href="https://openexchange.app/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="px-8 py-4 bg-gradient-to-r from-primary to-primary-light text-dark font-bold rounded-lg hover:shadow-glow transition-all duration-300 inline-block"
-          >
-            Visit OpenExchange
-          </a>
-        </div>
-      </div>
-      
+      </section>
+
       <ScrollToTop />
     </div>
   )
@@ -253,7 +239,10 @@ const OpenExchangePage: NextPageWithLayout = () => {
 
 OpenExchangePage.getLayout = (page: React.ReactElement) => {
   return (
-    <Layout title="OpenExchange - Cryptocurrency Exchange | Open Crypto Foundation">
+    <Layout 
+      title="Open Exchange - Secure Crypto Trading Platform | Open Crypto Foundation"
+      description="Trade securely, access top digital assets, and experience lightning-fast transactions on a reliable and scalable crypto exchange platform."
+    >
       {page}
     </Layout>
   )
