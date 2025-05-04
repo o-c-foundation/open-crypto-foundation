@@ -267,7 +267,7 @@ export default function Tokenomics() {
                   <h2 className="text-2xl font-bold text-white">wopen Token Allocation</h2>
                 </div>
                 
-                <p className="text-gray-400 mb-6">Total Supply: <span className="text-white font-semibold">10,000,000,000 wopen</span></p>
+                <p className="text-gray-400 mb-6">Total Supply: <span className="text-white font-semibold">1,000,000,000 wopen</span></p>
                 
                 <DonutChart segments={wopenTokenAllocations} />
                 
