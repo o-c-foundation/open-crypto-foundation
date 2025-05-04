@@ -403,6 +403,15 @@ export default function Navbar() {
               </Transition>
             </div>
           
+            {/* Open Exchange standalone tab */}
+            <Link
+              href="/openexchange"
+              className="flex items-center justify-center px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-gray-200 hover:text-white hover:bg-dark-card/40 focus:outline-none transition-all duration-200 border border-gray-700/40"
+            >
+              <FaExchangeAlt className="mr-1" size={14} />
+              <span className="mr-1 sm:mr-2 text-xs sm:text-sm font-medium">Open Exchange</span>
+            </Link>
+
             {/* Tools dropdown */}
             <div className="relative" ref={toolsDropdownRef}>
             <button 
