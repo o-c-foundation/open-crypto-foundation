@@ -1,7 +1,6 @@
 import React from 'react'
 import { FaShieldAlt, FaServer, FaLock, FaCheckCircle, FaFileAlt } from 'react-icons/fa'
 import Layout from '../../../components/Layout'
-import type { ReactElement } from 'react'
 
 interface ComplianceSection {
   title: string
@@ -89,7 +88,6 @@ const ProductCompliance = () => {
   )
 }
 
-import type { ReactElement } from 'react'
 ProductCompliance.getLayout = (page: ReactElement) => (
   <Layout title="Product Compliance | Open Exchange Legal">
     {page}
